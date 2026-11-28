@@ -44,76 +44,76 @@ namespace net.crossly.Model
             Inter = 1,
 
             /// <summary>
-            /// Enum Playfair for value: playfair
-            /// </summary>
-            [EnumMember(Value = "playfair")]
-            Playfair = 2,
-
-            /// <summary>
-            /// Enum Cormorant for value: cormorant
-            /// </summary>
-            [EnumMember(Value = "cormorant")]
-            Cormorant = 3,
-
-            /// <summary>
-            /// Enum SpaceGrotesk for value: space-grotesk
-            /// </summary>
-            [EnumMember(Value = "space-grotesk")]
-            SpaceGrotesk = 4,
-
-            /// <summary>
-            /// Enum ArchivoBlack for value: archivo-black
-            /// </summary>
-            [EnumMember(Value = "archivo-black")]
-            ArchivoBlack = 5,
-
-            /// <summary>
             /// Enum DmSans for value: dm-sans
             /// </summary>
             [EnumMember(Value = "dm-sans")]
-            DmSans = 6,
+            DmSans = 2,
 
             /// <summary>
             /// Enum Manrope for value: manrope
             /// </summary>
             [EnumMember(Value = "manrope")]
-            Manrope = 7,
+            Manrope = 3,
 
             /// <summary>
             /// Enum Poppins for value: poppins
             /// </summary>
             [EnumMember(Value = "poppins")]
-            Poppins = 8,
+            Poppins = 4,
 
             /// <summary>
             /// Enum Montserrat for value: montserrat
             /// </summary>
             [EnumMember(Value = "montserrat")]
-            Montserrat = 9,
+            Montserrat = 5,
 
             /// <summary>
             /// Enum WorkSans for value: work-sans
             /// </summary>
             [EnumMember(Value = "work-sans")]
-            WorkSans = 10,
+            WorkSans = 6,
+
+            /// <summary>
+            /// Enum SpaceGrotesk for value: space-grotesk
+            /// </summary>
+            [EnumMember(Value = "space-grotesk")]
+            SpaceGrotesk = 7,
+
+            /// <summary>
+            /// Enum Playfair for value: playfair
+            /// </summary>
+            [EnumMember(Value = "playfair")]
+            Playfair = 8,
+
+            /// <summary>
+            /// Enum Cormorant for value: cormorant
+            /// </summary>
+            [EnumMember(Value = "cormorant")]
+            Cormorant = 9,
 
             /// <summary>
             /// Enum Fraunces for value: fraunces
             /// </summary>
             [EnumMember(Value = "fraunces")]
-            Fraunces = 11,
+            Fraunces = 10,
 
             /// <summary>
             /// Enum LibreBaskerville for value: libre-baskerville
             /// </summary>
             [EnumMember(Value = "libre-baskerville")]
-            LibreBaskerville = 12,
+            LibreBaskerville = 11,
 
             /// <summary>
             /// Enum BebasNeue for value: bebas-neue
             /// </summary>
             [EnumMember(Value = "bebas-neue")]
-            BebasNeue = 13,
+            BebasNeue = 12,
+
+            /// <summary>
+            /// Enum ArchivoBlack for value: archivo-black
+            /// </summary>
+            [EnumMember(Value = "archivo-black")]
+            ArchivoBlack = 13,
 
             /// <summary>
             /// Enum JetbrainsMono for value: jetbrains-mono
@@ -142,76 +142,76 @@ namespace net.crossly.Model
             Inter = 1,
 
             /// <summary>
-            /// Enum Playfair for value: playfair
-            /// </summary>
-            [EnumMember(Value = "playfair")]
-            Playfair = 2,
-
-            /// <summary>
-            /// Enum Cormorant for value: cormorant
-            /// </summary>
-            [EnumMember(Value = "cormorant")]
-            Cormorant = 3,
-
-            /// <summary>
-            /// Enum SpaceGrotesk for value: space-grotesk
-            /// </summary>
-            [EnumMember(Value = "space-grotesk")]
-            SpaceGrotesk = 4,
-
-            /// <summary>
-            /// Enum ArchivoBlack for value: archivo-black
-            /// </summary>
-            [EnumMember(Value = "archivo-black")]
-            ArchivoBlack = 5,
-
-            /// <summary>
             /// Enum DmSans for value: dm-sans
             /// </summary>
             [EnumMember(Value = "dm-sans")]
-            DmSans = 6,
+            DmSans = 2,
 
             /// <summary>
             /// Enum Manrope for value: manrope
             /// </summary>
             [EnumMember(Value = "manrope")]
-            Manrope = 7,
+            Manrope = 3,
 
             /// <summary>
             /// Enum Poppins for value: poppins
             /// </summary>
             [EnumMember(Value = "poppins")]
-            Poppins = 8,
+            Poppins = 4,
 
             /// <summary>
             /// Enum Montserrat for value: montserrat
             /// </summary>
             [EnumMember(Value = "montserrat")]
-            Montserrat = 9,
+            Montserrat = 5,
 
             /// <summary>
             /// Enum WorkSans for value: work-sans
             /// </summary>
             [EnumMember(Value = "work-sans")]
-            WorkSans = 10,
+            WorkSans = 6,
+
+            /// <summary>
+            /// Enum SpaceGrotesk for value: space-grotesk
+            /// </summary>
+            [EnumMember(Value = "space-grotesk")]
+            SpaceGrotesk = 7,
+
+            /// <summary>
+            /// Enum Playfair for value: playfair
+            /// </summary>
+            [EnumMember(Value = "playfair")]
+            Playfair = 8,
+
+            /// <summary>
+            /// Enum Cormorant for value: cormorant
+            /// </summary>
+            [EnumMember(Value = "cormorant")]
+            Cormorant = 9,
 
             /// <summary>
             /// Enum Fraunces for value: fraunces
             /// </summary>
             [EnumMember(Value = "fraunces")]
-            Fraunces = 11,
+            Fraunces = 10,
 
             /// <summary>
             /// Enum LibreBaskerville for value: libre-baskerville
             /// </summary>
             [EnumMember(Value = "libre-baskerville")]
-            LibreBaskerville = 12,
+            LibreBaskerville = 11,
 
             /// <summary>
             /// Enum BebasNeue for value: bebas-neue
             /// </summary>
             [EnumMember(Value = "bebas-neue")]
-            BebasNeue = 13,
+            BebasNeue = 12,
+
+            /// <summary>
+            /// Enum ArchivoBlack for value: archivo-black
+            /// </summary>
+            [EnumMember(Value = "archivo-black")]
+            ArchivoBlack = 13,
 
             /// <summary>
             /// Enum JetbrainsMono for value: jetbrains-mono

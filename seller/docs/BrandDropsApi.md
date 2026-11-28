@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createbranddrop"></a>
 # **CreateBrandDrop**
-> BrandDropResponse CreateBrandDrop ()
+> BrandDropResponse CreateBrandDrop (CreateBrandDropRequest createBrandDropRequest)
 
 Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
 
@@ -39,11 +39,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BrandDropsApi(config);
+            var createBrandDropRequest = new CreateBrandDropRequest(); // CreateBrandDropRequest | 
 
             try
             {
                 // Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
-                BrandDropResponse result = apiInstance.CreateBrandDrop();
+                BrandDropResponse result = apiInstance.CreateBrandDrop(createBrandDropRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +59,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBrandDropRequest** | **CreateBrandDropRequest**|  | 
 
 ### Return type
 
@@ -70,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -319,7 +323,7 @@ Name | Type | Description  | Notes
 
 <a name="listbranddrops"></a>
 # **ListBrandDrops**
-> ListBrandDropsResponse ListBrandDrops ()
+> ListBrandDropsResponse ListBrandDrops (string status = null, decimal? limit = null)
 
 Your brand drops, newest start time first. Filter with ?status=draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
 
@@ -343,11 +347,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BrandDropsApi(config);
+            var status = "draft";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your brand drops, newest start time first. Filter with ?status=draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
-                ListBrandDropsResponse result = apiInstance.ListBrandDrops();
+                ListBrandDropsResponse result = apiInstance.ListBrandDrops(status, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -362,7 +368,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -393,7 +403,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebranddrop"></a>
 # **UpdateBrandDrop**
-> BrandDropResponse UpdateBrandDrop (Guid id)
+> BrandDropResponse UpdateBrandDrop (Guid id, UpdateBrandDropRequest updateBrandDropRequest = null)
 
 Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
 
@@ -418,11 +428,12 @@ namespace Example
 
             var apiInstance = new BrandDropsApi(config);
             var id = "id_example";  // Guid | 
+            var updateBrandDropRequest = new UpdateBrandDropRequest(); // UpdateBrandDropRequest |  (optional) 
 
             try
             {
                 // Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
-                BrandDropResponse result = apiInstance.UpdateBrandDrop(id);
+                BrandDropResponse result = apiInstance.UpdateBrandDrop(id, updateBrandDropRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -441,6 +452,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateBrandDropRequest** | **UpdateBrandDropRequest**|  | [optional] 
 
 ### Return type
 
@@ -452,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -471,7 +483,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebranddroplisting"></a>
 # **UpdateBrandDropListing**
-> ListBrandDropListingsResponse UpdateBrandDropListing (Guid id)
+> ListBrandDropListingsResponse UpdateBrandDropListing (Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest)
 
 Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
 
@@ -496,11 +508,12 @@ namespace Example
 
             var apiInstance = new BrandDropsApi(config);
             var id = "id_example";  // Guid | 
+            var updateBrandDropListingRequest = new UpdateBrandDropListingRequest(); // UpdateBrandDropListingRequest | 
 
             try
             {
                 // Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
-                ListBrandDropListingsResponse result = apiInstance.UpdateBrandDropListing(id);
+                ListBrandDropListingsResponse result = apiInstance.UpdateBrandDropListing(id, updateBrandDropListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -519,6 +532,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateBrandDropListingRequest** | **UpdateBrandDropListingRequest**|  | 
 
 ### Return type
 
@@ -530,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

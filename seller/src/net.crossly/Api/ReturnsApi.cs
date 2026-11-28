@@ -48,8 +48,9 @@ namespace net.crossly.Api
         /// Open a return record on an order (rejects if another open return exists).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>GetReturnResponse</returns>
-        GetReturnResponse CreateReturn();
+        GetReturnResponse CreateReturn(OrderIdReasonRequest orderIdReasonRequest);
 
         /// <summary>
         /// Open a return record on an order (rejects if another open return exists).
@@ -58,15 +59,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of GetReturnResponse</returns>
-        ApiResponse<GetReturnResponse> CreateReturnWithHttpInfo();
+        ApiResponse<GetReturnResponse> CreateReturnWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest);
         /// <summary>
         /// Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <returns>CreateReturnAcceptResponse</returns>
-        CreateReturnAcceptResponse CreateReturnAccept(Guid id);
+        CreateReturnAcceptResponse CreateReturnAccept(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest));
 
         /// <summary>
         /// Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
@@ -76,8 +79,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateReturnAcceptResponse</returns>
-        ApiResponse<CreateReturnAcceptResponse> CreateReturnAcceptWithHttpInfo(Guid id);
+        ApiResponse<CreateReturnAcceptResponse> CreateReturnAcceptWithHttpInfo(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest));
         /// <summary>
         /// Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
         /// </summary>
@@ -120,8 +124,9 @@ namespace net.crossly.Api
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <returns>ListPolicyReturnsResponse</returns>
-        ListPolicyReturnsResponse ListPolicyReturns();
+        ListPolicyReturnsResponse ListPolicyReturns(string orderId = default(string));
 
         /// <summary>
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId.
@@ -130,14 +135,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <returns>ApiResponse of ListPolicyReturnsResponse</returns>
-        ApiResponse<ListPolicyReturnsResponse> ListPolicyReturnsWithHttpInfo();
+        ApiResponse<ListPolicyReturnsResponse> ListPolicyReturnsWithHttpInfo(string orderId = default(string));
         /// <summary>
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <returns>ListReturnsResponse</returns>
-        ListReturnsResponse ListReturns();
+        ListReturnsResponse ListReturns(string assignee = default(string));
 
         /// <summary>
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
@@ -146,15 +153,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <returns>ApiResponse of ListReturnsResponse</returns>
-        ApiResponse<ListReturnsResponse> ListReturnsWithHttpInfo();
+        ApiResponse<ListReturnsResponse> ListReturnsWithHttpInfo(string assignee = default(string));
         /// <summary>
         /// Transition return status (received/inspected/restocked) and bump inventory on restock.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <returns>GetReturnResponse</returns>
-        GetReturnResponse UpdateReturn(Guid id);
+        GetReturnResponse UpdateReturn(Guid id, UpdateReturnRequest updateReturnRequest);
 
         /// <summary>
         /// Transition return status (received/inspected/restocked) and bump inventory on restock.
@@ -164,8 +173,43 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <returns>ApiResponse of GetReturnResponse</returns>
-        ApiResponse<GetReturnResponse> UpdateReturnWithHttpInfo(Guid id);
+        ApiResponse<GetReturnResponse> UpdateReturnWithHttpInfo(Guid id, UpdateReturnRequest updateReturnRequest);
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UpdateOrderAssigneeResponse</returns>
+        UpdateOrderAssigneeResponse UpdateReturnAssignee();
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UpdateOrderAssigneeResponse</returns>
+        ApiResponse<UpdateOrderAssigneeResponse> UpdateReturnAssigneeWithHttpInfo();
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateOrderAssigneeByIdResponse</returns>
+        UpdateOrderAssigneeByIdResponse UpdateReturnAssigneeById(string id);
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateOrderAssigneeByIdResponse</returns>
+        ApiResponse<UpdateOrderAssigneeByIdResponse> UpdateReturnAssigneeByIdWithHttpInfo(string id);
         #endregion Synchronous Operations
     }
 
@@ -205,9 +249,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetReturnResponse</returns>
-        System.Threading.Tasks.Task<GetReturnResponse> CreateReturnAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetReturnResponse> CreateReturnAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open a return record on an order (rejects if another open return exists).
@@ -216,9 +261,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetReturnResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetReturnResponse>> CreateReturnWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetReturnResponse>> CreateReturnWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
         /// </summary>
@@ -227,9 +273,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateReturnAcceptResponse</returns>
-        System.Threading.Tasks.Task<CreateReturnAcceptResponse> CreateReturnAcceptAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateReturnAcceptResponse> CreateReturnAcceptAsync(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept a Crossly-marketplace return request: a prepaid return label to your return address (the buyer has 14 days to ship), a return record linked to it, and optionally a refund now (refund: { amount? } in dollars; needs orders:refund). Without one, the rest is refunded when the return is delivered. Safe to repeat. Crossposted orders: not_supported_on_platform.
@@ -239,9 +286,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateReturnAcceptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateReturnAcceptResponse>> CreateReturnAcceptWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateReturnAcceptResponse>> CreateReturnAcceptWithHttpInfoAsync(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Decline a Crossly-marketplace return request with a reason (required, 8-2000 chars), posted to the buyer as your response. It does not close the request: the buyer can reply or ask Crossly to decide. Not after the label is issued.
         /// </summary>
@@ -297,9 +345,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListPolicyReturnsResponse</returns>
-        System.Threading.Tasks.Task<ListPolicyReturnsResponse> ListPolicyReturnsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListPolicyReturnsResponse> ListPolicyReturnsAsync(string orderId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId.
@@ -308,9 +357,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListPolicyReturnsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListPolicyReturnsResponse>> ListPolicyReturnsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListPolicyReturnsResponse>> ListPolicyReturnsWithHttpInfoAsync(string orderId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
         /// </summary>
@@ -318,9 +368,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListReturnsResponse</returns>
-        System.Threading.Tasks.Task<ListReturnsResponse> ListReturnsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListReturnsResponse> ListReturnsAsync(string assignee = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline.
@@ -329,9 +380,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListReturnsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListReturnsResponse>> ListReturnsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListReturnsResponse>> ListReturnsWithHttpInfoAsync(string assignee = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Transition return status (received/inspected/restocked) and bump inventory on restock.
         /// </summary>
@@ -340,9 +392,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetReturnResponse</returns>
-        System.Threading.Tasks.Task<GetReturnResponse> UpdateReturnAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetReturnResponse> UpdateReturnAsync(Guid id, UpdateReturnRequest updateReturnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Transition return status (received/inspected/restocked) and bump inventory on restock.
@@ -352,9 +405,54 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetReturnResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetReturnResponse>> UpdateReturnWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetReturnResponse>> UpdateReturnWithHttpInfoAsync(Guid id, UpdateReturnRequest updateReturnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeResponse</returns>
+        System.Threading.Tasks.Task<UpdateOrderAssigneeResponse> UpdateReturnAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateOrderAssigneeResponse>> UpdateReturnAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeByIdResponse</returns>
+        System.Threading.Tasks.Task<UpdateOrderAssigneeByIdResponse> UpdateReturnAssigneeByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeByIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateOrderAssigneeByIdResponse>> UpdateReturnAssigneeByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -625,10 +723,11 @@ namespace net.crossly.Api
         /// Open a return record on an order (rejects if another open return exists). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>GetReturnResponse</returns>
-        public GetReturnResponse CreateReturn()
+        public GetReturnResponse CreateReturn(OrderIdReasonRequest orderIdReasonRequest)
         {
-            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = CreateReturnWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = CreateReturnWithHttpInfo(orderIdReasonRequest);
             return localVarResponse.Data;
         }
 
@@ -636,12 +735,20 @@ namespace net.crossly.Api
         /// Open a return record on an order (rejects if another open return exists). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of GetReturnResponse</returns>
-        public net.crossly.Client.ApiResponse<GetReturnResponse> CreateReturnWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetReturnResponse> CreateReturnWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest)
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling ReturnsApi->CreateReturn");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -661,6 +768,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -687,11 +795,12 @@ namespace net.crossly.Api
         /// Open a return record on an order (rejects if another open return exists). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetReturnResponse</returns>
-        public async System.Threading.Tasks.Task<GetReturnResponse> CreateReturnAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetReturnResponse> CreateReturnAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = await CreateReturnWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = await CreateReturnWithHttpInfoAsync(orderIdReasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -699,14 +808,22 @@ namespace net.crossly.Api
         /// Open a return record on an order (rejects if another open return exists). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetReturnResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetReturnResponse>> CreateReturnWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetReturnResponse>> CreateReturnWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling ReturnsApi->CreateReturn");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -726,6 +843,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -754,10 +872,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <returns>CreateReturnAcceptResponse</returns>
-        public CreateReturnAcceptResponse CreateReturnAccept(Guid id)
+        public CreateReturnAcceptResponse CreateReturnAccept(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest))
         {
-            net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> localVarResponse = CreateReturnAcceptWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> localVarResponse = CreateReturnAcceptWithHttpInfo(id, createReturnAcceptRequest);
             return localVarResponse.Data;
         }
 
@@ -766,12 +885,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateReturnAcceptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> CreateReturnAcceptWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> CreateReturnAcceptWithHttpInfo(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -792,6 +913,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createReturnAcceptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -819,11 +941,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateReturnAcceptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateReturnAcceptResponse> CreateReturnAcceptAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateReturnAcceptResponse> CreateReturnAcceptAsync(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> localVarResponse = await CreateReturnAcceptWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateReturnAcceptResponse> localVarResponse = await CreateReturnAcceptWithHttpInfoAsync(id, createReturnAcceptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -832,14 +955,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createReturnAcceptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateReturnAcceptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateReturnAcceptResponse>> CreateReturnAcceptWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateReturnAcceptResponse>> CreateReturnAcceptWithHttpInfoAsync(Guid id, CreateReturnAcceptRequest createReturnAcceptRequest = default(CreateReturnAcceptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -860,6 +985,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createReturnAcceptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1175,10 +1301,11 @@ namespace net.crossly.Api
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <returns>ListPolicyReturnsResponse</returns>
-        public ListPolicyReturnsResponse ListPolicyReturns()
+        public ListPolicyReturnsResponse ListPolicyReturns(string orderId = default(string))
         {
-            net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> localVarResponse = ListPolicyReturnsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> localVarResponse = ListPolicyReturnsWithHttpInfo(orderId);
             return localVarResponse.Data;
         }
 
@@ -1186,8 +1313,9 @@ namespace net.crossly.Api
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <returns>ApiResponse of ListPolicyReturnsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> ListPolicyReturnsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> ListPolicyReturnsWithHttpInfo(string orderId = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1211,6 +1339,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (orderId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "orderId", orderId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1237,11 +1369,12 @@ namespace net.crossly.Api
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListPolicyReturnsResponse</returns>
-        public async System.Threading.Tasks.Task<ListPolicyReturnsResponse> ListPolicyReturnsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListPolicyReturnsResponse> ListPolicyReturnsAsync(string orderId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> localVarResponse = await ListPolicyReturnsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListPolicyReturnsResponse> localVarResponse = await ListPolicyReturnsWithHttpInfoAsync(orderId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1249,9 +1382,10 @@ namespace net.crossly.Api
         /// Returns Crossly buyers opened under your return policy or try at home; filter by orderId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListPolicyReturnsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPolicyReturnsResponse>> ListPolicyReturnsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPolicyReturnsResponse>> ListPolicyReturnsWithHttpInfoAsync(string orderId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1276,6 +1410,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (orderId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "orderId", orderId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1303,10 +1441,11 @@ namespace net.crossly.Api
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <returns>ListReturnsResponse</returns>
-        public ListReturnsResponse ListReturns()
+        public ListReturnsResponse ListReturns(string assignee = default(string))
         {
-            net.crossly.Client.ApiResponse<ListReturnsResponse> localVarResponse = ListReturnsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListReturnsResponse> localVarResponse = ListReturnsWithHttpInfo(assignee);
             return localVarResponse.Data;
         }
 
@@ -1314,8 +1453,9 @@ namespace net.crossly.Api
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <returns>ApiResponse of ListReturnsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListReturnsResponse> ListReturnsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListReturnsResponse> ListReturnsWithHttpInfo(string assignee = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1339,6 +1479,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (assignee != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "assignee", assignee));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1365,11 +1509,12 @@ namespace net.crossly.Api
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListReturnsResponse</returns>
-        public async System.Threading.Tasks.Task<ListReturnsResponse> ListReturnsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListReturnsResponse> ListReturnsAsync(string assignee = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListReturnsResponse> localVarResponse = await ListReturnsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListReturnsResponse> localVarResponse = await ListReturnsWithHttpInfoAsync(assignee, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1377,9 +1522,10 @@ namespace net.crossly.Api
         /// List returns. Default: your return records (the physical-return workflow), status&#x3D;open|closed|&lt;exact&gt;. source&#x3D;request: the OPEN return requests buyers made on the Crossly marketplace, newest first; accept or decline each with POST /v1/returns/{id}/accept | decline. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListReturnsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListReturnsResponse>> ListReturnsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListReturnsResponse>> ListReturnsWithHttpInfoAsync(string assignee = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1404,6 +1550,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (assignee != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "assignee", assignee));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1432,10 +1582,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <returns>GetReturnResponse</returns>
-        public GetReturnResponse UpdateReturn(Guid id)
+        public GetReturnResponse UpdateReturn(Guid id, UpdateReturnRequest updateReturnRequest)
         {
-            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = UpdateReturnWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = UpdateReturnWithHttpInfo(id, updateReturnRequest);
             return localVarResponse.Data;
         }
 
@@ -1444,12 +1595,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <returns>ApiResponse of GetReturnResponse</returns>
-        public net.crossly.Client.ApiResponse<GetReturnResponse> UpdateReturnWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<GetReturnResponse> UpdateReturnWithHttpInfo(Guid id, UpdateReturnRequest updateReturnRequest)
         {
+            // verify the required parameter 'updateReturnRequest' is set
+            if (updateReturnRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateReturnRequest' when calling ReturnsApi->UpdateReturn");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1470,6 +1629,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateReturnRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1497,11 +1657,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetReturnResponse</returns>
-        public async System.Threading.Tasks.Task<GetReturnResponse> UpdateReturnAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetReturnResponse> UpdateReturnAsync(Guid id, UpdateReturnRequest updateReturnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = await UpdateReturnWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetReturnResponse> localVarResponse = await UpdateReturnWithHttpInfoAsync(id, updateReturnRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1510,10 +1671,219 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateReturnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetReturnResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetReturnResponse>> UpdateReturnWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetReturnResponse>> UpdateReturnWithHttpInfoAsync(Guid id, UpdateReturnRequest updateReturnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateReturnRequest' is set
+            if (updateReturnRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateReturnRequest' when calling ReturnsApi->UpdateReturn");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateReturnRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<GetReturnResponse>("/v1/returns/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateReturn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UpdateOrderAssigneeResponse</returns>
+        public UpdateOrderAssigneeResponse UpdateReturnAssignee()
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> localVarResponse = UpdateReturnAssigneeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UpdateOrderAssigneeResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> UpdateReturnAssigneeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateOrderAssigneeResponse>("/v1/returns/assignee", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateReturnAssignee", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateOrderAssigneeResponse> UpdateReturnAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> localVarResponse = await UpdateReturnAssigneeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign many returns to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse>> UpdateReturnAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateOrderAssigneeResponse>("/v1/returns/assignee", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateReturnAssignee", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateOrderAssigneeByIdResponse</returns>
+        public UpdateOrderAssigneeByIdResponse UpdateReturnAssigneeById(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> localVarResponse = UpdateReturnAssigneeByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateOrderAssigneeByIdResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> UpdateReturnAssigneeByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling ReturnsApi->UpdateReturnAssigneeById");
+            }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1547,11 +1917,85 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<GetReturnResponse>("/v1/returns/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = this.Client.Patch<UpdateOrderAssigneeByIdResponse>("/v1/returns/{id}/assignee", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateReturnAssigneeById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeByIdResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateOrderAssigneeByIdResponse> UpdateReturnAssigneeByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> localVarResponse = await UpdateReturnAssigneeByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign one return to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeByIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse>> UpdateReturnAssigneeByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling ReturnsApi->UpdateReturnAssigneeById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateOrderAssigneeByIdResponse>("/v1/returns/{id}/assignee", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateReturn", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateReturnAssigneeById", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

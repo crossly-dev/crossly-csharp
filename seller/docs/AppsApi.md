@@ -5,7 +5,7 @@ All URIs are relative to *https://crossly.net/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetApp**](AppsApi.md#getapp) | **GET** /v1/apps/{clientId} | Get one listed app by client id or profile slug. 404 if it is not in the directory.
-[**GetAppEarning**](AppsApi.md#getappearning) | **GET** /v1/apps/{id}/earnings | Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only.
+[**GetAppEarning**](AppsApi.md#getappearning) | **GET** /v1/apps/{id}/earnings | Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it.
 [**GetAppListingAllowance**](AppsApi.md#getapplistingallowance) | **GET** /v1/apps/{id}/listing-allowance | Your OAuth app&#39;s listing allowance (read-only): whether staff let sellers list above their plan through it, its limitMode (separate pool or shared with the plan), limitPeriod (total or monthly), the per-seller limit and the platform scope. Owner only.
 [**ListApps**](AppsApi.md#listapps) | **GET** /v1/apps | Browse the public Crossly app directories: seller apps, buyer apps or both (search, category, sort, featured, paging).
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 # **GetAppEarning**
 > GetAppEarningResponse GetAppEarning (Guid id)
 
-Your OAuth app's revenue-share earnings: summary + ledger. Owner only.
+Your store's OAuth app's revenue-share earnings: summary (with the store they pay out to) + ledger. The app's store owner, or a teammate with apps:read on it.
 
 ### Example
 ```csharp
@@ -118,7 +118,7 @@ namespace Example
 
             try
             {
-                // Your OAuth app's revenue-share earnings: summary + ledger. Owner only.
+                // Your store's OAuth app's revenue-share earnings: summary (with the store they pay out to) + ledger. The app's store owner, or a teammate with apps:read on it.
                 GetAppEarningResponse result = apiInstance.GetAppEarning(id);
                 Debug.WriteLine(result);
             }

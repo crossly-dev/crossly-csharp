@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 <a name="createmetemplate"></a>
 # **CreateMeTemplate**
-> ListMeTemplatesItem CreateMeTemplate ()
+> ListMeTemplatesItem CreateMeTemplate (CreateMeTemplateRequest createMeTemplateRequest)
 
 Create a template.
 
@@ -43,11 +43,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TemplatesApi(config);
+            var createMeTemplateRequest = new CreateMeTemplateRequest(); // CreateMeTemplateRequest | 
 
             try
             {
                 // Create a template.
-                ListMeTemplatesItem result = apiInstance.CreateMeTemplate();
+                ListMeTemplatesItem result = apiInstance.CreateMeTemplate(createMeTemplateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -62,7 +63,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMeTemplateRequest** | **CreateMeTemplateRequest**|  | 
 
 ### Return type
 
@@ -74,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -169,7 +173,7 @@ This endpoint does not need any parameter.
 
 <a name="createmetemplaterender"></a>
 # **CreateMeTemplateRender**
-> CreateMeTemplateRenderResponse CreateMeTemplateRender (Guid id)
+> CreateMeTemplateRenderResponse CreateMeTemplateRender (Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = null)
 
 Render a template's title + description against a context.
 
@@ -194,11 +198,12 @@ namespace Example
 
             var apiInstance = new TemplatesApi(config);
             var id = "id_example";  // Guid | 
+            var createMeTemplateRenderRequest = new CreateMeTemplateRenderRequest(); // CreateMeTemplateRenderRequest |  (optional) 
 
             try
             {
                 // Render a template's title + description against a context.
-                CreateMeTemplateRenderResponse result = apiInstance.CreateMeTemplateRender(id);
+                CreateMeTemplateRenderResponse result = apiInstance.CreateMeTemplateRender(id, createMeTemplateRenderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -217,6 +222,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createMeTemplateRenderRequest** | **CreateMeTemplateRenderRequest**|  | [optional] 
 
 ### Return type
 
@@ -228,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -247,7 +253,7 @@ Name | Type | Description  | Notes
 
 <a name="createmetemplateshare"></a>
 # **CreateMeTemplateShare**
-> CreateMeTemplateShareResponse CreateMeTemplateShare (Guid id)
+> TokenObject CreateMeTemplateShare (Guid id)
 
 Mint or return an existing share token for a template.
 
@@ -276,7 +282,7 @@ namespace Example
             try
             {
                 // Mint or return an existing share token for a template.
-                CreateMeTemplateShareResponse result = apiInstance.CreateMeTemplateShare(id);
+                TokenObject result = apiInstance.CreateMeTemplateShare(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -298,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateMeTemplateShareResponse**
+**TokenObject**
 
 ### Authorization
 
@@ -712,7 +718,7 @@ No authorization required
 
 <a name="listmetemplates"></a>
 # **ListMeTemplates**
-> ListMeTemplatesResponse ListMeTemplates ()
+> ListMeTemplatesResponse ListMeTemplates (string scope = null, string category = null)
 
 List the seller's templates.
 
@@ -736,11 +742,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TemplatesApi(config);
+            var scope = "description";  // string |  (optional) 
+            var category = "category_example";  // string |  (optional) 
 
             try
             {
                 // List the seller's templates.
-                ListMeTemplatesResponse result = apiInstance.ListMeTemplates();
+                ListMeTemplatesResponse result = apiInstance.ListMeTemplates(scope, category);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -755,7 +763,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
 
 ### Return type
 
@@ -786,7 +798,7 @@ This endpoint does not need any parameter.
 
 <a name="updatemetemplate"></a>
 # **UpdateMeTemplate**
-> ListMeTemplatesItem UpdateMeTemplate (Guid id)
+> ListMeTemplatesItem UpdateMeTemplate (Guid id, CreateMeTemplateRequest createMeTemplateRequest)
 
 Patch a template.
 
@@ -811,11 +823,12 @@ namespace Example
 
             var apiInstance = new TemplatesApi(config);
             var id = "id_example";  // Guid | 
+            var createMeTemplateRequest = new CreateMeTemplateRequest(); // CreateMeTemplateRequest | 
 
             try
             {
                 // Patch a template.
-                ListMeTemplatesItem result = apiInstance.UpdateMeTemplate(id);
+                ListMeTemplatesItem result = apiInstance.UpdateMeTemplate(id, createMeTemplateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -834,6 +847,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createMeTemplateRequest** | **CreateMeTemplateRequest**|  | 
 
 ### Return type
 
@@ -845,7 +859,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

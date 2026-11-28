@@ -50,46 +50,46 @@ namespace net.crossly.Model
             Enum = 2,
 
             /// <summary>
+            /// Enum Plan for value: plan
+            /// </summary>
+            [EnumMember(Value = "plan")]
+            Plan = 3,
+
+            /// <summary>
             /// Enum Budget for value: budget
             /// </summary>
             [EnumMember(Value = "budget")]
-            Budget = 3,
+            Budget = 4,
 
             /// <summary>
             /// Enum Required for value: required
             /// </summary>
             [EnumMember(Value = "required")]
-            Required = 4,
+            Required = 5,
 
             /// <summary>
             /// Enum Duplicate for value: duplicate
             /// </summary>
             [EnumMember(Value = "duplicate")]
-            Duplicate = 5,
+            Duplicate = 6,
 
             /// <summary>
             /// Enum TooLarge for value: too_large
             /// </summary>
             [EnumMember(Value = "too_large")]
-            TooLarge = 6,
+            TooLarge = 7,
 
             /// <summary>
             /// Enum MissingFile for value: missing_file
             /// </summary>
             [EnumMember(Value = "missing_file")]
-            MissingFile = 7,
+            MissingFile = 8,
 
             /// <summary>
             /// Enum Moderation for value: moderation
             /// </summary>
             [EnumMember(Value = "moderation")]
-            Moderation = 8,
-
-            /// <summary>
-            /// Enum Plan for value: plan
-            /// </summary>
-            [EnumMember(Value = "plan")]
-            Plan = 9
+            Moderation = 9
 
         }
 

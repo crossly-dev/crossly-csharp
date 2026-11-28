@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <returns>CreateNftMarketExternalResaleResponse</returns>
-        CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale();
+        CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest);
 
         /// <summary>
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <returns>ApiResponse of CreateNftMarketExternalResaleResponse</returns>
-        ApiResponse<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleWithHttpInfo();
+        ApiResponse<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleWithHttpInfo(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest);
         /// <summary>
         /// List an NFT you own for resale on the Crossly marketplace.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <returns>CreateNftMarketListingResponse</returns>
-        CreateNftMarketListingResponse CreateNftMarketListing();
+        CreateNftMarketListingResponse CreateNftMarketListing(CreateNftMarketListingRequest createNftMarketListingRequest);
 
         /// <summary>
         /// List an NFT you own for resale on the Crossly marketplace.
@@ -56,8 +59,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <returns>ApiResponse of CreateNftMarketListingResponse</returns>
-        ApiResponse<CreateNftMarketListingResponse> CreateNftMarketListingWithHttpInfo();
+        ApiResponse<CreateNftMarketListingResponse> CreateNftMarketListingWithHttpInfo(CreateNftMarketListingRequest createNftMarketListingRequest);
         /// <summary>
         /// Cancel one of your open NFT listings.
         /// </summary>
@@ -81,8 +85,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse CreateNftMarketListingConfirmSale(string id);
+        OkResponse CreateNftMarketListingConfirmSale(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest);
 
         /// <summary>
         /// Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
@@ -92,8 +97,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateNftMarketListingConfirmSaleWithHttpInfo(string id);
+        ApiResponse<OkResponse> CreateNftMarketListingConfirmSaleWithHttpInfo(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest);
         /// <summary>
         /// Browse open on-platform NFT listings (Crossly cosmetics for resale in CBX/SOL).
         /// </summary>
@@ -126,9 +132,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateNftMarketExternalResaleResponse</returns>
-        System.Threading.Tasks.Task<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleAsync(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
@@ -137,9 +144,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateNftMarketExternalResaleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateNftMarketExternalResaleResponse>> CreateNftMarketExternalResaleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateNftMarketExternalResaleResponse>> CreateNftMarketExternalResaleWithHttpInfoAsync(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List an NFT you own for resale on the Crossly marketplace.
         /// </summary>
@@ -147,9 +155,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateNftMarketListingResponse</returns>
-        System.Threading.Tasks.Task<CreateNftMarketListingResponse> CreateNftMarketListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateNftMarketListingResponse> CreateNftMarketListingAsync(CreateNftMarketListingRequest createNftMarketListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List an NFT you own for resale on the Crossly marketplace.
@@ -158,9 +167,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateNftMarketListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateNftMarketListingResponse>> CreateNftMarketListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateNftMarketListingResponse>> CreateNftMarketListingWithHttpInfoAsync(CreateNftMarketListingRequest createNftMarketListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel one of your open NFT listings.
         /// </summary>
@@ -192,9 +202,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateNftMarketListingConfirmSaleAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> CreateNftMarketListingConfirmSaleAsync(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
@@ -204,9 +215,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateNftMarketListingConfirmSaleWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateNftMarketListingConfirmSaleWithHttpInfoAsync(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Browse open on-platform NFT listings (Crossly cosmetics for resale in CBX/SOL).
         /// </summary>
@@ -352,10 +364,11 @@ namespace net.crossly.Api
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <returns>CreateNftMarketExternalResaleResponse</returns>
-        public CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale()
+        public CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest)
         {
-            net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> localVarResponse = CreateNftMarketExternalResaleWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> localVarResponse = CreateNftMarketExternalResaleWithHttpInfo(createNftMarketExternalResaleRequest);
             return localVarResponse.Data;
         }
 
@@ -363,12 +376,20 @@ namespace net.crossly.Api
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <returns>ApiResponse of CreateNftMarketExternalResaleResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleWithHttpInfo(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest)
         {
+            // verify the required parameter 'createNftMarketExternalResaleRequest' is set
+            if (createNftMarketExternalResaleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketExternalResaleRequest' when calling NFTMarketApi->CreateNftMarketExternalResale");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -388,6 +409,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createNftMarketExternalResaleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -414,11 +436,12 @@ namespace net.crossly.Api
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateNftMarketExternalResaleResponse</returns>
-        public async System.Threading.Tasks.Task<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateNftMarketExternalResaleResponse> CreateNftMarketExternalResaleAsync(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> localVarResponse = await CreateNftMarketExternalResaleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse> localVarResponse = await CreateNftMarketExternalResaleWithHttpInfoAsync(createNftMarketExternalResaleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -426,14 +449,22 @@ namespace net.crossly.Api
         /// Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketExternalResaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateNftMarketExternalResaleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse>> CreateNftMarketExternalResaleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNftMarketExternalResaleResponse>> CreateNftMarketExternalResaleWithHttpInfoAsync(CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createNftMarketExternalResaleRequest' is set
+            if (createNftMarketExternalResaleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketExternalResaleRequest' when calling NFTMarketApi->CreateNftMarketExternalResale");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -453,6 +484,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createNftMarketExternalResaleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -480,10 +512,11 @@ namespace net.crossly.Api
         /// List an NFT you own for resale on the Crossly marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <returns>CreateNftMarketListingResponse</returns>
-        public CreateNftMarketListingResponse CreateNftMarketListing()
+        public CreateNftMarketListingResponse CreateNftMarketListing(CreateNftMarketListingRequest createNftMarketListingRequest)
         {
-            net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> localVarResponse = CreateNftMarketListingWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> localVarResponse = CreateNftMarketListingWithHttpInfo(createNftMarketListingRequest);
             return localVarResponse.Data;
         }
 
@@ -491,12 +524,20 @@ namespace net.crossly.Api
         /// List an NFT you own for resale on the Crossly marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <returns>ApiResponse of CreateNftMarketListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> CreateNftMarketListingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> CreateNftMarketListingWithHttpInfo(CreateNftMarketListingRequest createNftMarketListingRequest)
         {
+            // verify the required parameter 'createNftMarketListingRequest' is set
+            if (createNftMarketListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketListingRequest' when calling NFTMarketApi->CreateNftMarketListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -516,6 +557,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createNftMarketListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -542,11 +584,12 @@ namespace net.crossly.Api
         /// List an NFT you own for resale on the Crossly marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateNftMarketListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateNftMarketListingResponse> CreateNftMarketListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateNftMarketListingResponse> CreateNftMarketListingAsync(CreateNftMarketListingRequest createNftMarketListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> localVarResponse = await CreateNftMarketListingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateNftMarketListingResponse> localVarResponse = await CreateNftMarketListingWithHttpInfoAsync(createNftMarketListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -554,14 +597,22 @@ namespace net.crossly.Api
         /// List an NFT you own for resale on the Crossly marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNftMarketListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateNftMarketListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNftMarketListingResponse>> CreateNftMarketListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNftMarketListingResponse>> CreateNftMarketListingWithHttpInfoAsync(CreateNftMarketListingRequest createNftMarketListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createNftMarketListingRequest' is set
+            if (createNftMarketListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketListingRequest' when calling NFTMarketApi->CreateNftMarketListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -581,6 +632,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createNftMarketListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -755,10 +807,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <returns>OkResponse</returns>
-        public OkResponse CreateNftMarketListingConfirmSale(string id)
+        public OkResponse CreateNftMarketListingConfirmSale(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateNftMarketListingConfirmSaleWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateNftMarketListingConfirmSaleWithHttpInfo(id, createNftMarketListingConfirmSaleRequest);
             return localVarResponse.Data;
         }
 
@@ -767,8 +820,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateNftMarketListingConfirmSaleWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<OkResponse> CreateNftMarketListingConfirmSaleWithHttpInfo(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -776,9 +830,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling NFTMarketApi->CreateNftMarketListingConfirmSale");
             }
 
+            // verify the required parameter 'createNftMarketListingConfirmSaleRequest' is set
+            if (createNftMarketListingConfirmSaleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketListingConfirmSaleRequest' when calling NFTMarketApi->CreateNftMarketListingConfirmSale");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -799,6 +860,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createNftMarketListingConfirmSaleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -826,11 +888,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateNftMarketListingConfirmSaleAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> CreateNftMarketListingConfirmSaleAsync(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateNftMarketListingConfirmSaleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateNftMarketListingConfirmSaleWithHttpInfoAsync(id, createNftMarketListingConfirmSaleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -839,9 +902,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createNftMarketListingConfirmSaleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateNftMarketListingConfirmSaleWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateNftMarketListingConfirmSaleWithHttpInfoAsync(string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -849,10 +913,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling NFTMarketApi->CreateNftMarketListingConfirmSale");
             }
 
+            // verify the required parameter 'createNftMarketListingConfirmSaleRequest' is set
+            if (createNftMarketListingConfirmSaleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNftMarketListingConfirmSaleRequest' when calling NFTMarketApi->CreateNftMarketListingConfirmSale");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -873,6 +944,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createNftMarketListingConfirmSaleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

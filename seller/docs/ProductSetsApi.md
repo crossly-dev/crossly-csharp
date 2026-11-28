@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="createproductset"></a>
 # **CreateProductSet**
-> ListProductSetsItem CreateProductSet ()
+> ListProductSetsItem CreateProductSet (CreateProductSetRequest createProductSetRequest)
 
 Create a product set (filters, explicit picks, or both).
 
@@ -40,11 +40,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ProductSetsApi(config);
+            var createProductSetRequest = new CreateProductSetRequest(); // CreateProductSetRequest | 
 
             try
             {
                 // Create a product set (filters, explicit picks, or both).
-                ListProductSetsItem result = apiInstance.CreateProductSet();
+                ListProductSetsItem result = apiInstance.CreateProductSet(createProductSetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -59,7 +60,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createProductSetRequest** | **CreateProductSetRequest**|  | 
 
 ### Return type
 
@@ -71,7 +75,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -90,7 +94,7 @@ This endpoint does not need any parameter.
 
 <a name="createproductsetbulk"></a>
 # **CreateProductSetBulk**
-> CreateProductSetBulkResponse CreateProductSetBulk (Guid id)
+> CreateProductSetBulkResponse CreateProductSetBulk (Guid id, CreateProductSetBulkRequest createProductSetBulkRequest)
 
 Run a bulk action (delist / relist / check-status) against the set's current members.
 
@@ -115,11 +119,12 @@ namespace Example
 
             var apiInstance = new ProductSetsApi(config);
             var id = "id_example";  // Guid | 
+            var createProductSetBulkRequest = new CreateProductSetBulkRequest(); // CreateProductSetBulkRequest | 
 
             try
             {
                 // Run a bulk action (delist / relist / check-status) against the set's current members.
-                CreateProductSetBulkResponse result = apiInstance.CreateProductSetBulk(id);
+                CreateProductSetBulkResponse result = apiInstance.CreateProductSetBulk(id, createProductSetBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -138,6 +143,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createProductSetBulkRequest** | **CreateProductSetBulkRequest**|  | 
 
 ### Return type
 
@@ -149,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -168,7 +174,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductsetmember"></a>
 # **CreateProductSetMember**
-> ListProductSetsItem CreateProductSetMember (Guid id)
+> ListProductSetsItem CreateProductSetMember (Guid id, CreateProductSetMemberRequest createProductSetMemberRequest)
 
 Add / exclude / remove explicit picks for a set.
 
@@ -193,11 +199,12 @@ namespace Example
 
             var apiInstance = new ProductSetsApi(config);
             var id = "id_example";  // Guid | 
+            var createProductSetMemberRequest = new CreateProductSetMemberRequest(); // CreateProductSetMemberRequest | 
 
             try
             {
                 // Add / exclude / remove explicit picks for a set.
-                ListProductSetsItem result = apiInstance.CreateProductSetMember(id);
+                ListProductSetsItem result = apiInstance.CreateProductSetMember(id, createProductSetMemberRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -216,6 +223,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createProductSetMemberRequest** | **CreateProductSetMemberRequest**|  | 
 
 ### Return type
 
@@ -227,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -558,7 +566,7 @@ This endpoint does not need any parameter.
 
 <a name="updateproductset"></a>
 # **UpdateProductSet**
-> ListProductSetsItem UpdateProductSet (Guid id)
+> ListProductSetsItem UpdateProductSet (Guid id, UpdateProductSetRequest updateProductSetRequest)
 
 Update a set: rename, description, or replace its filters.
 
@@ -583,11 +591,12 @@ namespace Example
 
             var apiInstance = new ProductSetsApi(config);
             var id = "id_example";  // Guid | 
+            var updateProductSetRequest = new UpdateProductSetRequest(); // UpdateProductSetRequest | 
 
             try
             {
                 // Update a set: rename, description, or replace its filters.
-                ListProductSetsItem result = apiInstance.UpdateProductSet(id);
+                ListProductSetsItem result = apiInstance.UpdateProductSet(id, updateProductSetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -606,6 +615,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateProductSetRequest** | **UpdateProductSetRequest**|  | 
 
 ### Return type
 
@@ -617,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

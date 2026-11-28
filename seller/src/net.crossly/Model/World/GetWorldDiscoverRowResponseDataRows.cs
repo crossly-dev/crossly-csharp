@@ -128,16 +128,16 @@ namespace net.crossly.Model
             Genreother = 15,
 
             /// <summary>
-            /// Enum Genrestrategy for value: genre:strategy
-            /// </summary>
-            [EnumMember(Value = "genre:strategy")]
-            Genrestrategy = 16,
-
-            /// <summary>
             /// Enum Genresocial for value: genre:social
             /// </summary>
             [EnumMember(Value = "genre:social")]
-            Genresocial = 17,
+            Genresocial = 16,
+
+            /// <summary>
+            /// Enum Genrestrategy for value: genre:strategy
+            /// </summary>
+            [EnumMember(Value = "genre:strategy")]
+            Genrestrategy = 17,
 
             /// <summary>
             /// Enum Genrehangout for value: genre:hangout
@@ -266,16 +266,16 @@ namespace net.crossly.Model
             Other = 2,
 
             /// <summary>
-            /// Enum Strategy for value: strategy
-            /// </summary>
-            [EnumMember(Value = "strategy")]
-            Strategy = 3,
-
-            /// <summary>
             /// Enum Social for value: social
             /// </summary>
             [EnumMember(Value = "social")]
-            Social = 4,
+            Social = 3,
+
+            /// <summary>
+            /// Enum Strategy for value: strategy
+            /// </summary>
+            [EnumMember(Value = "strategy")]
+            Strategy = 4,
 
             /// <summary>
             /// Enum Hangout for value: hangout

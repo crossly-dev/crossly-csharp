@@ -146,7 +146,7 @@ namespace net.crossly.Model
         /// <param name="moreBreakdowns">Further tables after the main one (Wholesale: aging, top catalogs, top items). Absent &#x3D; none..</param>
         /// <param name="notes">Caveats a reader needs (a point-in-time figure, a window the source caps). (required).</param>
         /// <param name="dimension">dimension.</param>
-        public GetAnalyticProgramResponseData(ProgramEnum program = default(ProgramEnum), string label = default(string), FromTo2 range = default(FromTo2), List<GetAnalyticProgramResponseDataKpis> kpis = default(List<GetAnalyticProgramResponseDataKpis>), GetAnalyticProgramResponseDataTrend trend = default(GetAnalyticProgramResponseDataTrend), GetAnalyticProgramResponseDataBreakdown breakdown = default(GetAnalyticProgramResponseDataBreakdown), List<GetAnalyticProgramResponseDataMoreBreakdowns> moreBreakdowns = default(List<GetAnalyticProgramResponseDataMoreBreakdowns>), List<string> notes = default(List<string>), GetAnalyticProgramResponseDataDimension dimension = default(GetAnalyticProgramResponseDataDimension))
+        public GetAnalyticProgramResponseData(ProgramEnum program = default(ProgramEnum), string label = default(string), CreateListingTagRenameRequest range = default(CreateListingTagRenameRequest), List<GetAnalyticProgramResponseDataKpis> kpis = default(List<GetAnalyticProgramResponseDataKpis>), GetAnalyticProgramResponseDataTrend trend = default(GetAnalyticProgramResponseDataTrend), GetAnalyticProgramResponseDataBreakdown breakdown = default(GetAnalyticProgramResponseDataBreakdown), List<GetAnalyticProgramResponseDataMoreBreakdowns> moreBreakdowns = default(List<GetAnalyticProgramResponseDataMoreBreakdowns>), List<string> notes = default(List<string>), GetAnalyticProgramResponseDataDimension dimension = default(GetAnalyticProgramResponseDataDimension))
         {
             this.Program = program;
             // to ensure "label" is required (not null)
@@ -193,7 +193,7 @@ namespace net.crossly.Model
         /// Gets or Sets Range
         /// </summary>
         [DataMember(Name = "range", IsRequired = true, EmitDefaultValue = false)]
-        public FromTo2 Range { get; set; }
+        public CreateListingTagRenameRequest Range { get; set; }
 
         /// <summary>
         /// Gets or Sets Kpis

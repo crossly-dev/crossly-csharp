@@ -141,6 +141,12 @@ namespace net.crossly.Model
         /// <returns>Validation Result</returns>
         public IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> Validate(ValidationContext validationContext)
         {
+            // Amount (decimal) minimum
+            if (this.Amount < (decimal)0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Amount, must be a value greater than or equal to 0.", new [] { "Amount" });
+            }
+
             // Note (string) maxLength
             if (this.Note != null && this.Note.Length > 1000)
             {

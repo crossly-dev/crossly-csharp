@@ -70,16 +70,16 @@ namespace net.crossly.Model
         public enum PeriodEnum
         {
             /// <summary>
-            /// Enum Week for value: week
-            /// </summary>
-            [EnumMember(Value = "week")]
-            Week = 1,
-
-            /// <summary>
             /// Enum All for value: all
             /// </summary>
             [EnumMember(Value = "all")]
-            All = 2
+            All = 1,
+
+            /// <summary>
+            /// Enum Week for value: week
+            /// </summary>
+            [EnumMember(Value = "week")]
+            Week = 2
 
         }
 

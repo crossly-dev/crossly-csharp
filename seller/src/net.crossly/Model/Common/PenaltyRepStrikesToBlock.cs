@@ -39,8 +39,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PenaltyRepStrikesToBlock" /> class.
         /// </summary>
-        /// <param name="penaltyRep">Tenths of a star taken off the worker&#39;s reputation for a no-show. (required).</param>
-        /// <param name="strikesToBlock">After this many no-shows for this employer, the worker is put on the posting&#39;s blacklist. 0 &#x3D; never. (required).</param>
+        /// <param name="penaltyRep">penaltyRep (required).</param>
+        /// <param name="strikesToBlock">strikesToBlock (required).</param>
         public PenaltyRepStrikesToBlock(decimal penaltyRep = default(decimal), decimal strikesToBlock = default(decimal))
         {
             this.PenaltyRep = penaltyRep;
@@ -48,16 +48,14 @@ namespace net.crossly.Model
         }
 
         /// <summary>
-        /// Tenths of a star taken off the worker&#39;s reputation for a no-show.
+        /// Gets or Sets PenaltyRep
         /// </summary>
-        /// <value>Tenths of a star taken off the worker&#39;s reputation for a no-show.</value>
         [DataMember(Name = "penaltyRep", IsRequired = true, EmitDefaultValue = false)]
         public decimal PenaltyRep { get; set; }
 
         /// <summary>
-        /// After this many no-shows for this employer, the worker is put on the posting&#39;s blacklist. 0 &#x3D; never.
+        /// Gets or Sets StrikesToBlock
         /// </summary>
-        /// <value>After this many no-shows for this employer, the worker is put on the posting&#39;s blacklist. 0 &#x3D; never.</value>
         [DataMember(Name = "strikesToBlock", IsRequired = true, EmitDefaultValue = false)]
         public decimal StrikesToBlock { get; set; }
 

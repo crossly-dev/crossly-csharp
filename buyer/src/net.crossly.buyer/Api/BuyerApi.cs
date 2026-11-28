@@ -118,8 +118,9 @@ namespace net.crossly.buyer.Api
         /// Create an outfit board.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <returns>CreateBuyerBoardResponse</returns>
-        CreateBuyerBoardResponse CreateBuyerBoard();
+        CreateBuyerBoardResponse CreateBuyerBoard(CreateBuyerBoardRequest createBuyerBoardRequest);
 
         /// <summary>
         /// Create an outfit board.
@@ -128,15 +129,17 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <returns>ApiResponse of CreateBuyerBoardResponse</returns>
-        ApiResponse<CreateBuyerBoardResponse> CreateBuyerBoardWithHttpInfo();
+        ApiResponse<CreateBuyerBoardResponse> CreateBuyerBoardWithHttpInfo(CreateBuyerBoardRequest createBuyerBoardRequest);
         /// <summary>
         /// Add a listing (by slug) to a board, at the next free spot.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <returns>BuyerResponse</returns>
-        BuyerResponse CreateBuyerBoardItem(string id);
+        BuyerResponse CreateBuyerBoardItem(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest);
 
         /// <summary>
         /// Add a listing (by slug) to a board, at the next free spot.
@@ -146,8 +149,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        ApiResponse<BuyerResponse> CreateBuyerBoardItemWithHttpInfo(string id);
+        ApiResponse<BuyerResponse> CreateBuyerBoardItemWithHttpInfo(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest);
         /// <summary>
         /// Hold a spot in a pick-your-spot break, then buy it through checkout before the hold lapses.
         /// </summary>
@@ -229,8 +233,9 @@ namespace net.crossly.buyer.Api
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <returns>CreateBuyerCartOptimizerResponse</returns>
-        CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer();
+        CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest);
 
         /// <summary>
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
@@ -239,8 +244,9 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCartOptimizerResponse</returns>
-        ApiResponse<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerWithHttpInfo();
+        ApiResponse<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerWithHttpInfo(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest);
         /// <summary>
         /// Price the cart, delivered — item, shipping, tax, total.
         /// </summary>
@@ -248,8 +254,9 @@ namespace net.crossly.buyer.Api
         /// Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <returns>CreateBuyerCartQuoteResponse</returns>
-        CreateBuyerCartQuoteResponse CreateBuyerCartQuote();
+        CreateBuyerCartQuoteResponse CreateBuyerCartQuote(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest));
 
         /// <summary>
         /// Price the cart, delivered — item, shipping, tax, total.
@@ -258,8 +265,9 @@ namespace net.crossly.buyer.Api
         /// Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerCartQuoteResponse</returns>
-        ApiResponse<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteWithHttpInfo();
+        ApiResponse<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteWithHttpInfo(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest));
         /// <summary>
         /// Move a saved item back into your cart, at today’s price.
         /// </summary>
@@ -394,8 +402,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>CreateBuyerCatalogListingRentalResponse</returns>
-        CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental(string slug);
+        CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest);
 
         /// <summary>
         /// Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
@@ -405,15 +414,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingRentalResponse</returns>
-        ApiResponse<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalWithHttpInfo(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest);
         /// <summary>
         /// Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote(string slug);
+        CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest);
 
         /// <summary>
         /// Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
@@ -423,15 +434,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteWithHttpInfo(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest);
         /// <summary>
         /// Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <returns>CreateBuyerCatalogListingVideoRequestResponse</returns>
-        CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest(string slug);
+        CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest));
 
         /// <summary>
         /// Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
@@ -441,8 +454,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingVideoRequestResponse</returns>
-        ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestWithHttpInfo(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest));
         /// <summary>
         /// Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
         /// </summary>
@@ -550,8 +564,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <returns>CreateBuyerEventRsvpResponse</returns>
-        CreateBuyerEventRsvpResponse CreateBuyerEventRsvp(string slug);
+        CreateBuyerEventRsvpResponse CreateBuyerEventRsvp(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest));
 
         /// <summary>
         /// RSVP to an event: going (counts against its capacity) or interested.
@@ -561,8 +576,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerEventRsvpResponse</returns>
-        ApiResponse<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpWithHttpInfo(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest));
         /// <summary>
         /// Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
         /// </summary>
@@ -753,8 +769,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <returns>BuyerLayawayResponse</returns>
-        BuyerLayawayResponse CreateBuyerLayawayPay(string id);
+        BuyerLayawayResponse CreateBuyerLayawayPay(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest));
 
         /// <summary>
         /// Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
@@ -764,8 +781,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerLayawayResponse</returns>
-        ApiResponse<BuyerLayawayResponse> CreateBuyerLayawayPayWithHttpInfo(string id);
+        ApiResponse<BuyerLayawayResponse> CreateBuyerLayawayPayWithHttpInfo(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest));
         /// <summary>
         /// Record the spoken summary of a listing (cached per listing version). 503 naming TTS_API_KEY when no speech provider is configured.
         /// </summary>
@@ -825,8 +843,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <returns>CreateBuyerListingTryOnResponse</returns>
-        CreateBuyerListingTryOnResponse CreateBuyerListingTryOn(string slug);
+        CreateBuyerListingTryOnResponse CreateBuyerListingTryOn(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest);
 
         /// <summary>
         /// Render an AI try-on of this listing on the buyer’s own photo (base64 &#x60;photo&#x60;, or &#x60;reuseLastPhoto&#x60;). &#x60;confirmSelfAdult&#x60; must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
@@ -836,8 +855,29 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <returns>ApiResponse of CreateBuyerListingTryOnResponse</returns>
-        ApiResponse<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnWithHttpInfo(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest);
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <returns>CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        CreateBuyerLoyaltyRewardRedeemResponse CreateBuyerLoyaltyRewardRedeem(string clubId, string rewardId);
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse> CreateBuyerLoyaltyRewardRedeemWithHttpInfo(string clubId, string rewardId);
         /// <summary>
         /// Place a fixed-price market bid. SPENDS MONEY: it fills against the lowest ask at or under your price and charges your saved card (plus the fast-ship premium when fastShip is set and it fills from vault stock). deliverTo vault keeps it in your Crossly vault; gradeWith sends a raw card to a Grading run first. Checked against this key’s spending controls; send an Idempotency-Key.
         /// </summary>
@@ -1001,8 +1041,9 @@ namespace net.crossly.buyer.Api
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <returns>GetBuyerPackFairnessResponse</returns>
-        GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate();
+        GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest));
 
         /// <summary>
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
@@ -1011,15 +1052,17 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPackFairnessResponse</returns>
-        ApiResponse<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateWithHttpInfo();
+        ApiResponse<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateWithHttpInfo(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest));
         /// <summary>
         /// Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <returns>CreateBuyerPackOpenResponse</returns>
-        CreateBuyerPackOpenResponse CreateBuyerPackOpen(string slug);
+        CreateBuyerPackOpenResponse CreateBuyerPackOpen(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest);
 
         /// <summary>
         /// Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
@@ -1029,8 +1072,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <returns>ApiResponse of CreateBuyerPackOpenResponse</returns>
-        ApiResponse<CreateBuyerPackOpenResponse> CreateBuyerPackOpenWithHttpInfo(string slug);
+        ApiResponse<CreateBuyerPackOpenResponse> CreateBuyerPackOpenWithHttpInfo(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest);
         /// <summary>
         /// Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
         /// </summary>
@@ -1054,8 +1098,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <returns>GetBuyerPassportResponse</returns>
-        GetBuyerPassportResponse CreateBuyerPassportClaim(string code);
+        GetBuyerPassportResponse CreateBuyerPassportClaim(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest));
 
         /// <summary>
         /// Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
@@ -1065,8 +1110,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPassportResponse</returns>
-        ApiResponse<GetBuyerPassportResponse> CreateBuyerPassportClaimWithHttpInfo(string code);
+        ApiResponse<GetBuyerPassportResponse> CreateBuyerPassportClaimWithHttpInfo(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest));
         /// <summary>
         /// Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
         /// </summary>
@@ -1090,8 +1136,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <returns>BuyerResponse</returns>
-        BuyerResponse CreateBuyerPurchaseFit(string id);
+        BuyerResponse CreateBuyerPurchaseFit(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest);
 
         /// <summary>
         /// Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
@@ -1101,8 +1148,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        ApiResponse<BuyerResponse> CreateBuyerPurchaseFitWithHttpInfo(string id);
+        ApiResponse<BuyerResponse> CreateBuyerPurchaseFitWithHttpInfo(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest);
         /// <summary>
         /// Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
         /// </summary>
@@ -1125,8 +1173,9 @@ namespace net.crossly.buyer.Api
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>CreateBuyerRegistryResponse</returns>
-        CreateBuyerRegistryResponse CreateBuyerRegistry();
+        CreateBuyerRegistryResponse CreateBuyerRegistry(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest));
 
         /// <summary>
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
@@ -1135,16 +1184,18 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerRegistryResponse</returns>
-        ApiResponse<CreateBuyerRegistryResponse> CreateBuyerRegistryWithHttpInfo();
+        ApiResponse<CreateBuyerRegistryResponse> CreateBuyerRegistryWithHttpInfo(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest));
         /// <summary>
         /// Tick a gift as thanked (or untick it).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <returns>CreateBuyerRegistryGiftThankedResponse</returns>
-        CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked(string id, string giftId);
+        CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest);
 
         /// <summary>
         /// Tick a gift as thanked (or untick it).
@@ -1155,15 +1206,17 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <returns>ApiResponse of CreateBuyerRegistryGiftThankedResponse</returns>
-        ApiResponse<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedWithHttpInfo(string id, string giftId);
+        ApiResponse<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedWithHttpInfo(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest);
         /// <summary>
         /// Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <returns>BuyerRentalResponse</returns>
-        BuyerRentalResponse CreateBuyerRentalArrivalPhoto(string id);
+        BuyerRentalResponse CreateBuyerRentalArrivalPhoto(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest);
 
         /// <summary>
         /// Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
@@ -1173,8 +1226,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <returns>ApiResponse of BuyerRentalResponse</returns>
-        ApiResponse<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoWithHttpInfo(string id);
+        ApiResponse<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoWithHttpInfo(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest);
         /// <summary>
         /// Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
         /// </summary>
@@ -1216,8 +1270,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <returns>BuyerResponse</returns>
-        BuyerResponse CreateBuyerRentalClaimResponse(string id);
+        BuyerResponse CreateBuyerRentalClaimResponse(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest);
 
         /// <summary>
         /// Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
@@ -1227,8 +1282,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        ApiResponse<BuyerResponse> CreateBuyerRentalClaimResponseWithHttpInfo(string id);
+        ApiResponse<BuyerResponse> CreateBuyerRentalClaimResponseWithHttpInfo(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest);
         /// <summary>
         /// Confirm your rental arrived.
         /// </summary>
@@ -1252,8 +1308,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <returns>CreateBuyerRentalExtensionResponse</returns>
-        CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension(string id);
+        CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest);
 
         /// <summary>
         /// Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
@@ -1263,8 +1320,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <returns>ApiResponse of CreateBuyerRentalExtensionResponse</returns>
-        ApiResponse<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionWithHttpInfo(string id);
+        ApiResponse<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionWithHttpInfo(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest);
         /// <summary>
         /// Pay for an extension the seller approved → clientSecret.
         /// </summary>
@@ -1306,8 +1364,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <returns>BuyerRentalResponse</returns>
-        BuyerRentalResponse CreateBuyerRentalReturnShipped(string id);
+        BuyerRentalResponse CreateBuyerRentalReturnShipped(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest));
 
         /// <summary>
         /// Say you sent your rental back (optionally with photos).
@@ -1317,8 +1376,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerRentalResponse</returns>
-        ApiResponse<BuyerRentalResponse> CreateBuyerRentalReturnShippedWithHttpInfo(string id);
+        ApiResponse<BuyerRentalResponse> CreateBuyerRentalReturnShippedWithHttpInfo(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest));
         /// <summary>
         /// Cancel a return before it ships.
         /// </summary>
@@ -1589,8 +1649,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <returns>CreateBuyerVaultListResponse</returns>
-        CreateBuyerVaultListResponse CreateBuyerVaultList(string id);
+        CreateBuyerVaultListResponse CreateBuyerVaultList(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest);
 
         /// <summary>
         /// Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
@@ -1600,8 +1661,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <returns>ApiResponse of CreateBuyerVaultListResponse</returns>
-        ApiResponse<CreateBuyerVaultListResponse> CreateBuyerVaultListWithHttpInfo(string id);
+        ApiResponse<CreateBuyerVaultListResponse> CreateBuyerVaultListWithHttpInfo(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest);
         /// <summary>
         /// Take a vault item off the market; it stays stored.
         /// </summary>
@@ -1625,8 +1687,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <returns>CreateBuyerVaultWithdrawResponse</returns>
-        CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw(string id);
+        CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest));
 
         /// <summary>
         /// Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
@@ -1636,8 +1699,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerVaultWithdrawResponse</returns>
-        ApiResponse<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawWithHttpInfo(string id);
+        ApiResponse<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawWithHttpInfo(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest));
         /// <summary>
         /// Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
         /// </summary>
@@ -2502,7 +2566,7 @@ namespace net.crossly.buyer.Api
         /// <returns>ApiResponse of GetBuyerCatalogListingPriceResponse</returns>
         ApiResponse<GetBuyerCatalogListingPriceResponse> GetBuyerCatalogListingPriceWithHttpInfo(string slug);
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
@@ -2510,7 +2574,7 @@ namespace net.crossly.buyer.Api
         GetBuyerCatalogListingRentalResponse GetBuyerCatalogListingRental(string slug);
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
         /// </summary>
         /// <remarks>
         /// 
@@ -2680,6 +2744,24 @@ namespace net.crossly.buyer.Api
         /// <returns>ApiResponse of GetBuyerGiftFinderOptionResponse</returns>
         ApiResponse<GetBuyerGiftFinderOptionResponse> GetBuyerGiftFinderOptionWithHttpInfo();
         /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetBuyerGroupBuyShareLinkResponse</returns>
+        GetBuyerGroupBuyShareLinkResponse GetBuyerGroupBuyShareLink(string id);
+
+        /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetBuyerGroupBuyShareLinkResponse</returns>
+        ApiResponse<GetBuyerGroupBuyShareLinkResponse> GetBuyerGroupBuyShareLinkWithHttpInfo(string id);
+        /// <summary>
         /// Your home in Crossly World (made on first read).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2695,6 +2777,22 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of BuyerHomeResponse</returns>
         ApiResponse<BuyerHomeResponse> GetBuyerHomeWithHttpInfo();
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBuyerHomePetResponse</returns>
+        GetBuyerHomePetResponse GetBuyerHomePet();
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBuyerHomePetResponse</returns>
+        ApiResponse<GetBuyerHomePetResponse> GetBuyerHomePetWithHttpInfo();
         /// <summary>
         /// What you could place in your home: your items and delivered furniture.
         /// </summary>
@@ -2944,11 +3042,31 @@ namespace net.crossly.buyer.Api
         /// <returns>ApiResponse of GetBuyerLiveStreamAuctionResponse</returns>
         ApiResponse<GetBuyerLiveStreamAuctionResponse> GetBuyerLiveStreamAuctionWithHttpInfo(string id);
         /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>GetBuyerLoyaltyRewardResponse</returns>
+        GetBuyerLoyaltyRewardResponse GetBuyerLoyaltyReward(string clubId);
+
+        /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>ApiResponse of GetBuyerLoyaltyRewardResponse</returns>
+        ApiResponse<GetBuyerLoyaltyRewardResponse> GetBuyerLoyaltyRewardWithHttpInfo(string clubId);
+        /// <summary>
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <returns>GetBuyerMarketPurchaseOptionResponse</returns>
-        GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption();
+        GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption(string variantId, string condition = default(string));
 
         /// <summary>
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
@@ -2957,8 +3075,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerMarketPurchaseOptionResponse</returns>
-        ApiResponse<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionWithHttpInfo();
+        ApiResponse<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionWithHttpInfo(string variantId, string condition = default(string));
         /// <summary>
         /// What you can do with one order right now — cancel, confirm receipt, report not received, leave feedback.
         /// </summary>
@@ -3078,8 +3198,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <returns>GetBuyerPassportResponse</returns>
-        GetBuyerPassportResponse GetBuyerPassport(string code);
+        GetBuyerPassportResponse GetBuyerPassport(string code, string uid = default(string));
 
         /// <summary>
         /// What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
@@ -3089,8 +3210,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPassportResponse</returns>
-        ApiResponse<GetBuyerPassportResponse> GetBuyerPassportWithHttpInfo(string code);
+        ApiResponse<GetBuyerPassportResponse> GetBuyerPassportWithHttpInfo(string code, string uid = default(string));
         /// <summary>
         /// The shopping profile derived from that activity.
         /// </summary>
@@ -4298,8 +4420,10 @@ namespace net.crossly.buyer.Api
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <returns>ListBuyerHotspotsResponse</returns>
-        ListBuyerHotspotsResponse ListBuyerHotspots();
+        ListBuyerHotspotsResponse ListBuyerHotspots(string targetType, string targetId);
 
         /// <summary>
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
@@ -4308,8 +4432,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <returns>ApiResponse of ListBuyerHotspotsResponse</returns>
-        ApiResponse<ListBuyerHotspotsResponse> ListBuyerHotspotsWithHttpInfo();
+        ApiResponse<ListBuyerHotspotsResponse> ListBuyerHotspotsWithHttpInfo(string targetType, string targetId);
         /// <summary>
         /// Your buyer-agent hunts and what they did.
         /// </summary>
@@ -4444,6 +4570,24 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListBuyerLoyaltyResponse</returns>
         ApiResponse<ListBuyerLoyaltyResponse> ListBuyerLoyaltyWithHttpInfo();
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>ListBuyerLoyaltyPointsResponse</returns>
+        ListBuyerLoyaltyPointsResponse ListBuyerLoyaltyPoints(string clubId);
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>ApiResponse of ListBuyerLoyaltyPointsResponse</returns>
+        ApiResponse<ListBuyerLoyaltyPointsResponse> ListBuyerLoyaltyPointsWithHttpInfo(string clubId);
         /// <summary>
         /// Your resting market bids.
         /// </summary>
@@ -4672,8 +4816,9 @@ namespace net.crossly.buyer.Api
         /// Find a registry by its name or the registrant’s name. Current and recent registries only.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListBuyerRegistrySearchResponse</returns>
-        ListBuyerRegistrySearchResponse ListBuyerRegistrySearch();
+        ListBuyerRegistrySearchResponse ListBuyerRegistrySearch(string q = default(string));
 
         /// <summary>
         /// Find a registry by its name or the registrant’s name. Current and recent registries only.
@@ -4682,8 +4827,9 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerRegistrySearchResponse</returns>
-        ApiResponse<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchWithHttpInfo();
+        ApiResponse<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchWithHttpInfo(string q = default(string));
         /// <summary>
         /// Your rentals: dates, status (reserved, out, returned, claimed, closed, cancelled), the return label, and what happened to the deposit.
         /// </summary>
@@ -4753,8 +4899,16 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListBuyerStoreListingsResponse</returns>
-        ListBuyerStoreListingsResponse ListBuyerStoreListings(string slug);
+        ListBuyerStoreListingsResponse ListBuyerStoreListings(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
@@ -4764,8 +4918,16 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerStoreListingsResponse</returns>
-        ApiResponse<ListBuyerStoreListingsResponse> ListBuyerStoreListingsWithHttpInfo(string slug);
+        ApiResponse<ListBuyerStoreListingsResponse> ListBuyerStoreListingsWithHttpInfo(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Your subscribe &amp; save standing orders.
         /// </summary>
@@ -5322,8 +5484,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <returns>BuyerResponse</returns>
-        BuyerResponse UpdateBuyerBoard(string id);
+        BuyerResponse UpdateBuyerBoard(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest);
 
         /// <summary>
         /// Rename a board, change its description, or make it public / private.
@@ -5333,15 +5496,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        ApiResponse<BuyerResponse> UpdateBuyerBoardWithHttpInfo(string id);
+        ApiResponse<BuyerResponse> UpdateBuyerBoardWithHttpInfo(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest);
         /// <summary>
         /// Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <returns>BuyerBoardResponse</returns>
-        BuyerBoardResponse UpdateBuyerBoardLayout(string id);
+        BuyerBoardResponse UpdateBuyerBoardLayout(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest);
 
         /// <summary>
         /// Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
@@ -5351,14 +5516,16 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <returns>ApiResponse of BuyerBoardResponse</returns>
-        ApiResponse<BuyerBoardResponse> UpdateBuyerBoardLayoutWithHttpInfo(string id);
+        ApiResponse<BuyerBoardResponse> UpdateBuyerBoardLayoutWithHttpInfo(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest);
         /// <summary>
         /// Show or hide yourself (by your public handle) on set leaderboards.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <returns>UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard();
+        UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest);
 
         /// <summary>
         /// Show or hide yourself (by your public handle) on set leaderboards.
@@ -5367,8 +5534,9 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <returns>ApiResponse of UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardWithHttpInfo();
+        ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardWithHttpInfo(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest);
         /// <summary>
         /// Rename the company or change its tax id / website (owner).
         /// </summary>
@@ -5471,8 +5639,9 @@ namespace net.crossly.buyer.Api
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <returns>BuyerHomeResponse</returns>
-        BuyerHomeResponse UpdateBuyerHome();
+        BuyerHomeResponse UpdateBuyerHome(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest));
 
         /// <summary>
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
@@ -5481,14 +5650,16 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerHomeResponse</returns>
-        ApiResponse<BuyerHomeResponse> UpdateBuyerHomeWithHttpInfo();
+        ApiResponse<BuyerHomeResponse> UpdateBuyerHomeWithHttpInfo(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest));
         /// <summary>
         /// Set your co-builders (friends only, at most 4).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <returns>ListBuyerHomeBuildersResponse</returns>
-        ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder();
+        ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest));
 
         /// <summary>
         /// Set your co-builders (friends only, at most 4).
@@ -5497,14 +5668,16 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerHomeBuildersResponse</returns>
-        ApiResponse<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderWithHttpInfo();
+        ApiResponse<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderWithHttpInfo(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest));
         /// <summary>
         /// Arrange your home: the whole layout, checked against what you own.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <returns>BuyerHomeResponse</returns>
-        BuyerHomeResponse UpdateBuyerHomeLayout();
+        BuyerHomeResponse UpdateBuyerHomeLayout(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest));
 
         /// <summary>
         /// Arrange your home: the whole layout, checked against what you own.
@@ -5513,8 +5686,27 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerHomeResponse</returns>
-        ApiResponse<BuyerHomeResponse> UpdateBuyerHomeLayoutWithHttpInfo();
+        ApiResponse<BuyerHomeResponse> UpdateBuyerHomeLayoutWithHttpInfo(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest));
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <returns>UpdateBuyerHomePetActiveResponse</returns>
+        UpdateBuyerHomePetActiveResponse UpdateBuyerHomePetActive(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest));
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateBuyerHomePetActiveResponse</returns>
+        ApiResponse<UpdateBuyerHomePetActiveResponse> UpdateBuyerHomePetActiveWithHttpInfo(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest));
         /// <summary>
         /// Pause, resume or stop a hunt.
         /// </summary>
@@ -5577,8 +5769,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>BuyerRegistryResponse</returns>
-        BuyerRegistryResponse UpdateBuyerRegistry(string id);
+        BuyerRegistryResponse UpdateBuyerRegistry(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest));
 
         /// <summary>
         /// Edit a registry: title, kind, date, message, ship-to address.
@@ -5588,16 +5781,18 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerRegistryResponse</returns>
-        ApiResponse<BuyerRegistryResponse> UpdateBuyerRegistryWithHttpInfo(string id);
+        ApiResponse<BuyerRegistryResponse> UpdateBuyerRegistryWithHttpInfo(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest));
         /// <summary>
         /// How many of an item you want (1–50).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <returns>UpdateBuyerRegistryItemResponse</returns>
-        UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem(string id, string platformListingId);
+        UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest);
 
         /// <summary>
         /// How many of an item you want (1–50).
@@ -5608,8 +5803,9 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <returns>ApiResponse of UpdateBuyerRegistryItemResponse</returns>
-        ApiResponse<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemWithHttpInfo(string id, string platformListingId);
+        ApiResponse<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemWithHttpInfo(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest);
         /// <summary>
         /// Pause, resume, skip the next delivery, change the interval, or cancel.
         /// </summary>
@@ -5797,9 +5993,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerBoardResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerBoardResponse> CreateBuyerBoardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerBoardResponse> CreateBuyerBoardAsync(CreateBuyerBoardRequest createBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create an outfit board.
@@ -5808,9 +6005,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerBoardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerBoardResponse>> CreateBuyerBoardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerBoardResponse>> CreateBuyerBoardWithHttpInfoAsync(CreateBuyerBoardRequest createBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add a listing (by slug) to a board, at the next free spot.
         /// </summary>
@@ -5819,9 +6017,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerBoardItemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerBoardItemAsync(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add a listing (by slug) to a board, at the next free spot.
@@ -5831,9 +6030,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerBoardItemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerBoardItemWithHttpInfoAsync(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Hold a spot in a pick-your-spot break, then buy it through checkout before the hold lapses.
         /// </summary>
@@ -5935,9 +6135,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCartOptimizerResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerAsync(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
@@ -5946,9 +6147,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCartOptimizerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCartOptimizerResponse>> CreateBuyerCartOptimizerWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCartOptimizerResponse>> CreateBuyerCartOptimizerWithHttpInfoAsync(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Price the cart, delivered — item, shipping, tax, total.
         /// </summary>
@@ -5956,9 +6158,10 @@ namespace net.crossly.buyer.Api
         /// Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCartQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteAsync(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Price the cart, delivered — item, shipping, tax, total.
@@ -5967,9 +6170,10 @@ namespace net.crossly.buyer.Api
         /// Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCartQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCartQuoteResponse>> CreateBuyerCartQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCartQuoteResponse>> CreateBuyerCartQuoteWithHttpInfoAsync(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Move a saved item back into your cart, at today’s price.
         /// </summary>
@@ -6122,9 +6326,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingRentalResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
@@ -6134,9 +6339,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingRentalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingRentalResponse>> CreateBuyerCatalogListingRentalWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingRentalResponse>> CreateBuyerCatalogListingRentalWithHttpInfoAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
         /// </summary>
@@ -6145,9 +6351,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. &#x60;problem&#x60; says why the dates can’t be booked.
@@ -6157,9 +6364,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingRentalQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse>> CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse>> CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
         /// </summary>
@@ -6168,9 +6376,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingVideoRequestResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestAsync(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
@@ -6180,9 +6389,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingVideoRequestResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a buyer company: name, taxId?, website?. You become its owner; a user is in at most one company.
         /// </summary>
@@ -6323,9 +6533,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerEventRsvpResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpAsync(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// RSVP to an event: going (counts against its capacity) or interested.
@@ -6335,9 +6546,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerEventRsvpResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerEventRsvpResponse>> CreateBuyerEventRsvpWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerEventRsvpResponse>> CreateBuyerEventRsvpWithHttpInfoAsync(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Leave feedback on up to 25 orders at once, with optional detailed seller ratings.
         /// </summary>
@@ -6572,9 +6784,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerLayawayResponse</returns>
-        System.Threading.Tasks.Task<BuyerLayawayResponse> CreateBuyerLayawayPayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerLayawayResponse> CreateBuyerLayawayPayAsync(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
@@ -6584,9 +6797,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerLayawayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerLayawayResponse>> CreateBuyerLayawayPayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerLayawayResponse>> CreateBuyerLayawayPayWithHttpInfoAsync(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Record the spoken summary of a listing (cached per listing version). 503 naming TTS_API_KEY when no speech provider is configured.
         /// </summary>
@@ -6664,9 +6878,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerListingTryOnResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnAsync(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Render an AI try-on of this listing on the buyer’s own photo (base64 &#x60;photo&#x60;, or &#x60;reuseLastPhoto&#x60;). &#x60;confirmSelfAdult&#x60; must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
@@ -6676,9 +6891,35 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerListingTryOnResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerListingTryOnResponse>> CreateBuyerListingTryOnWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerListingTryOnResponse>> CreateBuyerListingTryOnWithHttpInfoAsync(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        System.Threading.Tasks.Task<CreateBuyerLoyaltyRewardRedeemResponse> CreateBuyerLoyaltyRewardRedeemAsync(string clubId, string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateBuyerLoyaltyRewardRedeemResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse>> CreateBuyerLoyaltyRewardRedeemWithHttpInfoAsync(string clubId, string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Place a fixed-price market bid. SPENDS MONEY: it fills against the lowest ask at or under your price and charges your saved card (plus the fast-ship premium when fastShip is set and it fills from vault stock). deliverTo vault keeps it in your Crossly vault; gradeWith sends a raw card to a Grading run first. Checked against this key’s spending controls; send an Idempotency-Key.
         /// </summary>
@@ -6870,9 +7111,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPackFairnessResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateAsync(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
@@ -6881,9 +7123,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPackFairnessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerPackFairnessResponse>> CreateBuyerPackFairnessRotateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerPackFairnessResponse>> CreateBuyerPackFairnessRotateWithHttpInfoAsync(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
         /// </summary>
@@ -6892,9 +7135,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerPackOpenResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerPackOpenResponse> CreateBuyerPackOpenAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerPackOpenResponse> CreateBuyerPackOpenAsync(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
@@ -6904,9 +7148,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerPackOpenResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerPackOpenResponse>> CreateBuyerPackOpenWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerPackOpenResponse>> CreateBuyerPackOpenWithHttpInfoAsync(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sell a pull straight back for Crossly credit at the pack’s buyback rate, within its window, while it is still in your vault.
         /// </summary>
@@ -6938,9 +7183,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPassportResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerPassportResponse> CreateBuyerPassportClaimAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerPassportResponse> CreateBuyerPassportClaimAsync(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
@@ -6950,9 +7196,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPassportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerPassportResponse>> CreateBuyerPassportClaimWithHttpInfoAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerPassportResponse>> CreateBuyerPassportClaimWithHttpInfoAsync(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a protection plan. The insurer decides what is refundable (pro-rata after the free-look window); that amount goes back to the card.
         /// </summary>
@@ -6984,9 +7231,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerPurchaseFitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerPurchaseFitAsync(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
@@ -6996,9 +7244,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerPurchaseFitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerPurchaseFitWithHttpInfoAsync(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Return a purchase under the seller’s policy, or send back a try-at-home item. With reason doesnt_fit, &#x60;fit&#x60; (small | large) says which way, and it feeds your size memory.
         /// </summary>
@@ -7029,9 +7278,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRegistryResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerRegistryResponse> CreateBuyerRegistryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerRegistryResponse> CreateBuyerRegistryAsync(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
@@ -7040,9 +7290,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRegistryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRegistryResponse>> CreateBuyerRegistryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRegistryResponse>> CreateBuyerRegistryWithHttpInfoAsync(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Tick a gift as thanked (or untick it).
         /// </summary>
@@ -7052,9 +7303,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRegistryGiftThankedResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedAsync(string id, string giftId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedAsync(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Tick a gift as thanked (or untick it).
@@ -7065,9 +7317,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRegistryGiftThankedResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRegistryGiftThankedResponse>> CreateBuyerRegistryGiftThankedWithHttpInfoAsync(string id, string giftId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRegistryGiftThankedResponse>> CreateBuyerRegistryGiftThankedWithHttpInfoAsync(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
         /// </summary>
@@ -7076,9 +7329,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRentalResponse</returns>
-        System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoAsync(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
@@ -7088,9 +7342,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRentalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerRentalResponse>> CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerRentalResponse>> CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy the item you are renting: the price less the rent-to-own credit → clientSecret.
         /// </summary>
@@ -7145,9 +7400,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerRentalClaimResponseAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerResponse> CreateBuyerRentalClaimResponseAsync(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
@@ -7157,9 +7413,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerRentalClaimResponseWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> CreateBuyerRentalClaimResponseWithHttpInfoAsync(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Confirm your rental arrived.
         /// </summary>
@@ -7191,9 +7448,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRentalExtensionResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionAsync(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
@@ -7203,9 +7461,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRentalExtensionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRentalExtensionResponse>> CreateBuyerRentalExtensionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerRentalExtensionResponse>> CreateBuyerRentalExtensionWithHttpInfoAsync(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pay for an extension the seller approved → clientSecret.
         /// </summary>
@@ -7260,9 +7519,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRentalResponse</returns>
-        System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalReturnShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalReturnShippedAsync(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Say you sent your rental back (optionally with photos).
@@ -7272,9 +7532,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRentalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerRentalResponse>> CreateBuyerRentalReturnShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerRentalResponse>> CreateBuyerRentalReturnShippedWithHttpInfoAsync(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a return before it ships.
         /// </summary>
@@ -7609,9 +7870,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerVaultListResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerVaultListResponse> CreateBuyerVaultListAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerVaultListResponse> CreateBuyerVaultListAsync(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
@@ -7621,9 +7883,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerVaultListResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerVaultListResponse>> CreateBuyerVaultListWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerVaultListResponse>> CreateBuyerVaultListWithHttpInfoAsync(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Take a vault item off the market; it stays stored.
         /// </summary>
@@ -7655,9 +7918,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerVaultWithdrawResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawAsync(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
@@ -7667,9 +7931,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerVaultWithdrawResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerVaultWithdrawResponse>> CreateBuyerVaultWithdrawWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerVaultWithdrawResponse>> CreateBuyerVaultWithdrawWithHttpInfoAsync(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply to a store&#39;s wholesale catalog: { message?, answers [{ id, value }], resaleCertUrl?, resaleCertState?, taxId?, businessInfo? }. The seller&#39;s requirements are enforced (400 trade_apply_requirements names the first one missing); the seller reviews the request.
         /// </summary>
@@ -8760,7 +9025,7 @@ namespace net.crossly.buyer.Api
         /// <returns>Task of ApiResponse (GetBuyerCatalogListingPriceResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBuyerCatalogListingPriceResponse>> GetBuyerCatalogListingPriceWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
         /// </summary>
         /// <remarks>
         /// 
@@ -8772,7 +9037,7 @@ namespace net.crossly.buyer.Api
         System.Threading.Tasks.Task<GetBuyerCatalogListingRentalResponse> GetBuyerCatalogListingRentalAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
         /// </summary>
         /// <remarks>
         /// 
@@ -8988,6 +9253,29 @@ namespace net.crossly.buyer.Api
         /// <returns>Task of ApiResponse (GetBuyerGiftFinderOptionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBuyerGiftFinderOptionResponse>> GetBuyerGiftFinderOptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerGroupBuyShareLinkResponse</returns>
+        System.Threading.Tasks.Task<GetBuyerGroupBuyShareLinkResponse> GetBuyerGroupBuyShareLinkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerGroupBuyShareLinkResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerGroupBuyShareLinkResponse>> GetBuyerGroupBuyShareLinkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Your home in Crossly World (made on first read).
         /// </summary>
         /// <remarks>
@@ -9008,6 +9296,27 @@ namespace net.crossly.buyer.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerHomeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<BuyerHomeResponse>> GetBuyerHomeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerHomePetResponse</returns>
+        System.Threading.Tasks.Task<GetBuyerHomePetResponse> GetBuyerHomePetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerHomePetResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerHomePetResponse>> GetBuyerHomePetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What you could place in your home: your items and delivered furniture.
         /// </summary>
@@ -9327,15 +9636,40 @@ namespace net.crossly.buyer.Api
         /// <returns>Task of ApiResponse (GetBuyerLiveStreamAuctionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBuyerLiveStreamAuctionResponse>> GetBuyerLiveStreamAuctionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerLoyaltyRewardResponse</returns>
+        System.Threading.Tasks.Task<GetBuyerLoyaltyRewardResponse> GetBuyerLoyaltyRewardAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerLoyaltyRewardResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerLoyaltyRewardResponse>> GetBuyerLoyaltyRewardWithHttpInfoAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerMarketPurchaseOptionResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionAsync(string variantId, string condition = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
@@ -9344,9 +9678,11 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerMarketPurchaseOptionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerMarketPurchaseOptionResponse>> GetBuyerMarketPurchaseOptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerMarketPurchaseOptionResponse>> GetBuyerMarketPurchaseOptionWithHttpInfoAsync(string variantId, string condition = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What you can do with one order right now — cancel, confirm receipt, report not received, leave feedback.
         /// </summary>
@@ -9493,9 +9829,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPassportResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerPassportResponse> GetBuyerPassportAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerPassportResponse> GetBuyerPassportAsync(string code, string uid = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid&#x3D;, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
@@ -9505,9 +9842,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPassportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerPassportResponse>> GetBuyerPassportWithHttpInfoAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerPassportResponse>> GetBuyerPassportWithHttpInfoAsync(string code, string uid = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The shopping profile derived from that activity.
         /// </summary>
@@ -11042,9 +11380,11 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerHotspotsResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerHotspotsResponse> ListBuyerHotspotsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerHotspotsResponse> ListBuyerHotspotsAsync(string targetType, string targetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
@@ -11053,9 +11393,11 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerHotspotsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerHotspotsResponse>> ListBuyerHotspotsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerHotspotsResponse>> ListBuyerHotspotsWithHttpInfoAsync(string targetType, string targetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your buyer-agent hunts and what they did.
         /// </summary>
@@ -11230,6 +11572,29 @@ namespace net.crossly.buyer.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerLoyaltyResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListBuyerLoyaltyResponse>> ListBuyerLoyaltyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBuyerLoyaltyPointsResponse</returns>
+        System.Threading.Tasks.Task<ListBuyerLoyaltyPointsResponse> ListBuyerLoyaltyPointsAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBuyerLoyaltyPointsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerLoyaltyPointsResponse>> ListBuyerLoyaltyPointsWithHttpInfoAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your resting market bids.
         /// </summary>
@@ -11520,9 +11885,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerRegistrySearchResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Find a registry by its name or the registrant’s name. Current and recent registries only.
@@ -11531,9 +11897,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerRegistrySearchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerRegistrySearchResponse>> ListBuyerRegistrySearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerRegistrySearchResponse>> ListBuyerRegistrySearchWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your rentals: dates, status (reserved, out, returned, claimed, closed, cancelled), the return label, and what happened to the deposit.
         /// </summary>
@@ -11626,9 +11993,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerStoreListingsResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerStoreListingsResponse> ListBuyerStoreListingsAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerStoreListingsResponse> ListBuyerStoreListingsAsync(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A store&#39;s live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
@@ -11638,9 +12013,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerStoreListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerStoreListingsResponse>> ListBuyerStoreListingsWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerStoreListingsResponse>> ListBuyerStoreListingsWithHttpInfoAsync(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your subscribe &amp; save standing orders.
         /// </summary>
@@ -12367,9 +12750,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        System.Threading.Tasks.Task<BuyerResponse> UpdateBuyerBoardAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerResponse> UpdateBuyerBoardAsync(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rename a board, change its description, or make it public / private.
@@ -12379,9 +12763,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> UpdateBuyerBoardWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerResponse>> UpdateBuyerBoardWithHttpInfoAsync(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
         /// </summary>
@@ -12390,9 +12775,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerBoardResponse</returns>
-        System.Threading.Tasks.Task<BuyerBoardResponse> UpdateBuyerBoardLayoutAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerBoardResponse> UpdateBuyerBoardLayoutAsync(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
@@ -12402,9 +12788,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerBoardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerBoardResponse>> UpdateBuyerBoardLayoutWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerBoardResponse>> UpdateBuyerBoardLayoutWithHttpInfoAsync(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Show or hide yourself (by your public handle) on set leaderboards.
         /// </summary>
@@ -12412,9 +12799,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        System.Threading.Tasks.Task<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardAsync(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Show or hide yourself (by your public handle) on set leaderboards.
@@ -12423,9 +12811,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBuyerCollectionSetLeaderboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rename the company or change its tax id / website (owner).
         /// </summary>
@@ -12550,9 +12939,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerHomeResponse</returns>
-        System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeAsync(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
@@ -12561,9 +12951,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerHomeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeWithHttpInfoAsync(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set your co-builders (friends only, at most 4).
         /// </summary>
@@ -12571,9 +12962,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerHomeBuildersResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderAsync(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set your co-builders (friends only, at most 4).
@@ -12582,9 +12974,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerHomeBuildersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerHomeBuildersResponse>> UpdateBuyerHomeBuilderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerHomeBuildersResponse>> UpdateBuyerHomeBuilderWithHttpInfoAsync(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Arrange your home: the whole layout, checked against what you own.
         /// </summary>
@@ -12592,9 +12985,10 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerHomeResponse</returns>
-        System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeLayoutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeLayoutAsync(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Arrange your home: the whole layout, checked against what you own.
@@ -12603,9 +12997,33 @@ namespace net.crossly.buyer.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerHomeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeLayoutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeLayoutWithHttpInfoAsync(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateBuyerHomePetActiveResponse</returns>
+        System.Threading.Tasks.Task<UpdateBuyerHomePetActiveResponse> UpdateBuyerHomePetActiveAsync(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateBuyerHomePetActiveResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateBuyerHomePetActiveResponse>> UpdateBuyerHomePetActiveWithHttpInfoAsync(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pause, resume or stop a hunt.
         /// </summary>
@@ -12683,9 +13101,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRegistryResponse</returns>
-        System.Threading.Tasks.Task<BuyerRegistryResponse> UpdateBuyerRegistryAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BuyerRegistryResponse> UpdateBuyerRegistryAsync(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a registry: title, kind, date, message, ship-to address.
@@ -12695,9 +13114,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRegistryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BuyerRegistryResponse>> UpdateBuyerRegistryWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BuyerRegistryResponse>> UpdateBuyerRegistryWithHttpInfoAsync(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// How many of an item you want (1–50).
         /// </summary>
@@ -12707,9 +13127,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBuyerRegistryItemResponse</returns>
-        System.Threading.Tasks.Task<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemAsync(string id, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemAsync(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// How many of an item you want (1–50).
@@ -12720,9 +13141,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBuyerRegistryItemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateBuyerRegistryItemResponse>> UpdateBuyerRegistryItemWithHttpInfoAsync(string id, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateBuyerRegistryItemResponse>> UpdateBuyerRegistryItemWithHttpInfoAsync(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pause, resume, skip the next delivery, change the interval, or cancel.
         /// </summary>
@@ -13565,10 +13987,11 @@ namespace net.crossly.buyer.Api
         /// Create an outfit board. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <returns>CreateBuyerBoardResponse</returns>
-        public CreateBuyerBoardResponse CreateBuyerBoard()
+        public CreateBuyerBoardResponse CreateBuyerBoard(CreateBuyerBoardRequest createBuyerBoardRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> localVarResponse = CreateBuyerBoardWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> localVarResponse = CreateBuyerBoardWithHttpInfo(createBuyerBoardRequest);
             return localVarResponse.Data;
         }
 
@@ -13576,12 +13999,20 @@ namespace net.crossly.buyer.Api
         /// Create an outfit board. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <returns>ApiResponse of CreateBuyerBoardResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> CreateBuyerBoardWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> CreateBuyerBoardWithHttpInfo(CreateBuyerBoardRequest createBuyerBoardRequest)
         {
+            // verify the required parameter 'createBuyerBoardRequest' is set
+            if (createBuyerBoardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerBoardRequest' when calling BuyerApi->CreateBuyerBoard");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13601,6 +14032,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerBoardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -13627,11 +14059,12 @@ namespace net.crossly.buyer.Api
         /// Create an outfit board. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerBoardResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerBoardResponse> CreateBuyerBoardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerBoardResponse> CreateBuyerBoardAsync(CreateBuyerBoardRequest createBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> localVarResponse = await CreateBuyerBoardWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse> localVarResponse = await CreateBuyerBoardWithHttpInfoAsync(createBuyerBoardRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -13639,14 +14072,22 @@ namespace net.crossly.buyer.Api
         /// Create an outfit board. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerBoardResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse>> CreateBuyerBoardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerBoardResponse>> CreateBuyerBoardWithHttpInfoAsync(CreateBuyerBoardRequest createBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerBoardRequest' is set
+            if (createBuyerBoardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerBoardRequest' when calling BuyerApi->CreateBuyerBoard");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13666,6 +14107,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerBoardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -13694,10 +14136,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <returns>BuyerResponse</returns>
-        public BuyerResponse CreateBuyerBoardItem(string id)
+        public BuyerResponse CreateBuyerBoardItem(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerBoardItemWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerBoardItemWithHttpInfo(id, createBuyerBoardItemRequest);
             return localVarResponse.Data;
         }
 
@@ -13706,8 +14149,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerBoardItemWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerBoardItemWithHttpInfo(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -13715,9 +14159,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerBoardItem");
             }
 
+            // verify the required parameter 'createBuyerBoardItemRequest' is set
+            if (createBuyerBoardItemRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerBoardItemRequest' when calling BuyerApi->CreateBuyerBoardItem");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13738,6 +14189,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerBoardItemRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -13765,11 +14217,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerBoardItemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerBoardItemAsync(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerBoardItemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerBoardItemWithHttpInfoAsync(id, createBuyerBoardItemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -13778,9 +14231,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerBoardItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerBoardItemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerBoardItemWithHttpInfoAsync(string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -13788,10 +14242,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerBoardItem");
             }
 
+            // verify the required parameter 'createBuyerBoardItemRequest' is set
+            if (createBuyerBoardItemRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerBoardItemRequest' when calling BuyerApi->CreateBuyerBoardItem");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -13812,6 +14273,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerBoardItemRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -14431,10 +14893,11 @@ namespace net.crossly.buyer.Api
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <returns>CreateBuyerCartOptimizerResponse</returns>
-        public CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer()
+        public CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> localVarResponse = CreateBuyerCartOptimizerWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> localVarResponse = CreateBuyerCartOptimizerWithHttpInfo(createBuyerCartOptimizerRequest);
             return localVarResponse.Data;
         }
 
@@ -14442,12 +14905,20 @@ namespace net.crossly.buyer.Api
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCartOptimizerResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerWithHttpInfo(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest)
         {
+            // verify the required parameter 'createBuyerCartOptimizerRequest' is set
+            if (createBuyerCartOptimizerRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCartOptimizerRequest' when calling BuyerApi->CreateBuyerCartOptimizer");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -14467,6 +14938,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCartOptimizerRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -14493,11 +14965,12 @@ namespace net.crossly.buyer.Api
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCartOptimizerResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCartOptimizerResponse> CreateBuyerCartOptimizerAsync(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> localVarResponse = await CreateBuyerCartOptimizerWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse> localVarResponse = await CreateBuyerCartOptimizerWithHttpInfoAsync(createBuyerCartOptimizerRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -14505,14 +14978,22 @@ namespace net.crossly.buyer.Api
         /// Cart optimizer: send a shopping list (one item per line, \&quot;2 Charizard Base Set\&quot;) and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartOptimizerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCartOptimizerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse>> CreateBuyerCartOptimizerWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCartOptimizerResponse>> CreateBuyerCartOptimizerWithHttpInfoAsync(CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerCartOptimizerRequest' is set
+            if (createBuyerCartOptimizerRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCartOptimizerRequest' when calling BuyerApi->CreateBuyerCartOptimizer");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -14532,6 +15013,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCartOptimizerRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -14559,10 +15041,11 @@ namespace net.crossly.buyer.Api
         /// Price the cart, delivered — item, shipping, tax, total. Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <returns>CreateBuyerCartQuoteResponse</returns>
-        public CreateBuyerCartQuoteResponse CreateBuyerCartQuote()
+        public CreateBuyerCartQuoteResponse CreateBuyerCartQuote(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> localVarResponse = CreateBuyerCartQuoteWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> localVarResponse = CreateBuyerCartQuoteWithHttpInfo(createBuyerCartQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -14570,12 +15053,14 @@ namespace net.crossly.buyer.Api
         /// Price the cart, delivered — item, shipping, tax, total. Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerCartQuoteResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteWithHttpInfo(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -14595,6 +15080,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCartQuoteRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -14621,11 +15107,12 @@ namespace net.crossly.buyer.Api
         /// Price the cart, delivered — item, shipping, tax, total. Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCartQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCartQuoteResponse> CreateBuyerCartQuoteAsync(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> localVarResponse = await CreateBuyerCartQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse> localVarResponse = await CreateBuyerCartQuoteWithHttpInfoAsync(createBuyerCartQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -14633,14 +15120,16 @@ namespace net.crossly.buyer.Api
         /// Price the cart, delivered — item, shipping, tax, total. Runs the real checkout cascade and returns the totals instead of charging. Nothing is purchased. &#x60;taxComplete: false&#x60; means there is no saved delivery address, so the total is a floor rather than a final figure. &#x60;shippingOptions&#x60; lists each seller’s shipping services; send &#x60;shippingServiceBySeller&#x60; to price a different speed (an id the seller does not offer to the destination is a 400). Optional body: &#x60;{ \&quot;shippingServiceBySeller\&quot;: { \&quot;&lt;sellerUserId&gt;\&quot;: \&quot;&lt;serviceId&gt;\&quot; } }&#x60; — omitted sellers get the cheapest service; &#x60;registryToken&#x60; prices it as a gift shipped to that registry. (No body JSON schema: existing callers POST with none.)
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCartQuoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCartQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse>> CreateBuyerCartQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCartQuoteResponse>> CreateBuyerCartQuoteWithHttpInfoAsync(CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = default(CreateBuyerCartQuoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -14660,6 +15149,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCartQuoteRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15552,10 +16042,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>CreateBuyerCatalogListingRentalResponse</returns>
-        public CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental(string slug)
+        public CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> localVarResponse = CreateBuyerCatalogListingRentalWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> localVarResponse = CreateBuyerCatalogListingRentalWithHttpInfo(slug, createBuyerCatalogListingRentalRequest);
             return localVarResponse.Data;
         }
 
@@ -15564,8 +16055,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingRentalResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalWithHttpInfo(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15573,9 +16065,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerCatalogListingRental");
             }
 
+            // verify the required parameter 'createBuyerCatalogListingRentalRequest' is set
+            if (createBuyerCatalogListingRentalRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCatalogListingRentalRequest' when calling BuyerApi->CreateBuyerCatalogListingRental");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15596,6 +16095,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingRentalRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15623,11 +16123,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingRentalResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalResponse> CreateBuyerCatalogListingRentalAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> localVarResponse = await CreateBuyerCatalogListingRentalWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse> localVarResponse = await CreateBuyerCatalogListingRentalWithHttpInfoAsync(slug, createBuyerCatalogListingRentalRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -15636,9 +16137,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingRentalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse>> CreateBuyerCatalogListingRentalWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalResponse>> CreateBuyerCatalogListingRentalWithHttpInfoAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15646,10 +16148,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerCatalogListingRental");
             }
 
+            // verify the required parameter 'createBuyerCatalogListingRentalRequest' is set
+            if (createBuyerCatalogListingRentalRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCatalogListingRentalRequest' when calling BuyerApi->CreateBuyerCatalogListingRental");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15670,6 +16179,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingRentalRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15698,10 +16208,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        public CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote(string slug)
+        public CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> localVarResponse = CreateBuyerCatalogListingRentalQuoteWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> localVarResponse = CreateBuyerCatalogListingRentalQuoteWithHttpInfo(slug, createBuyerCatalogListingRentalRequest);
             return localVarResponse.Data;
         }
 
@@ -15710,8 +16221,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteWithHttpInfo(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15719,9 +16231,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerCatalogListingRentalQuote");
             }
 
+            // verify the required parameter 'createBuyerCatalogListingRentalRequest' is set
+            if (createBuyerCatalogListingRentalRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCatalogListingRentalRequest' when calling BuyerApi->CreateBuyerCatalogListingRentalQuote");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15742,6 +16261,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingRentalRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15769,11 +16289,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingRentalQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingRentalQuoteResponse> CreateBuyerCatalogListingRentalQuoteAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> localVarResponse = await CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse> localVarResponse = await CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(slug, createBuyerCatalogListingRentalRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -15782,9 +16303,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingRentalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingRentalQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse>> CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingRentalQuoteResponse>> CreateBuyerCatalogListingRentalQuoteWithHttpInfoAsync(string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15792,10 +16314,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerCatalogListingRentalQuote");
             }
 
+            // verify the required parameter 'createBuyerCatalogListingRentalRequest' is set
+            if (createBuyerCatalogListingRentalRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCatalogListingRentalRequest' when calling BuyerApi->CreateBuyerCatalogListingRentalQuote");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15816,6 +16345,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingRentalRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15844,10 +16374,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <returns>CreateBuyerCatalogListingVideoRequestResponse</returns>
-        public CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest(string slug)
+        public CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> localVarResponse = CreateBuyerCatalogListingVideoRequestWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> localVarResponse = CreateBuyerCatalogListingVideoRequestWithHttpInfo(slug, createBuyerCatalogListingVideoRequestRequest);
             return localVarResponse.Data;
         }
 
@@ -15856,8 +16387,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerCatalogListingVideoRequestResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestWithHttpInfo(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15868,6 +16400,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15888,6 +16421,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingVideoRequestRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -15915,11 +16449,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCatalogListingVideoRequestResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCatalogListingVideoRequestResponse> CreateBuyerCatalogListingVideoRequestAsync(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> localVarResponse = await CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse> localVarResponse = await CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(slug, createBuyerCatalogListingVideoRequestRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -15928,9 +16463,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerCatalogListingVideoRequestRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCatalogListingVideoRequestResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCatalogListingVideoRequestResponse>> CreateBuyerCatalogListingVideoRequestWithHttpInfoAsync(string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = default(CreateBuyerCatalogListingVideoRequestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -15942,6 +16478,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -15962,6 +16499,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerCatalogListingVideoRequestRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -16812,10 +17350,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <returns>CreateBuyerEventRsvpResponse</returns>
-        public CreateBuyerEventRsvpResponse CreateBuyerEventRsvp(string slug)
+        public CreateBuyerEventRsvpResponse CreateBuyerEventRsvp(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> localVarResponse = CreateBuyerEventRsvpWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> localVarResponse = CreateBuyerEventRsvpWithHttpInfo(slug, createBuyerEventRsvpRequest);
             return localVarResponse.Data;
         }
 
@@ -16824,8 +17363,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerEventRsvpResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpWithHttpInfo(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -16836,6 +17376,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -16856,6 +17397,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerEventRsvpRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -16883,11 +17425,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerEventRsvpResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerEventRsvpResponse> CreateBuyerEventRsvpAsync(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> localVarResponse = await CreateBuyerEventRsvpWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse> localVarResponse = await CreateBuyerEventRsvpWithHttpInfoAsync(slug, createBuyerEventRsvpRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -16896,9 +17439,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerEventRsvpResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse>> CreateBuyerEventRsvpWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerEventRsvpResponse>> CreateBuyerEventRsvpWithHttpInfoAsync(string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = default(CreateBuyerEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -16910,6 +17454,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -16930,6 +17475,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerEventRsvpRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -18390,10 +18936,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <returns>BuyerLayawayResponse</returns>
-        public BuyerLayawayResponse CreateBuyerLayawayPay(string id)
+        public BuyerLayawayResponse CreateBuyerLayawayPay(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> localVarResponse = CreateBuyerLayawayPayWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> localVarResponse = CreateBuyerLayawayPayWithHttpInfo(id, createBuyerLayawayPayRequest);
             return localVarResponse.Data;
         }
 
@@ -18402,8 +18949,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerLayawayResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> CreateBuyerLayawayPayWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> CreateBuyerLayawayPayWithHttpInfo(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -18414,6 +18962,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -18434,6 +18983,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLayawayPayRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -18461,11 +19011,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerLayawayResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerLayawayResponse> CreateBuyerLayawayPayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerLayawayResponse> CreateBuyerLayawayPayAsync(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> localVarResponse = await CreateBuyerLayawayPayWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse> localVarResponse = await CreateBuyerLayawayPayWithHttpInfoAsync(id, createBuyerLayawayPayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18474,9 +19025,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLayawayPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerLayawayResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse>> CreateBuyerLayawayPayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerLayawayResponse>> CreateBuyerLayawayPayWithHttpInfoAsync(string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = default(CreateBuyerLayawayPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -18488,6 +19040,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -18508,6 +19061,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLayawayPayRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -18974,10 +19528,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <returns>CreateBuyerListingTryOnResponse</returns>
-        public CreateBuyerListingTryOnResponse CreateBuyerListingTryOn(string slug)
+        public CreateBuyerListingTryOnResponse CreateBuyerListingTryOn(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> localVarResponse = CreateBuyerListingTryOnWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> localVarResponse = CreateBuyerListingTryOnWithHttpInfo(slug, createBuyerListingTryOnRequest);
             return localVarResponse.Data;
         }
 
@@ -18986,8 +19541,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <returns>ApiResponse of CreateBuyerListingTryOnResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnWithHttpInfo(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest)
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -18995,9 +19551,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerListingTryOn");
             }
 
+            // verify the required parameter 'createBuyerListingTryOnRequest' is set
+            if (createBuyerListingTryOnRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerListingTryOnRequest' when calling BuyerApi->CreateBuyerListingTryOn");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -19018,6 +19581,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerListingTryOnRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -19045,11 +19609,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerListingTryOnResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerListingTryOnResponse> CreateBuyerListingTryOnAsync(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> localVarResponse = await CreateBuyerListingTryOnWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse> localVarResponse = await CreateBuyerListingTryOnWithHttpInfoAsync(slug, createBuyerListingTryOnRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -19058,14 +19623,186 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerListingTryOnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerListingTryOnResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse>> CreateBuyerListingTryOnWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerListingTryOnResponse>> CreateBuyerListingTryOnWithHttpInfoAsync(string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
             {
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerListingTryOn");
+            }
+
+            // verify the required parameter 'createBuyerListingTryOnRequest' is set
+            if (createBuyerListingTryOnRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerListingTryOnRequest' when calling BuyerApi->CreateBuyerListingTryOn");
+            }
+
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerListingTryOnRequest;
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBuyerListingTryOnResponse>("/v1/buyer/listings/{slug}/try-on", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateBuyerListingTryOn", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <returns>CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        public CreateBuyerLoyaltyRewardRedeemResponse CreateBuyerLoyaltyRewardRedeem(string clubId, string rewardId)
+        {
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse> localVarResponse = CreateBuyerLoyaltyRewardRedeemWithHttpInfo(clubId, rewardId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse> CreateBuyerLoyaltyRewardRedeemWithHttpInfo(string clubId, string rewardId)
+        {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->CreateBuyerLoyaltyRewardRedeem");
+            }
+
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'rewardId' when calling BuyerApi->CreateBuyerLoyaltyRewardRedeem");
+            }
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.buyer.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateBuyerLoyaltyRewardRedeemResponse>("/v1/buyer/loyalty/{clubId}/rewards/{rewardId}/redeem", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateBuyerLoyaltyRewardRedeem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateBuyerLoyaltyRewardRedeemResponse</returns>
+        public async System.Threading.Tasks.Task<CreateBuyerLoyaltyRewardRedeemResponse> CreateBuyerLoyaltyRewardRedeemAsync(string clubId, string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse> localVarResponse = await CreateBuyerLoyaltyRewardRedeemWithHttpInfoAsync(clubId, rewardId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateBuyerLoyaltyRewardRedeemResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLoyaltyRewardRedeemResponse>> CreateBuyerLoyaltyRewardRedeemWithHttpInfoAsync(string clubId, string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->CreateBuyerLoyaltyRewardRedeem");
+            }
+
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'rewardId' when calling BuyerApi->CreateBuyerLoyaltyRewardRedeem");
             }
 
 
@@ -19091,7 +19828,8 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.buyer.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -19101,11 +19839,11 @@ namespace net.crossly.buyer.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBuyerListingTryOnResponse>("/v1/buyer/listings/{slug}/try-on", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBuyerLoyaltyRewardRedeemResponse>("/v1/buyer/loyalty/{clubId}/rewards/{rewardId}/redeem", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateBuyerListingTryOn", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateBuyerLoyaltyRewardRedeem", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -20245,10 +20983,11 @@ namespace net.crossly.buyer.Api
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <returns>GetBuyerPackFairnessResponse</returns>
-        public GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate()
+        public GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> localVarResponse = CreateBuyerPackFairnessRotateWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> localVarResponse = CreateBuyerPackFairnessRotateWithHttpInfo(createBuyerPackFairnessRotateRequest);
             return localVarResponse.Data;
         }
 
@@ -20256,12 +20995,14 @@ namespace net.crossly.buyer.Api
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPackFairnessResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateWithHttpInfo(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20281,6 +21022,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerPackFairnessRotateRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20307,11 +21049,12 @@ namespace net.crossly.buyer.Api
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPackFairnessResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerPackFairnessResponse> CreateBuyerPackFairnessRotateAsync(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> localVarResponse = await CreateBuyerPackFairnessRotateWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse> localVarResponse = await CreateBuyerPackFairnessRotateWithHttpInfoAsync(createBuyerPackFairnessRotateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20319,14 +21062,16 @@ namespace net.crossly.buyer.Api
         /// Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerPackFairnessRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPackFairnessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse>> CreateBuyerPackFairnessRotateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPackFairnessResponse>> CreateBuyerPackFairnessRotateWithHttpInfoAsync(CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = default(CreateBuyerPackFairnessRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20346,6 +21091,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerPackFairnessRotateRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20374,10 +21120,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <returns>CreateBuyerPackOpenResponse</returns>
-        public CreateBuyerPackOpenResponse CreateBuyerPackOpen(string slug)
+        public CreateBuyerPackOpenResponse CreateBuyerPackOpen(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> localVarResponse = CreateBuyerPackOpenWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> localVarResponse = CreateBuyerPackOpenWithHttpInfo(slug, createBuyerPackOpenRequest);
             return localVarResponse.Data;
         }
 
@@ -20386,8 +21133,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <returns>ApiResponse of CreateBuyerPackOpenResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> CreateBuyerPackOpenWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> CreateBuyerPackOpenWithHttpInfo(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest)
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -20395,9 +21143,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerPackOpen");
             }
 
+            // verify the required parameter 'createBuyerPackOpenRequest' is set
+            if (createBuyerPackOpenRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerPackOpenRequest' when calling BuyerApi->CreateBuyerPackOpen");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20418,6 +21173,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerPackOpenRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20445,11 +21201,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerPackOpenResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerPackOpenResponse> CreateBuyerPackOpenAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerPackOpenResponse> CreateBuyerPackOpenAsync(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> localVarResponse = await CreateBuyerPackOpenWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse> localVarResponse = await CreateBuyerPackOpenWithHttpInfoAsync(slug, createBuyerPackOpenRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20458,9 +21215,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="createBuyerPackOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerPackOpenResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse>> CreateBuyerPackOpenWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerPackOpenResponse>> CreateBuyerPackOpenWithHttpInfoAsync(string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -20468,10 +21226,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'slug' when calling BuyerApi->CreateBuyerPackOpen");
             }
 
+            // verify the required parameter 'createBuyerPackOpenRequest' is set
+            if (createBuyerPackOpenRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerPackOpenRequest' when calling BuyerApi->CreateBuyerPackOpen");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20492,6 +21257,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createBuyerPackOpenRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20666,10 +21432,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <returns>GetBuyerPassportResponse</returns>
-        public GetBuyerPassportResponse CreateBuyerPassportClaim(string code)
+        public GetBuyerPassportResponse CreateBuyerPassportClaim(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = CreateBuyerPassportClaimWithHttpInfo(code);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = CreateBuyerPassportClaimWithHttpInfo(code, createBuyerPassportClaimRequest);
             return localVarResponse.Data;
         }
 
@@ -20678,8 +21445,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPassportResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> CreateBuyerPassportClaimWithHttpInfo(string code)
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> CreateBuyerPassportClaimWithHttpInfo(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest))
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -20690,6 +21458,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20710,6 +21479,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("code", net.crossly.buyer.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = createBuyerPassportClaimRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20737,11 +21507,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPassportResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerPassportResponse> CreateBuyerPassportClaimAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerPassportResponse> CreateBuyerPassportClaimAsync(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = await CreateBuyerPassportClaimWithHttpInfoAsync(code, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = await CreateBuyerPassportClaimWithHttpInfoAsync(code, createBuyerPassportClaimRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20750,9 +21521,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="createBuyerPassportClaimRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPassportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse>> CreateBuyerPassportClaimWithHttpInfoAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse>> CreateBuyerPassportClaimWithHttpInfoAsync(string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = default(CreateBuyerPassportClaimRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -20764,6 +21536,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -20784,6 +21557,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("code", net.crossly.buyer.Client.ClientUtils.ParameterToString(code)); // path parameter
+            localVarRequestOptions.Data = createBuyerPassportClaimRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -20958,10 +21732,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <returns>BuyerResponse</returns>
-        public BuyerResponse CreateBuyerPurchaseFit(string id)
+        public BuyerResponse CreateBuyerPurchaseFit(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerPurchaseFitWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerPurchaseFitWithHttpInfo(id, createBuyerPurchaseFitRequest);
             return localVarResponse.Data;
         }
 
@@ -20970,8 +21745,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerPurchaseFitWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerPurchaseFitWithHttpInfo(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -20979,9 +21755,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerPurchaseFit");
             }
 
+            // verify the required parameter 'createBuyerPurchaseFitRequest' is set
+            if (createBuyerPurchaseFitRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerPurchaseFitRequest' when calling BuyerApi->CreateBuyerPurchaseFit");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21002,6 +21785,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerPurchaseFitRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21029,11 +21813,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerPurchaseFitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerPurchaseFitAsync(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerPurchaseFitWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerPurchaseFitWithHttpInfoAsync(id, createBuyerPurchaseFitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21042,9 +21827,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerPurchaseFitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerPurchaseFitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerPurchaseFitWithHttpInfoAsync(string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -21052,10 +21838,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerPurchaseFit");
             }
 
+            // verify the required parameter 'createBuyerPurchaseFitRequest' is set
+            if (createBuyerPurchaseFitRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerPurchaseFitRequest' when calling BuyerApi->CreateBuyerPurchaseFit");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21076,6 +21869,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerPurchaseFitRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21249,10 +22043,11 @@ namespace net.crossly.buyer.Api
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>CreateBuyerRegistryResponse</returns>
-        public CreateBuyerRegistryResponse CreateBuyerRegistry()
+        public CreateBuyerRegistryResponse CreateBuyerRegistry(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> localVarResponse = CreateBuyerRegistryWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> localVarResponse = CreateBuyerRegistryWithHttpInfo(createBuyerRegistryRequest);
             return localVarResponse.Data;
         }
 
@@ -21260,12 +22055,14 @@ namespace net.crossly.buyer.Api
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerRegistryResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> CreateBuyerRegistryWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> CreateBuyerRegistryWithHttpInfo(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21285,6 +22082,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerRegistryRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21311,11 +22109,12 @@ namespace net.crossly.buyer.Api
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRegistryResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerRegistryResponse> CreateBuyerRegistryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerRegistryResponse> CreateBuyerRegistryAsync(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> localVarResponse = await CreateBuyerRegistryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse> localVarResponse = await CreateBuyerRegistryWithHttpInfoAsync(createBuyerRegistryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21323,14 +22122,16 @@ namespace net.crossly.buyer.Api
         /// Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRegistryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse>> CreateBuyerRegistryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryResponse>> CreateBuyerRegistryWithHttpInfoAsync(CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21350,6 +22151,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerRegistryRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21379,10 +22181,11 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <returns>CreateBuyerRegistryGiftThankedResponse</returns>
-        public CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked(string id, string giftId)
+        public CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> localVarResponse = CreateBuyerRegistryGiftThankedWithHttpInfo(id, giftId);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> localVarResponse = CreateBuyerRegistryGiftThankedWithHttpInfo(id, giftId, createBuyerRegistryGiftThankedRequest);
             return localVarResponse.Data;
         }
 
@@ -21392,8 +22195,9 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <returns>ApiResponse of CreateBuyerRegistryGiftThankedResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedWithHttpInfo(string id, string giftId)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedWithHttpInfo(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -21407,9 +22211,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'giftId' when calling BuyerApi->CreateBuyerRegistryGiftThanked");
             }
 
+            // verify the required parameter 'createBuyerRegistryGiftThankedRequest' is set
+            if (createBuyerRegistryGiftThankedRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRegistryGiftThankedRequest' when calling BuyerApi->CreateBuyerRegistryGiftThanked");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21431,6 +22242,7 @@ namespace net.crossly.buyer.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("giftId", net.crossly.buyer.Client.ClientUtils.ParameterToString(giftId)); // path parameter
+            localVarRequestOptions.Data = createBuyerRegistryGiftThankedRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21459,11 +22271,12 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRegistryGiftThankedResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedAsync(string id, string giftId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerRegistryGiftThankedResponse> CreateBuyerRegistryGiftThankedAsync(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> localVarResponse = await CreateBuyerRegistryGiftThankedWithHttpInfoAsync(id, giftId, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse> localVarResponse = await CreateBuyerRegistryGiftThankedWithHttpInfoAsync(id, giftId, createBuyerRegistryGiftThankedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21473,9 +22286,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="giftId"></param>
+        /// <param name="createBuyerRegistryGiftThankedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRegistryGiftThankedResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse>> CreateBuyerRegistryGiftThankedWithHttpInfoAsync(string id, string giftId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRegistryGiftThankedResponse>> CreateBuyerRegistryGiftThankedWithHttpInfoAsync(string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -21489,10 +22303,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'giftId' when calling BuyerApi->CreateBuyerRegistryGiftThanked");
             }
 
+            // verify the required parameter 'createBuyerRegistryGiftThankedRequest' is set
+            if (createBuyerRegistryGiftThankedRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRegistryGiftThankedRequest' when calling BuyerApi->CreateBuyerRegistryGiftThanked");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21514,6 +22335,7 @@ namespace net.crossly.buyer.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("giftId", net.crossly.buyer.Client.ClientUtils.ParameterToString(giftId)); // path parameter
+            localVarRequestOptions.Data = createBuyerRegistryGiftThankedRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21542,10 +22364,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <returns>BuyerRentalResponse</returns>
-        public BuyerRentalResponse CreateBuyerRentalArrivalPhoto(string id)
+        public BuyerRentalResponse CreateBuyerRentalArrivalPhoto(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = CreateBuyerRentalArrivalPhotoWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = CreateBuyerRentalArrivalPhotoWithHttpInfo(id, createBuyerRentalArrivalPhotoRequest);
             return localVarResponse.Data;
         }
 
@@ -21554,8 +22377,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <returns>ApiResponse of BuyerRentalResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoWithHttpInfo(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -21563,9 +22387,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalArrivalPhoto");
             }
 
+            // verify the required parameter 'createBuyerRentalArrivalPhotoRequest' is set
+            if (createBuyerRentalArrivalPhotoRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalArrivalPhotoRequest' when calling BuyerApi->CreateBuyerRentalArrivalPhoto");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21586,6 +22417,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalArrivalPhotoRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21613,11 +22445,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRentalResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalArrivalPhotoAsync(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = await CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = await CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(id, createBuyerRentalArrivalPhotoRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21626,9 +22459,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalArrivalPhotoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRentalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse>> CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse>> CreateBuyerRentalArrivalPhotoWithHttpInfoAsync(string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -21636,10 +22470,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalArrivalPhoto");
             }
 
+            // verify the required parameter 'createBuyerRentalArrivalPhotoRequest' is set
+            if (createBuyerRentalArrivalPhotoRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalArrivalPhotoRequest' when calling BuyerApi->CreateBuyerRentalArrivalPhoto");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21660,6 +22501,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalArrivalPhotoRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -21980,10 +22822,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <returns>BuyerResponse</returns>
-        public BuyerResponse CreateBuyerRentalClaimResponse(string id)
+        public BuyerResponse CreateBuyerRentalClaimResponse(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerRentalClaimResponseWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = CreateBuyerRentalClaimResponseWithHttpInfo(id, createBuyerRentalClaimResponseRequest);
             return localVarResponse.Data;
         }
 
@@ -21992,8 +22835,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerRentalClaimResponseWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> CreateBuyerRentalClaimResponseWithHttpInfo(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22001,9 +22845,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalClaimResponse");
             }
 
+            // verify the required parameter 'createBuyerRentalClaimResponseRequest' is set
+            if (createBuyerRentalClaimResponseRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalClaimResponseRequest' when calling BuyerApi->CreateBuyerRentalClaimResponse");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22024,6 +22875,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalClaimResponseRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -22051,11 +22903,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerRentalClaimResponseAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerResponse> CreateBuyerRentalClaimResponseAsync(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerRentalClaimResponseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await CreateBuyerRentalClaimResponseWithHttpInfoAsync(id, createBuyerRentalClaimResponseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -22064,9 +22917,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalClaimResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerRentalClaimResponseWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> CreateBuyerRentalClaimResponseWithHttpInfoAsync(string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22074,10 +22928,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalClaimResponse");
             }
 
+            // verify the required parameter 'createBuyerRentalClaimResponseRequest' is set
+            if (createBuyerRentalClaimResponseRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalClaimResponseRequest' when calling BuyerApi->CreateBuyerRentalClaimResponse");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22098,6 +22959,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalClaimResponseRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -22272,10 +23134,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <returns>CreateBuyerRentalExtensionResponse</returns>
-        public CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension(string id)
+        public CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> localVarResponse = CreateBuyerRentalExtensionWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> localVarResponse = CreateBuyerRentalExtensionWithHttpInfo(id, createBuyerRentalExtensionRequest);
             return localVarResponse.Data;
         }
 
@@ -22284,8 +23147,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <returns>ApiResponse of CreateBuyerRentalExtensionResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionWithHttpInfo(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22293,9 +23157,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalExtension");
             }
 
+            // verify the required parameter 'createBuyerRentalExtensionRequest' is set
+            if (createBuyerRentalExtensionRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalExtensionRequest' when calling BuyerApi->CreateBuyerRentalExtension");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22316,6 +23187,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalExtensionRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -22343,11 +23215,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerRentalExtensionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerRentalExtensionResponse> CreateBuyerRentalExtensionAsync(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> localVarResponse = await CreateBuyerRentalExtensionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse> localVarResponse = await CreateBuyerRentalExtensionWithHttpInfoAsync(id, createBuyerRentalExtensionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -22356,9 +23229,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalExtensionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerRentalExtensionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse>> CreateBuyerRentalExtensionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerRentalExtensionResponse>> CreateBuyerRentalExtensionWithHttpInfoAsync(string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22366,10 +23240,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerRentalExtension");
             }
 
+            // verify the required parameter 'createBuyerRentalExtensionRequest' is set
+            if (createBuyerRentalExtensionRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerRentalExtensionRequest' when calling BuyerApi->CreateBuyerRentalExtension");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22390,6 +23271,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalExtensionRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -22710,10 +23592,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <returns>BuyerRentalResponse</returns>
-        public BuyerRentalResponse CreateBuyerRentalReturnShipped(string id)
+        public BuyerRentalResponse CreateBuyerRentalReturnShipped(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = CreateBuyerRentalReturnShippedWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = CreateBuyerRentalReturnShippedWithHttpInfo(id, createBuyerRentalReturnShippedRequest);
             return localVarResponse.Data;
         }
 
@@ -22722,8 +23605,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerRentalResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> CreateBuyerRentalReturnShippedWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> CreateBuyerRentalReturnShippedWithHttpInfo(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22734,6 +23618,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22754,6 +23639,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalReturnShippedRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -22781,11 +23667,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRentalResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalReturnShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerRentalResponse> CreateBuyerRentalReturnShippedAsync(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = await CreateBuyerRentalReturnShippedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse> localVarResponse = await CreateBuyerRentalReturnShippedWithHttpInfoAsync(id, createBuyerRentalReturnShippedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -22794,9 +23681,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRentalReturnShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRentalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse>> CreateBuyerRentalReturnShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRentalResponse>> CreateBuyerRentalReturnShippedWithHttpInfoAsync(string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = default(CreateBuyerRentalReturnShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -22808,6 +23696,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -22828,6 +23717,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRentalReturnShippedRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -24942,10 +25832,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <returns>CreateBuyerVaultListResponse</returns>
-        public CreateBuyerVaultListResponse CreateBuyerVaultList(string id)
+        public CreateBuyerVaultListResponse CreateBuyerVaultList(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> localVarResponse = CreateBuyerVaultListWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> localVarResponse = CreateBuyerVaultListWithHttpInfo(id, createBuyerVaultListRequest);
             return localVarResponse.Data;
         }
 
@@ -24954,8 +25845,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <returns>ApiResponse of CreateBuyerVaultListResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> CreateBuyerVaultListWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> CreateBuyerVaultListWithHttpInfo(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -24963,9 +25855,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerVaultList");
             }
 
+            // verify the required parameter 'createBuyerVaultListRequest' is set
+            if (createBuyerVaultListRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerVaultListRequest' when calling BuyerApi->CreateBuyerVaultList");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -24986,6 +25885,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerVaultListRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -25013,11 +25913,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerVaultListResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerVaultListResponse> CreateBuyerVaultListAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerVaultListResponse> CreateBuyerVaultListAsync(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> localVarResponse = await CreateBuyerVaultListWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse> localVarResponse = await CreateBuyerVaultListWithHttpInfoAsync(id, createBuyerVaultListRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -25026,9 +25927,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultListRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerVaultListResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse>> CreateBuyerVaultListWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultListResponse>> CreateBuyerVaultListWithHttpInfoAsync(string id, CreateBuyerVaultListRequest createBuyerVaultListRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -25036,10 +25938,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->CreateBuyerVaultList");
             }
 
+            // verify the required parameter 'createBuyerVaultListRequest' is set
+            if (createBuyerVaultListRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerVaultListRequest' when calling BuyerApi->CreateBuyerVaultList");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -25060,6 +25969,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerVaultListRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -25234,10 +26144,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <returns>CreateBuyerVaultWithdrawResponse</returns>
-        public CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw(string id)
+        public CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> localVarResponse = CreateBuyerVaultWithdrawWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> localVarResponse = CreateBuyerVaultWithdrawWithHttpInfo(id, createBuyerVaultWithdrawRequest);
             return localVarResponse.Data;
         }
 
@@ -25246,8 +26157,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerVaultWithdrawResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawWithHttpInfo(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -25258,6 +26170,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -25278,6 +26191,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerVaultWithdrawRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -25305,11 +26219,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerVaultWithdrawResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerVaultWithdrawResponse> CreateBuyerVaultWithdrawAsync(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> localVarResponse = await CreateBuyerVaultWithdrawWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse> localVarResponse = await CreateBuyerVaultWithdrawWithHttpInfoAsync(id, createBuyerVaultWithdrawRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -25318,9 +26233,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerVaultWithdrawRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerVaultWithdrawResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse>> CreateBuyerVaultWithdrawWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerVaultWithdrawResponse>> CreateBuyerVaultWithdrawWithHttpInfoAsync(string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = default(CreateBuyerVaultWithdrawRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -25332,6 +26248,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -25352,6 +26269,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerVaultWithdrawRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -32204,7 +33122,7 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent. 
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
@@ -32216,7 +33134,7 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent. 
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
@@ -32275,7 +33193,7 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent. 
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
@@ -32288,7 +33206,7 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent. 
+        /// Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
@@ -33646,6 +34564,152 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetBuyerGroupBuyShareLinkResponse</returns>
+        public GetBuyerGroupBuyShareLinkResponse GetBuyerGroupBuyShareLink(string id)
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerGroupBuyShareLinkResponse> localVarResponse = GetBuyerGroupBuyShareLinkWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetBuyerGroupBuyShareLinkResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerGroupBuyShareLinkResponse> GetBuyerGroupBuyShareLinkWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->GetBuyerGroupBuyShareLink");
+            }
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetBuyerGroupBuyShareLinkResponse>("/v1/buyer/group-buys/{id}/share-link", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerGroupBuyShareLink", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerGroupBuyShareLinkResponse</returns>
+        public async System.Threading.Tasks.Task<GetBuyerGroupBuyShareLinkResponse> GetBuyerGroupBuyShareLinkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerGroupBuyShareLinkResponse> localVarResponse = await GetBuyerGroupBuyShareLinkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerGroupBuyShareLinkResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerGroupBuyShareLinkResponse>> GetBuyerGroupBuyShareLinkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->GetBuyerGroupBuyShareLink");
+            }
+
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBuyerGroupBuyShareLinkResponse>("/v1/buyer/group-buys/{id}/share-link", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerGroupBuyShareLink", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Your home in Crossly World (made on first read). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
@@ -33764,6 +34828,134 @@ namespace net.crossly.buyer.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetBuyerHome", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBuyerHomePetResponse</returns>
+        public GetBuyerHomePetResponse GetBuyerHomePet()
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerHomePetResponse> localVarResponse = GetBuyerHomePetWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBuyerHomePetResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerHomePetResponse> GetBuyerHomePetWithHttpInfo()
+        {
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetBuyerHomePetResponse>("/v1/buyer/home/pets", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerHomePet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerHomePetResponse</returns>
+        public async System.Threading.Tasks.Task<GetBuyerHomePetResponse> GetBuyerHomePetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerHomePetResponse> localVarResponse = await GetBuyerHomePetWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerHomePetResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerHomePetResponse>> GetBuyerHomePetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBuyerHomePetResponse>("/v1/buyer/home/pets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerHomePet", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -35782,23 +36974,31 @@ namespace net.crossly.buyer.Api
         }
 
         /// <summary>
-        /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>GetBuyerMarketPurchaseOptionResponse</returns>
-        public GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption()
+        /// <param name="clubId"></param>
+        /// <returns>GetBuyerLoyaltyRewardResponse</returns>
+        public GetBuyerLoyaltyRewardResponse GetBuyerLoyaltyReward(string clubId)
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> localVarResponse = GetBuyerMarketPurchaseOptionWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<GetBuyerLoyaltyRewardResponse> localVarResponse = GetBuyerLoyaltyRewardWithHttpInfo(clubId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of GetBuyerMarketPurchaseOptionResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionWithHttpInfo()
+        /// <param name="clubId"></param>
+        /// <returns>ApiResponse of GetBuyerLoyaltyRewardResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerLoyaltyRewardResponse> GetBuyerLoyaltyRewardWithHttpInfo(string clubId)
         {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->GetBuyerLoyaltyReward");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -35821,6 +37021,159 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetBuyerLoyaltyRewardResponse>("/v1/buyer/loyalty/{clubId}/rewards", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerLoyaltyReward", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBuyerLoyaltyRewardResponse</returns>
+        public async System.Threading.Tasks.Task<GetBuyerLoyaltyRewardResponse> GetBuyerLoyaltyRewardAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerLoyaltyRewardResponse> localVarResponse = await GetBuyerLoyaltyRewardWithHttpInfoAsync(clubId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBuyerLoyaltyRewardResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerLoyaltyRewardResponse>> GetBuyerLoyaltyRewardWithHttpInfoAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->GetBuyerLoyaltyReward");
+            }
+
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBuyerLoyaltyRewardResponse>("/v1/buyer/loyalty/{clubId}/rewards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBuyerLoyaltyReward", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
+        /// <returns>GetBuyerMarketPurchaseOptionResponse</returns>
+        public GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption(string variantId, string condition = default(string))
+        {
+            net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> localVarResponse = GetBuyerMarketPurchaseOptionWithHttpInfo(variantId, condition);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
+        /// <returns>ApiResponse of GetBuyerMarketPurchaseOptionResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionWithHttpInfo(string variantId, string condition = default(string))
+        {
+            // verify the required parameter 'variantId' is set
+            if (variantId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'variantId' when calling BuyerApi->GetBuyerMarketPurchaseOption");
+            }
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "variantId", variantId));
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -35847,11 +37200,13 @@ namespace net.crossly.buyer.Api
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerMarketPurchaseOptionResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerMarketPurchaseOptionResponse> GetBuyerMarketPurchaseOptionAsync(string variantId, string condition = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> localVarResponse = await GetBuyerMarketPurchaseOptionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse> localVarResponse = await GetBuyerMarketPurchaseOptionWithHttpInfoAsync(variantId, condition, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -35859,10 +37214,18 @@ namespace net.crossly.buyer.Api
         /// Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="variantId"></param>
+        /// <param name="condition"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerMarketPurchaseOptionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse>> GetBuyerMarketPurchaseOptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerMarketPurchaseOptionResponse>> GetBuyerMarketPurchaseOptionWithHttpInfoAsync(string variantId, string condition = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'variantId' is set
+            if (variantId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'variantId' when calling BuyerApi->GetBuyerMarketPurchaseOption");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -35886,6 +37249,11 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "variantId", variantId));
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -36766,10 +38134,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <returns>GetBuyerPassportResponse</returns>
-        public GetBuyerPassportResponse GetBuyerPassport(string code)
+        public GetBuyerPassportResponse GetBuyerPassport(string code, string uid = default(string))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = GetBuyerPassportWithHttpInfo(code);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = GetBuyerPassportWithHttpInfo(code, uid);
             return localVarResponse.Data;
         }
 
@@ -36778,8 +38147,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerPassportResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> GetBuyerPassportWithHttpInfo(string code)
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> GetBuyerPassportWithHttpInfo(string code, string uid = default(string))
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -36810,6 +38180,10 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("code", net.crossly.buyer.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (uid != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "uid", uid));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -36837,11 +38211,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerPassportResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerPassportResponse> GetBuyerPassportAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerPassportResponse> GetBuyerPassportAsync(string code, string uid = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = await GetBuyerPassportWithHttpInfoAsync(code, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse> localVarResponse = await GetBuyerPassportWithHttpInfoAsync(code, uid, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -36850,9 +38225,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
+        /// <param name="uid"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerPassportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse>> GetBuyerPassportWithHttpInfoAsync(string code, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerPassportResponse>> GetBuyerPassportWithHttpInfoAsync(string code, string uid = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -36884,6 +38260,10 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("code", net.crossly.buyer.Client.ClientUtils.ParameterToString(code)); // path parameter
+            if (uid != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "uid", uid));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -46409,10 +47789,12 @@ namespace net.crossly.buyer.Api
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <returns>ListBuyerHotspotsResponse</returns>
-        public ListBuyerHotspotsResponse ListBuyerHotspots()
+        public ListBuyerHotspotsResponse ListBuyerHotspots(string targetType, string targetId)
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> localVarResponse = ListBuyerHotspotsWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> localVarResponse = ListBuyerHotspotsWithHttpInfo(targetType, targetId);
             return localVarResponse.Data;
         }
 
@@ -46420,9 +47802,23 @@ namespace net.crossly.buyer.Api
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <returns>ApiResponse of ListBuyerHotspotsResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> ListBuyerHotspotsWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> ListBuyerHotspotsWithHttpInfo(string targetType, string targetId)
         {
+            // verify the required parameter 'targetType' is set
+            if (targetType == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'targetType' when calling BuyerApi->ListBuyerHotspots");
+            }
+
+            // verify the required parameter 'targetId' is set
+            if (targetId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'targetId' when calling BuyerApi->ListBuyerHotspots");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -46445,6 +47841,8 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "targetType", targetType));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "targetId", targetId));
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -46471,11 +47869,13 @@ namespace net.crossly.buyer.Api
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerHotspotsResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerHotspotsResponse> ListBuyerHotspotsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerHotspotsResponse> ListBuyerHotspotsAsync(string targetType, string targetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> localVarResponse = await ListBuyerHotspotsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse> localVarResponse = await ListBuyerHotspotsWithHttpInfoAsync(targetType, targetId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -46483,10 +47883,24 @@ namespace net.crossly.buyer.Api
         /// Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="targetType"></param>
+        /// <param name="targetId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerHotspotsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse>> ListBuyerHotspotsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerHotspotsResponse>> ListBuyerHotspotsWithHttpInfoAsync(string targetType, string targetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'targetType' is set
+            if (targetType == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'targetType' when calling BuyerApi->ListBuyerHotspots");
+            }
+
+            // verify the required parameter 'targetId' is set
+            if (targetId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'targetId' when calling BuyerApi->ListBuyerHotspots");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -46510,6 +47924,8 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "targetType", targetType));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "targetId", targetId));
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -47602,6 +49018,152 @@ namespace net.crossly.buyer.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListBuyerLoyalty", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>ListBuyerLoyaltyPointsResponse</returns>
+        public ListBuyerLoyaltyPointsResponse ListBuyerLoyaltyPoints(string clubId)
+        {
+            net.crossly.buyer.Client.ApiResponse<ListBuyerLoyaltyPointsResponse> localVarResponse = ListBuyerLoyaltyPointsWithHttpInfo(clubId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <returns>ApiResponse of ListBuyerLoyaltyPointsResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerLoyaltyPointsResponse> ListBuyerLoyaltyPointsWithHttpInfo(string clubId)
+        {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->ListBuyerLoyaltyPoints");
+            }
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListBuyerLoyaltyPointsResponse>("/v1/buyer/loyalty/{clubId}/points", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBuyerLoyaltyPoints", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBuyerLoyaltyPointsResponse</returns>
+        public async System.Threading.Tasks.Task<ListBuyerLoyaltyPointsResponse> ListBuyerLoyaltyPointsAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<ListBuyerLoyaltyPointsResponse> localVarResponse = await ListBuyerLoyaltyPointsWithHttpInfoAsync(clubId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="clubId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBuyerLoyaltyPointsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerLoyaltyPointsResponse>> ListBuyerLoyaltyPointsWithHttpInfoAsync(string clubId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'clubId' is set
+            if (clubId == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'clubId' when calling BuyerApi->ListBuyerLoyaltyPoints");
+            }
+
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("clubId", net.crossly.buyer.Client.ClientUtils.ParameterToString(clubId)); // path parameter
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListBuyerLoyaltyPointsResponse>("/v1/buyer/loyalty/{clubId}/points", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBuyerLoyaltyPoints", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -49351,10 +50913,11 @@ namespace net.crossly.buyer.Api
         /// Find a registry by its name or the registrant’s name. Current and recent registries only. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListBuyerRegistrySearchResponse</returns>
-        public ListBuyerRegistrySearchResponse ListBuyerRegistrySearch()
+        public ListBuyerRegistrySearchResponse ListBuyerRegistrySearch(string q = default(string))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> localVarResponse = ListBuyerRegistrySearchWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> localVarResponse = ListBuyerRegistrySearchWithHttpInfo(q);
             return localVarResponse.Data;
         }
 
@@ -49362,8 +50925,9 @@ namespace net.crossly.buyer.Api
         /// Find a registry by its name or the registrant’s name. Current and recent registries only. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerRegistrySearchResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchWithHttpInfo(string q = default(string))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -49387,6 +50951,10 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -49413,11 +50981,12 @@ namespace net.crossly.buyer.Api
         /// Find a registry by its name or the registrant’s name. Current and recent registries only. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerRegistrySearchResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerRegistrySearchResponse> ListBuyerRegistrySearchAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> localVarResponse = await ListBuyerRegistrySearchWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse> localVarResponse = await ListBuyerRegistrySearchWithHttpInfoAsync(q, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -49425,9 +50994,10 @@ namespace net.crossly.buyer.Api
         /// Find a registry by its name or the registrant’s name. Current and recent registries only. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerRegistrySearchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse>> ListBuyerRegistrySearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerRegistrySearchResponse>> ListBuyerRegistrySearchWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
@@ -49452,6 +51022,10 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -49992,10 +51566,18 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListBuyerStoreListingsResponse</returns>
-        public ListBuyerStoreListingsResponse ListBuyerStoreListings(string slug)
+        public ListBuyerStoreListingsResponse ListBuyerStoreListings(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> localVarResponse = ListBuyerStoreListingsWithHttpInfo(slug);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> localVarResponse = ListBuyerStoreListingsWithHttpInfo(slug, tag, category, sub, q, sort, f, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -50004,8 +51586,16 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerStoreListingsResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> ListBuyerStoreListingsWithHttpInfo(string slug)
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> ListBuyerStoreListingsWithHttpInfo(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -50036,6 +51626,38 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (sub != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sub", sub));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (f != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "f", f));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -50063,11 +51685,19 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerStoreListingsResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerStoreListingsResponse> ListBuyerStoreListingsAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerStoreListingsResponse> ListBuyerStoreListingsAsync(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> localVarResponse = await ListBuyerStoreListingsWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse> localVarResponse = await ListBuyerStoreListingsWithHttpInfoAsync(slug, tag, category, sub, q, sort, f, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -50076,9 +51706,17 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="tag"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="sub"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="f"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerStoreListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse>> ListBuyerStoreListingsWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerStoreListingsResponse>> ListBuyerStoreListingsWithHttpInfoAsync(string slug, string tag = default(string), string category = default(string), string sub = default(string), string q = default(string), string sort = default(string), string f = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -50110,6 +51748,38 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.buyer.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (sub != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sub", sub));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (f != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "f", f));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54514,10 +56184,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <returns>BuyerResponse</returns>
-        public BuyerResponse UpdateBuyerBoard(string id)
+        public BuyerResponse UpdateBuyerBoard(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = UpdateBuyerBoardWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = UpdateBuyerBoardWithHttpInfo(id, updateBuyerBoardRequest);
             return localVarResponse.Data;
         }
 
@@ -54526,8 +56197,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <returns>ApiResponse of BuyerResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> UpdateBuyerBoardWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerResponse> UpdateBuyerBoardWithHttpInfo(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54535,9 +56207,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->UpdateBuyerBoard");
             }
 
+            // verify the required parameter 'updateBuyerBoardRequest' is set
+            if (updateBuyerBoardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerBoardRequest' when calling BuyerApi->UpdateBuyerBoard");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54558,6 +56237,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerBoardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54585,11 +56265,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerResponse> UpdateBuyerBoardAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerResponse> UpdateBuyerBoardAsync(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await UpdateBuyerBoardWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerResponse> localVarResponse = await UpdateBuyerBoardWithHttpInfoAsync(id, updateBuyerBoardRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54598,9 +56279,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> UpdateBuyerBoardWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerResponse>> UpdateBuyerBoardWithHttpInfoAsync(string id, UpdateBuyerBoardRequest updateBuyerBoardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54608,10 +56290,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->UpdateBuyerBoard");
             }
 
+            // verify the required parameter 'updateBuyerBoardRequest' is set
+            if (updateBuyerBoardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerBoardRequest' when calling BuyerApi->UpdateBuyerBoard");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54632,6 +56321,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerBoardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54660,10 +56350,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <returns>BuyerBoardResponse</returns>
-        public BuyerBoardResponse UpdateBuyerBoardLayout(string id)
+        public BuyerBoardResponse UpdateBuyerBoardLayout(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> localVarResponse = UpdateBuyerBoardLayoutWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> localVarResponse = UpdateBuyerBoardLayoutWithHttpInfo(id, updateBuyerBoardLayoutRequest);
             return localVarResponse.Data;
         }
 
@@ -54672,8 +56363,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <returns>ApiResponse of BuyerBoardResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> UpdateBuyerBoardLayoutWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> UpdateBuyerBoardLayoutWithHttpInfo(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54681,9 +56373,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->UpdateBuyerBoardLayout");
             }
 
+            // verify the required parameter 'updateBuyerBoardLayoutRequest' is set
+            if (updateBuyerBoardLayoutRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerBoardLayoutRequest' when calling BuyerApi->UpdateBuyerBoardLayout");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54704,6 +56403,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerBoardLayoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54731,11 +56431,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerBoardResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerBoardResponse> UpdateBuyerBoardLayoutAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerBoardResponse> UpdateBuyerBoardLayoutAsync(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> localVarResponse = await UpdateBuyerBoardLayoutWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse> localVarResponse = await UpdateBuyerBoardLayoutWithHttpInfoAsync(id, updateBuyerBoardLayoutRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54744,9 +56445,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerBoardLayoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerBoardResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse>> UpdateBuyerBoardLayoutWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerBoardResponse>> UpdateBuyerBoardLayoutWithHttpInfoAsync(string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54754,10 +56456,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerApi->UpdateBuyerBoardLayout");
             }
 
+            // verify the required parameter 'updateBuyerBoardLayoutRequest' is set
+            if (updateBuyerBoardLayoutRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerBoardLayoutRequest' when calling BuyerApi->UpdateBuyerBoardLayout");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54778,6 +56487,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerBoardLayoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54805,10 +56515,11 @@ namespace net.crossly.buyer.Api
         /// Show or hide yourself (by your public handle) on set leaderboards. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <returns>UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        public UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard()
+        public UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> localVarResponse = UpdateBuyerCollectionSetLeaderboardWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> localVarResponse = UpdateBuyerCollectionSetLeaderboardWithHttpInfo(updateBuyerCollectionSetLeaderboardRequest);
             return localVarResponse.Data;
         }
 
@@ -54816,12 +56527,20 @@ namespace net.crossly.buyer.Api
         /// Show or hide yourself (by your public handle) on set leaderboards. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <returns>ApiResponse of UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardWithHttpInfo(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest)
         {
+            // verify the required parameter 'updateBuyerCollectionSetLeaderboardRequest' is set
+            if (updateBuyerCollectionSetLeaderboardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerCollectionSetLeaderboardRequest' when calling BuyerApi->UpdateBuyerCollectionSetLeaderboard");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54841,6 +56560,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerCollectionSetLeaderboardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -54867,11 +56587,12 @@ namespace net.crossly.buyer.Api
         /// Show or hide yourself (by your public handle) on set leaderboards. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBuyerCollectionSetLeaderboardResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateBuyerCollectionSetLeaderboardResponse> UpdateBuyerCollectionSetLeaderboardAsync(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> localVarResponse = await UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse> localVarResponse = await UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(updateBuyerCollectionSetLeaderboardRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54879,14 +56600,22 @@ namespace net.crossly.buyer.Api
         /// Show or hide yourself (by your public handle) on set leaderboards. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCollectionSetLeaderboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBuyerCollectionSetLeaderboardResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<UpdateBuyerCollectionSetLeaderboardResponse>> UpdateBuyerCollectionSetLeaderboardWithHttpInfoAsync(UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBuyerCollectionSetLeaderboardRequest' is set
+            if (updateBuyerCollectionSetLeaderboardRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerCollectionSetLeaderboardRequest' when calling BuyerApi->UpdateBuyerCollectionSetLeaderboard");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54906,6 +56635,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerCollectionSetLeaderboardRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55673,10 +57403,11 @@ namespace net.crossly.buyer.Api
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <returns>BuyerHomeResponse</returns>
-        public BuyerHomeResponse UpdateBuyerHome()
+        public BuyerHomeResponse UpdateBuyerHome(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = UpdateBuyerHomeWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = UpdateBuyerHomeWithHttpInfo(updateBuyerHomeRequest);
             return localVarResponse.Data;
         }
 
@@ -55684,12 +57415,14 @@ namespace net.crossly.buyer.Api
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerHomeResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> UpdateBuyerHomeWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> UpdateBuyerHomeWithHttpInfo(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55709,6 +57442,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55735,11 +57469,12 @@ namespace net.crossly.buyer.Api
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerHomeResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeAsync(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = await UpdateBuyerHomeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = await UpdateBuyerHomeWithHttpInfoAsync(updateBuyerHomeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55747,14 +57482,16 @@ namespace net.crossly.buyer.Api
         /// Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerHomeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeWithHttpInfoAsync(UpdateBuyerHomeRequest updateBuyerHomeRequest = default(UpdateBuyerHomeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55774,6 +57511,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55801,10 +57539,11 @@ namespace net.crossly.buyer.Api
         /// Set your co-builders (friends only, at most 4). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <returns>ListBuyerHomeBuildersResponse</returns>
-        public ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder()
+        public ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> localVarResponse = UpdateBuyerHomeBuilderWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> localVarResponse = UpdateBuyerHomeBuilderWithHttpInfo(updateBuyerHomeBuilderRequest);
             return localVarResponse.Data;
         }
 
@@ -55812,12 +57551,14 @@ namespace net.crossly.buyer.Api
         /// Set your co-builders (friends only, at most 4). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerHomeBuildersResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderWithHttpInfo(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55837,6 +57578,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeBuilderRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55863,11 +57605,12 @@ namespace net.crossly.buyer.Api
         /// Set your co-builders (friends only, at most 4). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerHomeBuildersResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerHomeBuildersResponse> UpdateBuyerHomeBuilderAsync(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> localVarResponse = await UpdateBuyerHomeBuilderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse> localVarResponse = await UpdateBuyerHomeBuilderWithHttpInfoAsync(updateBuyerHomeBuilderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55875,14 +57618,16 @@ namespace net.crossly.buyer.Api
         /// Set your co-builders (friends only, at most 4). 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeBuilderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerHomeBuildersResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse>> UpdateBuyerHomeBuilderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerHomeBuildersResponse>> UpdateBuyerHomeBuilderWithHttpInfoAsync(UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = default(UpdateBuyerHomeBuilderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55902,6 +57647,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeBuilderRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55929,10 +57675,11 @@ namespace net.crossly.buyer.Api
         /// Arrange your home: the whole layout, checked against what you own. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <returns>BuyerHomeResponse</returns>
-        public BuyerHomeResponse UpdateBuyerHomeLayout()
+        public BuyerHomeResponse UpdateBuyerHomeLayout(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = UpdateBuyerHomeLayoutWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = UpdateBuyerHomeLayoutWithHttpInfo(updateBuyerHomeLayoutRequest);
             return localVarResponse.Data;
         }
 
@@ -55940,12 +57687,14 @@ namespace net.crossly.buyer.Api
         /// Arrange your home: the whole layout, checked against what you own. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerHomeResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> UpdateBuyerHomeLayoutWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> UpdateBuyerHomeLayoutWithHttpInfo(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55965,6 +57714,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeLayoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -55991,11 +57741,12 @@ namespace net.crossly.buyer.Api
         /// Arrange your home: the whole layout, checked against what you own. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerHomeResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeLayoutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerHomeResponse> UpdateBuyerHomeLayoutAsync(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = await UpdateBuyerHomeLayoutWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse> localVarResponse = await UpdateBuyerHomeLayoutWithHttpInfoAsync(updateBuyerHomeLayoutRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56003,14 +57754,16 @@ namespace net.crossly.buyer.Api
         /// Arrange your home: the whole layout, checked against what you own. 
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomeLayoutRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerHomeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeLayoutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerHomeResponse>> UpdateBuyerHomeLayoutWithHttpInfoAsync(UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = default(UpdateBuyerHomeLayoutRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56030,6 +57783,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerHomeLayoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -56044,6 +57798,142 @@ namespace net.crossly.buyer.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateBuyerHomeLayout", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <returns>UpdateBuyerHomePetActiveResponse</returns>
+        public UpdateBuyerHomePetActiveResponse UpdateBuyerHomePetActive(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest))
+        {
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerHomePetActiveResponse> localVarResponse = UpdateBuyerHomePetActiveWithHttpInfo(updateBuyerHomePetActiveRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateBuyerHomePetActiveResponse</returns>
+        public net.crossly.buyer.Client.ApiResponse<UpdateBuyerHomePetActiveResponse> UpdateBuyerHomePetActiveWithHttpInfo(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest))
+        {
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateBuyerHomePetActiveRequest;
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateBuyerHomePetActiveResponse>("/v1/buyer/home/pets/active", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBuyerHomePetActive", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateBuyerHomePetActiveResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateBuyerHomePetActiveResponse> UpdateBuyerHomePetActiveAsync(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerHomePetActiveResponse> localVarResponse = await UpdateBuyerHomePetActiveWithHttpInfoAsync(updateBuyerHomePetActiveRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned. 
+        /// </summary>
+        /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerHomePetActiveRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateBuyerHomePetActiveResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<UpdateBuyerHomePetActiveResponse>> UpdateBuyerHomePetActiveWithHttpInfoAsync(UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = default(UpdateBuyerHomePetActiveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.buyer.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.buyer.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateBuyerHomePetActiveRequest;
+
+            // authentication (BuyerOAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateBuyerHomePetActiveResponse>("/v1/buyer/home/pets/active", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBuyerHomePetActive", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -56496,10 +58386,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>BuyerRegistryResponse</returns>
-        public BuyerRegistryResponse UpdateBuyerRegistry(string id)
+        public BuyerRegistryResponse UpdateBuyerRegistry(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> localVarResponse = UpdateBuyerRegistryWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> localVarResponse = UpdateBuyerRegistryWithHttpInfo(id, createBuyerRegistryRequest);
             return localVarResponse.Data;
         }
 
@@ -56508,8 +58399,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <returns>ApiResponse of BuyerRegistryResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> UpdateBuyerRegistryWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> UpdateBuyerRegistryWithHttpInfo(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56520,6 +58412,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56540,6 +58433,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRegistryRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -56567,11 +58461,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BuyerRegistryResponse</returns>
-        public async System.Threading.Tasks.Task<BuyerRegistryResponse> UpdateBuyerRegistryAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BuyerRegistryResponse> UpdateBuyerRegistryAsync(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> localVarResponse = await UpdateBuyerRegistryWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse> localVarResponse = await UpdateBuyerRegistryWithHttpInfoAsync(id, createBuyerRegistryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56580,9 +58475,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerRegistryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyerRegistryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse>> UpdateBuyerRegistryWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<BuyerRegistryResponse>> UpdateBuyerRegistryWithHttpInfoAsync(string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = default(CreateBuyerRegistryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56594,6 +58490,7 @@ namespace net.crossly.buyer.Api
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56614,6 +58511,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerRegistryRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -56643,10 +58541,11 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <returns>UpdateBuyerRegistryItemResponse</returns>
-        public UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem(string id, string platformListingId)
+        public UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> localVarResponse = UpdateBuyerRegistryItemWithHttpInfo(id, platformListingId);
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> localVarResponse = UpdateBuyerRegistryItemWithHttpInfo(id, platformListingId, updateBuyerRegistryItemRequest);
             return localVarResponse.Data;
         }
 
@@ -56656,8 +58555,9 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <returns>ApiResponse of UpdateBuyerRegistryItemResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemWithHttpInfo(string id, string platformListingId)
+        public net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemWithHttpInfo(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56671,9 +58571,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'platformListingId' when calling BuyerApi->UpdateBuyerRegistryItem");
             }
 
+            // verify the required parameter 'updateBuyerRegistryItemRequest' is set
+            if (updateBuyerRegistryItemRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerRegistryItemRequest' when calling BuyerApi->UpdateBuyerRegistryItem");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56695,6 +58602,7 @@ namespace net.crossly.buyer.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platformListingId", net.crossly.buyer.Client.ClientUtils.ParameterToString(platformListingId)); // path parameter
+            localVarRequestOptions.Data = updateBuyerRegistryItemRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -56723,11 +58631,12 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBuyerRegistryItemResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemAsync(string id, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateBuyerRegistryItemResponse> UpdateBuyerRegistryItemAsync(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> localVarResponse = await UpdateBuyerRegistryItemWithHttpInfoAsync(id, platformListingId, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse> localVarResponse = await UpdateBuyerRegistryItemWithHttpInfoAsync(id, platformListingId, updateBuyerRegistryItemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56737,9 +58646,10 @@ namespace net.crossly.buyer.Api
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateBuyerRegistryItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBuyerRegistryItemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse>> UpdateBuyerRegistryItemWithHttpInfoAsync(string id, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<UpdateBuyerRegistryItemResponse>> UpdateBuyerRegistryItemWithHttpInfoAsync(string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56753,10 +58663,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'platformListingId' when calling BuyerApi->UpdateBuyerRegistryItem");
             }
 
+            // verify the required parameter 'updateBuyerRegistryItemRequest' is set
+            if (updateBuyerRegistryItemRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerRegistryItemRequest' when calling BuyerApi->UpdateBuyerRegistryItem");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56778,6 +58695,7 @@ namespace net.crossly.buyer.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platformListingId", net.crossly.buyer.Client.ClientUtils.ParameterToString(platformListingId)); // path parameter
+            localVarRequestOptions.Data = updateBuyerRegistryItemRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required

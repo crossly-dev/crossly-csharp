@@ -11,15 +11,20 @@ Method | HTTP request | Description
 [**CreateAutomationRuleValidateRecipe**](AutomationApi.md#createautomationrulevalidaterecipe) | **POST** /v1/automation/rules/validate-recipe | Dry-run validate one or more recipes against the live catalog.
 [**CreateRepriceEventApprove**](AutomationApi.md#createrepriceeventapprove) | **POST** /v1/reprice-events/{id}/approve | Apply a pending reprice proposal: the recorded price goes to the recorded platform listing. Proposals older than three days expire instead.
 [**CreateRepriceEventSkip**](AutomationApi.md#createrepriceeventskip) | **POST** /v1/reprice-events/{id}/skip | Skip a pending reprice proposal; the price stays as it is.
+[**CreateRepricingAssignment**](AutomationApi.md#createrepricingassignment) | **POST** /v1/repricing/assignments | Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it.
 [**DeleteAutomationRule**](AutomationApi.md#deleteautomationrule) | **DELETE** /v1/automation/rules/{id} | Delete an automation rule.
+[**DeleteRepricingAssignment**](AutomationApi.md#deleterepricingassignment) | **DELETE** /v1/repricing/assignments/{id} | Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
 [**GetAutomationCatalog**](AutomationApi.md#getautomationcatalog) | **GET** /v1/automation/catalog | Supported triggerType / actionType / conditionType values for automation rules.
 [**GetAutomationRule**](AutomationApi.md#getautomationrule) | **GET** /v1/automation/rules/{id} | Get a single automation rule.
 [**GetAutomationRuleExport**](AutomationApi.md#getautomationruleexport) | **GET** /v1/automation/rules/export | Export the user&#39;s full rule library as a portable recipe bundle.
 [**GetAutomationRuleExportById**](AutomationApi.md#getautomationruleexportbyid) | **GET** /v1/automation/rules/{id}/export | Export a single automation rule as a portable recipe.
+[**GetRepricingStrategy**](AutomationApi.md#getrepricingstrategy) | **GET** /v1/repricing/strategies | The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
 [**ListAutomationRules**](AutomationApi.md#listautomationrules) | **GET** /v1/automation/rules | List automation rules.
 [**ListAutomationRuns**](AutomationApi.md#listautomationruns) | **GET** /v1/automation/runs | Per-fire history for automation rules and workflow chain runs.
 [**ListRepriceEvents**](AutomationApi.md#listrepriceevents) | **GET** /v1/reprice-events | Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
+[**ListRepricingAssignments**](AutomationApi.md#listrepricingassignments) | **GET** /v1/repricing/assignments | Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
 [**UpdateAutomationRule**](AutomationApi.md#updateautomationrule) | **PUT** /v1/automation/rules/{id} | Update an automation rule (full replace).
+[**UpdateRepricingAssignment**](AutomationApi.md#updaterepricingassignment) | **PATCH** /v1/repricing/assignments/{id} | Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
 
 
 <a name="createautomationrule"></a>
@@ -100,7 +105,7 @@ This endpoint does not need any parameter.
 
 <a name="createautomationruleimport"></a>
 # **CreateAutomationRuleImport**
-> CreateAutomationRuleImportResponse CreateAutomationRuleImport (bool? activate = null)
+> CreateAutomationRuleImportResponse CreateAutomationRuleImport (CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = null)
 
 Import one or more rules from recipe JSON (single or bundle).
 
@@ -126,12 +131,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AutomationApi(config);
+            var createAutomationRuleImportRequest = new CreateAutomationRuleImportRequest(); // CreateAutomationRuleImportRequest | 
             var activate = false;  // bool? |  (optional)  (default to false)
 
             try
             {
                 // Import one or more rules from recipe JSON (single or bundle).
-                CreateAutomationRuleImportResponse result = apiInstance.CreateAutomationRuleImport(activate);
+                CreateAutomationRuleImportResponse result = apiInstance.CreateAutomationRuleImport(createAutomationRuleImportRequest, activate);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -149,6 +155,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **createAutomationRuleImportRequest** | **CreateAutomationRuleImportRequest**|  | 
  **activate** | **bool?**|  | [optional] [default to false]
 
 ### Return type
@@ -161,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -340,7 +347,7 @@ Name | Type | Description  | Notes
 
 <a name="createautomationrulevalidaterecipe"></a>
 # **CreateAutomationRuleValidateRecipe**
-> CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe ()
+> CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe (CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest)
 
 Dry-run validate one or more recipes against the live catalog.
 
@@ -366,11 +373,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AutomationApi(config);
+            var createAutomationRuleValidateRecipeRequest = new CreateAutomationRuleValidateRecipeRequest(); // CreateAutomationRuleValidateRecipeRequest | 
 
             try
             {
                 // Dry-run validate one or more recipes against the live catalog.
-                CreateAutomationRuleValidateRecipeResponse result = apiInstance.CreateAutomationRuleValidateRecipe();
+                CreateAutomationRuleValidateRecipeResponse result = apiInstance.CreateAutomationRuleValidateRecipe(createAutomationRuleValidateRecipeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -385,7 +393,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAutomationRuleValidateRecipeRequest** | **CreateAutomationRuleValidateRecipeRequest**|  | 
 
 ### Return type
 
@@ -397,7 +408,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -570,6 +581,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createrepricingassignment"></a>
+# **CreateRepricingAssignment**
+> CreateRepricingAssignmentResponse CreateRepricingAssignment (CreateRepricingAssignmentRequest createRepricingAssignmentRequest = null)
+
+Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \"ask\" records each change for approval instead of applying it.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateRepricingAssignmentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var createRepricingAssignmentRequest = new CreateRepricingAssignmentRequest(); // CreateRepricingAssignmentRequest |  (optional) 
+
+            try
+            {
+                // Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \"ask\" records each change for approval instead of applying it.
+                CreateRepricingAssignmentResponse result = apiInstance.CreateRepricingAssignment(createRepricingAssignmentRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.CreateRepricingAssignment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createRepricingAssignmentRequest** | **CreateRepricingAssignmentRequest**|  | [optional] 
+
+### Return type
+
+**CreateRepricingAssignmentResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="deleteautomationrule"></a>
 # **DeleteAutomationRule**
 > OkResponse DeleteAutomationRule (Guid id)
@@ -626,6 +715,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **OkResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deleterepricingassignment"></a>
+# **DeleteRepricingAssignment**
+> DeleteStoryResponse DeleteRepricingAssignment (string id)
+
+Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class DeleteRepricingAssignmentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+                DeleteStoryResponse result = apiInstance.DeleteRepricingAssignment(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.DeleteRepricingAssignment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**DeleteStoryResponse**
 
 ### Authorization
 
@@ -960,6 +1127,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getrepricingstrategy"></a>
+# **GetRepricingStrategy**
+> GetRepricingStrategyResponse GetRepricingStrategy ()
+
+The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetRepricingStrategyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+
+            try
+            {
+                // The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+                GetRepricingStrategyResponse result = apiInstance.GetRepricingStrategy();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.GetRepricingStrategy: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetRepricingStrategyResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listautomationrules"></a>
 # **ListAutomationRules**
 > ListAutomationRulesResponse ListAutomationRules ()
@@ -1122,7 +1363,7 @@ Name | Type | Description  | Notes
 
 <a name="listrepriceevents"></a>
 # **ListRepriceEvents**
-> ListRepriceEventsResponse ListRepriceEvents ()
+> ListRepriceEventsResponse ListRepriceEvents (string pending = null, string listingId = null, decimal? limit = null)
 
 Reprice decisions, newest first: applied, held at a floor, or pending approval (pending=true for only those waiting).
 
@@ -1146,11 +1387,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AutomationApi(config);
+            var pending = "true";  // string |  (optional) 
+            var listingId = "listingId_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Reprice decisions, newest first: applied, held at a floor, or pending approval (pending=true for only those waiting).
-                ListRepriceEventsResponse result = apiInstance.ListRepriceEvents();
+                ListRepriceEventsResponse result = apiInstance.ListRepriceEvents(pending, listingId, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1165,11 +1409,90 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pending** | **string**|  | [optional] 
+ **listingId** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
 **ListRepriceEventsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listrepricingassignments"></a>
+# **ListRepricingAssignments**
+> ListRepricingAssignmentsResponse ListRepricingAssignments ()
+
+Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListRepricingAssignmentsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+
+            try
+            {
+                // Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+                ListRepricingAssignmentsResponse result = apiInstance.ListRepricingAssignments();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.ListRepricingAssignments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListRepricingAssignmentsResponse**
 
 ### Authorization
 
@@ -1258,6 +1581,86 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updaterepricingassignment"></a>
+# **UpdateRepricingAssignment**
+> CreateRepricingAssignmentResponse UpdateRepricingAssignment (string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = null)
+
+Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateRepricingAssignmentExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AutomationApi(config);
+            var id = "id_example";  // string | 
+            var updateRepricingAssignmentRequest = new UpdateRepricingAssignmentRequest(); // UpdateRepricingAssignmentRequest |  (optional) 
+
+            try
+            {
+                // Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+                CreateRepricingAssignmentResponse result = apiInstance.UpdateRepricingAssignment(id, updateRepricingAssignmentRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AutomationApi.UpdateRepricingAssignment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **updateRepricingAssignmentRequest** | **UpdateRepricingAssignmentRequest**|  | [optional] 
+
+### Return type
+
+**CreateRepricingAssignmentResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

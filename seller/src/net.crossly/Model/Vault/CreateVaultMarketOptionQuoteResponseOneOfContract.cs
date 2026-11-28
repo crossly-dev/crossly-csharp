@@ -90,16 +90,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Open for value: open
-            /// </summary>
-            [EnumMember(Value = "open")]
-            Open = 1,
-
-            /// <summary>
             /// Enum Expired for value: expired
             /// </summary>
             [EnumMember(Value = "expired")]
-            Expired = 2,
+            Expired = 1,
+
+            /// <summary>
+            /// Enum Open for value: open
+            /// </summary>
+            [EnumMember(Value = "open")]
+            Open = 2,
 
             /// <summary>
             /// Enum Delisted for value: delisted

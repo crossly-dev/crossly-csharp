@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getworldexperiencead"></a>
 # **GetWorldExperienceAd**
-> GetWorldExperienceAdResponse GetWorldExperienceAd (string experienceId)
+> GetWorldExperienceAdResponse GetWorldExperienceAd (string experienceId, decimal? slots = null)
 
 The ads for a game's in-world ad surfaces (parts tagged CrosslyAdSurface), for the token's owner: Sponsored Listings labelled \"Ad\", served only to signed-in adults where the game's creator turned ads on, never to its team. A click is POST /api/public/shop/ads/click { token }.
 
@@ -37,11 +37,12 @@ namespace Example
 
             var apiInstance = new WorldsAdsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var slots = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The ads for a game's in-world ad surfaces (parts tagged CrosslyAdSurface), for the token's owner: Sponsored Listings labelled \"Ad\", served only to signed-in adults where the game's creator turned ads on, never to its team. A click is POST /api/public/shop/ads/click { token }.
-                GetWorldExperienceAdResponse result = apiInstance.GetWorldExperienceAd(experienceId);
+                GetWorldExperienceAdResponse result = apiInstance.GetWorldExperienceAd(experienceId, slots);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,6 +61,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **slots** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceadreport"></a>
 # **GetWorldExperienceAdReport**
-> GetWorldExperienceAdReportResponse GetWorldExperienceAdReport (string experienceId)
+> GetWorldExperienceAdReportResponse GetWorldExperienceAdReport (string experienceId, decimal? days = null)
 
 In-game ads over the last N days (default 30, max 90): impressions, clicks, charged clicks, advertiser spend and your earned share, per day.
 
@@ -115,11 +117,12 @@ namespace Example
 
             var apiInstance = new WorldsAdsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // In-game ads over the last N days (default 30, max 90): impressions, clicks, charged clicks, advertiser spend and your earned share, per day.
-                GetWorldExperienceAdReportResponse result = apiInstance.GetWorldExperienceAdReport(experienceId);
+                GetWorldExperienceAdReportResponse result = apiInstance.GetWorldExperienceAdReport(experienceId, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -138,6 +141,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -246,7 +250,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceadsetting"></a>
 # **UpdateWorldExperienceAdSetting**
-> GetWorldExperienceAdSettingResponse UpdateWorldExperienceAdSetting (string experienceId)
+> GetWorldExperienceAdSettingResponse UpdateWorldExperienceAdSetting (string experienceId, EnabledRequest enabledRequest = null)
 
 Turn in-game ads on or off for this game. Ads fill the game's ad surfaces (parts tagged CrosslyAdSurface); nothing shows until it has one.
 
@@ -271,11 +275,12 @@ namespace Example
 
             var apiInstance = new WorldsAdsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var enabledRequest = new EnabledRequest(); // EnabledRequest |  (optional) 
 
             try
             {
                 // Turn in-game ads on or off for this game. Ads fill the game's ad surfaces (parts tagged CrosslyAdSurface); nothing shows until it has one.
-                GetWorldExperienceAdSettingResponse result = apiInstance.UpdateWorldExperienceAdSetting(experienceId);
+                GetWorldExperienceAdSettingResponse result = apiInstance.UpdateWorldExperienceAdSetting(experienceId, enabledRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -294,6 +299,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **enabledRequest** | **EnabledRequest**|  | [optional] 
 
 ### Return type
 
@@ -305,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ScopeEnum
         {
             /// <summary>
-            /// Enum Platform for value: platform
-            /// </summary>
-            [EnumMember(Value = "platform")]
-            Platform = 1,
-
-            /// <summary>
             /// Enum App for value: app
             /// </summary>
             [EnumMember(Value = "app")]
-            App = 2,
+            App = 1,
+
+            /// <summary>
+            /// Enum Platform for value: platform
+            /// </summary>
+            [EnumMember(Value = "platform")]
+            Platform = 2,
 
             /// <summary>
             /// Enum Global for value: global
@@ -150,16 +150,16 @@ namespace net.crossly.Model
         public enum OwnershipEnum
         {
             /// <summary>
-            /// Enum Imported for value: imported
-            /// </summary>
-            [EnumMember(Value = "imported")]
-            Imported = 1,
-
-            /// <summary>
             /// Enum Crossly for value: crossly
             /// </summary>
             [EnumMember(Value = "crossly")]
-            Crossly = 2,
+            Crossly = 1,
+
+            /// <summary>
+            /// Enum Imported for value: imported
+            /// </summary>
+            [EnumMember(Value = "imported")]
+            Imported = 2,
 
             /// <summary>
             /// Enum OtherTool for value: other_tool

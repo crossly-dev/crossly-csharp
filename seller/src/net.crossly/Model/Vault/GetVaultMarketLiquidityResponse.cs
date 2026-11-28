@@ -71,16 +71,16 @@ namespace net.crossly.Model
         public enum PeerGroupEnum
         {
             /// <summary>
-            /// Enum Category for value: category
-            /// </summary>
-            [EnumMember(Value = "category")]
-            Category = 1,
-
-            /// <summary>
             /// Enum All for value: all
             /// </summary>
             [EnumMember(Value = "all")]
-            All = 2
+            All = 1,
+
+            /// <summary>
+            /// Enum Category for value: category
+            /// </summary>
+            [EnumMember(Value = "category")]
+            Category = 2
 
         }
 

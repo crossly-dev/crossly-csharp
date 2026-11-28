@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <returns>CreateBreakResponse</returns>
-        CreateBreakResponse CreateGroupBuy();
+        CreateBreakResponse CreateGroupBuy(CreateGroupBuyRequest createGroupBuyRequest);
 
         /// <summary>
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <returns>ApiResponse of CreateBreakResponse</returns>
-        ApiResponse<CreateBreakResponse> CreateGroupBuyWithHttpInfo();
+        ApiResponse<CreateBreakResponse> CreateGroupBuyWithHttpInfo(CreateGroupBuyRequest createGroupBuyRequest);
         /// <summary>
         /// Cancel a group buy: every hold is released and every charge refunded.
         /// </summary>
@@ -83,8 +85,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <returns>CreateGroupBuyExtendResponse</returns>
-        CreateGroupBuyExtendResponse CreateGroupBuyExtend(string id);
+        CreateGroupBuyExtendResponse CreateGroupBuyExtend(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest));
 
         /// <summary>
         /// Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
@@ -94,15 +97,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGroupBuyExtendResponse</returns>
-        ApiResponse<CreateGroupBuyExtendResponse> CreateGroupBuyExtendWithHttpInfo(string id);
+        ApiResponse<CreateGroupBuyExtendResponse> CreateGroupBuyExtendWithHttpInfo(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest));
         /// <summary>
         /// Send a notification to every buyer committed to the group buy.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>CreateGroupBuyMessageResponse</returns>
-        CreateGroupBuyMessageResponse CreateGroupBuyMessage(string id);
+        CreateGroupBuyMessageResponse CreateGroupBuyMessage(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest));
 
         /// <summary>
         /// Send a notification to every buyer committed to the group buy.
@@ -112,8 +117,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGroupBuyMessageResponse</returns>
-        ApiResponse<CreateGroupBuyMessageResponse> CreateGroupBuyMessageWithHttpInfo(string id);
+        ApiResponse<CreateGroupBuyMessageResponse> CreateGroupBuyMessageWithHttpInfo(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest));
         /// <summary>
         /// One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
         /// </summary>
@@ -171,8 +177,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <returns>UpdateGroupBuyResponse</returns>
-        UpdateGroupBuyResponse UpdateGroupBuy(string id);
+        UpdateGroupBuyResponse UpdateGroupBuy(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest));
 
         /// <summary>
         /// Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
@@ -182,8 +189,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
-        ApiResponse<UpdateGroupBuyResponse> UpdateGroupBuyWithHttpInfo(string id);
+        ApiResponse<UpdateGroupBuyResponse> UpdateGroupBuyWithHttpInfo(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest));
         #endregion Synchronous Operations
     }
 
@@ -200,9 +208,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBreakResponse</returns>
-        System.Threading.Tasks.Task<CreateBreakResponse> CreateGroupBuyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBreakResponse> CreateGroupBuyAsync(CreateGroupBuyRequest createGroupBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
@@ -211,9 +220,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBreakResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBreakResponse>> CreateGroupBuyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBreakResponse>> CreateGroupBuyWithHttpInfoAsync(CreateGroupBuyRequest createGroupBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a group buy: every hold is released and every charge refunded.
         /// </summary>
@@ -268,9 +278,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGroupBuyExtendResponse</returns>
-        System.Threading.Tasks.Task<CreateGroupBuyExtendResponse> CreateGroupBuyExtendAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateGroupBuyExtendResponse> CreateGroupBuyExtendAsync(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
@@ -280,9 +291,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGroupBuyExtendResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateGroupBuyExtendResponse>> CreateGroupBuyExtendWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateGroupBuyExtendResponse>> CreateGroupBuyExtendWithHttpInfoAsync(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send a notification to every buyer committed to the group buy.
         /// </summary>
@@ -291,9 +303,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGroupBuyMessageResponse</returns>
-        System.Threading.Tasks.Task<CreateGroupBuyMessageResponse> CreateGroupBuyMessageAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateGroupBuyMessageResponse> CreateGroupBuyMessageAsync(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send a notification to every buyer committed to the group buy.
@@ -303,9 +316,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGroupBuyMessageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateGroupBuyMessageResponse>> CreateGroupBuyMessageWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateGroupBuyMessageResponse>> CreateGroupBuyMessageWithHttpInfoAsync(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One group buy: progress towards each tier, committed buyers (masked), time left, revenue at the current tier and the activity feed.
         /// </summary>
@@ -381,9 +395,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGroupBuyResponse</returns>
-        System.Threading.Tasks.Task<UpdateGroupBuyResponse> UpdateGroupBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> UpdateGroupBuyAsync(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
@@ -393,9 +408,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> UpdateGroupBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> UpdateGroupBuyWithHttpInfoAsync(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -520,10 +536,11 @@ namespace net.crossly.Api
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <returns>CreateBreakResponse</returns>
-        public CreateBreakResponse CreateGroupBuy()
+        public CreateBreakResponse CreateGroupBuy(CreateGroupBuyRequest createGroupBuyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = CreateGroupBuyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = CreateGroupBuyWithHttpInfo(createGroupBuyRequest);
             return localVarResponse.Data;
         }
 
@@ -531,12 +548,20 @@ namespace net.crossly.Api
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <returns>ApiResponse of CreateBreakResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBreakResponse> CreateGroupBuyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateBreakResponse> CreateGroupBuyWithHttpInfo(CreateGroupBuyRequest createGroupBuyRequest)
         {
+            // verify the required parameter 'createGroupBuyRequest' is set
+            if (createGroupBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createGroupBuyRequest' when calling GroupBuysApi->CreateGroupBuy");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -556,6 +581,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGroupBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -582,11 +608,12 @@ namespace net.crossly.Api
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBreakResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBreakResponse> CreateGroupBuyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBreakResponse> CreateGroupBuyAsync(CreateGroupBuyRequest createGroupBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = await CreateGroupBuyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = await CreateGroupBuyWithHttpInfoAsync(createGroupBuyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -594,14 +621,22 @@ namespace net.crossly.Api
         /// Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGroupBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBreakResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakResponse>> CreateGroupBuyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakResponse>> CreateGroupBuyWithHttpInfoAsync(CreateGroupBuyRequest createGroupBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createGroupBuyRequest' is set
+            if (createGroupBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createGroupBuyRequest' when calling GroupBuysApi->CreateGroupBuy");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -621,6 +656,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGroupBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -941,10 +977,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <returns>CreateGroupBuyExtendResponse</returns>
-        public CreateGroupBuyExtendResponse CreateGroupBuyExtend(string id)
+        public CreateGroupBuyExtendResponse CreateGroupBuyExtend(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest))
         {
-            net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> localVarResponse = CreateGroupBuyExtendWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> localVarResponse = CreateGroupBuyExtendWithHttpInfo(id, createGroupBuyExtendRequest);
             return localVarResponse.Data;
         }
 
@@ -953,8 +990,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGroupBuyExtendResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> CreateGroupBuyExtendWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> CreateGroupBuyExtendWithHttpInfo(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -965,6 +1003,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -985,6 +1024,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyExtendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1012,11 +1052,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGroupBuyExtendResponse</returns>
-        public async System.Threading.Tasks.Task<CreateGroupBuyExtendResponse> CreateGroupBuyExtendAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateGroupBuyExtendResponse> CreateGroupBuyExtendAsync(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> localVarResponse = await CreateGroupBuyExtendWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse> localVarResponse = await CreateGroupBuyExtendWithHttpInfoAsync(id, createGroupBuyExtendRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1025,9 +1066,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyExtendRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGroupBuyExtendResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse>> CreateGroupBuyExtendWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGroupBuyExtendResponse>> CreateGroupBuyExtendWithHttpInfoAsync(string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = default(CreateGroupBuyExtendRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1039,6 +1081,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1059,6 +1102,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyExtendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1087,10 +1131,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>CreateGroupBuyMessageResponse</returns>
-        public CreateGroupBuyMessageResponse CreateGroupBuyMessage(string id)
+        public CreateGroupBuyMessageResponse CreateGroupBuyMessage(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest))
         {
-            net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> localVarResponse = CreateGroupBuyMessageWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> localVarResponse = CreateGroupBuyMessageWithHttpInfo(id, createGroupBuyMessageRequest);
             return localVarResponse.Data;
         }
 
@@ -1099,8 +1144,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGroupBuyMessageResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> CreateGroupBuyMessageWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> CreateGroupBuyMessageWithHttpInfo(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1111,6 +1157,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1131,6 +1178,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1158,11 +1206,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGroupBuyMessageResponse</returns>
-        public async System.Threading.Tasks.Task<CreateGroupBuyMessageResponse> CreateGroupBuyMessageAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateGroupBuyMessageResponse> CreateGroupBuyMessageAsync(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> localVarResponse = await CreateGroupBuyMessageWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse> localVarResponse = await CreateGroupBuyMessageWithHttpInfoAsync(id, createGroupBuyMessageRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1171,9 +1220,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGroupBuyMessageResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse>> CreateGroupBuyMessageWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGroupBuyMessageResponse>> CreateGroupBuyMessageWithHttpInfoAsync(string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1185,6 +1235,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1205,6 +1256,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1653,10 +1705,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <returns>UpdateGroupBuyResponse</returns>
-        public UpdateGroupBuyResponse UpdateGroupBuy(string id)
+        public UpdateGroupBuyResponse UpdateGroupBuy(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = UpdateGroupBuyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = UpdateGroupBuyWithHttpInfo(id, updateGroupBuyRequest);
             return localVarResponse.Data;
         }
 
@@ -1665,8 +1718,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> UpdateGroupBuyWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> UpdateGroupBuyWithHttpInfo(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1677,6 +1731,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1697,6 +1752,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateGroupBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1724,11 +1780,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGroupBuyResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> UpdateGroupBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> UpdateGroupBuyAsync(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await UpdateGroupBuyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await UpdateGroupBuyWithHttpInfoAsync(id, updateGroupBuyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1737,9 +1794,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateGroupBuyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> UpdateGroupBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> UpdateGroupBuyWithHttpInfoAsync(string id, UpdateGroupBuyRequest updateGroupBuyRequest = default(UpdateGroupBuyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1751,6 +1809,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1771,6 +1830,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateGroupBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

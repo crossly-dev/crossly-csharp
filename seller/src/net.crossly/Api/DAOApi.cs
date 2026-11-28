@@ -33,8 +33,9 @@ namespace net.crossly.Api
         /// Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <returns>CreateDaoProposalResponse</returns>
-        CreateDaoProposalResponse CreateDaoProposal();
+        CreateDaoProposalResponse CreateDaoProposal(CreateDaoProposalRequest createDaoProposalRequest);
 
         /// <summary>
         /// Raise a proposal. Starts as a draft.
@@ -43,8 +44,9 @@ namespace net.crossly.Api
         /// Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalResponse</returns>
-        ApiResponse<CreateDaoProposalResponse> CreateDaoProposalWithHttpInfo();
+        ApiResponse<CreateDaoProposalResponse> CreateDaoProposalWithHttpInfo(CreateDaoProposalRequest createDaoProposalRequest);
         /// <summary>
         /// Close a proposal whose window has passed and record the outcome.
         /// </summary>
@@ -74,8 +76,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <returns>CreateDaoProposalOpenResponse</returns>
-        CreateDaoProposalOpenResponse CreateDaoProposalOpen(string id);
+        CreateDaoProposalOpenResponse CreateDaoProposalOpen(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest);
 
         /// <summary>
         /// Put your draft to a vote. Snapshots voting power.
@@ -85,8 +88,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalOpenResponse</returns>
-        ApiResponse<CreateDaoProposalOpenResponse> CreateDaoProposalOpenWithHttpInfo(string id);
+        ApiResponse<CreateDaoProposalOpenResponse> CreateDaoProposalOpenWithHttpInfo(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest);
         /// <summary>
         /// Operator block. There is no matching power to PASS.
         /// </summary>
@@ -95,8 +99,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <returns>CreateDaoProposalVetoResponse</returns>
-        CreateDaoProposalVetoResponse CreateDaoProposalVeto(string id);
+        CreateDaoProposalVetoResponse CreateDaoProposalVeto(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest);
 
         /// <summary>
         /// Operator block. There is no matching power to PASS.
@@ -106,8 +111,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalVetoResponse</returns>
-        ApiResponse<CreateDaoProposalVetoResponse> CreateDaoProposalVetoWithHttpInfo(string id);
+        ApiResponse<CreateDaoProposalVetoResponse> CreateDaoProposalVetoWithHttpInfo(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest);
         /// <summary>
         /// Cast or change a vote while the window is open.
         /// </summary>
@@ -116,8 +122,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <returns>CreateDaoProposalVoteResponse</returns>
-        CreateDaoProposalVoteResponse CreateDaoProposalVote(string id);
+        CreateDaoProposalVoteResponse CreateDaoProposalVote(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest);
 
         /// <summary>
         /// Cast or change a vote while the window is open.
@@ -127,8 +134,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalVoteResponse</returns>
-        ApiResponse<CreateDaoProposalVoteResponse> CreateDaoProposalVoteWithHttpInfo(string id);
+        ApiResponse<CreateDaoProposalVoteResponse> CreateDaoProposalVoteWithHttpInfo(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest);
         /// <summary>
         /// Withdraw your own DRAFT.
         /// </summary>
@@ -137,8 +145,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <returns>DeleteDaoProposalResponse</returns>
-        DeleteDaoProposalResponse DeleteDaoProposal(string id);
+        DeleteDaoProposalResponse DeleteDaoProposal(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest));
 
         /// <summary>
         /// Withdraw your own DRAFT.
@@ -148,8 +157,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteDaoProposalResponse</returns>
-        ApiResponse<DeleteDaoProposalResponse> DeleteDaoProposalWithHttpInfo(string id);
+        ApiResponse<DeleteDaoProposalResponse> DeleteDaoProposalWithHttpInfo(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest));
         /// <summary>
         /// The live count.
         /// </summary>
@@ -172,14 +182,37 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetDaoProposalTallyResponse</returns>
         ApiResponse<GetDaoProposalTallyResponse> GetDaoProposalTallyWithHttpInfo(string id);
         /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share.
+        /// </summary>
+        /// <remarks>
+        /// Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <returns>GetDaoSubjectParticipationResponse</returns>
+        GetDaoSubjectParticipationResponse GetDaoSubjectParticipation(string subjectId);
+
+        /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share.
+        /// </summary>
+        /// <remarks>
+        /// Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <returns>ApiResponse of GetDaoSubjectParticipationResponse</returns>
+        ApiResponse<GetDaoSubjectParticipationResponse> GetDaoSubjectParticipationWithHttpInfo(string subjectId);
+        /// <summary>
         /// The proposal queue.
         /// </summary>
         /// <remarks>
         /// Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListDaoProposalsResponse</returns>
-        ListDaoProposalsResponse ListDaoProposals();
+        ListDaoProposalsResponse ListDaoProposals(string status = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// The proposal queue.
@@ -188,8 +221,10 @@ namespace net.crossly.Api
         /// Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListDaoProposalsResponse</returns>
-        ApiResponse<ListDaoProposalsResponse> ListDaoProposalsWithHttpInfo();
+        ApiResponse<ListDaoProposalsResponse> ListDaoProposalsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?));
         #endregion Synchronous Operations
     }
 
@@ -206,9 +241,10 @@ namespace net.crossly.Api
         /// Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalResponse</returns>
-        System.Threading.Tasks.Task<CreateDaoProposalResponse> CreateDaoProposalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateDaoProposalResponse> CreateDaoProposalAsync(CreateDaoProposalRequest createDaoProposalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Raise a proposal. Starts as a draft.
@@ -217,9 +253,10 @@ namespace net.crossly.Api
         /// Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalResponse>> CreateDaoProposalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalResponse>> CreateDaoProposalWithHttpInfoAsync(CreateDaoProposalRequest createDaoProposalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Close a proposal whose window has passed and record the outcome.
         /// </summary>
@@ -251,9 +288,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalOpenResponse</returns>
-        System.Threading.Tasks.Task<CreateDaoProposalOpenResponse> CreateDaoProposalOpenAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateDaoProposalOpenResponse> CreateDaoProposalOpenAsync(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Put your draft to a vote. Snapshots voting power.
@@ -263,9 +301,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalOpenResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalOpenResponse>> CreateDaoProposalOpenWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalOpenResponse>> CreateDaoProposalOpenWithHttpInfoAsync(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Operator block. There is no matching power to PASS.
         /// </summary>
@@ -274,9 +313,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalVetoResponse</returns>
-        System.Threading.Tasks.Task<CreateDaoProposalVetoResponse> CreateDaoProposalVetoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateDaoProposalVetoResponse> CreateDaoProposalVetoAsync(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Operator block. There is no matching power to PASS.
@@ -286,9 +326,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalVetoResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalVetoResponse>> CreateDaoProposalVetoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalVetoResponse>> CreateDaoProposalVetoWithHttpInfoAsync(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cast or change a vote while the window is open.
         /// </summary>
@@ -297,9 +338,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalVoteResponse</returns>
-        System.Threading.Tasks.Task<CreateDaoProposalVoteResponse> CreateDaoProposalVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateDaoProposalVoteResponse> CreateDaoProposalVoteAsync(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cast or change a vote while the window is open.
@@ -309,9 +351,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalVoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalVoteResponse>> CreateDaoProposalVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateDaoProposalVoteResponse>> CreateDaoProposalVoteWithHttpInfoAsync(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Withdraw your own DRAFT.
         /// </summary>
@@ -320,9 +363,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDaoProposalResponse</returns>
-        System.Threading.Tasks.Task<DeleteDaoProposalResponse> DeleteDaoProposalAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteDaoProposalResponse> DeleteDaoProposalAsync(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Withdraw your own DRAFT.
@@ -332,9 +376,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDaoProposalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteDaoProposalResponse>> DeleteDaoProposalWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteDaoProposalResponse>> DeleteDaoProposalWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The live count.
         /// </summary>
@@ -359,15 +404,40 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetDaoProposalTallyResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetDaoProposalTallyResponse>> GetDaoProposalTallyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share.
+        /// </summary>
+        /// <remarks>
+        /// Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDaoSubjectParticipationResponse</returns>
+        System.Threading.Tasks.Task<GetDaoSubjectParticipationResponse> GetDaoSubjectParticipationAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share.
+        /// </summary>
+        /// <remarks>
+        /// Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDaoSubjectParticipationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDaoSubjectParticipationResponse>> GetDaoSubjectParticipationWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// The proposal queue.
         /// </summary>
         /// <remarks>
         /// Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDaoProposalsResponse</returns>
-        System.Threading.Tasks.Task<ListDaoProposalsResponse> ListDaoProposalsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListDaoProposalsResponse> ListDaoProposalsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The proposal queue.
@@ -376,9 +446,11 @@ namespace net.crossly.Api
         /// Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDaoProposalsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDaoProposalsResponse>> ListDaoProposalsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListDaoProposalsResponse>> ListDaoProposalsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -503,10 +575,11 @@ namespace net.crossly.Api
         /// Raise a proposal. Starts as a draft. Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <returns>CreateDaoProposalResponse</returns>
-        public CreateDaoProposalResponse CreateDaoProposal()
+        public CreateDaoProposalResponse CreateDaoProposal(CreateDaoProposalRequest createDaoProposalRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalResponse> localVarResponse = CreateDaoProposalWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateDaoProposalResponse> localVarResponse = CreateDaoProposalWithHttpInfo(createDaoProposalRequest);
             return localVarResponse.Data;
         }
 
@@ -514,12 +587,20 @@ namespace net.crossly.Api
         /// Raise a proposal. Starts as a draft. Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDaoProposalResponse> CreateDaoProposalWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateDaoProposalResponse> CreateDaoProposalWithHttpInfo(CreateDaoProposalRequest createDaoProposalRequest)
         {
+            // verify the required parameter 'createDaoProposalRequest' is set
+            if (createDaoProposalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalRequest' when calling DAOApi->CreateDaoProposal");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -539,6 +620,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createDaoProposalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -565,11 +647,12 @@ namespace net.crossly.Api
         /// Raise a proposal. Starts as a draft. Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDaoProposalResponse> CreateDaoProposalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateDaoProposalResponse> CreateDaoProposalAsync(CreateDaoProposalRequest createDaoProposalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalResponse> localVarResponse = await CreateDaoProposalWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateDaoProposalResponse> localVarResponse = await CreateDaoProposalWithHttpInfoAsync(createDaoProposalRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -577,14 +660,22 @@ namespace net.crossly.Api
         /// Raise a proposal. Starts as a draft. Requires staked CBX above &#x60;minProposeWeight&#x60;, and one in-flight proposal at a time. The limits bound a denial of ATTENTION rather than of service — attention is the resource a DAO actually runs on. &#x60;beneficiaryKind&#x60; is a CLOSED set and there is deliberately no stakers, holders, airdrop or distribution option. A proposal whose beneficiaries are the voters would be a self-payment, and a distribution decided by its own recipients is a dividend whatever it is called. The DAO decides WHAT to fund, never WHO gets paid. A &#x60;policy&#x60; proposal requests no funds and must omit the amount; every other kind must supply one. proposalKind (default spend) raises a Crossly Funding pool proposal instead: pool_allocation (beneficiary funding_pool, an amount), pool_parameter, spend_category or supplier_allowlist (beneficiary policy, with params). A passed pool proposal is applied by the operator; it never pays the voters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDaoProposalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalResponse>> CreateDaoProposalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalResponse>> CreateDaoProposalWithHttpInfoAsync(CreateDaoProposalRequest createDaoProposalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createDaoProposalRequest' is set
+            if (createDaoProposalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalRequest' when calling DAOApi->CreateDaoProposal");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -604,6 +695,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createDaoProposalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -778,10 +870,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <returns>CreateDaoProposalOpenResponse</returns>
-        public CreateDaoProposalOpenResponse CreateDaoProposalOpen(string id)
+        public CreateDaoProposalOpenResponse CreateDaoProposalOpen(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> localVarResponse = CreateDaoProposalOpenWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> localVarResponse = CreateDaoProposalOpenWithHttpInfo(id, createDaoProposalOpenRequest);
             return localVarResponse.Data;
         }
 
@@ -790,8 +883,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalOpenResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> CreateDaoProposalOpenWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> CreateDaoProposalOpenWithHttpInfo(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -799,9 +893,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalOpen");
             }
 
+            // verify the required parameter 'createDaoProposalOpenRequest' is set
+            if (createDaoProposalOpenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalOpenRequest' when calling DAOApi->CreateDaoProposalOpen");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -822,6 +923,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalOpenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -849,11 +951,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalOpenResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDaoProposalOpenResponse> CreateDaoProposalOpenAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateDaoProposalOpenResponse> CreateDaoProposalOpenAsync(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> localVarResponse = await CreateDaoProposalOpenWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse> localVarResponse = await CreateDaoProposalOpenWithHttpInfoAsync(id, createDaoProposalOpenRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -862,9 +965,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalOpenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalOpenResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse>> CreateDaoProposalOpenWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalOpenResponse>> CreateDaoProposalOpenWithHttpInfoAsync(string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -872,10 +976,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalOpen");
             }
 
+            // verify the required parameter 'createDaoProposalOpenRequest' is set
+            if (createDaoProposalOpenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalOpenRequest' when calling DAOApi->CreateDaoProposalOpen");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -896,6 +1007,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalOpenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -924,10 +1036,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <returns>CreateDaoProposalVetoResponse</returns>
-        public CreateDaoProposalVetoResponse CreateDaoProposalVeto(string id)
+        public CreateDaoProposalVetoResponse CreateDaoProposalVeto(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> localVarResponse = CreateDaoProposalVetoWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> localVarResponse = CreateDaoProposalVetoWithHttpInfo(id, createDaoProposalVetoRequest);
             return localVarResponse.Data;
         }
 
@@ -936,8 +1049,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalVetoResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> CreateDaoProposalVetoWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> CreateDaoProposalVetoWithHttpInfo(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -945,9 +1059,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalVeto");
             }
 
+            // verify the required parameter 'createDaoProposalVetoRequest' is set
+            if (createDaoProposalVetoRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalVetoRequest' when calling DAOApi->CreateDaoProposalVeto");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -968,6 +1089,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalVetoRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -995,11 +1117,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalVetoResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDaoProposalVetoResponse> CreateDaoProposalVetoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateDaoProposalVetoResponse> CreateDaoProposalVetoAsync(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> localVarResponse = await CreateDaoProposalVetoWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse> localVarResponse = await CreateDaoProposalVetoWithHttpInfoAsync(id, createDaoProposalVetoRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1008,9 +1131,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVetoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalVetoResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse>> CreateDaoProposalVetoWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalVetoResponse>> CreateDaoProposalVetoWithHttpInfoAsync(string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1018,10 +1142,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalVeto");
             }
 
+            // verify the required parameter 'createDaoProposalVetoRequest' is set
+            if (createDaoProposalVetoRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalVetoRequest' when calling DAOApi->CreateDaoProposalVeto");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1042,6 +1173,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalVetoRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1070,10 +1202,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <returns>CreateDaoProposalVoteResponse</returns>
-        public CreateDaoProposalVoteResponse CreateDaoProposalVote(string id)
+        public CreateDaoProposalVoteResponse CreateDaoProposalVote(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> localVarResponse = CreateDaoProposalVoteWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> localVarResponse = CreateDaoProposalVoteWithHttpInfo(id, createDaoProposalVoteRequest);
             return localVarResponse.Data;
         }
 
@@ -1082,8 +1215,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <returns>ApiResponse of CreateDaoProposalVoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> CreateDaoProposalVoteWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> CreateDaoProposalVoteWithHttpInfo(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1091,9 +1225,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalVote");
             }
 
+            // verify the required parameter 'createDaoProposalVoteRequest' is set
+            if (createDaoProposalVoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalVoteRequest' when calling DAOApi->CreateDaoProposalVote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1114,6 +1255,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1141,11 +1283,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDaoProposalVoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDaoProposalVoteResponse> CreateDaoProposalVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateDaoProposalVoteResponse> CreateDaoProposalVoteAsync(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> localVarResponse = await CreateDaoProposalVoteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse> localVarResponse = await CreateDaoProposalVoteWithHttpInfoAsync(id, createDaoProposalVoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1154,9 +1297,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDaoProposalVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDaoProposalVoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse>> CreateDaoProposalVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDaoProposalVoteResponse>> CreateDaoProposalVoteWithHttpInfoAsync(string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1164,10 +1308,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DAOApi->CreateDaoProposalVote");
             }
 
+            // verify the required parameter 'createDaoProposalVoteRequest' is set
+            if (createDaoProposalVoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDaoProposalVoteRequest' when calling DAOApi->CreateDaoProposalVote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1188,6 +1339,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDaoProposalVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1216,10 +1368,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <returns>DeleteDaoProposalResponse</returns>
-        public DeleteDaoProposalResponse DeleteDaoProposal(string id)
+        public DeleteDaoProposalResponse DeleteDaoProposal(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest))
         {
-            net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> localVarResponse = DeleteDaoProposalWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> localVarResponse = DeleteDaoProposalWithHttpInfo(id, subjectIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1228,8 +1381,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteDaoProposalResponse</returns>
-        public net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> DeleteDaoProposalWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> DeleteDaoProposalWithHttpInfo(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1240,6 +1394,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1260,6 +1415,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1287,11 +1443,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDaoProposalResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteDaoProposalResponse> DeleteDaoProposalAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteDaoProposalResponse> DeleteDaoProposalAsync(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> localVarResponse = await DeleteDaoProposalWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DeleteDaoProposalResponse> localVarResponse = await DeleteDaoProposalWithHttpInfoAsync(id, subjectIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1300,9 +1457,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDaoProposalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteDaoProposalResponse>> DeleteDaoProposalWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteDaoProposalResponse>> DeleteDaoProposalWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest = default(SubjectIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1314,6 +1472,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1334,6 +1493,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1504,13 +1664,161 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share. Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <returns>GetDaoSubjectParticipationResponse</returns>
+        public GetDaoSubjectParticipationResponse GetDaoSubjectParticipation(string subjectId)
+        {
+            net.crossly.Client.ApiResponse<GetDaoSubjectParticipationResponse> localVarResponse = GetDaoSubjectParticipationWithHttpInfo(subjectId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share. Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <returns>ApiResponse of GetDaoSubjectParticipationResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDaoSubjectParticipationResponse> GetDaoSubjectParticipationWithHttpInfo(string subjectId)
+        {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling DAOApi->GetDaoSubjectParticipation");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDaoSubjectParticipationResponse>("/v1/dao/subjects/{subjectId}/participation", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDaoSubjectParticipation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share. Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDaoSubjectParticipationResponse</returns>
+        public async System.Threading.Tasks.Task<GetDaoSubjectParticipationResponse> GetDaoSubjectParticipationAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDaoSubjectParticipationResponse> localVarResponse = await GetDaoSubjectParticipationWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One holder&#39;s participation: votes, voting power over time, share. Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDaoSubjectParticipationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDaoSubjectParticipationResponse>> GetDaoSubjectParticipationWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling DAOApi->GetDaoSubjectParticipation");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDaoSubjectParticipationResponse>("/v1/dao/subjects/{subjectId}/participation", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDaoSubjectParticipation", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// The proposal queue. Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListDaoProposalsResponse</returns>
-        public ListDaoProposalsResponse ListDaoProposals()
+        public ListDaoProposalsResponse ListDaoProposals(string status = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListDaoProposalsResponse> localVarResponse = ListDaoProposalsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListDaoProposalsResponse> localVarResponse = ListDaoProposalsWithHttpInfo(status, limit);
             return localVarResponse.Data;
         }
 
@@ -1518,8 +1826,10 @@ namespace net.crossly.Api
         /// The proposal queue. Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListDaoProposalsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListDaoProposalsResponse> ListDaoProposalsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListDaoProposalsResponse> ListDaoProposalsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1543,6 +1853,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1569,11 +1887,13 @@ namespace net.crossly.Api
         /// The proposal queue. Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDaoProposalsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDaoProposalsResponse> ListDaoProposalsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListDaoProposalsResponse> ListDaoProposalsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListDaoProposalsResponse> localVarResponse = await ListDaoProposalsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListDaoProposalsResponse> localVarResponse = await ListDaoProposalsWithHttpInfoAsync(status, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1581,9 +1901,11 @@ namespace net.crossly.Api
         /// The proposal queue. Staked CBX decides what the events pool funds. Voting power is size x tenure — the same weighting the earn multiplier uses — and it is SNAPSHOTTED when a proposal opens, so staking after seeing one grants no vote on it. &#x60;totalVotingPower&#x60; is the frozen quorum denominator; recomputing it would let somebody move the bar after votes were cast. Amounts are strings of base units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDaoProposalsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDaoProposalsResponse>> ListDaoProposalsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDaoProposalsResponse>> ListDaoProposalsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1608,6 +1930,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

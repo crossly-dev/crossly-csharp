@@ -67,10 +67,10 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="kind">kind (required).</param>
         /// <param name="endsAt">endsAt (required).</param>
         /// <param name="reason">reason (required).</param>
         /// <param name="startedAt">startedAt (required).</param>
-        /// <param name="kind">kind (required).</param>
         /// <param name="priceCents">priceCents (required).</param>
         /// <param name="tradeId">tradeId.</param>
         /// <param name="bidId">bidId.</param>
@@ -80,7 +80,7 @@ namespace net.crossly.Model
         /// <param name="markCents">markCents (required).</param>
         /// <param name="settledAt">settledAt.</param>
         /// <param name="checkedAt">checkedAt.</param>
-        public GetVaultMarketPositionResponseAuctionsItem(string id = default(string), string status = default(string), DateTime endsAt = default(DateTime), string reason = default(string), DateTime startedAt = default(DateTime), KindEnum kind = default(KindEnum), Object priceCents = default(Object), string tradeId = default(string), string bidId = default(string), string askId = default(string), string vaultItemId = default(string), string positionId = default(string), Object markCents = default(Object), DateTime? settledAt = default(DateTime?), DateTime? checkedAt = default(DateTime?))
+        public GetVaultMarketPositionResponseAuctionsItem(string id = default(string), string status = default(string), KindEnum kind = default(KindEnum), DateTime endsAt = default(DateTime), string reason = default(string), DateTime startedAt = default(DateTime), Object priceCents = default(Object), string tradeId = default(string), string bidId = default(string), string askId = default(string), string vaultItemId = default(string), string positionId = default(string), Object markCents = default(Object), DateTime? settledAt = default(DateTime?), DateTime? checkedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -92,6 +92,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for GetVaultMarketPositionResponseAuctionsItem and cannot be null");
             }
             this.Status = status;
+            this.Kind = kind;
             this.EndsAt = endsAt;
             // to ensure "reason" is required (not null)
             if (reason == null) {
@@ -99,7 +100,6 @@ namespace net.crossly.Model
             }
             this.Reason = reason;
             this.StartedAt = startedAt;
-            this.Kind = kind;
             // to ensure "priceCents" is required (not null)
             if (priceCents == null) {
                 throw new ArgumentNullException("priceCents is a required property for GetVaultMarketPositionResponseAuctionsItem and cannot be null");
@@ -217,10 +217,10 @@ namespace net.crossly.Model
             sb.Append("class GetVaultMarketPositionResponseAuctionsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  TradeId: ").Append(TradeId).Append("\n");
             sb.Append("  BidId: ").Append(BidId).Append("\n");
@@ -276,6 +276,10 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
@@ -289,10 +293,6 @@ namespace net.crossly.Model
                     this.StartedAt == input.StartedAt ||
                     (this.StartedAt != null &&
                     this.StartedAt.Equals(input.StartedAt))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    this.Kind.Equals(input.Kind)
                 ) && 
                 (
                     this.PriceCents == input.PriceCents ||
@@ -358,6 +358,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
@@ -370,7 +371,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.StartedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.PriceCents != null)
                 {
                     hashCode = (hashCode * 59) + this.PriceCents.GetHashCode();

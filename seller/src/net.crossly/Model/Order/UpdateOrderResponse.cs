@@ -46,14 +46,16 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="notes">notes.</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="source">source.</param>
         /// <param name="quantity">quantity (required).</param>
+        /// <param name="assigneeMemberId">assigneeMemberId.</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
         /// <param name="listingId">listingId.</param>
         /// <param name="platformListingId">platformListingId.</param>
-        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="handlingTimeDays">handlingTimeDays.</param>
         /// <param name="platformOrderId">platformOrderId.</param>
+        /// <param name="orderNumber">orderNumber.</param>
         /// <param name="reportedByAppId">reportedByAppId.</param>
         /// <param name="buyerUsername">buyerUsername.</param>
         /// <param name="pickupPoint">pickupPoint.</param>
@@ -93,6 +95,7 @@ namespace net.crossly.Model
         /// <param name="oversoldBy">oversoldBy (required).</param>
         /// <param name="lastStatusCheckAt">lastStatusCheckAt.</param>
         /// <param name="lastChatCheckAt">lastChatCheckAt.</param>
+        /// <param name="lastTrackingCheckAt">lastTrackingCheckAt.</param>
         /// <param name="isDisputed">isDisputed (required).</param>
         /// <param name="disputeReason">disputeReason.</param>
         /// <param name="disputePlatformCaseId">disputePlatformCaseId.</param>
@@ -114,7 +117,7 @@ namespace net.crossly.Model
         /// <param name="fulfillmentMethod">fulfillmentMethod (required).</param>
         /// <param name="platformConfirmedAt">platformConfirmedAt.</param>
         /// <param name="deletedAt">deletedAt.</param>
-        public UpdateOrderResponse(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), string status = default(string), string notes = default(string), string source = default(string), decimal quantity = default(decimal), string inventoryItemId = default(string), string listingId = default(string), string platformListingId = default(string), string storefrontId = default(string), decimal? handlingTimeDays = default(decimal?), string platformOrderId = default(string), string reportedByAppId = default(string), string buyerUsername = default(string), Dictionary<string, Object> pickupPoint = default(Dictionary<string, Object>), string consolidationId = default(string), decimal dutiesCents = default(decimal), DateTime? dutiesRefundedAt = default(DateTime?), string salesChannel = default(string), string channelLocationId = default(string), string channel = default(string), string invoiceId = default(string), string buyerCompanyId = default(string), string packagePresetId = default(string), string carrier = default(string), string service = default(string), string trackingNumber = default(string), string easypostShipmentId = default(string), string easypostTrackerId = default(string), string easypostRateId = default(string), string shippingLabelUrl = default(string), DateTime? labelPurchasedAt = default(DateTime?), DateTime? shippedAt = default(DateTime?), string estimatedDelivery = default(string), DateTime? deliveredAt = default(DateTime?), string carrierStatus = default(string), string carrierStatusDetail = default(string), List<GetOrderResponseTrackingHistory> trackingHistory = default(List<GetOrderResponseTrackingHistory>), string deliveryLocation = default(string), string deliverySignature = default(string), DateTime? trackingSubmittedAt = default(DateTime?), string trackingSubmitStatus = default(string), string labelCost = default(string), string costOfGoods = default(string), string requestedCarrier = default(string), string requestedService = default(string), DateTime? shipByAt = default(DateTime?), DateTime? shipByAlertedAt = default(DateTime?), decimal oversoldBy = default(decimal), DateTime? lastStatusCheckAt = default(DateTime?), DateTime? lastChatCheckAt = default(DateTime?), bool isDisputed = default(bool), string disputeReason = default(string), string disputePlatformCaseId = default(string), DateTime? disputeResolvedAt = default(DateTime?), string refundAmount = default(string), string refundReason = default(string), string refundPlatformId = default(string), DateTime? refundedAt = default(DateTime?), DateTime? cancelledAt = default(DateTime?), string cancellationReason = default(string), DateTime? arrivalConditionRequestedAt = default(DateTime?), DateTime? arrivalConditionSubmittedAt = default(DateTime?), DateTime? arrivalConditionDeclinedAt = default(DateTime?), string deliveryPhotoUrl = default(string), string deliveryPhotoSource = default(string), string purchaseOrderRef = default(string), List<string> arrivalConditionPhotos = default(List<string>), string buyerEmail = default(string), string fulfillmentMethod = default(string), DateTime? platformConfirmedAt = default(DateTime?), DateTime? deletedAt = default(DateTime?))
+        public UpdateOrderResponse(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), string status = default(string), string notes = default(string), string storefrontId = default(string), string source = default(string), decimal quantity = default(decimal), string assigneeMemberId = default(string), string inventoryItemId = default(string), string listingId = default(string), string platformListingId = default(string), decimal? handlingTimeDays = default(decimal?), string platformOrderId = default(string), string orderNumber = default(string), string reportedByAppId = default(string), string buyerUsername = default(string), Dictionary<string, Object> pickupPoint = default(Dictionary<string, Object>), string consolidationId = default(string), decimal dutiesCents = default(decimal), DateTime? dutiesRefundedAt = default(DateTime?), string salesChannel = default(string), string channelLocationId = default(string), string channel = default(string), string invoiceId = default(string), string buyerCompanyId = default(string), string packagePresetId = default(string), string carrier = default(string), string service = default(string), string trackingNumber = default(string), string easypostShipmentId = default(string), string easypostTrackerId = default(string), string easypostRateId = default(string), string shippingLabelUrl = default(string), DateTime? labelPurchasedAt = default(DateTime?), DateTime? shippedAt = default(DateTime?), string estimatedDelivery = default(string), DateTime? deliveredAt = default(DateTime?), string carrierStatus = default(string), string carrierStatusDetail = default(string), List<GetOrderResponseTrackingHistory> trackingHistory = default(List<GetOrderResponseTrackingHistory>), string deliveryLocation = default(string), string deliverySignature = default(string), DateTime? trackingSubmittedAt = default(DateTime?), string trackingSubmitStatus = default(string), string labelCost = default(string), string costOfGoods = default(string), string requestedCarrier = default(string), string requestedService = default(string), DateTime? shipByAt = default(DateTime?), DateTime? shipByAlertedAt = default(DateTime?), decimal oversoldBy = default(decimal), DateTime? lastStatusCheckAt = default(DateTime?), DateTime? lastChatCheckAt = default(DateTime?), DateTime? lastTrackingCheckAt = default(DateTime?), bool isDisputed = default(bool), string disputeReason = default(string), string disputePlatformCaseId = default(string), DateTime? disputeResolvedAt = default(DateTime?), string refundAmount = default(string), string refundReason = default(string), string refundPlatformId = default(string), DateTime? refundedAt = default(DateTime?), DateTime? cancelledAt = default(DateTime?), string cancellationReason = default(string), DateTime? arrivalConditionRequestedAt = default(DateTime?), DateTime? arrivalConditionSubmittedAt = default(DateTime?), DateTime? arrivalConditionDeclinedAt = default(DateTime?), string deliveryPhotoUrl = default(string), string deliveryPhotoSource = default(string), string purchaseOrderRef = default(string), List<string> arrivalConditionPhotos = default(List<string>), string buyerEmail = default(string), string fulfillmentMethod = default(string), DateTime? platformConfirmedAt = default(DateTime?), DateTime? deletedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -163,13 +166,15 @@ namespace net.crossly.Model
             }
             this.FulfillmentMethod = fulfillmentMethod;
             this.Notes = notes;
+            this.StorefrontId = storefrontId;
             this.Source = source;
+            this.AssigneeMemberId = assigneeMemberId;
             this.InventoryItemId = inventoryItemId;
             this.ListingId = listingId;
             this.PlatformListingId = platformListingId;
-            this.StorefrontId = storefrontId;
             this.HandlingTimeDays = handlingTimeDays;
             this.PlatformOrderId = platformOrderId;
+            this.OrderNumber = orderNumber;
             this.ReportedByAppId = reportedByAppId;
             this.BuyerUsername = buyerUsername;
             this.PickupPoint = pickupPoint;
@@ -205,6 +210,7 @@ namespace net.crossly.Model
             this.ShipByAlertedAt = shipByAlertedAt;
             this.LastStatusCheckAt = lastStatusCheckAt;
             this.LastChatCheckAt = lastChatCheckAt;
+            this.LastTrackingCheckAt = lastTrackingCheckAt;
             this.DisputeReason = disputeReason;
             this.DisputePlatformCaseId = disputePlatformCaseId;
             this.DisputeResolvedAt = disputeResolvedAt;
@@ -268,6 +274,12 @@ namespace net.crossly.Model
         public string Notes { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Source
         /// </summary>
         [DataMember(Name = "source", EmitDefaultValue = true)]
@@ -278,6 +290,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
         public decimal Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssigneeMemberId
+        /// </summary>
+        [DataMember(Name = "assigneeMemberId", EmitDefaultValue = true)]
+        public string AssigneeMemberId { get; set; }
 
         /// <summary>
         /// Gets or Sets InventoryItemId
@@ -298,12 +316,6 @@ namespace net.crossly.Model
         public string PlatformListingId { get; set; }
 
         /// <summary>
-        /// Gets or Sets StorefrontId
-        /// </summary>
-        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
-        public string StorefrontId { get; set; }
-
-        /// <summary>
         /// Gets or Sets HandlingTimeDays
         /// </summary>
         [DataMember(Name = "handlingTimeDays", EmitDefaultValue = true)]
@@ -314,6 +326,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "platformOrderId", EmitDefaultValue = true)]
         public string PlatformOrderId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OrderNumber
+        /// </summary>
+        [DataMember(Name = "orderNumber", EmitDefaultValue = true)]
+        public string OrderNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets ReportedByAppId
@@ -550,6 +568,12 @@ namespace net.crossly.Model
         public DateTime? LastChatCheckAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets LastTrackingCheckAt
+        /// </summary>
+        [DataMember(Name = "lastTrackingCheckAt", EmitDefaultValue = true)]
+        public DateTime? LastTrackingCheckAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets IsDisputed
         /// </summary>
         [DataMember(Name = "isDisputed", IsRequired = true, EmitDefaultValue = true)]
@@ -690,14 +714,16 @@ namespace net.crossly.Model
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  AssigneeMemberId: ").Append(AssigneeMemberId).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
-            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  HandlingTimeDays: ").Append(HandlingTimeDays).Append("\n");
             sb.Append("  PlatformOrderId: ").Append(PlatformOrderId).Append("\n");
+            sb.Append("  OrderNumber: ").Append(OrderNumber).Append("\n");
             sb.Append("  ReportedByAppId: ").Append(ReportedByAppId).Append("\n");
             sb.Append("  BuyerUsername: ").Append(BuyerUsername).Append("\n");
             sb.Append("  PickupPoint: ").Append(PickupPoint).Append("\n");
@@ -737,6 +763,7 @@ namespace net.crossly.Model
             sb.Append("  OversoldBy: ").Append(OversoldBy).Append("\n");
             sb.Append("  LastStatusCheckAt: ").Append(LastStatusCheckAt).Append("\n");
             sb.Append("  LastChatCheckAt: ").Append(LastChatCheckAt).Append("\n");
+            sb.Append("  LastTrackingCheckAt: ").Append(LastTrackingCheckAt).Append("\n");
             sb.Append("  IsDisputed: ").Append(IsDisputed).Append("\n");
             sb.Append("  DisputeReason: ").Append(DisputeReason).Append("\n");
             sb.Append("  DisputePlatformCaseId: ").Append(DisputePlatformCaseId).Append("\n");
@@ -829,6 +856,11 @@ namespace net.crossly.Model
                     this.Notes.Equals(input.Notes))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Source == input.Source ||
                     (this.Source != null &&
                     this.Source.Equals(input.Source))
@@ -836,6 +868,11 @@ namespace net.crossly.Model
                 (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
+                ) && 
+                (
+                    this.AssigneeMemberId == input.AssigneeMemberId ||
+                    (this.AssigneeMemberId != null &&
+                    this.AssigneeMemberId.Equals(input.AssigneeMemberId))
                 ) && 
                 (
                     this.InventoryItemId == input.InventoryItemId ||
@@ -853,11 +890,6 @@ namespace net.crossly.Model
                     this.PlatformListingId.Equals(input.PlatformListingId))
                 ) && 
                 (
-                    this.StorefrontId == input.StorefrontId ||
-                    (this.StorefrontId != null &&
-                    this.StorefrontId.Equals(input.StorefrontId))
-                ) && 
-                (
                     this.HandlingTimeDays == input.HandlingTimeDays ||
                     (this.HandlingTimeDays != null &&
                     this.HandlingTimeDays.Equals(input.HandlingTimeDays))
@@ -866,6 +898,11 @@ namespace net.crossly.Model
                     this.PlatformOrderId == input.PlatformOrderId ||
                     (this.PlatformOrderId != null &&
                     this.PlatformOrderId.Equals(input.PlatformOrderId))
+                ) && 
+                (
+                    this.OrderNumber == input.OrderNumber ||
+                    (this.OrderNumber != null &&
+                    this.OrderNumber.Equals(input.OrderNumber))
                 ) && 
                 (
                     this.ReportedByAppId == input.ReportedByAppId ||
@@ -1063,6 +1100,11 @@ namespace net.crossly.Model
                     this.LastChatCheckAt.Equals(input.LastChatCheckAt))
                 ) && 
                 (
+                    this.LastTrackingCheckAt == input.LastTrackingCheckAt ||
+                    (this.LastTrackingCheckAt != null &&
+                    this.LastTrackingCheckAt.Equals(input.LastTrackingCheckAt))
+                ) && 
+                (
                     this.IsDisputed == input.IsDisputed ||
                     this.IsDisputed.Equals(input.IsDisputed)
                 ) && 
@@ -1206,11 +1248,19 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                if (this.AssigneeMemberId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssigneeMemberId.GetHashCode();
+                }
                 if (this.InventoryItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
@@ -1223,10 +1273,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
                 }
-                if (this.StorefrontId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
-                }
                 if (this.HandlingTimeDays != null)
                 {
                     hashCode = (hashCode * 59) + this.HandlingTimeDays.GetHashCode();
@@ -1234,6 +1280,10 @@ namespace net.crossly.Model
                 if (this.PlatformOrderId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformOrderId.GetHashCode();
+                }
+                if (this.OrderNumber != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderNumber.GetHashCode();
                 }
                 if (this.ReportedByAppId != null)
                 {
@@ -1384,6 +1434,10 @@ namespace net.crossly.Model
                 if (this.LastChatCheckAt != null)
                 {
                     hashCode = (hashCode * 59) + this.LastChatCheckAt.GetHashCode();
+                }
+                if (this.LastTrackingCheckAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastTrackingCheckAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsDisputed.GetHashCode();
                 if (this.DisputeReason != null)

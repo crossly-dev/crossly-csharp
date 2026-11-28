@@ -44,40 +44,46 @@ namespace net.crossly.Model
             Confirmed = 1,
 
             /// <summary>
+            /// Enum Dismissed for value: dismissed
+            /// </summary>
+            [EnumMember(Value = "dismissed")]
+            Dismissed = 2,
+
+            /// <summary>
             /// Enum Failed for value: failed
             /// </summary>
             [EnumMember(Value = "failed")]
-            Failed = 2,
+            Failed = 3,
 
             /// <summary>
             /// Enum Acted for value: acted
             /// </summary>
             [EnumMember(Value = "acted")]
-            Acted = 3,
+            Acted = 4,
 
             /// <summary>
             /// Enum Held for value: held
             /// </summary>
             [EnumMember(Value = "held")]
-            Held = 4,
+            Held = 5,
 
             /// <summary>
             /// Enum Asked for value: asked
             /// </summary>
             [EnumMember(Value = "asked")]
-            Asked = 5,
+            Asked = 6,
 
             /// <summary>
             /// Enum Ignored for value: ignored
             /// </summary>
             [EnumMember(Value = "ignored")]
-            Ignored = 6,
+            Ignored = 7,
 
             /// <summary>
             /// Enum Undone for value: undone
             /// </summary>
             [EnumMember(Value = "undone")]
-            Undone = 7
+            Undone = 8
 
         }
 
@@ -107,8 +113,12 @@ namespace net.crossly.Model
         /// <param name="canUndo">canUndo (required).</param>
         /// <param name="candidateTitles">candidateTitles.</param>
         /// <param name="title">title.</param>
+        /// <param name="legacy">A legacy event_policy_decisions row shown in History (read-only, no actions)..</param>
+        /// <param name="dismissedAt">Dismiss on an ask (status dismissed)..</param>
+        /// <param name="orderId">orders.id the event is about (1460)..</param>
+        /// <param name="listingId">listings.id (the master listing, not the platform row) the event is about: the event page links to it..</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListDetectedEventEventsItem(string id = default(string), StatusEnum status = default(StatusEnum), string ruleId = default(string), string ruleName = default(string), List<ListDetectedEventEventsItemReports> reports = default(List<ListDetectedEventEventsItemReports>), List<ListDetectedEventEventsItemGuards> guards = default(List<ListDetectedEventEventsItemGuards>), List<ListDetectedEventEventsItemPlan> plan = default(List<ListDetectedEventEventsItemPlan>), List<ListDetectedEventEventsItemActions> actions = default(List<ListDetectedEventEventsItemActions>), bool canConfirm = default(bool), bool canUndo = default(bool), Dictionary<string, Object> candidateTitles = default(Dictionary<string, Object>), string title = default(string), string createdAt = default(string))
+        public ListDetectedEventEventsItem(string id = default(string), StatusEnum status = default(StatusEnum), string ruleId = default(string), string ruleName = default(string), List<ListDetectedEventEventsItemReports> reports = default(List<ListDetectedEventEventsItemReports>), List<ListDetectedEventEventsItemGuards> guards = default(List<ListDetectedEventEventsItemGuards>), List<ListDetectedEventEventsItemPlan> plan = default(List<ListDetectedEventEventsItemPlan>), List<ListDetectedEventEventsItemActions> actions = default(List<ListDetectedEventEventsItemActions>), bool canConfirm = default(bool), bool canUndo = default(bool), Dictionary<string, Object> candidateTitles = default(Dictionary<string, Object>), string title = default(string), bool? legacy = default(bool?), string dismissedAt = default(string), string orderId = default(string), string listingId = default(string), string createdAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -147,6 +157,10 @@ namespace net.crossly.Model
             this.RuleName = ruleName;
             this.CandidateTitles = candidateTitles;
             this.Title = title;
+            this.Legacy = legacy;
+            this.DismissedAt = dismissedAt;
+            this.OrderId = orderId;
+            this.ListingId = listingId;
         }
 
         /// <summary>
@@ -216,6 +230,34 @@ namespace net.crossly.Model
         public string Title { get; set; }
 
         /// <summary>
+        /// A legacy event_policy_decisions row shown in History (read-only, no actions).
+        /// </summary>
+        /// <value>A legacy event_policy_decisions row shown in History (read-only, no actions).</value>
+        [DataMember(Name = "legacy", EmitDefaultValue = true)]
+        public bool? Legacy { get; set; }
+
+        /// <summary>
+        /// Dismiss on an ask (status dismissed).
+        /// </summary>
+        /// <value>Dismiss on an ask (status dismissed).</value>
+        [DataMember(Name = "dismissedAt", EmitDefaultValue = true)]
+        public string DismissedAt { get; set; }
+
+        /// <summary>
+        /// orders.id the event is about (1460).
+        /// </summary>
+        /// <value>orders.id the event is about (1460).</value>
+        [DataMember(Name = "orderId", EmitDefaultValue = true)]
+        public string OrderId { get; set; }
+
+        /// <summary>
+        /// listings.id (the master listing, not the platform row) the event is about: the event page links to it.
+        /// </summary>
+        /// <value>listings.id (the master listing, not the platform row) the event is about: the event page links to it.</value>
+        [DataMember(Name = "listingId", EmitDefaultValue = true)]
+        public string ListingId { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -241,6 +283,10 @@ namespace net.crossly.Model
             sb.Append("  CanUndo: ").Append(CanUndo).Append("\n");
             sb.Append("  CandidateTitles: ").Append(CandidateTitles).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Legacy: ").Append(Legacy).Append("\n");
+            sb.Append("  DismissedAt: ").Append(DismissedAt).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -340,6 +386,26 @@ namespace net.crossly.Model
                     this.Title.Equals(input.Title))
                 ) && 
                 (
+                    this.Legacy == input.Legacy ||
+                    (this.Legacy != null &&
+                    this.Legacy.Equals(input.Legacy))
+                ) && 
+                (
+                    this.DismissedAt == input.DismissedAt ||
+                    (this.DismissedAt != null &&
+                    this.DismissedAt.Equals(input.DismissedAt))
+                ) && 
+                (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
+                ) && 
+                (
+                    this.ListingId == input.ListingId ||
+                    (this.ListingId != null &&
+                    this.ListingId.Equals(input.ListingId))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -393,6 +459,22 @@ namespace net.crossly.Model
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
+                if (this.Legacy != null)
+                {
+                    hashCode = (hashCode * 59) + this.Legacy.GetHashCode();
+                }
+                if (this.DismissedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DismissedAt.GetHashCode();
+                }
+                if (this.OrderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
+                if (this.ListingId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

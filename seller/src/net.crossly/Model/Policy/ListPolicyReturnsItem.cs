@@ -46,6 +46,7 @@ namespace net.crossly.Model
         /// <param name="carrier">carrier.</param>
         /// <param name="shippedAt">shippedAt.</param>
         /// <param name="refundedAt">refundedAt.</param>
+        /// <param name="note">note.</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
         /// <param name="reason">reason (required).</param>
         /// <param name="receivedAt">receivedAt.</param>
@@ -53,13 +54,12 @@ namespace net.crossly.Model
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="refundStripeId">refundStripeId.</param>
         /// <param name="purchaseId">purchaseId (required).</param>
-        /// <param name="note">note.</param>
         /// <param name="feeCents">feeCents (required).</param>
         /// <param name="trackingCode">trackingCode.</param>
         /// <param name="fit">fit.</param>
         /// <param name="refundCents">refundCents (required).</param>
         /// <param name="prepaidLabel">prepaidLabel (required).</param>
-        public ListPolicyReturnsItem(string orderId = default(string), string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string carrier = default(string), DateTime? shippedAt = default(DateTime?), DateTime? refundedAt = default(DateTime?), string buyerUserId = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string labelUrl = default(string), string sellerUserId = default(string), string refundStripeId = default(string), string purchaseId = default(string), string note = default(string), decimal feeCents = default(decimal), string trackingCode = default(string), string fit = default(string), decimal refundCents = default(decimal), bool prepaidLabel = default(bool))
+        public ListPolicyReturnsItem(string orderId = default(string), string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string carrier = default(string), DateTime? shippedAt = default(DateTime?), DateTime? refundedAt = default(DateTime?), string note = default(string), string buyerUserId = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string labelUrl = default(string), string sellerUserId = default(string), string refundStripeId = default(string), string purchaseId = default(string), decimal feeCents = default(decimal), string trackingCode = default(string), string fit = default(string), decimal refundCents = default(decimal), bool prepaidLabel = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -99,10 +99,10 @@ namespace net.crossly.Model
             this.Carrier = carrier;
             this.ShippedAt = shippedAt;
             this.RefundedAt = refundedAt;
+            this.Note = note;
             this.ReceivedAt = receivedAt;
             this.LabelUrl = labelUrl;
             this.RefundStripeId = refundStripeId;
-            this.Note = note;
             this.TrackingCode = trackingCode;
             this.Fit = fit;
         }
@@ -150,6 +150,12 @@ namespace net.crossly.Model
         public DateTime? RefundedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
@@ -190,12 +196,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "purchaseId", IsRequired = true, EmitDefaultValue = false)]
         public string PurchaseId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Note
-        /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeCents
@@ -242,6 +242,7 @@ namespace net.crossly.Model
             sb.Append("  Carrier: ").Append(Carrier).Append("\n");
             sb.Append("  ShippedAt: ").Append(ShippedAt).Append("\n");
             sb.Append("  RefundedAt: ").Append(RefundedAt).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  ReceivedAt: ").Append(ReceivedAt).Append("\n");
@@ -249,7 +250,6 @@ namespace net.crossly.Model
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  RefundStripeId: ").Append(RefundStripeId).Append("\n");
             sb.Append("  PurchaseId: ").Append(PurchaseId).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  FeeCents: ").Append(FeeCents).Append("\n");
             sb.Append("  TrackingCode: ").Append(TrackingCode).Append("\n");
             sb.Append("  Fit: ").Append(Fit).Append("\n");
@@ -326,6 +326,11 @@ namespace net.crossly.Model
                     this.RefundedAt.Equals(input.RefundedAt))
                 ) && 
                 (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
@@ -359,11 +364,6 @@ namespace net.crossly.Model
                     this.PurchaseId == input.PurchaseId ||
                     (this.PurchaseId != null &&
                     this.PurchaseId.Equals(input.PurchaseId))
-                ) && 
-                (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
                 ) && 
                 (
                     this.FeeCents == input.FeeCents ||
@@ -426,6 +426,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.RefundedAt.GetHashCode();
                 }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
@@ -453,10 +457,6 @@ namespace net.crossly.Model
                 if (this.PurchaseId != null)
                 {
                     hashCode = (hashCode * 59) + this.PurchaseId.GetHashCode();
-                }
-                if (this.Note != null)
-                {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.FeeCents.GetHashCode();
                 if (this.TrackingCode != null)

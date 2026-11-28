@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent(string experienceId);
+        WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest));
 
         /// <summary>
         /// Schedule an Experience Event shown on the game&#39;s card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event&#39;s schedule.
@@ -42,8 +43,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventWithHttpInfo(string experienceId);
+        ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventWithHttpInfo(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest));
         /// <summary>
         /// Cancel an event (it disappears from the game&#39;s card; no reminder goes out).
         /// </summary>
@@ -70,8 +72,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp(string experienceId, string eventId);
+        WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest));
 
         /// <summary>
         /// RSVP (going: true) or take it back. remind: true also turns the experience&#39;s notifications on, so the 15-minute reminder can reach you.
@@ -82,15 +85,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpWithHttpInfo(string experienceId, string eventId);
+        ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpWithHttpInfo(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest));
         /// <summary>
         /// Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceNotificationResponse</returns>
-        CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification(string experienceId);
+        CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest));
 
         /// <summary>
         /// Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
@@ -100,8 +105,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceNotificationResponse</returns>
-        ApiResponse<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationWithHttpInfo(string experienceId);
+        ApiResponse<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationWithHttpInfo(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest));
         /// <summary>
         /// Retire a template: sends by its key stop.
         /// </summary>
@@ -145,8 +151,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetWorldExperienceNotificationReportResponse</returns>
-        GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport(string experienceId);
+        GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport(string experienceId, decimal? days = default(decimal?));
 
         /// <summary>
         /// Sends over the last N days (default 7, max 90): delivered, suppressed by reason, per template, and how many players turned notifications on.
@@ -156,14 +163,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetWorldExperienceNotificationReportResponse</returns>
-        ApiResponse<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportWithHttpInfo(string experienceId);
+        ApiResponse<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportWithHttpInfo(string experienceId, decimal? days = default(decimal?));
         /// <summary>
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWorldExperienceEventUpcomingResponse</returns>
-        ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming();
+        ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming(decimal? limit = default(decimal?));
 
         /// <summary>
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board.
@@ -172,8 +181,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWorldExperienceEventUpcomingResponse</returns>
-        ApiResponse<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingWithHttpInfo();
+        ApiResponse<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingWithHttpInfo(decimal? limit = default(decimal?));
         /// <summary>
         /// An experience&#39;s upcoming and live events as players see them, with whether you are going.
         /// </summary>
@@ -266,8 +276,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent(string experienceId, string eventId);
+        WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest));
 
         /// <summary>
         /// Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
@@ -278,15 +289,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        ApiResponse<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventWithHttpInfo(string experienceId, string eventId);
+        ApiResponse<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventWithHttpInfo(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest));
         /// <summary>
         /// Turn this experience&#39;s notifications on or off for you. timeZone (IANA) keeps them out of your night.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <returns>GetWorldExperienceNotificationOptInResponse</returns>
-        GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn(string experienceId);
+        GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest));
 
         /// <summary>
         /// Turn this experience&#39;s notifications on or off for you. timeZone (IANA) keeps them out of your night.
@@ -296,16 +309,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <returns>ApiResponse of GetWorldExperienceNotificationOptInResponse</returns>
-        ApiResponse<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInWithHttpInfo(string experienceId);
+        ApiResponse<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInWithHttpInfo(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest));
         /// <summary>
         /// Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceNotificationTemplateResponse</returns>
-        UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate(string experienceId, string key);
+        UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest));
 
         /// <summary>
         /// Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
@@ -316,8 +331,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceNotificationTemplateResponse</returns>
-        ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateWithHttpInfo(string experienceId, string key);
+        ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateWithHttpInfo(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest));
         #endregion Synchronous Operations
     }
 
@@ -335,9 +351,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventAsync(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Schedule an Experience Event shown on the game&#39;s card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event&#39;s schedule.
@@ -347,9 +364,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel an event (it disappears from the game&#39;s card; no reminder goes out).
         /// </summary>
@@ -384,9 +402,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpAsync(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// RSVP (going: true) or take it back. remind: true also turns the experience&#39;s notifications on, so the 15-minute reminder can reach you.
@@ -397,9 +416,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
         /// </summary>
@@ -408,9 +428,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceNotificationResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationAsync(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
@@ -420,9 +441,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceNotificationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceNotificationResponse>> CreateWorldExperienceNotificationWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceNotificationResponse>> CreateWorldExperienceNotificationWithHttpInfoAsync(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retire a template: sends by its key stop.
         /// </summary>
@@ -479,9 +501,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorldExperienceNotificationReportResponse</returns>
-        System.Threading.Tasks.Task<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportAsync(string experienceId, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sends over the last N days (default 7, max 90): delivered, suppressed by reason, per template, and how many players turned notifications on.
@@ -491,9 +514,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorldExperienceNotificationReportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWorldExperienceNotificationReportResponse>> GetWorldExperienceNotificationReportWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWorldExperienceNotificationReportResponse>> GetWorldExperienceNotificationReportWithHttpInfoAsync(string experienceId, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board.
         /// </summary>
@@ -501,9 +525,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWorldExperienceEventUpcomingResponse</returns>
-        System.Threading.Tasks.Task<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board.
@@ -512,9 +537,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWorldExperienceEventUpcomingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWorldExperienceEventUpcomingResponse>> ListWorldExperienceEventUpcomingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWorldExperienceEventUpcomingResponse>> ListWorldExperienceEventUpcomingWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// An experience&#39;s upcoming and live events as players see them, with whether you are going.
         /// </summary>
@@ -635,9 +661,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventAsync(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
@@ -648,9 +675,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> UpdateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceExperienceEventResponse>> UpdateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Turn this experience&#39;s notifications on or off for you. timeZone (IANA) keeps them out of your night.
         /// </summary>
@@ -659,9 +687,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorldExperienceNotificationOptInResponse</returns>
-        System.Threading.Tasks.Task<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInAsync(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Turn this experience&#39;s notifications on or off for you. timeZone (IANA) keeps them out of your night.
@@ -671,9 +700,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorldExperienceNotificationOptInResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWorldExperienceNotificationOptInResponse>> UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWorldExperienceNotificationOptInResponse>> UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
         /// </summary>
@@ -683,9 +713,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceNotificationTemplateResponse</returns>
-        System.Threading.Tasks.Task<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateAsync(string experienceId, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateAsync(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
@@ -696,9 +727,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceNotificationTemplateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceNotificationTemplateResponse>> UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(string experienceId, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceNotificationTemplateResponse>> UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -824,10 +856,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        public WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent(string experienceId)
+        public WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = CreateWorldExperienceExperienceEventWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = CreateWorldExperienceExperienceEventWithHttpInfo(experienceId, createWorldExperienceExperienceEventRequest);
             return localVarResponse.Data;
         }
 
@@ -836,8 +869,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventWithHttpInfo(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -848,6 +882,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -868,6 +903,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceExperienceEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -895,11 +931,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventAsync(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await CreateWorldExperienceExperienceEventWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await CreateWorldExperienceExperienceEventWithHttpInfoAsync(experienceId, createWorldExperienceExperienceEventRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -908,9 +945,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = default(CreateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -922,6 +960,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -942,6 +981,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceExperienceEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1135,10 +1175,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        public WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp(string experienceId, string eventId)
+        public WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = CreateWorldExperienceExperienceEventRsvpWithHttpInfo(experienceId, eventId);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = CreateWorldExperienceExperienceEventRsvpWithHttpInfo(experienceId, eventId, createWorldExperienceExperienceEventRsvpRequest);
             return localVarResponse.Data;
         }
 
@@ -1148,8 +1189,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpWithHttpInfo(string experienceId, string eventId)
+        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpWithHttpInfo(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1166,6 +1208,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1187,6 +1230,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceExperienceEventRsvpRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1215,11 +1259,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> CreateWorldExperienceExperienceEventRsvpAsync(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(experienceId, eventId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(experienceId, eventId, createWorldExperienceExperienceEventRsvpRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1229,9 +1274,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="createWorldExperienceExperienceEventRsvpRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> CreateWorldExperienceExperienceEventRsvpWithHttpInfoAsync(string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = default(CreateWorldExperienceExperienceEventRsvpRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1249,6 +1295,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1270,6 +1317,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceExperienceEventRsvpRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1298,10 +1346,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceNotificationResponse</returns>
-        public CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification(string experienceId)
+        public CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> localVarResponse = CreateWorldExperienceNotificationWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> localVarResponse = CreateWorldExperienceNotificationWithHttpInfo(experienceId, createWorldExperienceNotificationRequest);
             return localVarResponse.Data;
         }
 
@@ -1310,8 +1359,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceNotificationResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationWithHttpInfo(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1322,6 +1372,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1342,6 +1393,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceNotificationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1369,11 +1421,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceNotificationResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldExperienceNotificationResponse> CreateWorldExperienceNotificationAsync(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> localVarResponse = await CreateWorldExperienceNotificationWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse> localVarResponse = await CreateWorldExperienceNotificationWithHttpInfoAsync(experienceId, createWorldExperienceNotificationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1382,9 +1435,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceNotificationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceNotificationResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse>> CreateWorldExperienceNotificationWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceNotificationResponse>> CreateWorldExperienceNotificationWithHttpInfoAsync(string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = default(CreateWorldExperienceNotificationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1396,6 +1450,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1416,6 +1471,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceNotificationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1754,10 +1810,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetWorldExperienceNotificationReportResponse</returns>
-        public GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport(string experienceId)
+        public GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport(string experienceId, decimal? days = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> localVarResponse = GetWorldExperienceNotificationReportWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> localVarResponse = GetWorldExperienceNotificationReportWithHttpInfo(experienceId, days);
             return localVarResponse.Data;
         }
 
@@ -1766,8 +1823,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetWorldExperienceNotificationReportResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportWithHttpInfo(string experienceId, decimal? days = default(decimal?))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1798,6 +1856,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1825,11 +1887,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorldExperienceNotificationReportResponse</returns>
-        public async System.Threading.Tasks.Task<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWorldExperienceNotificationReportResponse> GetWorldExperienceNotificationReportAsync(string experienceId, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> localVarResponse = await GetWorldExperienceNotificationReportWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse> localVarResponse = await GetWorldExperienceNotificationReportWithHttpInfoAsync(experienceId, days, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1838,9 +1901,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorldExperienceNotificationReportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse>> GetWorldExperienceNotificationReportWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorldExperienceNotificationReportResponse>> GetWorldExperienceNotificationReportWithHttpInfoAsync(string experienceId, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1872,6 +1936,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1899,10 +1967,11 @@ namespace net.crossly.Api
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWorldExperienceEventUpcomingResponse</returns>
-        public ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming()
+        public ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming(decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> localVarResponse = ListWorldExperienceEventUpcomingWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> localVarResponse = ListWorldExperienceEventUpcomingWithHttpInfo(limit);
             return localVarResponse.Data;
         }
 
@@ -1910,8 +1979,9 @@ namespace net.crossly.Api
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWorldExperienceEventUpcomingResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingWithHttpInfo(decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1935,6 +2005,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1961,11 +2035,12 @@ namespace net.crossly.Api
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWorldExperienceEventUpcomingResponse</returns>
-        public async System.Threading.Tasks.Task<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWorldExperienceEventUpcomingResponse> ListWorldExperienceEventUpcomingAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> localVarResponse = await ListWorldExperienceEventUpcomingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse> localVarResponse = await ListWorldExperienceEventUpcomingWithHttpInfoAsync(limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1973,9 +2048,10 @@ namespace net.crossly.Api
         /// Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza&#39;s \&quot;Coming up\&quot; board. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWorldExperienceEventUpcomingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse>> ListWorldExperienceEventUpcomingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWorldExperienceEventUpcomingResponse>> ListWorldExperienceEventUpcomingWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2000,6 +2076,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2723,10 +2803,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>WorldExperienceExperienceEventResponse</returns>
-        public WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent(string experienceId, string eventId)
+        public WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = UpdateWorldExperienceExperienceEventWithHttpInfo(experienceId, eventId);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = UpdateWorldExperienceExperienceEventWithHttpInfo(experienceId, eventId, updateWorldExperienceExperienceEventRequest);
             return localVarResponse.Data;
         }
 
@@ -2736,8 +2817,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceExperienceEventResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventWithHttpInfo(string experienceId, string eventId)
+        public net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventWithHttpInfo(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -2754,6 +2836,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2775,6 +2858,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceExperienceEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2803,11 +2887,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceExperienceEventResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceExperienceEventResponse> UpdateWorldExperienceExperienceEventAsync(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await UpdateWorldExperienceExperienceEventWithHttpInfoAsync(experienceId, eventId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse> localVarResponse = await UpdateWorldExperienceExperienceEventWithHttpInfoAsync(experienceId, eventId, updateWorldExperienceExperienceEventRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2817,9 +2902,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="eventId"></param>
+        /// <param name="updateWorldExperienceExperienceEventRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceExperienceEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> UpdateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, string eventId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceExperienceEventResponse>> UpdateWorldExperienceExperienceEventWithHttpInfoAsync(string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = default(UpdateWorldExperienceExperienceEventRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -2837,6 +2923,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2858,6 +2945,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("eventId", net.crossly.Client.ClientUtils.ParameterToString(eventId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceExperienceEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2886,10 +2974,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <returns>GetWorldExperienceNotificationOptInResponse</returns>
-        public GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn(string experienceId)
+        public GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest))
         {
-            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> localVarResponse = UpdateWorldExperienceNotificationOptInWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> localVarResponse = UpdateWorldExperienceNotificationOptInWithHttpInfo(experienceId, updateWorldExperienceNotificationOptInRequest);
             return localVarResponse.Data;
         }
 
@@ -2898,8 +2987,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <returns>ApiResponse of GetWorldExperienceNotificationOptInResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInWithHttpInfo(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -2910,6 +3000,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2930,6 +3021,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceNotificationOptInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2957,11 +3049,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWorldExperienceNotificationOptInResponse</returns>
-        public async System.Threading.Tasks.Task<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWorldExperienceNotificationOptInResponse> UpdateWorldExperienceNotificationOptInAsync(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> localVarResponse = await UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse> localVarResponse = await UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(experienceId, updateWorldExperienceNotificationOptInRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2970,9 +3063,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceNotificationOptInRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorldExperienceNotificationOptInResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse>> UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWorldExperienceNotificationOptInResponse>> UpdateWorldExperienceNotificationOptInWithHttpInfoAsync(string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = default(UpdateWorldExperienceNotificationOptInRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -2984,6 +3078,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3004,6 +3099,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceNotificationOptInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3033,10 +3129,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceNotificationTemplateResponse</returns>
-        public UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate(string experienceId, string key)
+        public UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> localVarResponse = UpdateWorldExperienceNotificationTemplateWithHttpInfo(experienceId, key);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> localVarResponse = UpdateWorldExperienceNotificationTemplateWithHttpInfo(experienceId, key, createGroupBuyMessageRequest);
             return localVarResponse.Data;
         }
 
@@ -3046,8 +3143,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceNotificationTemplateResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateWithHttpInfo(string experienceId, string key)
+        public net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateWithHttpInfo(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -3064,6 +3162,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3085,6 +3184,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3113,11 +3213,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceNotificationTemplateResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateAsync(string experienceId, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWorldExperienceNotificationTemplateResponse> UpdateWorldExperienceNotificationTemplateAsync(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> localVarResponse = await UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(experienceId, key, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse> localVarResponse = await UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(experienceId, key, createGroupBuyMessageRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3127,9 +3228,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="key"></param>
+        /// <param name="createGroupBuyMessageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceNotificationTemplateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse>> UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(string experienceId, string key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceNotificationTemplateResponse>> UpdateWorldExperienceNotificationTemplateWithHttpInfoAsync(string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = default(CreateGroupBuyMessageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -3147,6 +3249,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3168,6 +3271,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            localVarRequestOptions.Data = createGroupBuyMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

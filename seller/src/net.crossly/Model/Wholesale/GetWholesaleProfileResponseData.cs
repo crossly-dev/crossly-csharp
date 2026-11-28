@@ -51,8 +51,8 @@ namespace net.crossly.Model
         /// <param name="logoUrl">logoUrl.</param>
         /// <param name="bannerUrl">bannerUrl.</param>
         /// <param name="returnPolicy">returnPolicy.</param>
-        /// <param name="returnPresetId">returnPresetId.</param>
         /// <param name="shippingPresetId">shippingPresetId.</param>
+        /// <param name="returnPresetId">returnPresetId.</param>
         /// <param name="paymentPresetId">paymentPresetId.</param>
         /// <param name="requiresBusinessVerification">requiresBusinessVerification (required).</param>
         /// <param name="directoryCategories">directoryCategories (required).</param>
@@ -79,7 +79,7 @@ namespace net.crossly.Model
         /// <param name="saved">saved (required).</param>
         /// <param name="legacyStoreless">legacyStoreless (required).</param>
         /// <param name="invoiceSettingsResolved">invoiceSettingsResolved (required).</param>
-        public GetWholesaleProfileResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string storefrontId = default(string), decimal? minOrderQuantity = default(decimal?), string sellerUserId = default(string), decimal? minOrderCents = default(decimal?), string contactEmail = default(string), string tagline = default(string), string logoUrl = default(string), string bannerUrl = default(string), string returnPolicy = default(string), string returnPresetId = default(string), string shippingPresetId = default(string), string paymentPresetId = default(string), bool requiresBusinessVerification = default(bool), List<string> directoryCategories = default(List<string>), string shipsFromRegion = default(string), string directoryBlurb = default(string), decimal? casePack = default(decimal?), decimal? leadTimeDays = default(decimal?), string priceVisibility = default(string), decimal? maxPerOrder = default(decimal?), string backorder = default(string), string companyName = default(string), GetWholesaleOverviewResponseDataProfileShipsFrom shipsFrom = default(GetWholesaleOverviewResponseDataProfileShipsFrom), List<string> paymentTermsOffered = default(List<string>), bool directoryListed = default(bool), bool invoicingEnabled = default(bool), GetWholesaleOverviewResponseDataProfileInvoiceSettings invoiceSettings = default(GetWholesaleOverviewResponseDataProfileInvoiceSettings), List<string> brandsCarried = default(List<string>), decimal? yearFounded = default(decimal?), decimal? minFirstOrderCents = default(decimal?), decimal? minReorderCents = default(decimal?), GetWholesaleProfileResponseDataBuyerRequirements buyerRequirements = default(GetWholesaleProfileResponseDataBuyerRequirements), decimal? tradeRewardsBps = default(decimal?), bool acceptsFunding = default(bool), bool saved = default(bool), bool legacyStoreless = default(bool), GetWholesaleOverviewResponseDataProfileInvoiceSettingsResolved invoiceSettingsResolved = default(GetWholesaleOverviewResponseDataProfileInvoiceSettingsResolved))
+        public GetWholesaleProfileResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string storefrontId = default(string), decimal? minOrderQuantity = default(decimal?), string sellerUserId = default(string), decimal? minOrderCents = default(decimal?), string contactEmail = default(string), string tagline = default(string), string logoUrl = default(string), string bannerUrl = default(string), string returnPolicy = default(string), string shippingPresetId = default(string), string returnPresetId = default(string), string paymentPresetId = default(string), bool requiresBusinessVerification = default(bool), List<string> directoryCategories = default(List<string>), string shipsFromRegion = default(string), string directoryBlurb = default(string), decimal? casePack = default(decimal?), decimal? leadTimeDays = default(decimal?), string priceVisibility = default(string), decimal? maxPerOrder = default(decimal?), string backorder = default(string), string companyName = default(string), GetWholesaleOverviewResponseDataProfileShipsFrom shipsFrom = default(GetWholesaleOverviewResponseDataProfileShipsFrom), List<string> paymentTermsOffered = default(List<string>), bool directoryListed = default(bool), bool invoicingEnabled = default(bool), GetWholesaleOverviewResponseDataProfileInvoiceSettings invoiceSettings = default(GetWholesaleOverviewResponseDataProfileInvoiceSettings), List<string> brandsCarried = default(List<string>), decimal? yearFounded = default(decimal?), decimal? minFirstOrderCents = default(decimal?), decimal? minReorderCents = default(decimal?), GetWholesaleProfileResponseDataBuyerRequirements buyerRequirements = default(GetWholesaleProfileResponseDataBuyerRequirements), decimal? tradeRewardsBps = default(decimal?), bool acceptsFunding = default(bool), bool saved = default(bool), bool legacyStoreless = default(bool), GetWholesaleOverviewResponseDataProfileInvoiceSettingsResolved invoiceSettingsResolved = default(GetWholesaleOverviewResponseDataProfileInvoiceSettingsResolved))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -127,8 +127,8 @@ namespace net.crossly.Model
             this.LogoUrl = logoUrl;
             this.BannerUrl = bannerUrl;
             this.ReturnPolicy = returnPolicy;
-            this.ReturnPresetId = returnPresetId;
             this.ShippingPresetId = shippingPresetId;
+            this.ReturnPresetId = returnPresetId;
             this.PaymentPresetId = paymentPresetId;
             this.ShipsFromRegion = shipsFromRegion;
             this.DirectoryBlurb = directoryBlurb;
@@ -220,16 +220,16 @@ namespace net.crossly.Model
         public string ReturnPolicy { get; set; }
 
         /// <summary>
-        /// Gets or Sets ReturnPresetId
-        /// </summary>
-        [DataMember(Name = "returnPresetId", EmitDefaultValue = true)]
-        public string ReturnPresetId { get; set; }
-
-        /// <summary>
         /// Gets or Sets ShippingPresetId
         /// </summary>
         [DataMember(Name = "shippingPresetId", EmitDefaultValue = true)]
         public string ShippingPresetId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReturnPresetId
+        /// </summary>
+        [DataMember(Name = "returnPresetId", EmitDefaultValue = true)]
+        public string ReturnPresetId { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentPresetId
@@ -407,8 +407,8 @@ namespace net.crossly.Model
             sb.Append("  LogoUrl: ").Append(LogoUrl).Append("\n");
             sb.Append("  BannerUrl: ").Append(BannerUrl).Append("\n");
             sb.Append("  ReturnPolicy: ").Append(ReturnPolicy).Append("\n");
-            sb.Append("  ReturnPresetId: ").Append(ReturnPresetId).Append("\n");
             sb.Append("  ShippingPresetId: ").Append(ShippingPresetId).Append("\n");
+            sb.Append("  ReturnPresetId: ").Append(ReturnPresetId).Append("\n");
             sb.Append("  PaymentPresetId: ").Append(PaymentPresetId).Append("\n");
             sb.Append("  RequiresBusinessVerification: ").Append(RequiresBusinessVerification).Append("\n");
             sb.Append("  DirectoryCategories: ").Append(DirectoryCategories).Append("\n");
@@ -531,14 +531,14 @@ namespace net.crossly.Model
                     this.ReturnPolicy.Equals(input.ReturnPolicy))
                 ) && 
                 (
-                    this.ReturnPresetId == input.ReturnPresetId ||
-                    (this.ReturnPresetId != null &&
-                    this.ReturnPresetId.Equals(input.ReturnPresetId))
-                ) && 
-                (
                     this.ShippingPresetId == input.ShippingPresetId ||
                     (this.ShippingPresetId != null &&
                     this.ShippingPresetId.Equals(input.ShippingPresetId))
+                ) && 
+                (
+                    this.ReturnPresetId == input.ReturnPresetId ||
+                    (this.ReturnPresetId != null &&
+                    this.ReturnPresetId.Equals(input.ReturnPresetId))
                 ) && 
                 (
                     this.PaymentPresetId == input.PaymentPresetId ||
@@ -726,13 +726,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ReturnPolicy.GetHashCode();
                 }
-                if (this.ReturnPresetId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReturnPresetId.GetHashCode();
-                }
                 if (this.ShippingPresetId != null)
                 {
                     hashCode = (hashCode * 59) + this.ShippingPresetId.GetHashCode();
+                }
+                if (this.ReturnPresetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnPresetId.GetHashCode();
                 }
                 if (this.PaymentPresetId != null)
                 {

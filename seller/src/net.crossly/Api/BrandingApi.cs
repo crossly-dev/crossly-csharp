@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <returns>CreateBrandingDropResponse</returns>
-        CreateBrandingDropResponse CreateBrandingDrop();
+        CreateBrandingDropResponse CreateBrandingDrop(CreateBrandingDropRequest createBrandingDropRequest);
 
         /// <summary>
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing.
@@ -40,16 +41,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <returns>ApiResponse of CreateBrandingDropResponse</returns>
-        ApiResponse<CreateBrandingDropResponse> CreateBrandingDropWithHttpInfo();
+        ApiResponse<CreateBrandingDropResponse> CreateBrandingDropWithHttpInfo(CreateBrandingDropRequest createBrandingDropRequest);
         /// <summary>
         /// Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <returns>GetBrandingDropResponse</returns>
-        GetBrandingDropResponse CreateBrandingDropControl(string id, string control);
+        GetBrandingDropResponse CreateBrandingDropControl(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest));
 
         /// <summary>
         /// Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
@@ -60,8 +63,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingDropResponse</returns>
-        ApiResponse<GetBrandingDropResponse> CreateBrandingDropControlWithHttpInfo(string id, string control);
+        ApiResponse<GetBrandingDropResponse> CreateBrandingDropControlWithHttpInfo(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest));
         /// <summary>
         /// Publish: scheduled, or pending_review for a brand partner without self-publish. Brand partners need a verified business on Stripe (403 business_verification_required).
         /// </summary>
@@ -81,12 +85,33 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateBrandingDropPublishResponse</returns>
         ApiResponse<CreateBrandingDropPublishResponse> CreateBrandingDropPublishWithHttpInfo(Guid id);
         /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <returns>CreateBrandingDropRestockRunResponse</returns>
+        CreateBrandingDropRestockRunResponse CreateBrandingDropRestockRun(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest));
+
+        /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateBrandingDropRestockRunResponse</returns>
+        ApiResponse<CreateBrandingDropRestockRunResponse> CreateBrandingDropRestockRunWithHttpInfo(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest));
+        /// <summary>
         /// Cancel a published event with the reason attendees see.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateBrandingEventCancelResponse</returns>
-        CreateBrandingEventCancelResponse CreateBrandingEventCancel(Guid id);
+        CreateBrandingEventCancelResponse CreateBrandingEventCancel(Guid id, ReasonRequest reasonRequest);
 
         /// <summary>
         /// Cancel a published event with the reason attendees see.
@@ -96,15 +121,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateBrandingEventCancelResponse</returns>
-        ApiResponse<CreateBrandingEventCancelResponse> CreateBrandingEventCancelWithHttpInfo(Guid id);
+        ApiResponse<CreateBrandingEventCancelResponse> CreateBrandingEventCancelWithHttpInfo(Guid id, ReasonRequest reasonRequest);
         /// <summary>
         /// Check a ticket in at the door by its QR token.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <returns>CreateBrandingEventCheckInResponse</returns>
-        CreateBrandingEventCheckInResponse CreateBrandingEventCheckIn(Guid id);
+        CreateBrandingEventCheckInResponse CreateBrandingEventCheckIn(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest);
 
         /// <summary>
         /// Check a ticket in at the door by its QR token.
@@ -114,15 +141,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <returns>ApiResponse of CreateBrandingEventCheckInResponse</returns>
-        ApiResponse<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInWithHttpInfo(Guid id);
+        ApiResponse<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInWithHttpInfo(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest);
         /// <summary>
         /// Message the event&#39;s attendees: all, going, or ticketed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <returns>CreateBrandingEventMessageResponse</returns>
-        CreateBrandingEventMessageResponse CreateBrandingEventMessage(Guid id);
+        CreateBrandingEventMessageResponse CreateBrandingEventMessage(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest);
 
         /// <summary>
         /// Message the event&#39;s attendees: all, going, or ticketed.
@@ -132,8 +161,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <returns>ApiResponse of CreateBrandingEventMessageResponse</returns>
-        ApiResponse<CreateBrandingEventMessageResponse> CreateBrandingEventMessageWithHttpInfo(Guid id);
+        ApiResponse<CreateBrandingEventMessageResponse> CreateBrandingEventMessageWithHttpInfo(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest);
         /// <summary>
         /// Delete a draft, or cancel a scheduled drop. A live drop is ended with the end control.
         /// </summary>
@@ -168,6 +198,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetBrandingBrandResponse</returns>
         ApiResponse<GetBrandingBrandResponse> GetBrandingBrandWithHttpInfo();
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBrandingBrandTermResponse</returns>
+        GetBrandingBrandTermResponse GetBrandingBrandTerm();
+
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBrandingBrandTermResponse</returns>
+        ApiResponse<GetBrandingBrandTermResponse> GetBrandingBrandTermWithHttpInfo();
         /// <summary>
         /// Whether your Stripe account is a verified business (company, EIN/tax id verified, payouts on), with reasons and the page to fix it.
         /// </summary>
@@ -206,8 +252,9 @@ namespace net.crossly.Api
         /// Your events: upcoming grouped by date (today, this_week, later), or past.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <returns>GetBrandingEventResponse</returns>
-        GetBrandingEventResponse GetBrandingEvent();
+        GetBrandingEventResponse GetBrandingEvent(string scope = default(string));
 
         /// <summary>
         /// Your events: upcoming grouped by date (today, this_week, later), or past.
@@ -216,8 +263,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingEventResponse</returns>
-        ApiResponse<GetBrandingEventResponse> GetBrandingEventWithHttpInfo();
+        ApiResponse<GetBrandingEventResponse> GetBrandingEventWithHttpInfo(string scope = default(string));
         /// <summary>
         /// The store’s Branding defaults new drops start from: timezone, notifyFollowers, botQueue, botCaptcha, cartHoldMinutes, leftovers.
         /// </summary>
@@ -235,11 +283,66 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetBrandingSettingResponse</returns>
         ApiResponse<GetBrandingSettingResponse> GetBrandingSettingWithHttpInfo();
         /// <summary>
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <returns>ListBrandingBrandSellerSearchResponse</returns>
+        ListBrandingBrandSellerSearchResponse ListBrandingBrandSellerSearch(string q = default(string));
+
+        /// <summary>
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <returns>ApiResponse of ListBrandingBrandSellerSearchResponse</returns>
+        ApiResponse<ListBrandingBrandSellerSearchResponse> ListBrandingBrandSellerSearchWithHttpInfo(string q = default(string));
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListBrandingBrandSellersResponse</returns>
+        ListBrandingBrandSellersResponse ListBrandingBrandSellers();
+
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListBrandingBrandSellersResponse</returns>
+        ApiResponse<ListBrandingBrandSellersResponse> ListBrandingBrandSellersWithHttpInfo();
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListBrandingDropBuyersResponse</returns>
+        ListBrandingDropBuyersResponse ListBrandingDropBuyers(Guid id);
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListBrandingDropBuyersResponse</returns>
+        ApiResponse<ListBrandingDropBuyersResponse> ListBrandingDropBuyersWithHttpInfo(Guid id);
+        /// <summary>
         /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ListBrandingDropsResponse</returns>
-        ListBrandingDropsResponse ListBrandingDrops();
+        ListBrandingDropsResponse ListBrandingDrops(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string));
 
         /// <summary>
         /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all.
@@ -248,8 +351,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ApiResponse of ListBrandingDropsResponse</returns>
-        ApiResponse<ListBrandingDropsResponse> ListBrandingDropsWithHttpInfo();
+        ApiResponse<ListBrandingDropsResponse> ListBrandingDropsWithHttpInfo(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string));
         /// <summary>
         /// Edit your brand profile: logoUrl, bannerUrl, story, links.
         /// </summary>
@@ -267,12 +373,31 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetBrandingBrandResponse</returns>
         ApiResponse<GetBrandingBrandResponse> UpdateBrandingBrandWithHttpInfo();
         /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <returns>UpdateBrandingBrandSellerResponse</returns>
+        UpdateBrandingBrandSellerResponse UpdateBrandingBrandSeller(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest);
+
+        /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <returns>ApiResponse of UpdateBrandingBrandSellerResponse</returns>
+        ApiResponse<UpdateBrandingBrandSellerResponse> UpdateBrandingBrandSellerWithHttpInfo(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest);
+        /// <summary>
         /// Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <returns>CreateBrandingDropResponse</returns>
-        CreateBrandingDropResponse UpdateBrandingDrop(Guid id);
+        CreateBrandingDropResponse UpdateBrandingDrop(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest);
 
         /// <summary>
         /// Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
@@ -282,15 +407,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <returns>ApiResponse of CreateBrandingDropResponse</returns>
-        ApiResponse<CreateBrandingDropResponse> UpdateBrandingDropWithHttpInfo(Guid id);
+        ApiResponse<CreateBrandingDropResponse> UpdateBrandingDropWithHttpInfo(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest);
         /// <summary>
         /// Save an event&#39;s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <returns>UpdateBrandingEventSettingResponse</returns>
-        UpdateBrandingEventSettingResponse UpdateBrandingEventSetting(Guid id);
+        UpdateBrandingEventSettingResponse UpdateBrandingEventSetting(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest);
 
         /// <summary>
         /// Save an event&#39;s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
@@ -300,14 +427,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <returns>ApiResponse of UpdateBrandingEventSettingResponse</returns>
-        ApiResponse<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingWithHttpInfo(Guid id);
+        ApiResponse<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingWithHttpInfo(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest);
         /// <summary>
         /// Change the store’s Branding defaults (any subset of the fields).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <returns>GetBrandingSettingResponse</returns>
-        GetBrandingSettingResponse UpdateBrandingSetting();
+        GetBrandingSettingResponse UpdateBrandingSetting(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest));
 
         /// <summary>
         /// Change the store’s Branding defaults (any subset of the fields).
@@ -316,8 +445,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingSettingResponse</returns>
-        ApiResponse<GetBrandingSettingResponse> UpdateBrandingSettingWithHttpInfo();
+        ApiResponse<GetBrandingSettingResponse> UpdateBrandingSettingWithHttpInfo(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest));
         #endregion Synchronous Operations
     }
 
@@ -334,9 +464,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingDropResponse</returns>
-        System.Threading.Tasks.Task<CreateBrandingDropResponse> CreateBrandingDropAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBrandingDropResponse> CreateBrandingDropAsync(CreateBrandingDropRequest createBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing.
@@ -345,9 +476,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropResponse>> CreateBrandingDropWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropResponse>> CreateBrandingDropWithHttpInfoAsync(CreateBrandingDropRequest createBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
         /// </summary>
@@ -357,9 +489,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingDropResponse</returns>
-        System.Threading.Tasks.Task<GetBrandingDropResponse> CreateBrandingDropControlAsync(string id, string control, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBrandingDropResponse> CreateBrandingDropControlAsync(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Live controls: pause, resume, extend (body endsAt), release-wave, end, draw (raffle).
@@ -370,9 +503,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBrandingDropResponse>> CreateBrandingDropControlWithHttpInfoAsync(string id, string control, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBrandingDropResponse>> CreateBrandingDropControlWithHttpInfoAsync(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Publish: scheduled, or pending_review for a brand partner without self-publish. Brand partners need a verified business on Stripe (403 business_verification_required).
         /// </summary>
@@ -397,6 +531,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateBrandingDropPublishResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropPublishResponse>> CreateBrandingDropPublishWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateBrandingDropRestockRunResponse</returns>
+        System.Threading.Tasks.Task<CreateBrandingDropRestockRunResponse> CreateBrandingDropRestockRunAsync(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateBrandingDropRestockRunResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropRestockRunResponse>> CreateBrandingDropRestockRunWithHttpInfoAsync(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Cancel a published event with the reason attendees see.
         /// </summary>
         /// <remarks>
@@ -404,9 +563,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventCancelResponse</returns>
-        System.Threading.Tasks.Task<CreateBrandingEventCancelResponse> CreateBrandingEventCancelAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBrandingEventCancelResponse> CreateBrandingEventCancelAsync(Guid id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel a published event with the reason attendees see.
@@ -416,9 +576,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventCancelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventCancelResponse>> CreateBrandingEventCancelWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventCancelResponse>> CreateBrandingEventCancelWithHttpInfoAsync(Guid id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Check a ticket in at the door by its QR token.
         /// </summary>
@@ -427,9 +588,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventCheckInResponse</returns>
-        System.Threading.Tasks.Task<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInAsync(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Check a ticket in at the door by its QR token.
@@ -439,9 +601,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventCheckInResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventCheckInResponse>> CreateBrandingEventCheckInWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventCheckInResponse>> CreateBrandingEventCheckInWithHttpInfoAsync(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Message the event&#39;s attendees: all, going, or ticketed.
         /// </summary>
@@ -450,9 +613,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventMessageResponse</returns>
-        System.Threading.Tasks.Task<CreateBrandingEventMessageResponse> CreateBrandingEventMessageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBrandingEventMessageResponse> CreateBrandingEventMessageAsync(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Message the event&#39;s attendees: all, going, or ticketed.
@@ -462,9 +626,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventMessageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventMessageResponse>> CreateBrandingEventMessageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingEventMessageResponse>> CreateBrandingEventMessageWithHttpInfoAsync(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a draft, or cancel a scheduled drop. A live drop is ended with the end control.
         /// </summary>
@@ -509,6 +674,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingBrandResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBrandingBrandResponse>> GetBrandingBrandWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBrandingBrandTermResponse</returns>
+        System.Threading.Tasks.Task<GetBrandingBrandTermResponse> GetBrandingBrandTermAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBrandingBrandTermResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBrandingBrandTermResponse>> GetBrandingBrandTermWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Whether your Stripe account is a verified business (company, EIN/tax id verified, payouts on), with reasons and the page to fix it.
         /// </summary>
@@ -560,9 +746,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingEventResponse</returns>
-        System.Threading.Tasks.Task<GetBrandingEventResponse> GetBrandingEventAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBrandingEventResponse> GetBrandingEventAsync(string scope = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your events: upcoming grouped by date (today, this_week, later), or past.
@@ -571,9 +758,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBrandingEventResponse>> GetBrandingEventWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBrandingEventResponse>> GetBrandingEventWithHttpInfoAsync(string scope = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The store’s Branding defaults new drops start from: timezone, notifyFollowers, botQueue, botCaptcha, cartHoldMinutes, leftovers.
         /// </summary>
@@ -596,15 +784,85 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetBrandingSettingResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBrandingSettingResponse>> GetBrandingSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all.
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingBrandSellerSearchResponse</returns>
+        System.Threading.Tasks.Task<ListBrandingBrandSellerSearchResponse> ListBrandingBrandSellerSearchAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingBrandSellerSearchResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListBrandingBrandSellerSearchResponse>> ListBrandingBrandSellerSearchWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingBrandSellersResponse</returns>
+        System.Threading.Tasks.Task<ListBrandingBrandSellersResponse> ListBrandingBrandSellersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingBrandSellersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListBrandingBrandSellersResponse>> ListBrandingBrandSellersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingDropBuyersResponse</returns>
+        System.Threading.Tasks.Task<ListBrandingDropBuyersResponse> ListBrandingDropBuyersAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingDropBuyersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListBrandingDropBuyersResponse>> ListBrandingDropBuyersWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBrandingDropsResponse</returns>
-        System.Threading.Tasks.Task<ListBrandingDropsResponse> ListBrandingDropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBrandingDropsResponse> ListBrandingDropsAsync(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all.
@@ -613,9 +871,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBrandingDropsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBrandingDropsResponse>> ListBrandingDropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBrandingDropsResponse>> ListBrandingDropsWithHttpInfoAsync(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit your brand profile: logoUrl, bannerUrl, story, links.
         /// </summary>
@@ -638,6 +899,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetBrandingBrandResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetBrandingBrandResponse>> UpdateBrandingBrandWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateBrandingBrandSellerResponse</returns>
+        System.Threading.Tasks.Task<UpdateBrandingBrandSellerResponse> UpdateBrandingBrandSellerAsync(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateBrandingBrandSellerResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateBrandingBrandSellerResponse>> UpdateBrandingBrandSellerWithHttpInfoAsync(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
         /// </summary>
         /// <remarks>
@@ -645,9 +929,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingDropResponse</returns>
-        System.Threading.Tasks.Task<CreateBrandingDropResponse> UpdateBrandingDropAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBrandingDropResponse> UpdateBrandingDropAsync(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems).
@@ -657,9 +942,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropResponse>> UpdateBrandingDropWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBrandingDropResponse>> UpdateBrandingDropWithHttpInfoAsync(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Save an event&#39;s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
         /// </summary>
@@ -668,9 +954,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBrandingEventSettingResponse</returns>
-        System.Threading.Tasks.Task<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingAsync(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save an event&#39;s full settings (where, access, reminders, check-in, recording, linked drops) and ticket tiers.
@@ -680,9 +967,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBrandingEventSettingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateBrandingEventSettingResponse>> UpdateBrandingEventSettingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateBrandingEventSettingResponse>> UpdateBrandingEventSettingWithHttpInfoAsync(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change the store’s Branding defaults (any subset of the fields).
         /// </summary>
@@ -690,9 +978,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingSettingResponse</returns>
-        System.Threading.Tasks.Task<GetBrandingSettingResponse> UpdateBrandingSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBrandingSettingResponse> UpdateBrandingSettingAsync(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change the store’s Branding defaults (any subset of the fields).
@@ -701,9 +990,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingSettingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBrandingSettingResponse>> UpdateBrandingSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBrandingSettingResponse>> UpdateBrandingSettingWithHttpInfoAsync(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -828,10 +1118,11 @@ namespace net.crossly.Api
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <returns>CreateBrandingDropResponse</returns>
-        public CreateBrandingDropResponse CreateBrandingDrop()
+        public CreateBrandingDropResponse CreateBrandingDrop(CreateBrandingDropRequest createBrandingDropRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = CreateBrandingDropWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = CreateBrandingDropWithHttpInfo(createBrandingDropRequest);
             return localVarResponse.Data;
         }
 
@@ -839,12 +1130,20 @@ namespace net.crossly.Api
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <returns>ApiResponse of CreateBrandingDropResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBrandingDropResponse> CreateBrandingDropWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateBrandingDropResponse> CreateBrandingDropWithHttpInfo(CreateBrandingDropRequest createBrandingDropRequest)
         {
+            // verify the required parameter 'createBrandingDropRequest' is set
+            if (createBrandingDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingDropRequest' when calling BrandingApi->CreateBrandingDrop");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -864,6 +1163,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBrandingDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -890,11 +1190,12 @@ namespace net.crossly.Api
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingDropResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBrandingDropResponse> CreateBrandingDropAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBrandingDropResponse> CreateBrandingDropAsync(CreateBrandingDropRequest createBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = await CreateBrandingDropWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = await CreateBrandingDropWithHttpInfoAsync(createBrandingDropRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -902,14 +1203,22 @@ namespace net.crossly.Api
         /// Create a drop as a draft. &#x60;config&#x60; is the full drop config (what, where: shop|world|live|storefront|featured, format, access, limits, pricing, schedule, promotion, fulfilment). Returns rule problems to fix before publishing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingDropResponse>> CreateBrandingDropWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingDropResponse>> CreateBrandingDropWithHttpInfoAsync(CreateBrandingDropRequest createBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBrandingDropRequest' is set
+            if (createBrandingDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingDropRequest' when calling BrandingApi->CreateBrandingDrop");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -929,6 +1238,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBrandingDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -958,10 +1268,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <returns>GetBrandingDropResponse</returns>
-        public GetBrandingDropResponse CreateBrandingDropControl(string id, string control)
+        public GetBrandingDropResponse CreateBrandingDropControl(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest))
         {
-            net.crossly.Client.ApiResponse<GetBrandingDropResponse> localVarResponse = CreateBrandingDropControlWithHttpInfo(id, control);
+            net.crossly.Client.ApiResponse<GetBrandingDropResponse> localVarResponse = CreateBrandingDropControlWithHttpInfo(id, control, createBrandingDropControlRequest);
             return localVarResponse.Data;
         }
 
@@ -971,8 +1282,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingDropResponse</returns>
-        public net.crossly.Client.ApiResponse<GetBrandingDropResponse> CreateBrandingDropControlWithHttpInfo(string id, string control)
+        public net.crossly.Client.ApiResponse<GetBrandingDropResponse> CreateBrandingDropControlWithHttpInfo(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -989,6 +1301,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1010,6 +1323,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("control", net.crossly.Client.ClientUtils.ParameterToString(control)); // path parameter
+            localVarRequestOptions.Data = createBrandingDropControlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1038,11 +1352,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingDropResponse</returns>
-        public async System.Threading.Tasks.Task<GetBrandingDropResponse> CreateBrandingDropControlAsync(string id, string control, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBrandingDropResponse> CreateBrandingDropControlAsync(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetBrandingDropResponse> localVarResponse = await CreateBrandingDropControlWithHttpInfoAsync(id, control, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetBrandingDropResponse> localVarResponse = await CreateBrandingDropControlWithHttpInfoAsync(id, control, createBrandingDropControlRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1052,9 +1367,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="control"></param>
+        /// <param name="createBrandingDropControlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingDropResponse>> CreateBrandingDropControlWithHttpInfoAsync(string id, string control, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingDropResponse>> CreateBrandingDropControlWithHttpInfoAsync(string id, string control, CreateBrandingDropControlRequest createBrandingDropControlRequest = default(CreateBrandingDropControlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1072,6 +1388,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1093,6 +1410,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("control", net.crossly.Client.ClientUtils.ParameterToString(control)); // path parameter
+            localVarRequestOptions.Data = createBrandingDropControlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1251,28 +1569,31 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Cancel a published event with the reason attendees see. 
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateBrandingEventCancelResponse</returns>
-        public CreateBrandingEventCancelResponse CreateBrandingEventCancel(Guid id)
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <returns>CreateBrandingDropRestockRunResponse</returns>
+        public CreateBrandingDropRestockRunResponse CreateBrandingDropRestockRun(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> localVarResponse = CreateBrandingEventCancelWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBrandingDropRestockRunResponse> localVarResponse = CreateBrandingDropRestockRunWithHttpInfo(id, createBrandingDropRestockRunRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel a published event with the reason attendees see. 
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateBrandingEventCancelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> CreateBrandingEventCancelWithHttpInfo(Guid id)
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateBrandingDropRestockRunResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateBrandingDropRestockRunResponse> CreateBrandingDropRestockRunWithHttpInfo(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1293,6 +1614,155 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingDropRestockRunRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateBrandingDropRestockRunResponse>("/v1/branding/drops/{id}/restock-run", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateBrandingDropRestockRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateBrandingDropRestockRunResponse</returns>
+        public async System.Threading.Tasks.Task<CreateBrandingDropRestockRunResponse> CreateBrandingDropRestockRunAsync(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateBrandingDropRestockRunResponse> localVarResponse = await CreateBrandingDropRestockRunWithHttpInfoAsync(id, createBrandingDropRestockRunRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Restock run for a sold-out or ended drop: a link-only group buy on one of its restocked listings ({ platformListingId?, tiers, goalQty?, minQtyToProceed?, perBuyerMax?, days?, paymentMode?, priorityHours?, title?, description?, shareCopy? }). Waitlisted, raffle-losing and notify entrants of the drop are told and join first for priorityHours. One run per drop (409 after). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createBrandingDropRestockRunRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateBrandingDropRestockRunResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingDropRestockRunResponse>> CreateBrandingDropRestockRunWithHttpInfoAsync(Guid id, CreateBrandingDropRestockRunRequest createBrandingDropRestockRunRequest = default(CreateBrandingDropRestockRunRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingDropRestockRunRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateBrandingDropRestockRunResponse>("/v1/branding/drops/{id}/restock-run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateBrandingDropRestockRun", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Cancel a published event with the reason attendees see. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
+        /// <returns>CreateBrandingEventCancelResponse</returns>
+        public CreateBrandingEventCancelResponse CreateBrandingEventCancel(Guid id, ReasonRequest reasonRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> localVarResponse = CreateBrandingEventCancelWithHttpInfo(id, reasonRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel a published event with the reason attendees see. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
+        /// <returns>ApiResponse of CreateBrandingEventCancelResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> CreateBrandingEventCancelWithHttpInfo(Guid id, ReasonRequest reasonRequest)
+        {
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling BrandingApi->CreateBrandingEventCancel");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1320,11 +1790,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventCancelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBrandingEventCancelResponse> CreateBrandingEventCancelAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBrandingEventCancelResponse> CreateBrandingEventCancelAsync(Guid id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> localVarResponse = await CreateBrandingEventCancelWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse> localVarResponse = await CreateBrandingEventCancelWithHttpInfoAsync(id, reasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1333,14 +1804,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventCancelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse>> CreateBrandingEventCancelWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventCancelResponse>> CreateBrandingEventCancelWithHttpInfoAsync(Guid id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling BrandingApi->CreateBrandingEventCancel");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1361,6 +1840,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1389,10 +1869,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <returns>CreateBrandingEventCheckInResponse</returns>
-        public CreateBrandingEventCheckInResponse CreateBrandingEventCheckIn(Guid id)
+        public CreateBrandingEventCheckInResponse CreateBrandingEventCheckIn(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> localVarResponse = CreateBrandingEventCheckInWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> localVarResponse = CreateBrandingEventCheckInWithHttpInfo(id, createBrandingEventCheckInRequest);
             return localVarResponse.Data;
         }
 
@@ -1401,12 +1882,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <returns>ApiResponse of CreateBrandingEventCheckInResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInWithHttpInfo(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest)
         {
+            // verify the required parameter 'createBrandingEventCheckInRequest' is set
+            if (createBrandingEventCheckInRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingEventCheckInRequest' when calling BrandingApi->CreateBrandingEventCheckIn");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1427,6 +1916,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingEventCheckInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1454,11 +1944,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventCheckInResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBrandingEventCheckInResponse> CreateBrandingEventCheckInAsync(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> localVarResponse = await CreateBrandingEventCheckInWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse> localVarResponse = await CreateBrandingEventCheckInWithHttpInfoAsync(id, createBrandingEventCheckInRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1467,14 +1958,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventCheckInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventCheckInResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse>> CreateBrandingEventCheckInWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventCheckInResponse>> CreateBrandingEventCheckInWithHttpInfoAsync(Guid id, CreateBrandingEventCheckInRequest createBrandingEventCheckInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBrandingEventCheckInRequest' is set
+            if (createBrandingEventCheckInRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingEventCheckInRequest' when calling BrandingApi->CreateBrandingEventCheckIn");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1495,6 +1994,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingEventCheckInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1523,10 +2023,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <returns>CreateBrandingEventMessageResponse</returns>
-        public CreateBrandingEventMessageResponse CreateBrandingEventMessage(Guid id)
+        public CreateBrandingEventMessageResponse CreateBrandingEventMessage(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> localVarResponse = CreateBrandingEventMessageWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> localVarResponse = CreateBrandingEventMessageWithHttpInfo(id, createBrandingEventMessageRequest);
             return localVarResponse.Data;
         }
 
@@ -1535,12 +2036,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <returns>ApiResponse of CreateBrandingEventMessageResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> CreateBrandingEventMessageWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> CreateBrandingEventMessageWithHttpInfo(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest)
         {
+            // verify the required parameter 'createBrandingEventMessageRequest' is set
+            if (createBrandingEventMessageRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingEventMessageRequest' when calling BrandingApi->CreateBrandingEventMessage");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1561,6 +2070,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingEventMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1588,11 +2098,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingEventMessageResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBrandingEventMessageResponse> CreateBrandingEventMessageAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBrandingEventMessageResponse> CreateBrandingEventMessageAsync(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> localVarResponse = await CreateBrandingEventMessageWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse> localVarResponse = await CreateBrandingEventMessageWithHttpInfoAsync(id, createBrandingEventMessageRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1601,14 +2112,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBrandingEventMessageRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingEventMessageResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse>> CreateBrandingEventMessageWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingEventMessageResponse>> CreateBrandingEventMessageWithHttpInfoAsync(Guid id, CreateBrandingEventMessageRequest createBrandingEventMessageRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBrandingEventMessageRequest' is set
+            if (createBrandingEventMessageRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandingEventMessageRequest' when calling BrandingApi->CreateBrandingEventMessage");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1629,6 +2148,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBrandingEventMessageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1915,6 +2435,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBrandingBrandTermResponse</returns>
+        public GetBrandingBrandTermResponse GetBrandingBrandTerm()
+        {
+            net.crossly.Client.ApiResponse<GetBrandingBrandTermResponse> localVarResponse = GetBrandingBrandTermWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBrandingBrandTermResponse</returns>
+        public net.crossly.Client.ApiResponse<GetBrandingBrandTermResponse> GetBrandingBrandTermWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetBrandingBrandTermResponse>("/v1/branding/brand/terms", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBrandingBrandTerm", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBrandingBrandTermResponse</returns>
+        public async System.Threading.Tasks.Task<GetBrandingBrandTermResponse> GetBrandingBrandTermAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetBrandingBrandTermResponse> localVarResponse = await GetBrandingBrandTermWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your partner terms (fee, drops per month, units per drop, self-publish, pre-bids, promotion tier), this month&#39;s drop usage and the terms history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBrandingBrandTermResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingBrandTermResponse>> GetBrandingBrandTermWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBrandingBrandTermResponse>("/v1/branding/brand/terms", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBrandingBrandTerm", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Whether your Stripe account is a verified business (company, EIN/tax id verified, payouts on), with reasons and the page to fix it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2180,10 +2828,11 @@ namespace net.crossly.Api
         /// Your events: upcoming grouped by date (today, this_week, later), or past. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <returns>GetBrandingEventResponse</returns>
-        public GetBrandingEventResponse GetBrandingEvent()
+        public GetBrandingEventResponse GetBrandingEvent(string scope = default(string))
         {
-            net.crossly.Client.ApiResponse<GetBrandingEventResponse> localVarResponse = GetBrandingEventWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetBrandingEventResponse> localVarResponse = GetBrandingEventWithHttpInfo(scope);
             return localVarResponse.Data;
         }
 
@@ -2191,8 +2840,9 @@ namespace net.crossly.Api
         /// Your events: upcoming grouped by date (today, this_week, later), or past. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingEventResponse</returns>
-        public net.crossly.Client.ApiResponse<GetBrandingEventResponse> GetBrandingEventWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetBrandingEventResponse> GetBrandingEventWithHttpInfo(string scope = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2216,6 +2866,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2242,11 +2896,12 @@ namespace net.crossly.Api
         /// Your events: upcoming grouped by date (today, this_week, later), or past. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingEventResponse</returns>
-        public async System.Threading.Tasks.Task<GetBrandingEventResponse> GetBrandingEventAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBrandingEventResponse> GetBrandingEventAsync(string scope = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetBrandingEventResponse> localVarResponse = await GetBrandingEventWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetBrandingEventResponse> localVarResponse = await GetBrandingEventWithHttpInfoAsync(scope, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2254,9 +2909,10 @@ namespace net.crossly.Api
         /// Your events: upcoming grouped by date (today, this_week, later), or past. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingEventResponse>> GetBrandingEventWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingEventResponse>> GetBrandingEventWithHttpInfoAsync(string scope = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2281,6 +2937,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2433,22 +3093,162 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ListBrandingDropsResponse</returns>
-        public ListBrandingDropsResponse ListBrandingDrops()
+        /// <param name="q"> (optional)</param>
+        /// <returns>ListBrandingBrandSellerSearchResponse</returns>
+        public ListBrandingBrandSellerSearchResponse ListBrandingBrandSellerSearch(string q = default(string))
         {
-            net.crossly.Client.ApiResponse<ListBrandingDropsResponse> localVarResponse = ListBrandingDropsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListBrandingBrandSellerSearchResponse> localVarResponse = ListBrandingBrandSellerSearchWithHttpInfo(q);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of ListBrandingDropsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListBrandingDropsResponse> ListBrandingDropsWithHttpInfo()
+        /// <param name="q"> (optional)</param>
+        /// <returns>ApiResponse of ListBrandingBrandSellerSearchResponse</returns>
+        public net.crossly.Client.ApiResponse<ListBrandingBrandSellerSearchResponse> ListBrandingBrandSellerSearchWithHttpInfo(string q = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListBrandingBrandSellerSearchResponse>("/v1/branding/brand/sellers/search", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingBrandSellerSearch", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingBrandSellerSearchResponse</returns>
+        public async System.Threading.Tasks.Task<ListBrandingBrandSellerSearchResponse> ListBrandingBrandSellerSearchAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListBrandingBrandSellerSearchResponse> localVarResponse = await ListBrandingBrandSellerSearchWithHttpInfoAsync(q, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Find a store to authorise by its name or slug (?q&#x3D;, at least 2 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingBrandSellerSearchResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandingBrandSellerSearchResponse>> ListBrandingBrandSellerSearchWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListBrandingBrandSellerSearchResponse>("/v1/branding/brand/sellers/search", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingBrandSellerSearch", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListBrandingBrandSellersResponse</returns>
+        public ListBrandingBrandSellersResponse ListBrandingBrandSellers()
+        {
+            net.crossly.Client.ApiResponse<ListBrandingBrandSellersResponse> localVarResponse = ListBrandingBrandSellersWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your authorised sellers (approved brand partners), each with its store name and status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListBrandingBrandSellersResponse</returns>
+        public net.crossly.Client.ApiResponse<ListBrandingBrandSellersResponse> ListBrandingBrandSellersWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2481,10 +3281,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListBrandingDropsResponse>("/v1/branding/drops", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListBrandingBrandSellersResponse>("/v1/branding/brand/sellers", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListBrandingDrops", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListBrandingBrandSellers", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2495,24 +3295,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// Your authorised sellers (approved brand partners), each with its store name and status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListBrandingDropsResponse</returns>
-        public async System.Threading.Tasks.Task<ListBrandingDropsResponse> ListBrandingDropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListBrandingBrandSellersResponse</returns>
+        public async System.Threading.Tasks.Task<ListBrandingBrandSellersResponse> ListBrandingBrandSellersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListBrandingDropsResponse> localVarResponse = await ListBrandingDropsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListBrandingBrandSellersResponse> localVarResponse = await ListBrandingBrandSellersWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// Your authorised sellers (approved brand partners), each with its store name and status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListBrandingDropsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandingDropsResponse>> ListBrandingDropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ListBrandingBrandSellersResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandingBrandSellersResponse>> ListBrandingBrandSellersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2537,6 +3337,304 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListBrandingBrandSellersResponse>("/v1/branding/brand/sellers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingBrandSellers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListBrandingDropBuyersResponse</returns>
+        public ListBrandingDropBuyersResponse ListBrandingDropBuyers(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListBrandingDropBuyersResponse> localVarResponse = ListBrandingDropBuyersWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListBrandingDropBuyersResponse</returns>
+        public net.crossly.Client.ApiResponse<ListBrandingDropBuyersResponse> ListBrandingDropBuyersWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListBrandingDropBuyersResponse>("/v1/branding/drops/{id}/buyers", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingDropBuyers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingDropBuyersResponse</returns>
+        public async System.Threading.Tasks.Task<ListBrandingDropBuyersResponse> ListBrandingDropBuyersAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListBrandingDropBuyersResponse> localVarResponse = await ListBrandingDropBuyersWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A drop&#39;s buyers: public username, units claimed, order id and when, oldest first. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingDropBuyersResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandingDropBuyersResponse>> ListBrandingDropBuyersWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListBrandingDropBuyersResponse>("/v1/branding/drops/{id}/buyers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingDropBuyers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <returns>ListBrandingDropsResponse</returns>
+        public ListBrandingDropsResponse ListBrandingDrops(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListBrandingDropsResponse> localVarResponse = ListBrandingDropsWithHttpInfo(scope, limit, cursor);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <returns>ApiResponse of ListBrandingDropsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListBrandingDropsResponse> ListBrandingDropsWithHttpInfo(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListBrandingDropsResponse>("/v1/branding/drops", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBrandingDrops", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBrandingDropsResponse</returns>
+        public async System.Threading.Tasks.Task<ListBrandingDropsResponse> ListBrandingDropsAsync(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListBrandingDropsResponse> localVarResponse = await ListBrandingDropsWithHttpInfoAsync(scope, limit, cursor, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your drops, newest first, with config, waves, counts (entries, holding, sold, buyers) and phase. ?scope&#x3D;upcoming|live|past|drafts|all. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBrandingDropsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandingDropsResponse>> ListBrandingDropsWithHttpInfoAsync(string scope = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2689,14 +3787,163 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <returns>UpdateBrandingBrandSellerResponse</returns>
+        public UpdateBrandingBrandSellerResponse UpdateBrandingBrandSeller(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateBrandingBrandSellerResponse> localVarResponse = UpdateBrandingBrandSellerWithHttpInfo(updateBrandingBrandSellerRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <returns>ApiResponse of UpdateBrandingBrandSellerResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateBrandingBrandSellerResponse> UpdateBrandingBrandSellerWithHttpInfo(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest)
+        {
+            // verify the required parameter 'updateBrandingBrandSellerRequest' is set
+            if (updateBrandingBrandSellerRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingBrandSellerRequest' when calling BrandingApi->UpdateBrandingBrandSeller");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateBrandingBrandSellerRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateBrandingBrandSellerResponse>("/v1/branding/brand/sellers", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBrandingBrandSeller", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateBrandingBrandSellerResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateBrandingBrandSellerResponse> UpdateBrandingBrandSellerAsync(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateBrandingBrandSellerResponse> localVarResponse = await UpdateBrandingBrandSellerWithHttpInfoAsync(updateBrandingBrandSellerRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Authorise a seller to sell your brand, or revoke them: { sellerUserId, status: active|revoked, note? }. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingBrandSellerRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateBrandingBrandSellerResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateBrandingBrandSellerResponse>> UpdateBrandingBrandSellerWithHttpInfoAsync(UpdateBrandingBrandSellerRequest updateBrandingBrandSellerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateBrandingBrandSellerRequest' is set
+            if (updateBrandingBrandSellerRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingBrandSellerRequest' when calling BrandingApi->UpdateBrandingBrandSeller");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateBrandingBrandSellerRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateBrandingBrandSellerResponse>("/v1/branding/brand/sellers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateBrandingBrandSeller", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Edit a drop that is not live yet. A published drop refuses rule problems (400 drop_config_problems). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <returns>CreateBrandingDropResponse</returns>
-        public CreateBrandingDropResponse UpdateBrandingDrop(Guid id)
+        public CreateBrandingDropResponse UpdateBrandingDrop(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = UpdateBrandingDropWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = UpdateBrandingDropWithHttpInfo(id, updateBrandingDropRequest);
             return localVarResponse.Data;
         }
 
@@ -2705,12 +3952,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <returns>ApiResponse of CreateBrandingDropResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBrandingDropResponse> UpdateBrandingDropWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBrandingDropResponse> UpdateBrandingDropWithHttpInfo(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest)
         {
+            // verify the required parameter 'updateBrandingDropRequest' is set
+            if (updateBrandingDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingDropRequest' when calling BrandingApi->UpdateBrandingDrop");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2731,6 +3986,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandingDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2758,11 +4014,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBrandingDropResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBrandingDropResponse> UpdateBrandingDropAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBrandingDropResponse> UpdateBrandingDropAsync(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = await UpdateBrandingDropWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBrandingDropResponse> localVarResponse = await UpdateBrandingDropWithHttpInfoAsync(id, updateBrandingDropRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2771,14 +4028,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBrandingDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingDropResponse>> UpdateBrandingDropWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBrandingDropResponse>> UpdateBrandingDropWithHttpInfoAsync(Guid id, UpdateBrandingDropRequest updateBrandingDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBrandingDropRequest' is set
+            if (updateBrandingDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingDropRequest' when calling BrandingApi->UpdateBrandingDrop");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2799,6 +4064,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandingDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2827,10 +4093,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <returns>UpdateBrandingEventSettingResponse</returns>
-        public UpdateBrandingEventSettingResponse UpdateBrandingEventSetting(Guid id)
+        public UpdateBrandingEventSettingResponse UpdateBrandingEventSetting(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> localVarResponse = UpdateBrandingEventSettingWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> localVarResponse = UpdateBrandingEventSettingWithHttpInfo(id, updateBrandingEventSettingRequest);
             return localVarResponse.Data;
         }
 
@@ -2839,12 +4106,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <returns>ApiResponse of UpdateBrandingEventSettingResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingWithHttpInfo(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest)
         {
+            // verify the required parameter 'updateBrandingEventSettingRequest' is set
+            if (updateBrandingEventSettingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingEventSettingRequest' when calling BrandingApi->UpdateBrandingEventSetting");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2865,6 +4140,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandingEventSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2892,11 +4168,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateBrandingEventSettingResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateBrandingEventSettingResponse> UpdateBrandingEventSettingAsync(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> localVarResponse = await UpdateBrandingEventSettingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse> localVarResponse = await UpdateBrandingEventSettingWithHttpInfoAsync(id, updateBrandingEventSettingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2905,14 +4182,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandingEventSettingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateBrandingEventSettingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse>> UpdateBrandingEventSettingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateBrandingEventSettingResponse>> UpdateBrandingEventSettingWithHttpInfoAsync(Guid id, UpdateBrandingEventSettingRequest updateBrandingEventSettingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBrandingEventSettingRequest' is set
+            if (updateBrandingEventSettingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandingEventSettingRequest' when calling BrandingApi->UpdateBrandingEventSetting");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2933,6 +4218,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandingEventSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2960,10 +4246,11 @@ namespace net.crossly.Api
         /// Change the store’s Branding defaults (any subset of the fields). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <returns>GetBrandingSettingResponse</returns>
-        public GetBrandingSettingResponse UpdateBrandingSetting()
+        public GetBrandingSettingResponse UpdateBrandingSetting(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest))
         {
-            net.crossly.Client.ApiResponse<GetBrandingSettingResponse> localVarResponse = UpdateBrandingSettingWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetBrandingSettingResponse> localVarResponse = UpdateBrandingSettingWithHttpInfo(updateBrandingSettingRequest);
             return localVarResponse.Data;
         }
 
@@ -2971,12 +4258,14 @@ namespace net.crossly.Api
         /// Change the store’s Branding defaults (any subset of the fields). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <returns>ApiResponse of GetBrandingSettingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetBrandingSettingResponse> UpdateBrandingSettingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetBrandingSettingResponse> UpdateBrandingSettingWithHttpInfo(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2996,6 +4285,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBrandingSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3022,11 +4312,12 @@ namespace net.crossly.Api
         /// Change the store’s Branding defaults (any subset of the fields). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBrandingSettingResponse</returns>
-        public async System.Threading.Tasks.Task<GetBrandingSettingResponse> UpdateBrandingSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBrandingSettingResponse> UpdateBrandingSettingAsync(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetBrandingSettingResponse> localVarResponse = await UpdateBrandingSettingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetBrandingSettingResponse> localVarResponse = await UpdateBrandingSettingWithHttpInfoAsync(updateBrandingSettingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3034,14 +4325,16 @@ namespace net.crossly.Api
         /// Change the store’s Branding defaults (any subset of the fields). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBrandingSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBrandingSettingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingSettingResponse>> UpdateBrandingSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBrandingSettingResponse>> UpdateBrandingSettingWithHttpInfoAsync(UpdateBrandingSettingRequest updateBrandingSettingRequest = default(UpdateBrandingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3061,6 +4354,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBrandingSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

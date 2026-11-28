@@ -11,12 +11,13 @@ Method | HTTP request | Description
 [**CreateDaoProposalVote**](DAOApi.md#createdaoproposalvote) | **POST** /v1/dao/proposals/{id}/vote | Cast or change a vote while the window is open.
 [**DeleteDaoProposal**](DAOApi.md#deletedaoproposal) | **DELETE** /v1/dao/proposals/{id} | Withdraw your own DRAFT.
 [**GetDaoProposalTally**](DAOApi.md#getdaoproposaltally) | **GET** /v1/dao/proposals/{id}/tally | The live count.
+[**GetDaoSubjectParticipation**](DAOApi.md#getdaosubjectparticipation) | **GET** /v1/dao/subjects/{subjectId}/participation | One holder&#39;s participation: votes, voting power over time, share.
 [**ListDaoProposals**](DAOApi.md#listdaoproposals) | **GET** /v1/dao/proposals | The proposal queue.
 
 
 <a name="createdaoproposal"></a>
 # **CreateDaoProposal**
-> CreateDaoProposalResponse CreateDaoProposal ()
+> CreateDaoProposalResponse CreateDaoProposal (CreateDaoProposalRequest createDaoProposalRequest)
 
 Raise a proposal. Starts as a draft.
 
@@ -42,11 +43,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DAOApi(config);
+            var createDaoProposalRequest = new CreateDaoProposalRequest(); // CreateDaoProposalRequest | 
 
             try
             {
                 // Raise a proposal. Starts as a draft.
-                CreateDaoProposalResponse result = apiInstance.CreateDaoProposal();
+                CreateDaoProposalResponse result = apiInstance.CreateDaoProposal(createDaoProposalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -61,7 +63,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDaoProposalRequest** | **CreateDaoProposalRequest**|  | 
 
 ### Return type
 
@@ -73,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -172,7 +177,7 @@ Name | Type | Description  | Notes
 
 <a name="createdaoproposalopen"></a>
 # **CreateDaoProposalOpen**
-> CreateDaoProposalOpenResponse CreateDaoProposalOpen (string id)
+> CreateDaoProposalOpenResponse CreateDaoProposalOpen (string id, CreateDaoProposalOpenRequest createDaoProposalOpenRequest)
 
 Put your draft to a vote. Snapshots voting power.
 
@@ -199,11 +204,12 @@ namespace Example
 
             var apiInstance = new DAOApi(config);
             var id = "id_example";  // string | 
+            var createDaoProposalOpenRequest = new CreateDaoProposalOpenRequest(); // CreateDaoProposalOpenRequest | 
 
             try
             {
                 // Put your draft to a vote. Snapshots voting power.
-                CreateDaoProposalOpenResponse result = apiInstance.CreateDaoProposalOpen(id);
+                CreateDaoProposalOpenResponse result = apiInstance.CreateDaoProposalOpen(id, createDaoProposalOpenRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -222,6 +228,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createDaoProposalOpenRequest** | **CreateDaoProposalOpenRequest**|  | 
 
 ### Return type
 
@@ -233,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -252,7 +259,7 @@ Name | Type | Description  | Notes
 
 <a name="createdaoproposalveto"></a>
 # **CreateDaoProposalVeto**
-> CreateDaoProposalVetoResponse CreateDaoProposalVeto (string id)
+> CreateDaoProposalVetoResponse CreateDaoProposalVeto (string id, CreateDaoProposalVetoRequest createDaoProposalVetoRequest)
 
 Operator block. There is no matching power to PASS.
 
@@ -279,11 +286,12 @@ namespace Example
 
             var apiInstance = new DAOApi(config);
             var id = "id_example";  // string | 
+            var createDaoProposalVetoRequest = new CreateDaoProposalVetoRequest(); // CreateDaoProposalVetoRequest | 
 
             try
             {
                 // Operator block. There is no matching power to PASS.
-                CreateDaoProposalVetoResponse result = apiInstance.CreateDaoProposalVeto(id);
+                CreateDaoProposalVetoResponse result = apiInstance.CreateDaoProposalVeto(id, createDaoProposalVetoRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -302,6 +310,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createDaoProposalVetoRequest** | **CreateDaoProposalVetoRequest**|  | 
 
 ### Return type
 
@@ -313,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -332,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="createdaoproposalvote"></a>
 # **CreateDaoProposalVote**
-> CreateDaoProposalVoteResponse CreateDaoProposalVote (string id)
+> CreateDaoProposalVoteResponse CreateDaoProposalVote (string id, CreateDaoProposalVoteRequest createDaoProposalVoteRequest)
 
 Cast or change a vote while the window is open.
 
@@ -359,11 +368,12 @@ namespace Example
 
             var apiInstance = new DAOApi(config);
             var id = "id_example";  // string | 
+            var createDaoProposalVoteRequest = new CreateDaoProposalVoteRequest(); // CreateDaoProposalVoteRequest | 
 
             try
             {
                 // Cast or change a vote while the window is open.
-                CreateDaoProposalVoteResponse result = apiInstance.CreateDaoProposalVote(id);
+                CreateDaoProposalVoteResponse result = apiInstance.CreateDaoProposalVote(id, createDaoProposalVoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -382,6 +392,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createDaoProposalVoteRequest** | **CreateDaoProposalVoteRequest**|  | 
 
 ### Return type
 
@@ -393,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -412,7 +423,7 @@ Name | Type | Description  | Notes
 
 <a name="deletedaoproposal"></a>
 # **DeleteDaoProposal**
-> DeleteDaoProposalResponse DeleteDaoProposal (string id)
+> DeleteDaoProposalResponse DeleteDaoProposal (string id, SubjectIdRequest subjectIdRequest = null)
 
 Withdraw your own DRAFT.
 
@@ -439,11 +450,12 @@ namespace Example
 
             var apiInstance = new DAOApi(config);
             var id = "id_example";  // string | 
+            var subjectIdRequest = new SubjectIdRequest(); // SubjectIdRequest |  (optional) 
 
             try
             {
                 // Withdraw your own DRAFT.
-                DeleteDaoProposalResponse result = apiInstance.DeleteDaoProposal(id);
+                DeleteDaoProposalResponse result = apiInstance.DeleteDaoProposal(id, subjectIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -462,6 +474,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **subjectIdRequest** | **SubjectIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -473,7 +486,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -570,9 +583,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getdaosubjectparticipation"></a>
+# **GetDaoSubjectParticipation**
+> GetDaoSubjectParticipationResponse GetDaoSubjectParticipation (string subjectId)
+
+One holder's participation: votes, voting power over time, share.
+
+Every vote the subject cast (with the frozen weight it carried), the voting power snapshotted for it at each proposal open (oldest first) with that proposal total, and the latest snapshot share of the total in bps. Amounts are strings of base units. Read-only; the subject must belong to the calling merchant.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDaoSubjectParticipationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DAOApi(config);
+            var subjectId = "subjectId_example";  // string | 
+
+            try
+            {
+                // One holder's participation: votes, voting power over time, share.
+                GetDaoSubjectParticipationResponse result = apiInstance.GetDaoSubjectParticipation(subjectId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DAOApi.GetDaoSubjectParticipation: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
+
+### Return type
+
+**GetDaoSubjectParticipationResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listdaoproposals"></a>
 # **ListDaoProposals**
-> ListDaoProposalsResponse ListDaoProposals ()
+> ListDaoProposalsResponse ListDaoProposals (string status = null, decimal? limit = null)
 
 The proposal queue.
 
@@ -598,11 +691,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DAOApi(config);
+            var status = "expired";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The proposal queue.
-                ListDaoProposalsResponse result = apiInstance.ListDaoProposals();
+                ListDaoProposalsResponse result = apiInstance.ListDaoProposals(status, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -617,7 +712,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 

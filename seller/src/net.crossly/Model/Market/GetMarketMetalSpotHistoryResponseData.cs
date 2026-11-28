@@ -76,22 +76,22 @@ namespace net.crossly.Model
         public enum RangeEnum
         {
             /// <summary>
-            /// Enum _1d for value: 1d
-            /// </summary>
-            [EnumMember(Value = "1d")]
-            _1d = 1,
-
-            /// <summary>
             /// Enum _7d for value: 7d
             /// </summary>
             [EnumMember(Value = "7d")]
-            _7d = 2,
+            _7d = 1,
 
             /// <summary>
             /// Enum _30d for value: 30d
             /// </summary>
             [EnumMember(Value = "30d")]
-            _30d = 3,
+            _30d = 2,
+
+            /// <summary>
+            /// Enum _1d for value: 1d
+            /// </summary>
+            [EnumMember(Value = "1d")]
+            _1d = 3,
 
             /// <summary>
             /// Enum _1y for value: 1y

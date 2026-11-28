@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingcommandcomplete"></a>
 # **CreateListingCommandComplete**
-> ListListingCommandsItem CreateListingCommandComplete (Guid id)
+> ListListingCommandsItem CreateListingCommandComplete (Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = null)
 
 Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
 
@@ -128,11 +128,12 @@ namespace Example
 
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createListingCommandCompleteRequest = new CreateListingCommandCompleteRequest(); // CreateListingCommandCompleteRequest |  (optional) 
 
             try
             {
                 // Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
-                ListListingCommandsItem result = apiInstance.CreateListingCommandComplete(id);
+                ListListingCommandsItem result = apiInstance.CreateListingCommandComplete(id, createListingCommandCompleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -151,6 +152,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createListingCommandCompleteRequest** | **CreateListingCommandCompleteRequest**|  | [optional] 
 
 ### Return type
 
@@ -162,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -181,7 +183,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingcommandfail"></a>
 # **CreateListingCommandFail**
-> ListListingCommandsItem CreateListingCommandFail (Guid id)
+> ListListingCommandsItem CreateListingCommandFail (Guid id, CreateListingCommandFailRequest createListingCommandFailRequest)
 
 Report a command failed, with a reason the seller will see.
 
@@ -206,11 +208,12 @@ namespace Example
 
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createListingCommandFailRequest = new CreateListingCommandFailRequest(); // CreateListingCommandFailRequest | 
 
             try
             {
                 // Report a command failed, with a reason the seller will see.
-                ListListingCommandsItem result = apiInstance.CreateListingCommandFail(id);
+                ListListingCommandsItem result = apiInstance.CreateListingCommandFail(id, createListingCommandFailRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -229,6 +232,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createListingCommandFailRequest** | **CreateListingCommandFailRequest**|  | 
 
 ### Return type
 
@@ -240,7 +244,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -259,7 +263,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingevent"></a>
 # **CreateListingEvent**
-> CreateListingEventResponse CreateListingEvent (Guid id)
+> CreateListingEventResponse CreateListingEvent (Guid id, CreateListingEventRequest createListingEventRequest)
 
 Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
 
@@ -286,11 +290,12 @@ namespace Example
 
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createListingEventRequest = new CreateListingEventRequest(); // CreateListingEventRequest | 
 
             try
             {
                 // Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
-                CreateListingEventResponse result = apiInstance.CreateListingEvent(id);
+                CreateListingEventResponse result = apiInstance.CreateListingEvent(id, createListingEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -309,6 +314,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createListingEventRequest** | **CreateListingEventRequest**|  | 
 
 ### Return type
 
@@ -320,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -339,7 +345,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingevent2"></a>
 # **CreateListingEvent2**
-> CreateListingEvent2Response CreateListingEvent2 ()
+> CreateListingEvent2Response CreateListingEvent2 (CreateListingEvent2Request createListingEvent2Request)
 
 Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
 
@@ -363,11 +369,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppManagedListingsApi(config);
+            var createListingEvent2Request = new CreateListingEvent2Request(); // CreateListingEvent2Request | 
 
             try
             {
                 // Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
-                CreateListingEvent2Response result = apiInstance.CreateListingEvent2();
+                CreateListingEvent2Response result = apiInstance.CreateListingEvent2(createListingEvent2Request);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -382,7 +389,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingEvent2Request** | **CreateListingEvent2Request**|  | 
 
 ### Return type
 
@@ -394,7 +404,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -413,7 +423,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistinglink"></a>
 # **CreateListingLink**
-> CreateListingLinkResponse CreateListingLink ()
+> CreateListingLinkResponse CreateListingLink (CreateListingLinkRequest createListingLinkRequest)
 
 Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
 
@@ -439,11 +449,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppManagedListingsApi(config);
+            var createListingLinkRequest = new CreateListingLinkRequest(); // CreateListingLinkRequest | 
 
             try
             {
                 // Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
-                CreateListingLinkResponse result = apiInstance.CreateListingLink();
+                CreateListingLinkResponse result = apiInstance.CreateListingLink(createListingLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -458,7 +469,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingLinkRequest** | **CreateListingLinkRequest**|  | 
 
 ### Return type
 
@@ -470,7 +484,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -489,7 +503,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistinglinkbulk"></a>
 # **CreateListingLinkBulk**
-> CreateListingLinkBulkResponse CreateListingLinkBulk ()
+> CreateListingLinkBulkResponse CreateListingLinkBulk (CreateListingLinkBulkRequest createListingLinkBulkRequest)
 
 Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
 
@@ -513,11 +527,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppManagedListingsApi(config);
+            var createListingLinkBulkRequest = new CreateListingLinkBulkRequest(); // CreateListingLinkBulkRequest | 
 
             try
             {
                 // Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
-                CreateListingLinkBulkResponse result = apiInstance.CreateListingLinkBulk();
+                CreateListingLinkBulkResponse result = apiInstance.CreateListingLinkBulk(createListingLinkBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -532,7 +547,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingLinkBulkRequest** | **CreateListingLinkBulkRequest**|  | 
 
 ### Return type
 
@@ -544,7 +562,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -563,7 +581,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingplatformreclone"></a>
 # **CreateListingPlatformReclone**
-> CreateListingPlatformRecloneResponse CreateListingPlatformReclone (Guid id, string platform)
+> CreateListingPlatformRecloneResponse CreateListingPlatformReclone (Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = null)
 
 End this marketplace item and relist it under Crossly. Requires consent: true.
 
@@ -591,11 +609,12 @@ namespace Example
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
             var platform = "platform_example";  // string | 
+            var createListingPlatformRecloneRequest = new CreateListingPlatformRecloneRequest(); // CreateListingPlatformRecloneRequest |  (optional) 
 
             try
             {
                 // End this marketplace item and relist it under Crossly. Requires consent: true.
-                CreateListingPlatformRecloneResponse result = apiInstance.CreateListingPlatformReclone(id, platform);
+                CreateListingPlatformRecloneResponse result = apiInstance.CreateListingPlatformReclone(id, platform, createListingPlatformRecloneRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -615,6 +634,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
  **platform** | **string**|  | 
+ **createListingPlatformRecloneRequest** | **CreateListingPlatformRecloneRequest**|  | [optional] 
 
 ### Return type
 
@@ -626,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -805,7 +825,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingplatformtakeover"></a>
 # **CreateListingPlatformTakeOver**
-> CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver (Guid id, string platform)
+> CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver (Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = null)
 
 Take over an app-managed item: Crossly acts on the marketplace itself (needs your own connection).
 
@@ -833,11 +853,12 @@ namespace Example
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
             var platform = "platform_example";  // string | 
+            var createOrderTakeOverRequest = new CreateOrderTakeOverRequest(); // CreateOrderTakeOverRequest |  (optional) 
 
             try
             {
                 // Take over an app-managed item: Crossly acts on the marketplace itself (needs your own connection).
-                CreateListingPlatformTakeOverResponse result = apiInstance.CreateListingPlatformTakeOver(id, platform);
+                CreateListingPlatformTakeOverResponse result = apiInstance.CreateListingPlatformTakeOver(id, platform, createOrderTakeOverRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -857,6 +878,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
  **platform** | **string**|  | 
+ **createOrderTakeOverRequest** | **CreateOrderTakeOverRequest**|  | [optional] 
 
 ### Return type
 
@@ -868,7 +890,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -965,7 +987,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderevent"></a>
 # **CreateOrderEvent**
-> CreateOrderEventResponse CreateOrderEvent ()
+> CreateOrderEventResponse CreateOrderEvent (CreateOrderEventRequest createOrderEventRequest)
 
 Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
 
@@ -989,11 +1011,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AppManagedListingsApi(config);
+            var createOrderEventRequest = new CreateOrderEventRequest(); // CreateOrderEventRequest | 
 
             try
             {
                 // Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
-                CreateOrderEventResponse result = apiInstance.CreateOrderEvent();
+                CreateOrderEventResponse result = apiInstance.CreateOrderEvent(createOrderEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1008,7 +1031,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderEventRequest** | **CreateOrderEventRequest**|  | 
 
 ### Return type
 
@@ -1020,7 +1046,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1039,7 +1065,7 @@ This endpoint does not need any parameter.
 
 <a name="createordertakeover"></a>
 # **CreateOrderTakeOver**
-> CreateOrderTakeOverResponse CreateOrderTakeOver (Guid id)
+> CreateOrderTakeOverResponse CreateOrderTakeOver (Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = null)
 
 Take over the app-managed item behind an order; its actions then go through your own connection.
 
@@ -1064,11 +1090,12 @@ namespace Example
 
             var apiInstance = new AppManagedListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderTakeOverRequest = new CreateOrderTakeOverRequest(); // CreateOrderTakeOverRequest |  (optional) 
 
             try
             {
                 // Take over the app-managed item behind an order; its actions then go through your own connection.
-                CreateOrderTakeOverResponse result = apiInstance.CreateOrderTakeOver(id);
+                CreateOrderTakeOverResponse result = apiInstance.CreateOrderTakeOver(id, createOrderTakeOverRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1087,6 +1114,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderTakeOverRequest** | **CreateOrderTakeOverRequest**|  | [optional] 
 
 ### Return type
 
@@ -1098,7 +1126,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

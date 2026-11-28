@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Connect a new platform account (kicks off OAuth or extension handshake).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <returns>CreateAccountResponse</returns>
-        CreateAccountResponse CreateAccount();
+        CreateAccountResponse CreateAccount(CreateAccountRequest createAccountRequest);
 
         /// <summary>
         /// Connect a new platform account (kicks off OAuth or extension handshake).
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <returns>ApiResponse of CreateAccountResponse</returns>
-        ApiResponse<CreateAccountResponse> CreateAccountWithHttpInfo();
+        ApiResponse<CreateAccountResponse> CreateAccountWithHttpInfo(CreateAccountRequest createAccountRequest);
         /// <summary>
         /// Connect CardNexus with a personal API key (validated live before it is stored).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>CreateConnectionCardnexusApiKeyResponse</returns>
-        CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey();
+        CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest);
 
         /// <summary>
         /// Connect CardNexus with a personal API key (validated live before it is stored).
@@ -56,40 +59,63 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ApiResponse of CreateConnectionCardnexusApiKeyResponse</returns>
-        ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo();
+        ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest);
         /// <summary>
-        /// Add an IMAP mailbox connection.
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateConnectionEmailCheckResponse</returns>
+        CreateConnectionEmailCheckResponse CreateConnectionEmailCheck(Guid id);
+
+        /// <summary>
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateConnectionEmailCheckResponse</returns>
+        ApiResponse<CreateConnectionEmailCheckResponse> CreateConnectionEmailCheckWithHttpInfo(Guid id);
+        /// <summary>
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <returns>CreateConnectionEmailImapResponse</returns>
-        CreateConnectionEmailImapResponse CreateConnectionEmailImap();
+        CreateConnectionEmailImapResponse CreateConnectionEmailImap(CreateConnectionEmailImapRequest createConnectionEmailImapRequest);
 
         /// <summary>
-        /// Add an IMAP mailbox connection.
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <returns>ApiResponse of CreateConnectionEmailImapResponse</returns>
-        ApiResponse<CreateConnectionEmailImapResponse> CreateConnectionEmailImapWithHttpInfo();
+        ApiResponse<CreateConnectionEmailImapResponse> CreateConnectionEmailImapWithHttpInfo(CreateConnectionEmailImapRequest createConnectionEmailImapRequest);
         /// <summary>
-        /// Validate IMAP credentials without persisting.
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <returns>CreateConnectionEmailImapTestResponse</returns>
-        CreateConnectionEmailImapTestResponse CreateConnectionEmailImapTest();
+        CreateConnectionEmailImapTestResponse CreateConnectionEmailImapTest(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest);
 
         /// <summary>
-        /// Validate IMAP credentials without persisting.
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <returns>ApiResponse of CreateConnectionEmailImapTestResponse</returns>
-        ApiResponse<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestWithHttpInfo();
+        ApiResponse<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestWithHttpInfo(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest);
         /// <summary>
         /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
         /// </summary>
@@ -109,30 +135,67 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateConnectionLightspeedXTokenResponse</returns>
         ApiResponse<CreateConnectionLightspeedXTokenResponse> CreateConnectionLightspeedXTokenWithHttpInfo(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest);
         /// <summary>
-        /// Express interest in a request_only platform.
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <returns>OkResponse</returns>
-        OkResponse CreateConnectionRequest(string platform);
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreAttachResponse</returns>
+        CreateConnectionStoreAttachResponse CreateConnectionStoreAttach(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest));
 
         /// <summary>
-        /// Express interest in a request_only platform.
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateConnectionRequestWithHttpInfo(string platform);
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreAttachResponse</returns>
+        ApiResponse<CreateConnectionStoreAttachResponse> CreateConnectionStoreAttachWithHttpInfo(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest));
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreCopyResponse</returns>
+        CreateConnectionStoreCopyResponse CreateConnectionStoreCopy(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest));
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreCopyResponse</returns>
+        ApiResponse<CreateConnectionStoreCopyResponse> CreateConnectionStoreCopyWithHttpInfo(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest));
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreDetachResponse</returns>
+        CreateConnectionStoreDetachResponse CreateConnectionStoreDetach(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest));
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreDetachResponse</returns>
+        ApiResponse<CreateConnectionStoreDetachResponse> CreateConnectionStoreDetachWithHttpInfo(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest));
         /// <summary>
         /// Revive or initiate connection for a cookie platform.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <returns>CreatePlatformAccountConnectResponse</returns>
-        CreatePlatformAccountConnectResponse CreatePlatformAccountConnect(string platform);
+        CreatePlatformAccountConnectResponse CreatePlatformAccountConnect(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest));
 
         /// <summary>
         /// Revive or initiate connection for a cookie platform.
@@ -142,8 +205,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePlatformAccountConnectResponse</returns>
-        ApiResponse<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectWithHttpInfo(string platform);
+        ApiResponse<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectWithHttpInfo(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest));
         /// <summary>
         /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
@@ -163,7 +227,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreatePlatformAccountDisconnectResponse</returns>
         ApiResponse<CreatePlatformAccountDisconnectResponse> CreatePlatformAccountDisconnectWithHttpInfo(string platform);
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now.
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -172,7 +236,7 @@ namespace net.crossly.Api
         CreatePlatformAccountHistoryImportResponse CreatePlatformAccountHistoryImport(string platform, CreatePlatformAccountHistoryImportRequest createPlatformAccountHistoryImportRequest);
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now.
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
         /// </summary>
         /// <remarks>
         /// 
@@ -235,39 +299,95 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of SuccessResponse</returns>
         ApiResponse<SuccessResponse> DeleteConnectionByIdWithHttpInfo(Guid id);
         /// <summary>
-        /// Remove an IMAP mailbox connection.
+        /// Disconnect an email connection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SuccessResponse</returns>
-        SuccessResponse DeleteConnectionEmailImap(Guid id);
+        /// <returns>DeleteConnectionEmailResponse</returns>
+        DeleteConnectionEmailResponse DeleteConnectionEmail(Guid id);
 
         /// <summary>
-        /// Remove an IMAP mailbox connection.
+        /// Disconnect an email connection.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SuccessResponse</returns>
-        ApiResponse<SuccessResponse> DeleteConnectionEmailImapWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of DeleteConnectionEmailResponse</returns>
+        ApiResponse<DeleteConnectionEmailResponse> DeleteConnectionEmailWithHttpInfo(Guid id);
         /// <summary>
-        /// List IMAP and email-OAuth connections.
+        /// Disconnect an email connection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>DeleteConnectionEmailResponse</returns>
+        DeleteConnectionEmailResponse DeleteConnectionEmailImap(Guid id);
+
+        /// <summary>
+        /// Disconnect an email connection.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of DeleteConnectionEmailResponse</returns>
+        ApiResponse<DeleteConnectionEmailResponse> DeleteConnectionEmailImapWithHttpInfo(Guid id);
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <returns>DeleteConnectionOwnAppResponse</returns>
+        DeleteConnectionOwnAppResponse DeleteConnectionOwnApp(string platform);
+
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <returns>ApiResponse of DeleteConnectionOwnAppResponse</returns>
+        ApiResponse<DeleteConnectionOwnAppResponse> DeleteConnectionOwnAppWithHttpInfo(string platform);
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>GetChannelAccountHistoryImportResponse</returns>
+        GetChannelAccountHistoryImportResponse GetChannelAccountHistoryImport(Guid accountId);
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of GetChannelAccountHistoryImportResponse</returns>
+        ApiResponse<GetChannelAccountHistoryImportResponse> GetChannelAccountHistoryImportWithHttpInfo(Guid accountId);
+        /// <summary>
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <returns>GetConnectionEmailResponse</returns>
-        GetConnectionEmailResponse GetConnectionEmail();
+        GetConnectionEmailResponse GetConnectionEmail(Guid id);
 
         /// <summary>
-        /// List IMAP and email-OAuth connections.
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <returns>ApiResponse of GetConnectionEmailResponse</returns>
-        ApiResponse<GetConnectionEmailResponse> GetConnectionEmailWithHttpInfo();
+        ApiResponse<GetConnectionEmailResponse> GetConnectionEmailWithHttpInfo(Guid id);
         /// <summary>
         /// Check if the browser extension is online.
         /// </summary>
@@ -308,10 +428,26 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetConnectionPolicyManagementOptionResponse</returns>
         ApiResponse<GetConnectionPolicyManagementOptionResponse> GetConnectionPolicyManagementOptionWithHttpInfo(string connectionId, string source);
         /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetConnectionStoreResponse</returns>
+        GetConnectionStoreResponse GetConnectionStore();
+
+        /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetConnectionStoreResponse</returns>
+        ApiResponse<GetConnectionStoreResponse> GetConnectionStoreWithHttpInfo();
+        /// <summary>
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -325,7 +461,7 @@ namespace net.crossly.Api
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -367,6 +503,72 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListAccountsResponse</returns>
         ApiResponse<ListAccountsResponse> ListAccountsWithHttpInfo();
         /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionEmailResponse</returns>
+        ListConnectionEmailResponse ListConnectionEmail();
+
+        /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionEmailResponse</returns>
+        ApiResponse<ListConnectionEmailResponse> ListConnectionEmailWithHttpInfo();
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListConnectionEmailEmailsResponse</returns>
+        ListConnectionEmailEmailsResponse ListConnectionEmailEmails(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?));
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListConnectionEmailEmailsResponse</returns>
+        ApiResponse<ListConnectionEmailEmailsResponse> ListConnectionEmailEmailsWithHttpInfo(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?));
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionOwnAppsResponse</returns>
+        ListConnectionOwnAppsResponse ListConnectionOwnApps();
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionOwnAppsResponse</returns>
+        ApiResponse<ListConnectionOwnAppsResponse> ListConnectionOwnAppsWithHttpInfo();
+        /// <summary>
         /// List eBay and Etsy accounts with whether Crossly manages their policies.
         /// </summary>
         /// <remarks>
@@ -386,14 +588,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListConnectionPolicyManagementResponse</returns>
         ApiResponse<ListConnectionPolicyManagementResponse> ListConnectionPolicyManagementWithHttpInfo();
         /// <summary>
-        /// List OAuth-connected API platforms.
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListConnectionsResponse</returns>
         ListConnectionsResponse ListConnections();
 
         /// <summary>
-        /// List OAuth-connected API platforms.
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
         /// </summary>
         /// <remarks>
         /// 
@@ -402,23 +604,101 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListConnectionsResponse</returns>
         ApiResponse<ListConnectionsResponse> ListConnectionsWithHttpInfo();
         /// <summary>
-        /// Edit an IMAP mailbox connection.
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListPlatformsResponse</returns>
+        ListPlatformsResponse ListPlatforms();
+
+        /// <summary>
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListPlatformsResponse</returns>
+        ApiResponse<ListPlatformsResponse> ListPlatformsWithHttpInfo();
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <returns>UpdateChannelAccountHistoryImportResponse</returns>
+        UpdateChannelAccountHistoryImportResponse UpdateChannelAccountHistoryImport(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest);
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <returns>ApiResponse of UpdateChannelAccountHistoryImportResponse</returns>
+        ApiResponse<UpdateChannelAccountHistoryImportResponse> UpdateChannelAccountHistoryImportWithHttpInfo(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest);
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SuccessResponse</returns>
-        SuccessResponse UpdateConnectionEmailImap(Guid id);
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>UpdateConnectionEmailResponse</returns>
+        UpdateConnectionEmailResponse UpdateConnectionEmail(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest);
 
         /// <summary>
-        /// Edit an IMAP mailbox connection.
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SuccessResponse</returns>
-        ApiResponse<SuccessResponse> UpdateConnectionEmailImapWithHttpInfo(Guid id);
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionEmailResponse</returns>
+        ApiResponse<UpdateConnectionEmailResponse> UpdateConnectionEmailWithHttpInfo(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest);
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>UpdateConnectionEmailResponse</returns>
+        UpdateConnectionEmailResponse UpdateConnectionEmailImap(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest);
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionEmailResponse</returns>
+        ApiResponse<UpdateConnectionEmailResponse> UpdateConnectionEmailImapWithHttpInfo(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest);
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <returns>UpdateConnectionOwnAppResponse</returns>
+        UpdateConnectionOwnAppResponse UpdateConnectionOwnApp(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest);
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionOwnAppResponse</returns>
+        ApiResponse<UpdateConnectionOwnAppResponse> UpdateConnectionOwnAppWithHttpInfo(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest);
         /// <summary>
         /// Turn Crossly policy management on or off for one eBay or Etsy account.
         /// </summary>
@@ -427,8 +707,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <returns>ListConnectionPolicyManagementItem</returns>
-        ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId);
+        ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest);
 
         /// <summary>
         /// Turn Crossly policy management on or off for one eBay or Etsy account.
@@ -438,16 +719,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <returns>ApiResponse of ListConnectionPolicyManagementItem</returns>
-        ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId);
+        ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest);
         /// <summary>
         /// Update per-platform connection preferences.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <returns>UpdatePlatformPreferenceResponse</returns>
-        UpdatePlatformPreferenceResponse UpdatePlatformPreference(string platform, Guid? connectionId = default(Guid?));
+        UpdatePlatformPreferenceResponse UpdatePlatformPreference(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?));
 
         /// <summary>
         /// Update per-platform connection preferences.
@@ -457,9 +740,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <returns>ApiResponse of UpdatePlatformPreferenceResponse</returns>
-        ApiResponse<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceWithHttpInfo(string platform, Guid? connectionId = default(Guid?));
+        ApiResponse<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceWithHttpInfo(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?));
         #endregion Synchronous Operations
     }
 
@@ -476,9 +760,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountResponse</returns>
-        System.Threading.Tasks.Task<CreateAccountResponse> CreateAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAccountResponse> CreateAccountAsync(CreateAccountRequest createAccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Connect a new platform account (kicks off OAuth or extension handshake).
@@ -487,9 +772,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAccountResponse>> CreateAccountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountResponse>> CreateAccountWithHttpInfoAsync(CreateAccountRequest createAccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Connect CardNexus with a personal API key (validated live before it is stored).
         /// </summary>
@@ -497,9 +783,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionCardnexusApiKeyResponse</returns>
-        System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Connect CardNexus with a personal API key (validated live before it is stored).
@@ -508,51 +795,79 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionCardnexusApiKeyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Add an IMAP mailbox connection.
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionEmailCheckResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionEmailCheckResponse> CreateConnectionEmailCheckAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionEmailCheckResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailCheckResponse>> CreateConnectionEmailCheckWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionEmailImapResponse</returns>
-        System.Threading.Tasks.Task<CreateConnectionEmailImapResponse> CreateConnectionEmailImapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateConnectionEmailImapResponse> CreateConnectionEmailImapAsync(CreateConnectionEmailImapRequest createConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Add an IMAP mailbox connection.
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionEmailImapResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailImapResponse>> CreateConnectionEmailImapWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailImapResponse>> CreateConnectionEmailImapWithHttpInfoAsync(CreateConnectionEmailImapRequest createConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Validate IMAP credentials without persisting.
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionEmailImapTestResponse</returns>
-        System.Threading.Tasks.Task<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestAsync(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Validate IMAP credentials without persisting.
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionEmailImapTestResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailImapTestResponse>> CreateConnectionEmailImapTestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionEmailImapTestResponse>> CreateConnectionEmailImapTestWithHttpInfoAsync(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Connect Lightspeed X-Series with a personal token (Setup → Personal tokens, Plus plan) and the store prefix.
         /// </summary>
@@ -577,28 +892,74 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateConnectionLightspeedXTokenResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateConnectionLightspeedXTokenResponse>> CreateConnectionLightspeedXTokenWithHttpInfoAsync(CreateConnectionLightspeedXTokenRequest createConnectionLightspeedXTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Express interest in a request_only platform.
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateConnectionRequestAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateConnectionStoreAttachResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionStoreAttachResponse> CreateConnectionStoreAttachAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Express interest in a request_only platform.
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateConnectionRequestWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateConnectionStoreAttachResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionStoreAttachResponse>> CreateConnectionStoreAttachWithHttpInfoAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionStoreCopyResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionStoreCopyResponse> CreateConnectionStoreCopyAsync(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionStoreCopyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionStoreCopyResponse>> CreateConnectionStoreCopyWithHttpInfoAsync(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionStoreDetachResponse</returns>
+        System.Threading.Tasks.Task<CreateConnectionStoreDetachResponse> CreateConnectionStoreDetachAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionStoreDetachResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateConnectionStoreDetachResponse>> CreateConnectionStoreDetachWithHttpInfoAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Revive or initiate connection for a cookie platform.
         /// </summary>
@@ -607,9 +968,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePlatformAccountConnectResponse</returns>
-        System.Threading.Tasks.Task<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectAsync(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Revive or initiate connection for a cookie platform.
@@ -619,9 +981,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePlatformAccountConnectResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePlatformAccountConnectResponse>> CreatePlatformAccountConnectWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePlatformAccountConnectResponse>> CreatePlatformAccountConnectWithHttpInfoAsync(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Disconnect every account of a platform (archives the rows and deletes their stored sessions).
         /// </summary>
@@ -646,7 +1009,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreatePlatformAccountDisconnectResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatePlatformAccountDisconnectResponse>> CreatePlatformAccountDisconnectWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now.
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
         /// </summary>
         /// <remarks>
         /// 
@@ -659,7 +1022,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreatePlatformAccountHistoryImportResponse> CreatePlatformAccountHistoryImportAsync(string platform, CreatePlatformAccountHistoryImportRequest createPlatformAccountHistoryImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now.
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now.
         /// </summary>
         /// <remarks>
         /// 
@@ -738,7 +1101,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteConnectionByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Remove an IMAP mailbox connection.
+        /// Disconnect an email connection.
         /// </summary>
         /// <remarks>
         /// 
@@ -746,11 +1109,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SuccessResponse</returns>
-        System.Threading.Tasks.Task<SuccessResponse> DeleteConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of DeleteConnectionEmailResponse</returns>
+        System.Threading.Tasks.Task<DeleteConnectionEmailResponse> DeleteConnectionEmailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Remove an IMAP mailbox connection.
+        /// Disconnect an email connection.
         /// </summary>
         /// <remarks>
         /// 
@@ -758,29 +1121,100 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (DeleteConnectionEmailResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteConnectionEmailResponse>> DeleteConnectionEmailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List IMAP and email-OAuth connections.
+        /// Disconnect an email connection.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteConnectionEmailResponse</returns>
+        System.Threading.Tasks.Task<DeleteConnectionEmailResponse> DeleteConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disconnect an email connection.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteConnectionEmailResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteConnectionEmailResponse>> DeleteConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteConnectionOwnAppResponse</returns>
+        System.Threading.Tasks.Task<DeleteConnectionOwnAppResponse> DeleteConnectionOwnAppAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteConnectionOwnAppResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteConnectionOwnAppResponse>> DeleteConnectionOwnAppWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetChannelAccountHistoryImportResponse</returns>
+        System.Threading.Tasks.Task<GetChannelAccountHistoryImportResponse> GetChannelAccountHistoryImportAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetChannelAccountHistoryImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetChannelAccountHistoryImportResponse>> GetChannelAccountHistoryImportWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetConnectionEmailResponse</returns>
-        System.Threading.Tasks.Task<GetConnectionEmailResponse> GetConnectionEmailAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetConnectionEmailResponse> GetConnectionEmailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List IMAP and email-OAuth connections.
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetConnectionEmailResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetConnectionEmailResponse>> GetConnectionEmailWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetConnectionEmailResponse>> GetConnectionEmailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Check if the browser extension is online.
         /// </summary>
@@ -828,10 +1262,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetConnectionPolicyManagementOptionResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetConnectionPolicyManagementOptionResponse>> GetConnectionPolicyManagementOptionWithHttpInfoAsync(string connectionId, string source, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetConnectionStoreResponse</returns>
+        System.Threading.Tasks.Task<GetConnectionStoreResponse> GetConnectionStoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetConnectionStoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetConnectionStoreResponse>> GetConnectionStoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -846,7 +1301,7 @@ namespace net.crossly.Api
         /// Return the OAuth authorize URL for an API-track platform.
         /// </summary>
         /// <remarks>
-        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -899,6 +1354,87 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListAccountsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAccountsResponse>> ListAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionEmailResponse</returns>
+        System.Threading.Tasks.Task<ListConnectionEmailResponse> ListConnectionEmailAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionEmailResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionEmailResponse>> ListConnectionEmailWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionEmailEmailsResponse</returns>
+        System.Threading.Tasks.Task<ListConnectionEmailEmailsResponse> ListConnectionEmailEmailsAsync(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionEmailEmailsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionEmailEmailsResponse>> ListConnectionEmailEmailsWithHttpInfoAsync(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionOwnAppsResponse</returns>
+        System.Threading.Tasks.Task<ListConnectionOwnAppsResponse> ListConnectionOwnAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionOwnAppsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionOwnAppsResponse>> ListConnectionOwnAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// List eBay and Etsy accounts with whether Crossly manages their policies.
         /// </summary>
         /// <remarks>
@@ -920,7 +1456,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListConnectionPolicyManagementResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListConnectionPolicyManagementResponse>> ListConnectionPolicyManagementWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List OAuth-connected API platforms.
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
         /// </summary>
         /// <remarks>
         /// 
@@ -931,7 +1467,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListConnectionsResponse> ListConnectionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List OAuth-connected API platforms.
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it.
         /// </summary>
         /// <remarks>
         /// 
@@ -941,28 +1477,126 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListConnectionsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListConnectionsResponse>> ListConnectionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Edit an IMAP mailbox connection.
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SuccessResponse</returns>
-        System.Threading.Tasks.Task<SuccessResponse> UpdateConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListPlatformsResponse</returns>
+        System.Threading.Tasks.Task<ListPlatformsResponse> ListPlatformsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Edit an IMAP mailbox connection.
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPlatformsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListPlatformsResponse>> ListPlatformsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateChannelAccountHistoryImportResponse</returns>
+        System.Threading.Tasks.Task<UpdateChannelAccountHistoryImportResponse> UpdateChannelAccountHistoryImportAsync(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateChannelAccountHistoryImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateChannelAccountHistoryImportResponse>> UpdateChannelAccountHistoryImportWithHttpInfoAsync(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> UpdateConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of UpdateConnectionEmailResponse</returns>
+        System.Threading.Tasks.Task<UpdateConnectionEmailResponse> UpdateConnectionEmailAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateConnectionEmailResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateConnectionEmailResponse>> UpdateConnectionEmailWithHttpInfoAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateConnectionEmailResponse</returns>
+        System.Threading.Tasks.Task<UpdateConnectionEmailResponse> UpdateConnectionEmailImapAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateConnectionEmailResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateConnectionEmailResponse>> UpdateConnectionEmailImapWithHttpInfoAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateConnectionOwnAppResponse</returns>
+        System.Threading.Tasks.Task<UpdateConnectionOwnAppResponse> UpdateConnectionOwnAppAsync(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateConnectionOwnAppResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateConnectionOwnAppResponse>> UpdateConnectionOwnAppWithHttpInfoAsync(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Turn Crossly policy management on or off for one eBay or Etsy account.
         /// </summary>
@@ -971,9 +1605,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListConnectionPolicyManagementItem</returns>
-        System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Turn Crossly policy management on or off for one eBay or Etsy account.
@@ -983,9 +1618,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListConnectionPolicyManagementItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update per-platform connection preferences.
         /// </summary>
@@ -994,10 +1630,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatePlatformPreferenceResponse</returns>
-        System.Threading.Tasks.Task<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceAsync(string platform, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceAsync(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update per-platform connection preferences.
@@ -1007,10 +1644,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatePlatformPreferenceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdatePlatformPreferenceResponse>> UpdatePlatformPreferenceWithHttpInfoAsync(string platform, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdatePlatformPreferenceResponse>> UpdatePlatformPreferenceWithHttpInfoAsync(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1135,10 +1773,11 @@ namespace net.crossly.Api
         /// Connect a new platform account (kicks off OAuth or extension handshake). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <returns>CreateAccountResponse</returns>
-        public CreateAccountResponse CreateAccount()
+        public CreateAccountResponse CreateAccount(CreateAccountRequest createAccountRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAccountResponse> localVarResponse = CreateAccountWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAccountResponse> localVarResponse = CreateAccountWithHttpInfo(createAccountRequest);
             return localVarResponse.Data;
         }
 
@@ -1146,12 +1785,20 @@ namespace net.crossly.Api
         /// Connect a new platform account (kicks off OAuth or extension handshake). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <returns>ApiResponse of CreateAccountResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAccountResponse> CreateAccountWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAccountResponse> CreateAccountWithHttpInfo(CreateAccountRequest createAccountRequest)
         {
+            // verify the required parameter 'createAccountRequest' is set
+            if (createAccountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAccountRequest' when calling AccountsApi->CreateAccount");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1171,6 +1818,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1197,11 +1845,12 @@ namespace net.crossly.Api
         /// Connect a new platform account (kicks off OAuth or extension handshake). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAccountResponse> CreateAccountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAccountResponse> CreateAccountAsync(CreateAccountRequest createAccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAccountResponse> localVarResponse = await CreateAccountWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAccountResponse> localVarResponse = await CreateAccountWithHttpInfoAsync(createAccountRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1209,14 +1858,22 @@ namespace net.crossly.Api
         /// Connect a new platform account (kicks off OAuth or extension handshake). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountResponse>> CreateAccountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountResponse>> CreateAccountWithHttpInfoAsync(CreateAccountRequest createAccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAccountRequest' is set
+            if (createAccountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAccountRequest' when calling AccountsApi->CreateAccount");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1236,6 +1893,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1263,10 +1921,11 @@ namespace net.crossly.Api
         /// Connect CardNexus with a personal API key (validated live before it is stored). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>CreateConnectionCardnexusApiKeyResponse</returns>
-        public CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey()
+        public CreateConnectionCardnexusApiKeyResponse CreateConnectionCardnexusApiKey(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = CreateConnectionCardnexusApiKeyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = CreateConnectionCardnexusApiKeyWithHttpInfo(updateWeb3MarketplaceKeyRequest);
             return localVarResponse.Data;
         }
 
@@ -1274,12 +1933,20 @@ namespace net.crossly.Api
         /// Connect CardNexus with a personal API key (validated live before it is stored). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ApiResponse of CreateConnectionCardnexusApiKeyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyWithHttpInfo(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest)
         {
+            // verify the required parameter 'updateWeb3MarketplaceKeyRequest' is set
+            if (updateWeb3MarketplaceKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3MarketplaceKeyRequest' when calling AccountsApi->CreateConnectionCardnexusApiKey");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1299,6 +1966,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWeb3MarketplaceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1325,11 +1993,12 @@ namespace net.crossly.Api
         /// Connect CardNexus with a personal API key (validated live before it is stored). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionCardnexusApiKeyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateConnectionCardnexusApiKeyResponse> CreateConnectionCardnexusApiKeyAsync(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = await CreateConnectionCardnexusApiKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse> localVarResponse = await CreateConnectionCardnexusApiKeyWithHttpInfoAsync(updateWeb3MarketplaceKeyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1337,14 +2006,22 @@ namespace net.crossly.Api
         /// Connect CardNexus with a personal API key (validated live before it is stored). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionCardnexusApiKeyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionCardnexusApiKeyResponse>> CreateConnectionCardnexusApiKeyWithHttpInfoAsync(UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateWeb3MarketplaceKeyRequest' is set
+            if (updateWeb3MarketplaceKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3MarketplaceKeyRequest' when calling AccountsApi->CreateConnectionCardnexusApiKey");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1364,6 +2041,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWeb3MarketplaceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1388,22 +2066,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Add an IMAP mailbox connection. 
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateConnectionEmailImapResponse</returns>
-        public CreateConnectionEmailImapResponse CreateConnectionEmailImap()
+        /// <param name="id"></param>
+        /// <returns>CreateConnectionEmailCheckResponse</returns>
+        public CreateConnectionEmailCheckResponse CreateConnectionEmailCheck(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> localVarResponse = CreateConnectionEmailImapWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateConnectionEmailCheckResponse> localVarResponse = CreateConnectionEmailCheckWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add an IMAP mailbox connection. 
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateConnectionEmailImapResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> CreateConnectionEmailImapWithHttpInfo()
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateConnectionEmailCheckResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionEmailCheckResponse> CreateConnectionEmailCheckWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1427,6 +2107,148 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateConnectionEmailCheckResponse>("/v1/connections/email/{id}/check", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionEmailCheck", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionEmailCheckResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionEmailCheckResponse> CreateConnectionEmailCheckAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionEmailCheckResponse> localVarResponse = await CreateConnectionEmailCheckWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Check an email connection now: sign in to it live (IMAP login, or a working Gmail / Outlook token) and, when that works and it is not paused, scan it straight away. data.ok false carries a plain reason. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionEmailCheckResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionEmailCheckResponse>> CreateConnectionEmailCheckWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionEmailCheckResponse>("/v1/connections/email/{id}/check", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionEmailCheck", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
+        /// <returns>CreateConnectionEmailImapResponse</returns>
+        public CreateConnectionEmailImapResponse CreateConnectionEmailImap(CreateConnectionEmailImapRequest createConnectionEmailImapRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> localVarResponse = CreateConnectionEmailImapWithHttpInfo(createConnectionEmailImapRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
+        /// <returns>ApiResponse of CreateConnectionEmailImapResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> CreateConnectionEmailImapWithHttpInfo(CreateConnectionEmailImapRequest createConnectionEmailImapRequest)
+        {
+            // verify the required parameter 'createConnectionEmailImapRequest' is set
+            if (createConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionEmailImapRequest' when calling AccountsApi->CreateConnectionEmailImap");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionEmailImapRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1450,29 +2272,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Add an IMAP mailbox connection. 
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionEmailImapResponse</returns>
-        public async System.Threading.Tasks.Task<CreateConnectionEmailImapResponse> CreateConnectionEmailImapAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateConnectionEmailImapResponse> CreateConnectionEmailImapAsync(CreateConnectionEmailImapRequest createConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> localVarResponse = await CreateConnectionEmailImapWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse> localVarResponse = await CreateConnectionEmailImapWithHttpInfoAsync(createConnectionEmailImapRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add an IMAP mailbox connection. 
+        /// Add an IMAP mailbox. The sign-in is verified before it is saved; most providers need an app password. watchedPlatforms picks the marketplaces it is read for (null &#x3D; all). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionEmailImapResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse>> CreateConnectionEmailImapWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionEmailImapResponse>> CreateConnectionEmailImapWithHttpInfoAsync(CreateConnectionEmailImapRequest createConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createConnectionEmailImapRequest' is set
+            if (createConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionEmailImapRequest' when calling AccountsApi->CreateConnectionEmailImap");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1492,6 +2323,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createConnectionEmailImapRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1516,26 +2348,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate IMAP credentials without persisting. 
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <returns>CreateConnectionEmailImapTestResponse</returns>
-        public CreateConnectionEmailImapTestResponse CreateConnectionEmailImapTest()
+        public CreateConnectionEmailImapTestResponse CreateConnectionEmailImapTest(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest)
         {
-            net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> localVarResponse = CreateConnectionEmailImapTestWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> localVarResponse = CreateConnectionEmailImapTestWithHttpInfo(createConnectionEmailImapTestRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Validate IMAP credentials without persisting. 
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <returns>ApiResponse of CreateConnectionEmailImapTestResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestWithHttpInfo(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest)
         {
+            // verify the required parameter 'createConnectionEmailImapTestRequest' is set
+            if (createConnectionEmailImapTestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionEmailImapTestRequest' when calling AccountsApi->CreateConnectionEmailImapTest");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1555,6 +2396,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createConnectionEmailImapTestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1578,29 +2420,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate IMAP credentials without persisting. 
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateConnectionEmailImapTestResponse</returns>
-        public async System.Threading.Tasks.Task<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateConnectionEmailImapTestResponse> CreateConnectionEmailImapTestAsync(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> localVarResponse = await CreateConnectionEmailImapTestWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse> localVarResponse = await CreateConnectionEmailImapTestWithHttpInfoAsync(createConnectionEmailImapTestRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Validate IMAP credentials without persisting. 
+        /// Check IMAP credentials without saving them. A failure is a 400 with a plain reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionEmailImapTestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateConnectionEmailImapTestResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse>> CreateConnectionEmailImapTestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionEmailImapTestResponse>> CreateConnectionEmailImapTestWithHttpInfoAsync(CreateConnectionEmailImapTestRequest createConnectionEmailImapTestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createConnectionEmailImapTestRequest' is set
+            if (createConnectionEmailImapTestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createConnectionEmailImapTestRequest' when calling AccountsApi->CreateConnectionEmailImapTest");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1620,6 +2471,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createConnectionEmailImapTestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1792,34 +2644,29 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Express interest in a request_only platform. 
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <returns>OkResponse</returns>
-        public OkResponse CreateConnectionRequest(string platform)
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreAttachResponse</returns>
+        public CreateConnectionStoreAttachResponse CreateConnectionStoreAttach(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateConnectionRequestWithHttpInfo(platform);
+            net.crossly.Client.ApiResponse<CreateConnectionStoreAttachResponse> localVarResponse = CreateConnectionStoreAttachWithHttpInfo(createConnectionStoreAttachRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Express interest in a request_only platform. 
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateConnectionRequestWithHttpInfo(string platform)
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreAttachResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionStoreAttachResponse> CreateConnectionStoreAttachWithHttpInfo(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest))
         {
-            // verify the required parameter 'platform' is set
-            if (platform == null)
-            {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->CreateConnectionRequest");
-            }
-
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1839,7 +2686,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createConnectionStoreAttachRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1849,10 +2696,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<OkResponse>("/v1/connections/{platform}/request", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateConnectionStoreAttachResponse>("/v1/connections/stores/attach", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateConnectionRequest", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreAttach", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1863,37 +2710,32 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Express interest in a request_only platform. 
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateConnectionRequestAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateConnectionStoreAttachResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionStoreAttachResponse> CreateConnectionStoreAttachAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateConnectionRequestWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateConnectionStoreAttachResponse> localVarResponse = await CreateConnectionStoreAttachWithHttpInfoAsync(createConnectionStoreAttachRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Express interest in a request_only platform. 
+        /// Let this store (X-Storefront-Id) use one of your marketplace accounts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateConnectionRequestWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateConnectionStoreAttachResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionStoreAttachResponse>> CreateConnectionStoreAttachWithHttpInfoAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'platform' is set
-            if (platform == null)
-            {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->CreateConnectionRequest");
-            }
-
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1913,7 +2755,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createConnectionStoreAttachRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1923,11 +2765,283 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<OkResponse>("/v1/connections/{platform}/request", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionStoreAttachResponse>("/v1/connections/stores/attach", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateConnectionRequest", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreAttach", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreCopyResponse</returns>
+        public CreateConnectionStoreCopyResponse CreateConnectionStoreCopy(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionStoreCopyResponse> localVarResponse = CreateConnectionStoreCopyWithHttpInfo(createConnectionStoreCopyRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreCopyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionStoreCopyResponse> CreateConnectionStoreCopyWithHttpInfo(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionStoreCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateConnectionStoreCopyResponse>("/v1/connections/stores/copy", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionStoreCopyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionStoreCopyResponse> CreateConnectionStoreCopyAsync(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionStoreCopyResponse> localVarResponse = await CreateConnectionStoreCopyWithHttpInfoAsync(createConnectionStoreCopyRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Let several of your stores use a marketplace account at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionStoreCopyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionStoreCopyResponse>> CreateConnectionStoreCopyWithHttpInfoAsync(CreateConnectionStoreCopyRequest createConnectionStoreCopyRequest = default(CreateConnectionStoreCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionStoreCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionStoreCopyResponse>("/v1/connections/stores/copy", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>CreateConnectionStoreDetachResponse</returns>
+        public CreateConnectionStoreDetachResponse CreateConnectionStoreDetach(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionStoreDetachResponse> localVarResponse = CreateConnectionStoreDetachWithHttpInfo(createConnectionStoreAttachRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateConnectionStoreDetachResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateConnectionStoreDetachResponse> CreateConnectionStoreDetachWithHttpInfo(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionStoreAttachRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateConnectionStoreDetachResponse>("/v1/connections/stores/detach", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreDetach", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateConnectionStoreDetachResponse</returns>
+        public async System.Threading.Tasks.Task<CreateConnectionStoreDetachResponse> CreateConnectionStoreDetachAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateConnectionStoreDetachResponse> localVarResponse = await CreateConnectionStoreDetachWithHttpInfoAsync(createConnectionStoreAttachRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop this store using a marketplace account. The account stays connected for your other stores. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createConnectionStoreAttachRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateConnectionStoreDetachResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateConnectionStoreDetachResponse>> CreateConnectionStoreDetachWithHttpInfoAsync(CreateConnectionStoreAttachRequest createConnectionStoreAttachRequest = default(CreateConnectionStoreAttachRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createConnectionStoreAttachRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateConnectionStoreDetachResponse>("/v1/connections/stores/detach", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateConnectionStoreDetach", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1942,10 +3056,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <returns>CreatePlatformAccountConnectResponse</returns>
-        public CreatePlatformAccountConnectResponse CreatePlatformAccountConnect(string platform)
+        public CreatePlatformAccountConnectResponse CreatePlatformAccountConnect(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest))
         {
-            net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> localVarResponse = CreatePlatformAccountConnectWithHttpInfo(platform);
+            net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> localVarResponse = CreatePlatformAccountConnectWithHttpInfo(platform, createPlatformAccountConnectRequest);
             return localVarResponse.Data;
         }
 
@@ -1954,8 +3069,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePlatformAccountConnectResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectWithHttpInfo(string platform)
+        public net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectWithHttpInfo(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -1966,6 +3082,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1986,6 +3103,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createPlatformAccountConnectRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2013,11 +3131,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePlatformAccountConnectResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePlatformAccountConnectResponse> CreatePlatformAccountConnectAsync(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> localVarResponse = await CreatePlatformAccountConnectWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse> localVarResponse = await CreatePlatformAccountConnectWithHttpInfoAsync(platform, createPlatformAccountConnectRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2026,9 +3145,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createPlatformAccountConnectRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePlatformAccountConnectResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse>> CreatePlatformAccountConnectWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePlatformAccountConnectResponse>> CreatePlatformAccountConnectWithHttpInfoAsync(string platform, CreatePlatformAccountConnectRequest createPlatformAccountConnectRequest = default(CreatePlatformAccountConnectRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2040,6 +3160,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2060,6 +3181,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createPlatformAccountConnectRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2230,7 +3352,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now. 
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2243,7 +3365,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now. 
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2311,7 +3433,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now. 
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2325,7 +3447,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set how far back to backfill order history + active listings for a platform, and run it now. 
+        /// Set how far back to backfill order history + active listings for a platform account (or every pending account of the platform), and run it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -2792,24 +3914,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove an IMAP mailbox connection. 
+        /// Disconnect an email connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>SuccessResponse</returns>
-        public SuccessResponse DeleteConnectionEmailImap(Guid id)
+        /// <returns>DeleteConnectionEmailResponse</returns>
+        public DeleteConnectionEmailResponse DeleteConnectionEmail(Guid id)
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = DeleteConnectionEmailImapWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> localVarResponse = DeleteConnectionEmailWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Remove an IMAP mailbox connection. 
+        /// Disconnect an email connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of SuccessResponse</returns>
-        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteConnectionEmailImapWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of DeleteConnectionEmailResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> DeleteConnectionEmailWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2843,10 +3965,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<SuccessResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("DeleteConnectionEmailImap", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeleteConnectionEmail", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2857,26 +3979,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove an IMAP mailbox connection. 
+        /// Disconnect an email connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SuccessResponse</returns>
-        public async System.Threading.Tasks.Task<SuccessResponse> DeleteConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of DeleteConnectionEmailResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteConnectionEmailResponse> DeleteConnectionEmailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await DeleteConnectionEmailImapWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> localVarResponse = await DeleteConnectionEmailWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Remove an IMAP mailbox connection. 
+        /// Disconnect an email connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (DeleteConnectionEmailResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse>> DeleteConnectionEmailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2911,7 +4033,141 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<SuccessResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteConnectionEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an email connection. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>DeleteConnectionEmailResponse</returns>
+        public DeleteConnectionEmailResponse DeleteConnectionEmailImap(Guid id)
+        {
+            net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> localVarResponse = DeleteConnectionEmailImapWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an email connection. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of DeleteConnectionEmailResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> DeleteConnectionEmailImapWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeleteConnectionEmailResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteConnectionEmailImap", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an email connection. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteConnectionEmailResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteConnectionEmailResponse> DeleteConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse> localVarResponse = await DeleteConnectionEmailImapWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an email connection. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteConnectionEmailResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteConnectionEmailResponse>> DeleteConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteConnectionEmailResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2926,22 +4182,304 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List IMAP and email-OAuth connections. 
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <returns>DeleteConnectionOwnAppResponse</returns>
+        public DeleteConnectionOwnAppResponse DeleteConnectionOwnApp(string platform)
+        {
+            net.crossly.Client.ApiResponse<DeleteConnectionOwnAppResponse> localVarResponse = DeleteConnectionOwnAppWithHttpInfo(platform);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <returns>ApiResponse of DeleteConnectionOwnAppResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteConnectionOwnAppResponse> DeleteConnectionOwnAppWithHttpInfo(string platform)
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->DeleteConnectionOwnApp");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeleteConnectionOwnAppResponse>("/v1/connections/own-apps/{platform}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteConnectionOwnApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteConnectionOwnAppResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteConnectionOwnAppResponse> DeleteConnectionOwnAppAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DeleteConnectionOwnAppResponse> localVarResponse = await DeleteConnectionOwnAppWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove your own developer app for a marketplace; the connections it authorized are switched off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteConnectionOwnAppResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteConnectionOwnAppResponse>> DeleteConnectionOwnAppWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->DeleteConnectionOwnApp");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteConnectionOwnAppResponse>("/v1/connections/own-apps/{platform}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteConnectionOwnApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>GetChannelAccountHistoryImportResponse</returns>
+        public GetChannelAccountHistoryImportResponse GetChannelAccountHistoryImport(Guid accountId)
+        {
+            net.crossly.Client.ApiResponse<GetChannelAccountHistoryImportResponse> localVarResponse = GetChannelAccountHistoryImportWithHttpInfo(accountId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of GetChannelAccountHistoryImportResponse</returns>
+        public net.crossly.Client.ApiResponse<GetChannelAccountHistoryImportResponse> GetChannelAccountHistoryImportWithHttpInfo(Guid accountId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetChannelAccountHistoryImportResponse>("/v1/channel-accounts/{accountId}/history-import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetChannelAccountHistoryImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetChannelAccountHistoryImportResponse</returns>
+        public async System.Threading.Tasks.Task<GetChannelAccountHistoryImportResponse> GetChannelAccountHistoryImportAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetChannelAccountHistoryImportResponse> localVarResponse = await GetChannelAccountHistoryImportWithHttpInfoAsync(accountId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s order-history import window (how far back its past sales and active listings import): days null &#x3D; All time, 0 &#x3D; None, N &#x3D; the last N days; chosen&#x3D;false &#x3D; never chosen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetChannelAccountHistoryImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetChannelAccountHistoryImportResponse>> GetChannelAccountHistoryImportWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetChannelAccountHistoryImportResponse>("/v1/channel-accounts/{accountId}/history-import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetChannelAccountHistoryImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <returns>GetConnectionEmailResponse</returns>
-        public GetConnectionEmailResponse GetConnectionEmail()
+        public GetConnectionEmailResponse GetConnectionEmail(Guid id)
         {
-            net.crossly.Client.ApiResponse<GetConnectionEmailResponse> localVarResponse = GetConnectionEmailWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetConnectionEmailResponse> localVarResponse = GetConnectionEmailWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List IMAP and email-OAuth connections. 
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <returns>ApiResponse of GetConnectionEmailResponse</returns>
-        public net.crossly.Client.ApiResponse<GetConnectionEmailResponse> GetConnectionEmailWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetConnectionEmailResponse> GetConnectionEmailWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2965,6 +4503,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2974,7 +4513,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetConnectionEmailResponse>("/v1/connections/email", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetConnectionEmail", localVarResponse);
@@ -2988,24 +4527,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List IMAP and email-OAuth connections. 
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetConnectionEmailResponse</returns>
-        public async System.Threading.Tasks.Task<GetConnectionEmailResponse> GetConnectionEmailAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetConnectionEmailResponse> GetConnectionEmailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetConnectionEmailResponse> localVarResponse = await GetConnectionEmailWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetConnectionEmailResponse> localVarResponse = await GetConnectionEmailWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List IMAP and email-OAuth connections. 
+        /// One email connection: health, last scan, the marketplaces it watches and its 7-day counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetConnectionEmailResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetConnectionEmailResponse>> GetConnectionEmailWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetConnectionEmailResponse>> GetConnectionEmailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3030,6 +4571,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3039,7 +4581,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetConnectionEmailResponse>("/v1/connections/email", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -3346,7 +4888,135 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetConnectionStoreResponse</returns>
+        public GetConnectionStoreResponse GetConnectionStore()
+        {
+            net.crossly.Client.ApiResponse<GetConnectionStoreResponse> localVarResponse = GetConnectionStoreWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetConnectionStoreResponse</returns>
+        public net.crossly.Client.ApiResponse<GetConnectionStoreResponse> GetConnectionStoreWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetConnectionStoreResponse>("/v1/connections/stores", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetConnectionStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetConnectionStoreResponse</returns>
+        public async System.Threading.Tasks.Task<GetConnectionStoreResponse> GetConnectionStoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetConnectionStoreResponse> localVarResponse = await GetConnectionStoreWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your stores and which marketplace accounts each may use (its default per platform, and the store each account was connected from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetConnectionStoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetConnectionStoreResponse>> GetConnectionStoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetConnectionStoreResponse>("/v1/connections/stores", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetConnectionStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -3361,7 +5031,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -3435,7 +5105,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -3451,7 +5121,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart returns &#x60;{ status: \&quot;request_only\&quot;, requestUrl, message }&#x60; instead of a URL because per-seller OAuth needs Solution Provider approval.
+        /// Return the OAuth authorize URL for an API-track platform. Most platforms return &#x60;{ url }&#x60; (Shopify, Etsy, Amazon and the other marketplaces Atlas Connections connects: the URL Atlas returns for this seller). Bonanza adds &#x60;{ oneShot: true }&#x60;. WooCommerce requires &#x60;?siteUrl&#x3D;...&#x60;. Walmart (and CardNexus before its approval link) returns &#x60;{ status: \&quot;own_credentials\&quot;, connectWith, docsUrl, message }&#x60;: connect with your own keys. An own_app marketplace (GET /api/v1/platforms) needs your app saved first (PUT /api/v1/connections/own-apps/:platform), else 400 own_app_required.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
@@ -3784,6 +5454,492 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionEmailResponse</returns>
+        public ListConnectionEmailResponse ListConnectionEmail()
+        {
+            net.crossly.Client.ApiResponse<ListConnectionEmailResponse> localVarResponse = ListConnectionEmailWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionEmailResponse</returns>
+        public net.crossly.Client.ApiResponse<ListConnectionEmailResponse> ListConnectionEmailWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListConnectionEmailResponse>("/v1/connections/email", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionEmailResponse</returns>
+        public async System.Threading.Tasks.Task<ListConnectionEmailResponse> ListConnectionEmailAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionEmailResponse> localVarResponse = await ListConnectionEmailWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List email connections (mailboxes Crossly reads marketplace email from). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionEmailResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionEmailResponse>> ListConnectionEmailWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListConnectionEmailResponse>("/v1/connections/email", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListConnectionEmailEmailsResponse</returns>
+        public ListConnectionEmailEmailsResponse ListConnectionEmailEmails(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionEmailEmailsResponse> localVarResponse = ListConnectionEmailEmailsWithHttpInfo(id, q, platform, type, match, from, to, cursor, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListConnectionEmailEmailsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListConnectionEmailEmailsResponse> ListConnectionEmailEmailsWithHttpInfo(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (platform != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+            }
+            if (type != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            }
+            if (match != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "match", match));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListConnectionEmailEmailsResponse>("/v1/connections/email/{id}/emails", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionEmailEmails", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionEmailEmailsResponse</returns>
+        public async System.Threading.Tasks.Task<ListConnectionEmailEmailsResponse> ListConnectionEmailEmailsAsync(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionEmailEmailsResponse> localVarResponse = await ListConnectionEmailEmailsWithHttpInfoAsync(id, q, platform, type, match, from, to, cursor, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// An email connection&#39;s inbox: the marketplace emails Crossly picked up from it and what it did with each, newest first. Filter by platform, type, matched/unmatched and date; page with next_cursor. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="platform"> (optional)</param>
+        /// <param name="type"> (optional)</param>
+        /// <param name="match"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionEmailEmailsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionEmailEmailsResponse>> ListConnectionEmailEmailsWithHttpInfoAsync(Guid id, string q = default(string), string platform = default(string), string type = default(string), string match = default(string), DateTime? from = default(DateTime?), DateTime? to = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (platform != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+            }
+            if (type != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            }
+            if (match != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "match", match));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListConnectionEmailEmailsResponse>("/v1/connections/email/{id}/emails", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionEmailEmails", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListConnectionOwnAppsResponse</returns>
+        public ListConnectionOwnAppsResponse ListConnectionOwnApps()
+        {
+            net.crossly.Client.ApiResponse<ListConnectionOwnAppsResponse> localVarResponse = ListConnectionOwnAppsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListConnectionOwnAppsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListConnectionOwnAppsResponse> ListConnectionOwnAppsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListConnectionOwnAppsResponse>("/v1/connections/own-apps", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionOwnApps", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListConnectionOwnAppsResponse</returns>
+        public async System.Threading.Tasks.Task<ListConnectionOwnAppsResponse> ListConnectionOwnAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListConnectionOwnAppsResponse> localVarResponse = await ListConnectionOwnAppsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the marketplaces you can connect with your own developer app, and what you&#39;ve saved. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListConnectionOwnAppsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionOwnAppsResponse>> ListConnectionOwnAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListConnectionOwnAppsResponse>("/v1/connections/own-apps", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListConnectionOwnApps", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List eBay and Etsy accounts with whether Crossly manages their policies. One row per connected eBay or Etsy account: &#x60;eligible&#x60; (eBay only on EBAY_US), &#x60;managed&#x60; (Crossly keeps its policies / shipping profiles in step with your default presets) and sync &#x60;notes&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3912,7 +6068,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List OAuth-connected API platforms. 
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListConnectionsResponse</returns>
@@ -3923,7 +6079,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List OAuth-connected API platforms. 
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListConnectionsResponse</returns>
@@ -3974,7 +6130,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List OAuth-connected API platforms. 
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -3986,7 +6142,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List OAuth-connected API platforms. 
+        /// List OAuth-connected API platforms, each flagged with whether this store (X-Storefront-Id) uses it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -4040,24 +6196,22 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit an IMAP mailbox connection. 
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <returns>SuccessResponse</returns>
-        public SuccessResponse UpdateConnectionEmailImap(Guid id)
+        /// <returns>ListPlatformsResponse</returns>
+        public ListPlatformsResponse ListPlatforms()
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = UpdateConnectionEmailImapWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListPlatformsResponse> localVarResponse = ListPlatformsWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit an IMAP mailbox connection. 
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <returns>ApiResponse of SuccessResponse</returns>
-        public net.crossly.Client.ApiResponse<SuccessResponse> UpdateConnectionEmailImapWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of ListPlatformsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListPlatformsResponse> ListPlatformsWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4081,7 +6235,6 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4091,7 +6244,456 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<SuccessResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListPlatformsResponse>("/v1/platforms", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPlatforms", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPlatformsResponse</returns>
+        public async System.Threading.Tasks.Task<ListPlatformsResponse> ListPlatformsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListPlatformsResponse> localVarResponse = await ListPlatformsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List marketplaces with their availability (connect, own_app, coming_soon) and capability chips. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPlatformsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPlatformsResponse>> ListPlatformsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListPlatformsResponse>("/v1/platforms", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPlatforms", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <returns>UpdateChannelAccountHistoryImportResponse</returns>
+        public UpdateChannelAccountHistoryImportResponse UpdateChannelAccountHistoryImport(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateChannelAccountHistoryImportResponse> localVarResponse = UpdateChannelAccountHistoryImportWithHttpInfo(accountId, updateChannelAccountHistoryImportRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <returns>ApiResponse of UpdateChannelAccountHistoryImportResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateChannelAccountHistoryImportResponse> UpdateChannelAccountHistoryImportWithHttpInfo(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest)
+        {
+            // verify the required parameter 'updateChannelAccountHistoryImportRequest' is set
+            if (updateChannelAccountHistoryImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelAccountHistoryImportRequest' when calling AccountsApi->UpdateChannelAccountHistoryImport");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+            localVarRequestOptions.Data = updateChannelAccountHistoryImportRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateChannelAccountHistoryImportResponse>("/v1/channel-accounts/{accountId}/history-import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateChannelAccountHistoryImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateChannelAccountHistoryImportResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateChannelAccountHistoryImportResponse> UpdateChannelAccountHistoryImportAsync(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateChannelAccountHistoryImportResponse> localVarResponse = await UpdateChannelAccountHistoryImportWithHttpInfoAsync(accountId, updateChannelAccountHistoryImportRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one platform account&#39;s order-history import window (how far back its past sales and active listings import). Runs the one-time backfill now when the account has not had it yet. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelAccountHistoryImportRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateChannelAccountHistoryImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateChannelAccountHistoryImportResponse>> UpdateChannelAccountHistoryImportWithHttpInfoAsync(Guid accountId, UpdateChannelAccountHistoryImportRequest updateChannelAccountHistoryImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateChannelAccountHistoryImportRequest' is set
+            if (updateChannelAccountHistoryImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelAccountHistoryImportRequest' when calling AccountsApi->UpdateChannelAccountHistoryImport");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+            localVarRequestOptions.Data = updateChannelAccountHistoryImportRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateChannelAccountHistoryImportResponse>("/v1/channel-accounts/{accountId}/history-import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateChannelAccountHistoryImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>UpdateConnectionEmailResponse</returns>
+        public UpdateConnectionEmailResponse UpdateConnectionEmail(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> localVarResponse = UpdateConnectionEmailWithHttpInfo(id, updateConnectionEmailImapRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionEmailResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> UpdateConnectionEmailWithHttpInfo(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest)
+        {
+            // verify the required parameter 'updateConnectionEmailImapRequest' is set
+            if (updateConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionEmailImapRequest' when calling AccountsApi->UpdateConnectionEmail");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateConnectionEmailImapRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateConnectionEmailResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateConnectionEmailResponse> UpdateConnectionEmailAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> localVarResponse = await UpdateConnectionEmailWithHttpInfoAsync(id, updateConnectionEmailImapRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateConnectionEmailResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse>> UpdateConnectionEmailWithHttpInfoAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateConnectionEmailImapRequest' is set
+            if (updateConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionEmailImapRequest' when calling AccountsApi->UpdateConnectionEmail");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateConnectionEmailImapRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateConnectionEmailResponse>("/v1/connections/email/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionEmail", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>UpdateConnectionEmailResponse</returns>
+        public UpdateConnectionEmailResponse UpdateConnectionEmailImap(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> localVarResponse = UpdateConnectionEmailImapWithHttpInfo(id, updateConnectionEmailImapRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionEmailResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> UpdateConnectionEmailImapWithHttpInfo(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest)
+        {
+            // verify the required parameter 'updateConnectionEmailImapRequest' is set
+            if (updateConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionEmailImapRequest' when calling AccountsApi->UpdateConnectionEmailImap");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateConnectionEmailImapRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateConnectionEmailResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateConnectionEmailImap", localVarResponse);
@@ -4105,31 +6707,40 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit an IMAP mailbox connection. 
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SuccessResponse</returns>
-        public async System.Threading.Tasks.Task<SuccessResponse> UpdateConnectionEmailImapAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of UpdateConnectionEmailResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateConnectionEmailResponse> UpdateConnectionEmailImapAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await UpdateConnectionEmailImapWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse> localVarResponse = await UpdateConnectionEmailImapWithHttpInfoAsync(id, updateConnectionEmailImapRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit an IMAP mailbox connection. 
+        /// Change an email connection: label, watchedPlatforms (null &#x3D; every marketplace), isActive (false pauses it), or an IMAP server / username / password (the sign-in is verified first). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateConnectionEmailImapRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> UpdateConnectionEmailImapWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (UpdateConnectionEmailResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateConnectionEmailResponse>> UpdateConnectionEmailImapWithHttpInfoAsync(Guid id, UpdateConnectionEmailImapRequest updateConnectionEmailImapRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateConnectionEmailImapRequest' is set
+            if (updateConnectionEmailImapRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionEmailImapRequest' when calling AccountsApi->UpdateConnectionEmailImap");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4150,6 +6761,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateConnectionEmailImapRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4159,11 +6771,177 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<SuccessResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateConnectionEmailResponse>("/v1/connections/email/imap/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateConnectionEmailImap", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <returns>UpdateConnectionOwnAppResponse</returns>
+        public UpdateConnectionOwnAppResponse UpdateConnectionOwnApp(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateConnectionOwnAppResponse> localVarResponse = UpdateConnectionOwnAppWithHttpInfo(platform, updateConnectionOwnAppRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <returns>ApiResponse of UpdateConnectionOwnAppResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateConnectionOwnAppResponse> UpdateConnectionOwnAppWithHttpInfo(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest)
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->UpdateConnectionOwnApp");
+            }
+
+            // verify the required parameter 'updateConnectionOwnAppRequest' is set
+            if (updateConnectionOwnAppRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionOwnAppRequest' when calling AccountsApi->UpdateConnectionOwnApp");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = updateConnectionOwnAppRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateConnectionOwnAppResponse>("/v1/connections/own-apps/{platform}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionOwnApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateConnectionOwnAppResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateConnectionOwnAppResponse> UpdateConnectionOwnAppAsync(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateConnectionOwnAppResponse> localVarResponse = await UpdateConnectionOwnAppWithHttpInfoAsync(platform, updateConnectionOwnAppRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save your own developer app for a marketplace (client id, secret and any required parameters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="updateConnectionOwnAppRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateConnectionOwnAppResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateConnectionOwnAppResponse>> UpdateConnectionOwnAppWithHttpInfoAsync(string platform, UpdateConnectionOwnAppRequest updateConnectionOwnAppRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->UpdateConnectionOwnApp");
+            }
+
+            // verify the required parameter 'updateConnectionOwnAppRequest' is set
+            if (updateConnectionOwnAppRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionOwnAppRequest' when calling AccountsApi->UpdateConnectionOwnApp");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = updateConnectionOwnAppRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateConnectionOwnAppResponse>("/v1/connections/own-apps/{platform}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateConnectionOwnApp", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4178,10 +6956,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <returns>ListConnectionPolicyManagementItem</returns>
-        public ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId)
+        public ListConnectionPolicyManagementItem UpdateConnectionPolicyManagement(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest)
         {
-            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = UpdateConnectionPolicyManagementWithHttpInfo(connectionId);
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = UpdateConnectionPolicyManagementWithHttpInfo(connectionId, updateConnectionPolicyManagementRequest);
             return localVarResponse.Data;
         }
 
@@ -4190,8 +6969,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <returns>ApiResponse of ListConnectionPolicyManagementItem</returns>
-        public net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId)
+        public net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementWithHttpInfo(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest)
         {
             // verify the required parameter 'connectionId' is set
             if (connectionId == null)
@@ -4199,9 +6979,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->UpdateConnectionPolicyManagement");
             }
 
+            // verify the required parameter 'updateConnectionPolicyManagementRequest' is set
+            if (updateConnectionPolicyManagementRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionPolicyManagementRequest' when calling AccountsApi->UpdateConnectionPolicyManagement");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4222,6 +7009,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+            localVarRequestOptions.Data = updateConnectionPolicyManagementRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4249,11 +7037,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListConnectionPolicyManagementItem</returns>
-        public async System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListConnectionPolicyManagementItem> UpdateConnectionPolicyManagementAsync(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = await UpdateConnectionPolicyManagementWithHttpInfoAsync(connectionId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem> localVarResponse = await UpdateConnectionPolicyManagementWithHttpInfoAsync(connectionId, updateConnectionPolicyManagementRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4262,9 +7051,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="connectionId"></param>
+        /// <param name="updateConnectionPolicyManagementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListConnectionPolicyManagementItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListConnectionPolicyManagementItem>> UpdateConnectionPolicyManagementWithHttpInfoAsync(string connectionId, UpdateConnectionPolicyManagementRequest updateConnectionPolicyManagementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'connectionId' is set
             if (connectionId == null)
@@ -4272,10 +7062,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'connectionId' when calling AccountsApi->UpdateConnectionPolicyManagement");
             }
 
+            // verify the required parameter 'updateConnectionPolicyManagementRequest' is set
+            if (updateConnectionPolicyManagementRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateConnectionPolicyManagementRequest' when calling AccountsApi->UpdateConnectionPolicyManagement");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4296,6 +7093,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("connectionId", net.crossly.Client.ClientUtils.ParameterToString(connectionId)); // path parameter
+            localVarRequestOptions.Data = updateConnectionPolicyManagementRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4324,11 +7122,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <returns>UpdatePlatformPreferenceResponse</returns>
-        public UpdatePlatformPreferenceResponse UpdatePlatformPreference(string platform, Guid? connectionId = default(Guid?))
+        public UpdatePlatformPreferenceResponse UpdatePlatformPreference(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?))
         {
-            net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> localVarResponse = UpdatePlatformPreferenceWithHttpInfo(platform, connectionId);
+            net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> localVarResponse = UpdatePlatformPreferenceWithHttpInfo(platform, updatePlatformPreferenceRequest, connectionId);
             return localVarResponse.Data;
         }
 
@@ -4337,9 +7136,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <returns>ApiResponse of UpdatePlatformPreferenceResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceWithHttpInfo(string platform, Guid? connectionId = default(Guid?))
+        public net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceWithHttpInfo(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -4347,9 +7147,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->UpdatePlatformPreference");
             }
 
+            // verify the required parameter 'updatePlatformPreferenceRequest' is set
+            if (updatePlatformPreferenceRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePlatformPreferenceRequest' when calling AccountsApi->UpdatePlatformPreference");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4374,6 +7181,7 @@ namespace net.crossly.Api
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "connection_id", connectionId));
             }
+            localVarRequestOptions.Data = updatePlatformPreferenceRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4401,12 +7209,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatePlatformPreferenceResponse</returns>
-        public async System.Threading.Tasks.Task<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceAsync(string platform, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdatePlatformPreferenceResponse> UpdatePlatformPreferenceAsync(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> localVarResponse = await UpdatePlatformPreferenceWithHttpInfoAsync(platform, connectionId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse> localVarResponse = await UpdatePlatformPreferenceWithHttpInfoAsync(platform, updatePlatformPreferenceRequest, connectionId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4415,10 +7224,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updatePlatformPreferenceRequest"></param>
         /// <param name="connectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatePlatformPreferenceResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse>> UpdatePlatformPreferenceWithHttpInfoAsync(string platform, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatePlatformPreferenceResponse>> UpdatePlatformPreferenceWithHttpInfoAsync(string platform, UpdatePlatformPreferenceRequest updatePlatformPreferenceRequest, Guid? connectionId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -4426,10 +7236,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AccountsApi->UpdatePlatformPreference");
             }
 
+            // verify the required parameter 'updatePlatformPreferenceRequest' is set
+            if (updatePlatformPreferenceRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePlatformPreferenceRequest' when calling AccountsApi->UpdatePlatformPreference");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4454,6 +7271,7 @@ namespace net.crossly.Api
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "connection_id", connectionId));
             }
+            localVarRequestOptions.Data = updatePlatformPreferenceRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

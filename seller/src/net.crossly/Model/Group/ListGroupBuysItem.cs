@@ -77,7 +77,7 @@ namespace net.crossly.Model
         /// <param name="finalPriceCents">finalPriceCents.</param>
         /// <param name="next">next.</param>
         /// <param name="minimumMet">minimumMet (required).</param>
-        public ListGroupBuysItem(List<GetGroupBuyResponseDataTiers> qtyTiers = default(List<GetGroupBuyResponseDataTiers>), List<ListGroupBuysItemTiers> tiers = default(List<ListGroupBuysItemTiers>), decimal minBuyers = default(decimal), decimal maxBuyers = default(decimal), decimal joined = default(decimal), string id = default(string), string slug = default(string), string title = default(string), string listingTitle = default(string), string description = default(string), string imageUrl = default(string), string status = default(string), string closedReason = default(string), string createdAt = default(string), string endsAt = default(string), decimal msLeft = default(decimal), string opensToAllAt = default(string), decimal basePriceCents = default(decimal), List<GetGroupBuyResponseDataProgress> progress = default(List<GetGroupBuyResponseDataProgress>), decimal goalQty = default(decimal), decimal minQtyToProceed = default(decimal), decimal perBuyerMax = default(decimal), decimal maxQty = default(decimal), string paymentMode = default(string), string goalMiss = default(string), decimal extendDays = default(decimal), bool extended = default(bool), string visibility = default(string), string visibilityTierId = default(string), GetGroupBuyResponseDataPlacement placement = default(GetGroupBuyResponseDataPlacement), string shareCopy = default(string), string shareImageUrl = default(string), decimal committedQty = default(decimal), decimal buyers = default(decimal), decimal currentPriceCents = default(decimal), decimal? finalPriceCents = default(decimal?), GetGroupBuyResponseDataNext next = default(GetGroupBuyResponseDataNext), bool minimumMet = default(bool))
+        public ListGroupBuysItem(List<MinQtyPriceCents> qtyTiers = default(List<MinQtyPriceCents>), List<CreateGroupBuyRequestTiers> tiers = default(List<CreateGroupBuyRequestTiers>), decimal minBuyers = default(decimal), decimal maxBuyers = default(decimal), decimal joined = default(decimal), string id = default(string), string slug = default(string), string title = default(string), string listingTitle = default(string), string description = default(string), string imageUrl = default(string), string status = default(string), string closedReason = default(string), string createdAt = default(string), string endsAt = default(string), decimal msLeft = default(decimal), string opensToAllAt = default(string), decimal basePriceCents = default(decimal), List<GetGroupBuyResponseDataProgress> progress = default(List<GetGroupBuyResponseDataProgress>), decimal goalQty = default(decimal), decimal minQtyToProceed = default(decimal), decimal perBuyerMax = default(decimal), decimal maxQty = default(decimal), string paymentMode = default(string), string goalMiss = default(string), decimal extendDays = default(decimal), bool extended = default(bool), string visibility = default(string), string visibilityTierId = default(string), GetGroupBuyResponseDataPlacement placement = default(GetGroupBuyResponseDataPlacement), string shareCopy = default(string), string shareImageUrl = default(string), decimal committedQty = default(decimal), decimal buyers = default(decimal), decimal currentPriceCents = default(decimal), decimal? finalPriceCents = default(decimal?), GetGroupBuyResponseDataNext next = default(GetGroupBuyResponseDataNext), bool minimumMet = default(bool))
         {
             // to ensure "qtyTiers" is required (not null)
             if (qtyTiers == null) {
@@ -167,13 +167,13 @@ namespace net.crossly.Model
         /// Gets or Sets QtyTiers
         /// </summary>
         [DataMember(Name = "qtyTiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetGroupBuyResponseDataTiers> QtyTiers { get; set; }
+        public List<MinQtyPriceCents> QtyTiers { get; set; }
 
         /// <summary>
         /// Gets or Sets Tiers
         /// </summary>
         [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListGroupBuysItemTiers> Tiers { get; set; }
+        public List<CreateGroupBuyRequestTiers> Tiers { get; set; }
 
         /// <summary>
         /// Gets or Sets MinBuyers

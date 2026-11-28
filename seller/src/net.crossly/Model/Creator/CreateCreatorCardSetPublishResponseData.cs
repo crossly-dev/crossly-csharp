@@ -50,7 +50,7 @@ namespace net.crossly.Model
         /// <param name="publishedVersion">publishedVersion.</param>
         /// <param name="publishedSemver">publishedSemver.</param>
         /// <param name="draft">draft (required).</param>
-        public CreateCreatorCardSetPublishResponseData(string id = default(string), string name = default(string), string updatedAt = default(string), CreatorCardSetResponseDataCheck check = default(CreatorCardSetResponseDataCheck), string publishedAt = default(string), CreateCreatorCardSetPublishResponseDataSubmitted submitted = default(CreateCreatorCardSetPublishResponseDataSubmitted), string gameId = default(string), string setCode = default(string), decimal? publishedVersion = default(decimal?), string publishedSemver = default(string), CreatorCardSetResponseDataDraft draft = default(CreatorCardSetResponseDataDraft))
+        public CreateCreatorCardSetPublishResponseData(string id = default(string), string name = default(string), string updatedAt = default(string), CreatorCardSetResponseDataCheck check = default(CreatorCardSetResponseDataCheck), string publishedAt = default(string), CreateCreatorCardGamePublishResponseDataSubmitted submitted = default(CreateCreatorCardGamePublishResponseDataSubmitted), string gameId = default(string), string setCode = default(string), decimal? publishedVersion = default(decimal?), string publishedSemver = default(string), CreatorCardSetResponseDataDraft draft = default(CreatorCardSetResponseDataDraft))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -131,7 +131,7 @@ namespace net.crossly.Model
         /// Gets or Sets Submitted
         /// </summary>
         [DataMember(Name = "submitted", IsRequired = true, EmitDefaultValue = false)]
-        public CreateCreatorCardSetPublishResponseDataSubmitted Submitted { get; set; }
+        public CreateCreatorCardGamePublishResponseDataSubmitted Submitted { get; set; }
 
         /// <summary>
         /// Gets or Sets GameId

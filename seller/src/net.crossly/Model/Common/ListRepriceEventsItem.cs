@@ -47,15 +47,15 @@ namespace net.crossly.Model
         /// <param name="platformListingId">platformListingId.</param>
         /// <param name="reason">reason (required).</param>
         /// <param name="ruleId">ruleId.</param>
+        /// <param name="floorCents">floorCents.</param>
+        /// <param name="decidedAt">decidedAt.</param>
         /// <param name="strategy">strategy (required).</param>
+        /// <param name="approval">approval.</param>
         /// <param name="oldPriceCents">oldPriceCents.</param>
         /// <param name="newPriceCents">newPriceCents.</param>
         /// <param name="changed">changed (required).</param>
-        /// <param name="floorCents">floorCents.</param>
         /// <param name="floorWasNet">floorWasNet (required).</param>
-        /// <param name="approval">approval.</param>
-        /// <param name="decidedAt">decidedAt.</param>
-        public ListRepriceEventsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string listingId = default(string), string platformListingId = default(string), string reason = default(string), string ruleId = default(string), string strategy = default(string), decimal? oldPriceCents = default(decimal?), decimal? newPriceCents = default(decimal?), bool changed = default(bool), decimal? floorCents = default(decimal?), bool floorWasNet = default(bool), string approval = default(string), DateTime? decidedAt = default(DateTime?))
+        public ListRepriceEventsItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string platform = default(string), string listingId = default(string), string platformListingId = default(string), string reason = default(string), string ruleId = default(string), decimal? floorCents = default(decimal?), DateTime? decidedAt = default(DateTime?), string strategy = default(string), string approval = default(string), decimal? oldPriceCents = default(decimal?), decimal? newPriceCents = default(decimal?), bool changed = default(bool), bool floorWasNet = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -84,11 +84,11 @@ namespace net.crossly.Model
             this.ListingId = listingId;
             this.PlatformListingId = platformListingId;
             this.RuleId = ruleId;
+            this.FloorCents = floorCents;
+            this.DecidedAt = decidedAt;
+            this.Approval = approval;
             this.OldPriceCents = oldPriceCents;
             this.NewPriceCents = newPriceCents;
-            this.FloorCents = floorCents;
-            this.Approval = approval;
-            this.DecidedAt = decidedAt;
         }
 
         /// <summary>
@@ -140,10 +140,28 @@ namespace net.crossly.Model
         public string RuleId { get; set; }
 
         /// <summary>
+        /// Gets or Sets FloorCents
+        /// </summary>
+        [DataMember(Name = "floorCents", EmitDefaultValue = true)]
+        public decimal? FloorCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DecidedAt
+        /// </summary>
+        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
+        public DateTime? DecidedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Strategy
         /// </summary>
         [DataMember(Name = "strategy", IsRequired = true, EmitDefaultValue = false)]
         public string Strategy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Approval
+        /// </summary>
+        [DataMember(Name = "approval", EmitDefaultValue = true)]
+        public string Approval { get; set; }
 
         /// <summary>
         /// Gets or Sets OldPriceCents
@@ -164,28 +182,10 @@ namespace net.crossly.Model
         public bool Changed { get; set; }
 
         /// <summary>
-        /// Gets or Sets FloorCents
-        /// </summary>
-        [DataMember(Name = "floorCents", EmitDefaultValue = true)]
-        public decimal? FloorCents { get; set; }
-
-        /// <summary>
         /// Gets or Sets FloorWasNet
         /// </summary>
         [DataMember(Name = "floorWasNet", IsRequired = true, EmitDefaultValue = true)]
         public bool FloorWasNet { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Approval
-        /// </summary>
-        [DataMember(Name = "approval", EmitDefaultValue = true)]
-        public string Approval { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DecidedAt
-        /// </summary>
-        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
-        public DateTime? DecidedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -203,14 +203,14 @@ namespace net.crossly.Model
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  RuleId: ").Append(RuleId).Append("\n");
+            sb.Append("  FloorCents: ").Append(FloorCents).Append("\n");
+            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
             sb.Append("  Strategy: ").Append(Strategy).Append("\n");
+            sb.Append("  Approval: ").Append(Approval).Append("\n");
             sb.Append("  OldPriceCents: ").Append(OldPriceCents).Append("\n");
             sb.Append("  NewPriceCents: ").Append(NewPriceCents).Append("\n");
             sb.Append("  Changed: ").Append(Changed).Append("\n");
-            sb.Append("  FloorCents: ").Append(FloorCents).Append("\n");
             sb.Append("  FloorWasNet: ").Append(FloorWasNet).Append("\n");
-            sb.Append("  Approval: ").Append(Approval).Append("\n");
-            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -287,9 +287,24 @@ namespace net.crossly.Model
                     this.RuleId.Equals(input.RuleId))
                 ) && 
                 (
+                    this.FloorCents == input.FloorCents ||
+                    (this.FloorCents != null &&
+                    this.FloorCents.Equals(input.FloorCents))
+                ) && 
+                (
+                    this.DecidedAt == input.DecidedAt ||
+                    (this.DecidedAt != null &&
+                    this.DecidedAt.Equals(input.DecidedAt))
+                ) && 
+                (
                     this.Strategy == input.Strategy ||
                     (this.Strategy != null &&
                     this.Strategy.Equals(input.Strategy))
+                ) && 
+                (
+                    this.Approval == input.Approval ||
+                    (this.Approval != null &&
+                    this.Approval.Equals(input.Approval))
                 ) && 
                 (
                     this.OldPriceCents == input.OldPriceCents ||
@@ -306,23 +321,8 @@ namespace net.crossly.Model
                     this.Changed.Equals(input.Changed)
                 ) && 
                 (
-                    this.FloorCents == input.FloorCents ||
-                    (this.FloorCents != null &&
-                    this.FloorCents.Equals(input.FloorCents))
-                ) && 
-                (
                     this.FloorWasNet == input.FloorWasNet ||
                     this.FloorWasNet.Equals(input.FloorWasNet)
-                ) && 
-                (
-                    this.Approval == input.Approval ||
-                    (this.Approval != null &&
-                    this.Approval.Equals(input.Approval))
-                ) && 
-                (
-                    this.DecidedAt == input.DecidedAt ||
-                    (this.DecidedAt != null &&
-                    this.DecidedAt.Equals(input.DecidedAt))
                 );
         }
 
@@ -367,9 +367,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.RuleId.GetHashCode();
                 }
+                if (this.FloorCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.FloorCents.GetHashCode();
+                }
+                if (this.DecidedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
+                }
                 if (this.Strategy != null)
                 {
                     hashCode = (hashCode * 59) + this.Strategy.GetHashCode();
+                }
+                if (this.Approval != null)
+                {
+                    hashCode = (hashCode * 59) + this.Approval.GetHashCode();
                 }
                 if (this.OldPriceCents != null)
                 {
@@ -380,19 +392,7 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.NewPriceCents.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Changed.GetHashCode();
-                if (this.FloorCents != null)
-                {
-                    hashCode = (hashCode * 59) + this.FloorCents.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.FloorWasNet.GetHashCode();
-                if (this.Approval != null)
-                {
-                    hashCode = (hashCode * 59) + this.Approval.GetHashCode();
-                }
-                if (this.DecidedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
-                }
                 return hashCode;
             }
         }

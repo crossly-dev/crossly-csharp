@@ -44,16 +44,16 @@ namespace net.crossly.buyer.Model
             Buyer = 1,
 
             /// <summary>
-            /// Enum Viewer for value: viewer
-            /// </summary>
-            [EnumMember(Value = "viewer")]
-            Viewer = 2,
-
-            /// <summary>
             /// Enum Owner for value: owner
             /// </summary>
             [EnumMember(Value = "owner")]
-            Owner = 3,
+            Owner = 2,
+
+            /// <summary>
+            /// Enum Viewer for value: viewer
+            /// </summary>
+            [EnumMember(Value = "viewer")]
+            Viewer = 3,
 
             /// <summary>
             /// Enum AccountsPayable for value: accounts_payable

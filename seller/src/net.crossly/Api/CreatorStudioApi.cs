@@ -27,11 +27,64 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreatorCardGameResponse</returns>
+        CreatorCardGameResponse CreateCreatorCardGame();
+
+        /// <summary>
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        ApiResponse<CreatorCardGameResponse> CreateCreatorCardGameWithHttpInfo();
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        CreatorCardGameResponse CreateCreatorCardGameCheck(string id);
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        ApiResponse<CreatorCardGameResponse> CreateCreatorCardGameCheckWithHttpInfo(string id);
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateCreatorCardGamePublishResponse</returns>
+        CreateCreatorCardGamePublishResponse CreateCreatorCardGamePublish(string id);
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateCreatorCardGamePublishResponse</returns>
+        ApiResponse<CreateCreatorCardGamePublishResponse> CreateCreatorCardGamePublishWithHttpInfo(string id);
+        /// <summary>
         /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
         /// <returns>CreatorCardSetResponse</returns>
-        CreatorCardSetResponse CreateCreatorCardSet();
+        CreatorCardSetResponse CreateCreatorCardSet(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest));
 
         /// <summary>
         /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
@@ -40,16 +93,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorCardSetResponse</returns>
-        ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetWithHttpInfo();
+        ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetWithHttpInfo(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest));
         /// <summary>
         /// One card&#39;s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>CreatorCardSetResponse</returns>
-        CreatorCardSetResponse CreateCreatorCardSetArt(string id, string slug);
+        CreatorCardSetResponse CreateCreatorCardSetArt(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest));
 
         /// <summary>
         /// One card&#39;s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
@@ -60,8 +115,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorCardSetResponse</returns>
-        ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetArtWithHttpInfo(string id, string slug);
+        ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetArtWithHttpInfo(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest));
         /// <summary>
         /// The full check publish runs: draft issues, tcgStaticConformance and bot-vs-bot games of the set.
         /// </summary>
@@ -104,8 +160,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <returns>CreateCreatorCreationSubmitResponse</returns>
-        CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit(string format, string id);
+        CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest));
 
         /// <summary>
         /// Send one creation to review through its format&#39;s own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
@@ -116,14 +173,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorCreationSubmitResponse</returns>
-        ApiResponse<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitWithHttpInfo(string format, string id);
+        ApiResponse<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitWithHttpInfo(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest));
         /// <summary>
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <returns>GetCreatorImportResponse</returns>
-        GetCreatorImportResponse CreateCreatorImport();
+        GetCreatorImportResponse CreateCreatorImport(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest));
 
         /// <summary>
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
@@ -132,8 +191,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <returns>ApiResponse of GetCreatorImportResponse</returns>
-        ApiResponse<GetCreatorImportResponse> CreateCreatorImportWithHttpInfo();
+        ApiResponse<GetCreatorImportResponse> CreateCreatorImportWithHttpInfo(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest));
         /// <summary>
         /// Create the drafts of a validated template upload (drafts only; nothing is submitted to review).
         /// </summary>
@@ -156,8 +216,9 @@ namespace net.crossly.Api
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <returns>CreatorItemModelResponse</returns>
-        CreatorItemModelResponse CreateCreatorItemModel();
+        CreatorItemModelResponse CreateCreatorItemModel(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest));
 
         /// <summary>
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
@@ -166,14 +227,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemModelResponse</returns>
-        ApiResponse<CreatorItemModelResponse> CreateCreatorItemModelWithHttpInfo();
+        ApiResponse<CreatorItemModelResponse> CreateCreatorItemModelWithHttpInfo(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest));
         /// <summary>
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <returns>CreateCreatorItemModelCheckResponse</returns>
-        CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck();
+        CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest));
 
         /// <summary>
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
@@ -182,8 +245,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorItemModelCheckResponse</returns>
-        ApiResponse<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckWithHttpInfo();
+        ApiResponse<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckWithHttpInfo(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest));
         /// <summary>
         /// Send an uploaded model to art review.
         /// </summary>
@@ -206,8 +270,9 @@ namespace net.crossly.Api
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>CreateCreatorItemPreviewResponse</returns>
-        CreateCreatorItemPreviewResponse CreateCreatorItemPreview();
+        CreateCreatorItemPreviewResponse CreateCreatorItemPreview(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest));
 
         /// <summary>
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
@@ -216,14 +281,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorItemPreviewResponse</returns>
-        ApiResponse<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewWithHttpInfo();
+        ApiResponse<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewWithHttpInfo(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest));
         /// <summary>
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        CreatorItemWearableResponse CreateCreatorItemWearable();
+        CreatorItemWearableResponse CreateCreatorItemWearable(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest));
 
         /// <summary>
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
@@ -232,15 +299,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableWithHttpInfo();
+        ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableWithHttpInfo(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest));
         /// <summary>
         /// Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        CreatorItemWearableResponse CreateCreatorItemWearableSubmit(string id);
+        CreatorItemWearableResponse CreateCreatorItemWearableSubmit(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest));
 
         /// <summary>
         /// Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
@@ -250,15 +319,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitWithHttpInfo(string id);
+        ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitWithHttpInfo(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest));
         /// <summary>
         /// Hide a buyer review from your public page (it is kept, and its rating still counts).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        CreatorReviewResponse CreateCreatorReviewHide(string reviewId);
+        CreatorReviewResponse CreateCreatorReviewHide(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2));
 
         /// <summary>
         /// Hide a buyer review from your public page (it is kept, and its rating still counts).
@@ -268,15 +339,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        ApiResponse<CreatorReviewResponse> CreateCreatorReviewHideWithHttpInfo(string reviewId);
+        ApiResponse<CreatorReviewResponse> CreateCreatorReviewHideWithHttpInfo(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2));
         /// <summary>
         /// Reply to a buyer review of your creation (or change your reply).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        CreatorReviewResponse CreateCreatorReviewReply(string reviewId);
+        CreatorReviewResponse CreateCreatorReviewReply(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest));
 
         /// <summary>
         /// Reply to a buyer review of your creation (or change your reply).
@@ -286,15 +359,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        ApiResponse<CreatorReviewResponse> CreateCreatorReviewReplyWithHttpInfo(string reviewId);
+        ApiResponse<CreatorReviewResponse> CreateCreatorReviewReplyWithHttpInfo(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest));
         /// <summary>
         /// Report a buyer review to Crossly (abuse, spam, not a real buyer).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        CreatorReviewResponse CreateCreatorReviewReport(string reviewId);
+        CreatorReviewResponse CreateCreatorReviewReport(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest));
 
         /// <summary>
         /// Report a buyer review to Crossly (abuse, spam, not a real buyer).
@@ -304,8 +379,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        ApiResponse<CreatorReviewResponse> CreateCreatorReviewReportWithHttpInfo(string reviewId);
+        ApiResponse<CreatorReviewResponse> CreateCreatorReviewReportWithHttpInfo(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest));
         /// <summary>
         /// Show a hidden buyer review on your page again.
         /// </summary>
@@ -324,6 +400,24 @@ namespace net.crossly.Api
         /// <param name="reviewId"></param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
         ApiResponse<CreatorReviewResponse> CreateCreatorReviewUnhideWithHttpInfo(string reviewId);
+        /// <summary>
+        /// Delete a composed card game that was never published.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        void DeleteCreatorCardGame(string id);
+
+        /// <summary>
+        /// Delete a composed card game that was never published.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteCreatorCardGameWithHttpInfo(string id);
         /// <summary>
         /// Delete a set draft that was never published.
         /// </summary>
@@ -378,6 +472,24 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteCreatorItemWearableWithHttpInfo(string id);
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        CreatorCardGameResponse GetCreatorCardGame(string id);
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        ApiResponse<CreatorCardGameResponse> GetCreatorCardGameWithHttpInfo(string id);
         /// <summary>
         /// One set draft with its check: draft issues by field and tcgStaticConformance problems.
         /// </summary>
@@ -677,6 +789,22 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of System.IO.Stream</returns>
         ApiResponse<System.IO.Stream> GetCreatorTemplateZipWithHttpInfo(string format);
         /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListCreatorCardGamesResponse</returns>
+        ListCreatorCardGamesResponse ListCreatorCardGames();
+
+        /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListCreatorCardGamesResponse</returns>
+        ApiResponse<ListCreatorCardGamesResponse> ListCreatorCardGamesWithHttpInfo();
+        /// <summary>
         /// Your card set drafts, each with its road from COSM to print: live on COSM, the mint threshold (collectors, packs opened, resales) and the print-run cost against what NFT sales have banked.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -698,8 +826,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListCreatorCreationReviewsResponse</returns>
-        ListCreatorCreationReviewsResponse ListCreatorCreationReviews(string format, string id);
+        ListCreatorCreationReviewsResponse ListCreatorCreationReviews(string format, string id, string cursor = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Buyer reviews of one creation, newest first (hidden ones included).
@@ -710,14 +840,21 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorCreationReviewsResponse</returns>
-        ApiResponse<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsWithHttpInfo(string format, string id);
+        ApiResponse<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsWithHttpInfo(string format, string id, string cursor = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListCreatorCreationsResponse</returns>
-        ListCreatorCreationsResponse ListCreatorCreations();
+        ListCreatorCreationsResponse ListCreatorCreations(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string));
 
         /// <summary>
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
@@ -726,8 +863,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorCreationsResponse</returns>
-        ApiResponse<ListCreatorCreationsResponse> ListCreatorCreationsWithHttpInfo();
+        ApiResponse<ListCreatorCreationsResponse> ListCreatorCreationsWithHttpInfo(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string));
         /// <summary>
         /// Your creator earnings over time: net (available + paid) per day, week or month (UTC) and rail, for the same filter as the ledger. meta.totals holds the per-rail and per-source totals of that filter.
         /// </summary>
@@ -867,6 +1009,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListCreatorReviewsResponse</returns>
         ApiResponse<ListCreatorReviewsResponse> ListCreatorReviewsWithHttpInfo(string kind = default(string), string state = default(string), int? limit = default(int?));
         /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        CreatorCardGameResponse UpdateCreatorCardGame(string id);
+
+        /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        ApiResponse<CreatorCardGameResponse> UpdateCreatorCardGameWithHttpInfo(string id);
+        /// <summary>
         /// Save the whole draft: cards (name, type, rarity, rules text, flavour, power/draw/guard), COSM prices and supply, frame colours, print plan. Every word goes through the text filter. Art is merged: a card without &#x60;art&#x60; (or with art as read) keeps its stored art, &#x60;art: null&#x60; clears it; only the art upload sets art. Answers the check.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -907,8 +1067,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        CreatorItemWearableResponse UpdateCreatorItemWearable(string id);
+        CreatorItemWearableResponse UpdateCreatorItemWearable(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest));
 
         /// <summary>
         /// Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
@@ -918,8 +1079,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        ApiResponse<CreatorItemWearableResponse> UpdateCreatorItemWearableWithHttpInfo(string id);
+        ApiResponse<CreatorItemWearableResponse> UpdateCreatorItemWearableWithHttpInfo(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest));
         #endregion Synchronous Operations
     }
 
@@ -930,15 +1092,83 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        System.Threading.Tasks.Task<CreatorCardGameResponse> CreateCreatorCardGameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardGameResponse>> CreateCreatorCardGameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        System.Threading.Tasks.Task<CreatorCardGameResponse> CreateCreatorCardGameCheckAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardGameResponse>> CreateCreatorCardGameCheckWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCreatorCardGamePublishResponse</returns>
+        System.Threading.Tasks.Task<CreateCreatorCardGamePublishResponse> CreateCreatorCardGamePublishAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCreatorCardGamePublishResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorCardGamePublishResponse>> CreateCreatorCardGamePublishWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorCardSetResponse</returns>
-        System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetAsync(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
@@ -947,9 +1177,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorCardSetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetWithHttpInfoAsync(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One card&#39;s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
         /// </summary>
@@ -959,9 +1190,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorCardSetResponse</returns>
-        System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetArtAsync(string id, string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetArtAsync(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// One card&#39;s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
@@ -972,9 +1204,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorCardSetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetArtWithHttpInfoAsync(string id, string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetArtWithHttpInfoAsync(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The full check publish runs: draft issues, tcgStaticConformance and bot-vs-bot games of the set.
         /// </summary>
@@ -1030,9 +1263,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorCreationSubmitResponse</returns>
-        System.Threading.Tasks.Task<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitAsync(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send one creation to review through its format&#39;s own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
@@ -1043,9 +1277,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorCreationSubmitResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCreatorCreationSubmitResponse>> CreateCreatorCreationSubmitWithHttpInfoAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorCreationSubmitResponse>> CreateCreatorCreationSubmitWithHttpInfoAsync(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
         /// </summary>
@@ -1053,9 +1288,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCreatorImportResponse</returns>
-        System.Threading.Tasks.Task<GetCreatorImportResponse> CreateCreatorImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetCreatorImportResponse> CreateCreatorImportAsync(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
@@ -1064,9 +1300,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCreatorImportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetCreatorImportResponse>> CreateCreatorImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetCreatorImportResponse>> CreateCreatorImportWithHttpInfoAsync(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create the drafts of a validated template upload (drafts only; nothing is submitted to review).
         /// </summary>
@@ -1097,9 +1334,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemModelResponse</returns>
-        System.Threading.Tasks.Task<CreatorItemModelResponse> CreateCreatorItemModelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorItemModelResponse> CreateCreatorItemModelAsync(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
@@ -1108,9 +1346,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemModelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorItemModelResponse>> CreateCreatorItemModelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorItemModelResponse>> CreateCreatorItemModelWithHttpInfoAsync(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
         /// </summary>
@@ -1118,9 +1357,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorItemModelCheckResponse</returns>
-        System.Threading.Tasks.Task<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckAsync(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
@@ -1129,9 +1369,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorItemModelCheckResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCreatorItemModelCheckResponse>> CreateCreatorItemModelCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorItemModelCheckResponse>> CreateCreatorItemModelCheckWithHttpInfoAsync(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send an uploaded model to art review.
         /// </summary>
@@ -1162,9 +1403,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorItemPreviewResponse</returns>
-        System.Threading.Tasks.Task<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewAsync(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
@@ -1173,9 +1415,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorItemPreviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCreatorItemPreviewResponse>> CreateCreatorItemPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorItemPreviewResponse>> CreateCreatorItemPreviewWithHttpInfoAsync(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
         /// </summary>
@@ -1183,9 +1426,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableAsync(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
@@ -1194,9 +1438,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableWithHttpInfoAsync(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
         /// </summary>
@@ -1205,9 +1450,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitAsync(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
@@ -1217,9 +1463,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableSubmitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableSubmitWithHttpInfoAsync(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Hide a buyer review from your public page (it is kept, and its rating still counts).
         /// </summary>
@@ -1228,9 +1475,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewHideAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewHideAsync(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Hide a buyer review from your public page (it is kept, and its rating still counts).
@@ -1240,9 +1488,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewHideWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewHideWithHttpInfoAsync(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Reply to a buyer review of your creation (or change your reply).
         /// </summary>
@@ -1251,9 +1500,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReplyAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReplyAsync(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reply to a buyer review of your creation (or change your reply).
@@ -1263,9 +1513,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReplyWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReplyWithHttpInfoAsync(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Report a buyer review to Crossly (abuse, spam, not a real buyer).
         /// </summary>
@@ -1274,9 +1525,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReportAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReportAsync(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report a buyer review to Crossly (abuse, spam, not a real buyer).
@@ -1286,9 +1538,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReportWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReportWithHttpInfoAsync(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Show a hidden buyer review on your page again.
         /// </summary>
@@ -1312,6 +1565,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreatorReviewResponse>> CreateCreatorReviewUnhideWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Delete a composed card game that was never published.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a composed card game that was never published.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a set draft that was never published.
         /// </summary>
@@ -1381,6 +1657,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCreatorItemWearableWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        System.Threading.Tasks.Task<CreatorCardGameResponse> GetCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardGameResponse>> GetCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One set draft with its check: draft issues by field and tcgStaticConformance problems.
         /// </summary>
@@ -1760,6 +2059,27 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetCreatorTemplateZipWithHttpInfoAsync(string format, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCreatorCardGamesResponse</returns>
+        System.Threading.Tasks.Task<ListCreatorCardGamesResponse> ListCreatorCardGamesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCreatorCardGamesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCreatorCardGamesResponse>> ListCreatorCardGamesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Your card set drafts, each with its road from COSM to print: live on COSM, the mint threshold (collectors, packs opened, resales) and the print-run cost against what NFT sales have banked.
         /// </summary>
         /// <remarks>
@@ -1789,9 +2109,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorCreationReviewsResponse</returns>
-        System.Threading.Tasks.Task<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsAsync(string format, string id, string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buyer reviews of one creation, newest first (hidden ones included).
@@ -1802,9 +2124,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorCreationReviewsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCreatorCreationReviewsResponse>> ListCreatorCreationReviewsWithHttpInfoAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCreatorCreationReviewsResponse>> ListCreatorCreationReviewsWithHttpInfoAsync(string format, string id, string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
         /// </summary>
@@ -1812,9 +2136,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorCreationsResponse</returns>
-        System.Threading.Tasks.Task<ListCreatorCreationsResponse> ListCreatorCreationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCreatorCreationsResponse> ListCreatorCreationsAsync(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
@@ -1823,9 +2152,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorCreationsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCreatorCreationsResponse>> ListCreatorCreationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCreatorCreationsResponse>> ListCreatorCreationsWithHttpInfoAsync(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your creator earnings over time: net (available + paid) per day, week or month (UTC) and rail, for the same filter as the ledger. meta.totals holds the per-rail and per-source totals of that filter.
         /// </summary>
@@ -1995,6 +2329,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListCreatorReviewsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListCreatorReviewsResponse>> ListCreatorReviewsWithHttpInfoAsync(string kind = default(string), string state = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        System.Threading.Tasks.Task<CreatorCardGameResponse> UpdateCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatorCardGameResponse>> UpdateCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Save the whole draft: cards (name, type, rarity, rules text, flavour, power/draw/guard), COSM prices and supply, frame colours, print plan. Every word goes through the text filter. Art is merged: a card without &#x60;art&#x60; (or with art as read) keeps its stored art, &#x60;art: null&#x60; clears it; only the art upload sets art. Answers the check.
         /// </summary>
         /// <remarks>
@@ -2048,9 +2405,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        System.Threading.Tasks.Task<CreatorItemWearableResponse> UpdateCreatorItemWearableAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatorItemWearableResponse> UpdateCreatorItemWearableAsync(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
@@ -2060,9 +2418,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> UpdateCreatorItemWearableWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatorItemWearableResponse>> UpdateCreatorItemWearableWithHttpInfoAsync(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -2184,22 +2543,22 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreatorCardSetResponse</returns>
-        public CreatorCardSetResponse CreateCreatorCardSet()
+        /// <returns>CreatorCardGameResponse</returns>
+        public CreatorCardGameResponse CreateCreatorCardGame()
         {
-            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = CreateCreatorCardSetWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = CreateCreatorCardGameWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreatorCardSetResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetWithHttpInfo()
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatorCardGameResponse> CreateCreatorCardGameWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2232,10 +2591,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreatorCardSetResponse>("/v1/creator/cards/sets", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreatorCardGameResponse>("/v1/creator/cards/games", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateCreatorCardSet", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGame", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2246,24 +2605,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreatorCardSetResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        public async System.Threading.Tasks.Task<CreatorCardGameResponse> CreateCreatorCardGameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = await CreateCreatorCardSetWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = await CreateCreatorCardGameWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreatorCardSetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardGameResponse>> CreateCreatorCardGameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2288,6 +2647,434 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatorCardGameResponse>("/v1/creator/cards/games", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        public CreatorCardGameResponse CreateCreatorCardGameCheck(string id)
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = CreateCreatorCardGameCheckWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatorCardGameResponse> CreateCreatorCardGameCheckWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->CreateCreatorCardGameCheck");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatorCardGameResponse>("/v1/creator/cards/games/{id}/check", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGameCheck", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        public async System.Threading.Tasks.Task<CreatorCardGameResponse> CreateCreatorCardGameCheckAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = await CreateCreatorCardGameCheckWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardGameResponse>> CreateCreatorCardGameCheckWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->CreateCreatorCardGameCheck");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatorCardGameResponse>("/v1/creator/cards/games/{id}/check", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGameCheck", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateCreatorCardGamePublishResponse</returns>
+        public CreateCreatorCardGamePublishResponse CreateCreatorCardGamePublish(string id)
+        {
+            net.crossly.Client.ApiResponse<CreateCreatorCardGamePublishResponse> localVarResponse = CreateCreatorCardGamePublishWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateCreatorCardGamePublishResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateCreatorCardGamePublishResponse> CreateCreatorCardGamePublishWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->CreateCreatorCardGamePublish");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateCreatorCardGamePublishResponse>("/v1/creator/cards/games/{id}/publish", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGamePublish", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCreatorCardGamePublishResponse</returns>
+        public async System.Threading.Tasks.Task<CreateCreatorCardGamePublishResponse> CreateCreatorCardGamePublishAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateCreatorCardGamePublishResponse> localVarResponse = await CreateCreatorCardGamePublishWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCreatorCardGamePublishResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorCardGamePublishResponse>> CreateCreatorCardGamePublishWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->CreateCreatorCardGamePublish");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateCreatorCardGamePublishResponse>("/v1/creator/cards/games/{id}/publish", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardGamePublish", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
+        /// <returns>CreatorCardSetResponse</returns>
+        public CreatorCardSetResponse CreateCreatorCardSet(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest))
+        {
+            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = CreateCreatorCardSetWithHttpInfo(createCreatorCardSetRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatorCardSetResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetWithHttpInfo(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCreatorCardSetRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatorCardSetResponse>("/v1/creator/cards/sets", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCreatorCardSet", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardSetResponse</returns>
+        public async System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetAsync(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = await CreateCreatorCardSetWithHttpInfoAsync(createCreatorCardSetRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardSetResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetWithHttpInfoAsync(CreateCreatorCardSetRequest createCreatorCardSetRequest = default(CreateCreatorCardSetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCreatorCardSetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2317,10 +3104,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>CreatorCardSetResponse</returns>
-        public CreatorCardSetResponse CreateCreatorCardSetArt(string id, string slug)
+        public CreatorCardSetResponse CreateCreatorCardSetArt(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = CreateCreatorCardSetArtWithHttpInfo(id, slug);
+            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = CreateCreatorCardSetArtWithHttpInfo(id, slug, createCreatorCardSetArtRequest);
             return localVarResponse.Data;
         }
 
@@ -2330,8 +3118,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorCardSetResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetArtWithHttpInfo(string id, string slug)
+        public net.crossly.Client.ApiResponse<CreatorCardSetResponse> CreateCreatorCardSetArtWithHttpInfo(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2348,6 +3137,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2369,6 +3159,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createCreatorCardSetArtRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2397,11 +3188,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorCardSetResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetArtAsync(string id, string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorCardSetResponse> CreateCreatorCardSetArtAsync(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = await CreateCreatorCardSetArtWithHttpInfoAsync(id, slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorCardSetResponse> localVarResponse = await CreateCreatorCardSetArtWithHttpInfoAsync(id, slug, createCreatorCardSetArtRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2411,9 +3203,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="slug"></param>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorCardSetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetArtWithHttpInfoAsync(string id, string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardSetResponse>> CreateCreatorCardSetArtWithHttpInfoAsync(string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2431,6 +3224,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2452,6 +3246,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.Data = createCreatorCardSetArtRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2773,10 +3568,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <returns>CreateCreatorCreationSubmitResponse</returns>
-        public CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit(string format, string id)
+        public CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> localVarResponse = CreateCreatorCreationSubmitWithHttpInfo(format, id);
+            net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> localVarResponse = CreateCreatorCreationSubmitWithHttpInfo(format, id, createCreatorCreationSubmitRequest);
             return localVarResponse.Data;
         }
 
@@ -2786,8 +3582,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorCreationSubmitResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitWithHttpInfo(string format, string id)
+        public net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitWithHttpInfo(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest))
         {
             // verify the required parameter 'format' is set
             if (format == null)
@@ -2804,6 +3601,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2825,6 +3623,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("format", net.crossly.Client.ClientUtils.ParameterToString(format)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorCreationSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2853,11 +3652,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorCreationSubmitResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCreatorCreationSubmitResponse> CreateCreatorCreationSubmitAsync(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> localVarResponse = await CreateCreatorCreationSubmitWithHttpInfoAsync(format, id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse> localVarResponse = await CreateCreatorCreationSubmitWithHttpInfoAsync(format, id, createCreatorCreationSubmitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2867,9 +3667,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="createCreatorCreationSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorCreationSubmitResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse>> CreateCreatorCreationSubmitWithHttpInfoAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorCreationSubmitResponse>> CreateCreatorCreationSubmitWithHttpInfoAsync(string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = default(CreateCreatorCreationSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'format' is set
             if (format == null)
@@ -2887,6 +3688,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2908,6 +3710,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("format", net.crossly.Client.ClientUtils.ParameterToString(format)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorCreationSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2935,10 +3738,11 @@ namespace net.crossly.Api
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <returns>GetCreatorImportResponse</returns>
-        public GetCreatorImportResponse CreateCreatorImport()
+        public GetCreatorImportResponse CreateCreatorImport(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest))
         {
-            net.crossly.Client.ApiResponse<GetCreatorImportResponse> localVarResponse = CreateCreatorImportWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetCreatorImportResponse> localVarResponse = CreateCreatorImportWithHttpInfo(createCreatorImportRequest);
             return localVarResponse.Data;
         }
 
@@ -2946,12 +3750,14 @@ namespace net.crossly.Api
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <returns>ApiResponse of GetCreatorImportResponse</returns>
-        public net.crossly.Client.ApiResponse<GetCreatorImportResponse> CreateCreatorImportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetCreatorImportResponse> CreateCreatorImportWithHttpInfo(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2971,6 +3777,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2997,11 +3804,12 @@ namespace net.crossly.Api
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCreatorImportResponse</returns>
-        public async System.Threading.Tasks.Task<GetCreatorImportResponse> CreateCreatorImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetCreatorImportResponse> CreateCreatorImportAsync(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetCreatorImportResponse> localVarResponse = await CreateCreatorImportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetCreatorImportResponse> localVarResponse = await CreateCreatorImportWithHttpInfoAsync(createCreatorImportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3009,14 +3817,16 @@ namespace net.crossly.Api
         /// Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCreatorImportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCreatorImportResponse>> CreateCreatorImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCreatorImportResponse>> CreateCreatorImportWithHttpInfoAsync(CreateCreatorImportRequest createCreatorImportRequest = default(CreateCreatorImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3036,6 +3846,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3209,10 +4020,11 @@ namespace net.crossly.Api
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <returns>CreatorItemModelResponse</returns>
-        public CreatorItemModelResponse CreateCreatorItemModel()
+        public CreatorItemModelResponse CreateCreatorItemModel(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorItemModelResponse> localVarResponse = CreateCreatorItemModelWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatorItemModelResponse> localVarResponse = CreateCreatorItemModelWithHttpInfo(createCreatorItemModelRequest);
             return localVarResponse.Data;
         }
 
@@ -3220,12 +4032,14 @@ namespace net.crossly.Api
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemModelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorItemModelResponse> CreateCreatorItemModelWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreatorItemModelResponse> CreateCreatorItemModelWithHttpInfo(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3245,6 +4059,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemModelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3271,11 +4086,12 @@ namespace net.crossly.Api
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemModelResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorItemModelResponse> CreateCreatorItemModelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorItemModelResponse> CreateCreatorItemModelAsync(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorItemModelResponse> localVarResponse = await CreateCreatorItemModelWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorItemModelResponse> localVarResponse = await CreateCreatorItemModelWithHttpInfoAsync(createCreatorItemModelRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3283,14 +4099,16 @@ namespace net.crossly.Api
         /// Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemModelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemModelResponse>> CreateCreatorItemModelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemModelResponse>> CreateCreatorItemModelWithHttpInfoAsync(CreateCreatorItemModelRequest createCreatorItemModelRequest = default(CreateCreatorItemModelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3310,6 +4128,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemModelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3337,10 +4156,11 @@ namespace net.crossly.Api
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <returns>CreateCreatorItemModelCheckResponse</returns>
-        public CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck()
+        public CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> localVarResponse = CreateCreatorItemModelCheckWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> localVarResponse = CreateCreatorItemModelCheckWithHttpInfo(createCreatorItemModelCheckRequest);
             return localVarResponse.Data;
         }
 
@@ -3348,12 +4168,14 @@ namespace net.crossly.Api
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorItemModelCheckResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckWithHttpInfo(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3373,6 +4195,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemModelCheckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3399,11 +4222,12 @@ namespace net.crossly.Api
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorItemModelCheckResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCreatorItemModelCheckResponse> CreateCreatorItemModelCheckAsync(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> localVarResponse = await CreateCreatorItemModelCheckWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse> localVarResponse = await CreateCreatorItemModelCheckWithHttpInfoAsync(createCreatorItemModelCheckRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3411,14 +4235,16 @@ namespace net.crossly.Api
         /// The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemModelCheckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorItemModelCheckResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse>> CreateCreatorItemModelCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorItemModelCheckResponse>> CreateCreatorItemModelCheckWithHttpInfoAsync(CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = default(CreateCreatorItemModelCheckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3438,6 +4264,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemModelCheckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3611,10 +4438,11 @@ namespace net.crossly.Api
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>CreateCreatorItemPreviewResponse</returns>
-        public CreateCreatorItemPreviewResponse CreateCreatorItemPreview()
+        public CreateCreatorItemPreviewResponse CreateCreatorItemPreview(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> localVarResponse = CreateCreatorItemPreviewWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> localVarResponse = CreateCreatorItemPreviewWithHttpInfo(createCreatorCardSetArtRequest);
             return localVarResponse.Data;
         }
 
@@ -3622,12 +4450,14 @@ namespace net.crossly.Api
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorItemPreviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewWithHttpInfo(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3647,6 +4477,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorCardSetArtRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3673,11 +4504,12 @@ namespace net.crossly.Api
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorItemPreviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCreatorItemPreviewResponse> CreateCreatorItemPreviewAsync(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> localVarResponse = await CreateCreatorItemPreviewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse> localVarResponse = await CreateCreatorItemPreviewWithHttpInfoAsync(createCreatorCardSetArtRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3685,14 +4517,16 @@ namespace net.crossly.Api
         /// Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorCardSetArtRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorItemPreviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse>> CreateCreatorItemPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorItemPreviewResponse>> CreateCreatorItemPreviewWithHttpInfoAsync(CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = default(CreateCreatorCardSetArtRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3712,6 +4546,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorCardSetArtRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3739,10 +4574,11 @@ namespace net.crossly.Api
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        public CreatorItemWearableResponse CreateCreatorItemWearable()
+        public CreatorItemWearableResponse CreateCreatorItemWearable(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = CreateCreatorItemWearableWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = CreateCreatorItemWearableWithHttpInfo(createCreatorItemWearableRequest);
             return localVarResponse.Data;
         }
 
@@ -3750,12 +4586,14 @@ namespace net.crossly.Api
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableWithHttpInfo(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3775,6 +4613,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemWearableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3801,11 +4640,12 @@ namespace net.crossly.Api
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableAsync(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await CreateCreatorItemWearableWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await CreateCreatorItemWearableWithHttpInfoAsync(createCreatorItemWearableRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3813,14 +4653,16 @@ namespace net.crossly.Api
         /// Start a wearable from a template: slug, name, colourways (panel -&gt; #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableWithHttpInfoAsync(CreateCreatorItemWearableRequest createCreatorItemWearableRequest = default(CreateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3840,6 +4682,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorItemWearableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3868,10 +4711,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        public CreatorItemWearableResponse CreateCreatorItemWearableSubmit(string id)
+        public CreatorItemWearableResponse CreateCreatorItemWearableSubmit(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = CreateCreatorItemWearableSubmitWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = CreateCreatorItemWearableSubmitWithHttpInfo(id, createCreatorItemWearableSubmitRequest);
             return localVarResponse.Data;
         }
 
@@ -3880,8 +4724,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitWithHttpInfo(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3892,6 +4737,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3912,6 +4758,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorItemWearableSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3939,11 +4786,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> CreateCreatorItemWearableSubmitAsync(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await CreateCreatorItemWearableSubmitWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await CreateCreatorItemWearableSubmitWithHttpInfoAsync(id, createCreatorItemWearableSubmitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3952,9 +4800,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorItemWearableSubmitRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableSubmitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> CreateCreatorItemWearableSubmitWithHttpInfoAsync(string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = default(CreateCreatorItemWearableSubmitRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3966,6 +4815,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3986,6 +4836,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorItemWearableSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4014,10 +4865,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        public CreatorReviewResponse CreateCreatorReviewHide(string reviewId)
+        public CreatorReviewResponse CreateCreatorReviewHide(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewHideWithHttpInfo(reviewId);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewHideWithHttpInfo(reviewId, reasonRequest2);
             return localVarResponse.Data;
         }
 
@@ -4026,8 +4878,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewHideWithHttpInfo(string reviewId)
+        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewHideWithHttpInfo(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4038,6 +4891,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4058,6 +4912,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest2;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4085,11 +4940,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewHideAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewHideAsync(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewHideWithHttpInfoAsync(reviewId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewHideWithHttpInfoAsync(reviewId, reasonRequest2, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4098,9 +4954,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewHideWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewHideWithHttpInfoAsync(string reviewId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4112,6 +4969,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4132,6 +4990,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest2;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4160,10 +5019,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        public CreatorReviewResponse CreateCreatorReviewReply(string reviewId)
+        public CreatorReviewResponse CreateCreatorReviewReply(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewReplyWithHttpInfo(reviewId);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewReplyWithHttpInfo(reviewId, createCreatorReviewReplyRequest);
             return localVarResponse.Data;
         }
 
@@ -4172,8 +5032,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewReplyWithHttpInfo(string reviewId)
+        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewReplyWithHttpInfo(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4184,6 +5045,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4204,6 +5066,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = createCreatorReviewReplyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4231,11 +5094,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReplyAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReplyAsync(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewReplyWithHttpInfoAsync(reviewId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewReplyWithHttpInfoAsync(reviewId, createCreatorReviewReplyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4244,9 +5108,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="createCreatorReviewReplyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReplyWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReplyWithHttpInfoAsync(string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = default(CreateCreatorReviewReplyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4258,6 +5123,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4278,6 +5144,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = createCreatorReviewReplyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4306,10 +5173,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <returns>CreatorReviewResponse</returns>
-        public CreatorReviewResponse CreateCreatorReviewReport(string reviewId)
+        public CreatorReviewResponse CreateCreatorReviewReport(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewReportWithHttpInfo(reviewId);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = CreateCreatorReviewReportWithHttpInfo(reviewId, reasonRequest);
             return localVarResponse.Data;
         }
 
@@ -4318,8 +5186,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorReviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewReportWithHttpInfo(string reviewId)
+        public net.crossly.Client.ApiResponse<CreatorReviewResponse> CreateCreatorReviewReportWithHttpInfo(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4330,6 +5199,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4350,6 +5220,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4377,11 +5248,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorReviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReportAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorReviewResponse> CreateCreatorReviewReportAsync(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewReportWithHttpInfoAsync(reviewId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorReviewResponse> localVarResponse = await CreateCreatorReviewReportWithHttpInfoAsync(reviewId, reasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4390,9 +5262,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="reviewId"></param>
+        /// <param name="reasonRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorReviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReportWithHttpInfoAsync(string reviewId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorReviewResponse>> CreateCreatorReviewReportWithHttpInfoAsync(string reviewId, ReasonRequest reasonRequest = default(ReasonRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'reviewId' is set
             if (reviewId == null)
@@ -4404,6 +5277,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4424,6 +5298,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("reviewId", net.crossly.Client.ClientUtils.ParameterToString(reviewId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4584,6 +5459,150 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateCreatorReviewUnhide", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a composed card game that was never published. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public void DeleteCreatorCardGame(string id)
+        {
+            DeleteCreatorCardGameWithHttpInfo(id);
+        }
+
+        /// <summary>
+        /// Delete a composed card game that was never published. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public net.crossly.Client.ApiResponse<Object> DeleteCreatorCardGameWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->DeleteCreatorCardGame");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<Object>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCreatorCardGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a composed card game that was never published. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await DeleteCreatorCardGameWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Delete a composed card game that was never published. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<Object>> DeleteCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->DeleteCreatorCardGame");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCreatorCardGame", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -5016,6 +6035,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteCreatorItemWearable", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        public CreatorCardGameResponse GetCreatorCardGame(string id)
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = GetCreatorCardGameWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatorCardGameResponse> GetCreatorCardGameWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->GetCreatorCardGame");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<CreatorCardGameResponse>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetCreatorCardGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        public async System.Threading.Tasks.Task<CreatorCardGameResponse> GetCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = await GetCreatorCardGameWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One composed card game with its check: issues by field and conformance problems. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardGameResponse>> GetCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->GetCreatorCardGame");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<CreatorCardGameResponse>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetCreatorCardGame", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -7410,6 +8575,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListCreatorCardGamesResponse</returns>
+        public ListCreatorCardGamesResponse ListCreatorCardGames()
+        {
+            net.crossly.Client.ApiResponse<ListCreatorCardGamesResponse> localVarResponse = ListCreatorCardGamesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListCreatorCardGamesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListCreatorCardGamesResponse> ListCreatorCardGamesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCreatorCardGamesResponse>("/v1/creator/cards/games", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCreatorCardGames", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCreatorCardGamesResponse</returns>
+        public async System.Threading.Tasks.Task<ListCreatorCardGamesResponse> ListCreatorCardGamesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListCreatorCardGamesResponse> localVarResponse = await ListCreatorCardGamesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCreatorCardGamesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorCardGamesResponse>> ListCreatorCardGamesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCreatorCardGamesResponse>("/v1/creator/cards/games", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCreatorCardGames", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Your card set drafts, each with its road from COSM to print: live on COSM, the mint threshold (collectors, packs opened, resales) and the print-run cost against what NFT sales have banked. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -7543,10 +8836,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListCreatorCreationReviewsResponse</returns>
-        public ListCreatorCreationReviewsResponse ListCreatorCreationReviews(string format, string id)
+        public ListCreatorCreationReviewsResponse ListCreatorCreationReviews(string format, string id, string cursor = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> localVarResponse = ListCreatorCreationReviewsWithHttpInfo(format, id);
+            net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> localVarResponse = ListCreatorCreationReviewsWithHttpInfo(format, id, cursor, limit);
             return localVarResponse.Data;
         }
 
@@ -7556,8 +8851,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorCreationReviewsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsWithHttpInfo(string format, string id)
+        public net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsWithHttpInfo(string format, string id, string cursor = default(string), decimal? limit = default(decimal?))
         {
             // verify the required parameter 'format' is set
             if (format == null)
@@ -7595,6 +8892,14 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("format", net.crossly.Client.ClientUtils.ParameterToString(format)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7623,11 +8928,13 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorCreationReviewsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCreatorCreationReviewsResponse> ListCreatorCreationReviewsAsync(string format, string id, string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> localVarResponse = await ListCreatorCreationReviewsWithHttpInfoAsync(format, id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse> localVarResponse = await ListCreatorCreationReviewsWithHttpInfoAsync(format, id, cursor, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7637,9 +8944,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="format"></param>
         /// <param name="id"></param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorCreationReviewsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse>> ListCreatorCreationReviewsWithHttpInfoAsync(string format, string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorCreationReviewsResponse>> ListCreatorCreationReviewsWithHttpInfoAsync(string format, string id, string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'format' is set
             if (format == null)
@@ -7678,6 +8987,14 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("format", net.crossly.Client.ClientUtils.ParameterToString(format)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7705,10 +9022,15 @@ namespace net.crossly.Api
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListCreatorCreationsResponse</returns>
-        public ListCreatorCreationsResponse ListCreatorCreations()
+        public ListCreatorCreationsResponse ListCreatorCreations(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string))
         {
-            net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> localVarResponse = ListCreatorCreationsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> localVarResponse = ListCreatorCreationsWithHttpInfo(kind, format, status, collection, q);
             return localVarResponse.Data;
         }
 
@@ -7716,8 +9038,13 @@ namespace net.crossly.Api
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorCreationsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> ListCreatorCreationsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> ListCreatorCreationsWithHttpInfo(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -7741,6 +9068,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (collection != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "collection", collection));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7767,11 +9114,16 @@ namespace net.crossly.Api
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorCreationsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCreatorCreationsResponse> ListCreatorCreationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCreatorCreationsResponse> ListCreatorCreationsAsync(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> localVarResponse = await ListCreatorCreationsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCreatorCreationsResponse> localVarResponse = await ListCreatorCreationsWithHttpInfoAsync(kind, format, status, collection, q, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7779,9 +9131,14 @@ namespace net.crossly.Api
         /// Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="collection"> (optional)</param>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorCreationsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorCreationsResponse>> ListCreatorCreationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorCreationsResponse>> ListCreatorCreationsWithHttpInfoAsync(string kind = default(string), string format = default(string), string status = default(string), string collection = default(string), string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -7806,6 +9163,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (collection != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "collection", collection));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8850,6 +10227,152 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatorCardGameResponse</returns>
+        public CreatorCardGameResponse UpdateCreatorCardGame(string id)
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = UpdateCreatorCardGameWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatorCardGameResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatorCardGameResponse> UpdateCreatorCardGameWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->UpdateCreatorCardGame");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<CreatorCardGameResponse>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCreatorCardGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatorCardGameResponse</returns>
+        public async System.Threading.Tasks.Task<CreatorCardGameResponse> UpdateCreatorCardGameAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatorCardGameResponse> localVarResponse = await UpdateCreatorCardGameWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatorCardGameResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorCardGameResponse>> UpdateCreatorCardGameWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CreatorStudioApi->UpdateCreatorCardGame");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<CreatorCardGameResponse>("/v1/creator/cards/games/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCreatorCardGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Save the whole draft: cards (name, type, rarity, rules text, flavour, power/draw/guard), COSM prices and supply, frame colours, print plan. Every word goes through the text filter. Art is merged: a card without &#x60;art&#x60; (or with art as read) keeps its stored art, &#x60;art: null&#x60; clears it; only the art upload sets art. Answers the check. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -9146,10 +10669,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <returns>CreatorItemWearableResponse</returns>
-        public CreatorItemWearableResponse UpdateCreatorItemWearable(string id)
+        public CreatorItemWearableResponse UpdateCreatorItemWearable(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = UpdateCreatorItemWearableWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = UpdateCreatorItemWearableWithHttpInfo(id, updateCreatorItemWearableRequest);
             return localVarResponse.Data;
         }
 
@@ -9158,8 +10682,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatorItemWearableResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> UpdateCreatorItemWearableWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreatorItemWearableResponse> UpdateCreatorItemWearableWithHttpInfo(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9170,6 +10695,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9190,6 +10716,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCreatorItemWearableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9217,11 +10744,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatorItemWearableResponse</returns>
-        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> UpdateCreatorItemWearableAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatorItemWearableResponse> UpdateCreatorItemWearableAsync(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await UpdateCreatorItemWearableWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatorItemWearableResponse> localVarResponse = await UpdateCreatorItemWearableWithHttpInfoAsync(id, updateCreatorItemWearableRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -9230,9 +10758,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCreatorItemWearableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatorItemWearableResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> UpdateCreatorItemWearableWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatorItemWearableResponse>> UpdateCreatorItemWearableWithHttpInfoAsync(string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = default(UpdateCreatorItemWearableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -9244,6 +10773,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9264,6 +10794,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCreatorItemWearableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

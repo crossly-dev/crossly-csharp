@@ -40,9 +40,15 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateAiTestKeyResponse" /> class.
         /// </summary>
         /// <param name="valid">valid (required).</param>
-        public CreateAiTestKeyResponse(bool valid = default(bool))
+        /// <param name="message">message (required).</param>
+        public CreateAiTestKeyResponse(bool valid = default(bool), string message = default(string))
         {
             this.Valid = valid;
+            // to ensure "message" is required (not null)
+            if (message == null) {
+                throw new ArgumentNullException("message is a required property for CreateAiTestKeyResponse and cannot be null");
+            }
+            this.Message = message;
         }
 
         /// <summary>
@@ -50,6 +56,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "valid", IsRequired = true, EmitDefaultValue = true)]
         public bool Valid { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Message
+        /// </summary>
+        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = false)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,6 +72,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateAiTestKeyResponse {\n");
             sb.Append("  Valid: ").Append(Valid).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,6 +111,11 @@ namespace net.crossly.Model
                 (
                     this.Valid == input.Valid ||
                     this.Valid.Equals(input.Valid)
+                ) && 
+                (
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 );
         }
 
@@ -111,6 +129,10 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Valid.GetHashCode();
+                if (this.Message != null)
+                {
+                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
+                }
                 return hashCode;
             }
         }

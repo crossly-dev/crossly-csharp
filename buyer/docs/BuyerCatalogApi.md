@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 <a name="createbuyeridentify"></a>
 # **CreateBuyerIdentify**
-> CreateBuyerIdentifyResponse CreateBuyerIdentify ()
+> CreateBuyerIdentifyResponse CreateBuyerIdentify (CreateBuyerIdentifyRequest createBuyerIdentifyRequest)
 
 Identify a held object and return a HUD-ready answer.
 
@@ -54,11 +54,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var createBuyerIdentifyRequest = new CreateBuyerIdentifyRequest(); // CreateBuyerIdentifyRequest | 
 
             try
             {
                 // Identify a held object and return a HUD-ready answer.
-                CreateBuyerIdentifyResponse result = apiInstance.CreateBuyerIdentify();
+                CreateBuyerIdentifyResponse result = apiInstance.CreateBuyerIdentify(createBuyerIdentifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -73,7 +74,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerIdentifyRequest** | **CreateBuyerIdentifyRequest**|  | 
 
 ### Return type
 
@@ -85,7 +89,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -104,7 +108,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerlockon"></a>
 # **CreateBuyerLockon**
-> CreateBuyerLockonResponse CreateBuyerLockon ()
+> CreateBuyerLockonResponse CreateBuyerLockon (CreateBuyerLockonRequest createBuyerLockonRequest)
 
 Lock on to an object the buyer is holding.
 
@@ -130,11 +134,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var createBuyerLockonRequest = new CreateBuyerLockonRequest(); // CreateBuyerLockonRequest | 
 
             try
             {
                 // Lock on to an object the buyer is holding.
-                CreateBuyerLockonResponse result = apiInstance.CreateBuyerLockon();
+                CreateBuyerLockonResponse result = apiInstance.CreateBuyerLockon(createBuyerLockonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -149,7 +154,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerLockonRequest** | **CreateBuyerLockonRequest**|  | 
 
 ### Return type
 
@@ -161,7 +169,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -180,7 +188,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerlockonconfirm"></a>
 # **CreateBuyerLockonConfirm**
-> CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm (Guid id)
+> CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm (Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest)
 
 The buyer picked one of the candidates.
 
@@ -207,11 +215,12 @@ namespace Example
 
             var apiInstance = new BuyerCatalogApi(config);
             var id = "id_example";  // Guid | 
+            var createBuyerLockonConfirmRequest = new CreateBuyerLockonConfirmRequest(); // CreateBuyerLockonConfirmRequest | 
 
             try
             {
                 // The buyer picked one of the candidates.
-                CreateBuyerLockonConfirmResponse result = apiInstance.CreateBuyerLockonConfirm(id);
+                CreateBuyerLockonConfirmResponse result = apiInstance.CreateBuyerLockonConfirm(id, createBuyerLockonConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -230,6 +239,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBuyerLockonConfirmRequest** | **CreateBuyerLockonConfirmRequest**|  | 
 
 ### Return type
 
@@ -241,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -260,7 +270,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerlockonobserve"></a>
 # **CreateBuyerLockonObserve**
-> CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve (Guid id)
+> CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve (Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = null)
 
 Add what this frame revealed, and get the current best answer.
 
@@ -287,11 +297,12 @@ namespace Example
 
             var apiInstance = new BuyerCatalogApi(config);
             var id = "id_example";  // Guid | 
+            var createBuyerLockonObserveRequest = new CreateBuyerLockonObserveRequest(); // CreateBuyerLockonObserveRequest |  (optional) 
 
             try
             {
                 // Add what this frame revealed, and get the current best answer.
-                CreateBuyerLockonConfirmResponse result = apiInstance.CreateBuyerLockonObserve(id);
+                CreateBuyerLockonConfirmResponse result = apiInstance.CreateBuyerLockonObserve(id, createBuyerLockonObserveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -310,6 +321,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBuyerLockonObserveRequest** | **CreateBuyerLockonObserveRequest**|  | [optional] 
 
 ### Return type
 
@@ -321,7 +333,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -340,7 +352,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerscan"></a>
 # **CreateBuyerScan**
-> CreateBuyerScanResponse CreateBuyerScan ()
+> CreateBuyerScanResponse CreateBuyerScan (CreateBuyerScanRequest createBuyerScanRequest)
 
 Identify a physical item and find the cheapest place to buy it.
 
@@ -366,11 +378,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var createBuyerScanRequest = new CreateBuyerScanRequest(); // CreateBuyerScanRequest | 
 
             try
             {
                 // Identify a physical item and find the cheapest place to buy it.
-                CreateBuyerScanResponse result = apiInstance.CreateBuyerScan();
+                CreateBuyerScanResponse result = apiInstance.CreateBuyerScan(createBuyerScanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -385,7 +398,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerScanRequest** | **CreateBuyerScanRequest**|  | 
 
 ### Return type
 
@@ -397,7 +413,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -416,7 +432,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerscansession"></a>
 # **CreateBuyerScanSession**
-> CreateBuyerScanSessionResponse CreateBuyerScanSession ()
+> CreateBuyerScanSessionResponse CreateBuyerScanSession (CreateBuyerScanSessionRequest createBuyerScanSessionRequest = null)
 
 Open a Live Shop session.
 
@@ -442,11 +458,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var createBuyerScanSessionRequest = new CreateBuyerScanSessionRequest(); // CreateBuyerScanSessionRequest |  (optional) 
 
             try
             {
                 // Open a Live Shop session.
-                CreateBuyerScanSessionResponse result = apiInstance.CreateBuyerScanSession();
+                CreateBuyerScanSessionResponse result = apiInstance.CreateBuyerScanSession(createBuyerScanSessionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -461,7 +478,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerScanSessionRequest** | **CreateBuyerScanSessionRequest**|  | [optional] 
 
 ### Return type
 
@@ -473,7 +493,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -570,7 +590,7 @@ Name | Type | Description  | Notes
 
 <a name="getbuyeranywhere"></a>
 # **GetBuyerAnywhere**
-> GetBuyerAnywhereResponse GetBuyerAnywhere ()
+> GetBuyerAnywhereResponse GetBuyerAnywhere (string ns, string value, decimal? pagePriceCents = null, string currency = null)
 
 Cheapest source for an item — Crossly first, then other retailers.
 
@@ -596,11 +616,15 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var ns = "discogs";  // string | An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \"cheaper elsewhere\" is a claim about a different product.  The ALLOW-LIST, not a free string. `compare.ts` explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue's provenance. Reusing the same list here keeps the two from drifting.
+            var value = "value_example";  // string | 
+            var pagePriceCents = 8.14D;  // decimal? | What the buyer is looking at, so \"cheaper\" means cheaper than THAT. (optional) 
+            var currency = "currency_example";  // string |  (optional) 
 
             try
             {
                 // Cheapest source for an item — Crossly first, then other retailers.
-                GetBuyerAnywhereResponse result = apiInstance.GetBuyerAnywhere();
+                GetBuyerAnywhereResponse result = apiInstance.GetBuyerAnywhere(ns, value, pagePriceCents, currency);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -615,7 +639,13 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ns** | **string**| An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting. | 
+ **value** | **string**|  | 
+ **pagePriceCents** | **decimal?**| What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. | [optional] 
+ **currency** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1210,7 +1240,7 @@ Name | Type | Description  | Notes
 
 <a name="listbuyercatalogbrowse"></a>
 # **ListBuyerCatalogBrowse**
-> ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse (string q = null, string format = null, string returns = null, string sold = null, string size = null, string color = null, string shipsTo = null, string sort = null, int? minPriceCents = null, int? maxPriceCents = null, int? page = null, int? limit = null)
+> ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse (string q = null, string format = null, string returns = null, string sold = null, string size = null, string color = null, string shipsTo = null, string sort = null, int? minPriceCents = null, int? maxPriceCents = null, int? page = null, int? limit = null, string brand = null, string condition = null, string category = null, string subcategory = null, string freeShipping = null, string localPickup = null, string deals = null, string state = null, string zip = null)
 
 Browse the way the shop does — buying format, returns, size, color, sold items, Best Match.
 
@@ -1248,11 +1278,20 @@ namespace Example
             var maxPriceCents = 56;  // int? | Highest price, in cents. (optional) 
             var page = 1;  // int? | 1-indexed page. (optional)  (default to 1)
             var limit = 24;  // int? | Rows per page. (optional)  (default to 24)
+            var brand = "brand_example";  // string |  (optional) 
+            var condition = "condition_example";  // string |  (optional) 
+            var category = "category_example";  // string |  (optional) 
+            var subcategory = "subcategory_example";  // string |  (optional) 
+            var freeShipping = "true";  // string |  (optional) 
+            var localPickup = "true";  // string |  (optional) 
+            var deals = "true";  // string |  (optional) 
+            var state = "state_example";  // string |  (optional) 
+            var zip = "zip_example";  // string |  (optional) 
 
             try
             {
                 // Browse the way the shop does — buying format, returns, size, color, sold items, Best Match.
-                ListBuyerCatalogBrowseResponse result = apiInstance.ListBuyerCatalogBrowse(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit);
+                ListBuyerCatalogBrowseResponse result = apiInstance.ListBuyerCatalogBrowse(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit, brand, condition, category, subcategory, freeShipping, localPickup, deals, state, zip);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1282,6 +1321,15 @@ Name | Type | Description  | Notes
  **maxPriceCents** | **int?**| Highest price, in cents. | [optional] 
  **page** | **int?**| 1-indexed page. | [optional] [default to 1]
  **limit** | **int?**| Rows per page. | [optional] [default to 24]
+ **brand** | **string**|  | [optional] 
+ **condition** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **subcategory** | **string**|  | [optional] 
+ **freeShipping** | **string**|  | [optional] 
+ **localPickup** | **string**|  | [optional] 
+ **deals** | **string**|  | [optional] 
+ **state** | **string**|  | [optional] 
+ **zip** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1392,7 +1440,7 @@ Name | Type | Description  | Notes
 
 <a name="listbuyercatalogsearch"></a>
 # **ListBuyerCatalogSearch**
-> ListBuyerCatalogSearchResponse ListBuyerCatalogSearch ()
+> ListBuyerCatalogSearchResponse ListBuyerCatalogSearch (string q = null, string brand = null, string category = null, string condition = null, string seller = null, decimal? minPriceCents = null, decimal? maxPriceCents = null, string listedAfter = null, string inStockOnly = null, string sort = null, decimal? limit = null, string cursor = null)
 
 Search the Crossly catalogue.
 
@@ -1418,11 +1466,23 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCatalogApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var brand = "brand_example";  // string |  (optional) 
+            var category = "category_example";  // string |  (optional) 
+            var condition = "condition_example";  // string |  (optional) 
+            var seller = "seller_example";  // string |  (optional) 
+            var minPriceCents = 8.14D;  // decimal? |  (optional) 
+            var maxPriceCents = 8.14D;  // decimal? |  (optional) 
+            var listedAfter = "listedAfter_example";  // string |  (optional) 
+            var inStockOnly = "true";  // string |  (optional) 
+            var sort = "newest";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
 
             try
             {
                 // Search the Crossly catalogue.
-                ListBuyerCatalogSearchResponse result = apiInstance.ListBuyerCatalogSearch();
+                ListBuyerCatalogSearchResponse result = apiInstance.ListBuyerCatalogSearch(q, brand, category, condition, seller, minPriceCents, maxPriceCents, listedAfter, inStockOnly, sort, limit, cursor);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1437,7 +1497,21 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **brand** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **condition** | **string**|  | [optional] 
+ **seller** | **string**|  | [optional] 
+ **minPriceCents** | **decimal?**|  | [optional] 
+ **maxPriceCents** | **decimal?**|  | [optional] 
+ **listedAfter** | **string**|  | [optional] 
+ **inStockOnly** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
 
 ### Return type
 

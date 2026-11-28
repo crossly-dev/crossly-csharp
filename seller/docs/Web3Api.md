@@ -116,6 +116,7 @@ Method | HTTP request | Description
 [**ListWeb3Search**](Web3Api.md#listweb3search) | **GET** /v1/web3/search | Find collections by contract address (every chain) or by name.
 [**ListWeb3SearchTokens**](Web3Api.md#listweb3searchtokens) | **GET** /v1/web3/search/tokens | Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
 [**ListWeb3StoreWalletBalances**](Web3Api.md#listweb3storewalletbalances) | **GET** /v1/web3/store-wallets/balances | The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
+[**ListWeb3StoreWalletMarketplaces**](Web3Api.md#listweb3storewalletmarketplaces) | **GET** /v1/web3/store-wallets/marketplaces | Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key).
 [**ListWeb3StoreWallets**](Web3Api.md#listweb3storewallets) | **GET** /v1/web3/store-wallets | List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
 [**ListWeb3Wallets**](Web3Api.md#listweb3wallets) | **GET** /v1/web3/wallets | List your verified, linked wallets (EVM and Solana).
 [**ListWeb3Watchlist**](Web3Api.md#listweb3watchlist) | **GET** /v1/web3/watchlist | Your favourited NFTs, with the cheapest open Crossly listing and the last sale of each.
@@ -126,12 +127,13 @@ Method | HTTP request | Description
 [**UpdateWeb3MarketplaceKey**](Web3Api.md#updateweb3marketplacekey) | **PUT** /v1/web3/marketplace-keys/{marketplace} | Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
 [**UpdateWeb3StoreWallet**](Web3Api.md#updateweb3storewallet) | **PATCH** /v1/web3/store-wallets/{walletId} | Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
 [**UpdateWeb3StoreWalletDefault**](Web3Api.md#updateweb3storewalletdefault) | **PUT** /v1/web3/store-wallets/{walletId}/default | Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
+[**UpdateWeb3StoreWalletMarketplace**](Web3Api.md#updateweb3storewalletmarketplace) | **PUT** /v1/web3/store-wallets/{walletId}/marketplaces/{marketplace} | Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;.
 [**UpdateWeb3Wallet**](Web3Api.md#updateweb3wallet) | **PATCH** /v1/web3/wallets/{id} | Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
 
 
 <a name="createweb3alert"></a>
 # **CreateWeb3Alert**
-> IdResponse CreateWeb3Alert ()
+> IdResponse CreateWeb3Alert (CreateWeb3AlertRequest createWeb3AlertRequest)
 
 Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below `price` (the chain's native coin). Setting it again moves the price.
 
@@ -155,11 +157,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3AlertRequest = new CreateWeb3AlertRequest(); // CreateWeb3AlertRequest | 
 
             try
             {
                 // Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below `price` (the chain's native coin). Setting it again moves the price.
-                IdResponse result = apiInstance.CreateWeb3Alert();
+                IdResponse result = apiInstance.CreateWeb3Alert(createWeb3AlertRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -174,7 +177,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3AlertRequest** | **CreateWeb3AlertRequest**|  | 
 
 ### Return type
 
@@ -186,7 +192,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -205,7 +211,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3auction"></a>
 # **CreateWeb3Auction**
-> CreateWeb3AuctionResponse CreateWeb3Auction ()
+> CreateWeb3AuctionResponse CreateWeb3Auction (CreateWeb3AuctionRequest createWeb3AuctionRequest)
 
 Start an English auction on a token in your linked wallet: `reserve` is the opening bid in the chain's native coin, `hours` its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
 
@@ -229,11 +235,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3AuctionRequest = new CreateWeb3AuctionRequest(); // CreateWeb3AuctionRequest | 
 
             try
             {
                 // Start an English auction on a token in your linked wallet: `reserve` is the opening bid in the chain's native coin, `hours` its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
-                CreateWeb3AuctionResponse result = apiInstance.CreateWeb3Auction();
+                CreateWeb3AuctionResponse result = apiInstance.CreateWeb3Auction(createWeb3AuctionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -248,7 +255,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3AuctionRequest** | **CreateWeb3AuctionRequest**|  | 
 
 ### Return type
 
@@ -260,7 +270,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -357,7 +367,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3creatorclaim"></a>
 # **CreateWeb3CreatorClaim**
-> CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim ()
+> CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim (CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest)
 
 Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns `{ chain, contract }`.
 
@@ -381,11 +391,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3CreatorClaimRequest = new CreateWeb3CreatorClaimRequest(); // CreateWeb3CreatorClaimRequest | 
 
             try
             {
                 // Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns `{ chain, contract }`.
-                CreateWeb3CreatorClaimResponse result = apiInstance.CreateWeb3CreatorClaim();
+                CreateWeb3CreatorClaimResponse result = apiInstance.CreateWeb3CreatorClaim(createWeb3CreatorClaimRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -400,7 +411,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3CreatorClaimRequest** | **CreateWeb3CreatorClaimRequest**|  | 
 
 ### Return type
 
@@ -412,7 +426,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -431,7 +445,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3crosslist"></a>
 # **CreateWeb3Crosslist**
-> CreateWeb3CrosslistResponse CreateWeb3Crosslist ()
+> CreateWeb3CrosslistResponse CreateWeb3Crosslist (CreateWeb3CrosslistRequest createWeb3CrosslistRequest)
 
 Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
 
@@ -455,11 +469,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3CrosslistRequest = new CreateWeb3CrosslistRequest(); // CreateWeb3CrosslistRequest | 
 
             try
             {
                 // Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
-                CreateWeb3CrosslistResponse result = apiInstance.CreateWeb3Crosslist();
+                CreateWeb3CrosslistResponse result = apiInstance.CreateWeb3Crosslist(createWeb3CrosslistRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -474,7 +489,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3CrosslistRequest** | **CreateWeb3CrosslistRequest**|  | 
 
 ### Return type
 
@@ -486,7 +504,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -583,7 +601,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3favorite"></a>
 # **CreateWeb3Favorite**
-> CreateWeb3FavoriteResponse CreateWeb3Favorite ()
+> CreateWeb3FavoriteResponse CreateWeb3Favorite (CreateWeb3FavoriteRequest createWeb3FavoriteRequest)
 
 Favourite an NFT, or unfavourite it if it already is. Returns `{ favorited }`.
 
@@ -607,11 +625,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3FavoriteRequest = new CreateWeb3FavoriteRequest(); // CreateWeb3FavoriteRequest | 
 
             try
             {
                 // Favourite an NFT, or unfavourite it if it already is. Returns `{ favorited }`.
-                CreateWeb3FavoriteResponse result = apiInstance.CreateWeb3Favorite();
+                CreateWeb3FavoriteResponse result = apiInstance.CreateWeb3Favorite(createWeb3FavoriteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -626,7 +645,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3FavoriteRequest** | **CreateWeb3FavoriteRequest**|  | 
 
 ### Return type
 
@@ -638,7 +660,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -657,7 +679,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3launch"></a>
 # **CreateWeb3Launch**
-> ListWeb3LaunchesItem CreateWeb3Launch ()
+> ListWeb3LaunchesItem CreateWeb3Launch (CreateWeb3LaunchRequest createWeb3LaunchRequest)
 
 Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
 
@@ -681,11 +703,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3LaunchRequest = new CreateWeb3LaunchRequest(); // CreateWeb3LaunchRequest | 
 
             try
             {
                 // Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
-                ListWeb3LaunchesItem result = apiInstance.CreateWeb3Launch();
+                ListWeb3LaunchesItem result = apiInstance.CreateWeb3Launch(createWeb3LaunchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -700,7 +723,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3LaunchRequest** | **CreateWeb3LaunchRequest**|  | 
 
 ### Return type
 
@@ -712,7 +738,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1121,7 +1147,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3order"></a>
 # **CreateWeb3Order**
-> CreateWeb3OrderResponse CreateWeb3Order ()
+> CreateWeb3OrderResponse CreateWeb3Order (CreateWeb3OrderRequest createWeb3OrderRequest)
 
 Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book.
 
@@ -1145,11 +1171,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3OrderRequest = new CreateWeb3OrderRequest(); // CreateWeb3OrderRequest | 
 
             try
             {
                 // Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book.
-                CreateWeb3OrderResponse result = apiInstance.CreateWeb3Order();
+                CreateWeb3OrderResponse result = apiInstance.CreateWeb3Order(createWeb3OrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1164,7 +1191,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3OrderRequest** | **CreateWeb3OrderRequest**|  | 
 
 ### Return type
 
@@ -1176,7 +1206,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1275,7 +1305,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3orderfulfillmentbatch"></a>
 # **CreateWeb3OrderFulfillmentBatch**
-> CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch ()
+> CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch (CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest)
 
 Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason.
 
@@ -1299,11 +1329,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3OrderFulfillmentBatchRequest = new CreateWeb3OrderFulfillmentBatchRequest(); // CreateWeb3OrderFulfillmentBatchRequest | 
 
             try
             {
                 // Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason.
-                CreateWeb3OrderFulfillmentBatchResponse result = apiInstance.CreateWeb3OrderFulfillmentBatch();
+                CreateWeb3OrderFulfillmentBatchResponse result = apiInstance.CreateWeb3OrderFulfillmentBatch(createWeb3OrderFulfillmentBatchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1318,7 +1349,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3OrderFulfillmentBatchRequest** | **CreateWeb3OrderFulfillmentBatchRequest**|  | 
 
 ### Return type
 
@@ -1330,7 +1364,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1349,7 +1383,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3phygital"></a>
 # **CreateWeb3Phygital**
-> CreateWeb3PhygitalResponse CreateWeb3Phygital ()
+> CreateWeb3PhygitalResponse CreateWeb3Phygital (CreateWeb3PhygitalRequest createWeb3PhygitalRequest)
 
 Make an NFT you hold redeemable for one of your physical inventory items.
 
@@ -1373,11 +1407,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3PhygitalRequest = new CreateWeb3PhygitalRequest(); // CreateWeb3PhygitalRequest | 
 
             try
             {
                 // Make an NFT you hold redeemable for one of your physical inventory items.
-                CreateWeb3PhygitalResponse result = apiInstance.CreateWeb3Phygital();
+                CreateWeb3PhygitalResponse result = apiInstance.CreateWeb3Phygital(createWeb3PhygitalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1392,7 +1427,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3PhygitalRequest** | **CreateWeb3PhygitalRequest**|  | 
 
 ### Return type
 
@@ -1404,7 +1442,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1423,7 +1461,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3phygitalredeem"></a>
 # **CreateWeb3PhygitalRedeem**
-> CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem (string id)
+> CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem (string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest)
 
 Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
 
@@ -1448,11 +1486,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var id = "id_example";  // string | 
+            var createWeb3PhygitalRedeemRequest = new CreateWeb3PhygitalRedeemRequest(); // CreateWeb3PhygitalRedeemRequest | 
 
             try
             {
                 // Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
-                CreateWeb3PhygitalRedeemResponse result = apiInstance.CreateWeb3PhygitalRedeem(id);
+                CreateWeb3PhygitalRedeemResponse result = apiInstance.CreateWeb3PhygitalRedeem(id, createWeb3PhygitalRedeemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1471,6 +1510,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWeb3PhygitalRedeemRequest** | **CreateWeb3PhygitalRedeemRequest**|  | 
 
 ### Return type
 
@@ -1482,7 +1522,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1501,7 +1541,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3phygitalredemptionship"></a>
 # **CreateWeb3PhygitalRedemptionShip**
-> OkResponse CreateWeb3PhygitalRedemptionShip (string id)
+> OkResponse CreateWeb3PhygitalRedemptionShip (string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest)
 
 Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
 
@@ -1526,11 +1566,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var id = "id_example";  // string | 
+            var createWeb3PhygitalRedemptionShipRequest = new CreateWeb3PhygitalRedemptionShipRequest(); // CreateWeb3PhygitalRedemptionShipRequest | 
 
             try
             {
                 // Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
-                OkResponse result = apiInstance.CreateWeb3PhygitalRedemptionShip(id);
+                OkResponse result = apiInstance.CreateWeb3PhygitalRedemptionShip(id, createWeb3PhygitalRedemptionShipRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1549,6 +1590,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWeb3PhygitalRedemptionShipRequest** | **CreateWeb3PhygitalRedemptionShipRequest**|  | 
 
 ### Return type
 
@@ -1560,7 +1602,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1579,7 +1621,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3raribledraft"></a>
 # **CreateWeb3RaribleDraft**
-> CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft ()
+> CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft (CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest)
 
 Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible's transfer proxy is approved.
 
@@ -1603,11 +1645,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3RaribleDraftRequest = new CreateWeb3RaribleDraftRequest(); // CreateWeb3RaribleDraftRequest | 
 
             try
             {
                 // Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible's transfer proxy is approved.
-                CreateWeb3RaribleDraftResponse result = apiInstance.CreateWeb3RaribleDraft();
+                CreateWeb3RaribleDraftResponse result = apiInstance.CreateWeb3RaribleDraft(createWeb3RaribleDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1622,7 +1665,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3RaribleDraftRequest** | **CreateWeb3RaribleDraftRequest**|  | 
 
 ### Return type
 
@@ -1634,7 +1680,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1653,7 +1699,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3rariblelisting"></a>
 # **CreateWeb3RaribleListing**
-> OrderHashResponse CreateWeb3RaribleListing ()
+> OrderHashResponse CreateWeb3RaribleListing (CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest)
 
 Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
 
@@ -1677,11 +1723,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3RaribleListingRequest = new CreateWeb3RaribleListingRequest(); // CreateWeb3RaribleListingRequest | 
 
             try
             {
                 // Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
-                OrderHashResponse result = apiInstance.CreateWeb3RaribleListing();
+                OrderHashResponse result = apiInstance.CreateWeb3RaribleListing(createWeb3RaribleListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1696,7 +1743,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3RaribleListingRequest** | **CreateWeb3RaribleListingRequest**|  | 
 
 ### Return type
 
@@ -1708,7 +1758,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1727,7 +1777,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3solanalisttx"></a>
 # **CreateWeb3SolanaListTx**
-> CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx (string marketplace)
+> CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx (string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest)
 
 Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
 
@@ -1752,11 +1802,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var marketplace = "crossly";  // string | 
+            var createWeb3SolanaListTxRequest = new CreateWeb3SolanaListTxRequest(); // CreateWeb3SolanaListTxRequest | 
 
             try
             {
                 // Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
-                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaListTx(marketplace);
+                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaListTx(marketplace, createWeb3SolanaListTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1775,6 +1826,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **marketplace** | **string**|  | 
+ **createWeb3SolanaListTxRequest** | **CreateWeb3SolanaListTxRequest**|  | 
 
 ### Return type
 
@@ -1786,7 +1838,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1805,7 +1857,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanalisting"></a>
 # **CreateWeb3SolanaListing**
-> OrderHashResponse CreateWeb3SolanaListing (string marketplace)
+> OrderHashResponse CreateWeb3SolanaListing (string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest)
 
 Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
 
@@ -1830,11 +1882,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var marketplace = "crossly";  // string | 
+            var createWeb3SolanaListingRequest = new CreateWeb3SolanaListingRequest(); // CreateWeb3SolanaListingRequest | 
 
             try
             {
                 // Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
-                OrderHashResponse result = apiInstance.CreateWeb3SolanaListing(marketplace);
+                OrderHashResponse result = apiInstance.CreateWeb3SolanaListing(marketplace, createWeb3SolanaListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1853,6 +1906,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **marketplace** | **string**|  | 
+ **createWeb3SolanaListingRequest** | **CreateWeb3SolanaListingRequest**|  | 
 
 ### Return type
 
@@ -1864,7 +1918,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1883,7 +1937,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaoffer"></a>
 # **CreateWeb3SolanaOffer**
-> OrderHashResponse CreateWeb3SolanaOffer ()
+> OrderHashResponse CreateWeb3SolanaOffer (CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest)
 
 Record a sent bid; it is recorded only once its trade state exists on chain.
 
@@ -1907,11 +1961,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3SolanaOfferRequest = new CreateWeb3SolanaOfferRequest(); // CreateWeb3SolanaOfferRequest | 
 
             try
             {
                 // Record a sent bid; it is recorded only once its trade state exists on chain.
-                OrderHashResponse result = apiInstance.CreateWeb3SolanaOffer();
+                OrderHashResponse result = apiInstance.CreateWeb3SolanaOffer(createWeb3SolanaOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1926,7 +1981,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3SolanaOfferRequest** | **CreateWeb3SolanaOfferRequest**|  | 
 
 ### Return type
 
@@ -1938,7 +1996,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1957,7 +2015,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3solanaofferaccepttx"></a>
 # **CreateWeb3SolanaOfferAcceptTx**
-> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx (string hash)
+> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx (string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest)
 
 Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
 
@@ -1982,11 +2040,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOfferAcceptTxRequest = new CreateWeb3SolanaOfferAcceptTxRequest(); // CreateWeb3SolanaOfferAcceptTxRequest | 
 
             try
             {
                 // Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
-                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOfferAcceptTx(hash);
+                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOfferAcceptTx(hash, createWeb3SolanaOfferAcceptTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2005,6 +2064,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOfferAcceptTxRequest** | **CreateWeb3SolanaOfferAcceptTxRequest**|  | 
 
 ### Return type
 
@@ -2016,7 +2076,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2035,7 +2095,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaoffercanceltx"></a>
 # **CreateWeb3SolanaOfferCancelTx**
-> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx (string hash)
+> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx (string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
 
 Build the cancel of your bid: the SOL your other bids do not need comes back.
 
@@ -2060,11 +2120,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOfferCancelTxRequest = new CreateWeb3SolanaOfferCancelTxRequest(); // CreateWeb3SolanaOfferCancelTxRequest | 
 
             try
             {
                 // Build the cancel of your bid: the SOL your other bids do not need comes back.
-                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOfferCancelTx(hash);
+                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOfferCancelTx(hash, createWeb3SolanaOfferCancelTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2083,6 +2144,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOfferCancelTxRequest** | **CreateWeb3SolanaOfferCancelTxRequest**|  | 
 
 ### Return type
 
@@ -2094,7 +2156,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2113,7 +2175,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaofferconfirm"></a>
 # **CreateWeb3SolanaOfferConfirm**
-> CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm (string hash)
+> CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm (string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest)
 
 Apply a sent accept or cancel once the chain shows the bid closed.
 
@@ -2138,11 +2200,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOfferConfirmRequest = new CreateWeb3SolanaOfferConfirmRequest(); // CreateWeb3SolanaOfferConfirmRequest | 
 
             try
             {
                 // Apply a sent accept or cancel once the chain shows the bid closed.
-                CreateWeb3SolanaOfferConfirmResponse result = apiInstance.CreateWeb3SolanaOfferConfirm(hash);
+                CreateWeb3SolanaOfferConfirmResponse result = apiInstance.CreateWeb3SolanaOfferConfirm(hash, createWeb3SolanaOfferConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2161,6 +2224,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOfferConfirmRequest** | **CreateWeb3SolanaOfferConfirmRequest**|  | 
 
 ### Return type
 
@@ -2172,7 +2236,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2191,7 +2255,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaoffertx"></a>
 # **CreateWeb3SolanaOfferTx**
-> CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx ()
+> CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx (CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest)
 
 Build a bid on a Solana NFT on Crossly's book for your linked wallet to sign; the SOL goes into your Auction House escrow.
 
@@ -2215,11 +2279,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3SolanaOfferTxRequest = new CreateWeb3SolanaOfferTxRequest(); // CreateWeb3SolanaOfferTxRequest | 
 
             try
             {
                 // Build a bid on a Solana NFT on Crossly's book for your linked wallet to sign; the SOL goes into your Auction House escrow.
-                CreateWeb3SolanaOfferTxResponse result = apiInstance.CreateWeb3SolanaOfferTx();
+                CreateWeb3SolanaOfferTxResponse result = apiInstance.CreateWeb3SolanaOfferTx(createWeb3SolanaOfferTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2234,7 +2299,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3SolanaOfferTxRequest** | **CreateWeb3SolanaOfferTxRequest**|  | 
 
 ### Return type
 
@@ -2246,7 +2314,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2265,7 +2333,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3solanaorderbuytx"></a>
 # **CreateWeb3SolanaOrderBuyTx**
-> CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx (string hash)
+> CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx (string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest)
 
 Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
 
@@ -2290,11 +2358,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOrderBuyTxRequest = new CreateWeb3SolanaOrderBuyTxRequest(); // CreateWeb3SolanaOrderBuyTxRequest | 
 
             try
             {
                 // Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
-                CreateWeb3SolanaOrderBuyTxResponse result = apiInstance.CreateWeb3SolanaOrderBuyTx(hash);
+                CreateWeb3SolanaOrderBuyTxResponse result = apiInstance.CreateWeb3SolanaOrderBuyTx(hash, createWeb3SolanaOrderBuyTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2313,6 +2382,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOrderBuyTxRequest** | **CreateWeb3SolanaOrderBuyTxRequest**|  | 
 
 ### Return type
 
@@ -2324,7 +2394,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2343,7 +2413,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaorderconfirm"></a>
 # **CreateWeb3SolanaOrderConfirm**
-> CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm (string hash)
+> CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm (string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest)
 
 Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
 
@@ -2368,11 +2438,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOrderConfirmRequest = new CreateWeb3SolanaOrderConfirmRequest(); // CreateWeb3SolanaOrderConfirmRequest | 
 
             try
             {
                 // Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
-                CreateWeb3SolanaOfferConfirmResponse result = apiInstance.CreateWeb3SolanaOrderConfirm(hash);
+                CreateWeb3SolanaOfferConfirmResponse result = apiInstance.CreateWeb3SolanaOrderConfirm(hash, createWeb3SolanaOrderConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2391,6 +2462,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOrderConfirmRequest** | **CreateWeb3SolanaOrderConfirmRequest**|  | 
 
 ### Return type
 
@@ -2402,7 +2474,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2421,7 +2493,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3solanaorderdelisttx"></a>
 # **CreateWeb3SolanaOrderDelistTx**
-> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx (string hash)
+> CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx (string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
 
 Build the unsigned transaction that takes your Solana listing down.
 
@@ -2446,11 +2518,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var hash = "hash_example";  // string | 
+            var createWeb3SolanaOfferCancelTxRequest = new CreateWeb3SolanaOfferCancelTxRequest(); // CreateWeb3SolanaOfferCancelTxRequest | 
 
             try
             {
                 // Build the unsigned transaction that takes your Solana listing down.
-                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOrderDelistTx(hash);
+                CreateWeb3SolanaListTxResponse result = apiInstance.CreateWeb3SolanaOrderDelistTx(hash, createWeb3SolanaOfferCancelTxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2469,6 +2542,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **hash** | **string**|  | 
+ **createWeb3SolanaOfferCancelTxRequest** | **CreateWeb3SolanaOfferCancelTxRequest**|  | 
 
 ### Return type
 
@@ -2480,7 +2554,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2943,7 +3017,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3storewallet"></a>
 # **CreateWeb3StoreWallet**
-> CreateWeb3StoreWalletResponse CreateWeb3StoreWallet ()
+> CreateWeb3StoreWalletResponse CreateWeb3StoreWallet (CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest)
 
 Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
 
@@ -2967,11 +3041,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3StoreWalletRequest = new CreateWeb3StoreWalletRequest(); // CreateWeb3StoreWalletRequest | 
 
             try
             {
                 // Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
-                CreateWeb3StoreWalletResponse result = apiInstance.CreateWeb3StoreWallet();
+                CreateWeb3StoreWalletResponse result = apiInstance.CreateWeb3StoreWallet(createWeb3StoreWalletRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2986,7 +3061,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3StoreWalletRequest** | **CreateWeb3StoreWalletRequest**|  | 
 
 ### Return type
 
@@ -2998,7 +3076,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3017,7 +3095,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3storewalletchallenge"></a>
 # **CreateWeb3StoreWalletChallenge**
-> CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge ()
+> CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge (CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
 
 Start adding a selling wallet to the store: the message the wallet signs.
 
@@ -3041,11 +3119,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3WalletChallengeRequest = new CreateWeb3WalletChallengeRequest(); // CreateWeb3WalletChallengeRequest | 
 
             try
             {
                 // Start adding a selling wallet to the store: the message the wallet signs.
-                CreateWeb3WalletChallengeResponse result = apiInstance.CreateWeb3StoreWalletChallenge();
+                CreateWeb3WalletChallengeResponse result = apiInstance.CreateWeb3StoreWalletChallenge(createWeb3WalletChallengeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3060,7 +3139,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3WalletChallengeRequest** | **CreateWeb3WalletChallengeRequest**|  | 
 
 ### Return type
 
@@ -3072,7 +3154,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3091,7 +3173,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3storewalletimport"></a>
 # **CreateWeb3StoreWalletImport**
-> CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport (Guid walletId)
+> CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport (Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest)
 
 Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
 
@@ -3116,11 +3198,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var walletId = "walletId_example";  // Guid | 
+            var createWeb3StoreWalletImportRequest = new CreateWeb3StoreWalletImportRequest(); // CreateWeb3StoreWalletImportRequest | 
 
             try
             {
                 // Add picked NFTs (`tokens: [{ chain, contract, tokenId }]`) from a store wallet to inventory.
-                CreateWeb3WalletImportResponse result = apiInstance.CreateWeb3StoreWalletImport(walletId);
+                CreateWeb3WalletImportResponse result = apiInstance.CreateWeb3StoreWalletImport(walletId, createWeb3StoreWalletImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3139,6 +3222,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **Guid**|  | 
+ **createWeb3StoreWalletImportRequest** | **CreateWeb3StoreWalletImportRequest**|  | 
 
 ### Return type
 
@@ -3150,7 +3234,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3247,7 +3331,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3storewalletverify"></a>
 # **CreateWeb3StoreWalletVerify**
-> CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify ()
+> CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify (CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest)
 
 Finish adding a selling wallet: verify its signature and link it to the store.
 
@@ -3271,11 +3355,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3StoreWalletVerifyRequest = new CreateWeb3StoreWalletVerifyRequest(); // CreateWeb3StoreWalletVerifyRequest | 
 
             try
             {
                 // Finish adding a selling wallet: verify its signature and link it to the store.
-                CreateWeb3StoreWalletResponse result = apiInstance.CreateWeb3StoreWalletVerify();
+                CreateWeb3StoreWalletResponse result = apiInstance.CreateWeb3StoreWalletVerify(createWeb3StoreWalletVerifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3290,7 +3375,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3StoreWalletVerifyRequest** | **CreateWeb3StoreWalletVerifyRequest**|  | 
 
 ### Return type
 
@@ -3302,7 +3390,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3403,7 +3491,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3transaction"></a>
 # **CreateWeb3Transaction**
-> CreateWeb3TransactionResponse CreateWeb3Transaction ()
+> CreateWeb3TransactionResponse CreateWeb3Transaction (CreateWeb3TransactionRequest createWeb3TransactionRequest)
 
 Apply a Seaport transaction's fills and cancels to the Crossly book (read from the receipt).
 
@@ -3427,11 +3515,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3TransactionRequest = new CreateWeb3TransactionRequest(); // CreateWeb3TransactionRequest | 
 
             try
             {
                 // Apply a Seaport transaction's fills and cancels to the Crossly book (read from the receipt).
-                CreateWeb3TransactionResponse result = apiInstance.CreateWeb3Transaction();
+                CreateWeb3TransactionResponse result = apiInstance.CreateWeb3Transaction(createWeb3TransactionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3446,7 +3535,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3TransactionRequest** | **CreateWeb3TransactionRequest**|  | 
 
 ### Return type
 
@@ -3458,7 +3550,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3477,7 +3569,7 @@ This endpoint does not need any parameter.
 
 <a name="createweb3walletchallenge"></a>
 # **CreateWeb3WalletChallenge**
-> CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge ()
+> CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge (CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
 
 Start linking a wallet: returns the message the wallet must sign.
 
@@ -3501,11 +3593,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3WalletChallengeRequest = new CreateWeb3WalletChallengeRequest(); // CreateWeb3WalletChallengeRequest | 
 
             try
             {
                 // Start linking a wallet: returns the message the wallet must sign.
-                CreateWeb3WalletChallengeResponse result = apiInstance.CreateWeb3WalletChallenge();
+                CreateWeb3WalletChallengeResponse result = apiInstance.CreateWeb3WalletChallenge(createWeb3WalletChallengeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3520,7 +3613,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3WalletChallengeRequest** | **CreateWeb3WalletChallengeRequest**|  | 
 
 ### Return type
 
@@ -3532,7 +3628,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3707,7 +3803,7 @@ Name | Type | Description  | Notes
 
 <a name="createweb3walletverify"></a>
 # **CreateWeb3WalletVerify**
-> CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify ()
+> CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify (CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest)
 
 Finish linking a wallet with its signature over the challenge message.
 
@@ -3731,11 +3827,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var createWeb3WalletVerifyRequest = new CreateWeb3WalletVerifyRequest(); // CreateWeb3WalletVerifyRequest | 
 
             try
             {
                 // Finish linking a wallet with its signature over the challenge message.
-                CreateWeb3WalletVerifyResponse result = apiInstance.CreateWeb3WalletVerify();
+                CreateWeb3WalletVerifyResponse result = apiInstance.CreateWeb3WalletVerify(createWeb3WalletVerifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3750,7 +3847,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWeb3WalletVerifyRequest** | **CreateWeb3WalletVerifyRequest**|  | 
 
 ### Return type
 
@@ -3762,7 +3862,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4561,7 +4661,7 @@ This endpoint does not need any parameter.
 
 <a name="getweb3browse"></a>
 # **GetWeb3Browse**
-> GetWeb3BrowseResponse GetWeb3Browse ()
+> GetWeb3BrowseResponse GetWeb3Browse (string chain = null, string category = null)
 
 The Web3 directory's categories and chains, with how many collections each holds.
 
@@ -4585,11 +4685,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var category = "pfps";  // string |  (optional) 
 
             try
             {
                 // The Web3 directory's categories and chains, with how many collections each holds.
-                GetWeb3BrowseResponse result = apiInstance.GetWeb3Browse();
+                GetWeb3BrowseResponse result = apiInstance.GetWeb3Browse(chain, category);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4604,7 +4706,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
 
 ### Return type
 
@@ -4875,7 +4981,7 @@ Name | Type | Description  | Notes
 
 <a name="getweb3collectionitem"></a>
 # **GetWeb3CollectionItem**
-> GetWeb3CollectionItemResponse GetWeb3CollectionItem (string chain, string contract)
+> GetWeb3CollectionItemResponse GetWeb3CollectionItem (string chain, string contract, decimal? offset = null, decimal? limit = null, string q = null, string sort = null, string trait = null, bool? listed = null, string pageKey = null)
 
 A collection's NFTs: filter by traits (repeat trait=Type:Value; OR within a type, AND across), search by name or token id, sort by id, rarity or Crossly price. Whole-collection once indexed.
 
@@ -4901,11 +5007,18 @@ namespace Example
             var apiInstance = new Web3Api(config);
             var chain = "chain_example";  // string | 
             var contract = "contract_example";  // string | 
+            var offset = 8.14D;  // decimal? |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var sort = "id";  // string |  (optional) 
+            var trait = "trait_example";  // string |  (optional) 
+            var listed = true;  // bool? |  (optional) 
+            var pageKey = "pageKey_example";  // string |  (optional) 
 
             try
             {
                 // A collection's NFTs: filter by traits (repeat trait=Type:Value; OR within a type, AND across), search by name or token id, sort by id, rarity or Crossly price. Whole-collection once indexed.
-                GetWeb3CollectionItemResponse result = apiInstance.GetWeb3CollectionItem(chain, contract);
+                GetWeb3CollectionItemResponse result = apiInstance.GetWeb3CollectionItem(chain, contract, offset, limit, q, sort, trait, listed, pageKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4925,6 +5038,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | **string**|  | 
  **contract** | **string**|  | 
+ **offset** | **decimal?**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **trait** | **string**|  | [optional] 
+ **listed** | **bool?**|  | [optional] 
+ **pageKey** | **string**|  | [optional] 
 
 ### Return type
 
@@ -5035,7 +5155,7 @@ Name | Type | Description  | Notes
 
 <a name="getweb3collectiontraittoken"></a>
 # **GetWeb3CollectionTraitToken**
-> GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken (string chain, string contract)
+> GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken (string chain, string contract, string type, string value)
 
 Token ids in a collection with one trait — what a trait offer commits to.
 
@@ -5061,11 +5181,13 @@ namespace Example
             var apiInstance = new Web3Api(config);
             var chain = "chain_example";  // string | 
             var contract = "contract_example";  // string | 
+            var type = "type_example";  // string | 
+            var value = "value_example";  // string | 
 
             try
             {
                 // Token ids in a collection with one trait — what a trait offer commits to.
-                GetWeb3CollectionTraitTokenResponse result = apiInstance.GetWeb3CollectionTraitToken(chain, contract);
+                GetWeb3CollectionTraitTokenResponse result = apiInstance.GetWeb3CollectionTraitToken(chain, contract, type, value);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5085,6 +5207,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | **string**|  | 
  **contract** | **string**|  | 
+ **type** | **string**|  | 
+ **value** | **string**|  | 
 
 ### Return type
 
@@ -5269,7 +5393,7 @@ Name | Type | Description  | Notes
 
 <a name="getweb3crosslistquote"></a>
 # **GetWeb3CrosslistQuote**
-> GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote ()
+> GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote (string chain, string contract, string tokenId)
 
 Each marketplace's terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability.
 
@@ -5293,11 +5417,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string | 
+            var contract = "contract_example";  // string | 
+            var tokenId = "tokenId_example";  // string | 
 
             try
             {
                 // Each marketplace's terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability.
-                GetWeb3CrosslistQuoteResponse result = apiInstance.GetWeb3CrosslistQuote();
+                GetWeb3CrosslistQuoteResponse result = apiInstance.GetWeb3CrosslistQuote(chain, contract, tokenId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5312,7 +5439,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | 
+ **contract** | **string**|  | 
+ **tokenId** | **string**|  | 
 
 ### Return type
 
@@ -5807,7 +5939,7 @@ Name | Type | Description  | Notes
 
 <a name="getweb3orderfulfillment"></a>
 # **GetWeb3OrderFulfillment**
-> GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment (string chain, string hash)
+> GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment (string chain, string hash, string tokenId = null)
 
 The signed order a taker passes to Seaport, after re-checking it can still fill.
 
@@ -5833,11 +5965,12 @@ namespace Example
             var apiInstance = new Web3Api(config);
             var chain = "chain_example";  // string | 
             var hash = "hash_example";  // string | 
+            var tokenId = "tokenId_example";  // string |  (optional) 
 
             try
             {
                 // The signed order a taker passes to Seaport, after re-checking it can still fill.
-                GetWeb3OrderFulfillmentResponse result = apiInstance.GetWeb3OrderFulfillment(chain, hash);
+                GetWeb3OrderFulfillmentResponse result = apiInstance.GetWeb3OrderFulfillment(chain, hash, tokenId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5857,6 +5990,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | **string**|  | 
  **hash** | **string**|  | 
+ **tokenId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -6117,7 +6251,7 @@ This endpoint does not need any parameter.
 
 <a name="getweb3portfoliotax"></a>
 # **GetWeb3PortfolioTax**
-> GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax ()
+> GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax (decimal year)
 
 One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD).
 
@@ -6141,11 +6275,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var year = 8.14D;  // decimal | 
 
             try
             {
                 // One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD).
-                GetWeb3PortfolioTaxResponse result = apiInstance.GetWeb3PortfolioTax();
+                GetWeb3PortfolioTaxResponse result = apiInstance.GetWeb3PortfolioTax(year);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6160,7 +6295,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **year** | **decimal**|  | 
 
 ### Return type
 
@@ -6815,7 +6953,7 @@ Name | Type | Description  | Notes
 
 <a name="listweb3activity"></a>
 # **ListWeb3Activity**
-> ListWeb3ActivityResponse ListWeb3Activity ()
+> ListWeb3ActivityResponse ListWeb3Activity (string chain = null, string contract = null, string tokenId = null, decimal? limit = null)
 
 Listings, offers, sales and cancels in the Crossly book, newest first.
 
@@ -6839,11 +6977,15 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var contract = "contract_example";  // string |  (optional) 
+            var tokenId = "tokenId_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Listings, offers, sales and cancels in the Crossly book, newest first.
-                ListWeb3ActivityResponse result = apiInstance.ListWeb3Activity();
+                ListWeb3ActivityResponse result = apiInstance.ListWeb3Activity(chain, contract, tokenId, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6858,7 +7000,13 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **contract** | **string**|  | [optional] 
+ **tokenId** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7037,7 +7185,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3auctions"></a>
 # **ListWeb3Auctions**
-> ListWeb3AuctionsResponse ListWeb3Auctions ()
+> ListWeb3AuctionsResponse ListWeb3Auctions (string chain = null, decimal? limit = null)
 
 Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be.
 
@@ -7061,11 +7209,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be.
-                ListWeb3AuctionsResponse result = apiInstance.ListWeb3Auctions();
+                ListWeb3AuctionsResponse result = apiInstance.ListWeb3Auctions(chain, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7080,7 +7230,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7111,7 +7265,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3browsecollections"></a>
 # **ListWeb3BrowseCollections**
-> ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections ()
+> ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections (string chain = null, string category = null, string q = null, string sort = null, bool? listed = null, bool? verified = null, string floorMin = null, string floorMax = null, decimal? limit = null, decimal? offset = null)
 
 Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
 
@@ -7135,11 +7289,21 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var category = "pfps";  // string |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var sort = "name";  // string |  (optional) 
+            var listed = true;  // bool? |  (optional) 
+            var verified = true;  // bool? |  (optional) 
+            var floorMin = "floorMin_example";  // string | Floor range in the chosen chain's native coin, e.g. 0.5 (ETH); ignored without a chain. (optional) 
+            var floorMax = "floorMax_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
-                ListWeb3BrowseCollectionsResponse result = apiInstance.ListWeb3BrowseCollections();
+                ListWeb3BrowseCollectionsResponse result = apiInstance.ListWeb3BrowseCollections(chain, category, q, sort, listed, verified, floorMin, floorMax, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7154,7 +7318,19 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **listed** | **bool?**|  | [optional] 
+ **verified** | **bool?**|  | [optional] 
+ **floorMin** | **string**| Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. | [optional] 
+ **floorMax** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7185,7 +7361,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3browsetokens"></a>
 # **ListWeb3BrowseTokens**
-> ListWeb3BrowseTokensResponse ListWeb3BrowseTokens ()
+> ListWeb3BrowseTokensResponse ListWeb3BrowseTokens (string chain = null, string category = null, decimal? limit = null)
 
 Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
 
@@ -7209,11 +7385,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var category = "pfps";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
-                ListWeb3BrowseTokensResponse result = apiInstance.ListWeb3BrowseTokens();
+                ListWeb3BrowseTokensResponse result = apiInstance.ListWeb3BrowseTokens(chain, category, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7228,7 +7407,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7259,7 +7443,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3bundles"></a>
 # **ListWeb3Bundles**
-> ListWeb3BundlesResponse ListWeb3Bundles ()
+> ListWeb3BundlesResponse ListWeb3Bundles (string chain = null, string contract = null, decimal? limit = null)
 
 Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
 
@@ -7283,11 +7467,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var contract = "contract_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
-                ListWeb3BundlesResponse result = apiInstance.ListWeb3Bundles();
+                ListWeb3BundlesResponse result = apiInstance.ListWeb3Bundles(chain, contract, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7302,7 +7489,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **contract** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7333,7 +7525,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3collectionhistory"></a>
 # **ListWeb3CollectionHistory**
-> ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory (string chain, string contract)
+> ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory (string chain, string contract, decimal? days = null)
 
 Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
 
@@ -7359,11 +7551,12 @@ namespace Example
             var apiInstance = new Web3Api(config);
             var chain = "chain_example";  // string | 
             var contract = "contract_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
-                ListWeb3CollectionHistoryResponse result = apiInstance.ListWeb3CollectionHistory(chain, contract);
+                ListWeb3CollectionHistoryResponse result = apiInstance.ListWeb3CollectionHistory(chain, contract, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7383,6 +7576,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chain** | **string**|  | 
  **contract** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7413,7 +7607,7 @@ Name | Type | Description  | Notes
 
 <a name="listweb3collections"></a>
 # **ListWeb3Collections**
-> ListWeb3CollectionsResponse ListWeb3Collections ()
+> ListWeb3CollectionsResponse ListWeb3Collections (string chain = null, decimal? limit = null)
 
 Collections ranked by 30-day Crossly volume, with floor and listed count.
 
@@ -7437,11 +7631,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Collections ranked by 30-day Crossly volume, with floor and listed count.
-                ListWeb3CollectionsResponse result = apiInstance.ListWeb3Collections();
+                ListWeb3CollectionsResponse result = apiInstance.ListWeb3Collections(chain, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7456,7 +7652,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7861,7 +8061,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3listings"></a>
 # **ListWeb3Listings**
-> ListWeb3ListingsResponse ListWeb3Listings ()
+> ListWeb3ListingsResponse ListWeb3Listings (string chain = null, string contract = null, string sort = null, decimal? page = null, decimal? limit = null)
 
 Open NFT listings in the Crossly book — the cheapest per token.
 
@@ -7885,11 +8085,16 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var contract = "contract_example";  // string |  (optional) 
+            var sort = "price_asc";  // string |  (optional) 
+            var page = 8.14D;  // decimal? |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Open NFT listings in the Crossly book — the cheapest per token.
-                ListWeb3ListingsResponse result = apiInstance.ListWeb3Listings();
+                ListWeb3ListingsResponse result = apiInstance.ListWeb3Listings(chain, contract, sort, page, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7904,7 +8109,14 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **contract** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **page** | **decimal?**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -8241,7 +8453,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3rankings"></a>
 # **ListWeb3Rankings**
-> ListWeb3RankingsResponse ListWeb3Rankings ()
+> ListWeb3RankingsResponse ListWeb3Rankings (string window = null, string chain = null, string category = null, decimal? limit = null)
 
 Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
 
@@ -8265,11 +8477,15 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var window = "7d";  // string |  (optional) 
+            var chain = "ethereum";  // string |  (optional) 
+            var category = "pfps";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
-                ListWeb3RankingsResponse result = apiInstance.ListWeb3Rankings();
+                ListWeb3RankingsResponse result = apiInstance.ListWeb3Rankings(window, chain, category, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8284,7 +8500,13 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **window** | **string**|  | [optional] 
+ **chain** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -8389,7 +8611,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3sales"></a>
 # **ListWeb3Sales**
-> ListWeb3SalesResponse ListWeb3Sales ()
+> ListWeb3SalesResponse ListWeb3Sales (string chain = null, string category = null, decimal? limit = null, string before = null)
 
 The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with `before`.
 
@@ -8413,11 +8635,15 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var chain = "ethereum";  // string |  (optional) 
+            var category = "pfps";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var before = "before_example";  // string |  (optional) 
 
             try
             {
                 // The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with `before`.
-                ListWeb3SalesResponse result = apiInstance.ListWeb3Sales();
+                ListWeb3SalesResponse result = apiInstance.ListWeb3Sales(chain, category, limit, before);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8432,7 +8658,13 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **chain** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **before** | **string**|  | [optional] 
 
 ### Return type
 
@@ -8463,7 +8695,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3search"></a>
 # **ListWeb3Search**
-> ListWeb3SearchResponse ListWeb3Search ()
+> ListWeb3SearchResponse ListWeb3Search (string q)
 
 Find collections by contract address (every chain) or by name.
 
@@ -8487,11 +8719,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var q = "q_example";  // string | 
 
             try
             {
                 // Find collections by contract address (every chain) or by name.
-                ListWeb3SearchResponse result = apiInstance.ListWeb3Search();
+                ListWeb3SearchResponse result = apiInstance.ListWeb3Search(q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8506,7 +8739,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | 
 
 ### Return type
 
@@ -8537,7 +8773,7 @@ This endpoint does not need any parameter.
 
 <a name="listweb3searchtokens"></a>
 # **ListWeb3SearchTokens**
-> ListWeb3SearchTokensResponse ListWeb3SearchTokens ()
+> ListWeb3SearchTokensResponse ListWeb3SearchTokens (string q)
 
 Find tokens by collection name and number: 'pudgy 42', 'Bored Ape #1234'.
 
@@ -8561,11 +8797,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var q = "q_example";  // string | 
 
             try
             {
                 // Find tokens by collection name and number: 'pudgy 42', 'Bored Ape #1234'.
-                ListWeb3SearchTokensResponse result = apiInstance.ListWeb3SearchTokens();
+                ListWeb3SearchTokensResponse result = apiInstance.ListWeb3SearchTokens(q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8580,7 +8817,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | 
 
 ### Return type
 
@@ -8659,6 +8899,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListWeb3StoreWalletBalancesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listweb3storewalletmarketplaces"></a>
+# **ListWeb3StoreWalletMarketplaces**
+> ListWeb3StoreWalletMarketplacesResponse ListWeb3StoreWalletMarketplaces ()
+
+Each NFT marketplace's status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. `keyMode` is `crossly` (Crossly's key, nothing to set up) or `own_key` (connect your own key).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListWeb3StoreWalletMarketplacesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new Web3Api(config);
+
+            try
+            {
+                // Each NFT marketplace's status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. `keyMode` is `crossly` (Crossly's key, nothing to set up) or `own_key` (connect your own key).
+                ListWeb3StoreWalletMarketplacesResponse result = apiInstance.ListWeb3StoreWalletMarketplaces();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling Web3Api.ListWeb3StoreWalletMarketplaces: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListWeb3StoreWalletMarketplacesResponse**
 
 ### Authorization
 
@@ -8907,7 +9221,7 @@ This endpoint does not need any parameter.
 
 <a name="updateweb3holderperk"></a>
 # **UpdateWeb3HolderPerk**
-> UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk ()
+> UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk (UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest)
 
 DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
 
@@ -8931,11 +9245,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new Web3Api(config);
+            var updateWeb3HolderPerkRequest = new UpdateWeb3HolderPerkRequest(); // UpdateWeb3HolderPerkRequest | 
 
             try
             {
                 // DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
-                UpdateWeb3HolderPerkResponse result = apiInstance.UpdateWeb3HolderPerk();
+                UpdateWeb3HolderPerkResponse result = apiInstance.UpdateWeb3HolderPerk(updateWeb3HolderPerkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8950,7 +9265,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWeb3HolderPerkRequest** | **UpdateWeb3HolderPerkRequest**|  | 
 
 ### Return type
 
@@ -8962,7 +9280,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9215,7 +9533,7 @@ Name | Type | Description  | Notes
 
 <a name="updateweb3marketplacekey"></a>
 # **UpdateWeb3MarketplaceKey**
-> ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey (string marketplace)
+> ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey (string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest)
 
 Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
 
@@ -9240,11 +9558,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var marketplace = "opensea";  // string | 
+            var updateWeb3MarketplaceKeyRequest = new UpdateWeb3MarketplaceKeyRequest(); // UpdateWeb3MarketplaceKeyRequest | 
 
             try
             {
                 // Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
-                ListWeb3MarketplaceKeysItem result = apiInstance.UpdateWeb3MarketplaceKey(marketplace);
+                ListWeb3MarketplaceKeysItem result = apiInstance.UpdateWeb3MarketplaceKey(marketplace, updateWeb3MarketplaceKeyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9263,6 +9582,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **marketplace** | **string**|  | 
+ **updateWeb3MarketplaceKeyRequest** | **UpdateWeb3MarketplaceKeyRequest**|  | 
 
 ### Return type
 
@@ -9274,7 +9594,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9293,7 +9613,7 @@ Name | Type | Description  | Notes
 
 <a name="updateweb3storewallet"></a>
 # **UpdateWeb3StoreWallet**
-> UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet (Guid walletId)
+> UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet (Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest)
 
 Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
 
@@ -9318,11 +9638,12 @@ namespace Example
 
             var apiInstance = new Web3Api(config);
             var walletId = "walletId_example";  // Guid | 
+            var updateWeb3StoreWalletRequest = new UpdateWeb3StoreWalletRequest(); // UpdateWeb3StoreWalletRequest | 
 
             try
             {
                 // Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
-                UpdateWeb3StoreWalletResponse result = apiInstance.UpdateWeb3StoreWallet(walletId);
+                UpdateWeb3StoreWalletResponse result = apiInstance.UpdateWeb3StoreWallet(walletId, updateWeb3StoreWalletRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9341,6 +9662,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **walletId** | **Guid**|  | 
+ **updateWeb3StoreWalletRequest** | **UpdateWeb3StoreWalletRequest**|  | 
 
 ### Return type
 
@@ -9352,7 +9674,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9431,6 +9753,88 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateweb3storewalletmarketplace"></a>
+# **UpdateWeb3StoreWalletMarketplace**
+> UpdateWeb3StoreWalletResponse UpdateWeb3StoreWalletMarketplace (Guid walletId, string marketplace, EnabledRequest enabledRequest)
+
+Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: `{ enabled }`.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateWeb3StoreWalletMarketplaceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new Web3Api(config);
+            var walletId = "walletId_example";  // Guid | 
+            var marketplace = "opensea";  // string | 
+            var enabledRequest = new EnabledRequest(); // EnabledRequest | 
+
+            try
+            {
+                // Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: `{ enabled }`.
+                UpdateWeb3StoreWalletResponse result = apiInstance.UpdateWeb3StoreWalletMarketplace(walletId, marketplace, enabledRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling Web3Api.UpdateWeb3StoreWalletMarketplace: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **walletId** | **Guid**|  | 
+ **marketplace** | **string**|  | 
+ **enabledRequest** | **EnabledRequest**|  | 
+
+### Return type
+
+**UpdateWeb3StoreWalletResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

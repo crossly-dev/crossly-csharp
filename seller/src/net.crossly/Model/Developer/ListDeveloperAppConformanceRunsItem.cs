@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum PhaseEnum
         {
             /// <summary>
-            /// Enum Failed for value: failed
-            /// </summary>
-            [EnumMember(Value = "failed")]
-            Failed = 1,
-
-            /// <summary>
             /// Enum Expired for value: expired
             /// </summary>
             [EnumMember(Value = "expired")]
-            Expired = 2,
+            Expired = 1,
+
+            /// <summary>
+            /// Enum Failed for value: failed
+            /// </summary>
+            [EnumMember(Value = "failed")]
+            Failed = 2,
 
             /// <summary>
             /// Enum Report for value: report

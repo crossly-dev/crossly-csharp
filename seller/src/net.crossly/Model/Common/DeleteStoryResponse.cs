@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="DeleteStoryResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public DeleteStoryResponse(DeleteStoryResponseData data = default(DeleteStoryResponseData))
+        public DeleteStoryResponse(DeleteSkuPresetResponse data = default(DeleteSkuPresetResponse))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public DeleteStoryResponseData Data { get; set; }
+        public DeleteSkuPresetResponse Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

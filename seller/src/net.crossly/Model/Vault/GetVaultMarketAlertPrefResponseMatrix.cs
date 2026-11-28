@@ -39,10 +39,11 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVaultMarketAlertPrefResponseMatrix" /> class.
         /// </summary>
+        /// <param name="fill">fill (required).</param>
         /// <param name="account">account (required).</param>
         /// <param name="price">price (required).</param>
-        /// <param name="fill">fill (required).</param>
         /// <param name="auction">auction (required).</param>
+        /// <param name="follow">follow (required).</param>
         /// <param name="prediction">prediction (required).</param>
         /// <param name="optionExpiry">optionExpiry (required).</param>
         /// <param name="marginCall">marginCall (required).</param>
@@ -51,13 +52,17 @@ namespace net.crossly.Model
         /// <param name="marketOpen">marketOpen (required).</param>
         /// <param name="receiptToken">receiptToken (required).</param>
         /// <param name="setGoal">setGoal (required).</param>
-        /// <param name="follow">follow (required).</param>
         /// <param name="shareOffering">shareOffering (required).</param>
         /// <param name="shareVote">shareVote (required).</param>
         /// <param name="optionSettlement">optionSettlement (required).</param>
         /// <param name="predictionOdds">predictionOdds (required).</param>
-        public GetVaultMarketAlertPrefResponseMatrix(GetVaultMarketAlertPrefResponseMatrixAccount account = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount price = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount fill = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount auction = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount prediction = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount optionExpiry = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount marginCall = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount adl = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount p2pLoan = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount marketOpen = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount receiptToken = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount setGoal = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount follow = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount shareOffering = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount shareVote = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount optionSettlement = default(GetVaultMarketAlertPrefResponseMatrixAccount), GetVaultMarketAlertPrefResponseMatrixAccount predictionOdds = default(GetVaultMarketAlertPrefResponseMatrixAccount))
+        public GetVaultMarketAlertPrefResponseMatrix(GetVaultMarketAlertPrefResponseMatrixFill fill = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill account = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill price = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill auction = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill follow = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill prediction = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill optionExpiry = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill marginCall = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill adl = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill p2pLoan = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill marketOpen = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill receiptToken = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill setGoal = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill shareOffering = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill shareVote = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill optionSettlement = default(GetVaultMarketAlertPrefResponseMatrixFill), GetVaultMarketAlertPrefResponseMatrixFill predictionOdds = default(GetVaultMarketAlertPrefResponseMatrixFill))
         {
+            // to ensure "fill" is required (not null)
+            if (fill == null) {
+                throw new ArgumentNullException("fill is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
+            }
+            this.Fill = fill;
             // to ensure "account" is required (not null)
             if (account == null) {
                 throw new ArgumentNullException("account is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
@@ -68,16 +73,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("price is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
             }
             this.Price = price;
-            // to ensure "fill" is required (not null)
-            if (fill == null) {
-                throw new ArgumentNullException("fill is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
-            }
-            this.Fill = fill;
             // to ensure "auction" is required (not null)
             if (auction == null) {
                 throw new ArgumentNullException("auction is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
             }
             this.Auction = auction;
+            // to ensure "follow" is required (not null)
+            if (follow == null) {
+                throw new ArgumentNullException("follow is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
+            }
+            this.Follow = follow;
             // to ensure "prediction" is required (not null)
             if (prediction == null) {
                 throw new ArgumentNullException("prediction is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
@@ -118,11 +123,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("setGoal is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
             }
             this.SetGoal = setGoal;
-            // to ensure "follow" is required (not null)
-            if (follow == null) {
-                throw new ArgumentNullException("follow is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
-            }
-            this.Follow = follow;
             // to ensure "shareOffering" is required (not null)
             if (shareOffering == null) {
                 throw new ArgumentNullException("shareOffering is a required property for GetVaultMarketAlertPrefResponseMatrix and cannot be null");
@@ -146,106 +146,106 @@ namespace net.crossly.Model
         }
 
         /// <summary>
+        /// Gets or Sets Fill
+        /// </summary>
+        [DataMember(Name = "fill", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill Fill { get; set; }
+
+        /// <summary>
         /// Gets or Sets Account
         /// </summary>
         [DataMember(Name = "account", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Account { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill Account { get; set; }
 
         /// <summary>
         /// Gets or Sets Price
         /// </summary>
         [DataMember(Name = "price", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Price { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Fill
-        /// </summary>
-        [DataMember(Name = "fill", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Fill { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill Price { get; set; }
 
         /// <summary>
         /// Gets or Sets Auction
         /// </summary>
         [DataMember(Name = "auction", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Auction { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Prediction
-        /// </summary>
-        [DataMember(Name = "prediction", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Prediction { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OptionExpiry
-        /// </summary>
-        [DataMember(Name = "option_expiry", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount OptionExpiry { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MarginCall
-        /// </summary>
-        [DataMember(Name = "margin_call", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount MarginCall { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Adl
-        /// </summary>
-        [DataMember(Name = "adl", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Adl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets P2pLoan
-        /// </summary>
-        [DataMember(Name = "p2p_loan", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount P2pLoan { get; set; }
-
-        /// <summary>
-        /// Gets or Sets MarketOpen
-        /// </summary>
-        [DataMember(Name = "market_open", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount MarketOpen { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReceiptToken
-        /// </summary>
-        [DataMember(Name = "receipt_token", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount ReceiptToken { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SetGoal
-        /// </summary>
-        [DataMember(Name = "set_goal", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount SetGoal { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill Auction { get; set; }
 
         /// <summary>
         /// Gets or Sets Follow
         /// </summary>
         [DataMember(Name = "follow", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount Follow { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill Follow { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Prediction
+        /// </summary>
+        [DataMember(Name = "prediction", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill Prediction { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OptionExpiry
+        /// </summary>
+        [DataMember(Name = "option_expiry", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill OptionExpiry { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MarginCall
+        /// </summary>
+        [DataMember(Name = "margin_call", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill MarginCall { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Adl
+        /// </summary>
+        [DataMember(Name = "adl", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill Adl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets P2pLoan
+        /// </summary>
+        [DataMember(Name = "p2p_loan", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill P2pLoan { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MarketOpen
+        /// </summary>
+        [DataMember(Name = "market_open", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill MarketOpen { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReceiptToken
+        /// </summary>
+        [DataMember(Name = "receipt_token", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill ReceiptToken { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SetGoal
+        /// </summary>
+        [DataMember(Name = "set_goal", IsRequired = true, EmitDefaultValue = false)]
+        public GetVaultMarketAlertPrefResponseMatrixFill SetGoal { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareOffering
         /// </summary>
         [DataMember(Name = "share_offering", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount ShareOffering { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill ShareOffering { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareVote
         /// </summary>
         [DataMember(Name = "share_vote", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount ShareVote { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill ShareVote { get; set; }
 
         /// <summary>
         /// Gets or Sets OptionSettlement
         /// </summary>
         [DataMember(Name = "option_settlement", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount OptionSettlement { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill OptionSettlement { get; set; }
 
         /// <summary>
         /// Gets or Sets PredictionOdds
         /// </summary>
         [DataMember(Name = "prediction_odds", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketAlertPrefResponseMatrixAccount PredictionOdds { get; set; }
+        public GetVaultMarketAlertPrefResponseMatrixFill PredictionOdds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -255,10 +255,11 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetVaultMarketAlertPrefResponseMatrix {\n");
+            sb.Append("  Fill: ").Append(Fill).Append("\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
-            sb.Append("  Fill: ").Append(Fill).Append("\n");
             sb.Append("  Auction: ").Append(Auction).Append("\n");
+            sb.Append("  Follow: ").Append(Follow).Append("\n");
             sb.Append("  Prediction: ").Append(Prediction).Append("\n");
             sb.Append("  OptionExpiry: ").Append(OptionExpiry).Append("\n");
             sb.Append("  MarginCall: ").Append(MarginCall).Append("\n");
@@ -267,7 +268,6 @@ namespace net.crossly.Model
             sb.Append("  MarketOpen: ").Append(MarketOpen).Append("\n");
             sb.Append("  ReceiptToken: ").Append(ReceiptToken).Append("\n");
             sb.Append("  SetGoal: ").Append(SetGoal).Append("\n");
-            sb.Append("  Follow: ").Append(Follow).Append("\n");
             sb.Append("  ShareOffering: ").Append(ShareOffering).Append("\n");
             sb.Append("  ShareVote: ").Append(ShareVote).Append("\n");
             sb.Append("  OptionSettlement: ").Append(OptionSettlement).Append("\n");
@@ -308,6 +308,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Fill == input.Fill ||
+                    (this.Fill != null &&
+                    this.Fill.Equals(input.Fill))
+                ) && 
+                (
                     this.Account == input.Account ||
                     (this.Account != null &&
                     this.Account.Equals(input.Account))
@@ -318,14 +323,14 @@ namespace net.crossly.Model
                     this.Price.Equals(input.Price))
                 ) && 
                 (
-                    this.Fill == input.Fill ||
-                    (this.Fill != null &&
-                    this.Fill.Equals(input.Fill))
-                ) && 
-                (
                     this.Auction == input.Auction ||
                     (this.Auction != null &&
                     this.Auction.Equals(input.Auction))
+                ) && 
+                (
+                    this.Follow == input.Follow ||
+                    (this.Follow != null &&
+                    this.Follow.Equals(input.Follow))
                 ) && 
                 (
                     this.Prediction == input.Prediction ||
@@ -368,11 +373,6 @@ namespace net.crossly.Model
                     this.SetGoal.Equals(input.SetGoal))
                 ) && 
                 (
-                    this.Follow == input.Follow ||
-                    (this.Follow != null &&
-                    this.Follow.Equals(input.Follow))
-                ) && 
-                (
                     this.ShareOffering == input.ShareOffering ||
                     (this.ShareOffering != null &&
                     this.ShareOffering.Equals(input.ShareOffering))
@@ -403,6 +403,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Fill != null)
+                {
+                    hashCode = (hashCode * 59) + this.Fill.GetHashCode();
+                }
                 if (this.Account != null)
                 {
                     hashCode = (hashCode * 59) + this.Account.GetHashCode();
@@ -411,13 +415,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Price.GetHashCode();
                 }
-                if (this.Fill != null)
-                {
-                    hashCode = (hashCode * 59) + this.Fill.GetHashCode();
-                }
                 if (this.Auction != null)
                 {
                     hashCode = (hashCode * 59) + this.Auction.GetHashCode();
+                }
+                if (this.Follow != null)
+                {
+                    hashCode = (hashCode * 59) + this.Follow.GetHashCode();
                 }
                 if (this.Prediction != null)
                 {
@@ -450,10 +454,6 @@ namespace net.crossly.Model
                 if (this.SetGoal != null)
                 {
                     hashCode = (hashCode * 59) + this.SetGoal.GetHashCode();
-                }
-                if (this.Follow != null)
-                {
-                    hashCode = (hashCode * 59) + this.Follow.GetHashCode();
                 }
                 if (this.ShareOffering != null)
                 {

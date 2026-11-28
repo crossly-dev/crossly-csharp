@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperiencehttpdomain"></a>
 # **CreateWorldExperienceHttpDomain**
-> CreateWorldExperienceHttpDomainResponse CreateWorldExperienceHttpDomain (string experienceId)
+> CreateWorldExperienceHttpDomainResponse CreateWorldExperienceHttpDomain (string experienceId, CreateWorldExperienceHttpDomainRequest createWorldExperienceHttpDomainRequest = null)
 
 Declare a domain server scripts may call (example.com or *.example.com). It is reviewed by a person before it works.
 
@@ -38,11 +38,12 @@ namespace Example
 
             var apiInstance = new WorldsHttpApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceHttpDomainRequest = new CreateWorldExperienceHttpDomainRequest(); // CreateWorldExperienceHttpDomainRequest |  (optional) 
 
             try
             {
                 // Declare a domain server scripts may call (example.com or *.example.com). It is reviewed by a person before it works.
-                CreateWorldExperienceHttpDomainResponse result = apiInstance.CreateWorldExperienceHttpDomain(experienceId);
+                CreateWorldExperienceHttpDomainResponse result = apiInstance.CreateWorldExperienceHttpDomain(experienceId, createWorldExperienceHttpDomainRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -61,6 +62,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceHttpDomainRequest** | **CreateWorldExperienceHttpDomainRequest**|  | [optional] 
 
 ### Return type
 
@@ -72,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -329,7 +331,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencehttpsecret"></a>
 # **UpdateWorldExperienceHttpSecret**
-> UpdateWorldExperienceHttpSecretResponse UpdateWorldExperienceHttpSecret (string experienceId, string name)
+> UpdateWorldExperienceHttpSecretResponse UpdateWorldExperienceHttpSecret (string experienceId, string name, UpdateWorldExperienceHttpSecretRequest updateWorldExperienceHttpSecretRequest = null)
 
 Set a secret (UPPER_SNAKE name). Scripts reference it as Http.secret(\"NAME\"); the value is never returned.
 
@@ -355,11 +357,12 @@ namespace Example
             var apiInstance = new WorldsHttpApi(config);
             var experienceId = "experienceId_example";  // string | 
             var name = "name_example";  // string | 
+            var updateWorldExperienceHttpSecretRequest = new UpdateWorldExperienceHttpSecretRequest(); // UpdateWorldExperienceHttpSecretRequest |  (optional) 
 
             try
             {
                 // Set a secret (UPPER_SNAKE name). Scripts reference it as Http.secret(\"NAME\"); the value is never returned.
-                UpdateWorldExperienceHttpSecretResponse result = apiInstance.UpdateWorldExperienceHttpSecret(experienceId, name);
+                UpdateWorldExperienceHttpSecretResponse result = apiInstance.UpdateWorldExperienceHttpSecret(experienceId, name, updateWorldExperienceHttpSecretRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -379,6 +382,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **name** | **string**|  | 
+ **updateWorldExperienceHttpSecretRequest** | **UpdateWorldExperienceHttpSecretRequest**|  | [optional] 
 
 ### Return type
 
@@ -390,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

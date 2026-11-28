@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="createsalebulkdelete"></a>
 # **CreateSaleBulkDelete**
-> CreateSaleBulkDeleteResponse CreateSaleBulkDelete ()
+> CreateSaleBulkDeleteResponse CreateSaleBulkDelete (CreateListingByIdRequest createListingByIdRequest)
 
 Bulk soft-delete sales rows.
 
@@ -34,11 +34,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SalesApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest | 
 
             try
             {
                 // Bulk soft-delete sales rows.
-                CreateSaleBulkDeleteResponse result = apiInstance.CreateSaleBulkDelete();
+                CreateSaleBulkDeleteResponse result = apiInstance.CreateSaleBulkDelete(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -53,7 +54,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | 
 
 ### Return type
 
@@ -65,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -84,7 +88,7 @@ This endpoint does not need any parameter.
 
 <a name="listsales"></a>
 # **ListSales**
-> ListSalesResponse ListSales ()
+> ListSalesResponse ListSales (int? page = null, int? limit = null)
 
 List sales (each unique sale event).
 
@@ -108,11 +112,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SalesApi(config);
+            var page = 1;  // int? |  (optional)  (default to 1)
+            var limit = 25;  // int? |  (optional)  (default to 25)
 
             try
             {
                 // List sales (each unique sale event).
-                ListSalesResponse result = apiInstance.ListSales();
+                ListSalesResponse result = apiInstance.ListSales(page, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -127,7 +133,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int?**|  | [optional] [default to 1]
+ **limit** | **int?**|  | [optional] [default to 25]
 
 ### Return type
 

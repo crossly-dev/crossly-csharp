@@ -74,7 +74,8 @@ namespace net.crossly.Model
         /// <param name="linkedByUserId">linkedByUserId.</param>
         /// <param name="isDefault">The store&#39;s default selling wallet on this network (1124): the one set with setDefaultStoreWallet, else the oldest link of the family. Exactly one per family that has a link. (required).</param>
         /// <param name="autoImport">1187: a sync of this wallet adds new NFTs to this store&#39;s inventory. (required).</param>
-        public ListWeb3StoreWalletsItem(string walletId = default(string), FamilyEnum family = default(FamilyEnum), string address = default(string), string label = default(string), string verifiedAt = default(string), string linkedAt = default(string), string linkedByUserId = default(string), bool isDefault = default(bool), bool autoImport = default(bool))
+        /// <param name="marketplaces">1197 (spec CN3): the NFT marketplaces this store lists from this wallet on (only its network&#39;s). (required).</param>
+        public ListWeb3StoreWalletsItem(string walletId = default(string), FamilyEnum family = default(FamilyEnum), string address = default(string), string label = default(string), string verifiedAt = default(string), string linkedAt = default(string), string linkedByUserId = default(string), bool isDefault = default(bool), bool autoImport = default(bool), List<ListWeb3StoreWalletsItemMarketplacesItem> marketplaces = default(List<ListWeb3StoreWalletsItemMarketplacesItem>))
         {
             // to ensure "walletId" is required (not null)
             if (walletId == null) {
@@ -94,6 +95,11 @@ namespace net.crossly.Model
             this.LinkedAt = linkedAt;
             this.IsDefault = isDefault;
             this.AutoImport = autoImport;
+            // to ensure "marketplaces" is required (not null)
+            if (marketplaces == null) {
+                throw new ArgumentNullException("marketplaces is a required property for ListWeb3StoreWalletsItem and cannot be null");
+            }
+            this.Marketplaces = marketplaces;
             this.Label = label;
             this.VerifiedAt = verifiedAt;
             this.LinkedByUserId = linkedByUserId;
@@ -150,6 +156,13 @@ namespace net.crossly.Model
         public bool AutoImport { get; set; }
 
         /// <summary>
+        /// 1197 (spec CN3): the NFT marketplaces this store lists from this wallet on (only its network&#39;s).
+        /// </summary>
+        /// <value>1197 (spec CN3): the NFT marketplaces this store lists from this wallet on (only its network&#39;s).</value>
+        [DataMember(Name = "marketplaces", IsRequired = true, EmitDefaultValue = false)]
+        public List<ListWeb3StoreWalletsItemMarketplacesItem> Marketplaces { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -166,6 +179,7 @@ namespace net.crossly.Model
             sb.Append("  LinkedByUserId: ").Append(LinkedByUserId).Append("\n");
             sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
             sb.Append("  AutoImport: ").Append(AutoImport).Append("\n");
+            sb.Append("  Marketplaces: ").Append(Marketplaces).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -242,6 +256,12 @@ namespace net.crossly.Model
                 (
                     this.AutoImport == input.AutoImport ||
                     this.AutoImport.Equals(input.AutoImport)
+                ) && 
+                (
+                    this.Marketplaces == input.Marketplaces ||
+                    this.Marketplaces != null &&
+                    input.Marketplaces != null &&
+                    this.Marketplaces.SequenceEqual(input.Marketplaces)
                 );
         }
 
@@ -281,6 +301,10 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
                 hashCode = (hashCode * 59) + this.AutoImport.GetHashCode();
+                if (this.Marketplaces != null)
+                {
+                    hashCode = (hashCode * 59) + this.Marketplaces.GetHashCode();
+                }
                 return hashCode;
             }
         }

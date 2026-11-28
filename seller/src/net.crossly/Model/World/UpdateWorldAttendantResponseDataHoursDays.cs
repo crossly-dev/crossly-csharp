@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// <param name="_4">_4.</param>
         /// <param name="_5">_5.</param>
         /// <param name="_6">_6.</param>
-        public UpdateWorldAttendantResponseDataHoursDays(OpenClose _0 = default(OpenClose), OpenClose _1 = default(OpenClose), OpenClose _2 = default(OpenClose), OpenClose _3 = default(OpenClose), OpenClose _4 = default(OpenClose), OpenClose _5 = default(OpenClose), OpenClose _6 = default(OpenClose))
+        public UpdateWorldAttendantResponseDataHoursDays(OpenClose2 _0 = default(OpenClose2), OpenClose2 _1 = default(OpenClose2), OpenClose2 _2 = default(OpenClose2), OpenClose2 _3 = default(OpenClose2), OpenClose2 _4 = default(OpenClose2), OpenClose2 _5 = default(OpenClose2), OpenClose2 _6 = default(OpenClose2))
         {
             this._0 = _0;
             this._1 = _1;
@@ -56,43 +56,43 @@ namespace net.crossly.Model
         /// Gets or Sets _0
         /// </summary>
         [DataMember(Name = "0", EmitDefaultValue = true)]
-        public OpenClose _0 { get; set; }
+        public OpenClose2 _0 { get; set; }
 
         /// <summary>
         /// Gets or Sets _1
         /// </summary>
         [DataMember(Name = "1", EmitDefaultValue = true)]
-        public OpenClose _1 { get; set; }
+        public OpenClose2 _1 { get; set; }
 
         /// <summary>
         /// Gets or Sets _2
         /// </summary>
         [DataMember(Name = "2", EmitDefaultValue = true)]
-        public OpenClose _2 { get; set; }
+        public OpenClose2 _2 { get; set; }
 
         /// <summary>
         /// Gets or Sets _3
         /// </summary>
         [DataMember(Name = "3", EmitDefaultValue = true)]
-        public OpenClose _3 { get; set; }
+        public OpenClose2 _3 { get; set; }
 
         /// <summary>
         /// Gets or Sets _4
         /// </summary>
         [DataMember(Name = "4", EmitDefaultValue = true)]
-        public OpenClose _4 { get; set; }
+        public OpenClose2 _4 { get; set; }
 
         /// <summary>
         /// Gets or Sets _5
         /// </summary>
         [DataMember(Name = "5", EmitDefaultValue = true)]
-        public OpenClose _5 { get; set; }
+        public OpenClose2 _5 { get; set; }
 
         /// <summary>
         /// Gets or Sets _6
         /// </summary>
         [DataMember(Name = "6", EmitDefaultValue = true)]
-        public OpenClose _6 { get; set; }
+        public OpenClose2 _6 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

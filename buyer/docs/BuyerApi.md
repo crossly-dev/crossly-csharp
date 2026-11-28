@@ -47,6 +47,7 @@ Method | HTTP request | Description
 [**CreateBuyerListingSplit**](BuyerApi.md#createbuyerlistingsplit) | **POST** /v1/buyer/listings/{slug}/split | Split a purchase: one pay link per person; nobody is charged until all have paid.
 [**CreateBuyerListingSubscribe**](BuyerApi.md#createbuyerlistingsubscribe) | **POST** /v1/buyer/listings/{slug}/subscribe | Subscribe &amp; save: a standing order charged to your saved card every interval. Checked against this key’s spending controls; send an Idempotency-Key.
 [**CreateBuyerListingTryOn**](BuyerApi.md#createbuyerlistingtryon) | **POST** /v1/buyer/listings/{slug}/try-on | Render an AI try-on of this listing on the buyer’s own photo (base64 &#x60;photo&#x60;, or &#x60;reuseLastPhoto&#x60;). &#x60;confirmSelfAdult&#x60; must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
+[**CreateBuyerLoyaltyRewardRedeem**](BuyerApi.md#createbuyerloyaltyrewardredeem) | **POST** /v1/buyer/loyalty/{clubId}/rewards/{rewardId}/redeem | Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
 [**CreateBuyerMarketBid**](BuyerApi.md#createbuyermarketbid) | **POST** /v1/buyer/market/bids | Place a fixed-price market bid. SPENDS MONEY: it fills against the lowest ask at or under your price and charges your saved card (plus the fast-ship premium when fastShip is set and it fills from vault stock). deliverTo vault keeps it in your Crossly vault; gradeWith sends a raw card to a Grading run first. Checked against this key’s spending controls; send an Idempotency-Key.
 [**CreateBuyerMarketWatch**](BuyerApi.md#createbuyermarketwatch) | **POST** /v1/buyer/market/watches | Watch a market variant: alert at or below a price, or on any drop.
 [**CreateBuyerOffer**](BuyerApi.md#createbuyeroffer) | **POST** /v1/buyer/offers | Offer a price on a listing.
@@ -137,7 +138,7 @@ Method | HTTP request | Description
 [**GetBuyerCase**](BuyerApi.md#getbuyercase) | **GET** /v1/buyer/cases/{id} | One case — its state, the message thread, and the return parcel if there is one.
 [**GetBuyerCatalogListingMySize**](BuyerApi.md#getbuyercataloglistingmysize) | **GET** /v1/buyer/catalog/listings/{slug}/my-size | This item against your size: the size you keep in this kind of item (and in this brand), whether this one is your size, smaller or larger, a warning if this brand and size ran small or large on you before, and how other buyers say the brand runs. null for an unsized item.
 [**GetBuyerCatalogListingPrice**](BuyerApi.md#getbuyercataloglistingprice) | **GET** /v1/buyer/catalog/listings/{slug}/price | The price today. When the seller has the same item live on another marketplace for less, this IS that price (&#x60;priceMatch&#x60; says where from), and &#x60;lowestAnywhere&#x60; lists the marketplaces it is guaranteed not to be cheaper on. &#x60;priceCheck&#x60; rates it against real sales of the same catalog item in the same condition over the last 180 days (great / good / fair / high, with the median and middle-half range in cents); null until there are 3+ sales from 2+ sellers.
-[**GetBuyerCatalogListingRental**](BuyerApi.md#getbuyercataloglistingrental) | **GET** /v1/buyer/catalog/listings/{slug}/rental | Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+[**GetBuyerCatalogListingRental**](BuyerApi.md#getbuyercataloglistingrental) | **GET** /v1/buyer/catalog/listings/{slug}/rental | Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and &#x60;policy&#x60;: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
 [**GetBuyerCheckoutUsdc**](BuyerApi.md#getbuyercheckoutusdc) | **GET** /v1/buyer/checkout/usdc | Whether Crossly takes USDC (Stripe stablecoin payments: Solana, Ethereum, Base, Polygon), and its per-order limit. Paying needs the buyer’s wallet, so it happens in the browser checkout, never unattended.
 [**GetBuyerCollectionOffer**](BuyerApi.md#getbuyercollectionoffer) | **GET** /v1/buyer/collection/{id}/offer | What an item in your collection would fetch now: the top open bid on the market for the same variant, condition and grade, and Crossly’s instant offer in store credit when that is switched on (a quote valid for a limited time).
 [**GetBuyerCollectionSet**](BuyerApi.md#getbuyercollectionset) | **GET** /v1/buyer/collection/sets/{category}/{brand}/{model} | One set: every piece (owned or missing, with its lowest ask on the market), what completing it would cost now, and the leaderboard of collectors who opted in, with your rank.
@@ -147,7 +148,9 @@ Method | HTTP request | Description
 [**GetBuyerEvent**](BuyerApi.md#getbuyerevent) | **GET** /v1/buyer/events/{slug} | A seller event: schedule, location, host, linked listings, live show, promo code, RSVP counts and your own RSVP.
 [**GetBuyerFitVocabulary**](BuyerApi.md#getbuyerfitvocabulary) | **GET** /v1/buyer/fit/vocabulary | Garment kinds and the measurements each takes.
 [**GetBuyerGiftFinderOption**](BuyerApi.md#getbuyergiftfinderoption) | **GET** /v1/buyer/gift-finder/options | The gift finder’s questions: recipients, interests, budgets.
+[**GetBuyerGroupBuyShareLink**](BuyerApi.md#getbuyergroupbuysharelink) | **GET** /v1/buyer/group-buys/{id}/share-link | Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
 [**GetBuyerHome**](BuyerApi.md#getbuyerhome) | **GET** /v1/buyer/home | Your home in Crossly World (made on first read).
+[**GetBuyerHomePet**](BuyerApi.md#getbuyerhomepet) | **GET** /v1/buyer/home/pets | Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
 [**GetBuyerHomePlaceable**](BuyerApi.md#getbuyerhomeplaceable) | **GET** /v1/buyer/home/placeable | What you could place in your home: your items and delivered furniture.
 [**GetBuyerImpact**](BuyerApi.md#getbuyerimpact) | **GET** /v1/buyer/impact | The sourced footprint your secondhand purchases avoided.
 [**GetBuyerLayaway**](BuyerApi.md#getbuyerlayaway) | **GET** /v1/buyer/layaways/{id} | One layaway and its schedule.
@@ -162,6 +165,7 @@ Method | HTTP request | Description
 [**GetBuyerListingSubscribeOffer**](BuyerApi.md#getbuyerlistingsubscribeoffer) | **GET** /v1/buyer/listings/{slug}/subscribe-offer | The subscribe &amp; save discount and intervals on a listing; null when the seller has none.
 [**GetBuyerListingTryOn**](BuyerApi.md#getbuyerlistingtryon) | **GET** /v1/buyer/listings/{slug}/try-on | Whether an AI try-on is offered for this listing (a wearable with a photo) and whether the image model is configured.
 [**GetBuyerLiveStreamAuction**](BuyerApi.md#getbuyerlivestreamauction) | **GET** /v1/buyer/live-streams/{id}/auction | The auction running on a live stream right now, if any. Bid on it by its &#x60;slug&#x60; at POST /v1/buyer/auctions/:slug/bids.
+[**GetBuyerLoyaltyReward**](BuyerApi.md#getbuyerloyaltyreward) | **GET** /v1/buyer/loyalty/{clubId}/rewards | A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
 [**GetBuyerMarketPurchaseOption**](BuyerApi.md#getbuyermarketpurchaseoption) | **GET** /v1/buyer/market/purchase-options | Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
 [**GetBuyerOrderEligibility**](BuyerApi.md#getbuyerordereligibility) | **GET** /v1/buyer/orders/{id}/eligibility | What you can do with one order right now — cancel, confirm receipt, report not received, leave feedback.
 [**GetBuyerOrderExport**](BuyerApi.md#getbuyerorderexport) | **GET** /v1/buyer/orders/export | Your order history as CSV text (up to 5,000 orders).
@@ -248,6 +252,7 @@ Method | HTTP request | Description
 [**ListBuyerLiveShipments**](BuyerApi.md#listbuyerliveshipments) | **GET** /v1/buyer/live-shipments | Your one-box-per-show shipments: every order won in a show ships together, and postage is charged once (the rest refunded when it ships).
 [**ListBuyerLiveStreamLineup**](BuyerApi.md#listbuyerlivestreamlineup) | **GET** /v1/buyer/live-streams/{id}/lineup | What a live show will sell, in order: each item, its price, and whether it is still available.
 [**ListBuyerLoyalty**](BuyerApi.md#listbuyerloyalty) | **GET** /v1/buyer/loyalty | Your loyalty clubs: the tier you hold, progress and how to reach the next tier, the typed perks you hold now, and your history.
+[**ListBuyerLoyaltyPoints**](BuyerApi.md#listbuyerloyaltypoints) | **GET** /v1/buyer/loyalty/{clubId}/points | Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
 [**ListBuyerMarketBids**](BuyerApi.md#listbuyermarketbids) | **GET** /v1/buyer/market/bids | Your resting market bids.
 [**ListBuyerMarketWatches**](BuyerApi.md#listbuyermarketwatches) | **GET** /v1/buyer/market/watches | Market variants you watch, with the price you are waiting for.
 [**ListBuyerOffers**](BuyerApi.md#listbuyeroffers) | **GET** /v1/buyer/offers | Offers you have made, newest first (last 100).
@@ -312,6 +317,7 @@ Method | HTTP request | Description
 [**UpdateBuyerHome**](BuyerApi.md#updatebuyerhome) | **PATCH** /v1/buyer/home | Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
 [**UpdateBuyerHomeBuilder**](BuyerApi.md#updatebuyerhomebuilder) | **PUT** /v1/buyer/home/builders | Set your co-builders (friends only, at most 4).
 [**UpdateBuyerHomeLayout**](BuyerApi.md#updatebuyerhomelayout) | **PUT** /v1/buyer/home/layout | Arrange your home: the whole layout, checked against what you own.
+[**UpdateBuyerHomePetActive**](BuyerApi.md#updatebuyerhomepetactive) | **PUT** /v1/buyer/home/pets/active | Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
 [**UpdateBuyerHunt**](BuyerApi.md#updatebuyerhunt) | **PATCH** /v1/buyer/hunts/{id} | Pause, resume or stop a hunt.
 [**UpdateBuyerPaymentMethodDefault**](BuyerApi.md#updatebuyerpaymentmethoddefault) | **PUT** /v1/buyer/payment-methods/{id}/default | Make one of your saved cards the default.
 [**UpdateBuyerPurchaseStory**](BuyerApi.md#updatebuyerpurchasestory) | **PUT** /v1/buyer/purchases/{id}/story | Write your owner story (280 characters); it travels with the item if you resell it.
@@ -649,7 +655,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerboard"></a>
 # **CreateBuyerBoard**
-> CreateBuyerBoardResponse CreateBuyerBoard ()
+> CreateBuyerBoardResponse CreateBuyerBoard (CreateBuyerBoardRequest createBuyerBoardRequest)
 
 Create an outfit board.
 
@@ -673,11 +679,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var createBuyerBoardRequest = new CreateBuyerBoardRequest(); // CreateBuyerBoardRequest | 
 
             try
             {
                 // Create an outfit board.
-                CreateBuyerBoardResponse result = apiInstance.CreateBuyerBoard();
+                CreateBuyerBoardResponse result = apiInstance.CreateBuyerBoard(createBuyerBoardRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -692,7 +699,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerBoardRequest** | **CreateBuyerBoardRequest**|  | 
 
 ### Return type
 
@@ -704,7 +714,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -723,7 +733,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerboarditem"></a>
 # **CreateBuyerBoardItem**
-> BuyerResponse CreateBuyerBoardItem (string id)
+> BuyerResponse CreateBuyerBoardItem (string id, CreateBuyerBoardItemRequest createBuyerBoardItemRequest)
 
 Add a listing (by slug) to a board, at the next free spot.
 
@@ -748,11 +758,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerBoardItemRequest = new CreateBuyerBoardItemRequest(); // CreateBuyerBoardItemRequest | 
 
             try
             {
                 // Add a listing (by slug) to a board, at the next free spot.
-                BuyerResponse result = apiInstance.CreateBuyerBoardItem(id);
+                BuyerResponse result = apiInstance.CreateBuyerBoardItem(id, createBuyerBoardItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -771,6 +782,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerBoardItemRequest** | **CreateBuyerBoardItemRequest**|  | 
 
 ### Return type
 
@@ -782,7 +794,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1117,7 +1129,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyercartoptimizer"></a>
 # **CreateBuyerCartOptimizer**
-> CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer ()
+> CreateBuyerCartOptimizerResponse CreateBuyerCartOptimizer (CreateBuyerCartOptimizerRequest createBuyerCartOptimizerRequest)
 
 Cart optimizer: send a shopping list (one item per line, \"2 Charizard Base Set\") and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
 
@@ -1141,11 +1153,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var createBuyerCartOptimizerRequest = new CreateBuyerCartOptimizerRequest(); // CreateBuyerCartOptimizerRequest | 
 
             try
             {
                 // Cart optimizer: send a shopping list (one item per line, \"2 Charizard Base Set\") and get the cheapest delivered basket across sellers — one pick per line, items + each seller’s shipping with free-shipping thresholds applied. fewestPackages prefers fewer sellers. Nothing is added to the cart.
-                CreateBuyerCartOptimizerResponse result = apiInstance.CreateBuyerCartOptimizer();
+                CreateBuyerCartOptimizerResponse result = apiInstance.CreateBuyerCartOptimizer(createBuyerCartOptimizerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1160,7 +1173,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerCartOptimizerRequest** | **CreateBuyerCartOptimizerRequest**|  | 
 
 ### Return type
 
@@ -1172,7 +1188,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1191,7 +1207,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyercartquote"></a>
 # **CreateBuyerCartQuote**
-> CreateBuyerCartQuoteResponse CreateBuyerCartQuote ()
+> CreateBuyerCartQuoteResponse CreateBuyerCartQuote (CreateBuyerCartQuoteRequest createBuyerCartQuoteRequest = null)
 
 Price the cart, delivered — item, shipping, tax, total.
 
@@ -1217,11 +1233,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var createBuyerCartQuoteRequest = new CreateBuyerCartQuoteRequest(); // CreateBuyerCartQuoteRequest |  (optional) 
 
             try
             {
                 // Price the cart, delivered — item, shipping, tax, total.
-                CreateBuyerCartQuoteResponse result = apiInstance.CreateBuyerCartQuote();
+                CreateBuyerCartQuoteResponse result = apiInstance.CreateBuyerCartQuote(createBuyerCartQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1236,7 +1253,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerCartQuoteRequest** | **CreateBuyerCartQuoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -1248,7 +1268,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1751,7 +1771,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyercataloglistingrental"></a>
 # **CreateBuyerCatalogListingRental**
-> CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental (string slug)
+> CreateBuyerCatalogListingRentalResponse CreateBuyerCatalogListingRental (string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
 
 Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
 
@@ -1776,11 +1796,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerCatalogListingRentalRequest = new CreateBuyerCatalogListingRentalRequest(); // CreateBuyerCatalogListingRentalRequest | 
 
             try
             {
                 // Book a rental. Returns a Stripe PaymentIntent client secret for rent + shipping both ways + deposit; the dates are held 30 minutes for payment. Crossly buys both labels; the deposit comes back after the item does.
-                CreateBuyerCatalogListingRentalResponse result = apiInstance.CreateBuyerCatalogListingRental(slug);
+                CreateBuyerCatalogListingRentalResponse result = apiInstance.CreateBuyerCatalogListingRental(slug, createBuyerCatalogListingRentalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1799,6 +1820,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerCatalogListingRentalRequest** | **CreateBuyerCatalogListingRentalRequest**|  | 
 
 ### Return type
 
@@ -1810,7 +1832,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1829,7 +1851,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyercataloglistingrentalquote"></a>
 # **CreateBuyerCatalogListingRentalQuote**
-> CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote (string slug)
+> CreateBuyerCatalogListingRentalQuoteResponse CreateBuyerCatalogListingRentalQuote (string slug, CreateBuyerCatalogListingRentalRequest createBuyerCatalogListingRentalRequest)
 
 Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. `problem` says why the dates can’t be booked.
 
@@ -1854,11 +1876,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerCatalogListingRentalRequest = new CreateBuyerCatalogListingRentalRequest(); // CreateBuyerCatalogListingRentalRequest | 
 
             try
             {
                 // Price a rental: rent (the cheaper of by-the-day and by-the-week), both shipping legs once a ship-to is given, and the deposit. `problem` says why the dates can’t be booked.
-                CreateBuyerCatalogListingRentalQuoteResponse result = apiInstance.CreateBuyerCatalogListingRentalQuote(slug);
+                CreateBuyerCatalogListingRentalQuoteResponse result = apiInstance.CreateBuyerCatalogListingRentalQuote(slug, createBuyerCatalogListingRentalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1877,6 +1900,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerCatalogListingRentalRequest** | **CreateBuyerCatalogListingRentalRequest**|  | 
 
 ### Return type
 
@@ -1888,7 +1912,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1907,7 +1931,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyercataloglistingvideorequest"></a>
 # **CreateBuyerCatalogListingVideoRequest**
-> CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest (string slug)
+> CreateBuyerCatalogListingVideoRequestResponse CreateBuyerCatalogListingVideoRequest (string slug, CreateBuyerCatalogListingVideoRequestRequest createBuyerCatalogListingVideoRequestRequest = null)
 
 Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
 
@@ -1932,11 +1956,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerCatalogListingVideoRequestRequest = new CreateBuyerCatalogListingVideoRequestRequest(); // CreateBuyerCatalogListingVideoRequestRequest |  (optional) 
 
             try
             {
                 // Ask the seller for a video of an item (one open request per item). The seller is notified; their answer appears on the listing for every buyer.
-                CreateBuyerCatalogListingVideoRequestResponse result = apiInstance.CreateBuyerCatalogListingVideoRequest(slug);
+                CreateBuyerCatalogListingVideoRequestResponse result = apiInstance.CreateBuyerCatalogListingVideoRequest(slug, createBuyerCatalogListingVideoRequestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1955,6 +1980,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerCatalogListingVideoRequestRequest** | **CreateBuyerCatalogListingVideoRequestRequest**|  | [optional] 
 
 ### Return type
 
@@ -1966,7 +1992,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2441,7 +2467,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyereventrsvp"></a>
 # **CreateBuyerEventRsvp**
-> CreateBuyerEventRsvpResponse CreateBuyerEventRsvp (string slug)
+> CreateBuyerEventRsvpResponse CreateBuyerEventRsvp (string slug, CreateBuyerEventRsvpRequest createBuyerEventRsvpRequest = null)
 
 RSVP to an event: going (counts against its capacity) or interested.
 
@@ -2466,11 +2492,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerEventRsvpRequest = new CreateBuyerEventRsvpRequest(); // CreateBuyerEventRsvpRequest |  (optional) 
 
             try
             {
                 // RSVP to an event: going (counts against its capacity) or interested.
-                CreateBuyerEventRsvpResponse result = apiInstance.CreateBuyerEventRsvp(slug);
+                CreateBuyerEventRsvpResponse result = apiInstance.CreateBuyerEventRsvp(slug, createBuyerEventRsvpRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2489,6 +2516,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerEventRsvpRequest** | **CreateBuyerEventRsvpRequest**|  | [optional] 
 
 ### Return type
 
@@ -2500,7 +2528,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3297,7 +3325,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerlayawaypay"></a>
 # **CreateBuyerLayawayPay**
-> BuyerLayawayResponse CreateBuyerLayawayPay (string id)
+> BuyerLayawayResponse CreateBuyerLayawayPay (string id, CreateBuyerLayawayPayRequest createBuyerLayawayPayRequest = null)
 
 Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
 
@@ -3322,11 +3350,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerLayawayPayRequest = new CreateBuyerLayawayPayRequest(); // CreateBuyerLayawayPayRequest |  (optional) 
 
             try
             {
                 // Pay some (at least $1) or all of what is left now, on the saved card. Paid in full, it ships.
-                BuyerLayawayResponse result = apiInstance.CreateBuyerLayawayPay(id);
+                BuyerLayawayResponse result = apiInstance.CreateBuyerLayawayPay(id, createBuyerLayawayPayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3345,6 +3374,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerLayawayPayRequest** | **CreateBuyerLayawayPayRequest**|  | [optional] 
 
 ### Return type
 
@@ -3356,7 +3386,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3609,7 +3639,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerlistingtryon"></a>
 # **CreateBuyerListingTryOn**
-> CreateBuyerListingTryOnResponse CreateBuyerListingTryOn (string slug)
+> CreateBuyerListingTryOnResponse CreateBuyerListingTryOn (string slug, CreateBuyerListingTryOnRequest createBuyerListingTryOnRequest)
 
 Render an AI try-on of this listing on the buyer’s own photo (base64 `photo`, or `reuseLastPhoto`). `confirmSelfAdult` must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
 
@@ -3634,11 +3664,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerListingTryOnRequest = new CreateBuyerListingTryOnRequest(); // CreateBuyerListingTryOnRequest | 
 
             try
             {
                 // Render an AI try-on of this listing on the buyer’s own photo (base64 `photo`, or `reuseLastPhoto`). `confirmSelfAdult` must be true: the photo is of the buyer and they are 18+. Wearables only; capped per day; 503 naming TRYON_API_KEY when no image model is configured.
-                CreateBuyerListingTryOnResponse result = apiInstance.CreateBuyerListingTryOn(slug);
+                CreateBuyerListingTryOnResponse result = apiInstance.CreateBuyerListingTryOn(slug, createBuyerListingTryOnRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3657,10 +3688,91 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerListingTryOnRequest** | **CreateBuyerListingTryOnRequest**|  | 
 
 ### Return type
 
 **CreateBuyerListingTryOnResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createbuyerloyaltyrewardredeem"></a>
+# **CreateBuyerLoyaltyRewardRedeem**
+> CreateBuyerLoyaltyRewardRedeemResponse CreateBuyerLoyaltyRewardRedeem (string clubId, string rewardId)
+
+Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class CreateBuyerLoyaltyRewardRedeemExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var clubId = "clubId_example";  // string | 
+            var rewardId = "rewardId_example";  // string | 
+
+            try
+            {
+                // Spend points on a reward (Idempotency-Key required: a retry answers the same redemption). A price reward answers a single-use code.
+                CreateBuyerLoyaltyRewardRedeemResponse result = apiInstance.CreateBuyerLoyaltyRewardRedeem(clubId, rewardId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.CreateBuyerLoyaltyRewardRedeem: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clubId** | **string**|  | 
+ **rewardId** | **string**|  | 
+
+### Return type
+
+**CreateBuyerLoyaltyRewardRedeemResponse**
 
 ### Authorization
 
@@ -4317,7 +4429,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerpackfairnessrotate"></a>
 # **CreateBuyerPackFairnessRotate**
-> GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate ()
+> GetBuyerPackFairnessResponse CreateBuyerPackFairnessRotate (CreateBuyerPackFairnessRotateRequest createBuyerPackFairnessRotateRequest = null)
 
 Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
 
@@ -4341,11 +4453,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var createBuyerPackFairnessRotateRequest = new CreateBuyerPackFairnessRotateRequest(); // CreateBuyerPackFairnessRotateRequest |  (optional) 
 
             try
             {
                 // Reveal your current server seed and start a new one (optionally with your own client seed). Refused while an opening is awaiting payment.
-                GetBuyerPackFairnessResponse result = apiInstance.CreateBuyerPackFairnessRotate();
+                GetBuyerPackFairnessResponse result = apiInstance.CreateBuyerPackFairnessRotate(createBuyerPackFairnessRotateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4360,7 +4473,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerPackFairnessRotateRequest** | **CreateBuyerPackFairnessRotateRequest**|  | [optional] 
 
 ### Return type
 
@@ -4372,7 +4488,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4391,7 +4507,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerpackopen"></a>
 # **CreateBuyerPackOpen**
-> CreateBuyerPackOpenResponse CreateBuyerPackOpen (string slug)
+> CreateBuyerPackOpenResponse CreateBuyerPackOpen (string slug, CreateBuyerPackOpenRequest createBuyerPackOpenRequest)
 
 Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
 
@@ -4416,11 +4532,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var createBuyerPackOpenRequest = new CreateBuyerPackOpenRequest(); // CreateBuyerPackOpenRequest | 
 
             try
             {
                 // Open a pack. SPENDS MONEY: charges the pack price to your saved card, then pulls one real item by the published odds (provably fair: see /buyer/packs/fairness) into your Crossly vault. confirmAdult must be true. Checked against this key’s spending controls; send an Idempotency-Key.
-                CreateBuyerPackOpenResponse result = apiInstance.CreateBuyerPackOpen(slug);
+                CreateBuyerPackOpenResponse result = apiInstance.CreateBuyerPackOpen(slug, createBuyerPackOpenRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4439,6 +4556,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createBuyerPackOpenRequest** | **CreateBuyerPackOpenRequest**|  | 
 
 ### Return type
 
@@ -4450,7 +4568,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4547,7 +4665,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerpassportclaim"></a>
 # **CreateBuyerPassportClaim**
-> GetBuyerPassportResponse CreateBuyerPassportClaim (string code)
+> GetBuyerPassportResponse CreateBuyerPassportClaim (string code, CreateBuyerPassportClaimRequest createBuyerPassportClaimRequest = null)
 
 Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
 
@@ -4572,11 +4690,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var code = "code_example";  // string | 
+            var createBuyerPassportClaimRequest = new CreateBuyerPassportClaimRequest(); // CreateBuyerPassportClaimRequest |  (optional) 
 
             try
             {
                 // Claim a passport as the item’s current owner — the buyer of its latest Crossly sale, or (after a sale on another marketplace) with the transfer code from the card in the box — shown as “in its owner’s hands” until it sells again.
-                GetBuyerPassportResponse result = apiInstance.CreateBuyerPassportClaim(code);
+                GetBuyerPassportResponse result = apiInstance.CreateBuyerPassportClaim(code, createBuyerPassportClaimRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4595,6 +4714,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **string**|  | 
+ **createBuyerPassportClaimRequest** | **CreateBuyerPassportClaimRequest**|  | [optional] 
 
 ### Return type
 
@@ -4606,7 +4726,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4703,7 +4823,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerpurchasefit"></a>
 # **CreateBuyerPurchaseFit**
-> BuyerResponse CreateBuyerPurchaseFit (string id)
+> BuyerResponse CreateBuyerPurchaseFit (string id, CreateBuyerPurchaseFitRequest createBuyerPurchaseFitRequest)
 
 Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
 
@@ -4728,11 +4848,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerPurchaseFitRequest = new CreateBuyerPurchaseFitRequest(); // CreateBuyerPurchaseFitRequest | 
 
             try
             {
                 // Say how a delivered purchase fit: true_to_size, small or large. It teaches your size memory and, pooled with other buyers, how the brand runs.
-                BuyerResponse result = apiInstance.CreateBuyerPurchaseFit(id);
+                BuyerResponse result = apiInstance.CreateBuyerPurchaseFit(id, createBuyerPurchaseFitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4751,6 +4872,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerPurchaseFitRequest** | **CreateBuyerPurchaseFitRequest**|  | 
 
 ### Return type
 
@@ -4762,7 +4884,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4859,7 +4981,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerregistry"></a>
 # **CreateBuyerRegistry**
-> CreateBuyerRegistryResponse CreateBuyerRegistry ()
+> CreateBuyerRegistryResponse CreateBuyerRegistry (CreateBuyerRegistryRequest createBuyerRegistryRequest = null)
 
 Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
 
@@ -4883,11 +5005,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var createBuyerRegistryRequest = new CreateBuyerRegistryRequest(); // CreateBuyerRegistryRequest |  (optional) 
 
             try
             {
                 // Start a gift registry (wedding, baby, birthday, housewarming, graduation, other). Items are added like any wishlist item; set shipAddressId to one of your saved addresses so guests can buy — they never see it.
-                CreateBuyerRegistryResponse result = apiInstance.CreateBuyerRegistry();
+                CreateBuyerRegistryResponse result = apiInstance.CreateBuyerRegistry(createBuyerRegistryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4902,7 +5025,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerRegistryRequest** | **CreateBuyerRegistryRequest**|  | [optional] 
 
 ### Return type
 
@@ -4914,7 +5040,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4933,7 +5059,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerregistrygiftthanked"></a>
 # **CreateBuyerRegistryGiftThanked**
-> CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked (string id, string giftId)
+> CreateBuyerRegistryGiftThankedResponse CreateBuyerRegistryGiftThanked (string id, string giftId, CreateBuyerRegistryGiftThankedRequest createBuyerRegistryGiftThankedRequest)
 
 Tick a gift as thanked (or untick it).
 
@@ -4959,11 +5085,12 @@ namespace Example
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
             var giftId = "giftId_example";  // string | 
+            var createBuyerRegistryGiftThankedRequest = new CreateBuyerRegistryGiftThankedRequest(); // CreateBuyerRegistryGiftThankedRequest | 
 
             try
             {
                 // Tick a gift as thanked (or untick it).
-                CreateBuyerRegistryGiftThankedResponse result = apiInstance.CreateBuyerRegistryGiftThanked(id, giftId);
+                CreateBuyerRegistryGiftThankedResponse result = apiInstance.CreateBuyerRegistryGiftThanked(id, giftId, createBuyerRegistryGiftThankedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4983,6 +5110,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **giftId** | **string**|  | 
+ **createBuyerRegistryGiftThankedRequest** | **CreateBuyerRegistryGiftThankedRequest**|  | 
 
 ### Return type
 
@@ -4994,7 +5122,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5013,7 +5141,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerrentalarrivalphoto"></a>
 # **CreateBuyerRentalArrivalPhoto**
-> BuyerRentalResponse CreateBuyerRentalArrivalPhoto (string id)
+> BuyerRentalResponse CreateBuyerRentalArrivalPhoto (string id, CreateBuyerRentalArrivalPhotoRequest createBuyerRentalArrivalPhotoRequest)
 
 Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
 
@@ -5038,11 +5166,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerRentalArrivalPhotoRequest = new CreateBuyerRentalArrivalPhotoRequest(); // CreateBuyerRentalArrivalPhotoRequest | 
 
             try
             {
                 // Photograph a rental on arrival (URLs you uploaded): your side of the condition record.
-                BuyerRentalResponse result = apiInstance.CreateBuyerRentalArrivalPhoto(id);
+                BuyerRentalResponse result = apiInstance.CreateBuyerRentalArrivalPhoto(id, createBuyerRentalArrivalPhotoRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5061,6 +5190,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerRentalArrivalPhotoRequest** | **CreateBuyerRentalArrivalPhotoRequest**|  | 
 
 ### Return type
 
@@ -5072,7 +5202,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5247,7 +5377,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerrentalclaimresponse"></a>
 # **CreateBuyerRentalClaimResponse**
-> BuyerResponse CreateBuyerRentalClaimResponse (string id)
+> BuyerResponse CreateBuyerRentalClaimResponse (string id, CreateBuyerRentalClaimResponseRequest createBuyerRentalClaimResponseRequest)
 
 Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
 
@@ -5272,11 +5402,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerRentalClaimResponseRequest = new CreateBuyerRentalClaimResponseRequest(); // CreateBuyerRentalClaimResponseRequest | 
 
             try
             {
                 // Answer a deposit claim: accept (the claim is paid, the rest refunded) or dispute (Crossly decides).
-                BuyerResponse result = apiInstance.CreateBuyerRentalClaimResponse(id);
+                BuyerResponse result = apiInstance.CreateBuyerRentalClaimResponse(id, createBuyerRentalClaimResponseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5295,6 +5426,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerRentalClaimResponseRequest** | **CreateBuyerRentalClaimResponseRequest**|  | 
 
 ### Return type
 
@@ -5306,7 +5438,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5403,7 +5535,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyerrentalextension"></a>
 # **CreateBuyerRentalExtension**
-> CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension (string id)
+> CreateBuyerRentalExtensionResponse CreateBuyerRentalExtension (string id, CreateBuyerRentalExtensionRequest createBuyerRentalExtensionRequest)
 
 Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
 
@@ -5428,11 +5560,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerRentalExtensionRequest = new CreateBuyerRentalExtensionRequest(); // CreateBuyerRentalExtensionRequest | 
 
             try
             {
                 // Ask for more days. Auto-approved extensions return a clientSecret to pay with Stripe.
-                CreateBuyerRentalExtensionResponse result = apiInstance.CreateBuyerRentalExtension(id);
+                CreateBuyerRentalExtensionResponse result = apiInstance.CreateBuyerRentalExtension(id, createBuyerRentalExtensionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5451,6 +5584,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerRentalExtensionRequest** | **CreateBuyerRentalExtensionRequest**|  | 
 
 ### Return type
 
@@ -5462,7 +5596,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5635,7 +5769,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyerrentalreturnshipped"></a>
 # **CreateBuyerRentalReturnShipped**
-> BuyerRentalResponse CreateBuyerRentalReturnShipped (string id)
+> BuyerRentalResponse CreateBuyerRentalReturnShipped (string id, CreateBuyerRentalReturnShippedRequest createBuyerRentalReturnShippedRequest = null)
 
 Say you sent your rental back (optionally with photos).
 
@@ -5660,11 +5794,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerRentalReturnShippedRequest = new CreateBuyerRentalReturnShippedRequest(); // CreateBuyerRentalReturnShippedRequest |  (optional) 
 
             try
             {
                 // Say you sent your rental back (optionally with photos).
-                BuyerRentalResponse result = apiInstance.CreateBuyerRentalReturnShipped(id);
+                BuyerRentalResponse result = apiInstance.CreateBuyerRentalReturnShipped(id, createBuyerRentalReturnShippedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5683,6 +5818,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerRentalReturnShippedRequest** | **CreateBuyerRentalReturnShippedRequest**|  | [optional] 
 
 ### Return type
 
@@ -5694,7 +5830,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6813,7 +6949,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyervaultlist"></a>
 # **CreateBuyerVaultList**
-> CreateBuyerVaultListResponse CreateBuyerVaultList (string id)
+> CreateBuyerVaultListResponse CreateBuyerVaultList (string id, CreateBuyerVaultListRequest createBuyerVaultListRequest)
 
 Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
 
@@ -6838,11 +6974,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerVaultListRequest = new CreateBuyerVaultListRequest(); // CreateBuyerVaultListRequest | 
 
             try
             {
                 // Sell a vault item on the market at your price. It is already authenticated, so when it sells nothing ships in: the buyer keeps it vaulted or it ships straight to them.
-                CreateBuyerVaultListResponse result = apiInstance.CreateBuyerVaultList(id);
+                CreateBuyerVaultListResponse result = apiInstance.CreateBuyerVaultList(id, createBuyerVaultListRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6861,6 +6998,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerVaultListRequest** | **CreateBuyerVaultListRequest**|  | 
 
 ### Return type
 
@@ -6872,7 +7010,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6969,7 +7107,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyervaultwithdraw"></a>
 # **CreateBuyerVaultWithdraw**
-> CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw (string id)
+> CreateBuyerVaultWithdrawResponse CreateBuyerVaultWithdraw (string id, CreateBuyerVaultWithdrawRequest createBuyerVaultWithdrawRequest = null)
 
 Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
 
@@ -6994,11 +7132,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerVaultWithdrawRequest = new CreateBuyerVaultWithdrawRequest(); // CreateBuyerVaultWithdrawRequest |  (optional) 
 
             try
             {
                 // Ship a vault item home, standard or expedited. The shipping, any storage it owes and the early-withdrawal fee (within 90 days of arriving) are charged to your saved card now, all checked against this key’s spending controls; send an Idempotency-Key.
-                CreateBuyerVaultWithdrawResponse result = apiInstance.CreateBuyerVaultWithdraw(id);
+                CreateBuyerVaultWithdrawResponse result = apiInstance.CreateBuyerVaultWithdraw(id, createBuyerVaultWithdrawRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7017,6 +7156,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerVaultWithdrawRequest** | **CreateBuyerVaultWithdrawRequest**|  | [optional] 
 
 ### Return type
 
@@ -7028,7 +7168,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10715,7 +10855,7 @@ Name | Type | Description  | Notes
 # **GetBuyerCatalogListingRental**
 > GetBuyerCatalogListingRentalResponse GetBuyerCatalogListingRental (string slug)
 
-Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and `policy`: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
 
 ### Example
 ```csharp
@@ -10741,7 +10881,7 @@ namespace Example
 
             try
             {
-                // Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, and the dates already booked. null when it is not for rent.
+                // Whether a listing is for rent: day and week rates, the refundable deposit, length limits, the turnaround buffer, the dates already booked, and `policy`: the store return and payment policies the rental inherits (return line, protections, arrival photos, claim window, accepted methods). null when it is not for rent.
                 GetBuyerCatalogListingRentalResponse result = apiInstance.GetBuyerCatalogListingRental(slug);
                 Debug.WriteLine(result);
             }
@@ -11481,6 +11621,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getbuyergroupbuysharelink"></a>
+# **GetBuyerGroupBuyShareLink**
+> GetBuyerGroupBuyShareLinkResponse GetBuyerGroupBuyShareLink (string id)
+
+Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerGroupBuyShareLinkExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Share a group buy: { url (the pool with your refer-a-friend code), text (how many more units unlock the next price), imageUrl (its share card), refCode, next }. A friend who buys through it earns your refer-a-friend credit.
+                GetBuyerGroupBuyShareLinkResponse result = apiInstance.GetBuyerGroupBuyShareLink(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerGroupBuyShareLink: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**GetBuyerGroupBuyShareLinkResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getbuyerhome"></a>
 # **GetBuyerHome**
 > BuyerHomeResponse GetBuyerHome ()
@@ -11531,6 +11749,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **BuyerHomeResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getbuyerhomepet"></a>
+# **GetBuyerHomePet**
+> GetBuyerHomePetResponse GetBuyerHomePet ()
+
+Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerHomePetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+
+            try
+            {
+                // Your companion pets in Crossly World: every pet, whether it is yours, how to earn it, and the one walking with you. Earned through quests and reputation, never sold.
+                GetBuyerHomePetResponse result = apiInstance.GetBuyerHomePet();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerHomePet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetBuyerHomePetResponse**
 
 ### Authorization
 
@@ -12639,9 +12931,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getbuyerloyaltyreward"></a>
+# **GetBuyerLoyaltyReward**
+> GetBuyerLoyaltyRewardResponse GetBuyerLoyaltyReward (string clubId)
+
+A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class GetBuyerLoyaltyRewardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var clubId = "clubId_example";  // string | 
+
+            try
+            {
+                // A club’s rewards shelf: what each reward costs in points, whether you can redeem it (and why not), stock left, and what you already redeemed.
+                GetBuyerLoyaltyRewardResponse result = apiInstance.GetBuyerLoyaltyReward(clubId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.GetBuyerLoyaltyReward: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clubId** | **string**|  | 
+
+### Return type
+
+**GetBuyerLoyaltyRewardResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getbuyermarketpurchaseoption"></a>
 # **GetBuyerMarketPurchaseOption**
-> GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption ()
+> GetBuyerMarketPurchaseOptionResponse GetBuyerMarketPurchaseOption (string variantId, string condition = null)
 
 Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
 
@@ -12665,11 +13035,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var variantId = "variantId_example";  // string | 
+            var condition = "DS";  // string |  (optional) 
 
             try
             {
                 // Before you bid or buy: whether the lowest ask is vault stock (keep it vaulted, or pay fastShipCents to rush it), and the grading runs a raw card can go straight to (pass gradeWith on the bid).
-                GetBuyerMarketPurchaseOptionResponse result = apiInstance.GetBuyerMarketPurchaseOption();
+                GetBuyerMarketPurchaseOptionResponse result = apiInstance.GetBuyerMarketPurchaseOption(variantId, condition);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -12684,7 +13056,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **variantId** | **string**|  | 
+ **condition** | **string**|  | [optional] 
 
 ### Return type
 
@@ -13185,7 +13561,7 @@ Name | Type | Description  | Notes
 
 <a name="getbuyerpassport"></a>
 # **GetBuyerPassport**
-> GetBuyerPassportResponse GetBuyerPassport (string code)
+> GetBuyerPassportResponse GetBuyerPassport (string code, string uid = null)
 
 What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
 
@@ -13210,11 +13586,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var code = "code_example";  // string | 
+            var uid = "uid_example";  // string |  (optional) 
 
             try
             {
                 // What a product passport tag opens: the item, the verify verdict (registered, tag bound, tag matches with ?uid=, authenticated, graded, in its owner’s hands), how many owners and since when — never who or for how much.
-                GetBuyerPassportResponse result = apiInstance.GetBuyerPassport(code);
+                GetBuyerPassportResponse result = apiInstance.GetBuyerPassport(code, uid);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -13233,6 +13610,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **string**|  | 
+ **uid** | **string**|  | [optional] 
 
 ### Return type
 
@@ -18533,7 +18911,7 @@ This endpoint does not need any parameter.
 
 <a name="listbuyerhotspots"></a>
 # **ListBuyerHotspots**
-> ListBuyerHotspotsResponse ListBuyerHotspots ()
+> ListBuyerHotspotsResponse ListBuyerHotspots (string targetType, string targetId)
 
 Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
 
@@ -18557,11 +18935,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var targetType = "story";  // string | 
+            var targetId = "targetId_example";  // string | 
 
             try
             {
                 // Shop-the-look tags on a story or lookbook photo: each tagged listing and where it sits on the image (x, y as fractions).
-                ListBuyerHotspotsResponse result = apiInstance.ListBuyerHotspots();
+                ListBuyerHotspotsResponse result = apiInstance.ListBuyerHotspots(targetType, targetId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -18576,7 +18956,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **targetType** | **string**|  | 
+ **targetId** | **string**|  | 
 
 ### Return type
 
@@ -19185,6 +19569,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListBuyerLoyaltyResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listbuyerloyaltypoints"></a>
+# **ListBuyerLoyaltyPoints**
+> ListBuyerLoyaltyPointsResponse ListBuyerLoyaltyPoints (string clubId)
+
+Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class ListBuyerLoyaltyPointsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var clubId = "clubId_example";  // string | 
+
+            try
+            {
+                // Your points history at a club: purchases, hunts, event check-ins, photo reviews, group buys and rewards you redeemed.
+                ListBuyerLoyaltyPointsResponse result = apiInstance.ListBuyerLoyaltyPoints(clubId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.ListBuyerLoyaltyPoints: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **clubId** | **string**|  | 
+
+### Return type
+
+**ListBuyerLoyaltyPointsResponse**
 
 ### Authorization
 
@@ -20195,7 +20657,7 @@ Name | Type | Description  | Notes
 
 <a name="listbuyerregistrysearch"></a>
 # **ListBuyerRegistrySearch**
-> ListBuyerRegistrySearchResponse ListBuyerRegistrySearch ()
+> ListBuyerRegistrySearchResponse ListBuyerRegistrySearch (string q = null)
 
 Find a registry by its name or the registrant’s name. Current and recent registries only.
 
@@ -20219,11 +20681,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var q = "q_example";  // string |  (optional) 
 
             try
             {
                 // Find a registry by its name or the registrant’s name. Current and recent registries only.
-                ListBuyerRegistrySearchResponse result = apiInstance.ListBuyerRegistrySearch();
+                ListBuyerRegistrySearchResponse result = apiInstance.ListBuyerRegistrySearch(q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -20238,7 +20701,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
 
 ### Return type
 
@@ -20565,7 +21031,7 @@ This endpoint does not need any parameter.
 
 <a name="listbuyerstorelistings"></a>
 # **ListBuyerStoreListings**
-> ListBuyerStoreListingsResponse ListBuyerStoreListings (string slug)
+> ListBuyerStoreListingsResponse ListBuyerStoreListings (string slug, string tag = null, string category = null, string sub = null, string q = null, string sort = null, string f = null, decimal? limit = null, decimal? offset = null)
 
 A store's live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
 
@@ -20590,11 +21056,19 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var slug = "slug_example";  // string | 
+            var tag = "tag_example";  // string |  (optional) 
+            var category = "category_example";  // string |  (optional) 
+            var sub = "sub_example";  // string |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var sort = "title";  // string |  (optional) 
+            var f = "f_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // A store's live listings, filtered by tag, category, text and program chips (f: on_sale, discount_eligible, code_eligible, group_buy_active, rentable, wholesale_available…; all must hold), sorted; each card carries its program badges.
-                ListBuyerStoreListingsResponse result = apiInstance.ListBuyerStoreListings(slug);
+                ListBuyerStoreListingsResponse result = apiInstance.ListBuyerStoreListings(slug, tag, category, sub, q, sort, f, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -20613,6 +21087,14 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **tag** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **sub** | **string**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **f** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -23169,7 +23651,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebuyerboard"></a>
 # **UpdateBuyerBoard**
-> BuyerResponse UpdateBuyerBoard (string id)
+> BuyerResponse UpdateBuyerBoard (string id, UpdateBuyerBoardRequest updateBuyerBoardRequest)
 
 Rename a board, change its description, or make it public / private.
 
@@ -23194,11 +23676,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var updateBuyerBoardRequest = new UpdateBuyerBoardRequest(); // UpdateBuyerBoardRequest | 
 
             try
             {
                 // Rename a board, change its description, or make it public / private.
-                BuyerResponse result = apiInstance.UpdateBuyerBoard(id);
+                BuyerResponse result = apiInstance.UpdateBuyerBoard(id, updateBuyerBoardRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23217,6 +23700,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateBuyerBoardRequest** | **UpdateBuyerBoardRequest**|  | 
 
 ### Return type
 
@@ -23228,7 +23712,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23247,7 +23731,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebuyerboardlayout"></a>
 # **UpdateBuyerBoardLayout**
-> BuyerBoardResponse UpdateBuyerBoardLayout (string id)
+> BuyerBoardResponse UpdateBuyerBoardLayout (string id, UpdateBuyerBoardLayoutRequest updateBuyerBoardLayoutRequest)
 
 Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
 
@@ -23272,11 +23756,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var updateBuyerBoardLayoutRequest = new UpdateBuyerBoardLayoutRequest(); // UpdateBuyerBoardLayoutRequest | 
 
             try
             {
                 // Replace a board’s layout: items by platform listing id or slug, with x, y, w (0–1) and z. At most 40.
-                BuyerBoardResponse result = apiInstance.UpdateBuyerBoardLayout(id);
+                BuyerBoardResponse result = apiInstance.UpdateBuyerBoardLayout(id, updateBuyerBoardLayoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23295,6 +23780,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateBuyerBoardLayoutRequest** | **UpdateBuyerBoardLayoutRequest**|  | 
 
 ### Return type
 
@@ -23306,7 +23792,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23325,7 +23811,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebuyercollectionsetleaderboard"></a>
 # **UpdateBuyerCollectionSetLeaderboard**
-> UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard ()
+> UpdateBuyerCollectionSetLeaderboardResponse UpdateBuyerCollectionSetLeaderboard (UpdateBuyerCollectionSetLeaderboardRequest updateBuyerCollectionSetLeaderboardRequest)
 
 Show or hide yourself (by your public handle) on set leaderboards.
 
@@ -23349,11 +23835,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var updateBuyerCollectionSetLeaderboardRequest = new UpdateBuyerCollectionSetLeaderboardRequest(); // UpdateBuyerCollectionSetLeaderboardRequest | 
 
             try
             {
                 // Show or hide yourself (by your public handle) on set leaderboards.
-                UpdateBuyerCollectionSetLeaderboardResponse result = apiInstance.UpdateBuyerCollectionSetLeaderboard();
+                UpdateBuyerCollectionSetLeaderboardResponse result = apiInstance.UpdateBuyerCollectionSetLeaderboard(updateBuyerCollectionSetLeaderboardRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23368,7 +23855,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerCollectionSetLeaderboardRequest** | **UpdateBuyerCollectionSetLeaderboardRequest**|  | 
 
 ### Return type
 
@@ -23380,7 +23870,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23791,7 +24281,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebuyerhome"></a>
 # **UpdateBuyerHome**
-> BuyerHomeResponse UpdateBuyerHome ()
+> BuyerHomeResponse UpdateBuyerHome (UpdateBuyerHomeRequest updateBuyerHomeRequest = null)
 
 Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
 
@@ -23815,11 +24305,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var updateBuyerHomeRequest = new UpdateBuyerHomeRequest(); // UpdateBuyerHomeRequest |  (optional) 
 
             try
             {
                 // Who may walk in (privacy), the lighting (theme), wallpaper/floor/mood decor and whether visitors see your vault wall values.
-                BuyerHomeResponse result = apiInstance.UpdateBuyerHome();
+                BuyerHomeResponse result = apiInstance.UpdateBuyerHome(updateBuyerHomeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23834,7 +24325,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerHomeRequest** | **UpdateBuyerHomeRequest**|  | [optional] 
 
 ### Return type
 
@@ -23846,7 +24340,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23865,7 +24359,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebuyerhomebuilder"></a>
 # **UpdateBuyerHomeBuilder**
-> ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder ()
+> ListBuyerHomeBuildersResponse UpdateBuyerHomeBuilder (UpdateBuyerHomeBuilderRequest updateBuyerHomeBuilderRequest = null)
 
 Set your co-builders (friends only, at most 4).
 
@@ -23889,11 +24383,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var updateBuyerHomeBuilderRequest = new UpdateBuyerHomeBuilderRequest(); // UpdateBuyerHomeBuilderRequest |  (optional) 
 
             try
             {
                 // Set your co-builders (friends only, at most 4).
-                ListBuyerHomeBuildersResponse result = apiInstance.UpdateBuyerHomeBuilder();
+                ListBuyerHomeBuildersResponse result = apiInstance.UpdateBuyerHomeBuilder(updateBuyerHomeBuilderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23908,7 +24403,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerHomeBuilderRequest** | **UpdateBuyerHomeBuilderRequest**|  | [optional] 
 
 ### Return type
 
@@ -23920,7 +24418,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23939,7 +24437,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebuyerhomelayout"></a>
 # **UpdateBuyerHomeLayout**
-> BuyerHomeResponse UpdateBuyerHomeLayout ()
+> BuyerHomeResponse UpdateBuyerHomeLayout (UpdateBuyerHomeLayoutRequest updateBuyerHomeLayoutRequest = null)
 
 Arrange your home: the whole layout, checked against what you own.
 
@@ -23963,11 +24461,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerApi(config);
+            var updateBuyerHomeLayoutRequest = new UpdateBuyerHomeLayoutRequest(); // UpdateBuyerHomeLayoutRequest |  (optional) 
 
             try
             {
                 // Arrange your home: the whole layout, checked against what you own.
-                BuyerHomeResponse result = apiInstance.UpdateBuyerHomeLayout();
+                BuyerHomeResponse result = apiInstance.UpdateBuyerHomeLayout(updateBuyerHomeLayoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23982,7 +24481,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerHomeLayoutRequest** | **UpdateBuyerHomeLayoutRequest**|  | [optional] 
 
 ### Return type
 
@@ -23994,7 +24496,85 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatebuyerhomepetactive"></a>
+# **UpdateBuyerHomePetActive**
+> UpdateBuyerHomePetActiveResponse UpdateBuyerHomePetActive (UpdateBuyerHomePetActiveRequest updateBuyerHomePetActiveRequest = null)
+
+Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.buyer.Api;
+using net.crossly.buyer.Client;
+using net.crossly.buyer.Model;
+
+namespace Example
+{
+    public class UpdateBuyerHomePetActiveExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: BuyerOAuth
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new BuyerApi(config);
+            var updateBuyerHomePetActiveRequest = new UpdateBuyerHomePetActiveRequest(); // UpdateBuyerHomePetActiveRequest |  (optional) 
+
+            try
+            {
+                // Walk one of your pets with you in the world, or none (kind: null). Only a pet you have earned.
+                UpdateBuyerHomePetActiveResponse result = apiInstance.UpdateBuyerHomePetActive(updateBuyerHomePetActiveRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling BuyerApi.UpdateBuyerHomePetActive: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerHomePetActiveRequest** | **UpdateBuyerHomePetActiveRequest**|  | [optional] 
+
+### Return type
+
+**UpdateBuyerHomePetActiveResponse**
+
+### Authorization
+
+[BuyerOAuth](../README.md#BuyerOAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24249,7 +24829,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebuyerregistry"></a>
 # **UpdateBuyerRegistry**
-> BuyerRegistryResponse UpdateBuyerRegistry (string id)
+> BuyerRegistryResponse UpdateBuyerRegistry (string id, CreateBuyerRegistryRequest createBuyerRegistryRequest = null)
 
 Edit a registry: title, kind, date, message, ship-to address.
 
@@ -24274,11 +24854,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
+            var createBuyerRegistryRequest = new CreateBuyerRegistryRequest(); // CreateBuyerRegistryRequest |  (optional) 
 
             try
             {
                 // Edit a registry: title, kind, date, message, ship-to address.
-                BuyerRegistryResponse result = apiInstance.UpdateBuyerRegistry(id);
+                BuyerRegistryResponse result = apiInstance.UpdateBuyerRegistry(id, createBuyerRegistryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24297,6 +24878,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerRegistryRequest** | **CreateBuyerRegistryRequest**|  | [optional] 
 
 ### Return type
 
@@ -24308,7 +24890,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24327,7 +24909,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebuyerregistryitem"></a>
 # **UpdateBuyerRegistryItem**
-> UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem (string id, string platformListingId)
+> UpdateBuyerRegistryItemResponse UpdateBuyerRegistryItem (string id, string platformListingId, UpdateBuyerRegistryItemRequest updateBuyerRegistryItemRequest)
 
 How many of an item you want (1–50).
 
@@ -24353,11 +24935,12 @@ namespace Example
             var apiInstance = new BuyerApi(config);
             var id = "id_example";  // string | 
             var platformListingId = "platformListingId_example";  // string | 
+            var updateBuyerRegistryItemRequest = new UpdateBuyerRegistryItemRequest(); // UpdateBuyerRegistryItemRequest | 
 
             try
             {
                 // How many of an item you want (1–50).
-                UpdateBuyerRegistryItemResponse result = apiInstance.UpdateBuyerRegistryItem(id, platformListingId);
+                UpdateBuyerRegistryItemResponse result = apiInstance.UpdateBuyerRegistryItem(id, platformListingId, updateBuyerRegistryItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24377,6 +24960,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **platformListingId** | **string**|  | 
+ **updateBuyerRegistryItemRequest** | **UpdateBuyerRegistryItemRequest**|  | 
 
 ### Return type
 
@@ -24388,7 +24972,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

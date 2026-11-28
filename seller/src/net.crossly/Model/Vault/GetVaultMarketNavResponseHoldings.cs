@@ -54,7 +54,7 @@ namespace net.crossly.Model
         /// <param name="bid">bid (required).</param>
         /// <param name="liquidation">liquidation (required).</param>
         /// <param name="administratorMark">administratorMark.</param>
-        public GetVaultMarketNavResponseHoldings(string bookKey = default(string), string title = default(string), string category = default(string), string grader = default(string), decimal units = default(decimal), decimal sellableUnits = default(decimal), decimal pledgedUnits = default(decimal), decimal lentUnits = default(decimal), decimal? insuredValueCents = default(decimal?), GetVaultMarketNavResponseHoldingsMark mark = default(GetVaultMarketNavResponseHoldingsMark), GetVaultMarketNavResponseHoldingsAsc820 asc820 = default(GetVaultMarketNavResponseHoldingsAsc820), decimal markValueCents = default(decimal), GetVaultMarketNavResponseHoldingsBid bid = default(GetVaultMarketNavResponseHoldingsBid), GetVaultMarketNavResponseHoldingsLiquidation liquidation = default(GetVaultMarketNavResponseHoldingsLiquidation), GetVaultMarketNavResponseHoldingsAdministratorMark administratorMark = default(GetVaultMarketNavResponseHoldingsAdministratorMark))
+        public GetVaultMarketNavResponseHoldings(string bookKey = default(string), string title = default(string), string category = default(string), string grader = default(string), decimal units = default(decimal), decimal sellableUnits = default(decimal), decimal pledgedUnits = default(decimal), decimal lentUnits = default(decimal), decimal? insuredValueCents = default(decimal?), GetVaultMarketNavResponseHoldingsMark mark = default(GetVaultMarketNavResponseHoldingsMark), ReasonRequest asc820 = default(ReasonRequest), decimal markValueCents = default(decimal), GetVaultMarketNavResponseHoldingsBid bid = default(GetVaultMarketNavResponseHoldingsBid), GetVaultMarketNavResponseHoldingsLiquidation liquidation = default(GetVaultMarketNavResponseHoldingsLiquidation), GetVaultMarketNavResponseHoldingsAdministratorMark administratorMark = default(GetVaultMarketNavResponseHoldingsAdministratorMark))
         {
             // to ensure "bookKey" is required (not null)
             if (bookKey == null) {
@@ -161,7 +161,7 @@ namespace net.crossly.Model
         /// Gets or Sets Asc820
         /// </summary>
         [DataMember(Name = "asc820", IsRequired = true, EmitDefaultValue = false)]
-        public GetVaultMarketNavResponseHoldingsAsc820 Asc820 { get; set; }
+        public ReasonRequest Asc820 { get; set; }
 
         /// <summary>
         /// Gets or Sets MarkValueCents

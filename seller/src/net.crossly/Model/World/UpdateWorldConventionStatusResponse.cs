@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="UpdateWorldConventionStatusResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public UpdateWorldConventionStatusResponse(UpdateWorldConventionStatusResponseData data = default(UpdateWorldConventionStatusResponseData))
+        public UpdateWorldConventionStatusResponse(UpdateWorldConventionStatusRequest data = default(UpdateWorldConventionStatusRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public UpdateWorldConventionStatusResponseData Data { get; set; }
+        public UpdateWorldConventionStatusRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

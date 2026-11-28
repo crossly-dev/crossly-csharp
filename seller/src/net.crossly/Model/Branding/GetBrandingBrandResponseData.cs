@@ -46,7 +46,7 @@ namespace net.crossly.Model
         /// <param name="story">story.</param>
         /// <param name="links">links (required).</param>
         /// <param name="verifiedAt">The verified badge: set by Crossly staff in the admin portal..</param>
-        public GetBrandingBrandResponseData(string brandName = default(string), string brandSlug = default(string), string logoUrl = default(string), string bannerUrl = default(string), string story = default(string), List<ListAppsItemDocsLinks> links = default(List<ListAppsItemDocsLinks>), string verifiedAt = default(string))
+        public GetBrandingBrandResponseData(string brandName = default(string), string brandSlug = default(string), string logoUrl = default(string), string bannerUrl = default(string), string story = default(string), List<LabelUrl> links = default(List<LabelUrl>), string verifiedAt = default(string))
         {
             // to ensure "brandName" is required (not null)
             if (brandName == null) {
@@ -99,7 +99,7 @@ namespace net.crossly.Model
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "links", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListAppsItemDocsLinks> Links { get; set; }
+        public List<LabelUrl> Links { get; set; }
 
         /// <summary>
         /// The verified badge: set by Crossly staff in the admin portal.

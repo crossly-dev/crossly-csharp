@@ -32,22 +32,22 @@ namespace net.crossly.Model
     public enum GetDiscountHolderResponseDataChannelsItem
     {
         /// <summary>
+        /// Enum Storefront for value: storefront
+        /// </summary>
+        [EnumMember(Value = "storefront")]
+        Storefront = 1,
+
+        /// <summary>
         /// Enum Live for value: live
         /// </summary>
         [EnumMember(Value = "live")]
-        Live = 1,
+        Live = 2,
 
         /// <summary>
         /// Enum Marketplace for value: marketplace
         /// </summary>
         [EnumMember(Value = "marketplace")]
-        Marketplace = 2,
-
-        /// <summary>
-        /// Enum Storefront for value: storefront
-        /// </summary>
-        [EnumMember(Value = "storefront")]
-        Storefront = 3,
+        Marketplace = 3,
 
         /// <summary>
         /// Enum Rentals for value: rentals

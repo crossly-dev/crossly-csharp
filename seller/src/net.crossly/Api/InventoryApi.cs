@@ -66,8 +66,9 @@ namespace net.crossly.Api
         /// Create a new inventory item.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <returns>CreateInventoryResponse</returns>
-        CreateInventoryResponse CreateInventory();
+        CreateInventoryResponse CreateInventory(CreateInventoryRequest createInventoryRequest);
 
         /// <summary>
         /// Create a new inventory item.
@@ -76,14 +77,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInventoryResponse</returns>
-        ApiResponse<CreateInventoryResponse> CreateInventoryWithHttpInfo();
+        ApiResponse<CreateInventoryResponse> CreateInventoryWithHttpInfo(CreateInventoryRequest createInventoryRequest);
         /// <summary>
         /// Bulk archive inventory items (soft).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateInventoryBulkArchiveResponse</returns>
-        CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive();
+        CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive(CreateListingByIdRequest createListingByIdRequest);
 
         /// <summary>
         /// Bulk archive inventory items (soft).
@@ -92,14 +95,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkArchiveResponse</returns>
-        ApiResponse<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveWithHttpInfo();
+        ApiResponse<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveWithHttpInfo(CreateListingByIdRequest createListingByIdRequest);
         /// <summary>
         /// Bulk delete inventory items (delinks listings).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <returns>CreateInventoryBulkDeleteResponse</returns>
-        CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete();
+        CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest);
 
         /// <summary>
         /// Bulk delete inventory items (delinks listings).
@@ -108,14 +113,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkDeleteResponse</returns>
-        ApiResponse<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteWithHttpInfo();
+        ApiResponse<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteWithHttpInfo(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest);
         /// <summary>
         /// Bulk add/remove labels on inventory items.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <returns>CreateListingBulkUpdateResponse</returns>
-        CreateListingBulkUpdateResponse CreateInventoryBulkLabel();
+        CreateListingBulkUpdateResponse CreateInventoryBulkLabel(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest);
 
         /// <summary>
         /// Bulk add/remove labels on inventory items.
@@ -124,8 +131,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <returns>ApiResponse of CreateListingBulkUpdateResponse</returns>
-        ApiResponse<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelWithHttpInfo();
+        ApiResponse<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelWithHttpInfo(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest);
         /// <summary>
         /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
         /// </summary>
@@ -149,8 +157,9 @@ namespace net.crossly.Api
         /// Restore archived inventory items (status returns to active, or sold_out when no stock).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateInventoryBulkRestoreResponse</returns>
-        CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore();
+        CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore(CreateListingByIdRequest createListingByIdRequest);
 
         /// <summary>
         /// Restore archived inventory items (status returns to active, or sold_out when no stock).
@@ -159,8 +168,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkRestoreResponse</returns>
-        ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo();
+        ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo(CreateListingByIdRequest createListingByIdRequest);
         /// <summary>
         /// Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
         /// </summary>
@@ -183,8 +193,9 @@ namespace net.crossly.Api
         /// Export inventory as CSV. Round-trips back through csv/import.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <returns>string</returns>
-        string CreateInventoryCsvExport();
+        string CreateInventoryCsvExport(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest));
 
         /// <summary>
         /// Export inventory as CSV. Round-trips back through csv/import.
@@ -193,14 +204,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CreateInventoryCsvExportWithHttpInfo();
+        ApiResponse<string> CreateInventoryCsvExportWithHttpInfo(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest));
         /// <summary>
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <returns>CreateInventoryCsvImportResponse</returns>
-        CreateInventoryCsvImportResponse CreateInventoryCsvImport();
+        CreateInventoryCsvImportResponse CreateInventoryCsvImport(CreateInventoryCsvImportRequest createInventoryCsvImportRequest);
 
         /// <summary>
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
@@ -209,14 +222,39 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <returns>ApiResponse of CreateInventoryCsvImportResponse</returns>
-        ApiResponse<CreateInventoryCsvImportResponse> CreateInventoryCsvImportWithHttpInfo();
+        ApiResponse<CreateInventoryCsvImportResponse> CreateInventoryCsvImportWithHttpInfo(CreateInventoryCsvImportRequest createInventoryCsvImportRequest);
+        /// <summary>
+        /// Release an inventory hold.
+        /// </summary>
+        /// <remarks>
+        /// Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <returns>CreateInventoryHoldReleaseResponse</returns>
+        CreateInventoryHoldReleaseResponse CreateInventoryHoldRelease(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest));
+
+        /// <summary>
+        /// Release an inventory hold.
+        /// </summary>
+        /// <remarks>
+        /// Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateInventoryHoldReleaseResponse</returns>
+        ApiResponse<CreateInventoryHoldReleaseResponse> CreateInventoryHoldReleaseWithHttpInfo(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest));
         /// <summary>
         /// Rename a label across every inventory item.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <returns>UpdatedResponse</returns>
-        UpdatedResponse CreateInventoryLabelRename();
+        UpdatedResponse CreateInventoryLabelRename(CreateListingTagRenameRequest createListingTagRenameRequest);
 
         /// <summary>
         /// Rename a label across every inventory item.
@@ -225,14 +263,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <returns>ApiResponse of UpdatedResponse</returns>
-        ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo();
+        ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo(CreateListingTagRenameRequest createListingTagRenameRequest);
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <returns>CreateInventoryMergeResponse</returns>
-        CreateInventoryMergeResponse CreateInventoryMerge();
+        CreateInventoryMergeResponse CreateInventoryMerge(CreateInventoryMergeRequest createInventoryMergeRequest);
 
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
@@ -241,8 +281,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <returns>ApiResponse of CreateInventoryMergeResponse</returns>
-        ApiResponse<CreateInventoryMergeResponse> CreateInventoryMergeWithHttpInfo();
+        ApiResponse<CreateInventoryMergeResponse> CreateInventoryMergeWithHttpInfo(CreateInventoryMergeRequest createInventoryMergeRequest);
         /// <summary>
         /// Record a serial, IMEI, or licence key against an inventory item.
         /// </summary>
@@ -251,8 +292,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <returns>CreateInventoryUnitIdentifierResponse</returns>
-        CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier(string id);
+        CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest);
 
         /// <summary>
         /// Record a serial, IMEI, or licence key against an inventory item.
@@ -262,8 +304,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <returns>ApiResponse of CreateInventoryUnitIdentifierResponse</returns>
-        ApiResponse<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierWithHttpInfo(string id);
+        ApiResponse<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierWithHttpInfo(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest);
         /// <summary>
         /// Find a unit by identifier.
         /// </summary>
@@ -271,8 +314,9 @@ namespace net.crossly.Api
         /// \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <returns>CreateInventoryUnitLookupResponse</returns>
-        CreateInventoryUnitLookupResponse CreateInventoryUnitLookup();
+        CreateInventoryUnitLookupResponse CreateInventoryUnitLookup(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest);
 
         /// <summary>
         /// Find a unit by identifier.
@@ -281,8 +325,9 @@ namespace net.crossly.Api
         /// \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <returns>ApiResponse of CreateInventoryUnitLookupResponse</returns>
-        ApiResponse<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupWithHttpInfo();
+        ApiResponse<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupWithHttpInfo(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest);
         /// <summary>
         /// Offer your plot for lease.
         /// </summary>
@@ -617,46 +662,6 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWorldCrewLeaveResponse</returns>
         ApiResponse<CreateWorldCrewLeaveResponse> DeleteSpatialStreetPlotWithHttpInfo(string slug);
         /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <returns>GetAnalyticInventoryResponse</returns>
-        GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
-
-        /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
-        ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?));
-        /// <summary>
         /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -846,8 +851,10 @@ namespace net.crossly.Api
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <returns>GetInventorySellThroughResponse</returns>
-        GetInventorySellThroughResponse GetInventorySellThrough();
+        GetInventorySellThroughResponse GetInventorySellThrough(string start = default(string), string end = default(string));
 
         /// <summary>
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
@@ -856,8 +863,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <returns>ApiResponse of GetInventorySellThroughResponse</returns>
-        ApiResponse<GetInventorySellThroughResponse> GetInventorySellThroughWithHttpInfo();
+        ApiResponse<GetInventorySellThroughResponse> GetInventorySellThroughWithHttpInfo(string start = default(string), string end = default(string));
         /// <summary>
         /// Check whether a SKU is already in use on this user&#39;s inventory.
         /// </summary>
@@ -880,8 +889,9 @@ namespace net.crossly.Api
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetInventoryValueHistoryResponse</returns>
-        GetInventoryValueHistoryResponse GetInventoryValueHistory();
+        GetInventoryValueHistoryResponse GetInventoryValueHistory(decimal? days = default(decimal?));
 
         /// <summary>
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
@@ -890,8 +900,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetInventoryValueHistoryResponse</returns>
-        ApiResponse<GetInventoryValueHistoryResponse> GetInventoryValueHistoryWithHttpInfo();
+        ApiResponse<GetInventoryValueHistoryResponse> GetInventoryValueHistoryWithHttpInfo(decimal? days = default(decimal?));
         /// <summary>
         /// The Crossly World Main Stage right now: the live show (title, kind, host lineup), the stream on its big screen while a lineup host is on air, how many people are there (it holds 64 per copy and opens copies as it fills) and what is on next.
         /// </summary>
@@ -1457,10 +1468,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ListInventoryResponse</returns>
-        ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
+        ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
 
         /// <summary>
         /// List inventory items.
@@ -1476,10 +1488,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ApiResponse of ListInventoryResponse</returns>
-        ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
+        ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?));
         /// <summary>
         /// Activity log for an inventory item (created/sold/edited/etc.).
         /// </summary>
@@ -1500,6 +1513,48 @@ namespace net.crossly.Api
         /// <param name="limit"> (optional, default to 50)</param>
         /// <returns>ApiResponse of ListInventoryActivityResponse</returns>
         ApiResponse<ListInventoryActivityResponse> ListInventoryActivityWithHttpInfo(Guid id, int? limit = default(int?));
+        /// <summary>
+        /// List the stock problems the holds ledger finds.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListInventoryHoldIssuesResponse</returns>
+        ListInventoryHoldIssuesResponse ListInventoryHoldIssues();
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListInventoryHoldIssuesResponse</returns>
+        ApiResponse<ListInventoryHoldIssuesResponse> ListInventoryHoldIssuesWithHttpInfo();
+        /// <summary>
+        /// List the holds on an inventory item.
+        /// </summary>
+        /// <remarks>
+        /// Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <returns>ListInventoryHoldsResponse</returns>
+        ListInventoryHoldsResponse ListInventoryHolds(string id, string history = default(string));
+
+        /// <summary>
+        /// List the holds on an inventory item.
+        /// </summary>
+        /// <remarks>
+        /// Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <returns>ApiResponse of ListInventoryHoldsResponse</returns>
+        ApiResponse<ListInventoryHoldsResponse> ListInventoryHoldsWithHttpInfo(string id, string history = default(string));
         /// <summary>
         /// Filter inventory → return matching id list.
         /// </summary>
@@ -1861,20 +1916,20 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListSpatialStaffingResponse</returns>
         ApiResponse<ListSpatialStaffingResponse> ListSpatialStaffingWithHttpInfo();
         /// <summary>
-        /// Your streets.
+        /// Streets your store holds.
         /// </summary>
         /// <remarks>
-        /// Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListSpatialStreetMineResponse</returns>
         ListSpatialStreetMineResponse ListSpatialStreetMine();
 
         /// <summary>
-        /// Your streets.
+        /// Streets your store holds.
         /// </summary>
         /// <remarks>
-        /// Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListSpatialStreetMineResponse</returns>
@@ -1955,8 +2010,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <returns>CreateInventoryResponse</returns>
-        CreateInventoryResponse UpdateInventory(Guid id);
+        CreateInventoryResponse UpdateInventory(Guid id, UpdateInventoryRequest updateInventoryRequest);
 
         /// <summary>
         /// Update an inventory item (partial).
@@ -1966,8 +2022,43 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInventoryResponse</returns>
-        ApiResponse<CreateInventoryResponse> UpdateInventoryWithHttpInfo(Guid id);
+        ApiResponse<CreateInventoryResponse> UpdateInventoryWithHttpInfo(Guid id, UpdateInventoryRequest updateInventoryRequest);
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UpdateOrderAssigneeResponse</returns>
+        UpdateOrderAssigneeResponse UpdateInventoryAssignee();
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UpdateOrderAssigneeResponse</returns>
+        ApiResponse<UpdateOrderAssigneeResponse> UpdateInventoryAssigneeWithHttpInfo();
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateOrderAssigneeByIdResponse</returns>
+        UpdateOrderAssigneeByIdResponse UpdateInventoryAssigneeById(string id);
+
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateOrderAssigneeByIdResponse</returns>
+        ApiResponse<UpdateOrderAssigneeByIdResponse> UpdateInventoryAssigneeByIdWithHttpInfo(string id);
         /// <summary>
         /// Create or replace the shop employee in one of your rooms.
         /// </summary>
@@ -1975,8 +2066,9 @@ namespace net.crossly.Api
         /// A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <returns>UpdateSpatialEmployeeConfigResponse</returns>
-        UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig();
+        UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest));
 
         /// <summary>
         /// Create or replace the shop employee in one of your rooms.
@@ -1985,8 +2077,9 @@ namespace net.crossly.Api
         /// A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateSpatialEmployeeConfigResponse</returns>
-        ApiResponse<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigWithHttpInfo();
+        ApiResponse<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigWithHttpInfo(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest));
         /// <summary>
         /// Set a staff member&#39;s weekly wage.
         /// </summary>
@@ -2070,9 +2163,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryResponse> CreateInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryResponse> CreateInventoryAsync(CreateInventoryRequest createInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a new inventory item.
@@ -2081,9 +2175,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryResponse>> CreateInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryResponse>> CreateInventoryWithHttpInfoAsync(CreateInventoryRequest createInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk archive inventory items (soft).
         /// </summary>
@@ -2091,9 +2186,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkArchiveResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk archive inventory items (soft).
@@ -2102,9 +2198,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkArchiveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkArchiveResponse>> CreateInventoryBulkArchiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkArchiveResponse>> CreateInventoryBulkArchiveWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk delete inventory items (delinks listings).
         /// </summary>
@@ -2112,9 +2209,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkDeleteResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteAsync(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk delete inventory items (delinks listings).
@@ -2123,9 +2221,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkDeleteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkDeleteResponse>> CreateInventoryBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkDeleteResponse>> CreateInventoryBulkDeleteWithHttpInfoAsync(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk add/remove labels on inventory items.
         /// </summary>
@@ -2133,9 +2232,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingBulkUpdateResponse</returns>
-        System.Threading.Tasks.Task<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelAsync(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk add/remove labels on inventory items.
@@ -2144,9 +2244,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingBulkUpdateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingBulkUpdateResponse>> CreateInventoryBulkLabelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingBulkUpdateResponse>> CreateInventoryBulkLabelWithHttpInfoAsync(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set / add / subtract stock across many items, or set a stock per item; syncs live listings.
         /// </summary>
@@ -2175,9 +2276,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkRestoreResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Restore archived inventory items (status returns to active, or sold_out when no stock).
@@ -2186,9 +2288,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkRestoreResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
         /// </summary>
@@ -2219,9 +2322,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CreateInventoryCsvExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreateInventoryCsvExportAsync(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Export inventory as CSV. Round-trips back through csv/import.
@@ -2230,9 +2334,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CreateInventoryCsvExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreateInventoryCsvExportWithHttpInfoAsync(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
         /// </summary>
@@ -2240,9 +2345,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryCsvImportResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryCsvImportResponse> CreateInventoryCsvImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryCsvImportResponse> CreateInventoryCsvImportAsync(CreateInventoryCsvImportRequest createInventoryCsvImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
@@ -2251,9 +2357,35 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryCsvImportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryCsvImportResponse>> CreateInventoryCsvImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryCsvImportResponse>> CreateInventoryCsvImportWithHttpInfoAsync(CreateInventoryCsvImportRequest createInventoryCsvImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Release an inventory hold.
+        /// </summary>
+        /// <remarks>
+        /// Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateInventoryHoldReleaseResponse</returns>
+        System.Threading.Tasks.Task<CreateInventoryHoldReleaseResponse> CreateInventoryHoldReleaseAsync(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Release an inventory hold.
+        /// </summary>
+        /// <remarks>
+        /// Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInventoryHoldReleaseResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryHoldReleaseResponse>> CreateInventoryHoldReleaseWithHttpInfoAsync(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rename a label across every inventory item.
         /// </summary>
@@ -2261,9 +2393,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatedResponse</returns>
-        System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(CreateListingTagRenameRequest createListingTagRenameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rename a label across every inventory item.
@@ -2272,9 +2405,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(CreateListingTagRenameRequest createListingTagRenameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
         /// </summary>
@@ -2282,9 +2416,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryMergeResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryMergeResponse> CreateInventoryMergeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryMergeResponse> CreateInventoryMergeAsync(CreateInventoryMergeRequest createInventoryMergeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Merge inventory items that are the same physical item into one (stock is not summed).
@@ -2293,9 +2428,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryMergeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryMergeResponse>> CreateInventoryMergeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryMergeResponse>> CreateInventoryMergeWithHttpInfoAsync(CreateInventoryMergeRequest createInventoryMergeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Record a serial, IMEI, or licence key against an inventory item.
         /// </summary>
@@ -2304,9 +2440,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryUnitIdentifierResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierAsync(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record a serial, IMEI, or licence key against an inventory item.
@@ -2316,9 +2453,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryUnitIdentifierResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryUnitIdentifierResponse>> CreateInventoryUnitIdentifierWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryUnitIdentifierResponse>> CreateInventoryUnitIdentifierWithHttpInfoAsync(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Find a unit by identifier.
         /// </summary>
@@ -2326,9 +2464,10 @@ namespace net.crossly.Api
         /// \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryUnitLookupResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupAsync(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Find a unit by identifier.
@@ -2337,9 +2476,10 @@ namespace net.crossly.Api
         /// \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryUnitLookupResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryUnitLookupResponse>> CreateInventoryUnitLookupWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryUnitLookupResponse>> CreateInventoryUnitLookupWithHttpInfoAsync(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Offer your plot for lease.
         /// </summary>
@@ -2709,51 +2849,6 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWorldCrewLeaveResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWorldCrewLeaveResponse>> DeleteSpatialStreetPlotWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetAnalyticInventoryResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
         /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
         /// </summary>
         /// <remarks>
@@ -3001,9 +3096,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetInventorySellThroughResponse</returns>
-        System.Threading.Tasks.Task<GetInventorySellThroughResponse> GetInventorySellThroughAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetInventorySellThroughResponse> GetInventorySellThroughAsync(string start = default(string), string end = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
@@ -3012,9 +3109,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetInventorySellThroughResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInventorySellThroughResponse>> GetInventorySellThroughWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetInventorySellThroughResponse>> GetInventorySellThroughWithHttpInfoAsync(string start = default(string), string end = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Check whether a SKU is already in use on this user&#39;s inventory.
         /// </summary>
@@ -3045,9 +3144,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetInventoryValueHistoryResponse</returns>
-        System.Threading.Tasks.Task<GetInventoryValueHistoryResponse> GetInventoryValueHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetInventoryValueHistoryResponse> GetInventoryValueHistoryAsync(decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
@@ -3056,9 +3156,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetInventoryValueHistoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInventoryValueHistoryResponse>> GetInventoryValueHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetInventoryValueHistoryResponse>> GetInventoryValueHistoryWithHttpInfoAsync(decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The Crossly World Main Stage right now: the live show (title, kind, host lineup), the stream on its big screen while a lineup host is on air, how many people are there (it holds 64 per copy and opens copies as it fills) and what is on next.
         /// </summary>
@@ -3741,11 +3842,12 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInventoryResponse</returns>
-        System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List inventory items.
@@ -3761,11 +3863,12 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Activity log for an inventory item (created/sold/edited/etc.).
         /// </summary>
@@ -3791,6 +3894,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInventoryActivityResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListInventoryActivityResponse>> ListInventoryActivityWithHttpInfoAsync(Guid id, int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List the stock problems the holds ledger finds.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListInventoryHoldIssuesResponse</returns>
+        System.Threading.Tasks.Task<ListInventoryHoldIssuesResponse> ListInventoryHoldIssuesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds.
+        /// </summary>
+        /// <remarks>
+        /// &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListInventoryHoldIssuesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListInventoryHoldIssuesResponse>> ListInventoryHoldIssuesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List the holds on an inventory item.
+        /// </summary>
+        /// <remarks>
+        /// Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListInventoryHoldsResponse</returns>
+        System.Threading.Tasks.Task<ListInventoryHoldsResponse> ListInventoryHoldsAsync(string id, string history = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List the holds on an inventory item.
+        /// </summary>
+        /// <remarks>
+        /// Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListInventoryHoldsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListInventoryHoldsResponse>> ListInventoryHoldsWithHttpInfoAsync(string id, string history = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Filter inventory → return matching id list.
         /// </summary>
@@ -4206,10 +4355,10 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListSpatialStaffingResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListSpatialStaffingResponse>> ListSpatialStaffingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your streets.
+        /// Streets your store holds.
         /// </summary>
         /// <remarks>
-        /// Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -4217,10 +4366,10 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListSpatialStreetMineResponse> ListSpatialStreetMineAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Your streets.
+        /// Streets your store holds.
         /// </summary>
         /// <remarks>
-        /// Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -4322,9 +4471,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryResponse</returns>
-        System.Threading.Tasks.Task<CreateInventoryResponse> UpdateInventoryAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInventoryResponse> UpdateInventoryAsync(Guid id, UpdateInventoryRequest updateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update an inventory item (partial).
@@ -4334,9 +4484,54 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInventoryResponse>> UpdateInventoryWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInventoryResponse>> UpdateInventoryWithHttpInfoAsync(Guid id, UpdateInventoryRequest updateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeResponse</returns>
+        System.Threading.Tasks.Task<UpdateOrderAssigneeResponse> UpdateInventoryAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateOrderAssigneeResponse>> UpdateInventoryAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeByIdResponse</returns>
+        System.Threading.Tasks.Task<UpdateOrderAssigneeByIdResponse> UpdateInventoryAssigneeByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeByIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateOrderAssigneeByIdResponse>> UpdateInventoryAssigneeByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create or replace the shop employee in one of your rooms.
         /// </summary>
@@ -4344,9 +4539,10 @@ namespace net.crossly.Api
         /// A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateSpatialEmployeeConfigResponse</returns>
-        System.Threading.Tasks.Task<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigAsync(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or replace the shop employee in one of your rooms.
@@ -4355,9 +4551,10 @@ namespace net.crossly.Api
         /// A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateSpatialEmployeeConfigResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateSpatialEmployeeConfigResponse>> UpdateSpatialEmployeeConfigWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateSpatialEmployeeConfigResponse>> UpdateSpatialEmployeeConfigWithHttpInfoAsync(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set a staff member&#39;s weekly wage.
         /// </summary>
@@ -4773,10 +4970,11 @@ namespace net.crossly.Api
         /// Create a new inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <returns>CreateInventoryResponse</returns>
-        public CreateInventoryResponse CreateInventory()
+        public CreateInventoryResponse CreateInventory(CreateInventoryRequest createInventoryRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = CreateInventoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = CreateInventoryWithHttpInfo(createInventoryRequest);
             return localVarResponse.Data;
         }
 
@@ -4784,12 +4982,20 @@ namespace net.crossly.Api
         /// Create a new inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryResponse> CreateInventoryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryResponse> CreateInventoryWithHttpInfo(CreateInventoryRequest createInventoryRequest)
         {
+            // verify the required parameter 'createInventoryRequest' is set
+            if (createInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryRequest' when calling InventoryApi->CreateInventory");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4809,6 +5015,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4835,11 +5042,12 @@ namespace net.crossly.Api
         /// Create a new inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryResponse> CreateInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryResponse> CreateInventoryAsync(CreateInventoryRequest createInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = await CreateInventoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = await CreateInventoryWithHttpInfoAsync(createInventoryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4847,14 +5055,22 @@ namespace net.crossly.Api
         /// Create a new inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryResponse>> CreateInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryResponse>> CreateInventoryWithHttpInfoAsync(CreateInventoryRequest createInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryRequest' is set
+            if (createInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryRequest' when calling InventoryApi->CreateInventory");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4874,6 +5090,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4901,10 +5118,11 @@ namespace net.crossly.Api
         /// Bulk archive inventory items (soft). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateInventoryBulkArchiveResponse</returns>
-        public CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive()
+        public CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive(CreateListingByIdRequest createListingByIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> localVarResponse = CreateInventoryBulkArchiveWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> localVarResponse = CreateInventoryBulkArchiveWithHttpInfo(createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -4912,12 +5130,20 @@ namespace net.crossly.Api
         /// Bulk archive inventory items (soft). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkArchiveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveWithHttpInfo(CreateListingByIdRequest createListingByIdRequest)
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling InventoryApi->CreateInventoryBulkArchive");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4937,6 +5163,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4963,11 +5190,12 @@ namespace net.crossly.Api
         /// Bulk archive inventory items (soft). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkArchiveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryBulkArchiveResponse> CreateInventoryBulkArchiveAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> localVarResponse = await CreateInventoryBulkArchiveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse> localVarResponse = await CreateInventoryBulkArchiveWithHttpInfoAsync(createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4975,14 +5203,22 @@ namespace net.crossly.Api
         /// Bulk archive inventory items (soft). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkArchiveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse>> CreateInventoryBulkArchiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkArchiveResponse>> CreateInventoryBulkArchiveWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling InventoryApi->CreateInventoryBulkArchive");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5002,6 +5238,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5029,10 +5266,11 @@ namespace net.crossly.Api
         /// Bulk delete inventory items (delinks listings). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <returns>CreateInventoryBulkDeleteResponse</returns>
-        public CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete()
+        public CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> localVarResponse = CreateInventoryBulkDeleteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> localVarResponse = CreateInventoryBulkDeleteWithHttpInfo(createInventoryBulkDeleteRequest);
             return localVarResponse.Data;
         }
 
@@ -5040,12 +5278,20 @@ namespace net.crossly.Api
         /// Bulk delete inventory items (delinks listings). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkDeleteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteWithHttpInfo(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest)
         {
+            // verify the required parameter 'createInventoryBulkDeleteRequest' is set
+            if (createInventoryBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryBulkDeleteRequest' when calling InventoryApi->CreateInventoryBulkDelete");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5065,6 +5311,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5091,11 +5338,12 @@ namespace net.crossly.Api
         /// Bulk delete inventory items (delinks listings). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkDeleteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryBulkDeleteResponse> CreateInventoryBulkDeleteAsync(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> localVarResponse = await CreateInventoryBulkDeleteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse> localVarResponse = await CreateInventoryBulkDeleteWithHttpInfoAsync(createInventoryBulkDeleteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5103,14 +5351,22 @@ namespace net.crossly.Api
         /// Bulk delete inventory items (delinks listings). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkDeleteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse>> CreateInventoryBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkDeleteResponse>> CreateInventoryBulkDeleteWithHttpInfoAsync(CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryBulkDeleteRequest' is set
+            if (createInventoryBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryBulkDeleteRequest' when calling InventoryApi->CreateInventoryBulkDelete");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5130,6 +5386,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5157,10 +5414,11 @@ namespace net.crossly.Api
         /// Bulk add/remove labels on inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <returns>CreateListingBulkUpdateResponse</returns>
-        public CreateListingBulkUpdateResponse CreateInventoryBulkLabel()
+        public CreateListingBulkUpdateResponse CreateInventoryBulkLabel(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> localVarResponse = CreateInventoryBulkLabelWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> localVarResponse = CreateInventoryBulkLabelWithHttpInfo(createInventoryBulkLabelRequest);
             return localVarResponse.Data;
         }
 
@@ -5168,12 +5426,20 @@ namespace net.crossly.Api
         /// Bulk add/remove labels on inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <returns>ApiResponse of CreateListingBulkUpdateResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelWithHttpInfo(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest)
         {
+            // verify the required parameter 'createInventoryBulkLabelRequest' is set
+            if (createInventoryBulkLabelRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryBulkLabelRequest' when calling InventoryApi->CreateInventoryBulkLabel");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5193,6 +5459,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryBulkLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5219,11 +5486,12 @@ namespace net.crossly.Api
         /// Bulk add/remove labels on inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingBulkUpdateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingBulkUpdateResponse> CreateInventoryBulkLabelAsync(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> localVarResponse = await CreateInventoryBulkLabelWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse> localVarResponse = await CreateInventoryBulkLabelWithHttpInfoAsync(createInventoryBulkLabelRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5231,14 +5499,22 @@ namespace net.crossly.Api
         /// Bulk add/remove labels on inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryBulkLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingBulkUpdateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse>> CreateInventoryBulkLabelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingBulkUpdateResponse>> CreateInventoryBulkLabelWithHttpInfoAsync(CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryBulkLabelRequest' is set
+            if (createInventoryBulkLabelRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryBulkLabelRequest' when calling InventoryApi->CreateInventoryBulkLabel");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5258,6 +5534,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryBulkLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5413,10 +5690,11 @@ namespace net.crossly.Api
         /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateInventoryBulkRestoreResponse</returns>
-        public CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore()
+        public CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore(CreateListingByIdRequest createListingByIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = CreateInventoryBulkRestoreWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = CreateInventoryBulkRestoreWithHttpInfo(createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -5424,12 +5702,20 @@ namespace net.crossly.Api
         /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateInventoryBulkRestoreResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreWithHttpInfo(CreateListingByIdRequest createListingByIdRequest)
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling InventoryApi->CreateInventoryBulkRestore");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5449,6 +5735,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5475,11 +5762,12 @@ namespace net.crossly.Api
         /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryBulkRestoreResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryBulkRestoreResponse> CreateInventoryBulkRestoreAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = await CreateInventoryBulkRestoreWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse> localVarResponse = await CreateInventoryBulkRestoreWithHttpInfoAsync(createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5487,14 +5775,22 @@ namespace net.crossly.Api
         /// Restore archived inventory items (status returns to active, or sold_out when no stock). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryBulkRestoreResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryBulkRestoreResponse>> CreateInventoryBulkRestoreWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling InventoryApi->CreateInventoryBulkRestore");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5514,6 +5810,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5675,10 +5972,11 @@ namespace net.crossly.Api
         /// Export inventory as CSV. Round-trips back through csv/import. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <returns>string</returns>
-        public string CreateInventoryCsvExport()
+        public string CreateInventoryCsvExport(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest))
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = CreateInventoryCsvExportWithHttpInfo();
+            net.crossly.Client.ApiResponse<string> localVarResponse = CreateInventoryCsvExportWithHttpInfo(createInventoryCsvExportRequest);
             return localVarResponse.Data;
         }
 
@@ -5686,12 +5984,14 @@ namespace net.crossly.Api
         /// Export inventory as CSV. Round-trips back through csv/import. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public net.crossly.Client.ApiResponse<string> CreateInventoryCsvExportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<string> CreateInventoryCsvExportWithHttpInfo(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5711,6 +6011,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryCsvExportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5737,11 +6038,12 @@ namespace net.crossly.Api
         /// Export inventory as CSV. Round-trips back through csv/import. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CreateInventoryCsvExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreateInventoryCsvExportAsync(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = await CreateInventoryCsvExportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<string> localVarResponse = await CreateInventoryCsvExportWithHttpInfoAsync(createInventoryCsvExportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5749,14 +6051,16 @@ namespace net.crossly.Api
         /// Export inventory as CSV. Round-trips back through csv/import. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvExportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> CreateInventoryCsvExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> CreateInventoryCsvExportWithHttpInfoAsync(CreateInventoryCsvExportRequest createInventoryCsvExportRequest = default(CreateInventoryCsvExportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5776,6 +6080,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryCsvExportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5803,10 +6108,11 @@ namespace net.crossly.Api
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <returns>CreateInventoryCsvImportResponse</returns>
-        public CreateInventoryCsvImportResponse CreateInventoryCsvImport()
+        public CreateInventoryCsvImportResponse CreateInventoryCsvImport(CreateInventoryCsvImportRequest createInventoryCsvImportRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> localVarResponse = CreateInventoryCsvImportWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> localVarResponse = CreateInventoryCsvImportWithHttpInfo(createInventoryCsvImportRequest);
             return localVarResponse.Data;
         }
 
@@ -5814,12 +6120,20 @@ namespace net.crossly.Api
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <returns>ApiResponse of CreateInventoryCsvImportResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> CreateInventoryCsvImportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> CreateInventoryCsvImportWithHttpInfo(CreateInventoryCsvImportRequest createInventoryCsvImportRequest)
         {
+            // verify the required parameter 'createInventoryCsvImportRequest' is set
+            if (createInventoryCsvImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryCsvImportRequest' when calling InventoryApi->CreateInventoryCsvImport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5839,6 +6153,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryCsvImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5865,11 +6180,12 @@ namespace net.crossly.Api
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryCsvImportResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryCsvImportResponse> CreateInventoryCsvImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryCsvImportResponse> CreateInventoryCsvImportAsync(CreateInventoryCsvImportRequest createInventoryCsvImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> localVarResponse = await CreateInventoryCsvImportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse> localVarResponse = await CreateInventoryCsvImportWithHttpInfoAsync(createInventoryCsvImportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5877,14 +6193,22 @@ namespace net.crossly.Api
         /// Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryCsvImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryCsvImportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse>> CreateInventoryCsvImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryCsvImportResponse>> CreateInventoryCsvImportWithHttpInfoAsync(CreateInventoryCsvImportRequest createInventoryCsvImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryCsvImportRequest' is set
+            if (createInventoryCsvImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryCsvImportRequest' when calling InventoryApi->CreateInventoryCsvImport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5904,6 +6228,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryCsvImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5928,26 +6253,37 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Rename a label across every inventory item. 
+        /// Release an inventory hold. Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>UpdatedResponse</returns>
-        public UpdatedResponse CreateInventoryLabelRename()
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <returns>CreateInventoryHoldReleaseResponse</returns>
+        public CreateInventoryHoldReleaseResponse CreateInventoryHoldRelease(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest))
         {
-            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateInventoryLabelRenameWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryHoldReleaseResponse> localVarResponse = CreateInventoryHoldReleaseWithHttpInfo(holdId, createInventoryHoldReleaseRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Rename a label across every inventory item. 
+        /// Release an inventory hold. Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of UpdatedResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo()
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateInventoryHoldReleaseResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateInventoryHoldReleaseResponse> CreateInventoryHoldReleaseWithHttpInfo(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest))
         {
+            // verify the required parameter 'holdId' is set
+            if (holdId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'holdId' when calling InventoryApi->CreateInventoryHoldRelease");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5967,6 +6303,159 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("holdId", net.crossly.Client.ClientUtils.ParameterToString(holdId)); // path parameter
+            localVarRequestOptions.Data = createInventoryHoldReleaseRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateInventoryHoldReleaseResponse>("/v1/inventory/holds/{holdId}/release", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInventoryHoldRelease", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Release an inventory hold. Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateInventoryHoldReleaseResponse</returns>
+        public async System.Threading.Tasks.Task<CreateInventoryHoldReleaseResponse> CreateInventoryHoldReleaseAsync(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateInventoryHoldReleaseResponse> localVarResponse = await CreateInventoryHoldReleaseWithHttpInfoAsync(holdId, createInventoryHoldReleaseRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Release an inventory hold. Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 &#x60;hold_already_released&#x60; for one that already ended (released, converted to an order or expired).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="holdId"></param>
+        /// <param name="createInventoryHoldReleaseRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateInventoryHoldReleaseResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryHoldReleaseResponse>> CreateInventoryHoldReleaseWithHttpInfoAsync(string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = default(CreateInventoryHoldReleaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'holdId' is set
+            if (holdId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'holdId' when calling InventoryApi->CreateInventoryHoldRelease");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("holdId", net.crossly.Client.ClientUtils.ParameterToString(holdId)); // path parameter
+            localVarRequestOptions.Data = createInventoryHoldReleaseRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateInventoryHoldReleaseResponse>("/v1/inventory/holds/{holdId}/release", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateInventoryHoldRelease", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Rename a label across every inventory item. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
+        /// <returns>UpdatedResponse</returns>
+        public UpdatedResponse CreateInventoryLabelRename(CreateListingTagRenameRequest createListingTagRenameRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateInventoryLabelRenameWithHttpInfo(createListingTagRenameRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rename a label across every inventory item. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
+        /// <returns>ApiResponse of UpdatedResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateInventoryLabelRenameWithHttpInfo(CreateListingTagRenameRequest createListingTagRenameRequest)
+        {
+            // verify the required parameter 'createListingTagRenameRequest' is set
+            if (createListingTagRenameRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingTagRenameRequest' when calling InventoryApi->CreateInventoryLabelRename");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createListingTagRenameRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5993,11 +6482,12 @@ namespace net.crossly.Api
         /// Rename a label across every inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatedResponse</returns>
-        public async System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdatedResponse> CreateInventoryLabelRenameAsync(CreateListingTagRenameRequest createListingTagRenameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateInventoryLabelRenameWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateInventoryLabelRenameWithHttpInfoAsync(createListingTagRenameRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6005,14 +6495,22 @@ namespace net.crossly.Api
         /// Rename a label across every inventory item. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingTagRenameRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateInventoryLabelRenameWithHttpInfoAsync(CreateListingTagRenameRequest createListingTagRenameRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingTagRenameRequest' is set
+            if (createListingTagRenameRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingTagRenameRequest' when calling InventoryApi->CreateInventoryLabelRename");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6032,6 +6530,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingTagRenameRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6059,10 +6558,11 @@ namespace net.crossly.Api
         /// Merge inventory items that are the same physical item into one (stock is not summed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <returns>CreateInventoryMergeResponse</returns>
-        public CreateInventoryMergeResponse CreateInventoryMerge()
+        public CreateInventoryMergeResponse CreateInventoryMerge(CreateInventoryMergeRequest createInventoryMergeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> localVarResponse = CreateInventoryMergeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> localVarResponse = CreateInventoryMergeWithHttpInfo(createInventoryMergeRequest);
             return localVarResponse.Data;
         }
 
@@ -6070,12 +6570,20 @@ namespace net.crossly.Api
         /// Merge inventory items that are the same physical item into one (stock is not summed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <returns>ApiResponse of CreateInventoryMergeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> CreateInventoryMergeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> CreateInventoryMergeWithHttpInfo(CreateInventoryMergeRequest createInventoryMergeRequest)
         {
+            // verify the required parameter 'createInventoryMergeRequest' is set
+            if (createInventoryMergeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryMergeRequest' when calling InventoryApi->CreateInventoryMerge");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6095,6 +6603,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryMergeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6121,11 +6630,12 @@ namespace net.crossly.Api
         /// Merge inventory items that are the same physical item into one (stock is not summed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryMergeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryMergeResponse> CreateInventoryMergeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryMergeResponse> CreateInventoryMergeAsync(CreateInventoryMergeRequest createInventoryMergeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> localVarResponse = await CreateInventoryMergeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryMergeResponse> localVarResponse = await CreateInventoryMergeWithHttpInfoAsync(createInventoryMergeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6133,14 +6643,22 @@ namespace net.crossly.Api
         /// Merge inventory items that are the same physical item into one (stock is not summed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryMergeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryMergeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryMergeResponse>> CreateInventoryMergeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryMergeResponse>> CreateInventoryMergeWithHttpInfoAsync(CreateInventoryMergeRequest createInventoryMergeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryMergeRequest' is set
+            if (createInventoryMergeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryMergeRequest' when calling InventoryApi->CreateInventoryMerge");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6160,6 +6678,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryMergeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6188,10 +6707,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <returns>CreateInventoryUnitIdentifierResponse</returns>
-        public CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier(string id)
+        public CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> localVarResponse = CreateInventoryUnitIdentifierWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> localVarResponse = CreateInventoryUnitIdentifierWithHttpInfo(id, createInventoryUnitIdentifierRequest);
             return localVarResponse.Data;
         }
 
@@ -6200,8 +6720,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <returns>ApiResponse of CreateInventoryUnitIdentifierResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierWithHttpInfo(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6209,9 +6730,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->CreateInventoryUnitIdentifier");
             }
 
+            // verify the required parameter 'createInventoryUnitIdentifierRequest' is set
+            if (createInventoryUnitIdentifierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryUnitIdentifierRequest' when calling InventoryApi->CreateInventoryUnitIdentifier");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6232,6 +6760,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInventoryUnitIdentifierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6259,11 +6788,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryUnitIdentifierResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryUnitIdentifierResponse> CreateInventoryUnitIdentifierAsync(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> localVarResponse = await CreateInventoryUnitIdentifierWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse> localVarResponse = await CreateInventoryUnitIdentifierWithHttpInfoAsync(id, createInventoryUnitIdentifierRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6272,9 +6802,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInventoryUnitIdentifierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryUnitIdentifierResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse>> CreateInventoryUnitIdentifierWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryUnitIdentifierResponse>> CreateInventoryUnitIdentifierWithHttpInfoAsync(string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6282,10 +6813,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->CreateInventoryUnitIdentifier");
             }
 
+            // verify the required parameter 'createInventoryUnitIdentifierRequest' is set
+            if (createInventoryUnitIdentifierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryUnitIdentifierRequest' when calling InventoryApi->CreateInventoryUnitIdentifier");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6306,6 +6844,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInventoryUnitIdentifierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6333,10 +6872,11 @@ namespace net.crossly.Api
         /// Find a unit by identifier. \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <returns>CreateInventoryUnitLookupResponse</returns>
-        public CreateInventoryUnitLookupResponse CreateInventoryUnitLookup()
+        public CreateInventoryUnitLookupResponse CreateInventoryUnitLookup(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> localVarResponse = CreateInventoryUnitLookupWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> localVarResponse = CreateInventoryUnitLookupWithHttpInfo(createInventoryUnitLookupRequest);
             return localVarResponse.Data;
         }
 
@@ -6344,12 +6884,20 @@ namespace net.crossly.Api
         /// Find a unit by identifier. \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <returns>ApiResponse of CreateInventoryUnitLookupResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupWithHttpInfo(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest)
         {
+            // verify the required parameter 'createInventoryUnitLookupRequest' is set
+            if (createInventoryUnitLookupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryUnitLookupRequest' when calling InventoryApi->CreateInventoryUnitLookup");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6369,6 +6917,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryUnitLookupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6395,11 +6944,12 @@ namespace net.crossly.Api
         /// Find a unit by identifier. \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryUnitLookupResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryUnitLookupResponse> CreateInventoryUnitLookupAsync(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> localVarResponse = await CreateInventoryUnitLookupWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse> localVarResponse = await CreateInventoryUnitLookupWithHttpInfoAsync(createInventoryUnitLookupRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6407,14 +6957,22 @@ namespace net.crossly.Api
         /// Find a unit by identifier. \&quot;Have I ever seen this serial?\&quot; — for when something arrives back and nobody knows which order it belongs to. Scoped to the caller, so it can never be used to probe another seller&#39;s stock.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInventoryUnitLookupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryUnitLookupResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse>> CreateInventoryUnitLookupWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryUnitLookupResponse>> CreateInventoryUnitLookupWithHttpInfoAsync(CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInventoryUnitLookupRequest' is set
+            if (createInventoryUnitLookupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInventoryUnitLookupRequest' when calling InventoryApi->CreateInventoryUnitLookup");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6434,6 +6992,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInventoryUnitLookupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8758,278 +9317,6 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <returns>GetAnalyticInventoryResponse</returns>
-        public GetAnalyticInventoryResponse GetAnalyticInventory(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
-        {
-            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = GetAnalyticInventoryWithHttpInfo(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <returns>ApiResponse of GetAnalyticInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> GetAnalyticInventoryWithHttpInfo(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?))
-        {
-            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (range != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
-            }
-            if (from != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
-            }
-            if (to != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
-            }
-            if (compare != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
-            }
-            if (cmpFrom != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
-            }
-            if (cmpTo != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
-            }
-            if (labels != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
-            }
-            if (platforms != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
-            }
-            if (category != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
-            }
-            if (brand != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
-            }
-            if (tz != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
-            }
-            if (maturity != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
-            }
-
-            // authentication (PersonalAccessToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration);
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetAnalyticInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticInventoryResponse> GetAnalyticInventoryAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse> localVarResponse = await GetAnalyticInventoryWithHttpInfoAsync(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health. 
-        /// </summary>
-        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="range">Reporting window. Default 30d. custom needs from and to. (optional)</param>
-        /// <param name="from">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="to">YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. (optional)</param>
-        /// <param name="compare">Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional)</param>
-        /// <param name="cmpFrom">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="cmpTo">YYYY-MM-DD. Only with compare&#x3D;custom. (optional)</param>
-        /// <param name="labels">Comma-separated inventory labels (any of them). (optional)</param>
-        /// <param name="platforms">Comma-separated platform ids. (optional)</param>
-        /// <param name="category">Canonical main-category key. (optional)</param>
-        /// <param name="brand">Brand name. (optional)</param>
-        /// <param name="tz">IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional)</param>
-        /// <param name="maturity">Days an item has to sell within to count as sold in the cohort. Default 30. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetAnalyticInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticInventoryResponse>> GetAnalyticInventoryWithHttpInfoAsync(string range = default(string), string from = default(string), string to = default(string), string compare = default(string), string cmpFrom = default(string), string cmpTo = default(string), string labels = default(string), string platforms = default(string), string category = default(string), string brand = default(string), string tz = default(string), int? maturity = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            if (range != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
-            }
-            if (from != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
-            }
-            if (to != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
-            }
-            if (compare != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "compare", compare));
-            }
-            if (cmpFrom != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpFrom", cmpFrom));
-            }
-            if (cmpTo != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cmpTo", cmpTo));
-            }
-            if (labels != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
-            }
-            if (platforms != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platforms", platforms));
-            }
-            if (category != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
-            }
-            if (brand != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
-            }
-            if (tz != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
-            }
-            if (maturity != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "maturity", maturity));
-            }
-
-            // authentication (PersonalAccessToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAnalyticInventoryResponse>("/v1/analytics/inventory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("GetAnalyticInventory", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -10483,10 +10770,12 @@ namespace net.crossly.Api
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <returns>GetInventorySellThroughResponse</returns>
-        public GetInventorySellThroughResponse GetInventorySellThrough()
+        public GetInventorySellThroughResponse GetInventorySellThrough(string start = default(string), string end = default(string))
         {
-            net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> localVarResponse = GetInventorySellThroughWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> localVarResponse = GetInventorySellThroughWithHttpInfo(start, end);
             return localVarResponse.Data;
         }
 
@@ -10494,8 +10783,10 @@ namespace net.crossly.Api
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <returns>ApiResponse of GetInventorySellThroughResponse</returns>
-        public net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> GetInventorySellThroughWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> GetInventorySellThroughWithHttpInfo(string start = default(string), string end = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -10519,6 +10810,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (start != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+            }
+            if (end != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "end", end));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10545,11 +10844,13 @@ namespace net.crossly.Api
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetInventorySellThroughResponse</returns>
-        public async System.Threading.Tasks.Task<GetInventorySellThroughResponse> GetInventorySellThroughAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetInventorySellThroughResponse> GetInventorySellThroughAsync(string start = default(string), string end = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> localVarResponse = await GetInventorySellThroughWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetInventorySellThroughResponse> localVarResponse = await GetInventorySellThroughWithHttpInfoAsync(start, end, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10557,9 +10858,11 @@ namespace net.crossly.Api
         /// Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="start"> (optional)</param>
+        /// <param name="end"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetInventorySellThroughResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInventorySellThroughResponse>> GetInventorySellThroughWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInventorySellThroughResponse>> GetInventorySellThroughWithHttpInfoAsync(string start = default(string), string end = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -10584,6 +10887,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (start != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "start", start));
+            }
+            if (end != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "end", end));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10757,10 +11068,11 @@ namespace net.crossly.Api
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetInventoryValueHistoryResponse</returns>
-        public GetInventoryValueHistoryResponse GetInventoryValueHistory()
+        public GetInventoryValueHistoryResponse GetInventoryValueHistory(decimal? days = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> localVarResponse = GetInventoryValueHistoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> localVarResponse = GetInventoryValueHistoryWithHttpInfo(days);
             return localVarResponse.Data;
         }
 
@@ -10768,8 +11080,9 @@ namespace net.crossly.Api
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetInventoryValueHistoryResponse</returns>
-        public net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> GetInventoryValueHistoryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> GetInventoryValueHistoryWithHttpInfo(decimal? days = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -10793,6 +11106,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10819,11 +11136,12 @@ namespace net.crossly.Api
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetInventoryValueHistoryResponse</returns>
-        public async System.Threading.Tasks.Task<GetInventoryValueHistoryResponse> GetInventoryValueHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetInventoryValueHistoryResponse> GetInventoryValueHistoryAsync(decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> localVarResponse = await GetInventoryValueHistoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse> localVarResponse = await GetInventoryValueHistoryWithHttpInfoAsync(days, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10831,9 +11149,10 @@ namespace net.crossly.Api
         /// Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetInventoryValueHistoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse>> GetInventoryValueHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetInventoryValueHistoryResponse>> GetInventoryValueHistoryWithHttpInfoAsync(decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -10858,6 +11177,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -15002,12 +15325,13 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ListInventoryResponse</returns>
-        public ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
+        public ListInventoryResponse ListInventory(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
         {
-            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = ListInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince);
+            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = ListInventoryWithHttpInfo(page, limit, search, status, kind, platforms, platformMode, assignee, sku, updatedSince);
             return localVarResponse.Data;
         }
 
@@ -15022,10 +15346,11 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <returns>ApiResponse of ListInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
+        public net.crossly.Client.ApiResponse<ListInventoryResponse> ListInventoryWithHttpInfo(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -15076,6 +15401,10 @@ namespace net.crossly.Api
             if (platformMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platformMode", platformMode));
+            }
+            if (assignee != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "assignee", assignee));
             }
             if (sku != null)
             {
@@ -15118,13 +15447,14 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListInventoryResponse> ListInventoryAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = await ListInventoryWithHttpInfoAsync(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListInventoryResponse> localVarResponse = await ListInventoryWithHttpInfoAsync(page, limit, search, status, kind, platforms, platformMode, assignee, sku, updatedSince, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -15139,11 +15469,12 @@ namespace net.crossly.Api
         /// <param name="kind">Physical goods or Web3 assets (NFTs). Omit for both. (optional)</param>
         /// <param name="platforms">Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. (optional)</param>
         /// <param name="platformMode">\&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. (optional)</param>
+        /// <param name="assignee">Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. (optional)</param>
         /// <param name="sku">Exact SKU match: look up the row a supplier product maps to. (optional)</param>
         /// <param name="updatedSince">Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryResponse>> ListInventoryWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), string search = default(string), string status = default(string), string kind = default(string), string platforms = default(string), string platformMode = default(string), string assignee = default(string), string sku = default(string), DateTime? updatedSince = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -15195,6 +15526,10 @@ namespace net.crossly.Api
             if (platformMode != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platformMode", platformMode));
+            }
+            if (assignee != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "assignee", assignee));
             }
             if (sku != null)
             {
@@ -15364,6 +15699,292 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListInventoryActivity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds. &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListInventoryHoldIssuesResponse</returns>
+        public ListInventoryHoldIssuesResponse ListInventoryHoldIssues()
+        {
+            net.crossly.Client.ApiResponse<ListInventoryHoldIssuesResponse> localVarResponse = ListInventoryHoldIssuesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds. &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListInventoryHoldIssuesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListInventoryHoldIssuesResponse> ListInventoryHoldIssuesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListInventoryHoldIssuesResponse>("/v1/inventory/holds/issues", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListInventoryHoldIssues", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds. &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListInventoryHoldIssuesResponse</returns>
+        public async System.Threading.Tasks.Task<ListInventoryHoldIssuesResponse> ListInventoryHoldIssuesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListInventoryHoldIssuesResponse> localVarResponse = await ListInventoryHoldIssuesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the stock problems the holds ledger finds. &#x60;held_but_listed&#x60;: every unit of an item is held for a program while a marketplace listing is still live. &#x60;expired_hold_unreleased&#x60;: a hold ran past its expiry and still keeps its units off sale.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListInventoryHoldIssuesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryHoldIssuesResponse>> ListInventoryHoldIssuesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListInventoryHoldIssuesResponse>("/v1/inventory/holds/issues", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListInventoryHoldIssues", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the holds on an inventory item. Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <returns>ListInventoryHoldsResponse</returns>
+        public ListInventoryHoldsResponse ListInventoryHolds(string id, string history = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListInventoryHoldsResponse> localVarResponse = ListInventoryHoldsWithHttpInfo(id, history);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the holds on an inventory item. Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <returns>ApiResponse of ListInventoryHoldsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListInventoryHoldsResponse> ListInventoryHoldsWithHttpInfo(string id, string history = default(string))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->ListInventoryHolds");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (history != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "history", history));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListInventoryHoldsResponse>("/v1/inventory/{id}/holds", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListInventoryHolds", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the holds on an inventory item. Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListInventoryHoldsResponse</returns>
+        public async System.Threading.Tasks.Task<ListInventoryHoldsResponse> ListInventoryHoldsAsync(string id, string history = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListInventoryHoldsResponse> localVarResponse = await ListInventoryHoldsWithHttpInfoAsync(id, history, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List the holds on an inventory item. Each hold names the program that set units aside (&#x60;sourceKind&#x60;: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (&#x60;sourceId&#x60;), how many units and until when. &#x60;state&#x60; is &#x60;active&#x60;, &#x60;lapsed&#x60; (past its expiry, not released yet) or &#x60;released&#x60;. Holds in force by default; &#x60;history&#x3D;true&#x60; adds released ones.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="history"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListInventoryHoldsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListInventoryHoldsResponse>> ListInventoryHoldsWithHttpInfoAsync(string id, string history = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->ListInventoryHolds");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (history != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "history", history));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListInventoryHoldsResponse>("/v1/inventory/{id}/holds", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListInventoryHolds", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -17906,7 +18527,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your streets. Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets your store holds. Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListSpatialStreetMineResponse</returns>
@@ -17917,7 +18538,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your streets. Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets your store holds. Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListSpatialStreetMineResponse</returns>
@@ -17968,7 +18589,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your streets. Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets your store holds. Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -17980,7 +18601,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your streets. Streets you hold or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
+        /// Streets your store holds. Streets the store (&#x60;X-Storefront-Id&#x60;, else your default store) holds or asked to found, newest first: &#x60;status&#x60; (pending review, approved, founding, active, dormant, rejected, released), &#x60;upkeep&#x60; (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), &#x60;paidThrough&#x60;, &#x60;admission&#x60;, &#x60;occupied&#x60; of &#x60;plotCount&#x60;, &#x60;pendingApplications&#x60;, and Crossly&#39;s &#x60;reviewNote&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -18568,10 +19189,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <returns>CreateInventoryResponse</returns>
-        public CreateInventoryResponse UpdateInventory(Guid id)
+        public CreateInventoryResponse UpdateInventory(Guid id, UpdateInventoryRequest updateInventoryRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = UpdateInventoryWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = UpdateInventoryWithHttpInfo(id, updateInventoryRequest);
             return localVarResponse.Data;
         }
 
@@ -18580,12 +19202,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInventoryResponse> UpdateInventoryWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateInventoryResponse> UpdateInventoryWithHttpInfo(Guid id, UpdateInventoryRequest updateInventoryRequest)
         {
+            // verify the required parameter 'updateInventoryRequest' is set
+            if (updateInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInventoryRequest' when calling InventoryApi->UpdateInventory");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -18606,6 +19236,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18633,11 +19264,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInventoryResponse> UpdateInventoryAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInventoryResponse> UpdateInventoryAsync(Guid id, UpdateInventoryRequest updateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = await UpdateInventoryWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInventoryResponse> localVarResponse = await UpdateInventoryWithHttpInfoAsync(id, updateInventoryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18646,10 +19278,219 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryResponse>> UpdateInventoryWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInventoryResponse>> UpdateInventoryWithHttpInfoAsync(Guid id, UpdateInventoryRequest updateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateInventoryRequest' is set
+            if (updateInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInventoryRequest' when calling InventoryApi->UpdateInventory");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInventoryRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreateInventoryResponse>("/v1/inventory/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>UpdateOrderAssigneeResponse</returns>
+        public UpdateOrderAssigneeResponse UpdateInventoryAssignee()
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> localVarResponse = UpdateInventoryAssigneeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of UpdateOrderAssigneeResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> UpdateInventoryAssigneeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateOrderAssigneeResponse>("/v1/inventory/assignee", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInventoryAssignee", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateOrderAssigneeResponse> UpdateInventoryAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse> localVarResponse = await UpdateInventoryAssigneeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign many inventory items to a teammate, round robin across several, or unassign them (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateOrderAssigneeResponse>> UpdateInventoryAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateOrderAssigneeResponse>("/v1/inventory/assignee", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInventoryAssignee", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateOrderAssigneeByIdResponse</returns>
+        public UpdateOrderAssigneeByIdResponse UpdateInventoryAssigneeById(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> localVarResponse = UpdateInventoryAssigneeByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Assign one inventory item to a teammate, or unassign it (null). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateOrderAssigneeByIdResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> UpdateInventoryAssigneeByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->UpdateInventoryAssigneeById");
+            }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -18683,11 +19524,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreateInventoryResponse>("/v1/inventory/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
+            var localVarResponse = this.Client.Patch<UpdateOrderAssigneeByIdResponse>("/v1/inventory/{id}/assignee", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("UpdateInventory", localVarResponse);
+                Exception _exception = this.ExceptionFactory("UpdateInventoryAssigneeById", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -18698,23 +19538,34 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
+        /// Assign one inventory item to a teammate, or unassign it (null). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>UpdateSpatialEmployeeConfigResponse</returns>
-        public UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig()
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateOrderAssigneeByIdResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateOrderAssigneeByIdResponse> UpdateInventoryAssigneeByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> localVarResponse = UpdateSpatialEmployeeConfigWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse> localVarResponse = await UpdateInventoryAssigneeByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
+        /// Assign one inventory item to a teammate, or unassign it (null). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of UpdateSpatialEmployeeConfigResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigWithHttpInfo()
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateOrderAssigneeByIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateOrderAssigneeByIdResponse>> UpdateInventoryAssigneeByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InventoryApi->UpdateInventoryAssigneeById");
+            }
+
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -18737,6 +19588,74 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateOrderAssigneeByIdResponse>("/v1/inventory/{id}/assignee", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateInventoryAssigneeById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
+        /// <returns>UpdateSpatialEmployeeConfigResponse</returns>
+        public UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest))
+        {
+            net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> localVarResponse = UpdateSpatialEmployeeConfigWithHttpInfo(updateSpatialEmployeeConfigRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateSpatialEmployeeConfigResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigWithHttpInfo(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateSpatialEmployeeConfigRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18763,11 +19682,12 @@ namespace net.crossly.Api
         /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateSpatialEmployeeConfigResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateSpatialEmployeeConfigResponse> UpdateSpatialEmployeeConfigAsync(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> localVarResponse = await UpdateSpatialEmployeeConfigWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse> localVarResponse = await UpdateSpatialEmployeeConfigWithHttpInfoAsync(updateSpatialEmployeeConfigRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18775,14 +19695,16 @@ namespace net.crossly.Api
         /// Create or replace the shop employee in one of your rooms. A full replace, not a patch: every field is written from this body, so read GET /api/v1/spatial/employee/config first and send it back changed. Owner-only — a room this account does not own answers 404, the same as one that does not exist. &#x60;brainKind&#x60; is idle (stands there), rules (&#x60;rules&#x60; evaluated in order, first match wins, max 12) or agent (your endpoint decides, and an endpoint URL is then required). A rule is &#x60;{ when, afterSeconds?, do: { act, line?, offerId?, itemId? } }&#x60;; &#x60;when&#x60; and &#x60;do.act&#x60; must come from the published vocabularies and anything else is a 400. NOTHING IN A RULE CARRIES A PRICE — &#x60;do.offerId&#x60; is a key into your own offers and the server prices it, so an employee can propose a discount it cannot grant. &#x60;displayName&#x60; and &#x60;do.line&#x60; must be printable ASCII: they are drawn in the room from a fixed glyph atlas and anything else renders as a floating box, so they are refused rather than silently rewritten. &#x60;agentEndpointUrl&#x60; is resolved and validated before it is stored — a public-looking hostname that answers with a private address is refused here rather than accepted and then never called. THE SIGNING SECRET IS RETURNED AT MOST ONCE, in the response that MINTS it: when you pass &#x60;rotateSecret: true&#x60;, or when you set an agent endpoint on a room that had no secret. Store it then — there is no read path that will ever return it again, and &#x60;hasAgentSecret&#x60; is all any GET will say. Send an Idempotency-Key if you might retry a rotation: without one, a retried rotate mints a SECOND secret and invalidates the one you just received. Saving anything also CLEARS a suspension — if the employee was paused for want of COSM it is back on the floor, and will be paused again by the next refused charge. Note what this endpoint cannot do: it cannot start a conversation. Engagements are emitted by the room as it is drawn, and they are what costs money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSpatialEmployeeConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateSpatialEmployeeConfigResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse>> UpdateSpatialEmployeeConfigWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateSpatialEmployeeConfigResponse>> UpdateSpatialEmployeeConfigWithHttpInfoAsync(UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = default(UpdateSpatialEmployeeConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -18802,6 +19724,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateSpatialEmployeeConfigRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

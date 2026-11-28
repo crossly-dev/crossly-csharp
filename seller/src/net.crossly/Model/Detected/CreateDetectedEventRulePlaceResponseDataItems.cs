@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Default = 1,
 
             /// <summary>
-            /// Enum Seller for value: seller
-            /// </summary>
-            [EnumMember(Value = "seller")]
-            Seller = 2,
-
-            /// <summary>
             /// Enum Legacy for value: legacy
             /// </summary>
             [EnumMember(Value = "legacy")]
-            Legacy = 3
+            Legacy = 2,
+
+            /// <summary>
+            /// Enum Seller for value: seller
+            /// </summary>
+            [EnumMember(Value = "seller")]
+            Seller = 3
 
         }
 

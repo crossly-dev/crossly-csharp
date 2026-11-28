@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ScopeEnum
         {
             /// <summary>
-            /// Enum Place for value: place
-            /// </summary>
-            [EnumMember(Value = "place")]
-            Place = 1,
-
-            /// <summary>
             /// Enum Owner for value: owner
             /// </summary>
             [EnumMember(Value = "owner")]
-            Owner = 2
+            Owner = 1,
+
+            /// <summary>
+            /// Enum Place for value: place
+            /// </summary>
+            [EnumMember(Value = "place")]
+            Place = 2
 
         }
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createbuyermonitor"></a>
 # **CreateBuyerMonitor**
-> ListBuyerMonitorsItem CreateBuyerMonitor ()
+> ListBuyerMonitorsItem CreateBuyerMonitor (CreateBuyerMonitorRequest createBuyerMonitorRequest)
 
 Watch a search, and be told when it matches.
 
@@ -39,11 +39,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerMonitorsApi(config);
+            var createBuyerMonitorRequest = new CreateBuyerMonitorRequest(); // CreateBuyerMonitorRequest | 
 
             try
             {
                 // Watch a search, and be told when it matches.
-                ListBuyerMonitorsItem result = apiInstance.CreateBuyerMonitor();
+                ListBuyerMonitorsItem result = apiInstance.CreateBuyerMonitor(createBuyerMonitorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +59,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerMonitorRequest** | **CreateBuyerMonitorRequest**|  | 
 
 ### Return type
 
@@ -70,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -320,7 +324,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebuyermonitor"></a>
 # **UpdateBuyerMonitor**
-> ListBuyerMonitorsItem UpdateBuyerMonitor (Guid id)
+> ListBuyerMonitorsItem UpdateBuyerMonitor (Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = null)
 
 Pause, resume or rename a monitor.
 
@@ -345,11 +349,12 @@ namespace Example
 
             var apiInstance = new BuyerMonitorsApi(config);
             var id = "id_example";  // Guid | 
+            var updateBuyerMonitorRequest = new UpdateBuyerMonitorRequest(); // UpdateBuyerMonitorRequest |  (optional) 
 
             try
             {
                 // Pause, resume or rename a monitor.
-                ListBuyerMonitorsItem result = apiInstance.UpdateBuyerMonitor(id);
+                ListBuyerMonitorsItem result = apiInstance.UpdateBuyerMonitor(id, updateBuyerMonitorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -368,6 +373,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateBuyerMonitorRequest** | **UpdateBuyerMonitorRequest**|  | [optional] 
 
 ### Return type
 
@@ -379,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

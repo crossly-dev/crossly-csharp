@@ -39,77 +39,33 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetConnectionEmailResponseData" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="type">type (required).</param>
-        /// <param name="isConnected">isConnected (required).</param>
-        /// <param name="email">email (required).</param>
-        /// <param name="host">host.</param>
-        /// <param name="port">port.</param>
-        /// <param name="lastSyncedAt">lastSyncedAt.</param>
-        public GetConnectionEmailResponseData(string id = default(string), string type = default(string), bool isConnected = default(bool), string email = default(string), string host = default(string), decimal? port = default(decimal?), DateTime? lastSyncedAt = default(DateTime?))
+        /// <param name="mailbox">mailbox (required).</param>
+        /// <param name="stats">stats (required).</param>
+        public GetConnectionEmailResponseData(ListConnectionEmailItem mailbox = default(ListConnectionEmailItem), GetConnectionEmailResponseDataStats stats = default(GetConnectionEmailResponseDataStats))
         {
-            // to ensure "id" is required (not null)
-            if (id == null) {
-                throw new ArgumentNullException("id is a required property for GetConnectionEmailResponseData and cannot be null");
+            // to ensure "mailbox" is required (not null)
+            if (mailbox == null) {
+                throw new ArgumentNullException("mailbox is a required property for GetConnectionEmailResponseData and cannot be null");
             }
-            this.Id = id;
-            // to ensure "type" is required (not null)
-            if (type == null) {
-                throw new ArgumentNullException("type is a required property for GetConnectionEmailResponseData and cannot be null");
+            this.Mailbox = mailbox;
+            // to ensure "stats" is required (not null)
+            if (stats == null) {
+                throw new ArgumentNullException("stats is a required property for GetConnectionEmailResponseData and cannot be null");
             }
-            this.Type = type;
-            this.IsConnected = isConnected;
-            // to ensure "email" is required (not null)
-            if (email == null) {
-                throw new ArgumentNullException("email is a required property for GetConnectionEmailResponseData and cannot be null");
-            }
-            this.Email = email;
-            this.Host = host;
-            this.Port = port;
-            this.LastSyncedAt = lastSyncedAt;
+            this.Stats = stats;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Mailbox
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
+        [DataMember(Name = "mailbox", IsRequired = true, EmitDefaultValue = false)]
+        public ListConnectionEmailItem Mailbox { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Stats
         /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets IsConnected
-        /// </summary>
-        [DataMember(Name = "isConnected", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsConnected { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Email
-        /// </summary>
-        [DataMember(Name = "email", IsRequired = true, EmitDefaultValue = false)]
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Host
-        /// </summary>
-        [DataMember(Name = "host", EmitDefaultValue = true)]
-        public string Host { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Port
-        /// </summary>
-        [DataMember(Name = "port", EmitDefaultValue = true)]
-        public decimal? Port { get; set; }
-
-        /// <summary>
-        /// Gets or Sets LastSyncedAt
-        /// </summary>
-        [DataMember(Name = "lastSyncedAt", EmitDefaultValue = true)]
-        public DateTime? LastSyncedAt { get; set; }
+        [DataMember(Name = "stats", IsRequired = true, EmitDefaultValue = false)]
+        public GetConnectionEmailResponseDataStats Stats { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,13 +75,8 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetConnectionEmailResponseData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  IsConnected: ").Append(IsConnected).Append("\n");
-            sb.Append("  Email: ").Append(Email).Append("\n");
-            sb.Append("  Host: ").Append(Host).Append("\n");
-            sb.Append("  Port: ").Append(Port).Append("\n");
-            sb.Append("  LastSyncedAt: ").Append(LastSyncedAt).Append("\n");
+            sb.Append("  Mailbox: ").Append(Mailbox).Append("\n");
+            sb.Append("  Stats: ").Append(Stats).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,38 +113,14 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Mailbox == input.Mailbox ||
+                    (this.Mailbox != null &&
+                    this.Mailbox.Equals(input.Mailbox))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.IsConnected == input.IsConnected ||
-                    this.IsConnected.Equals(input.IsConnected)
-                ) && 
-                (
-                    this.Email == input.Email ||
-                    (this.Email != null &&
-                    this.Email.Equals(input.Email))
-                ) && 
-                (
-                    this.Host == input.Host ||
-                    (this.Host != null &&
-                    this.Host.Equals(input.Host))
-                ) && 
-                (
-                    this.Port == input.Port ||
-                    (this.Port != null &&
-                    this.Port.Equals(input.Port))
-                ) && 
-                (
-                    this.LastSyncedAt == input.LastSyncedAt ||
-                    (this.LastSyncedAt != null &&
-                    this.LastSyncedAt.Equals(input.LastSyncedAt))
+                    this.Stats == input.Stats ||
+                    (this.Stats != null &&
+                    this.Stats.Equals(input.Stats))
                 );
         }
 
@@ -206,30 +133,13 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.Mailbox != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Mailbox.GetHashCode();
                 }
-                if (this.Type != null)
+                if (this.Stats != null)
                 {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.IsConnected.GetHashCode();
-                if (this.Email != null)
-                {
-                    hashCode = (hashCode * 59) + this.Email.GetHashCode();
-                }
-                if (this.Host != null)
-                {
-                    hashCode = (hashCode * 59) + this.Host.GetHashCode();
-                }
-                if (this.Port != null)
-                {
-                    hashCode = (hashCode * 59) + this.Port.GetHashCode();
-                }
-                if (this.LastSyncedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastSyncedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Stats.GetHashCode();
                 }
                 return hashCode;
             }

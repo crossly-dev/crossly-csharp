@@ -83,8 +83,9 @@ namespace net.crossly.Api
         /// Confirm again a deletion paused because the account was in use.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <returns>CreateAccountReconfirmDeletionResponse</returns>
-        CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion();
+        CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest));
 
         /// <summary>
         /// Confirm again a deletion paused because the account was in use.
@@ -93,14 +94,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateAccountReconfirmDeletionResponse</returns>
-        ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo();
+        ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest));
         /// <summary>
         /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <returns>CreateAccountRequestDeletionResponse</returns>
-        CreateAccountRequestDeletionResponse CreateAccountRequestDeletion();
+        CreateAccountRequestDeletionResponse CreateAccountRequestDeletion(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest));
 
         /// <summary>
         /// Schedule account deletion after a grace period. Requires confirmEmail.
@@ -109,8 +112,27 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateAccountRequestDeletionResponse</returns>
-        ApiResponse<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionWithHttpInfo();
+        ApiResponse<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionWithHttpInfo(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest));
+        /// <summary>
+        /// Sign out several sessions at once.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <returns>CreateAuthSessionSignOutResponse</returns>
+        CreateAuthSessionSignOutResponse CreateAuthSessionSignOut(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest);
+
+        /// <summary>
+        /// Sign out several sessions at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <returns>ApiResponse of CreateAuthSessionSignOutResponse</returns>
+        ApiResponse<CreateAuthSessionSignOutResponse> CreateAuthSessionSignOutWithHttpInfo(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest);
         /// <summary>
         /// Revoke all active browser sessions.
         /// </summary>
@@ -215,6 +237,38 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAccountIdentityVerificationResponse</returns>
         ApiResponse<GetAccountIdentityVerificationResponse> GetAccountIdentityVerificationWithHttpInfo();
         /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountNotificationPreferenceResponse</returns>
+        GetAccountNotificationPreferenceResponse GetAccountNotificationPreference();
+
+        /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountNotificationPreferenceResponse</returns>
+        ApiResponse<GetAccountNotificationPreferenceResponse> GetAccountNotificationPreferenceWithHttpInfo();
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountSignInIdentityResponse</returns>
+        GetAccountSignInIdentityResponse GetAccountSignInIdentity();
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountSignInIdentityResponse</returns>
+        ApiResponse<GetAccountSignInIdentityResponse> GetAccountSignInIdentityWithHttpInfo();
+        /// <summary>
         /// Identity check — authenticated user + PAT scopes + account state.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -250,30 +304,44 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetMembershipResponse</returns>
         ApiResponse<GetMembershipResponse> GetMembershipWithHttpInfo();
         /// <summary>
-        /// List active browser auth sessions.
+        /// List, search and filter your sign-in sessions.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListAuthSessionsResponse</returns>
-        ListAuthSessionsResponse ListAuthSessions();
+        ListAuthSessionsResponse ListAuthSessions(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
 
         /// <summary>
-        /// List active browser auth sessions.
+        /// List, search and filter your sign-in sessions.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListAuthSessionsResponse</returns>
-        ApiResponse<ListAuthSessionsResponse> ListAuthSessionsWithHttpInfo();
+        ApiResponse<ListAuthSessionsResponse> ListAuthSessionsWithHttpInfo(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?));
         /// <summary>
-        /// List third-party OAuth apps with access to this account.
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListConnectedAppsResponse</returns>
         ListConnectedAppsResponse ListConnectedApps();
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account.
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -281,6 +349,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListConnectedAppsResponse</returns>
         ApiResponse<ListConnectedAppsResponse> ListConnectedAppsWithHttpInfo();
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <returns>GetAccountNotificationPreferenceResponse</returns>
+        GetAccountNotificationPreferenceResponse UpdateAccountNotificationPreference(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest);
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <returns>ApiResponse of GetAccountNotificationPreferenceResponse</returns>
+        ApiResponse<GetAccountNotificationPreferenceResponse> UpdateAccountNotificationPreferenceWithHttpInfo(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest);
         #endregion Synchronous Operations
     }
 
@@ -362,9 +448,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountReconfirmDeletionResponse</returns>
-        System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Confirm again a deletion paused because the account was in use.
@@ -373,9 +460,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountReconfirmDeletionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Schedule account deletion after a grace period. Requires confirmEmail.
         /// </summary>
@@ -383,9 +471,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountRequestDeletionResponse</returns>
-        System.Threading.Tasks.Task<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionAsync(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Schedule account deletion after a grace period. Requires confirmEmail.
@@ -394,9 +483,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountRequestDeletionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAccountRequestDeletionResponse>> CreateAccountRequestDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAccountRequestDeletionResponse>> CreateAccountRequestDeletionWithHttpInfoAsync(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Sign out several sessions at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAuthSessionSignOutResponse</returns>
+        System.Threading.Tasks.Task<CreateAuthSessionSignOutResponse> CreateAuthSessionSignOutAsync(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Sign out several sessions at once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAuthSessionSignOutResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAuthSessionSignOutResponse>> CreateAuthSessionSignOutWithHttpInfoAsync(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Revoke all active browser sessions.
         /// </summary>
@@ -528,6 +641,48 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAccountIdentityVerificationResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAccountIdentityVerificationResponse>> GetAccountIdentityVerificationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountNotificationPreferenceResponse</returns>
+        System.Threading.Tasks.Task<GetAccountNotificationPreferenceResponse> GetAccountNotificationPreferenceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountNotificationPreferenceResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountNotificationPreferenceResponse>> GetAccountNotificationPreferenceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountSignInIdentityResponse</returns>
+        System.Threading.Tasks.Task<GetAccountSignInIdentityResponse> GetAccountSignInIdentityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountSignInIdentityResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountSignInIdentityResponse>> GetAccountSignInIdentityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Identity check — authenticated user + PAT scopes + account state.
         /// </summary>
         /// <remarks>
@@ -570,28 +725,42 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetMembershipResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetMembershipResponse>> GetMembershipWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List active browser auth sessions.
+        /// List, search and filter your sign-in sessions.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuthSessionsResponse</returns>
-        System.Threading.Tasks.Task<ListAuthSessionsResponse> ListAuthSessionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListAuthSessionsResponse> ListAuthSessionsAsync(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List active browser auth sessions.
+        /// List, search and filter your sign-in sessions.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuthSessionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAuthSessionsResponse>> ListAuthSessionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListAuthSessionsResponse>> ListAuthSessionsWithHttpInfoAsync(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List third-party OAuth apps with access to this account.
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -602,7 +771,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListConnectedAppsResponse> ListConnectedAppsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account.
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -611,6 +780,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListConnectedAppsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListConnectedAppsResponse>> ListConnectedAppsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountNotificationPreferenceResponse</returns>
+        System.Threading.Tasks.Task<GetAccountNotificationPreferenceResponse> UpdateAccountNotificationPreferenceAsync(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountNotificationPreferenceResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAccountNotificationPreferenceResponse>> UpdateAccountNotificationPreferenceWithHttpInfoAsync(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1139,10 +1331,11 @@ namespace net.crossly.Api
         /// Confirm again a deletion paused because the account was in use. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <returns>CreateAccountReconfirmDeletionResponse</returns>
-        public CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion()
+        public CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest))
         {
-            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = CreateAccountReconfirmDeletionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = CreateAccountReconfirmDeletionWithHttpInfo(createAccountReconfirmDeletionRequest);
             return localVarResponse.Data;
         }
 
@@ -1150,12 +1343,14 @@ namespace net.crossly.Api
         /// Confirm again a deletion paused because the account was in use. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateAccountReconfirmDeletionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionWithHttpInfo(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1175,6 +1370,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountReconfirmDeletionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1201,11 +1397,12 @@ namespace net.crossly.Api
         /// Confirm again a deletion paused because the account was in use. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountReconfirmDeletionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAccountReconfirmDeletionResponse> CreateAccountReconfirmDeletionAsync(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = await CreateAccountReconfirmDeletionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse> localVarResponse = await CreateAccountReconfirmDeletionWithHttpInfoAsync(createAccountReconfirmDeletionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1213,14 +1410,16 @@ namespace net.crossly.Api
         /// Confirm again a deletion paused because the account was in use. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountReconfirmDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountReconfirmDeletionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountReconfirmDeletionResponse>> CreateAccountReconfirmDeletionWithHttpInfoAsync(CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = default(CreateAccountReconfirmDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1240,6 +1439,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountReconfirmDeletionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1267,10 +1467,11 @@ namespace net.crossly.Api
         /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <returns>CreateAccountRequestDeletionResponse</returns>
-        public CreateAccountRequestDeletionResponse CreateAccountRequestDeletion()
+        public CreateAccountRequestDeletionResponse CreateAccountRequestDeletion(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest))
         {
-            net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> localVarResponse = CreateAccountRequestDeletionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> localVarResponse = CreateAccountRequestDeletionWithHttpInfo(createAccountRequestDeletionRequest);
             return localVarResponse.Data;
         }
 
@@ -1278,12 +1479,14 @@ namespace net.crossly.Api
         /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateAccountRequestDeletionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionWithHttpInfo(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1303,6 +1506,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountRequestDeletionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1329,11 +1533,12 @@ namespace net.crossly.Api
         /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAccountRequestDeletionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAccountRequestDeletionResponse> CreateAccountRequestDeletionAsync(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> localVarResponse = await CreateAccountRequestDeletionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse> localVarResponse = await CreateAccountRequestDeletionWithHttpInfoAsync(createAccountRequestDeletionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1341,14 +1546,16 @@ namespace net.crossly.Api
         /// Schedule account deletion after a grace period. Requires confirmEmail. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAccountRequestDeletionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAccountRequestDeletionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse>> CreateAccountRequestDeletionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAccountRequestDeletionResponse>> CreateAccountRequestDeletionWithHttpInfoAsync(CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = default(CreateAccountRequestDeletionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1368,6 +1575,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAccountRequestDeletionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1382,6 +1590,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateAccountRequestDeletion", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sign out several sessions at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <returns>CreateAuthSessionSignOutResponse</returns>
+        public CreateAuthSessionSignOutResponse CreateAuthSessionSignOut(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateAuthSessionSignOutResponse> localVarResponse = CreateAuthSessionSignOutWithHttpInfo(createAuthSessionSignOutRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sign out several sessions at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <returns>ApiResponse of CreateAuthSessionSignOutResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAuthSessionSignOutResponse> CreateAuthSessionSignOutWithHttpInfo(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest)
+        {
+            // verify the required parameter 'createAuthSessionSignOutRequest' is set
+            if (createAuthSessionSignOutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAuthSessionSignOutRequest' when calling AccountApi->CreateAuthSessionSignOut");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAuthSessionSignOutRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAuthSessionSignOutResponse>("/v1/auth/sessions/sign-out", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthSessionSignOut", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Sign out several sessions at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAuthSessionSignOutResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAuthSessionSignOutResponse> CreateAuthSessionSignOutAsync(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAuthSessionSignOutResponse> localVarResponse = await CreateAuthSessionSignOutWithHttpInfoAsync(createAuthSessionSignOutRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Sign out several sessions at once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAuthSessionSignOutRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAuthSessionSignOutResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAuthSessionSignOutResponse>> CreateAuthSessionSignOutWithHttpInfoAsync(CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createAuthSessionSignOutRequest' is set
+            if (createAuthSessionSignOutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAuthSessionSignOutRequest' when calling AccountApi->CreateAuthSessionSignOut");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAuthSessionSignOutRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAuthSessionSignOutResponse>("/v1/auth/sessions/sign-out", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAuthSessionSignOut", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2196,6 +2552,262 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountNotificationPreferenceResponse</returns>
+        public GetAccountNotificationPreferenceResponse GetAccountNotificationPreference()
+        {
+            net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> localVarResponse = GetAccountNotificationPreferenceWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountNotificationPreferenceResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> GetAccountNotificationPreferenceWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAccountNotificationPreferenceResponse>("/v1/account/notification-preferences", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountNotificationPreference", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountNotificationPreferenceResponse</returns>
+        public async System.Threading.Tasks.Task<GetAccountNotificationPreferenceResponse> GetAccountNotificationPreferenceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> localVarResponse = await GetAccountNotificationPreferenceWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Which notifications reach you, per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountNotificationPreferenceResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse>> GetAccountNotificationPreferenceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountNotificationPreferenceResponse>("/v1/account/notification-preferences", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountNotificationPreference", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAccountSignInIdentityResponse</returns>
+        public GetAccountSignInIdentityResponse GetAccountSignInIdentity()
+        {
+            net.crossly.Client.ApiResponse<GetAccountSignInIdentityResponse> localVarResponse = GetAccountSignInIdentityWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAccountSignInIdentityResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAccountSignInIdentityResponse> GetAccountSignInIdentityWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAccountSignInIdentityResponse>("/v1/account/sign-in-identity", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountSignInIdentity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountSignInIdentityResponse</returns>
+        public async System.Threading.Tasks.Task<GetAccountSignInIdentityResponse> GetAccountSignInIdentityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAccountSignInIdentityResponse> localVarResponse = await GetAccountSignInIdentityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// How you sign in (Atlas): linked providers, password, passkeys, two-step. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountSignInIdentityResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAccountSignInIdentityResponse>> GetAccountSignInIdentityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountSignInIdentityResponse>("/v1/account/sign-in-identity", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAccountSignInIdentity", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Identity check — authenticated user + PAT scopes + account state. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2452,22 +3064,36 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List active browser auth sessions. 
+        /// List, search and filter your sign-in sessions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListAuthSessionsResponse</returns>
-        public ListAuthSessionsResponse ListAuthSessions()
+        public ListAuthSessionsResponse ListAuthSessions(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
         {
-            net.crossly.Client.ApiResponse<ListAuthSessionsResponse> localVarResponse = ListAuthSessionsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListAuthSessionsResponse> localVarResponse = ListAuthSessionsWithHttpInfo(q, status, deviceType, from, to, page, limit);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List active browser auth sessions. 
+        /// List, search and filter your sign-in sessions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListAuthSessionsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListAuthSessionsResponse> ListAuthSessionsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListAuthSessionsResponse> ListAuthSessionsWithHttpInfo(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2491,6 +3117,34 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (deviceType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "deviceType", deviceType));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2514,24 +3168,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List active browser auth sessions. 
+        /// List, search and filter your sign-in sessions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuthSessionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAuthSessionsResponse> ListAuthSessionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListAuthSessionsResponse> ListAuthSessionsAsync(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListAuthSessionsResponse> localVarResponse = await ListAuthSessionsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListAuthSessionsResponse> localVarResponse = await ListAuthSessionsWithHttpInfoAsync(q, status, deviceType, from, to, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List active browser auth sessions. 
+        /// List, search and filter your sign-in sessions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="deviceType"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuthSessionsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListAuthSessionsResponse>> ListAuthSessionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListAuthSessionsResponse>> ListAuthSessionsWithHttpInfoAsync(string q = default(string), string status = default(string), string deviceType = default(string), string from = default(string), string to = default(string), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2556,6 +3224,34 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (deviceType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "deviceType", deviceType));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2580,7 +3276,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account. 
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListConnectedAppsResponse</returns>
@@ -2591,7 +3287,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account. 
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListConnectedAppsResponse</returns>
@@ -2642,7 +3338,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account. 
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2654,7 +3350,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List third-party OAuth apps with access to this account. 
+        /// List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -2698,6 +3394,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListConnectedApps", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <returns>GetAccountNotificationPreferenceResponse</returns>
+        public GetAccountNotificationPreferenceResponse UpdateAccountNotificationPreference(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest)
+        {
+            net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> localVarResponse = UpdateAccountNotificationPreferenceWithHttpInfo(updateAccountNotificationPreferenceRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <returns>ApiResponse of GetAccountNotificationPreferenceResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> UpdateAccountNotificationPreferenceWithHttpInfo(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest)
+        {
+            // verify the required parameter 'updateAccountNotificationPreferenceRequest' is set
+            if (updateAccountNotificationPreferenceRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAccountNotificationPreferenceRequest' when calling AccountApi->UpdateAccountNotificationPreference");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateAccountNotificationPreferenceRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetAccountNotificationPreferenceResponse>("/v1/account/notification-preferences", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAccountNotificationPreference", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAccountNotificationPreferenceResponse</returns>
+        public async System.Threading.Tasks.Task<GetAccountNotificationPreferenceResponse> UpdateAccountNotificationPreferenceAsync(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse> localVarResponse = await UpdateAccountNotificationPreferenceWithHttpInfoAsync(updateAccountNotificationPreferenceRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Turn notifications on or off per event and channel (email, push, in-app). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAccountNotificationPreferenceRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAccountNotificationPreferenceResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAccountNotificationPreferenceResponse>> UpdateAccountNotificationPreferenceWithHttpInfoAsync(UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateAccountNotificationPreferenceRequest' is set
+            if (updateAccountNotificationPreferenceRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAccountNotificationPreferenceRequest' when calling AccountApi->UpdateAccountNotificationPreference");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateAccountNotificationPreferenceRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetAccountNotificationPreferenceResponse>("/v1/account/notification-preferences", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAccountNotificationPreference", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

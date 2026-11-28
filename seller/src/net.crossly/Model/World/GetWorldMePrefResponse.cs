@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetWorldMePrefResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public GetWorldMePrefResponse(GetWorldMePrefResponseData data = default(GetWorldMePrefResponseData))
+        public GetWorldMePrefResponse(UpdateWorldMePrefRequest data = default(UpdateWorldMePrefRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public GetWorldMePrefResponseData Data { get; set; }
+        public UpdateWorldMePrefRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

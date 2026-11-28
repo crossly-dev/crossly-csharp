@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 1,
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Open for value: open
             /// </summary>
             [EnumMember(Value = "open")]
-            Open = 2,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
+            Open = 3,
 
             /// <summary>
             /// Enum Filled for value: filled
@@ -107,18 +107,18 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="strategy">strategy (required).</param>
         /// <param name="closedAt">closedAt.</param>
         /// <param name="holderAccountId">holderAccountId.</param>
         /// <param name="side">side (required).</param>
         /// <param name="seriesId">seriesId (required).</param>
+        /// <param name="strategy">strategy (required).</param>
         /// <param name="comboKey">comboKey (required).</param>
         /// <param name="legs">legs (required).</param>
         /// <param name="qtyMilli">qtyMilli (required).</param>
         /// <param name="limitCents">limitCents.</param>
         /// <param name="requesterUserId">requesterUserId (required).</param>
         /// <param name="comboFillId">comboFillId.</param>
-        public ListVaultMarketOptionComboRfqItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime expiresAt = default(DateTime), StatusEnum status = default(StatusEnum), string strategy = default(string), DateTime? closedAt = default(DateTime?), string holderAccountId = default(string), SideEnum side = default(SideEnum), string seriesId = default(string), string comboKey = default(string), List<ListVaultMarketOptionCombosItemLegs> legs = default(List<ListVaultMarketOptionCombosItemLegs>), decimal qtyMilli = default(decimal), decimal? limitCents = default(decimal?), string requesterUserId = default(string), string comboFillId = default(string))
+        public ListVaultMarketOptionComboRfqItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime expiresAt = default(DateTime), StatusEnum status = default(StatusEnum), DateTime? closedAt = default(DateTime?), string holderAccountId = default(string), SideEnum side = default(SideEnum), string seriesId = default(string), string strategy = default(string), string comboKey = default(string), List<ListVaultMarketOptionCombosItemLegs> legs = default(List<ListVaultMarketOptionCombosItemLegs>), decimal qtyMilli = default(decimal), decimal? limitCents = default(decimal?), string requesterUserId = default(string), string comboFillId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -128,17 +128,17 @@ namespace net.crossly.Model
             this.CreatedAt = createdAt;
             this.ExpiresAt = expiresAt;
             this.Status = status;
-            // to ensure "strategy" is required (not null)
-            if (strategy == null) {
-                throw new ArgumentNullException("strategy is a required property for ListVaultMarketOptionComboRfqItem and cannot be null");
-            }
-            this.Strategy = strategy;
             this.Side = side;
             // to ensure "seriesId" is required (not null)
             if (seriesId == null) {
                 throw new ArgumentNullException("seriesId is a required property for ListVaultMarketOptionComboRfqItem and cannot be null");
             }
             this.SeriesId = seriesId;
+            // to ensure "strategy" is required (not null)
+            if (strategy == null) {
+                throw new ArgumentNullException("strategy is a required property for ListVaultMarketOptionComboRfqItem and cannot be null");
+            }
+            this.Strategy = strategy;
             // to ensure "comboKey" is required (not null)
             if (comboKey == null) {
                 throw new ArgumentNullException("comboKey is a required property for ListVaultMarketOptionComboRfqItem and cannot be null");
@@ -180,12 +180,6 @@ namespace net.crossly.Model
         public DateTime ExpiresAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Strategy
-        /// </summary>
-        [DataMember(Name = "strategy", IsRequired = true, EmitDefaultValue = false)]
-        public string Strategy { get; set; }
-
-        /// <summary>
         /// Gets or Sets ClosedAt
         /// </summary>
         [DataMember(Name = "closedAt", EmitDefaultValue = true)]
@@ -202,6 +196,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "seriesId", IsRequired = true, EmitDefaultValue = false)]
         public string SeriesId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Strategy
+        /// </summary>
+        [DataMember(Name = "strategy", IsRequired = true, EmitDefaultValue = false)]
+        public string Strategy { get; set; }
 
         /// <summary>
         /// Gets or Sets ComboKey
@@ -251,11 +251,11 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Strategy: ").Append(Strategy).Append("\n");
             sb.Append("  ClosedAt: ").Append(ClosedAt).Append("\n");
             sb.Append("  HolderAccountId: ").Append(HolderAccountId).Append("\n");
             sb.Append("  Side: ").Append(Side).Append("\n");
             sb.Append("  SeriesId: ").Append(SeriesId).Append("\n");
+            sb.Append("  Strategy: ").Append(Strategy).Append("\n");
             sb.Append("  ComboKey: ").Append(ComboKey).Append("\n");
             sb.Append("  Legs: ").Append(Legs).Append("\n");
             sb.Append("  QtyMilli: ").Append(QtyMilli).Append("\n");
@@ -317,11 +317,6 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
-                    this.Strategy == input.Strategy ||
-                    (this.Strategy != null &&
-                    this.Strategy.Equals(input.Strategy))
-                ) && 
-                (
                     this.ClosedAt == input.ClosedAt ||
                     (this.ClosedAt != null &&
                     this.ClosedAt.Equals(input.ClosedAt))
@@ -339,6 +334,11 @@ namespace net.crossly.Model
                     this.SeriesId == input.SeriesId ||
                     (this.SeriesId != null &&
                     this.SeriesId.Equals(input.SeriesId))
+                ) && 
+                (
+                    this.Strategy == input.Strategy ||
+                    (this.Strategy != null &&
+                    this.Strategy.Equals(input.Strategy))
                 ) && 
                 (
                     this.ComboKey == input.ComboKey ||
@@ -394,10 +394,6 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                if (this.Strategy != null)
-                {
-                    hashCode = (hashCode * 59) + this.Strategy.GetHashCode();
-                }
                 if (this.ClosedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ClosedAt.GetHashCode();
@@ -410,6 +406,10 @@ namespace net.crossly.Model
                 if (this.SeriesId != null)
                 {
                     hashCode = (hashCode * 59) + this.SeriesId.GetHashCode();
+                }
+                if (this.Strategy != null)
+                {
+                    hashCode = (hashCode * 59) + this.Strategy.GetHashCode();
                 }
                 if (this.ComboKey != null)
                 {

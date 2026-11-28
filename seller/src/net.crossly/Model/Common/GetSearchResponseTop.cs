@@ -124,34 +124,34 @@ namespace net.crossly.Model
             Email = 3,
 
             /// <summary>
+            /// Enum Text for value: text
+            /// </summary>
+            [EnumMember(Value = "text")]
+            Text = 4,
+
+            /// <summary>
             /// Enum Sku for value: sku
             /// </summary>
             [EnumMember(Value = "sku")]
-            Sku = 4,
+            Sku = 5,
 
             /// <summary>
             /// Enum ListingId for value: listing_id
             /// </summary>
             [EnumMember(Value = "listing_id")]
-            ListingId = 5,
+            ListingId = 6,
 
             /// <summary>
             /// Enum Title for value: title
             /// </summary>
             [EnumMember(Value = "title")]
-            Title = 6,
+            Title = 7,
 
             /// <summary>
             /// Enum OrderId for value: order_id
             /// </summary>
             [EnumMember(Value = "order_id")]
-            OrderId = 7,
-
-            /// <summary>
-            /// Enum Text for value: text
-            /// </summary>
-            [EnumMember(Value = "text")]
-            Text = 8,
+            OrderId = 8,
 
             /// <summary>
             /// Enum Url for value: url

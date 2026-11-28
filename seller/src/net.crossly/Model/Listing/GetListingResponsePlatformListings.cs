@@ -153,12 +153,14 @@ namespace net.crossly.Model
         /// <param name="accountSlot">accountSlot (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="marketplaceId">marketplaceId.</param>
+        /// <param name="currency">currency.</param>
+        /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="platformConnectionId">platformConnectionId.</param>
         /// <param name="origin">origin (required).</param>
         /// <param name="views">views (required).</param>
         /// <param name="favorites">favorites (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="inventoryItemId">inventoryItemId.</param>
-        /// <param name="currency">currency.</param>
         /// <param name="delistedAt">delistedAt.</param>
         /// <param name="soldAt">soldAt.</param>
         /// <param name="listingId">listingId (required).</param>
@@ -184,7 +186,6 @@ namespace net.crossly.Model
         /// <param name="crosslyPriceUsdCents">crosslyPriceUsdCents.</param>
         /// <param name="crosslyPriceFxAsOf">crosslyPriceFxAsOf.</param>
         /// <param name="bundlePromo">bundlePromo.</param>
-        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="hashtags">hashtags.</param>
         /// <param name="isDraft">isDraft (required).</param>
         /// <param name="scheduledPublishAt">scheduledPublishAt.</param>
@@ -245,7 +246,7 @@ namespace net.crossly.Model
         /// <param name="publishedOverrides">publishedOverrides.</param>
         /// <param name="delistState">delistState.</param>
         /// <param name="unmatchedSale">unmatchedSale.</param>
-        public GetListingResponsePlatformListings(string id = default(string), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string status = default(string), string marketplaceId = default(string), OriginEnum origin = default(OriginEnum), decimal views = default(decimal), decimal favorites = default(decimal), decimal quantity = default(decimal), string inventoryItemId = default(string), string currency = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), string listingId = default(string), string platformListingId = default(string), string platformListingUrl = default(string), string stockLocation = default(string), DateTime? listedAt = default(DateTime?), DateTime? sharedAt = default(DateTime?), string delistReason = default(string), DateTime? lastCheckedAt = default(DateTime?), decimal commentsCount = default(decimal), decimal? impressions = default(decimal?), decimal? ctrBps = default(decimal?), ViewsSemanticsEnum? viewsSemantics = default(ViewsSemanticsEnum?), DateTime? lastStatsSyncedAt = default(DateTime?), string errorMessage = default(string), DateTime? delistRequestedAt = default(DateTime?), string delistRequestedReason = default(string), DateTime? delistFailedAt = default(DateTime?), string delistError = default(string), string delistErrorCode = default(string), string listedPrice = default(string), decimal? crosslyPriceUsdCents = default(decimal?), string crosslyPriceFxAsOf = default(string), GetInventoryResponsePlatformListingsBundlePromo bundlePromo = default(GetInventoryResponsePlatformListingsBundlePromo), string storefrontId = default(string), List<string> hashtags = default(List<string>), bool isDraft = default(bool), DateTime? scheduledPublishAt = default(DateTime?), bool isDutchAuction = default(bool), decimal? dutchStartCents = default(decimal?), decimal? dutchFloorCents = default(decimal?), DateTime? dutchEndsAt = default(DateTime?), bool isPreOrder = default(bool), string expectedShipBy = default(string), decimal? preorderDepositPercentBps = default(decimal?), DateTime? boostedAt = default(DateTime?), string imageCaption = default(string), decimal? durationDays = default(decimal?), DateTime? endsAt = default(DateTime?), bool bestOfferEnabled = default(bool), decimal? bestOfferAutoAcceptCents = default(decimal?), decimal? bestOfferAutoDeclineCents = default(decimal?), List<string> aestheticTags = default(List<string>), GetInventoryResponsePlatformListingsPersonalization personalization = default(GetInventoryResponsePlatformListingsPersonalization), decimal? tryDays = default(decimal?), decimal? tryFeeCents = default(decimal?), decimal? subscribeDiscountBps = default(decimal?), GetInventoryResponsePlatformListingsMeasurements measurements = default(GetInventoryResponsePlatformListingsMeasurements), bool allowsLocalPickup = default(bool), decimal? pickupRadiusMiles = default(decimal?), string pickupLat = default(string), string pickupLng = default(string), string refurbishedTier = default(string), decimal? refurbWarrantyMonths = default(decimal?), decimal? refurbBatteryPct = default(decimal?), string charitySlug = default(string), decimal? charityPercentBps = default(decimal?), string crosslyReturnPolicyId = default(string), string crosslyShippingPolicyId = default(string), string crosslyPaymentPolicyId = default(string), decimal? retailPriceCents = default(decimal?), List<string> restrictedCountries = default(List<string>), decimal? auctionExtendSeconds = default(decimal?), string authenticationProviderSlug = default(string), bool authenticationRequired = default(bool), bool hasVariants = default(bool), string charityId = default(string), decimal minOrderQuantity = default(decimal), decimal? wholesaleUnitPriceCents = default(decimal?), decimal? wholesaleMinQuantity = default(decimal?), decimal? auctionReserveCents = default(decimal?), bool isGtc = default(bool), decimal handlingTimeDays = default(decimal), string itemLocation = default(string), string itemLocationZip = default(string), string itemLocationCountry = default(string), string declaredShippingCost = default(string), string returnPolicyText = default(string), DateTime? lastDriftCheckedAt = default(DateTime?), string web3OrderId = default(string), bool verificationFailed = default(bool), bool detailsPending = default(bool), Dictionary<string, Object> publishedOverrides = default(Dictionary<string, Object>), DelistStateEnum? delistState = default(DelistStateEnum?), GetListingResponsePlatformListingsUnmatchedSale unmatchedSale = default(GetListingResponsePlatformListingsUnmatchedSale))
+        public GetListingResponsePlatformListings(string id = default(string), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string status = default(string), string marketplaceId = default(string), string currency = default(string), string storefrontId = default(string), string platformConnectionId = default(string), OriginEnum origin = default(OriginEnum), decimal views = default(decimal), decimal favorites = default(decimal), decimal quantity = default(decimal), string inventoryItemId = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), string listingId = default(string), string platformListingId = default(string), string platformListingUrl = default(string), string stockLocation = default(string), DateTime? listedAt = default(DateTime?), DateTime? sharedAt = default(DateTime?), string delistReason = default(string), DateTime? lastCheckedAt = default(DateTime?), decimal commentsCount = default(decimal), decimal? impressions = default(decimal?), decimal? ctrBps = default(decimal?), ViewsSemanticsEnum? viewsSemantics = default(ViewsSemanticsEnum?), DateTime? lastStatsSyncedAt = default(DateTime?), string errorMessage = default(string), DateTime? delistRequestedAt = default(DateTime?), string delistRequestedReason = default(string), DateTime? delistFailedAt = default(DateTime?), string delistError = default(string), string delistErrorCode = default(string), string listedPrice = default(string), decimal? crosslyPriceUsdCents = default(decimal?), string crosslyPriceFxAsOf = default(string), GetInventoryResponsePlatformListingsBundlePromo bundlePromo = default(GetInventoryResponsePlatformListingsBundlePromo), List<string> hashtags = default(List<string>), bool isDraft = default(bool), DateTime? scheduledPublishAt = default(DateTime?), bool isDutchAuction = default(bool), decimal? dutchStartCents = default(decimal?), decimal? dutchFloorCents = default(decimal?), DateTime? dutchEndsAt = default(DateTime?), bool isPreOrder = default(bool), string expectedShipBy = default(string), decimal? preorderDepositPercentBps = default(decimal?), DateTime? boostedAt = default(DateTime?), string imageCaption = default(string), decimal? durationDays = default(decimal?), DateTime? endsAt = default(DateTime?), bool bestOfferEnabled = default(bool), decimal? bestOfferAutoAcceptCents = default(decimal?), decimal? bestOfferAutoDeclineCents = default(decimal?), List<string> aestheticTags = default(List<string>), GetInventoryResponsePlatformListingsPersonalization personalization = default(GetInventoryResponsePlatformListingsPersonalization), decimal? tryDays = default(decimal?), decimal? tryFeeCents = default(decimal?), decimal? subscribeDiscountBps = default(decimal?), GetInventoryResponsePlatformListingsMeasurements measurements = default(GetInventoryResponsePlatformListingsMeasurements), bool allowsLocalPickup = default(bool), decimal? pickupRadiusMiles = default(decimal?), string pickupLat = default(string), string pickupLng = default(string), string refurbishedTier = default(string), decimal? refurbWarrantyMonths = default(decimal?), decimal? refurbBatteryPct = default(decimal?), string charitySlug = default(string), decimal? charityPercentBps = default(decimal?), string crosslyReturnPolicyId = default(string), string crosslyShippingPolicyId = default(string), string crosslyPaymentPolicyId = default(string), decimal? retailPriceCents = default(decimal?), List<string> restrictedCountries = default(List<string>), decimal? auctionExtendSeconds = default(decimal?), string authenticationProviderSlug = default(string), bool authenticationRequired = default(bool), bool hasVariants = default(bool), string charityId = default(string), decimal minOrderQuantity = default(decimal), decimal? wholesaleUnitPriceCents = default(decimal?), decimal? wholesaleMinQuantity = default(decimal?), decimal? auctionReserveCents = default(decimal?), bool isGtc = default(bool), decimal handlingTimeDays = default(decimal), string itemLocation = default(string), string itemLocationZip = default(string), string itemLocationCountry = default(string), string declaredShippingCost = default(string), string returnPolicyText = default(string), DateTime? lastDriftCheckedAt = default(DateTime?), string web3OrderId = default(string), bool verificationFailed = default(bool), bool detailsPending = default(bool), Dictionary<string, Object> publishedOverrides = default(Dictionary<string, Object>), DelistStateEnum? delistState = default(DelistStateEnum?), GetListingResponsePlatformListingsUnmatchedSale unmatchedSale = default(GetListingResponsePlatformListingsUnmatchedSale))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -301,8 +302,10 @@ namespace net.crossly.Model
             this.VerificationFailed = verificationFailed;
             this.DetailsPending = detailsPending;
             this.MarketplaceId = marketplaceId;
-            this.InventoryItemId = inventoryItemId;
             this.Currency = currency;
+            this.StorefrontId = storefrontId;
+            this.PlatformConnectionId = platformConnectionId;
+            this.InventoryItemId = inventoryItemId;
             this.DelistedAt = delistedAt;
             this.SoldAt = soldAt;
             this.PlatformListingUrl = platformListingUrl;
@@ -324,7 +327,6 @@ namespace net.crossly.Model
             this.CrosslyPriceUsdCents = crosslyPriceUsdCents;
             this.CrosslyPriceFxAsOf = crosslyPriceFxAsOf;
             this.BundlePromo = bundlePromo;
-            this.StorefrontId = storefrontId;
             this.Hashtags = hashtags;
             this.ScheduledPublishAt = scheduledPublishAt;
             this.DutchStartCents = dutchStartCents;
@@ -412,6 +414,24 @@ namespace net.crossly.Model
         public string MarketplaceId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PlatformConnectionId
+        /// </summary>
+        [DataMember(Name = "platformConnectionId", EmitDefaultValue = true)]
+        public string PlatformConnectionId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Views
         /// </summary>
         [DataMember(Name = "views", IsRequired = true, EmitDefaultValue = false)]
@@ -434,12 +454,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
         public string InventoryItemId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
-        public string Currency { get; set; }
 
         /// <summary>
         /// Gets or Sets DelistedAt
@@ -584,12 +598,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bundlePromo", EmitDefaultValue = true)]
         public GetInventoryResponsePlatformListingsBundlePromo BundlePromo { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StorefrontId
-        /// </summary>
-        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
-        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets Hashtags
@@ -959,12 +967,14 @@ namespace net.crossly.Model
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  PlatformConnectionId: ").Append(PlatformConnectionId).Append("\n");
             sb.Append("  Origin: ").Append(Origin).Append("\n");
             sb.Append("  Views: ").Append(Views).Append("\n");
             sb.Append("  Favorites: ").Append(Favorites).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  DelistedAt: ").Append(DelistedAt).Append("\n");
             sb.Append("  SoldAt: ").Append(SoldAt).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
@@ -990,7 +1000,6 @@ namespace net.crossly.Model
             sb.Append("  CrosslyPriceUsdCents: ").Append(CrosslyPriceUsdCents).Append("\n");
             sb.Append("  CrosslyPriceFxAsOf: ").Append(CrosslyPriceFxAsOf).Append("\n");
             sb.Append("  BundlePromo: ").Append(BundlePromo).Append("\n");
-            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Hashtags: ").Append(Hashtags).Append("\n");
             sb.Append("  IsDraft: ").Append(IsDraft).Append("\n");
             sb.Append("  ScheduledPublishAt: ").Append(ScheduledPublishAt).Append("\n");
@@ -1116,6 +1125,21 @@ namespace net.crossly.Model
                     this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.PlatformConnectionId == input.PlatformConnectionId ||
+                    (this.PlatformConnectionId != null &&
+                    this.PlatformConnectionId.Equals(input.PlatformConnectionId))
+                ) && 
+                (
                     this.Origin == input.Origin ||
                     this.Origin.Equals(input.Origin)
                 ) && 
@@ -1135,11 +1159,6 @@ namespace net.crossly.Model
                     this.InventoryItemId == input.InventoryItemId ||
                     (this.InventoryItemId != null &&
                     this.InventoryItemId.Equals(input.InventoryItemId))
-                ) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
                 ) && 
                 (
                     this.DelistedAt == input.DelistedAt ||
@@ -1263,11 +1282,6 @@ namespace net.crossly.Model
                     this.BundlePromo == input.BundlePromo ||
                     (this.BundlePromo != null &&
                     this.BundlePromo.Equals(input.BundlePromo))
-                ) && 
-                (
-                    this.StorefrontId == input.StorefrontId ||
-                    (this.StorefrontId != null &&
-                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.Hashtags == input.Hashtags ||
@@ -1592,6 +1606,18 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                if (this.PlatformConnectionId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PlatformConnectionId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Origin.GetHashCode();
                 hashCode = (hashCode * 59) + this.Views.GetHashCode();
                 hashCode = (hashCode * 59) + this.Favorites.GetHashCode();
@@ -1599,10 +1625,6 @@ namespace net.crossly.Model
                 if (this.InventoryItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
-                }
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 if (this.DelistedAt != null)
                 {
@@ -1697,10 +1719,6 @@ namespace net.crossly.Model
                 if (this.BundlePromo != null)
                 {
                     hashCode = (hashCode * 59) + this.BundlePromo.GetHashCode();
-                }
-                if (this.StorefrontId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.Hashtags != null)
                 {

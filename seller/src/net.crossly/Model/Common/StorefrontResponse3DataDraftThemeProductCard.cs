@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum StyleEnum
         {
             /// <summary>
+            /// Enum Minimal for value: minimal
+            /// </summary>
+            [EnumMember(Value = "minimal")]
+            Minimal = 1,
+
+            /// <summary>
             /// Enum Standard for value: standard
             /// </summary>
             [EnumMember(Value = "standard")]
-            Standard = 1,
+            Standard = 2,
 
             /// <summary>
             /// Enum Overlay for value: overlay
             /// </summary>
             [EnumMember(Value = "overlay")]
-            Overlay = 2,
-
-            /// <summary>
-            /// Enum Minimal for value: minimal
-            /// </summary>
-            [EnumMember(Value = "minimal")]
-            Minimal = 3,
+            Overlay = 3,
 
             /// <summary>
             /// Enum Bordered for value: bordered

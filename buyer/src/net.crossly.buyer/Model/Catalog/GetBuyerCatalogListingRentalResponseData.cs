@@ -49,10 +49,11 @@ namespace net.crossly.buyer.Model
         /// <param name="requireApproval">requireApproval (required).</param>
         /// <param name="available">available (required).</param>
         /// <param name="returnPolicy">returnPolicy.</param>
+        /// <param name="policy">policy.</param>
         /// <param name="booked">booked (required).</param>
         /// <param name="options">options (required).</param>
         /// <param name="unitsFree">unitsFree (required).</param>
-        public GetBuyerCatalogListingRentalResponseData(decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal? depositCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), bool available = default(bool), string returnPolicy = default(string), List<GetBuyerCatalogListingRentalResponseDataBooked> booked = default(List<GetBuyerCatalogListingRentalResponseDataBooked>), GetBuyerCatalogListingRentalResponseDataOptions options = default(GetBuyerCatalogListingRentalResponseDataOptions), Dictionary<string, Object> unitsFree = default(Dictionary<string, Object>))
+        public GetBuyerCatalogListingRentalResponseData(decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal? depositCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), bool available = default(bool), string returnPolicy = default(string), GetBuyerCatalogListingRentalResponseDataPolicy policy = default(GetBuyerCatalogListingRentalResponseDataPolicy), List<GetBuyerCatalogListingRentalResponseDataBooked> booked = default(List<GetBuyerCatalogListingRentalResponseDataBooked>), GetBuyerCatalogListingRentalResponseDataOptions options = default(GetBuyerCatalogListingRentalResponseDataOptions), Dictionary<string, Object> unitsFree = default(Dictionary<string, Object>))
         {
             this.DailyCents = dailyCents;
             this.MinDays = minDays;
@@ -79,6 +80,7 @@ namespace net.crossly.buyer.Model
             this.WeeklyCents = weeklyCents;
             this.DepositCents = depositCents;
             this.ReturnPolicy = returnPolicy;
+            this.Policy = policy;
         }
 
         /// <summary>
@@ -142,6 +144,12 @@ namespace net.crossly.buyer.Model
         public string ReturnPolicy { get; set; }
 
         /// <summary>
+        /// Gets or Sets Policy
+        /// </summary>
+        [DataMember(Name = "policy", EmitDefaultValue = true)]
+        public GetBuyerCatalogListingRentalResponseDataPolicy Policy { get; set; }
+
+        /// <summary>
         /// Gets or Sets Booked
         /// </summary>
         [DataMember(Name = "booked", IsRequired = true, EmitDefaultValue = false)]
@@ -177,6 +185,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  RequireApproval: ").Append(RequireApproval).Append("\n");
             sb.Append("  Available: ").Append(Available).Append("\n");
             sb.Append("  ReturnPolicy: ").Append(ReturnPolicy).Append("\n");
+            sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("  Booked: ").Append(Booked).Append("\n");
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  UnitsFree: ").Append(UnitsFree).Append("\n");
@@ -259,6 +268,11 @@ namespace net.crossly.buyer.Model
                     this.ReturnPolicy.Equals(input.ReturnPolicy))
                 ) && 
                 (
+                    this.Policy == input.Policy ||
+                    (this.Policy != null &&
+                    this.Policy.Equals(input.Policy))
+                ) && 
+                (
                     this.Booked == input.Booked ||
                     this.Booked != null &&
                     input.Booked != null &&
@@ -304,6 +318,10 @@ namespace net.crossly.buyer.Model
                 if (this.ReturnPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.ReturnPolicy.GetHashCode();
+                }
+                if (this.Policy != null)
+                {
+                    hashCode = (hashCode * 59) + this.Policy.GetHashCode();
                 }
                 if (this.Booked != null)
                 {

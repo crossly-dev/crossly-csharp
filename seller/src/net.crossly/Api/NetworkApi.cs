@@ -112,8 +112,9 @@ namespace net.crossly.Api
         /// Update per-action toggles + platforms on pool membership.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse UpdateNetworkPool();
+        OkResponse UpdateNetworkPool(UpdateNetworkPoolRequest updateNetworkPoolRequest);
 
         /// <summary>
         /// Update per-action toggles + platforms on pool membership.
@@ -122,8 +123,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> UpdateNetworkPoolWithHttpInfo();
+        ApiResponse<OkResponse> UpdateNetworkPoolWithHttpInfo(UpdateNetworkPoolRequest updateNetworkPoolRequest);
         #endregion Synchronous Operations
     }
 
@@ -247,9 +249,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> UpdateNetworkPoolAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> UpdateNetworkPoolAsync(UpdateNetworkPoolRequest updateNetworkPoolRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update per-action toggles + platforms on pool membership.
@@ -258,9 +261,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateNetworkPoolWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateNetworkPoolWithHttpInfoAsync(UpdateNetworkPoolRequest updateNetworkPoolRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1037,10 +1041,11 @@ namespace net.crossly.Api
         /// Update per-action toggles + platforms on pool membership. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <returns>OkResponse</returns>
-        public OkResponse UpdateNetworkPool()
+        public OkResponse UpdateNetworkPool(UpdateNetworkPoolRequest updateNetworkPoolRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateNetworkPoolWithHttpInfo();
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateNetworkPoolWithHttpInfo(updateNetworkPoolRequest);
             return localVarResponse.Data;
         }
 
@@ -1048,12 +1053,20 @@ namespace net.crossly.Api
         /// Update per-action toggles + platforms on pool membership. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> UpdateNetworkPoolWithHttpInfo()
+        public net.crossly.Client.ApiResponse<OkResponse> UpdateNetworkPoolWithHttpInfo(UpdateNetworkPoolRequest updateNetworkPoolRequest)
         {
+            // verify the required parameter 'updateNetworkPoolRequest' is set
+            if (updateNetworkPoolRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateNetworkPoolRequest' when calling NetworkApi->UpdateNetworkPool");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1073,6 +1086,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateNetworkPoolRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1099,11 +1113,12 @@ namespace net.crossly.Api
         /// Update per-action toggles + platforms on pool membership. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> UpdateNetworkPoolAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> UpdateNetworkPoolAsync(UpdateNetworkPoolRequest updateNetworkPoolRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateNetworkPoolWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateNetworkPoolWithHttpInfoAsync(updateNetworkPoolRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1111,14 +1126,22 @@ namespace net.crossly.Api
         /// Update per-action toggles + platforms on pool membership. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateNetworkPoolRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateNetworkPoolWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateNetworkPoolWithHttpInfoAsync(UpdateNetworkPoolRequest updateNetworkPoolRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateNetworkPoolRequest' is set
+            if (updateNetworkPoolRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateNetworkPoolRequest' when calling NetworkApi->UpdateNetworkPool");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1138,6 +1161,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateNetworkPoolRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

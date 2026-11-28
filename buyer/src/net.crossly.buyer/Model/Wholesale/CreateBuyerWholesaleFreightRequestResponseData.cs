@@ -43,15 +43,15 @@ namespace net.crossly.buyer.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="note">note.</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
-        /// <param name="note">note.</param>
         /// <param name="lines">lines (required).</param>
         /// <param name="shipTo">shipTo.</param>
         /// <param name="sellerNote">sellerNote.</param>
         /// <param name="quotedCents">quotedCents.</param>
         /// <param name="weightLbs">weightLbs.</param>
-        public CreateBuyerWholesaleFreightRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), string buyerUserId = default(string), string sellerUserId = default(string), string note = default(string), List<CreateBuyerWholesaleFreightRequestResponseDataLines> lines = default(List<CreateBuyerWholesaleFreightRequestResponseDataLines>), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string sellerNote = default(string), decimal? quotedCents = default(decimal?), decimal? weightLbs = default(decimal?))
+        public CreateBuyerWholesaleFreightRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string status = default(string), string note = default(string), string buyerUserId = default(string), string sellerUserId = default(string), List<CreateBuyerWholesaleFreightRequestResponseDataLines> lines = default(List<CreateBuyerWholesaleFreightRequestResponseDataLines>), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string sellerNote = default(string), decimal? quotedCents = default(decimal?), decimal? weightLbs = default(decimal?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -112,6 +112,12 @@ namespace net.crossly.buyer.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
@@ -122,12 +128,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string SellerUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Note
-        /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
 
         /// <summary>
         /// Gets or Sets Lines
@@ -171,9 +171,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  Lines: ").Append(Lines).Append("\n");
             sb.Append("  ShipTo: ").Append(ShipTo).Append("\n");
             sb.Append("  SellerNote: ").Append(SellerNote).Append("\n");
@@ -235,6 +235,11 @@ namespace net.crossly.buyer.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
@@ -243,11 +248,6 @@ namespace net.crossly.buyer.Model
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
                 ) && 
                 (
                     this.Lines == input.Lines ||
@@ -303,6 +303,10 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
@@ -310,10 +314,6 @@ namespace net.crossly.buyer.Model
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
-                if (this.Note != null)
-                {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
                 }
                 if (this.Lines != null)
                 {

@@ -46,8 +46,9 @@ namespace net.crossly.Api
         /// Register an Expo push token for this user.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse CreateMobilePushToken();
+        OkResponse CreateMobilePushToken(CreateMobilePushTokenRequest createMobilePushTokenRequest);
 
         /// <summary>
         /// Register an Expo push token for this user.
@@ -56,8 +57,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateMobilePushTokenWithHttpInfo();
+        ApiResponse<OkResponse> CreateMobilePushTokenWithHttpInfo(CreateMobilePushTokenRequest createMobilePushTokenRequest);
         /// <summary>
         /// Clear ALL registered push tokens for this user.
         /// </summary>
@@ -127,9 +129,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateMobilePushTokenAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> CreateMobilePushTokenAsync(CreateMobilePushTokenRequest createMobilePushTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Register an Expo push token for this user.
@@ -138,9 +141,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateMobilePushTokenWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateMobilePushTokenWithHttpInfoAsync(CreateMobilePushTokenRequest createMobilePushTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Clear ALL registered push tokens for this user.
         /// </summary>
@@ -435,10 +439,11 @@ namespace net.crossly.Api
         /// Register an Expo push token for this user. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <returns>OkResponse</returns>
-        public OkResponse CreateMobilePushToken()
+        public OkResponse CreateMobilePushToken(CreateMobilePushTokenRequest createMobilePushTokenRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateMobilePushTokenWithHttpInfo();
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateMobilePushTokenWithHttpInfo(createMobilePushTokenRequest);
             return localVarResponse.Data;
         }
 
@@ -446,12 +451,20 @@ namespace net.crossly.Api
         /// Register an Expo push token for this user. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateMobilePushTokenWithHttpInfo()
+        public net.crossly.Client.ApiResponse<OkResponse> CreateMobilePushTokenWithHttpInfo(CreateMobilePushTokenRequest createMobilePushTokenRequest)
         {
+            // verify the required parameter 'createMobilePushTokenRequest' is set
+            if (createMobilePushTokenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMobilePushTokenRequest' when calling MobileApi->CreateMobilePushToken");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -471,6 +484,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createMobilePushTokenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -497,11 +511,12 @@ namespace net.crossly.Api
         /// Register an Expo push token for this user. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateMobilePushTokenAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> CreateMobilePushTokenAsync(CreateMobilePushTokenRequest createMobilePushTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateMobilePushTokenWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateMobilePushTokenWithHttpInfoAsync(createMobilePushTokenRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -509,14 +524,22 @@ namespace net.crossly.Api
         /// Register an Expo push token for this user. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMobilePushTokenRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateMobilePushTokenWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateMobilePushTokenWithHttpInfoAsync(CreateMobilePushTokenRequest createMobilePushTokenRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createMobilePushTokenRequest' is set
+            if (createMobilePushTokenRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMobilePushTokenRequest' when calling MobileApi->CreateMobilePushToken");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -536,6 +559,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createMobilePushTokenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

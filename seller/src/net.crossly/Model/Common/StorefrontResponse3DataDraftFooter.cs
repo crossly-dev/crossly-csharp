@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Columns = 1,
 
             /// <summary>
-            /// Enum Minimal for value: minimal
-            /// </summary>
-            [EnumMember(Value = "minimal")]
-            Minimal = 2,
-
-            /// <summary>
             /// Enum Centered for value: centered
             /// </summary>
             [EnumMember(Value = "centered")]
-            Centered = 3
+            Centered = 2,
+
+            /// <summary>
+            /// Enum Minimal for value: minimal
+            /// </summary>
+            [EnumMember(Value = "minimal")]
+            Minimal = 3
 
         }
 

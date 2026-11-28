@@ -77,7 +77,7 @@ namespace net.crossly.Model
         /// <param name="active">active (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public ListAutomaticDiscountsItem(string id = default(string), string name = default(string), KindEnum kind = default(KindEnum), List<ListAutomaticDiscountsItemTiers> tiers = default(List<ListAutomaticDiscountsItemTiers>), ListAutomaticDiscountsItemAppliesTo appliesTo = default(ListAutomaticDiscountsItemAppliesTo), ListAutomaticDiscountsItemExclusions exclusions = default(ListAutomaticDiscountsItemExclusions), List<ListAutomaticDiscountsItemChannelsItem> channels = default(List<ListAutomaticDiscountsItemChannelsItem>), ListAutomaticDiscountsItemSchedule schedule = default(ListAutomaticDiscountsItemSchedule), ListAutomaticDiscountsItemStacking stacking = default(ListAutomaticDiscountsItemStacking), bool active = default(bool), string createdAt = default(string), string updatedAt = default(string))
+        public ListAutomaticDiscountsItem(string id = default(string), string name = default(string), KindEnum kind = default(KindEnum), List<MinQtyPercentBps> tiers = default(List<MinQtyPercentBps>), ListAutomaticDiscountsItemAppliesTo appliesTo = default(ListAutomaticDiscountsItemAppliesTo), ListAutomaticDiscountsItemExclusions exclusions = default(ListAutomaticDiscountsItemExclusions), List<ListAutomaticDiscountsItemChannelsItem> channels = default(List<ListAutomaticDiscountsItemChannelsItem>), ListAutomaticDiscountsItemSchedule schedule = default(ListAutomaticDiscountsItemSchedule), ListAutomaticDiscountsItemStacking stacking = default(ListAutomaticDiscountsItemStacking), bool active = default(bool), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -149,7 +149,7 @@ namespace net.crossly.Model
         /// Gets or Sets Tiers
         /// </summary>
         [DataMember(Name = "tiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListAutomaticDiscountsItemTiers> Tiers { get; set; }
+        public List<MinQtyPercentBps> Tiers { get; set; }
 
         /// <summary>
         /// Gets or Sets AppliesTo

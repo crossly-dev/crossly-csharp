@@ -105,11 +105,19 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="tier">tier (required).</param>
         /// <param name="interval">interval (default to IntervalEnum.Monthly).</param>
-        public CreateBillingUpgradeRequest(TierEnum tier = default(TierEnum), IntervalEnum? interval = IntervalEnum.Monthly)
+        /// <param name="separate">separate (default to false).</param>
+        public CreateBillingUpgradeRequest(TierEnum tier = default(TierEnum), IntervalEnum? interval = IntervalEnum.Monthly, bool separate = false)
         {
             this.Tier = tier;
             this.Interval = interval;
+            this.Separate = separate;
         }
+
+        /// <summary>
+        /// Gets or Sets Separate
+        /// </summary>
+        [DataMember(Name = "separate", EmitDefaultValue = true)]
+        public bool Separate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -121,6 +129,7 @@ namespace net.crossly.Model
             sb.Append("class CreateBillingUpgradeRequest {\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
             sb.Append("  Interval: ").Append(Interval).Append("\n");
+            sb.Append("  Separate: ").Append(Separate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +172,10 @@ namespace net.crossly.Model
                 (
                     this.Interval == input.Interval ||
                     this.Interval.Equals(input.Interval)
+                ) && 
+                (
+                    this.Separate == input.Separate ||
+                    this.Separate.Equals(input.Separate)
                 );
         }
 
@@ -177,6 +190,7 @@ namespace net.crossly.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Tier.GetHashCode();
                 hashCode = (hashCode * 59) + this.Interval.GetHashCode();
+                hashCode = (hashCode * 59) + this.Separate.GetHashCode();
                 return hashCode;
             }
         }

@@ -46,8 +46,8 @@ namespace net.crossly.Model
         /// <param name="pipeTo">The **&#x60;pipeTo()&#x60;** method of the ReadableStream interface pipes the current &#x60;ReadableStream&#x60; to a given WritableStream and returns a Promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.  [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/pipeTo) (required).</param>
         /// <param name="tee">The **&#x60;tee()&#x60;** method of the two-element array containing the two resulting branches as new ReadableStream instances.  [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee) (required).</param>
         /// <param name="values">values (required).</param>
-        /// <param name="asyncIterator6022">asyncIterator6022 (required).</param>
-        public GetActionLogExportDownloadResponse(bool locked = default(bool), Dictionary<string, Object> cancel = default(Dictionary<string, Object>), Dictionary<string, Object> getReader = default(Dictionary<string, Object>), Dictionary<string, Object> pipeThrough = default(Dictionary<string, Object>), Dictionary<string, Object> pipeTo = default(Dictionary<string, Object>), Dictionary<string, Object> tee = default(Dictionary<string, Object>), Dictionary<string, Object> values = default(Dictionary<string, Object>), Dictionary<string, Object> asyncIterator6022 = default(Dictionary<string, Object>))
+        /// <param name="asyncIterator5986">asyncIterator5986 (required).</param>
+        public GetActionLogExportDownloadResponse(bool locked = default(bool), Dictionary<string, Object> cancel = default(Dictionary<string, Object>), Dictionary<string, Object> getReader = default(Dictionary<string, Object>), Dictionary<string, Object> pipeThrough = default(Dictionary<string, Object>), Dictionary<string, Object> pipeTo = default(Dictionary<string, Object>), Dictionary<string, Object> tee = default(Dictionary<string, Object>), Dictionary<string, Object> values = default(Dictionary<string, Object>), Dictionary<string, Object> asyncIterator5986 = default(Dictionary<string, Object>))
         {
             this.Locked = locked;
             // to ensure "cancel" is required (not null)
@@ -80,11 +80,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("values is a required property for GetActionLogExportDownloadResponse and cannot be null");
             }
             this.Values = values;
-            // to ensure "asyncIterator6022" is required (not null)
-            if (asyncIterator6022 == null) {
-                throw new ArgumentNullException("asyncIterator6022 is a required property for GetActionLogExportDownloadResponse and cannot be null");
+            // to ensure "asyncIterator5986" is required (not null)
+            if (asyncIterator5986 == null) {
+                throw new ArgumentNullException("asyncIterator5986 is a required property for GetActionLogExportDownloadResponse and cannot be null");
             }
-            this.AsyncIterator6022 = asyncIterator6022;
+            this.AsyncIterator5986 = asyncIterator5986;
         }
 
         /// <summary>
@@ -136,10 +136,10 @@ namespace net.crossly.Model
         public Dictionary<string, Object> Values { get; set; }
 
         /// <summary>
-        /// Gets or Sets AsyncIterator6022
+        /// Gets or Sets AsyncIterator5986
         /// </summary>
-        [DataMember(Name = "__@asyncIterator@6022", IsRequired = true, EmitDefaultValue = false)]
-        public Dictionary<string, Object> AsyncIterator6022 { get; set; }
+        [DataMember(Name = "__@asyncIterator@5986", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> AsyncIterator5986 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -156,7 +156,7 @@ namespace net.crossly.Model
             sb.Append("  PipeTo: ").Append(PipeTo).Append("\n");
             sb.Append("  Tee: ").Append(Tee).Append("\n");
             sb.Append("  Values: ").Append(Values).Append("\n");
-            sb.Append("  AsyncIterator6022: ").Append(AsyncIterator6022).Append("\n");
+            sb.Append("  AsyncIterator5986: ").Append(AsyncIterator5986).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -233,10 +233,10 @@ namespace net.crossly.Model
                     this.Values.SequenceEqual(input.Values)
                 ) && 
                 (
-                    this.AsyncIterator6022 == input.AsyncIterator6022 ||
-                    this.AsyncIterator6022 != null &&
-                    input.AsyncIterator6022 != null &&
-                    this.AsyncIterator6022.SequenceEqual(input.AsyncIterator6022)
+                    this.AsyncIterator5986 == input.AsyncIterator5986 ||
+                    this.AsyncIterator5986 != null &&
+                    input.AsyncIterator5986 != null &&
+                    this.AsyncIterator5986.SequenceEqual(input.AsyncIterator5986)
                 );
         }
 
@@ -274,9 +274,9 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Values.GetHashCode();
                 }
-                if (this.AsyncIterator6022 != null)
+                if (this.AsyncIterator5986 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AsyncIterator6022.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AsyncIterator5986.GetHashCode();
                 }
                 return hashCode;
             }

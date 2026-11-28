@@ -43,13 +43,13 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="kind">kind (required).</param>
+        /// <param name="title">title (required).</param>
         /// <param name="visible">visible (required).</param>
         /// <param name="position">position (required).</param>
-        /// <param name="kind">kind (required).</param>
         /// <param name="listingIds">listingIds (required).</param>
-        public ListStorefrontSectionsItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string title = default(string), string storefrontId = default(string), bool visible = default(bool), decimal position = default(decimal), string kind = default(string), List<string> listingIds = default(List<string>))
+        public ListStorefrontSectionsItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string storefrontId = default(string), string kind = default(string), string title = default(string), bool visible = default(bool), decimal position = default(decimal), List<string> listingIds = default(List<string>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -63,6 +63,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListStorefrontSectionsItem and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "kind" is required (not null)
+            if (kind == null) {
+                throw new ArgumentNullException("kind is a required property for ListStorefrontSectionsItem and cannot be null");
+            }
+            this.Kind = kind;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for ListStorefrontSectionsItem and cannot be null");
@@ -70,11 +75,6 @@ namespace net.crossly.Model
             this.Title = title;
             this.Visible = visible;
             this.Position = position;
-            // to ensure "kind" is required (not null)
-            if (kind == null) {
-                throw new ArgumentNullException("kind is a required property for ListStorefrontSectionsItem and cannot be null");
-            }
-            this.Kind = kind;
             // to ensure "listingIds" is required (not null)
             if (listingIds == null) {
                 throw new ArgumentNullException("listingIds is a required property for ListStorefrontSectionsItem and cannot be null");
@@ -108,16 +108,22 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets StorefrontId
         /// </summary>
         [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
         public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Visible
@@ -130,12 +136,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
         public decimal Position { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Kind
-        /// </summary>
-        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
-        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingIds
@@ -155,11 +155,11 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Visible: ").Append(Visible).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  ListingIds: ").Append(ListingIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -217,14 +217,19 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.StorefrontId == input.StorefrontId ||
                     (this.StorefrontId != null &&
                     this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
                 ) && 
                 (
                     this.Visible == input.Visible ||
@@ -233,11 +238,6 @@ namespace net.crossly.Model
                 (
                     this.Position == input.Position ||
                     this.Position.Equals(input.Position)
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    (this.Kind != null &&
-                    this.Kind.Equals(input.Kind))
                 ) && 
                 (
                     this.ListingIds == input.ListingIds ||
@@ -272,20 +272,20 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.StorefrontId != null)
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Visible.GetHashCode();
-                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Visible.GetHashCode();
+                hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.ListingIds != null)
                 {
                     hashCode = (hashCode * 59) + this.ListingIds.GetHashCode();

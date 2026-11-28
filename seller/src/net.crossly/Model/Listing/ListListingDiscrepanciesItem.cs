@@ -46,9 +46,9 @@ namespace net.crossly.Model
         /// <param name="platform">platform (required).</param>
         /// <param name="accountSlot">accountSlot (required).</param>
         /// <param name="marketplaceId">marketplaceId (required).</param>
-        /// <param name="lastError">lastError.</param>
         /// <param name="source">source (required).</param>
         /// <param name="listingId">listingId (required).</param>
+        /// <param name="lastError">lastError.</param>
         /// <param name="field">field (required).</param>
         /// <param name="ourValue">ourValue.</param>
         /// <param name="remoteValue">remoteValue.</param>
@@ -56,7 +56,7 @@ namespace net.crossly.Model
         /// <param name="lastDetectedAt">lastDetectedAt (required).</param>
         /// <param name="dismissedAt">dismissedAt.</param>
         /// <param name="dismissedRemoteValue">dismissedRemoteValue.</param>
-        public ListListingDiscrepanciesItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string marketplaceId = default(string), string lastError = default(string), string source = default(string), string listingId = default(string), string field = default(string), string ourValue = default(string), string remoteValue = default(string), DateTime firstDetectedAt = default(DateTime), DateTime lastDetectedAt = default(DateTime), DateTime? dismissedAt = default(DateTime?), string dismissedRemoteValue = default(string))
+        public ListListingDiscrepanciesItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), decimal accountSlot = default(decimal), string marketplaceId = default(string), string source = default(string), string listingId = default(string), string lastError = default(string), string field = default(string), string ourValue = default(string), string remoteValue = default(string), DateTime firstDetectedAt = default(DateTime), DateTime lastDetectedAt = default(DateTime), DateTime? dismissedAt = default(DateTime?), string dismissedRemoteValue = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -148,12 +148,6 @@ namespace net.crossly.Model
         public string MarketplaceId { get; set; }
 
         /// <summary>
-        /// Gets or Sets LastError
-        /// </summary>
-        [DataMember(Name = "lastError", EmitDefaultValue = true)]
-        public string LastError { get; set; }
-
-        /// <summary>
         /// Gets or Sets Source
         /// </summary>
         [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
@@ -164,6 +158,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "listingId", IsRequired = true, EmitDefaultValue = false)]
         public string ListingId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastError
+        /// </summary>
+        [DataMember(Name = "lastError", EmitDefaultValue = true)]
+        public string LastError { get; set; }
 
         /// <summary>
         /// Gets or Sets Field
@@ -222,9 +222,9 @@ namespace net.crossly.Model
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
-            sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
+            sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  OurValue: ").Append(OurValue).Append("\n");
             sb.Append("  RemoteValue: ").Append(RemoteValue).Append("\n");
@@ -302,11 +302,6 @@ namespace net.crossly.Model
                     this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
-                    this.LastError == input.LastError ||
-                    (this.LastError != null &&
-                    this.LastError.Equals(input.LastError))
-                ) && 
-                (
                     this.Source == input.Source ||
                     (this.Source != null &&
                     this.Source.Equals(input.Source))
@@ -315,6 +310,11 @@ namespace net.crossly.Model
                     this.ListingId == input.ListingId ||
                     (this.ListingId != null &&
                     this.ListingId.Equals(input.ListingId))
+                ) && 
+                (
+                    this.LastError == input.LastError ||
+                    (this.LastError != null &&
+                    this.LastError.Equals(input.LastError))
                 ) && 
                 (
                     this.Field == input.Field ||
@@ -387,10 +387,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
-                if (this.LastError != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
-                }
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
@@ -398,6 +394,10 @@ namespace net.crossly.Model
                 if (this.ListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
+                }
+                if (this.LastError != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
                 }
                 if (this.Field != null)
                 {

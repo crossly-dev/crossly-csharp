@@ -65,7 +65,13 @@ namespace net.crossly.Model
             /// Enum Interactive for value: interactive
             /// </summary>
             [EnumMember(Value = "interactive")]
-            Interactive = 5
+            Interactive = 5,
+
+            /// <summary>
+            /// Enum CardGame for value: card_game
+            /// </summary>
+            [EnumMember(Value = "card_game")]
+            CardGame = 6
 
         }
 
@@ -83,18 +89,18 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetCreatorImportResponseDataResult" /> class.
         /// </summary>
+        /// <param name="ok">ok (required).</param>
         /// <param name="format">format.</param>
         /// <param name="issues">issues (required).</param>
-        /// <param name="ok">ok (required).</param>
         /// <param name="preview">preview (required).</param>
-        public GetCreatorImportResponseDataResult(FormatEnum? format = default(FormatEnum?), List<GetCreatorImportResponseDataResultIssues> issues = default(List<GetCreatorImportResponseDataResultIssues>), bool ok = default(bool), List<GetCreatorImportResponseDataResultPreview> preview = default(List<GetCreatorImportResponseDataResultPreview>))
+        public GetCreatorImportResponseDataResult(bool ok = default(bool), FormatEnum? format = default(FormatEnum?), List<GetCreatorImportResponseDataResultIssues> issues = default(List<GetCreatorImportResponseDataResultIssues>), List<GetCreatorImportResponseDataResultPreview> preview = default(List<GetCreatorImportResponseDataResultPreview>))
         {
+            this.Ok = ok;
             // to ensure "issues" is required (not null)
             if (issues == null) {
                 throw new ArgumentNullException("issues is a required property for GetCreatorImportResponseDataResult and cannot be null");
             }
             this.Issues = issues;
-            this.Ok = ok;
             // to ensure "preview" is required (not null)
             if (preview == null) {
                 throw new ArgumentNullException("preview is a required property for GetCreatorImportResponseDataResult and cannot be null");
@@ -104,16 +110,16 @@ namespace net.crossly.Model
         }
 
         /// <summary>
-        /// Gets or Sets Issues
-        /// </summary>
-        [DataMember(Name = "issues", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetCreatorImportResponseDataResultIssues> Issues { get; set; }
-
-        /// <summary>
         /// Gets or Sets Ok
         /// </summary>
         [DataMember(Name = "ok", IsRequired = true, EmitDefaultValue = true)]
         public bool Ok { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Issues
+        /// </summary>
+        [DataMember(Name = "issues", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetCreatorImportResponseDataResultIssues> Issues { get; set; }
 
         /// <summary>
         /// Gets or Sets Preview
@@ -129,9 +135,9 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetCreatorImportResponseDataResult {\n");
+            sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  Issues: ").Append(Issues).Append("\n");
-            sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  Preview: ").Append(Preview).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -169,6 +175,10 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Ok == input.Ok ||
+                    this.Ok.Equals(input.Ok)
+                ) && 
+                (
                     this.Format == input.Format ||
                     this.Format.Equals(input.Format)
                 ) && 
@@ -177,10 +187,6 @@ namespace net.crossly.Model
                     this.Issues != null &&
                     input.Issues != null &&
                     this.Issues.SequenceEqual(input.Issues)
-                ) && 
-                (
-                    this.Ok == input.Ok ||
-                    this.Ok.Equals(input.Ok)
                 ) && 
                 (
                     this.Preview == input.Preview ||
@@ -199,12 +205,12 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 hashCode = (hashCode * 59) + this.Format.GetHashCode();
                 if (this.Issues != null)
                 {
                     hashCode = (hashCode * 59) + this.Issues.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 if (this.Preview != null)
                 {
                     hashCode = (hashCode * 59) + this.Preview.GetHashCode();

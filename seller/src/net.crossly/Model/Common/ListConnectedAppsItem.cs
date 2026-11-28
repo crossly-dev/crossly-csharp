@@ -50,7 +50,15 @@ namespace net.crossly.Model
         /// <param name="developerName">developerName.</param>
         /// <param name="developerEmail">developerEmail (required).</param>
         /// <param name="revShareBps">The share of take-home THIS install agreed to (frozen at consent), not the app&#39;s current terms. Null &#x3D; free..</param>
-        public ListConnectedAppsItem(string grantId = default(string), List<string> scopes = default(List<string>), DateTime connectedAt = default(DateTime), DateTime? lastUsedAt = default(DateTime?), string appId = default(string), string appName = default(string), string appDescription = default(string), string homepageUrl = default(string), string developerName = default(string), string developerEmail = default(string), decimal? revShareBps = default(decimal?))
+        /// <param name="publisherName">Who publishes it (spec DV2 \&quot;by publisher\&quot;): the store that owns the app (drizzle/1320), else its developer&#39;s display name for an app still waiting for a store..</param>
+        /// <param name="tagline">\&quot;About this app\&quot; (spec DV2): the directory profile when it is listed, else these facts in a dialog..</param>
+        /// <param name="slug">slug.</param>
+        /// <param name="listed">listed (required).</param>
+        /// <param name="verified">verified (required).</param>
+        /// <param name="supportUrl">supportUrl.</param>
+        /// <param name="privacyUrl">privacyUrl.</param>
+        /// <param name="termsUrl">termsUrl.</param>
+        public ListConnectedAppsItem(string grantId = default(string), List<string> scopes = default(List<string>), DateTime connectedAt = default(DateTime), DateTime? lastUsedAt = default(DateTime?), string appId = default(string), string appName = default(string), string appDescription = default(string), string homepageUrl = default(string), string developerName = default(string), string developerEmail = default(string), decimal? revShareBps = default(decimal?), string publisherName = default(string), string tagline = default(string), string slug = default(string), bool listed = default(bool), bool verified = default(bool), string supportUrl = default(string), string privacyUrl = default(string), string termsUrl = default(string))
         {
             // to ensure "grantId" is required (not null)
             if (grantId == null) {
@@ -78,11 +86,19 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("developerEmail is a required property for ListConnectedAppsItem and cannot be null");
             }
             this.DeveloperEmail = developerEmail;
+            this.Listed = listed;
+            this.Verified = verified;
             this.LastUsedAt = lastUsedAt;
             this.AppDescription = appDescription;
             this.HomepageUrl = homepageUrl;
             this.DeveloperName = developerName;
             this.RevShareBps = revShareBps;
+            this.PublisherName = publisherName;
+            this.Tagline = tagline;
+            this.Slug = slug;
+            this.SupportUrl = supportUrl;
+            this.PrivacyUrl = privacyUrl;
+            this.TermsUrl = termsUrl;
         }
 
         /// <summary>
@@ -153,6 +169,56 @@ namespace net.crossly.Model
         public decimal? RevShareBps { get; set; }
 
         /// <summary>
+        /// Who publishes it (spec DV2 \&quot;by publisher\&quot;): the store that owns the app (drizzle/1320), else its developer&#39;s display name for an app still waiting for a store.
+        /// </summary>
+        /// <value>Who publishes it (spec DV2 \&quot;by publisher\&quot;): the store that owns the app (drizzle/1320), else its developer&#39;s display name for an app still waiting for a store.</value>
+        [DataMember(Name = "publisherName", EmitDefaultValue = true)]
+        public string PublisherName { get; set; }
+
+        /// <summary>
+        /// \&quot;About this app\&quot; (spec DV2): the directory profile when it is listed, else these facts in a dialog.
+        /// </summary>
+        /// <value>\&quot;About this app\&quot; (spec DV2): the directory profile when it is listed, else these facts in a dialog.</value>
+        [DataMember(Name = "tagline", EmitDefaultValue = true)]
+        public string Tagline { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Slug
+        /// </summary>
+        [DataMember(Name = "slug", EmitDefaultValue = true)]
+        public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Listed
+        /// </summary>
+        [DataMember(Name = "listed", IsRequired = true, EmitDefaultValue = true)]
+        public bool Listed { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Verified
+        /// </summary>
+        [DataMember(Name = "verified", IsRequired = true, EmitDefaultValue = true)]
+        public bool Verified { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SupportUrl
+        /// </summary>
+        [DataMember(Name = "supportUrl", EmitDefaultValue = true)]
+        public string SupportUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PrivacyUrl
+        /// </summary>
+        [DataMember(Name = "privacyUrl", EmitDefaultValue = true)]
+        public string PrivacyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TermsUrl
+        /// </summary>
+        [DataMember(Name = "termsUrl", EmitDefaultValue = true)]
+        public string TermsUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -171,6 +237,14 @@ namespace net.crossly.Model
             sb.Append("  DeveloperName: ").Append(DeveloperName).Append("\n");
             sb.Append("  DeveloperEmail: ").Append(DeveloperEmail).Append("\n");
             sb.Append("  RevShareBps: ").Append(RevShareBps).Append("\n");
+            sb.Append("  PublisherName: ").Append(PublisherName).Append("\n");
+            sb.Append("  Tagline: ").Append(Tagline).Append("\n");
+            sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Listed: ").Append(Listed).Append("\n");
+            sb.Append("  Verified: ").Append(Verified).Append("\n");
+            sb.Append("  SupportUrl: ").Append(SupportUrl).Append("\n");
+            sb.Append("  PrivacyUrl: ").Append(PrivacyUrl).Append("\n");
+            sb.Append("  TermsUrl: ").Append(TermsUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -261,6 +335,44 @@ namespace net.crossly.Model
                     this.RevShareBps == input.RevShareBps ||
                     (this.RevShareBps != null &&
                     this.RevShareBps.Equals(input.RevShareBps))
+                ) && 
+                (
+                    this.PublisherName == input.PublisherName ||
+                    (this.PublisherName != null &&
+                    this.PublisherName.Equals(input.PublisherName))
+                ) && 
+                (
+                    this.Tagline == input.Tagline ||
+                    (this.Tagline != null &&
+                    this.Tagline.Equals(input.Tagline))
+                ) && 
+                (
+                    this.Slug == input.Slug ||
+                    (this.Slug != null &&
+                    this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Listed == input.Listed ||
+                    this.Listed.Equals(input.Listed)
+                ) && 
+                (
+                    this.Verified == input.Verified ||
+                    this.Verified.Equals(input.Verified)
+                ) && 
+                (
+                    this.SupportUrl == input.SupportUrl ||
+                    (this.SupportUrl != null &&
+                    this.SupportUrl.Equals(input.SupportUrl))
+                ) && 
+                (
+                    this.PrivacyUrl == input.PrivacyUrl ||
+                    (this.PrivacyUrl != null &&
+                    this.PrivacyUrl.Equals(input.PrivacyUrl))
+                ) && 
+                (
+                    this.TermsUrl == input.TermsUrl ||
+                    (this.TermsUrl != null &&
+                    this.TermsUrl.Equals(input.TermsUrl))
                 );
         }
 
@@ -316,6 +428,32 @@ namespace net.crossly.Model
                 if (this.RevShareBps != null)
                 {
                     hashCode = (hashCode * 59) + this.RevShareBps.GetHashCode();
+                }
+                if (this.PublisherName != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublisherName.GetHashCode();
+                }
+                if (this.Tagline != null)
+                {
+                    hashCode = (hashCode * 59) + this.Tagline.GetHashCode();
+                }
+                if (this.Slug != null)
+                {
+                    hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Listed.GetHashCode();
+                hashCode = (hashCode * 59) + this.Verified.GetHashCode();
+                if (this.SupportUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.SupportUrl.GetHashCode();
+                }
+                if (this.PrivacyUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.PrivacyUrl.GetHashCode();
+                }
+                if (this.TermsUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.TermsUrl.GetHashCode();
                 }
                 return hashCode;
             }

@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Mint a new PAT. Full token returned ONCE — store it on the client.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <returns>CreatePatResponse</returns>
-        CreatePatResponse CreatePat();
+        CreatePatResponse CreatePat(CreatePatRequest createPatRequest);
 
         /// <summary>
         /// Mint a new PAT. Full token returned ONCE — store it on the client.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <returns>ApiResponse of CreatePatResponse</returns>
-        ApiResponse<CreatePatResponse> CreatePatWithHttpInfo();
+        ApiResponse<CreatePatResponse> CreatePatWithHttpInfo(CreatePatRequest createPatRequest);
         /// <summary>
         /// Revoke a PAT by id.
         /// </summary>
@@ -77,14 +79,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetPatScopeResponse</returns>
         ApiResponse<GetPatScopeResponse> GetPatScopeWithHttpInfo();
         /// <summary>
-        /// List the caller&#39;s PATs (preview only).
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListPatResponse</returns>
         ListPatResponse ListPat();
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only).
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -108,9 +110,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePatResponse</returns>
-        System.Threading.Tasks.Task<CreatePatResponse> CreatePatAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePatResponse> CreatePatAsync(CreatePatRequest createPatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mint a new PAT. Full token returned ONCE — store it on the client.
@@ -119,9 +122,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePatResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePatResponse>> CreatePatWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePatResponse>> CreatePatWithHttpInfoAsync(CreatePatRequest createPatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Revoke a PAT by id.
         /// </summary>
@@ -167,7 +171,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetPatScopeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetPatScopeResponse>> GetPatScopeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List the caller&#39;s PATs (preview only).
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -178,7 +182,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListPatResponse> ListPatAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only).
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -311,10 +315,11 @@ namespace net.crossly.Api
         /// Mint a new PAT. Full token returned ONCE — store it on the client. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <returns>CreatePatResponse</returns>
-        public CreatePatResponse CreatePat()
+        public CreatePatResponse CreatePat(CreatePatRequest createPatRequest)
         {
-            net.crossly.Client.ApiResponse<CreatePatResponse> localVarResponse = CreatePatWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatePatResponse> localVarResponse = CreatePatWithHttpInfo(createPatRequest);
             return localVarResponse.Data;
         }
 
@@ -322,12 +327,20 @@ namespace net.crossly.Api
         /// Mint a new PAT. Full token returned ONCE — store it on the client. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <returns>ApiResponse of CreatePatResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePatResponse> CreatePatWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreatePatResponse> CreatePatWithHttpInfo(CreatePatRequest createPatRequest)
         {
+            // verify the required parameter 'createPatRequest' is set
+            if (createPatRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPatRequest' when calling PATApi->CreatePat");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -347,6 +360,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createPatRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -373,11 +387,12 @@ namespace net.crossly.Api
         /// Mint a new PAT. Full token returned ONCE — store it on the client. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePatResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePatResponse> CreatePatAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePatResponse> CreatePatAsync(CreatePatRequest createPatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePatResponse> localVarResponse = await CreatePatWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePatResponse> localVarResponse = await CreatePatWithHttpInfoAsync(createPatRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -385,14 +400,22 @@ namespace net.crossly.Api
         /// Mint a new PAT. Full token returned ONCE — store it on the client. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPatRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePatResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePatResponse>> CreatePatWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePatResponse>> CreatePatWithHttpInfoAsync(CreatePatRequest createPatRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createPatRequest' is set
+            if (createPatRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPatRequest' when calling PATApi->CreatePat");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -412,6 +435,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createPatRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -698,7 +722,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only). 
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListPatResponse</returns>
@@ -709,7 +733,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only). 
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListPatResponse</returns>
@@ -760,7 +784,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only). 
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -772,7 +796,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s PATs (preview only). 
+        /// List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

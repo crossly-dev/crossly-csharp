@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**DeleteStorefrontSectionBySectionId**](StorefrontsApi.md#deletestorefrontsectionbysectionid) | **DELETE** /v1/storefronts/{id}/sections/{sectionId} | Remove a section from a store. Listings on a removed shelf stay live.
 [**DeleteStorefrontTeamAccess**](StorefrontsApi.md#deletestorefrontteamaccess) | **DELETE** /v1/storefronts/team-access | Revoke a team member&#39;s access to one store (or their all-stores grant).
 [**GetHubSetup**](StorefrontsApi.md#gethubsetup) | **GET** /v1/hub/setup/{section} | A Hub section&#39;s setup checklist: each step, whether it is done and the page that completes it. Derived from what exists, never stored.
-[**GetStorefrontById**](StorefrontsApi.md#getstorefrontbyid) | **GET** /v1/storefronts/{id} | One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+[**GetStorefrontById**](StorefrontsApi.md#getstorefrontbyid) | **GET** /v1/storefronts/{id} | One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen).
 [**GetStorefrontOnboarding**](StorefrontsApi.md#getstorefrontonboarding) | **GET** /v1/storefronts/onboarding | Crossly Shop setup state: whether you have a store, the generated name/slug a skip would use, each optional step and whether it is done, the listing-gate requirements, payouts readiness and the public URL once live.
 [**GetStorefrontPolicy**](StorefrontsApi.md#getstorefrontpolicy) | **GET** /v1/storefronts/{id}/policies | A store&#39;s policies: per kind (shipping, return, payment) the preset the store picked (presetId, null &#x3D; your default) and what the store resolves to (resolvedPresetId, resolvedPresetName, level: store | seller_default | legacy | default, body).
 [**GetStorefrontRequirement**](StorefrontsApi.md#getstorefrontrequirement) | **GET** /v1/storefronts/{id}/requirements | What this store still needs before a NEW Crossly listing can publish into it: ship_from, shipping_policy, return_policy, payouts — with where to fix each.
@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**ListStorefrontTeamAccess**](StorefrontsApi.md#liststorefrontteamaccess) | **GET** /v1/storefronts/team-access | Every active per-store grant you have made to team members (storefrontId null &#x3D; all stores).
 [**ListStorefronts**](StorefrontsApi.md#liststorefronts) | **GET** /v1/storefronts | Your stores (default first). includeArchived&#x3D;true adds archived ones.
 [**UpdateStorefrontById**](StorefrontsApi.md#updatestorefrontbyid) | **PATCH** /v1/storefronts/{id} | Rename a store. Never changes the slug or your @handle.
+[**UpdateStorefrontCurrency**](StorefrontsApi.md#updatestorefrontcurrency) | **PUT** /v1/storefronts/{id}/currency | Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
 [**UpdateStorefrontDefault**](StorefrontsApi.md#updatestorefrontdefault) | **PUT** /v1/storefronts/{id}/default | Make this store your default (where a Crossly publish with no storefrontId lands).
 [**UpdateStorefrontPolicy**](StorefrontsApi.md#updatestorefrontpolicy) | **PUT** /v1/storefronts/{id}/policies | Set a store&#39;s policies: shippingPresetId, returnPresetId, paymentPresetId (a policy preset of that kind you own, or null for your default). Omitted &#x3D; unchanged. Listings in the store with no preset of their own follow these.
 [**UpdateStorefrontSectionBySectionId**](StorefrontsApi.md#updatestorefrontsectionbysectionid) | **PATCH** /v1/storefronts/{id}/sections/{sectionId} | Rename, show/hide, refill (listings shelves) or reconfigure one section of a store.
@@ -964,7 +965,7 @@ Name | Type | Description  | Notes
 # **GetStorefrontById**
 > StorefrontResponse GetStorefrontById (string id)
 
-One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null = never chosen).
 
 ### Example
 ```csharp
@@ -990,7 +991,7 @@ namespace Example
 
             try
             {
-                // One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+                // One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null = never chosen).
                 StorefrontResponse result = apiInstance.GetStorefrontById(id);
                 Debug.WriteLine(result);
             }
@@ -1348,7 +1349,7 @@ Name | Type | Description  | Notes
 
 <a name="getstorefrontslugavailable"></a>
 # **GetStorefrontSlugAvailable**
-> GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable ()
+> GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable (string slug)
 
 Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
 
@@ -1372,11 +1373,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontsApi(config);
+            var slug = "slug_example";  // string | 
 
             try
             {
                 // Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
-                GetStorefrontSlugAvailableResponse result = apiInstance.GetStorefrontSlugAvailable();
+                GetStorefrontSlugAvailableResponse result = apiInstance.GetStorefrontSlugAvailable(slug);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1391,7 +1393,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slug** | **string**|  | 
 
 ### Return type
 
@@ -1574,7 +1579,7 @@ This endpoint does not need any parameter.
 
 <a name="liststorefronts"></a>
 # **ListStorefronts**
-> ListStorefrontsResponse ListStorefronts ()
+> ListStorefrontsResponse ListStorefronts (string includeArchived = null)
 
 Your stores (default first). includeArchived=true adds archived ones.
 
@@ -1598,11 +1603,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontsApi(config);
+            var includeArchived = "true";  // string |  (optional) 
 
             try
             {
                 // Your stores (default first). includeArchived=true adds archived ones.
-                ListStorefrontsResponse result = apiInstance.ListStorefronts();
+                ListStorefrontsResponse result = apiInstance.ListStorefronts(includeArchived);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1617,7 +1623,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includeArchived** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1683,6 +1692,84 @@ namespace Example
             catch (ApiException  e)
             {
                 Debug.Print("Exception when calling StorefrontsApi.UpdateStorefrontById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**StorefrontResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatestorefrontcurrency"></a>
+# **UpdateStorefrontCurrency**
+> StorefrontResponse UpdateStorefrontCurrency (string id)
+
+Set a store's currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateStorefrontCurrencyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new StorefrontsApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Set a store's currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+                StorefrontResponse result = apiInstance.UpdateStorefrontCurrency(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling StorefrontsApi.UpdateStorefrontCurrency: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }

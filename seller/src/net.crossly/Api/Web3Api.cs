@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <returns>IdResponse</returns>
-        IdResponse CreateWeb3Alert();
+        IdResponse CreateWeb3Alert(CreateWeb3AlertRequest createWeb3AlertRequest);
 
         /// <summary>
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> CreateWeb3AlertWithHttpInfo();
+        ApiResponse<IdResponse> CreateWeb3AlertWithHttpInfo(CreateWeb3AlertRequest createWeb3AlertRequest);
         /// <summary>
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <returns>CreateWeb3AuctionResponse</returns>
-        CreateWeb3AuctionResponse CreateWeb3Auction();
+        CreateWeb3AuctionResponse CreateWeb3Auction(CreateWeb3AuctionRequest createWeb3AuctionRequest);
 
         /// <summary>
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
@@ -56,8 +59,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <returns>ApiResponse of CreateWeb3AuctionResponse</returns>
-        ApiResponse<CreateWeb3AuctionResponse> CreateWeb3AuctionWithHttpInfo();
+        ApiResponse<CreateWeb3AuctionResponse> CreateWeb3AuctionWithHttpInfo(CreateWeb3AuctionRequest createWeb3AuctionRequest);
         /// <summary>
         /// Call off your auction while it has no bids.
         /// </summary>
@@ -80,8 +84,9 @@ namespace net.crossly.Api
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <returns>CreateWeb3CreatorClaimResponse</returns>
-        CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim();
+        CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest);
 
         /// <summary>
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;.
@@ -90,14 +95,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <returns>ApiResponse of CreateWeb3CreatorClaimResponse</returns>
-        ApiResponse<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimWithHttpInfo();
+        ApiResponse<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimWithHttpInfo(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest);
         /// <summary>
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <returns>CreateWeb3CrosslistResponse</returns>
-        CreateWeb3CrosslistResponse CreateWeb3Crosslist();
+        CreateWeb3CrosslistResponse CreateWeb3Crosslist(CreateWeb3CrosslistRequest createWeb3CrosslistRequest);
 
         /// <summary>
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
@@ -106,8 +113,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <returns>ApiResponse of CreateWeb3CrosslistResponse</returns>
-        ApiResponse<CreateWeb3CrosslistResponse> CreateWeb3CrosslistWithHttpInfo();
+        ApiResponse<CreateWeb3CrosslistResponse> CreateWeb3CrosslistWithHttpInfo(CreateWeb3CrosslistRequest createWeb3CrosslistRequest);
         /// <summary>
         /// Turn the 15-minute reminder for a drop on, or off if it already is. Returns &#x60;{ remindMe }&#x60;.
         /// </summary>
@@ -130,8 +138,9 @@ namespace net.crossly.Api
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <returns>CreateWeb3FavoriteResponse</returns>
-        CreateWeb3FavoriteResponse CreateWeb3Favorite();
+        CreateWeb3FavoriteResponse CreateWeb3Favorite(CreateWeb3FavoriteRequest createWeb3FavoriteRequest);
 
         /// <summary>
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;.
@@ -140,14 +149,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <returns>ApiResponse of CreateWeb3FavoriteResponse</returns>
-        ApiResponse<CreateWeb3FavoriteResponse> CreateWeb3FavoriteWithHttpInfo();
+        ApiResponse<CreateWeb3FavoriteResponse> CreateWeb3FavoriteWithHttpInfo(CreateWeb3FavoriteRequest createWeb3FavoriteRequest);
         /// <summary>
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <returns>ListWeb3LaunchesItem</returns>
-        ListWeb3LaunchesItem CreateWeb3Launch();
+        ListWeb3LaunchesItem CreateWeb3Launch(CreateWeb3LaunchRequest createWeb3LaunchRequest);
 
         /// <summary>
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
@@ -156,8 +167,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <returns>ApiResponse of ListWeb3LaunchesItem</returns>
-        ApiResponse<ListWeb3LaunchesItem> CreateWeb3LaunchWithHttpInfo();
+        ApiResponse<ListWeb3LaunchesItem> CreateWeb3LaunchWithHttpInfo(CreateWeb3LaunchRequest createWeb3LaunchRequest);
         /// <summary>
         /// Plan an airdrop (one free NFT each, up to 500) to &#x60;addresses&#x60; and/or the holders of &#x60;holdersOf&#x60;. Returns the transactions for the owner wallet; no payment moves.
         /// </summary>
@@ -252,8 +264,9 @@ namespace net.crossly.Api
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <returns>CreateWeb3OrderResponse</returns>
-        CreateWeb3OrderResponse CreateWeb3Order();
+        CreateWeb3OrderResponse CreateWeb3Order(CreateWeb3OrderRequest createWeb3OrderRequest);
 
         /// <summary>
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book.
@@ -262,8 +275,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <returns>ApiResponse of CreateWeb3OrderResponse</returns>
-        ApiResponse<CreateWeb3OrderResponse> CreateWeb3OrderWithHttpInfo();
+        ApiResponse<CreateWeb3OrderResponse> CreateWeb3OrderWithHttpInfo(CreateWeb3OrderRequest createWeb3OrderRequest);
         /// <summary>
         /// Take one of your orders out of the Crossly book.
         /// </summary>
@@ -288,8 +302,9 @@ namespace net.crossly.Api
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <returns>CreateWeb3OrderFulfillmentBatchResponse</returns>
-        CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch();
+        CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest);
 
         /// <summary>
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason.
@@ -298,14 +313,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <returns>ApiResponse of CreateWeb3OrderFulfillmentBatchResponse</returns>
-        ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchWithHttpInfo();
+        ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchWithHttpInfo(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest);
         /// <summary>
         /// Make an NFT you hold redeemable for one of your physical inventory items.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <returns>CreateWeb3PhygitalResponse</returns>
-        CreateWeb3PhygitalResponse CreateWeb3Phygital();
+        CreateWeb3PhygitalResponse CreateWeb3Phygital(CreateWeb3PhygitalRequest createWeb3PhygitalRequest);
 
         /// <summary>
         /// Make an NFT you hold redeemable for one of your physical inventory items.
@@ -314,15 +331,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <returns>ApiResponse of CreateWeb3PhygitalResponse</returns>
-        ApiResponse<CreateWeb3PhygitalResponse> CreateWeb3PhygitalWithHttpInfo();
+        ApiResponse<CreateWeb3PhygitalResponse> CreateWeb3PhygitalWithHttpInfo(CreateWeb3PhygitalRequest createWeb3PhygitalRequest);
         /// <summary>
         /// Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <returns>CreateWeb3PhygitalRedeemResponse</returns>
-        CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem(string id);
+        CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest);
 
         /// <summary>
         /// Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
@@ -332,15 +351,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <returns>ApiResponse of CreateWeb3PhygitalRedeemResponse</returns>
-        ApiResponse<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemWithHttpInfo(string id);
+        ApiResponse<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemWithHttpInfo(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest);
         /// <summary>
         /// Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse CreateWeb3PhygitalRedemptionShip(string id);
+        OkResponse CreateWeb3PhygitalRedemptionShip(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest);
 
         /// <summary>
         /// Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
@@ -350,14 +371,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateWeb3PhygitalRedemptionShipWithHttpInfo(string id);
+        ApiResponse<OkResponse> CreateWeb3PhygitalRedemptionShipWithHttpInfo(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest);
         /// <summary>
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <returns>CreateWeb3RaribleDraftResponse</returns>
-        CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft();
+        CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest);
 
         /// <summary>
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved.
@@ -366,14 +389,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <returns>ApiResponse of CreateWeb3RaribleDraftResponse</returns>
-        ApiResponse<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftWithHttpInfo();
+        ApiResponse<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftWithHttpInfo(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest);
         /// <summary>
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        OrderHashResponse CreateWeb3RaribleListing();
+        OrderHashResponse CreateWeb3RaribleListing(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest);
 
         /// <summary>
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
@@ -382,15 +407,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        ApiResponse<OrderHashResponse> CreateWeb3RaribleListingWithHttpInfo();
+        ApiResponse<OrderHashResponse> CreateWeb3RaribleListingWithHttpInfo(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest);
         /// <summary>
         /// Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx(string marketplace);
+        CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest);
 
         /// <summary>
         /// Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
@@ -400,15 +427,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxWithHttpInfo(string marketplace);
+        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxWithHttpInfo(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest);
         /// <summary>
         /// Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        OrderHashResponse CreateWeb3SolanaListing(string marketplace);
+        OrderHashResponse CreateWeb3SolanaListing(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest);
 
         /// <summary>
         /// Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
@@ -418,14 +447,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        ApiResponse<OrderHashResponse> CreateWeb3SolanaListingWithHttpInfo(string marketplace);
+        ApiResponse<OrderHashResponse> CreateWeb3SolanaListingWithHttpInfo(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest);
         /// <summary>
         /// Record a sent bid; it is recorded only once its trade state exists on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        OrderHashResponse CreateWeb3SolanaOffer();
+        OrderHashResponse CreateWeb3SolanaOffer(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest);
 
         /// <summary>
         /// Record a sent bid; it is recorded only once its trade state exists on chain.
@@ -434,15 +465,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        ApiResponse<OrderHashResponse> CreateWeb3SolanaOfferWithHttpInfo();
+        ApiResponse<OrderHashResponse> CreateWeb3SolanaOfferWithHttpInfo(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest);
         /// <summary>
         /// Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx(string hash);
+        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest);
 
         /// <summary>
         /// Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
@@ -452,15 +485,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxWithHttpInfo(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest);
         /// <summary>
         /// Build the cancel of your bid: the SOL your other bids do not need comes back.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx(string hash);
+        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest);
 
         /// <summary>
         /// Build the cancel of your bid: the SOL your other bids do not need comes back.
@@ -470,15 +505,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxWithHttpInfo(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest);
         /// <summary>
         /// Apply a sent accept or cancel once the chain shows the bid closed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <returns>CreateWeb3SolanaOfferConfirmResponse</returns>
-        CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm(string hash);
+        CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest);
 
         /// <summary>
         /// Apply a sent accept or cancel once the chain shows the bid closed.
@@ -488,14 +525,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferConfirmResponse</returns>
-        ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmWithHttpInfo(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest);
         /// <summary>
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <returns>CreateWeb3SolanaOfferTxResponse</returns>
-        CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx();
+        CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest);
 
         /// <summary>
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow.
@@ -504,15 +543,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxWithHttpInfo();
+        ApiResponse<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxWithHttpInfo(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest);
         /// <summary>
         /// Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <returns>CreateWeb3SolanaOrderBuyTxResponse</returns>
-        CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx(string hash);
+        CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest);
 
         /// <summary>
         /// Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
@@ -522,15 +563,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOrderBuyTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxWithHttpInfo(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest);
         /// <summary>
         /// Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <returns>CreateWeb3SolanaOfferConfirmResponse</returns>
-        CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm(string hash);
+        CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest);
 
         /// <summary>
         /// Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
@@ -540,15 +583,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferConfirmResponse</returns>
-        ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmWithHttpInfo(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest);
         /// <summary>
         /// Build the unsigned transaction that takes your Solana listing down.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx(string hash);
+        CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest);
 
         /// <summary>
         /// Build the unsigned transaction that takes your Solana listing down.
@@ -558,8 +603,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxWithHttpInfo(string hash);
+        ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxWithHttpInfo(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest);
         /// <summary>
         /// Build the transaction that sells your NFT into a Tensor bid, never below &#x60;minLamports&#x60;.
         /// </summary>
@@ -660,8 +706,9 @@ namespace net.crossly.Api
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <returns>CreateWeb3StoreWalletResponse</returns>
-        CreateWeb3StoreWalletResponse CreateWeb3StoreWallet();
+        CreateWeb3StoreWalletResponse CreateWeb3StoreWallet(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest);
 
         /// <summary>
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
@@ -670,14 +717,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
-        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo();
+        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest);
         /// <summary>
         /// Start adding a selling wallet to the store: the message the wallet signs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>CreateWeb3WalletChallengeResponse</returns>
-        CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge();
+        CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest);
 
         /// <summary>
         /// Start adding a selling wallet to the store: the message the wallet signs.
@@ -686,15 +735,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
-        ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo();
+        ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest);
         /// <summary>
         /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <returns>CreateWeb3WalletImportResponse</returns>
-        CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId);
+        CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest);
 
         /// <summary>
         /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
@@ -704,8 +755,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
-        ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId);
+        ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest);
         /// <summary>
         /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
         /// </summary>
@@ -728,8 +780,9 @@ namespace net.crossly.Api
         /// Finish adding a selling wallet: verify its signature and link it to the store.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <returns>CreateWeb3StoreWalletResponse</returns>
-        CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify();
+        CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest);
 
         /// <summary>
         /// Finish adding a selling wallet: verify its signature and link it to the store.
@@ -738,8 +791,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
-        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo();
+        ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest);
         /// <summary>
         /// Re-read a token&#39;s metadata from the chain&#39;s provider (name, traits, image — a new image is copied to Crossly&#39;s CDN). Once per token per 10 minutes.
         /// </summary>
@@ -766,8 +820,9 @@ namespace net.crossly.Api
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <returns>CreateWeb3TransactionResponse</returns>
-        CreateWeb3TransactionResponse CreateWeb3Transaction();
+        CreateWeb3TransactionResponse CreateWeb3Transaction(CreateWeb3TransactionRequest createWeb3TransactionRequest);
 
         /// <summary>
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt).
@@ -776,14 +831,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <returns>ApiResponse of CreateWeb3TransactionResponse</returns>
-        ApiResponse<CreateWeb3TransactionResponse> CreateWeb3TransactionWithHttpInfo();
+        ApiResponse<CreateWeb3TransactionResponse> CreateWeb3TransactionWithHttpInfo(CreateWeb3TransactionRequest createWeb3TransactionRequest);
         /// <summary>
         /// Start linking a wallet: returns the message the wallet must sign.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>CreateWeb3WalletChallengeResponse</returns>
-        CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge();
+        CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest);
 
         /// <summary>
         /// Start linking a wallet: returns the message the wallet must sign.
@@ -792,8 +849,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
-        ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeWithHttpInfo();
+        ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeWithHttpInfo(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest);
         /// <summary>
         /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
         /// </summary>
@@ -834,8 +892,9 @@ namespace net.crossly.Api
         /// Finish linking a wallet with its signature over the challenge message.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <returns>CreateWeb3WalletVerifyResponse</returns>
-        CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify();
+        CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest);
 
         /// <summary>
         /// Finish linking a wallet with its signature over the challenge message.
@@ -844,8 +903,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletVerifyResponse</returns>
-        ApiResponse<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyWithHttpInfo();
+        ApiResponse<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyWithHttpInfo(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest);
         /// <summary>
         /// Delete a price alert.
         /// </summary>
@@ -1037,8 +1097,10 @@ namespace net.crossly.Api
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>GetWeb3BrowseResponse</returns>
-        GetWeb3BrowseResponse GetWeb3Browse();
+        GetWeb3BrowseResponse GetWeb3Browse(string chain = default(string), string category = default(string));
 
         /// <summary>
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds.
@@ -1047,8 +1109,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3BrowseResponse</returns>
-        ApiResponse<GetWeb3BrowseResponse> GetWeb3BrowseWithHttpInfo();
+        ApiResponse<GetWeb3BrowseResponse> GetWeb3BrowseWithHttpInfo(string chain = default(string), string category = default(string));
         /// <summary>
         /// A collection: metadata and Crossly stats (floor, listed, volume, best collection offer).
         /// </summary>
@@ -1115,8 +1179,15 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <returns>GetWeb3CollectionItemResponse</returns>
-        GetWeb3CollectionItemResponse GetWeb3CollectionItem(string chain, string contract);
+        GetWeb3CollectionItemResponse GetWeb3CollectionItem(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string));
 
         /// <summary>
         /// A collection&#39;s NFTs: filter by traits (repeat trait&#x3D;Type:Value; OR within a type, AND across), search by name or token id, sort by id, rarity or Crossly price. Whole-collection once indexed.
@@ -1127,8 +1198,15 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3CollectionItemResponse</returns>
-        ApiResponse<GetWeb3CollectionItemResponse> GetWeb3CollectionItemWithHttpInfo(string chain, string contract);
+        ApiResponse<GetWeb3CollectionItemResponse> GetWeb3CollectionItemWithHttpInfo(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string));
         /// <summary>
         /// Every trait type and value in a collection, with how many tokens have each.
         /// </summary>
@@ -1155,8 +1233,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <returns>GetWeb3CollectionTraitTokenResponse</returns>
-        GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken(string chain, string contract);
+        GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken(string chain, string contract, string type, string value);
 
         /// <summary>
         /// Token ids in a collection with one trait — what a trait offer commits to.
@@ -1167,8 +1247,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <returns>ApiResponse of GetWeb3CollectionTraitTokenResponse</returns>
-        ApiResponse<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenWithHttpInfo(string chain, string contract);
+        ApiResponse<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenWithHttpInfo(string chain, string contract, string type, string value);
         /// <summary>
         /// Your collector perks: how many different NFTs you bought through Crossly, your Collector pin tier, relist rewards paid, and each NFT you still hold with the Bought on Crossly mark.
         /// </summary>
@@ -1209,8 +1291,11 @@ namespace net.crossly.Api
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <returns>GetWeb3CrosslistQuoteResponse</returns>
-        GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote();
+        GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote(string chain, string contract, string tokenId);
 
         /// <summary>
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability.
@@ -1219,8 +1304,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <returns>ApiResponse of GetWeb3CrosslistQuoteResponse</returns>
-        ApiResponse<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteWithHttpInfo();
+        ApiResponse<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteWithHttpInfo(string chain, string contract, string tokenId);
         /// <summary>
         /// The NFT home&#39;s featured collections: chosen by Crossly, else the hottest.
         /// </summary>
@@ -1333,8 +1421,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <returns>GetWeb3OrderFulfillmentResponse</returns>
-        GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment(string chain, string hash);
+        GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment(string chain, string hash, string tokenId = default(string));
 
         /// <summary>
         /// The signed order a taker passes to Seaport, after re-checking it can still fill.
@@ -1345,8 +1434,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3OrderFulfillmentResponse</returns>
-        ApiResponse<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentWithHttpInfo(string chain, string hash);
+        ApiResponse<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentWithHttpInfo(string chain, string hash, string tokenId = default(string));
         /// <summary>
         /// A token&#39;s phygital: the physical item it can be redeemed for, and whether it has been.
         /// </summary>
@@ -1405,8 +1495,9 @@ namespace net.crossly.Api
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <returns>GetWeb3PortfolioTaxResponse</returns>
-        GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax();
+        GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax(decimal year);
 
         /// <summary>
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD).
@@ -1415,8 +1506,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <returns>ApiResponse of GetWeb3PortfolioTaxResponse</returns>
-        ApiResponse<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxWithHttpInfo();
+        ApiResponse<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxWithHttpInfo(decimal year);
         /// <summary>
         /// A wallet&#39;s public profile: NFTs held, open Crossly listings, and activity.
         /// </summary>
@@ -1570,8 +1662,12 @@ namespace net.crossly.Api
         /// Listings, offers, sales and cancels in the Crossly book, newest first.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3ActivityResponse</returns>
-        ListWeb3ActivityResponse ListWeb3Activity();
+        ListWeb3ActivityResponse ListWeb3Activity(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Listings, offers, sales and cancels in the Crossly book, newest first.
@@ -1580,8 +1676,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3ActivityResponse</returns>
-        ApiResponse<ListWeb3ActivityResponse> ListWeb3ActivityWithHttpInfo();
+        ApiResponse<ListWeb3ActivityResponse> ListWeb3ActivityWithHttpInfo(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Your NFT price alerts, with the cheapest open Crossly listing each one covers now.
         /// </summary>
@@ -1618,8 +1718,10 @@ namespace net.crossly.Api
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3AuctionsResponse</returns>
-        ListWeb3AuctionsResponse ListWeb3Auctions();
+        ListWeb3AuctionsResponse ListWeb3Auctions(string chain = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be.
@@ -1628,14 +1730,26 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3AuctionsResponse</returns>
-        ApiResponse<ListWeb3AuctionsResponse> ListWeb3AuctionsWithHttpInfo();
+        ApiResponse<ListWeb3AuctionsResponse> ListWeb3AuctionsWithHttpInfo(string chain = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListWeb3BrowseCollectionsResponse</returns>
-        ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections();
+        ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
@@ -1644,14 +1758,27 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BrowseCollectionsResponse</returns>
-        ApiResponse<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsWithHttpInfo();
+        ApiResponse<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsWithHttpInfo(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3BrowseTokensResponse</returns>
-        ListWeb3BrowseTokensResponse ListWeb3BrowseTokens();
+        ListWeb3BrowseTokensResponse ListWeb3BrowseTokens(string chain = default(string), string category = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
@@ -1660,14 +1787,20 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BrowseTokensResponse</returns>
-        ApiResponse<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensWithHttpInfo();
+        ApiResponse<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensWithHttpInfo(string chain = default(string), string category = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3BundlesResponse</returns>
-        ListWeb3BundlesResponse ListWeb3Bundles();
+        ListWeb3BundlesResponse ListWeb3Bundles(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
@@ -1676,16 +1809,20 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BundlesResponse</returns>
-        ApiResponse<ListWeb3BundlesResponse> ListWeb3BundlesWithHttpInfo();
+        ApiResponse<ListWeb3BundlesResponse> ListWeb3BundlesWithHttpInfo(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ListWeb3CollectionHistoryResponse</returns>
-        ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory(string chain, string contract);
+        ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory(string chain, string contract, decimal? days = default(decimal?));
 
         /// <summary>
         /// Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
@@ -1696,14 +1833,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3CollectionHistoryResponse</returns>
-        ApiResponse<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryWithHttpInfo(string chain, string contract);
+        ApiResponse<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryWithHttpInfo(string chain, string contract, decimal? days = default(decimal?));
         /// <summary>
         /// Collections ranked by 30-day Crossly volume, with floor and listed count.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3CollectionsResponse</returns>
-        ListWeb3CollectionsResponse ListWeb3Collections();
+        ListWeb3CollectionsResponse ListWeb3Collections(string chain = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Collections ranked by 30-day Crossly volume, with floor and listed count.
@@ -1712,8 +1852,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3CollectionsResponse</returns>
-        ApiResponse<ListWeb3CollectionsResponse> ListWeb3CollectionsWithHttpInfo();
+        ApiResponse<ListWeb3CollectionsResponse> ListWeb3CollectionsWithHttpInfo(string chain = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Collections you are the creator of: your launches, and contracts you claimed by owning them.
         /// </summary>
@@ -1802,8 +1944,13 @@ namespace net.crossly.Api
         /// Open NFT listings in the Crossly book — the cheapest per token.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3ListingsResponse</returns>
-        ListWeb3ListingsResponse ListWeb3Listings();
+        ListWeb3ListingsResponse ListWeb3Listings(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Open NFT listings in the Crossly book — the cheapest per token.
@@ -1812,8 +1959,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3ListingsResponse</returns>
-        ApiResponse<ListWeb3ListingsResponse> ListWeb3ListingsWithHttpInfo();
+        ApiResponse<ListWeb3ListingsResponse> ListWeb3ListingsWithHttpInfo(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?));
         /// <summary>
         /// Your own marketplace API keys (last four characters only) and whether Crossly&#39;s key covers each marketplace.
         /// </summary>
@@ -1890,8 +2042,12 @@ namespace net.crossly.Api
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3RankingsResponse</returns>
-        ListWeb3RankingsResponse ListWeb3Rankings();
+        ListWeb3RankingsResponse ListWeb3Rankings(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
@@ -1900,8 +2056,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3RankingsResponse</returns>
-        ApiResponse<ListWeb3RankingsResponse> ListWeb3RankingsWithHttpInfo();
+        ApiResponse<ListWeb3RankingsResponse> ListWeb3RankingsWithHttpInfo(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Private listings reserved for one of your linked wallets — only you can see or buy them.
         /// </summary>
@@ -1922,8 +2082,12 @@ namespace net.crossly.Api
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <returns>ListWeb3SalesResponse</returns>
-        ListWeb3SalesResponse ListWeb3Sales();
+        ListWeb3SalesResponse ListWeb3Sales(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string));
 
         /// <summary>
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;.
@@ -1932,14 +2096,19 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3SalesResponse</returns>
-        ApiResponse<ListWeb3SalesResponse> ListWeb3SalesWithHttpInfo();
+        ApiResponse<ListWeb3SalesResponse> ListWeb3SalesWithHttpInfo(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string));
         /// <summary>
         /// Find collections by contract address (every chain) or by name.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ListWeb3SearchResponse</returns>
-        ListWeb3SearchResponse ListWeb3Search();
+        ListWeb3SearchResponse ListWeb3Search(string q);
 
         /// <summary>
         /// Find collections by contract address (every chain) or by name.
@@ -1948,14 +2117,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ApiResponse of ListWeb3SearchResponse</returns>
-        ApiResponse<ListWeb3SearchResponse> ListWeb3SearchWithHttpInfo();
+        ApiResponse<ListWeb3SearchResponse> ListWeb3SearchWithHttpInfo(string q);
         /// <summary>
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ListWeb3SearchTokensResponse</returns>
-        ListWeb3SearchTokensResponse ListWeb3SearchTokens();
+        ListWeb3SearchTokensResponse ListWeb3SearchTokens(string q);
 
         /// <summary>
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
@@ -1964,8 +2135,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ApiResponse of ListWeb3SearchTokensResponse</returns>
-        ApiResponse<ListWeb3SearchTokensResponse> ListWeb3SearchTokensWithHttpInfo();
+        ApiResponse<ListWeb3SearchTokensResponse> ListWeb3SearchTokensWithHttpInfo(string q);
         /// <summary>
         /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
         /// </summary>
@@ -1982,6 +2154,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWeb3StoreWalletBalancesResponse</returns>
         ApiResponse<ListWeb3StoreWalletBalancesResponse> ListWeb3StoreWalletBalancesWithHttpInfo();
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletMarketplacesResponse</returns>
+        ListWeb3StoreWalletMarketplacesResponse ListWeb3StoreWalletMarketplaces();
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletMarketplacesResponse</returns>
+        ApiResponse<ListWeb3StoreWalletMarketplacesResponse> ListWeb3StoreWalletMarketplacesWithHttpInfo();
         /// <summary>
         /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
         /// </summary>
@@ -2034,9 +2222,10 @@ namespace net.crossly.Api
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <returns>UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk();
+        UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest);
 
         /// <summary>
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
@@ -2045,9 +2234,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <returns>ApiResponse of UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo();
+        ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest);
         /// <summary>
         /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
         /// </summary>
@@ -2107,8 +2297,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ListWeb3MarketplaceKeysItem</returns>
-        ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey(string marketplace);
+        ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest);
 
         /// <summary>
         /// Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
@@ -2118,15 +2309,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ApiResponse of ListWeb3MarketplaceKeysItem</returns>
-        ApiResponse<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyWithHttpInfo(string marketplace);
+        ApiResponse<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyWithHttpInfo(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest);
         /// <summary>
         /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <returns>UpdateWeb3StoreWalletResponse</returns>
-        UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId);
+        UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest);
 
         /// <summary>
         /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
@@ -2136,8 +2329,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
-        ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId);
+        ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest);
         /// <summary>
         /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
         /// </summary>
@@ -2156,6 +2350,28 @@ namespace net.crossly.Api
         /// <param name="walletId"></param>
         /// <returns>ApiResponse of ListWeb3StoreWalletsResponse</returns>
         ApiResponse<ListWeb3StoreWalletsResponse> UpdateWeb3StoreWalletDefaultWithHttpInfo(Guid walletId);
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <returns>UpdateWeb3StoreWalletResponse</returns>
+        UpdateWeb3StoreWalletResponse UpdateWeb3StoreWalletMarketplace(Guid walletId, string marketplace, EnabledRequest enabledRequest);
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
+        ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletMarketplaceWithHttpInfo(Guid walletId, string marketplace, EnabledRequest enabledRequest);
         /// <summary>
         /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
         /// </summary>
@@ -2190,9 +2406,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> CreateWeb3AlertAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdResponse> CreateWeb3AlertAsync(CreateWeb3AlertRequest createWeb3AlertRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price.
@@ -2201,9 +2418,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateWeb3AlertWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateWeb3AlertWithHttpInfoAsync(CreateWeb3AlertRequest createWeb3AlertRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
         /// </summary>
@@ -2211,9 +2429,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3AuctionResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3AuctionResponse> CreateWeb3AuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3AuctionResponse> CreateWeb3AuctionAsync(CreateWeb3AuctionRequest createWeb3AuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes.
@@ -2222,9 +2441,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3AuctionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3AuctionResponse>> CreateWeb3AuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3AuctionResponse>> CreateWeb3AuctionWithHttpInfoAsync(CreateWeb3AuctionRequest createWeb3AuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Call off your auction while it has no bids.
         /// </summary>
@@ -2255,9 +2475,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3CreatorClaimResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimAsync(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;.
@@ -2266,9 +2487,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3CreatorClaimResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3CreatorClaimResponse>> CreateWeb3CreatorClaimWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3CreatorClaimResponse>> CreateWeb3CreatorClaimWithHttpInfoAsync(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
         /// </summary>
@@ -2276,9 +2498,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3CrosslistResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3CrosslistResponse> CreateWeb3CrosslistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3CrosslistResponse> CreateWeb3CrosslistAsync(CreateWeb3CrosslistRequest createWeb3CrosslistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace.
@@ -2287,9 +2510,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3CrosslistResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3CrosslistResponse>> CreateWeb3CrosslistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3CrosslistResponse>> CreateWeb3CrosslistWithHttpInfoAsync(CreateWeb3CrosslistRequest createWeb3CrosslistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Turn the 15-minute reminder for a drop on, or off if it already is. Returns &#x60;{ remindMe }&#x60;.
         /// </summary>
@@ -2320,9 +2544,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3FavoriteResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3FavoriteResponse> CreateWeb3FavoriteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3FavoriteResponse> CreateWeb3FavoriteAsync(CreateWeb3FavoriteRequest createWeb3FavoriteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;.
@@ -2331,9 +2556,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3FavoriteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3FavoriteResponse>> CreateWeb3FavoriteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3FavoriteResponse>> CreateWeb3FavoriteWithHttpInfoAsync(CreateWeb3FavoriteRequest createWeb3FavoriteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
         /// </summary>
@@ -2341,9 +2567,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3LaunchesItem</returns>
-        System.Threading.Tasks.Task<ListWeb3LaunchesItem> CreateWeb3LaunchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3LaunchesItem> CreateWeb3LaunchAsync(CreateWeb3LaunchRequest createWeb3LaunchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract.
@@ -2352,9 +2579,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3LaunchesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3LaunchesItem>> CreateWeb3LaunchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3LaunchesItem>> CreateWeb3LaunchWithHttpInfoAsync(CreateWeb3LaunchRequest createWeb3LaunchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Plan an airdrop (one free NFT each, up to 500) to &#x60;addresses&#x60; and/or the holders of &#x60;holdersOf&#x60;. Returns the transactions for the owner wallet; no payment moves.
         /// </summary>
@@ -2477,9 +2705,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3OrderResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3OrderResponse> CreateWeb3OrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3OrderResponse> CreateWeb3OrderAsync(CreateWeb3OrderRequest createWeb3OrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book.
@@ -2488,9 +2717,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3OrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3OrderResponse>> CreateWeb3OrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3OrderResponse>> CreateWeb3OrderWithHttpInfoAsync(CreateWeb3OrderRequest createWeb3OrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Take one of your orders out of the Crossly book.
         /// </summary>
@@ -2523,9 +2753,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3OrderFulfillmentBatchResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchAsync(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason.
@@ -2534,9 +2765,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3OrderFulfillmentBatchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3OrderFulfillmentBatchResponse>> CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3OrderFulfillmentBatchResponse>> CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make an NFT you hold redeemable for one of your physical inventory items.
         /// </summary>
@@ -2544,9 +2776,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3PhygitalResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3PhygitalResponse> CreateWeb3PhygitalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3PhygitalResponse> CreateWeb3PhygitalAsync(CreateWeb3PhygitalRequest createWeb3PhygitalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Make an NFT you hold redeemable for one of your physical inventory items.
@@ -2555,9 +2788,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3PhygitalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3PhygitalResponse>> CreateWeb3PhygitalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3PhygitalResponse>> CreateWeb3PhygitalWithHttpInfoAsync(CreateWeb3PhygitalRequest createWeb3PhygitalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
         /// </summary>
@@ -2566,9 +2800,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3PhygitalRedeemResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemAsync(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Redeem a phygital you hold (checked on-chain) for its physical item, with a shipping address. Once per phygital.
@@ -2578,9 +2813,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3PhygitalRedeemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3PhygitalRedeemResponse>> CreateWeb3PhygitalRedeemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3PhygitalRedeemResponse>> CreateWeb3PhygitalRedeemWithHttpInfoAsync(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
         /// </summary>
@@ -2589,9 +2825,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateWeb3PhygitalRedemptionShipAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> CreateWeb3PhygitalRedemptionShipAsync(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mark a redemption shipped with its carrier and tracking number; the redeemer is notified.
@@ -2601,9 +2838,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved.
         /// </summary>
@@ -2611,9 +2849,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3RaribleDraftResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftAsync(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved.
@@ -2622,9 +2861,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3RaribleDraftResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3RaribleDraftResponse>> CreateWeb3RaribleDraftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3RaribleDraftResponse>> CreateWeb3RaribleDraftWithHttpInfoAsync(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
         /// </summary>
@@ -2632,9 +2872,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3RaribleListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3RaribleListingAsync(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded.
@@ -2643,9 +2884,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3RaribleListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3RaribleListingWithHttpInfoAsync(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
         /// </summary>
@@ -2654,9 +2896,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxAsync(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build an unsigned listing transaction on the Crossly book, Tensor or Magic Eden for a Solana NFT in your linked wallet.
@@ -2666,9 +2909,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaListTxWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaListTxWithHttpInfoAsync(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
         /// </summary>
@@ -2677,9 +2921,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaListingAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaListingAsync(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record a Crossly-book, Tensor or Magic Eden listing your wallet sent (read back from the chain first).
@@ -2689,9 +2934,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3SolanaListingWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3SolanaListingWithHttpInfoAsync(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Record a sent bid; it is recorded only once its trade state exists on chain.
         /// </summary>
@@ -2699,9 +2945,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaOfferAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaOfferAsync(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record a sent bid; it is recorded only once its trade state exists on chain.
@@ -2710,9 +2957,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3SolanaOfferWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OrderHashResponse>> CreateWeb3SolanaOfferWithHttpInfoAsync(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
         /// </summary>
@@ -2721,9 +2969,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxAsync(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build the sale into a bid from your linked wallet that holds the NFT (sell + execute_sale, one transaction).
@@ -2733,9 +2982,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the cancel of your bid: the SOL your other bids do not need comes back.
         /// </summary>
@@ -2744,9 +2994,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build the cancel of your bid: the SOL your other bids do not need comes back.
@@ -2756,9 +3007,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply a sent accept or cancel once the chain shows the bid closed.
         /// </summary>
@@ -2767,9 +3019,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmAsync(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply a sent accept or cancel once the chain shows the bid closed.
@@ -2779,9 +3032,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow.
         /// </summary>
@@ -2789,9 +3043,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxAsync(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow.
@@ -2800,9 +3055,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferTxResponse>> CreateWeb3SolanaOfferTxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferTxResponse>> CreateWeb3SolanaOfferTxWithHttpInfoAsync(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
         /// </summary>
@@ -2811,9 +3067,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOrderBuyTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxAsync(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build the unsigned transaction that buys a Solana listing (price capped at the listed price).
@@ -2823,9 +3080,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOrderBuyTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOrderBuyTxResponse>> CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOrderBuyTxResponse>> CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
         /// </summary>
@@ -2834,9 +3092,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmAsync(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply a sent Solana buy or delist to the book (the transaction is read back from the chain).
@@ -2846,9 +3105,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the unsigned transaction that takes your Solana listing down.
         /// </summary>
@@ -2857,9 +3117,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build the unsigned transaction that takes your Solana listing down.
@@ -2869,9 +3130,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the transaction that sells your NFT into a Tensor bid, never below &#x60;minLamports&#x60;.
         /// </summary>
@@ -3005,9 +3267,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it.
@@ -3016,9 +3279,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start adding a selling wallet to the store: the message the wallet signs.
         /// </summary>
@@ -3026,9 +3290,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start adding a selling wallet to the store: the message the wallet signs.
@@ -3037,9 +3302,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
         /// </summary>
@@ -3048,9 +3314,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletImportResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add picked NFTs (&#x60;tokens: [{ chain, contract, tokenId }]&#x60;) from a store wallet to inventory.
@@ -3060,9 +3327,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sync a store wallet: refresh its NFTs in inventory; new ones are added when the store&#39;s link auto-imports.
         /// </summary>
@@ -3093,9 +3361,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Finish adding a selling wallet: verify its signature and link it to the store.
@@ -3104,9 +3373,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Re-read a token&#39;s metadata from the chain&#39;s provider (name, traits, image — a new image is copied to Crossly&#39;s CDN). Once per token per 10 minutes.
         /// </summary>
@@ -3141,9 +3411,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3TransactionResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3TransactionResponse> CreateWeb3TransactionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3TransactionResponse> CreateWeb3TransactionAsync(CreateWeb3TransactionRequest createWeb3TransactionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt).
@@ -3152,9 +3423,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3TransactionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3TransactionResponse>> CreateWeb3TransactionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3TransactionResponse>> CreateWeb3TransactionWithHttpInfoAsync(CreateWeb3TransactionRequest createWeb3TransactionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start linking a wallet: returns the message the wallet must sign.
         /// </summary>
@@ -3162,9 +3434,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start linking a wallet: returns the message the wallet must sign.
@@ -3173,9 +3446,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3WalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3WalletChallengeWithHttpInfoAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add picked NFTs (&#x60;tokens&#x60;: chain, contract, tokenId; up to 200) from a linked wallet to inventory. Tokens the wallet does not hold are counted in &#x60;notInWallet&#x60;, never added.
         /// </summary>
@@ -3229,9 +3503,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletVerifyResponse</returns>
-        System.Threading.Tasks.Task<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyAsync(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Finish linking a wallet with its signature over the challenge message.
@@ -3240,9 +3515,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletVerifyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletVerifyResponse>> CreateWeb3WalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWeb3WalletVerifyResponse>> CreateWeb3WalletVerifyWithHttpInfoAsync(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a price alert.
         /// </summary>
@@ -3484,9 +3760,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3BrowseResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3BrowseResponse> GetWeb3BrowseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3BrowseResponse> GetWeb3BrowseAsync(string chain = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds.
@@ -3495,9 +3773,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3BrowseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3BrowseResponse>> GetWeb3BrowseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3BrowseResponse>> GetWeb3BrowseWithHttpInfoAsync(string chain = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A collection: metadata and Crossly stats (floor, listed, volume, best collection offer).
         /// </summary>
@@ -3582,9 +3862,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CollectionItemResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3CollectionItemResponse> GetWeb3CollectionItemAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3CollectionItemResponse> GetWeb3CollectionItemAsync(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A collection&#39;s NFTs: filter by traits (repeat trait&#x3D;Type:Value; OR within a type, AND across), search by name or token id, sort by id, rarity or Crossly price. Whole-collection once indexed.
@@ -3595,9 +3882,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CollectionItemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3CollectionItemResponse>> GetWeb3CollectionItemWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3CollectionItemResponse>> GetWeb3CollectionItemWithHttpInfoAsync(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Every trait type and value in a collection, with how many tokens have each.
         /// </summary>
@@ -3632,9 +3926,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CollectionTraitTokenResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenAsync(string chain, string contract, string type, string value, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Token ids in a collection with one trait — what a trait offer commits to.
@@ -3645,9 +3941,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CollectionTraitTokenResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3CollectionTraitTokenResponse>> GetWeb3CollectionTraitTokenWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3CollectionTraitTokenResponse>> GetWeb3CollectionTraitTokenWithHttpInfoAsync(string chain, string contract, string type, string value, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your collector perks: how many different NFTs you bought through Crossly, your Collector pin tier, relist rewards paid, and each NFT you still hold with the Bought on Crossly mark.
         /// </summary>
@@ -3701,9 +3999,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CrosslistQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability.
@@ -3712,9 +4013,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CrosslistQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3CrosslistQuoteResponse>> GetWeb3CrosslistQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3CrosslistQuoteResponse>> GetWeb3CrosslistQuoteWithHttpInfoAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The NFT home&#39;s featured collections: chosen by Crossly, else the hottest.
         /// </summary>
@@ -3860,9 +4164,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3OrderFulfillmentResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentAsync(string chain, string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentAsync(string chain, string hash, string tokenId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The signed order a taker passes to Seaport, after re-checking it can still fill.
@@ -3873,9 +4178,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3OrderFulfillmentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3OrderFulfillmentResponse>> GetWeb3OrderFulfillmentWithHttpInfoAsync(string chain, string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3OrderFulfillmentResponse>> GetWeb3OrderFulfillmentWithHttpInfoAsync(string chain, string hash, string tokenId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A token&#39;s phygital: the physical item it can be redeemed for, and whether it has been.
         /// </summary>
@@ -3952,9 +4258,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3PortfolioTaxResponse</returns>
-        System.Threading.Tasks.Task<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxAsync(decimal year, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD).
@@ -3963,9 +4270,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3PortfolioTaxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetWeb3PortfolioTaxResponse>> GetWeb3PortfolioTaxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetWeb3PortfolioTaxResponse>> GetWeb3PortfolioTaxWithHttpInfoAsync(decimal year, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A wallet&#39;s public profile: NFTs held, open Crossly listings, and activity.
         /// </summary>
@@ -4159,9 +4467,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3ActivityResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3ActivityResponse> ListWeb3ActivityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3ActivityResponse> ListWeb3ActivityAsync(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Listings, offers, sales and cancels in the Crossly book, newest first.
@@ -4170,9 +4482,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3ActivityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3ActivityResponse>> ListWeb3ActivityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3ActivityResponse>> ListWeb3ActivityWithHttpInfoAsync(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your NFT price alerts, with the cheapest open Crossly listing each one covers now.
         /// </summary>
@@ -4222,9 +4538,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3AuctionsResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3AuctionsResponse> ListWeb3AuctionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3AuctionsResponse> ListWeb3AuctionsAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be.
@@ -4233,9 +4551,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3AuctionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3AuctionsResponse>> ListWeb3AuctionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3AuctionsResponse>> ListWeb3AuctionsWithHttpInfoAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
         /// </summary>
@@ -4243,9 +4563,19 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BrowseCollectionsResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsAsync(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name.
@@ -4254,9 +4584,19 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BrowseCollectionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3BrowseCollectionsResponse>> ListWeb3BrowseCollectionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3BrowseCollectionsResponse>> ListWeb3BrowseCollectionsWithHttpInfoAsync(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
         /// </summary>
@@ -4264,9 +4604,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BrowseTokensResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections.
@@ -4275,9 +4618,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BrowseTokensResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3BrowseTokensResponse>> ListWeb3BrowseTokensWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3BrowseTokensResponse>> ListWeb3BrowseTokensWithHttpInfoAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
         /// </summary>
@@ -4285,9 +4631,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BundlesResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3BundlesResponse> ListWeb3BundlesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3BundlesResponse> ListWeb3BundlesAsync(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from.
@@ -4296,9 +4645,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BundlesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3BundlesResponse>> ListWeb3BundlesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3BundlesResponse>> ListWeb3BundlesWithHttpInfoAsync(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
         /// </summary>
@@ -4308,9 +4660,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3CollectionHistoryResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryAsync(string chain, string contract, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Daily floor, sales, volume, holders and listed count for a collection, oldest first (up to 365 days).
@@ -4321,9 +4674,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3CollectionHistoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3CollectionHistoryResponse>> ListWeb3CollectionHistoryWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3CollectionHistoryResponse>> ListWeb3CollectionHistoryWithHttpInfoAsync(string chain, string contract, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Collections ranked by 30-day Crossly volume, with floor and listed count.
         /// </summary>
@@ -4331,9 +4685,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3CollectionsResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3CollectionsResponse> ListWeb3CollectionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3CollectionsResponse> ListWeb3CollectionsAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Collections ranked by 30-day Crossly volume, with floor and listed count.
@@ -4342,9 +4698,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3CollectionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3CollectionsResponse>> ListWeb3CollectionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3CollectionsResponse>> ListWeb3CollectionsWithHttpInfoAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Collections you are the creator of: your launches, and contracts you claimed by owning them.
         /// </summary>
@@ -4461,9 +4819,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3ListingsResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3ListingsResponse> ListWeb3ListingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3ListingsResponse> ListWeb3ListingsAsync(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open NFT listings in the Crossly book — the cheapest per token.
@@ -4472,9 +4835,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3ListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3ListingsResponse>> ListWeb3ListingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3ListingsResponse>> ListWeb3ListingsWithHttpInfoAsync(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your own marketplace API keys (last four characters only) and whether Crossly&#39;s key covers each marketplace.
         /// </summary>
@@ -4574,9 +4942,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3RankingsResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3RankingsResponse> ListWeb3RankingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3RankingsResponse> ListWeb3RankingsAsync(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own.
@@ -4585,9 +4957,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3RankingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3RankingsResponse>> ListWeb3RankingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3RankingsResponse>> ListWeb3RankingsWithHttpInfoAsync(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Private listings reserved for one of your linked wallets — only you can see or buy them.
         /// </summary>
@@ -4616,9 +4992,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SalesResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3SalesResponse> ListWeb3SalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3SalesResponse> ListWeb3SalesAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;.
@@ -4627,9 +5007,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SalesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3SalesResponse>> ListWeb3SalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3SalesResponse>> ListWeb3SalesWithHttpInfoAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Find collections by contract address (every chain) or by name.
         /// </summary>
@@ -4637,9 +5021,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SearchResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3SearchResponse> ListWeb3SearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3SearchResponse> ListWeb3SearchAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Find collections by contract address (every chain) or by name.
@@ -4648,9 +5033,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SearchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3SearchResponse>> ListWeb3SearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3SearchResponse>> ListWeb3SearchWithHttpInfoAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
         /// </summary>
@@ -4658,9 +5044,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SearchTokensResponse</returns>
-        System.Threading.Tasks.Task<ListWeb3SearchTokensResponse> ListWeb3SearchTokensAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3SearchTokensResponse> ListWeb3SearchTokensAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;.
@@ -4669,9 +5056,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SearchTokensResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3SearchTokensResponse>> ListWeb3SearchTokensWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3SearchTokensResponse>> ListWeb3SearchTokensWithHttpInfoAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The native-coin balance (SOL, ETH, POL, …) of each of the store&#39;s selling wallets, read on chain.
         /// </summary>
@@ -4693,6 +5081,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3StoreWalletBalancesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletBalancesResponse>> ListWeb3StoreWalletBalancesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletMarketplacesResponse</returns>
+        System.Threading.Tasks.Task<ListWeb3StoreWalletMarketplacesResponse> ListWeb3StoreWalletMarketplacesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletMarketplacesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletMarketplacesResponse>> ListWeb3StoreWalletMarketplacesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List the store&#39;s selling wallets (X-Storefront-Id; default store when omitted).
         /// </summary>
@@ -4763,10 +5172,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection.
@@ -4775,10 +5185,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWeb3HolderPerkResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit a launch draft (or a failed deploy) before it deploys: any creation field except chain and owner. The schedule is re-checked; 409 once live.
         /// </summary>
@@ -4856,9 +5267,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3MarketplaceKeysItem</returns>
-        System.Threading.Tasks.Task<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyAsync(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save your own API key for a marketplace (checked against the marketplace first where it can be); stored encrypted.
@@ -4868,9 +5280,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3MarketplaceKeysItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListWeb3MarketplaceKeysItem>> UpdateWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListWeb3MarketplaceKeysItem>> UpdateWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
         /// </summary>
@@ -4879,9 +5292,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
-        System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Turn on or off whether syncing this store wallet adds new NFTs to the store’s inventory (X-Storefront-Id).
@@ -4891,9 +5305,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make a linked wallet the store&#39;s default selling wallet on its network (EVM or Solana).
         /// </summary>
@@ -4917,6 +5332,33 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3StoreWalletsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWeb3StoreWalletsResponse>> UpdateWeb3StoreWalletDefaultWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
+        System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletMarketplaceAsync(Guid walletId, string marketplace, EnabledRequest enabledRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletMarketplaceWithHttpInfoAsync(Guid walletId, string marketplace, EnabledRequest enabledRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change a linked wallet: &#x60;autoImport&#x60; (a sync adds new NFTs to inventory; off, it only refreshes the ones there) and &#x60;label&#x60;.
         /// </summary>
@@ -5064,10 +5506,11 @@ namespace net.crossly.Api
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <returns>IdResponse</returns>
-        public IdResponse CreateWeb3Alert()
+        public IdResponse CreateWeb3Alert(CreateWeb3AlertRequest createWeb3AlertRequest)
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateWeb3AlertWithHttpInfo();
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateWeb3AlertWithHttpInfo(createWeb3AlertRequest);
             return localVarResponse.Data;
         }
 
@@ -5075,12 +5518,20 @@ namespace net.crossly.Api
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        public net.crossly.Client.ApiResponse<IdResponse> CreateWeb3AlertWithHttpInfo()
+        public net.crossly.Client.ApiResponse<IdResponse> CreateWeb3AlertWithHttpInfo(CreateWeb3AlertRequest createWeb3AlertRequest)
         {
+            // verify the required parameter 'createWeb3AlertRequest' is set
+            if (createWeb3AlertRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3AlertRequest' when calling Web3Api->CreateWeb3Alert");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5100,6 +5551,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3AlertRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5126,11 +5578,12 @@ namespace net.crossly.Api
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> CreateWeb3AlertAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdResponse> CreateWeb3AlertAsync(CreateWeb3AlertRequest createWeb3AlertRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateWeb3AlertWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateWeb3AlertWithHttpInfoAsync(createWeb3AlertRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5138,14 +5591,22 @@ namespace net.crossly.Api
         /// Set a price alert on a token, or on a whole collection without tokenId: you are notified when one is listed at or below &#x60;price&#x60; (the chain&#39;s native coin). Setting it again moves the price. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AlertRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateWeb3AlertWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateWeb3AlertWithHttpInfoAsync(CreateWeb3AlertRequest createWeb3AlertRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3AlertRequest' is set
+            if (createWeb3AlertRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3AlertRequest' when calling Web3Api->CreateWeb3Alert");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5165,6 +5626,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3AlertRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5192,10 +5654,11 @@ namespace net.crossly.Api
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <returns>CreateWeb3AuctionResponse</returns>
-        public CreateWeb3AuctionResponse CreateWeb3Auction()
+        public CreateWeb3AuctionResponse CreateWeb3Auction(CreateWeb3AuctionRequest createWeb3AuctionRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> localVarResponse = CreateWeb3AuctionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> localVarResponse = CreateWeb3AuctionWithHttpInfo(createWeb3AuctionRequest);
             return localVarResponse.Data;
         }
 
@@ -5203,12 +5666,20 @@ namespace net.crossly.Api
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <returns>ApiResponse of CreateWeb3AuctionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> CreateWeb3AuctionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> CreateWeb3AuctionWithHttpInfo(CreateWeb3AuctionRequest createWeb3AuctionRequest)
         {
+            // verify the required parameter 'createWeb3AuctionRequest' is set
+            if (createWeb3AuctionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3AuctionRequest' when calling Web3Api->CreateWeb3Auction");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5228,6 +5699,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3AuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5254,11 +5726,12 @@ namespace net.crossly.Api
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3AuctionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3AuctionResponse> CreateWeb3AuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3AuctionResponse> CreateWeb3AuctionAsync(CreateWeb3AuctionRequest createWeb3AuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> localVarResponse = await CreateWeb3AuctionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse> localVarResponse = await CreateWeb3AuctionWithHttpInfoAsync(createWeb3AuctionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5266,14 +5739,22 @@ namespace net.crossly.Api
         /// Start an English auction on a token in your linked wallet: &#x60;reserve&#x60; is the opening bid in the chain&#39;s native coin, &#x60;hours&#x60; its length (1–720). Bids must rise 5%; a late bid extends the end by 10 minutes. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3AuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3AuctionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse>> CreateWeb3AuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3AuctionResponse>> CreateWeb3AuctionWithHttpInfoAsync(CreateWeb3AuctionRequest createWeb3AuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3AuctionRequest' is set
+            if (createWeb3AuctionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3AuctionRequest' when calling Web3Api->CreateWeb3Auction");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5293,6 +5774,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3AuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5466,10 +5948,11 @@ namespace net.crossly.Api
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <returns>CreateWeb3CreatorClaimResponse</returns>
-        public CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim()
+        public CreateWeb3CreatorClaimResponse CreateWeb3CreatorClaim(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> localVarResponse = CreateWeb3CreatorClaimWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> localVarResponse = CreateWeb3CreatorClaimWithHttpInfo(createWeb3CreatorClaimRequest);
             return localVarResponse.Data;
         }
 
@@ -5477,12 +5960,20 @@ namespace net.crossly.Api
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <returns>ApiResponse of CreateWeb3CreatorClaimResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimWithHttpInfo(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest)
         {
+            // verify the required parameter 'createWeb3CreatorClaimRequest' is set
+            if (createWeb3CreatorClaimRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3CreatorClaimRequest' when calling Web3Api->CreateWeb3CreatorClaim");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5502,6 +5993,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3CreatorClaimRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5528,11 +6020,12 @@ namespace net.crossly.Api
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3CreatorClaimResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3CreatorClaimResponse> CreateWeb3CreatorClaimAsync(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> localVarResponse = await CreateWeb3CreatorClaimWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse> localVarResponse = await CreateWeb3CreatorClaimWithHttpInfoAsync(createWeb3CreatorClaimRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5540,14 +6033,22 @@ namespace net.crossly.Api
         /// Claim an EVM collection as its creator: its owner() must be one of your verified wallets. Returns &#x60;{ chain, contract }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CreatorClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3CreatorClaimResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse>> CreateWeb3CreatorClaimWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3CreatorClaimResponse>> CreateWeb3CreatorClaimWithHttpInfoAsync(CreateWeb3CreatorClaimRequest createWeb3CreatorClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3CreatorClaimRequest' is set
+            if (createWeb3CreatorClaimRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3CreatorClaimRequest' when calling Web3Api->CreateWeb3CreatorClaim");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5567,6 +6068,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3CreatorClaimRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5594,10 +6096,11 @@ namespace net.crossly.Api
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <returns>CreateWeb3CrosslistResponse</returns>
-        public CreateWeb3CrosslistResponse CreateWeb3Crosslist()
+        public CreateWeb3CrosslistResponse CreateWeb3Crosslist(CreateWeb3CrosslistRequest createWeb3CrosslistRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> localVarResponse = CreateWeb3CrosslistWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> localVarResponse = CreateWeb3CrosslistWithHttpInfo(createWeb3CrosslistRequest);
             return localVarResponse.Data;
         }
 
@@ -5605,12 +6108,20 @@ namespace net.crossly.Api
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <returns>ApiResponse of CreateWeb3CrosslistResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> CreateWeb3CrosslistWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> CreateWeb3CrosslistWithHttpInfo(CreateWeb3CrosslistRequest createWeb3CrosslistRequest)
         {
+            // verify the required parameter 'createWeb3CrosslistRequest' is set
+            if (createWeb3CrosslistRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3CrosslistRequest' when calling Web3Api->CreateWeb3Crosslist");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5630,6 +6141,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3CrosslistRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5656,11 +6168,12 @@ namespace net.crossly.Api
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3CrosslistResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3CrosslistResponse> CreateWeb3CrosslistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3CrosslistResponse> CreateWeb3CrosslistAsync(CreateWeb3CrosslistRequest createWeb3CrosslistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> localVarResponse = await CreateWeb3CrosslistWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse> localVarResponse = await CreateWeb3CrosslistWithHttpInfoAsync(createWeb3CrosslistRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5668,14 +6181,22 @@ namespace net.crossly.Api
         /// Submit signed Seaport listings for several marketplaces at once (crossly, opensea); results per marketplace. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3CrosslistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3CrosslistResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse>> CreateWeb3CrosslistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3CrosslistResponse>> CreateWeb3CrosslistWithHttpInfoAsync(CreateWeb3CrosslistRequest createWeb3CrosslistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3CrosslistRequest' is set
+            if (createWeb3CrosslistRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3CrosslistRequest' when calling Web3Api->CreateWeb3Crosslist");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5695,6 +6216,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3CrosslistRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5868,10 +6390,11 @@ namespace net.crossly.Api
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <returns>CreateWeb3FavoriteResponse</returns>
-        public CreateWeb3FavoriteResponse CreateWeb3Favorite()
+        public CreateWeb3FavoriteResponse CreateWeb3Favorite(CreateWeb3FavoriteRequest createWeb3FavoriteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> localVarResponse = CreateWeb3FavoriteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> localVarResponse = CreateWeb3FavoriteWithHttpInfo(createWeb3FavoriteRequest);
             return localVarResponse.Data;
         }
 
@@ -5879,12 +6402,20 @@ namespace net.crossly.Api
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <returns>ApiResponse of CreateWeb3FavoriteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> CreateWeb3FavoriteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> CreateWeb3FavoriteWithHttpInfo(CreateWeb3FavoriteRequest createWeb3FavoriteRequest)
         {
+            // verify the required parameter 'createWeb3FavoriteRequest' is set
+            if (createWeb3FavoriteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3FavoriteRequest' when calling Web3Api->CreateWeb3Favorite");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5904,6 +6435,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3FavoriteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5930,11 +6462,12 @@ namespace net.crossly.Api
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3FavoriteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3FavoriteResponse> CreateWeb3FavoriteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3FavoriteResponse> CreateWeb3FavoriteAsync(CreateWeb3FavoriteRequest createWeb3FavoriteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> localVarResponse = await CreateWeb3FavoriteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse> localVarResponse = await CreateWeb3FavoriteWithHttpInfoAsync(createWeb3FavoriteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5942,14 +6475,22 @@ namespace net.crossly.Api
         /// Favourite an NFT, or unfavourite it if it already is. Returns &#x60;{ favorited }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3FavoriteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3FavoriteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse>> CreateWeb3FavoriteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3FavoriteResponse>> CreateWeb3FavoriteWithHttpInfoAsync(CreateWeb3FavoriteRequest createWeb3FavoriteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3FavoriteRequest' is set
+            if (createWeb3FavoriteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3FavoriteRequest' when calling Web3Api->CreateWeb3Favorite");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5969,6 +6510,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3FavoriteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5996,10 +6538,11 @@ namespace net.crossly.Api
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <returns>ListWeb3LaunchesItem</returns>
-        public ListWeb3LaunchesItem CreateWeb3Launch()
+        public ListWeb3LaunchesItem CreateWeb3Launch(CreateWeb3LaunchRequest createWeb3LaunchRequest)
         {
-            net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> localVarResponse = CreateWeb3LaunchWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> localVarResponse = CreateWeb3LaunchWithHttpInfo(createWeb3LaunchRequest);
             return localVarResponse.Data;
         }
 
@@ -6007,12 +6550,20 @@ namespace net.crossly.Api
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <returns>ApiResponse of ListWeb3LaunchesItem</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> CreateWeb3LaunchWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> CreateWeb3LaunchWithHttpInfo(CreateWeb3LaunchRequest createWeb3LaunchRequest)
         {
+            // verify the required parameter 'createWeb3LaunchRequest' is set
+            if (createWeb3LaunchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3LaunchRequest' when calling Web3Api->CreateWeb3Launch");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6032,6 +6583,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3LaunchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6058,11 +6610,12 @@ namespace net.crossly.Api
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3LaunchesItem</returns>
-        public async System.Threading.Tasks.Task<ListWeb3LaunchesItem> CreateWeb3LaunchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3LaunchesItem> CreateWeb3LaunchAsync(CreateWeb3LaunchRequest createWeb3LaunchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> localVarResponse = await CreateWeb3LaunchWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3LaunchesItem> localVarResponse = await CreateWeb3LaunchWithHttpInfoAsync(createWeb3LaunchRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6070,14 +6623,22 @@ namespace net.crossly.Api
         /// Draft a launchpad collection: name, symbol, supply, mint price (wei of the chain’s native currency), schedule, optional holder phase and royalty. Crossly takes 5% of each mint inside the contract. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3LaunchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3LaunchesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3LaunchesItem>> CreateWeb3LaunchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3LaunchesItem>> CreateWeb3LaunchWithHttpInfoAsync(CreateWeb3LaunchRequest createWeb3LaunchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3LaunchRequest' is set
+            if (createWeb3LaunchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3LaunchRequest' when calling Web3Api->CreateWeb3Launch");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6097,6 +6658,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3LaunchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6854,10 +7416,11 @@ namespace net.crossly.Api
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <returns>CreateWeb3OrderResponse</returns>
-        public CreateWeb3OrderResponse CreateWeb3Order()
+        public CreateWeb3OrderResponse CreateWeb3Order(CreateWeb3OrderRequest createWeb3OrderRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> localVarResponse = CreateWeb3OrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> localVarResponse = CreateWeb3OrderWithHttpInfo(createWeb3OrderRequest);
             return localVarResponse.Data;
         }
 
@@ -6865,12 +7428,20 @@ namespace net.crossly.Api
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <returns>ApiResponse of CreateWeb3OrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> CreateWeb3OrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> CreateWeb3OrderWithHttpInfo(CreateWeb3OrderRequest createWeb3OrderRequest)
         {
+            // verify the required parameter 'createWeb3OrderRequest' is set
+            if (createWeb3OrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3OrderRequest' when calling Web3Api->CreateWeb3Order");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6890,6 +7461,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3OrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6916,11 +7488,12 @@ namespace net.crossly.Api
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3OrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3OrderResponse> CreateWeb3OrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3OrderResponse> CreateWeb3OrderAsync(CreateWeb3OrderRequest createWeb3OrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> localVarResponse = await CreateWeb3OrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3OrderResponse> localVarResponse = await CreateWeb3OrderWithHttpInfoAsync(createWeb3OrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6928,14 +7501,22 @@ namespace net.crossly.Api
         /// Place a signed Seaport 1.6 order (listing, offer or collection offer) in the Crossly book. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3OrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3OrderResponse>> CreateWeb3OrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3OrderResponse>> CreateWeb3OrderWithHttpInfoAsync(CreateWeb3OrderRequest createWeb3OrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3OrderRequest' is set
+            if (createWeb3OrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3OrderRequest' when calling Web3Api->CreateWeb3Order");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6955,6 +7536,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3OrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7146,10 +7728,11 @@ namespace net.crossly.Api
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <returns>CreateWeb3OrderFulfillmentBatchResponse</returns>
-        public CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch()
+        public CreateWeb3OrderFulfillmentBatchResponse CreateWeb3OrderFulfillmentBatch(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> localVarResponse = CreateWeb3OrderFulfillmentBatchWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> localVarResponse = CreateWeb3OrderFulfillmentBatchWithHttpInfo(createWeb3OrderFulfillmentBatchRequest);
             return localVarResponse.Data;
         }
 
@@ -7157,12 +7740,20 @@ namespace net.crossly.Api
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <returns>ApiResponse of CreateWeb3OrderFulfillmentBatchResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchWithHttpInfo(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest)
         {
+            // verify the required parameter 'createWeb3OrderFulfillmentBatchRequest' is set
+            if (createWeb3OrderFulfillmentBatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3OrderFulfillmentBatchRequest' when calling Web3Api->CreateWeb3OrderFulfillmentBatch");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7182,6 +7773,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3OrderFulfillmentBatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7208,11 +7800,12 @@ namespace net.crossly.Api
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3OrderFulfillmentBatchResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3OrderFulfillmentBatchResponse> CreateWeb3OrderFulfillmentBatchAsync(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> localVarResponse = await CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse> localVarResponse = await CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(createWeb3OrderFulfillmentBatchRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7220,14 +7813,22 @@ namespace net.crossly.Api
         /// Fulfilments for sweeping several listings in one Seaport transaction; unfillable ones are skipped with a reason. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3OrderFulfillmentBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3OrderFulfillmentBatchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse>> CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3OrderFulfillmentBatchResponse>> CreateWeb3OrderFulfillmentBatchWithHttpInfoAsync(CreateWeb3OrderFulfillmentBatchRequest createWeb3OrderFulfillmentBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3OrderFulfillmentBatchRequest' is set
+            if (createWeb3OrderFulfillmentBatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3OrderFulfillmentBatchRequest' when calling Web3Api->CreateWeb3OrderFulfillmentBatch");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7247,6 +7848,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3OrderFulfillmentBatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7274,10 +7876,11 @@ namespace net.crossly.Api
         /// Make an NFT you hold redeemable for one of your physical inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <returns>CreateWeb3PhygitalResponse</returns>
-        public CreateWeb3PhygitalResponse CreateWeb3Phygital()
+        public CreateWeb3PhygitalResponse CreateWeb3Phygital(CreateWeb3PhygitalRequest createWeb3PhygitalRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> localVarResponse = CreateWeb3PhygitalWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> localVarResponse = CreateWeb3PhygitalWithHttpInfo(createWeb3PhygitalRequest);
             return localVarResponse.Data;
         }
 
@@ -7285,12 +7888,20 @@ namespace net.crossly.Api
         /// Make an NFT you hold redeemable for one of your physical inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <returns>ApiResponse of CreateWeb3PhygitalResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> CreateWeb3PhygitalWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> CreateWeb3PhygitalWithHttpInfo(CreateWeb3PhygitalRequest createWeb3PhygitalRequest)
         {
+            // verify the required parameter 'createWeb3PhygitalRequest' is set
+            if (createWeb3PhygitalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRequest' when calling Web3Api->CreateWeb3Phygital");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7310,6 +7921,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3PhygitalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7336,11 +7948,12 @@ namespace net.crossly.Api
         /// Make an NFT you hold redeemable for one of your physical inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3PhygitalResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3PhygitalResponse> CreateWeb3PhygitalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3PhygitalResponse> CreateWeb3PhygitalAsync(CreateWeb3PhygitalRequest createWeb3PhygitalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> localVarResponse = await CreateWeb3PhygitalWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse> localVarResponse = await CreateWeb3PhygitalWithHttpInfoAsync(createWeb3PhygitalRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7348,14 +7961,22 @@ namespace net.crossly.Api
         /// Make an NFT you hold redeemable for one of your physical inventory items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3PhygitalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3PhygitalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse>> CreateWeb3PhygitalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3PhygitalResponse>> CreateWeb3PhygitalWithHttpInfoAsync(CreateWeb3PhygitalRequest createWeb3PhygitalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3PhygitalRequest' is set
+            if (createWeb3PhygitalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRequest' when calling Web3Api->CreateWeb3Phygital");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7375,6 +7996,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3PhygitalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7403,10 +8025,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <returns>CreateWeb3PhygitalRedeemResponse</returns>
-        public CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem(string id)
+        public CreateWeb3PhygitalRedeemResponse CreateWeb3PhygitalRedeem(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> localVarResponse = CreateWeb3PhygitalRedeemWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> localVarResponse = CreateWeb3PhygitalRedeemWithHttpInfo(id, createWeb3PhygitalRedeemRequest);
             return localVarResponse.Data;
         }
 
@@ -7415,8 +8038,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <returns>ApiResponse of CreateWeb3PhygitalRedeemResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemWithHttpInfo(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7424,9 +8048,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3PhygitalRedeem");
             }
 
+            // verify the required parameter 'createWeb3PhygitalRedeemRequest' is set
+            if (createWeb3PhygitalRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRedeemRequest' when calling Web3Api->CreateWeb3PhygitalRedeem");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7447,6 +8078,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWeb3PhygitalRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7474,11 +8106,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3PhygitalRedeemResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3PhygitalRedeemResponse> CreateWeb3PhygitalRedeemAsync(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> localVarResponse = await CreateWeb3PhygitalRedeemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse> localVarResponse = await CreateWeb3PhygitalRedeemWithHttpInfoAsync(id, createWeb3PhygitalRedeemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7487,9 +8120,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3PhygitalRedeemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse>> CreateWeb3PhygitalRedeemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3PhygitalRedeemResponse>> CreateWeb3PhygitalRedeemWithHttpInfoAsync(string id, CreateWeb3PhygitalRedeemRequest createWeb3PhygitalRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7497,10 +8131,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3PhygitalRedeem");
             }
 
+            // verify the required parameter 'createWeb3PhygitalRedeemRequest' is set
+            if (createWeb3PhygitalRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRedeemRequest' when calling Web3Api->CreateWeb3PhygitalRedeem");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7521,6 +8162,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWeb3PhygitalRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7549,10 +8191,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <returns>OkResponse</returns>
-        public OkResponse CreateWeb3PhygitalRedemptionShip(string id)
+        public OkResponse CreateWeb3PhygitalRedemptionShip(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateWeb3PhygitalRedemptionShipWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateWeb3PhygitalRedemptionShipWithHttpInfo(id, createWeb3PhygitalRedemptionShipRequest);
             return localVarResponse.Data;
         }
 
@@ -7561,8 +8204,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateWeb3PhygitalRedemptionShipWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<OkResponse> CreateWeb3PhygitalRedemptionShipWithHttpInfo(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7570,9 +8214,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3PhygitalRedemptionShip");
             }
 
+            // verify the required parameter 'createWeb3PhygitalRedemptionShipRequest' is set
+            if (createWeb3PhygitalRedemptionShipRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRedemptionShipRequest' when calling Web3Api->CreateWeb3PhygitalRedemptionShip");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7593,6 +8244,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWeb3PhygitalRedemptionShipRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7620,11 +8272,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateWeb3PhygitalRedemptionShipAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> CreateWeb3PhygitalRedemptionShipAsync(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(id, createWeb3PhygitalRedemptionShipRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7633,9 +8286,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWeb3PhygitalRedemptionShipRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateWeb3PhygitalRedemptionShipWithHttpInfoAsync(string id, CreateWeb3PhygitalRedemptionShipRequest createWeb3PhygitalRedemptionShipRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -7643,10 +8297,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling Web3Api->CreateWeb3PhygitalRedemptionShip");
             }
 
+            // verify the required parameter 'createWeb3PhygitalRedemptionShipRequest' is set
+            if (createWeb3PhygitalRedemptionShipRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3PhygitalRedemptionShipRequest' when calling Web3Api->CreateWeb3PhygitalRedemptionShip");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7667,6 +8328,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWeb3PhygitalRedemptionShipRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7694,10 +8356,11 @@ namespace net.crossly.Api
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <returns>CreateWeb3RaribleDraftResponse</returns>
-        public CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft()
+        public CreateWeb3RaribleDraftResponse CreateWeb3RaribleDraft(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> localVarResponse = CreateWeb3RaribleDraftWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> localVarResponse = CreateWeb3RaribleDraftWithHttpInfo(createWeb3RaribleDraftRequest);
             return localVarResponse.Data;
         }
 
@@ -7705,12 +8368,20 @@ namespace net.crossly.Api
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <returns>ApiResponse of CreateWeb3RaribleDraftResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftWithHttpInfo(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest)
         {
+            // verify the required parameter 'createWeb3RaribleDraftRequest' is set
+            if (createWeb3RaribleDraftRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3RaribleDraftRequest' when calling Web3Api->CreateWeb3RaribleDraft");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7730,6 +8401,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3RaribleDraftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7756,11 +8428,12 @@ namespace net.crossly.Api
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3RaribleDraftResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3RaribleDraftResponse> CreateWeb3RaribleDraftAsync(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> localVarResponse = await CreateWeb3RaribleDraftWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse> localVarResponse = await CreateWeb3RaribleDraftWithHttpInfoAsync(createWeb3RaribleDraftRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7768,14 +8441,22 @@ namespace net.crossly.Api
         /// Draft a Rarible V2 listing for an NFT in your linked wallet: the EIP-712 order to sign and whether Rarible&#39;s transfer proxy is approved. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleDraftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3RaribleDraftResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse>> CreateWeb3RaribleDraftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3RaribleDraftResponse>> CreateWeb3RaribleDraftWithHttpInfoAsync(CreateWeb3RaribleDraftRequest createWeb3RaribleDraftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3RaribleDraftRequest' is set
+            if (createWeb3RaribleDraftRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3RaribleDraftRequest' when calling Web3Api->CreateWeb3RaribleDraft");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7795,6 +8476,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3RaribleDraftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7822,10 +8504,11 @@ namespace net.crossly.Api
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        public OrderHashResponse CreateWeb3RaribleListing()
+        public OrderHashResponse CreateWeb3RaribleListing(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest)
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3RaribleListingWithHttpInfo();
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3RaribleListingWithHttpInfo(createWeb3RaribleListingRequest);
             return localVarResponse.Data;
         }
 
@@ -7833,12 +8516,20 @@ namespace net.crossly.Api
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3RaribleListingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3RaribleListingWithHttpInfo(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest)
         {
+            // verify the required parameter 'createWeb3RaribleListingRequest' is set
+            if (createWeb3RaribleListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3RaribleListingRequest' when calling Web3Api->CreateWeb3RaribleListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7858,6 +8549,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3RaribleListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7884,11 +8576,12 @@ namespace net.crossly.Api
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3RaribleListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3RaribleListingAsync(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3RaribleListingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3RaribleListingWithHttpInfoAsync(createWeb3RaribleListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7896,14 +8589,22 @@ namespace net.crossly.Api
         /// Submit a signed Rarible V2 listing: the signature is verified, then the order is posted to Rarible and recorded. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3RaribleListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3RaribleListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3RaribleListingWithHttpInfoAsync(CreateWeb3RaribleListingRequest createWeb3RaribleListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3RaribleListingRequest' is set
+            if (createWeb3RaribleListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3RaribleListingRequest' when calling Web3Api->CreateWeb3RaribleListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7923,6 +8624,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3RaribleListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7951,10 +8653,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx(string marketplace)
+        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaListTx(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaListTxWithHttpInfo(marketplace);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaListTxWithHttpInfo(marketplace, createWeb3SolanaListTxRequest);
             return localVarResponse.Data;
         }
 
@@ -7963,8 +8666,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxWithHttpInfo(string marketplace)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxWithHttpInfo(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest)
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -7972,9 +8676,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->CreateWeb3SolanaListTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaListTxRequest' is set
+            if (createWeb3SolanaListTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaListTxRequest' when calling Web3Api->CreateWeb3SolanaListTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7995,6 +8706,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaListTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8022,11 +8734,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaListTxAsync(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaListTxWithHttpInfoAsync(marketplace, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaListTxWithHttpInfoAsync(marketplace, createWeb3SolanaListTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8035,9 +8748,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaListTxWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaListTxWithHttpInfoAsync(string marketplace, CreateWeb3SolanaListTxRequest createWeb3SolanaListTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -8045,10 +8759,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->CreateWeb3SolanaListTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaListTxRequest' is set
+            if (createWeb3SolanaListTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaListTxRequest' when calling Web3Api->CreateWeb3SolanaListTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8069,6 +8790,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaListTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8097,10 +8819,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        public OrderHashResponse CreateWeb3SolanaListing(string marketplace)
+        public OrderHashResponse CreateWeb3SolanaListing(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest)
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3SolanaListingWithHttpInfo(marketplace);
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3SolanaListingWithHttpInfo(marketplace, createWeb3SolanaListingRequest);
             return localVarResponse.Data;
         }
 
@@ -8109,8 +8832,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3SolanaListingWithHttpInfo(string marketplace)
+        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3SolanaListingWithHttpInfo(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest)
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -8118,9 +8842,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->CreateWeb3SolanaListing");
             }
 
+            // verify the required parameter 'createWeb3SolanaListingRequest' is set
+            if (createWeb3SolanaListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaListingRequest' when calling Web3Api->CreateWeb3SolanaListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8141,6 +8872,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8168,11 +8900,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaListingAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaListingAsync(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3SolanaListingWithHttpInfoAsync(marketplace, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3SolanaListingWithHttpInfoAsync(marketplace, createWeb3SolanaListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8181,9 +8914,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="createWeb3SolanaListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3SolanaListingWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3SolanaListingWithHttpInfoAsync(string marketplace, CreateWeb3SolanaListingRequest createWeb3SolanaListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -8191,10 +8925,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->CreateWeb3SolanaListing");
             }
 
+            // verify the required parameter 'createWeb3SolanaListingRequest' is set
+            if (createWeb3SolanaListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaListingRequest' when calling Web3Api->CreateWeb3SolanaListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8215,6 +8956,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8242,10 +8984,11 @@ namespace net.crossly.Api
         /// Record a sent bid; it is recorded only once its trade state exists on chain. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <returns>OrderHashResponse</returns>
-        public OrderHashResponse CreateWeb3SolanaOffer()
+        public OrderHashResponse CreateWeb3SolanaOffer(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest)
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3SolanaOfferWithHttpInfo();
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = CreateWeb3SolanaOfferWithHttpInfo(createWeb3SolanaOfferRequest);
             return localVarResponse.Data;
         }
 
@@ -8253,12 +8996,20 @@ namespace net.crossly.Api
         /// Record a sent bid; it is recorded only once its trade state exists on chain. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <returns>ApiResponse of OrderHashResponse</returns>
-        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3SolanaOfferWithHttpInfo()
+        public net.crossly.Client.ApiResponse<OrderHashResponse> CreateWeb3SolanaOfferWithHttpInfo(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest)
         {
+            // verify the required parameter 'createWeb3SolanaOfferRequest' is set
+            if (createWeb3SolanaOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferRequest' when calling Web3Api->CreateWeb3SolanaOffer");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8278,6 +9029,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3SolanaOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8304,11 +9056,12 @@ namespace net.crossly.Api
         /// Record a sent bid; it is recorded only once its trade state exists on chain. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OrderHashResponse</returns>
-        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaOfferAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OrderHashResponse> CreateWeb3SolanaOfferAsync(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3SolanaOfferWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OrderHashResponse> localVarResponse = await CreateWeb3SolanaOfferWithHttpInfoAsync(createWeb3SolanaOfferRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8316,14 +9069,22 @@ namespace net.crossly.Api
         /// Record a sent bid; it is recorded only once its trade state exists on chain. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OrderHashResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3SolanaOfferWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OrderHashResponse>> CreateWeb3SolanaOfferWithHttpInfoAsync(CreateWeb3SolanaOfferRequest createWeb3SolanaOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3SolanaOfferRequest' is set
+            if (createWeb3SolanaOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferRequest' when calling Web3Api->CreateWeb3SolanaOffer");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8343,6 +9104,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3SolanaOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8371,10 +9133,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx(string hash)
+        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferAcceptTx(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOfferAcceptTxWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOfferAcceptTxWithHttpInfo(hash, createWeb3SolanaOfferAcceptTxRequest);
             return localVarResponse.Data;
         }
 
@@ -8383,8 +9146,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxWithHttpInfo(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8392,9 +9156,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferAcceptTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferAcceptTxRequest' is set
+            if (createWeb3SolanaOfferAcceptTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferAcceptTxRequest' when calling Web3Api->CreateWeb3SolanaOfferAcceptTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8415,6 +9186,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferAcceptTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8442,11 +9214,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferAcceptTxAsync(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(hash, createWeb3SolanaOfferAcceptTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8455,9 +9228,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferAcceptTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferAcceptTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferAcceptTxRequest createWeb3SolanaOfferAcceptTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8465,10 +9239,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferAcceptTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferAcceptTxRequest' is set
+            if (createWeb3SolanaOfferAcceptTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferAcceptTxRequest' when calling Web3Api->CreateWeb3SolanaOfferAcceptTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8489,6 +9270,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferAcceptTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8517,10 +9299,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx(string hash)
+        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOfferCancelTx(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOfferCancelTxWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOfferCancelTxWithHttpInfo(hash, createWeb3SolanaOfferCancelTxRequest);
             return localVarResponse.Data;
         }
 
@@ -8529,8 +9312,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxWithHttpInfo(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8538,9 +9322,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferCancelTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferCancelTxRequest' is set
+            if (createWeb3SolanaOfferCancelTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferCancelTxRequest' when calling Web3Api->CreateWeb3SolanaOfferCancelTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8561,6 +9352,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferCancelTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8588,11 +9380,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOfferCancelTxAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(hash, createWeb3SolanaOfferCancelTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8601,9 +9394,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOfferCancelTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8611,10 +9405,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferCancelTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferCancelTxRequest' is set
+            if (createWeb3SolanaOfferCancelTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferCancelTxRequest' when calling Web3Api->CreateWeb3SolanaOfferCancelTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8635,6 +9436,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferCancelTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8663,10 +9465,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <returns>CreateWeb3SolanaOfferConfirmResponse</returns>
-        public CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm(string hash)
+        public CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOfferConfirm(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = CreateWeb3SolanaOfferConfirmWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = CreateWeb3SolanaOfferConfirmWithHttpInfo(hash, createWeb3SolanaOfferConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -8675,8 +9478,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmWithHttpInfo(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8684,9 +9488,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferConfirm");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferConfirmRequest' is set
+            if (createWeb3SolanaOfferConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferConfirmRequest' when calling Web3Api->CreateWeb3SolanaOfferConfirm");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8707,6 +9518,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8734,11 +9546,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOfferConfirmAsync(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = await CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = await CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(hash, createWeb3SolanaOfferConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8747,9 +9560,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOfferConfirmWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferConfirmRequest createWeb3SolanaOfferConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8757,10 +9571,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOfferConfirm");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferConfirmRequest' is set
+            if (createWeb3SolanaOfferConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferConfirmRequest' when calling Web3Api->CreateWeb3SolanaOfferConfirm");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8781,6 +9602,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8808,10 +9630,11 @@ namespace net.crossly.Api
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <returns>CreateWeb3SolanaOfferTxResponse</returns>
-        public CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx()
+        public CreateWeb3SolanaOfferTxResponse CreateWeb3SolanaOfferTx(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> localVarResponse = CreateWeb3SolanaOfferTxWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> localVarResponse = CreateWeb3SolanaOfferTxWithHttpInfo(createWeb3SolanaOfferTxRequest);
             return localVarResponse.Data;
         }
 
@@ -8819,12 +9642,20 @@ namespace net.crossly.Api
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxWithHttpInfo(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest)
         {
+            // verify the required parameter 'createWeb3SolanaOfferTxRequest' is set
+            if (createWeb3SolanaOfferTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferTxRequest' when calling Web3Api->CreateWeb3SolanaOfferTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8844,6 +9675,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3SolanaOfferTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8870,11 +9702,12 @@ namespace net.crossly.Api
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferTxResponse> CreateWeb3SolanaOfferTxAsync(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> localVarResponse = await CreateWeb3SolanaOfferTxWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse> localVarResponse = await CreateWeb3SolanaOfferTxWithHttpInfoAsync(createWeb3SolanaOfferTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8882,14 +9715,22 @@ namespace net.crossly.Api
         /// Build a bid on a Solana NFT on Crossly&#39;s book for your linked wallet to sign; the SOL goes into your Auction House escrow. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3SolanaOfferTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse>> CreateWeb3SolanaOfferTxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferTxResponse>> CreateWeb3SolanaOfferTxWithHttpInfoAsync(CreateWeb3SolanaOfferTxRequest createWeb3SolanaOfferTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3SolanaOfferTxRequest' is set
+            if (createWeb3SolanaOfferTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferTxRequest' when calling Web3Api->CreateWeb3SolanaOfferTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8909,6 +9750,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3SolanaOfferTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8937,10 +9779,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <returns>CreateWeb3SolanaOrderBuyTxResponse</returns>
-        public CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx(string hash)
+        public CreateWeb3SolanaOrderBuyTxResponse CreateWeb3SolanaOrderBuyTx(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> localVarResponse = CreateWeb3SolanaOrderBuyTxWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> localVarResponse = CreateWeb3SolanaOrderBuyTxWithHttpInfo(hash, createWeb3SolanaOrderBuyTxRequest);
             return localVarResponse.Data;
         }
 
@@ -8949,8 +9792,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOrderBuyTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxWithHttpInfo(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -8958,9 +9802,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderBuyTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOrderBuyTxRequest' is set
+            if (createWeb3SolanaOrderBuyTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOrderBuyTxRequest' when calling Web3Api->CreateWeb3SolanaOrderBuyTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8981,6 +9832,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOrderBuyTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9008,11 +9860,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOrderBuyTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaOrderBuyTxResponse> CreateWeb3SolanaOrderBuyTxAsync(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> localVarResponse = await CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse> localVarResponse = await CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(hash, createWeb3SolanaOrderBuyTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -9021,9 +9874,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderBuyTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOrderBuyTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse>> CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOrderBuyTxResponse>> CreateWeb3SolanaOrderBuyTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOrderBuyTxRequest createWeb3SolanaOrderBuyTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -9031,10 +9885,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderBuyTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOrderBuyTxRequest' is set
+            if (createWeb3SolanaOrderBuyTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOrderBuyTxRequest' when calling Web3Api->CreateWeb3SolanaOrderBuyTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9055,6 +9916,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOrderBuyTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9083,10 +9945,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <returns>CreateWeb3SolanaOfferConfirmResponse</returns>
-        public CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm(string hash)
+        public CreateWeb3SolanaOfferConfirmResponse CreateWeb3SolanaOrderConfirm(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = CreateWeb3SolanaOrderConfirmWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = CreateWeb3SolanaOrderConfirmWithHttpInfo(hash, createWeb3SolanaOrderConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -9095,8 +9958,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaOfferConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmWithHttpInfo(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -9104,9 +9968,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderConfirm");
             }
 
+            // verify the required parameter 'createWeb3SolanaOrderConfirmRequest' is set
+            if (createWeb3SolanaOrderConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOrderConfirmRequest' when calling Web3Api->CreateWeb3SolanaOrderConfirm");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9127,6 +9998,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOrderConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9154,11 +10026,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaOfferConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaOfferConfirmResponse> CreateWeb3SolanaOrderConfirmAsync(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = await CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse> localVarResponse = await CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(hash, createWeb3SolanaOrderConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -9167,9 +10040,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOrderConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaOfferConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaOfferConfirmResponse>> CreateWeb3SolanaOrderConfirmWithHttpInfoAsync(string hash, CreateWeb3SolanaOrderConfirmRequest createWeb3SolanaOrderConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -9177,10 +10051,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderConfirm");
             }
 
+            // verify the required parameter 'createWeb3SolanaOrderConfirmRequest' is set
+            if (createWeb3SolanaOrderConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOrderConfirmRequest' when calling Web3Api->CreateWeb3SolanaOrderConfirm");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9201,6 +10082,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOrderConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9229,10 +10111,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>CreateWeb3SolanaListTxResponse</returns>
-        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx(string hash)
+        public CreateWeb3SolanaListTxResponse CreateWeb3SolanaOrderDelistTx(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOrderDelistTxWithHttpInfo(hash);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = CreateWeb3SolanaOrderDelistTxWithHttpInfo(hash, createWeb3SolanaOfferCancelTxRequest);
             return localVarResponse.Data;
         }
 
@@ -9241,8 +10124,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <returns>ApiResponse of CreateWeb3SolanaListTxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxWithHttpInfo(string hash)
+        public net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxWithHttpInfo(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest)
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -9250,9 +10134,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderDelistTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferCancelTxRequest' is set
+            if (createWeb3SolanaOfferCancelTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferCancelTxRequest' when calling Web3Api->CreateWeb3SolanaOrderDelistTx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9273,6 +10164,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferCancelTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -9300,11 +10192,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3SolanaListTxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3SolanaListTxResponse> CreateWeb3SolanaOrderDelistTxAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse> localVarResponse = await CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(hash, createWeb3SolanaOfferCancelTxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -9313,9 +10206,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="hash"></param>
+        /// <param name="createWeb3SolanaOfferCancelTxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3SolanaListTxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3SolanaListTxResponse>> CreateWeb3SolanaOrderDelistTxWithHttpInfoAsync(string hash, CreateWeb3SolanaOfferCancelTxRequest createWeb3SolanaOfferCancelTxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'hash' is set
             if (hash == null)
@@ -9323,10 +10217,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'hash' when calling Web3Api->CreateWeb3SolanaOrderDelistTx");
             }
 
+            // verify the required parameter 'createWeb3SolanaOfferCancelTxRequest' is set
+            if (createWeb3SolanaOfferCancelTxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3SolanaOfferCancelTxRequest' when calling Web3Api->CreateWeb3SolanaOrderDelistTx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -9347,6 +10248,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            localVarRequestOptions.Data = createWeb3SolanaOfferCancelTxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10142,10 +11044,11 @@ namespace net.crossly.Api
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <returns>CreateWeb3StoreWalletResponse</returns>
-        public CreateWeb3StoreWalletResponse CreateWeb3StoreWallet()
+        public CreateWeb3StoreWalletResponse CreateWeb3StoreWallet(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletWithHttpInfo(createWeb3StoreWalletRequest);
             return localVarResponse.Data;
         }
 
@@ -10153,12 +11056,20 @@ namespace net.crossly.Api
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletWithHttpInfo(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest)
         {
+            // verify the required parameter 'createWeb3StoreWalletRequest' is set
+            if (createWeb3StoreWalletRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletRequest' when calling Web3Api->CreateWeb3StoreWallet");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10178,6 +11089,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3StoreWalletRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10204,11 +11116,12 @@ namespace net.crossly.Api
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletAsync(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletWithHttpInfoAsync(createWeb3StoreWalletRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10216,14 +11129,22 @@ namespace net.crossly.Api
         /// Link one of your verified wallets to the store so it sells NFTs from it and is paid into it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletWithHttpInfoAsync(CreateWeb3StoreWalletRequest createWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3StoreWalletRequest' is set
+            if (createWeb3StoreWalletRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletRequest' when calling Web3Api->CreateWeb3StoreWallet");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10243,6 +11164,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3StoreWalletRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10270,10 +11192,11 @@ namespace net.crossly.Api
         /// Start adding a selling wallet to the store: the message the wallet signs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>CreateWeb3WalletChallengeResponse</returns>
-        public CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge()
+        public CreateWeb3WalletChallengeResponse CreateWeb3StoreWalletChallenge(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = CreateWeb3StoreWalletChallengeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = CreateWeb3StoreWalletChallengeWithHttpInfo(createWeb3WalletChallengeRequest);
             return localVarResponse.Data;
         }
 
@@ -10281,12 +11204,20 @@ namespace net.crossly.Api
         /// Start adding a selling wallet to the store: the message the wallet signs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeWithHttpInfo(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
         {
+            // verify the required parameter 'createWeb3WalletChallengeRequest' is set
+            if (createWeb3WalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletChallengeRequest' when calling Web3Api->CreateWeb3StoreWalletChallenge");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10306,6 +11237,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10332,11 +11264,12 @@ namespace net.crossly.Api
         /// Start adding a selling wallet to the store: the message the wallet signs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3StoreWalletChallengeAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = await CreateWeb3StoreWalletChallengeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = await CreateWeb3StoreWalletChallengeWithHttpInfoAsync(createWeb3WalletChallengeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10344,14 +11277,22 @@ namespace net.crossly.Api
         /// Start adding a selling wallet to the store: the message the wallet signs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3StoreWalletChallengeWithHttpInfoAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3WalletChallengeRequest' is set
+            if (createWeb3WalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletChallengeRequest' when calling Web3Api->CreateWeb3StoreWalletChallenge");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10371,6 +11312,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10399,10 +11341,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <returns>CreateWeb3WalletImportResponse</returns>
-        public CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId)
+        public CreateWeb3WalletImportResponse CreateWeb3StoreWalletImport(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = CreateWeb3StoreWalletImportWithHttpInfo(walletId);
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = CreateWeb3StoreWalletImportWithHttpInfo(walletId, createWeb3StoreWalletImportRequest);
             return localVarResponse.Data;
         }
 
@@ -10411,12 +11354,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletImportResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId)
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportWithHttpInfo(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest)
         {
+            // verify the required parameter 'createWeb3StoreWalletImportRequest' is set
+            if (createWeb3StoreWalletImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletImportRequest' when calling Web3Api->CreateWeb3StoreWalletImport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10437,6 +11388,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = createWeb3StoreWalletImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10464,11 +11416,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletImportResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3WalletImportResponse> CreateWeb3StoreWalletImportAsync(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = await CreateWeb3StoreWalletImportWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse> localVarResponse = await CreateWeb3StoreWalletImportWithHttpInfoAsync(walletId, createWeb3StoreWalletImportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10477,14 +11430,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="createWeb3StoreWalletImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletImportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletImportResponse>> CreateWeb3StoreWalletImportWithHttpInfoAsync(Guid walletId, CreateWeb3StoreWalletImportRequest createWeb3StoreWalletImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3StoreWalletImportRequest' is set
+            if (createWeb3StoreWalletImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletImportRequest' when calling Web3Api->CreateWeb3StoreWalletImport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10505,6 +11466,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = createWeb3StoreWalletImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10666,10 +11628,11 @@ namespace net.crossly.Api
         /// Finish adding a selling wallet: verify its signature and link it to the store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <returns>CreateWeb3StoreWalletResponse</returns>
-        public CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify()
+        public CreateWeb3StoreWalletResponse CreateWeb3StoreWalletVerify(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletVerifyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = CreateWeb3StoreWalletVerifyWithHttpInfo(createWeb3StoreWalletVerifyRequest);
             return localVarResponse.Data;
         }
 
@@ -10677,12 +11640,20 @@ namespace net.crossly.Api
         /// Finish adding a selling wallet: verify its signature and link it to the store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateWeb3StoreWalletResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyWithHttpInfo(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest)
         {
+            // verify the required parameter 'createWeb3StoreWalletVerifyRequest' is set
+            if (createWeb3StoreWalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletVerifyRequest' when calling Web3Api->CreateWeb3StoreWalletVerify");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10702,6 +11673,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3StoreWalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10728,11 +11700,12 @@ namespace net.crossly.Api
         /// Finish adding a selling wallet: verify its signature and link it to the store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3StoreWalletResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3StoreWalletResponse> CreateWeb3StoreWalletVerifyAsync(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletVerifyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse> localVarResponse = await CreateWeb3StoreWalletVerifyWithHttpInfoAsync(createWeb3StoreWalletVerifyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -10740,14 +11713,22 @@ namespace net.crossly.Api
         /// Finish adding a selling wallet: verify its signature and link it to the store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3StoreWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3StoreWalletResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3StoreWalletResponse>> CreateWeb3StoreWalletVerifyWithHttpInfoAsync(CreateWeb3StoreWalletVerifyRequest createWeb3StoreWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3StoreWalletVerifyRequest' is set
+            if (createWeb3StoreWalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3StoreWalletVerifyRequest' when calling Web3Api->CreateWeb3StoreWalletVerify");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -10767,6 +11748,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3StoreWalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -10976,10 +11958,11 @@ namespace net.crossly.Api
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <returns>CreateWeb3TransactionResponse</returns>
-        public CreateWeb3TransactionResponse CreateWeb3Transaction()
+        public CreateWeb3TransactionResponse CreateWeb3Transaction(CreateWeb3TransactionRequest createWeb3TransactionRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> localVarResponse = CreateWeb3TransactionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> localVarResponse = CreateWeb3TransactionWithHttpInfo(createWeb3TransactionRequest);
             return localVarResponse.Data;
         }
 
@@ -10987,12 +11970,20 @@ namespace net.crossly.Api
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <returns>ApiResponse of CreateWeb3TransactionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> CreateWeb3TransactionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> CreateWeb3TransactionWithHttpInfo(CreateWeb3TransactionRequest createWeb3TransactionRequest)
         {
+            // verify the required parameter 'createWeb3TransactionRequest' is set
+            if (createWeb3TransactionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3TransactionRequest' when calling Web3Api->CreateWeb3Transaction");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11012,6 +12003,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3TransactionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -11038,11 +12030,12 @@ namespace net.crossly.Api
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3TransactionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3TransactionResponse> CreateWeb3TransactionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3TransactionResponse> CreateWeb3TransactionAsync(CreateWeb3TransactionRequest createWeb3TransactionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> localVarResponse = await CreateWeb3TransactionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse> localVarResponse = await CreateWeb3TransactionWithHttpInfoAsync(createWeb3TransactionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -11050,14 +12043,22 @@ namespace net.crossly.Api
         /// Apply a Seaport transaction&#39;s fills and cancels to the Crossly book (read from the receipt). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3TransactionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3TransactionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse>> CreateWeb3TransactionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3TransactionResponse>> CreateWeb3TransactionWithHttpInfoAsync(CreateWeb3TransactionRequest createWeb3TransactionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3TransactionRequest' is set
+            if (createWeb3TransactionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3TransactionRequest' when calling Web3Api->CreateWeb3Transaction");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11077,6 +12078,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3TransactionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -11104,10 +12106,11 @@ namespace net.crossly.Api
         /// Start linking a wallet: returns the message the wallet must sign. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>CreateWeb3WalletChallengeResponse</returns>
-        public CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge()
+        public CreateWeb3WalletChallengeResponse CreateWeb3WalletChallenge(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = CreateWeb3WalletChallengeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = CreateWeb3WalletChallengeWithHttpInfo(createWeb3WalletChallengeRequest);
             return localVarResponse.Data;
         }
 
@@ -11115,12 +12118,20 @@ namespace net.crossly.Api
         /// Start linking a wallet: returns the message the wallet must sign. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletChallengeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeWithHttpInfo(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest)
         {
+            // verify the required parameter 'createWeb3WalletChallengeRequest' is set
+            if (createWeb3WalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletChallengeRequest' when calling Web3Api->CreateWeb3WalletChallenge");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11140,6 +12151,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -11166,11 +12178,12 @@ namespace net.crossly.Api
         /// Start linking a wallet: returns the message the wallet must sign. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletChallengeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3WalletChallengeResponse> CreateWeb3WalletChallengeAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = await CreateWeb3WalletChallengeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse> localVarResponse = await CreateWeb3WalletChallengeWithHttpInfoAsync(createWeb3WalletChallengeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -11178,14 +12191,22 @@ namespace net.crossly.Api
         /// Start linking a wallet: returns the message the wallet must sign. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletChallengeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3WalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletChallengeResponse>> CreateWeb3WalletChallengeWithHttpInfoAsync(CreateWeb3WalletChallengeRequest createWeb3WalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3WalletChallengeRequest' is set
+            if (createWeb3WalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletChallengeRequest' when calling Web3Api->CreateWeb3WalletChallenge");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11205,6 +12226,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -11524,10 +12546,11 @@ namespace net.crossly.Api
         /// Finish linking a wallet with its signature over the challenge message. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <returns>CreateWeb3WalletVerifyResponse</returns>
-        public CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify()
+        public CreateWeb3WalletVerifyResponse CreateWeb3WalletVerify(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> localVarResponse = CreateWeb3WalletVerifyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> localVarResponse = CreateWeb3WalletVerifyWithHttpInfo(createWeb3WalletVerifyRequest);
             return localVarResponse.Data;
         }
 
@@ -11535,12 +12558,20 @@ namespace net.crossly.Api
         /// Finish linking a wallet with its signature over the challenge message. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateWeb3WalletVerifyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyWithHttpInfo(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest)
         {
+            // verify the required parameter 'createWeb3WalletVerifyRequest' is set
+            if (createWeb3WalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletVerifyRequest' when calling Web3Api->CreateWeb3WalletVerify");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11560,6 +12591,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -11586,11 +12618,12 @@ namespace net.crossly.Api
         /// Finish linking a wallet with its signature over the challenge message. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWeb3WalletVerifyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWeb3WalletVerifyResponse> CreateWeb3WalletVerifyAsync(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> localVarResponse = await CreateWeb3WalletVerifyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse> localVarResponse = await CreateWeb3WalletVerifyWithHttpInfoAsync(createWeb3WalletVerifyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -11598,14 +12631,22 @@ namespace net.crossly.Api
         /// Finish linking a wallet with its signature over the challenge message. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWeb3WalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWeb3WalletVerifyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse>> CreateWeb3WalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWeb3WalletVerifyResponse>> CreateWeb3WalletVerifyWithHttpInfoAsync(CreateWeb3WalletVerifyRequest createWeb3WalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWeb3WalletVerifyRequest' is set
+            if (createWeb3WalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWeb3WalletVerifyRequest' when calling Web3Api->CreateWeb3WalletVerify");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -11625,6 +12666,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWeb3WalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -13106,10 +14148,12 @@ namespace net.crossly.Api
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>GetWeb3BrowseResponse</returns>
-        public GetWeb3BrowseResponse GetWeb3Browse()
+        public GetWeb3BrowseResponse GetWeb3Browse(string chain = default(string), string category = default(string))
         {
-            net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> localVarResponse = GetWeb3BrowseWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> localVarResponse = GetWeb3BrowseWithHttpInfo(chain, category);
             return localVarResponse.Data;
         }
 
@@ -13117,8 +14161,10 @@ namespace net.crossly.Api
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3BrowseResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> GetWeb3BrowseWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> GetWeb3BrowseWithHttpInfo(string chain = default(string), string category = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -13142,6 +14188,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -13168,11 +14222,13 @@ namespace net.crossly.Api
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3BrowseResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3BrowseResponse> GetWeb3BrowseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3BrowseResponse> GetWeb3BrowseAsync(string chain = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> localVarResponse = await GetWeb3BrowseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3BrowseResponse> localVarResponse = await GetWeb3BrowseWithHttpInfoAsync(chain, category, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -13180,9 +14236,11 @@ namespace net.crossly.Api
         /// The Web3 directory&#39;s categories and chains, with how many collections each holds. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3BrowseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3BrowseResponse>> GetWeb3BrowseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3BrowseResponse>> GetWeb3BrowseWithHttpInfoAsync(string chain = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -13207,6 +14265,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -13728,10 +14794,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <returns>GetWeb3CollectionItemResponse</returns>
-        public GetWeb3CollectionItemResponse GetWeb3CollectionItem(string chain, string contract)
+        public GetWeb3CollectionItemResponse GetWeb3CollectionItem(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string))
         {
-            net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> localVarResponse = GetWeb3CollectionItemWithHttpInfo(chain, contract);
+            net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> localVarResponse = GetWeb3CollectionItemWithHttpInfo(chain, contract, offset, limit, q, sort, trait, listed, pageKey);
             return localVarResponse.Data;
         }
 
@@ -13741,8 +14814,15 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3CollectionItemResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> GetWeb3CollectionItemWithHttpInfo(string chain, string contract)
+        public net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> GetWeb3CollectionItemWithHttpInfo(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -13780,6 +14860,34 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (trait != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "trait", trait));
+            }
+            if (listed != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listed", listed));
+            }
+            if (pageKey != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageKey", pageKey));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -13808,11 +14916,18 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CollectionItemResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3CollectionItemResponse> GetWeb3CollectionItemAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3CollectionItemResponse> GetWeb3CollectionItemAsync(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> localVarResponse = await GetWeb3CollectionItemWithHttpInfoAsync(chain, contract, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse> localVarResponse = await GetWeb3CollectionItemWithHttpInfoAsync(chain, contract, offset, limit, q, sort, trait, listed, pageKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -13822,9 +14937,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="trait"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="pageKey"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CollectionItemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse>> GetWeb3CollectionItemWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CollectionItemResponse>> GetWeb3CollectionItemWithHttpInfoAsync(string chain, string contract, decimal? offset = default(decimal?), decimal? limit = default(decimal?), string q = default(string), string sort = default(string), string trait = default(string), bool? listed = default(bool?), string pageKey = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -13863,6 +14985,34 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (trait != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "trait", trait));
+            }
+            if (listed != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listed", listed));
+            }
+            if (pageKey != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageKey", pageKey));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -14056,10 +15206,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <returns>GetWeb3CollectionTraitTokenResponse</returns>
-        public GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken(string chain, string contract)
+        public GetWeb3CollectionTraitTokenResponse GetWeb3CollectionTraitToken(string chain, string contract, string type, string value)
         {
-            net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> localVarResponse = GetWeb3CollectionTraitTokenWithHttpInfo(chain, contract);
+            net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> localVarResponse = GetWeb3CollectionTraitTokenWithHttpInfo(chain, contract, type, value);
             return localVarResponse.Data;
         }
 
@@ -14069,8 +15221,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <returns>ApiResponse of GetWeb3CollectionTraitTokenResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenWithHttpInfo(string chain, string contract)
+        public net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenWithHttpInfo(string chain, string contract, string type, string value)
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -14082,6 +15236,18 @@ namespace net.crossly.Api
             if (contract == null)
             {
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'contract' when calling Web3Api->GetWeb3CollectionTraitToken");
+            }
+
+            // verify the required parameter 'type' is set
+            if (type == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'type' when calling Web3Api->GetWeb3CollectionTraitToken");
+            }
+
+            // verify the required parameter 'value' is set
+            if (value == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'value' when calling Web3Api->GetWeb3CollectionTraitToken");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -14108,6 +15274,8 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "value", value));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -14136,11 +15304,13 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CollectionTraitTokenResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3CollectionTraitTokenResponse> GetWeb3CollectionTraitTokenAsync(string chain, string contract, string type, string value, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> localVarResponse = await GetWeb3CollectionTraitTokenWithHttpInfoAsync(chain, contract, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse> localVarResponse = await GetWeb3CollectionTraitTokenWithHttpInfoAsync(chain, contract, type, value, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -14150,9 +15320,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="type"></param>
+        /// <param name="value"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CollectionTraitTokenResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse>> GetWeb3CollectionTraitTokenWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CollectionTraitTokenResponse>> GetWeb3CollectionTraitTokenWithHttpInfoAsync(string chain, string contract, string type, string value, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -14164,6 +15336,18 @@ namespace net.crossly.Api
             if (contract == null)
             {
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'contract' when calling Web3Api->GetWeb3CollectionTraitToken");
+            }
+
+            // verify the required parameter 'type' is set
+            if (type == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'type' when calling Web3Api->GetWeb3CollectionTraitToken");
+            }
+
+            // verify the required parameter 'value' is set
+            if (value == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'value' when calling Web3Api->GetWeb3CollectionTraitToken");
             }
 
 
@@ -14191,6 +15375,8 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "type", type));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "value", value));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -14510,10 +15696,13 @@ namespace net.crossly.Api
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <returns>GetWeb3CrosslistQuoteResponse</returns>
-        public GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote()
+        public GetWeb3CrosslistQuoteResponse GetWeb3CrosslistQuote(string chain, string contract, string tokenId)
         {
-            net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> localVarResponse = GetWeb3CrosslistQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> localVarResponse = GetWeb3CrosslistQuoteWithHttpInfo(chain, contract, tokenId);
             return localVarResponse.Data;
         }
 
@@ -14521,9 +15710,30 @@ namespace net.crossly.Api
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <returns>ApiResponse of GetWeb3CrosslistQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteWithHttpInfo(string chain, string contract, string tokenId)
         {
+            // verify the required parameter 'chain' is set
+            if (chain == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'chain' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
+            // verify the required parameter 'contract' is set
+            if (contract == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'contract' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenId' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -14546,6 +15756,9 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -14572,11 +15785,14 @@ namespace net.crossly.Api
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3CrosslistQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3CrosslistQuoteResponse> GetWeb3CrosslistQuoteAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> localVarResponse = await GetWeb3CrosslistQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse> localVarResponse = await GetWeb3CrosslistQuoteWithHttpInfoAsync(chain, contract, tokenId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -14584,10 +15800,31 @@ namespace net.crossly.Api
         /// Each marketplace&#39;s terms for listing a token: Crossly fee, OpenSea required fees and zone, Tensor availability. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"></param>
+        /// <param name="contract"></param>
+        /// <param name="tokenId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3CrosslistQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse>> GetWeb3CrosslistQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3CrosslistQuoteResponse>> GetWeb3CrosslistQuoteWithHttpInfoAsync(string chain, string contract, string tokenId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'chain' is set
+            if (chain == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'chain' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
+            // verify the required parameter 'contract' is set
+            if (contract == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'contract' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenId' when calling Web3Api->GetWeb3CrosslistQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -14611,6 +15848,9 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -15498,10 +16738,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <returns>GetWeb3OrderFulfillmentResponse</returns>
-        public GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment(string chain, string hash)
+        public GetWeb3OrderFulfillmentResponse GetWeb3OrderFulfillment(string chain, string hash, string tokenId = default(string))
         {
-            net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> localVarResponse = GetWeb3OrderFulfillmentWithHttpInfo(chain, hash);
+            net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> localVarResponse = GetWeb3OrderFulfillmentWithHttpInfo(chain, hash, tokenId);
             return localVarResponse.Data;
         }
 
@@ -15511,8 +16752,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <returns>ApiResponse of GetWeb3OrderFulfillmentResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentWithHttpInfo(string chain, string hash)
+        public net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentWithHttpInfo(string chain, string hash, string tokenId = default(string))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -15550,6 +16792,10 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            if (tokenId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -15578,11 +16824,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3OrderFulfillmentResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentAsync(string chain, string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3OrderFulfillmentResponse> GetWeb3OrderFulfillmentAsync(string chain, string hash, string tokenId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> localVarResponse = await GetWeb3OrderFulfillmentWithHttpInfoAsync(chain, hash, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse> localVarResponse = await GetWeb3OrderFulfillmentWithHttpInfoAsync(chain, hash, tokenId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -15592,9 +16839,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="hash"></param>
+        /// <param name="tokenId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3OrderFulfillmentResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse>> GetWeb3OrderFulfillmentWithHttpInfoAsync(string chain, string hash, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3OrderFulfillmentResponse>> GetWeb3OrderFulfillmentWithHttpInfoAsync(string chain, string hash, string tokenId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -15633,6 +16881,10 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("hash", net.crossly.Client.ClientUtils.ParameterToString(hash)); // path parameter
+            if (tokenId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -16098,10 +17350,11 @@ namespace net.crossly.Api
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <returns>GetWeb3PortfolioTaxResponse</returns>
-        public GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax()
+        public GetWeb3PortfolioTaxResponse GetWeb3PortfolioTax(decimal year)
         {
-            net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> localVarResponse = GetWeb3PortfolioTaxWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> localVarResponse = GetWeb3PortfolioTaxWithHttpInfo(year);
             return localVarResponse.Data;
         }
 
@@ -16109,8 +17362,9 @@ namespace net.crossly.Api
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <returns>ApiResponse of GetWeb3PortfolioTaxResponse</returns>
-        public net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxWithHttpInfo(decimal year)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -16134,6 +17388,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -16160,11 +17415,12 @@ namespace net.crossly.Api
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetWeb3PortfolioTaxResponse</returns>
-        public async System.Threading.Tasks.Task<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetWeb3PortfolioTaxResponse> GetWeb3PortfolioTaxAsync(decimal year, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> localVarResponse = await GetWeb3PortfolioTaxWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse> localVarResponse = await GetWeb3PortfolioTaxWithHttpInfoAsync(year, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -16172,9 +17428,10 @@ namespace net.crossly.Api
         /// One calendar year of NFT disposals from your linked wallets as CSV text: acquired, sold, proceeds, cost basis, gain (coin and USD). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWeb3PortfolioTaxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse>> GetWeb3PortfolioTaxWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetWeb3PortfolioTaxResponse>> GetWeb3PortfolioTaxWithHttpInfoAsync(decimal year, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -16199,6 +17456,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17400,10 +18658,14 @@ namespace net.crossly.Api
         /// Listings, offers, sales and cancels in the Crossly book, newest first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3ActivityResponse</returns>
-        public ListWeb3ActivityResponse ListWeb3Activity()
+        public ListWeb3ActivityResponse ListWeb3Activity(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> localVarResponse = ListWeb3ActivityWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> localVarResponse = ListWeb3ActivityWithHttpInfo(chain, contract, tokenId, limit);
             return localVarResponse.Data;
         }
 
@@ -17411,8 +18673,12 @@ namespace net.crossly.Api
         /// Listings, offers, sales and cancels in the Crossly book, newest first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3ActivityResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> ListWeb3ActivityWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> ListWeb3ActivityWithHttpInfo(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -17436,6 +18702,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (tokenId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17462,11 +18744,15 @@ namespace net.crossly.Api
         /// Listings, offers, sales and cancels in the Crossly book, newest first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3ActivityResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3ActivityResponse> ListWeb3ActivityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3ActivityResponse> ListWeb3ActivityAsync(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> localVarResponse = await ListWeb3ActivityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3ActivityResponse> localVarResponse = await ListWeb3ActivityWithHttpInfoAsync(chain, contract, tokenId, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -17474,9 +18760,13 @@ namespace net.crossly.Api
         /// Listings, offers, sales and cancels in the Crossly book, newest first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="tokenId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3ActivityResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3ActivityResponse>> ListWeb3ActivityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3ActivityResponse>> ListWeb3ActivityWithHttpInfoAsync(string chain = default(string), string contract = default(string), string tokenId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -17501,6 +18791,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (tokenId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tokenId", tokenId));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17784,10 +19090,12 @@ namespace net.crossly.Api
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3AuctionsResponse</returns>
-        public ListWeb3AuctionsResponse ListWeb3Auctions()
+        public ListWeb3AuctionsResponse ListWeb3Auctions(string chain = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> localVarResponse = ListWeb3AuctionsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> localVarResponse = ListWeb3AuctionsWithHttpInfo(chain, limit);
             return localVarResponse.Data;
         }
 
@@ -17795,8 +19103,10 @@ namespace net.crossly.Api
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3AuctionsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> ListWeb3AuctionsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> ListWeb3AuctionsWithHttpInfo(string chain = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -17820,6 +19130,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17846,11 +19164,13 @@ namespace net.crossly.Api
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3AuctionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3AuctionsResponse> ListWeb3AuctionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3AuctionsResponse> ListWeb3AuctionsAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> localVarResponse = await ListWeb3AuctionsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse> localVarResponse = await ListWeb3AuctionsWithHttpInfoAsync(chain, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -17858,9 +19178,11 @@ namespace net.crossly.Api
         /// Live English auctions on the Crossly book, ending soonest first, each with its top bid and the least the next bid can be. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3AuctionsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse>> ListWeb3AuctionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3AuctionsResponse>> ListWeb3AuctionsWithHttpInfoAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -17885,6 +19207,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17912,10 +19242,20 @@ namespace net.crossly.Api
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListWeb3BrowseCollectionsResponse</returns>
-        public ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections()
+        public ListWeb3BrowseCollectionsResponse ListWeb3BrowseCollections(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> localVarResponse = ListWeb3BrowseCollectionsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> localVarResponse = ListWeb3BrowseCollectionsWithHttpInfo(chain, category, q, sort, listed, verified, floorMin, floorMax, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -17923,8 +19263,18 @@ namespace net.crossly.Api
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BrowseCollectionsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsWithHttpInfo(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -17948,6 +19298,46 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (listed != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listed", listed));
+            }
+            if (verified != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "verified", verified));
+            }
+            if (floorMin != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "floorMin", floorMin));
+            }
+            if (floorMax != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "floorMax", floorMax));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -17974,11 +19364,21 @@ namespace net.crossly.Api
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BrowseCollectionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3BrowseCollectionsResponse> ListWeb3BrowseCollectionsAsync(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> localVarResponse = await ListWeb3BrowseCollectionsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse> localVarResponse = await ListWeb3BrowseCollectionsWithHttpInfoAsync(chain, category, q, sort, listed, verified, floorMin, floorMax, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -17986,9 +19386,19 @@ namespace net.crossly.Api
         /// Browse NFT collections by chain, category and name; sort hot (Crossly sales, listings, favourites), new, volume, floor or name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="listed"> (optional)</param>
+        /// <param name="verified"> (optional)</param>
+        /// <param name="floorMin">Floor range in the chosen chain&#39;s native coin, e.g. 0.5 (ETH); ignored without a chain. (optional)</param>
+        /// <param name="floorMax"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BrowseCollectionsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse>> ListWeb3BrowseCollectionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BrowseCollectionsResponse>> ListWeb3BrowseCollectionsWithHttpInfoAsync(string chain = default(string), string category = default(string), string q = default(string), string sort = default(string), bool? listed = default(bool?), bool? verified = default(bool?), string floorMin = default(string), string floorMax = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -18013,6 +19423,46 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (listed != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listed", listed));
+            }
+            if (verified != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "verified", verified));
+            }
+            if (floorMin != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "floorMin", floorMin));
+            }
+            if (floorMax != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "floorMax", floorMax));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18040,10 +19490,13 @@ namespace net.crossly.Api
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3BrowseTokensResponse</returns>
-        public ListWeb3BrowseTokensResponse ListWeb3BrowseTokens()
+        public ListWeb3BrowseTokensResponse ListWeb3BrowseTokens(string chain = default(string), string category = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> localVarResponse = ListWeb3BrowseTokensWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> localVarResponse = ListWeb3BrowseTokensWithHttpInfo(chain, category, limit);
             return localVarResponse.Data;
         }
 
@@ -18051,8 +19504,11 @@ namespace net.crossly.Api
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BrowseTokensResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensWithHttpInfo(string chain = default(string), string category = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -18076,6 +19532,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18102,11 +19570,14 @@ namespace net.crossly.Api
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BrowseTokensResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3BrowseTokensResponse> ListWeb3BrowseTokensAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> localVarResponse = await ListWeb3BrowseTokensWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse> localVarResponse = await ListWeb3BrowseTokensWithHttpInfoAsync(chain, category, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18114,9 +19585,12 @@ namespace net.crossly.Api
         /// Hot NFTs: what is for sale on Crossly first, then tokens from the hottest collections. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BrowseTokensResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse>> ListWeb3BrowseTokensWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BrowseTokensResponse>> ListWeb3BrowseTokensWithHttpInfoAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -18141,6 +19615,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18168,10 +19654,13 @@ namespace net.crossly.Api
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3BundlesResponse</returns>
-        public ListWeb3BundlesResponse ListWeb3Bundles()
+        public ListWeb3BundlesResponse ListWeb3Bundles(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> localVarResponse = ListWeb3BundlesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> localVarResponse = ListWeb3BundlesWithHttpInfo(chain, contract, limit);
             return localVarResponse.Data;
         }
 
@@ -18179,8 +19668,11 @@ namespace net.crossly.Api
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3BundlesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> ListWeb3BundlesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> ListWeb3BundlesWithHttpInfo(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -18204,6 +19696,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18230,11 +19734,14 @@ namespace net.crossly.Api
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3BundlesResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3BundlesResponse> ListWeb3BundlesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3BundlesResponse> ListWeb3BundlesAsync(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> localVarResponse = await ListWeb3BundlesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3BundlesResponse> localVarResponse = await ListWeb3BundlesWithHttpInfoAsync(chain, contract, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18242,9 +19749,12 @@ namespace net.crossly.Api
         /// Open bundle listings (2–30 NFTs for one price), newest first, by chain or by a contract any item is from. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3BundlesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BundlesResponse>> ListWeb3BundlesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3BundlesResponse>> ListWeb3BundlesWithHttpInfoAsync(string chain = default(string), string contract = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -18269,6 +19779,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18298,10 +19820,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ListWeb3CollectionHistoryResponse</returns>
-        public ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory(string chain, string contract)
+        public ListWeb3CollectionHistoryResponse ListWeb3CollectionHistory(string chain, string contract, decimal? days = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> localVarResponse = ListWeb3CollectionHistoryWithHttpInfo(chain, contract);
+            net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> localVarResponse = ListWeb3CollectionHistoryWithHttpInfo(chain, contract, days);
             return localVarResponse.Data;
         }
 
@@ -18311,8 +19834,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3CollectionHistoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryWithHttpInfo(string chain, string contract)
+        public net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryWithHttpInfo(string chain, string contract, decimal? days = default(decimal?))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -18350,6 +19874,10 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18378,11 +19906,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3CollectionHistoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3CollectionHistoryResponse> ListWeb3CollectionHistoryAsync(string chain, string contract, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> localVarResponse = await ListWeb3CollectionHistoryWithHttpInfoAsync(chain, contract, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse> localVarResponse = await ListWeb3CollectionHistoryWithHttpInfoAsync(chain, contract, days, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18392,9 +19921,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chain"></param>
         /// <param name="contract"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3CollectionHistoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse>> ListWeb3CollectionHistoryWithHttpInfoAsync(string chain, string contract, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3CollectionHistoryResponse>> ListWeb3CollectionHistoryWithHttpInfoAsync(string chain, string contract, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'chain' is set
             if (chain == null)
@@ -18433,6 +19963,10 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("chain", net.crossly.Client.ClientUtils.ParameterToString(chain)); // path parameter
             localVarRequestOptions.PathParameters.Add("contract", net.crossly.Client.ClientUtils.ParameterToString(contract)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18460,10 +19994,12 @@ namespace net.crossly.Api
         /// Collections ranked by 30-day Crossly volume, with floor and listed count. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3CollectionsResponse</returns>
-        public ListWeb3CollectionsResponse ListWeb3Collections()
+        public ListWeb3CollectionsResponse ListWeb3Collections(string chain = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> localVarResponse = ListWeb3CollectionsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> localVarResponse = ListWeb3CollectionsWithHttpInfo(chain, limit);
             return localVarResponse.Data;
         }
 
@@ -18471,8 +20007,10 @@ namespace net.crossly.Api
         /// Collections ranked by 30-day Crossly volume, with floor and listed count. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3CollectionsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> ListWeb3CollectionsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> ListWeb3CollectionsWithHttpInfo(string chain = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -18496,6 +20034,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -18522,11 +20068,13 @@ namespace net.crossly.Api
         /// Collections ranked by 30-day Crossly volume, with floor and listed count. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3CollectionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3CollectionsResponse> ListWeb3CollectionsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3CollectionsResponse> ListWeb3CollectionsAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> localVarResponse = await ListWeb3CollectionsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse> localVarResponse = await ListWeb3CollectionsWithHttpInfoAsync(chain, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -18534,9 +20082,11 @@ namespace net.crossly.Api
         /// Collections ranked by 30-day Crossly volume, with floor and listed count. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3CollectionsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse>> ListWeb3CollectionsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3CollectionsResponse>> ListWeb3CollectionsWithHttpInfoAsync(string chain = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -18561,6 +20111,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -19238,10 +20796,15 @@ namespace net.crossly.Api
         /// Open NFT listings in the Crossly book — the cheapest per token. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3ListingsResponse</returns>
-        public ListWeb3ListingsResponse ListWeb3Listings()
+        public ListWeb3ListingsResponse ListWeb3Listings(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> localVarResponse = ListWeb3ListingsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> localVarResponse = ListWeb3ListingsWithHttpInfo(chain, contract, sort, page, limit);
             return localVarResponse.Data;
         }
 
@@ -19249,8 +20812,13 @@ namespace net.crossly.Api
         /// Open NFT listings in the Crossly book — the cheapest per token. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3ListingsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> ListWeb3ListingsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> ListWeb3ListingsWithHttpInfo(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -19274,6 +20842,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -19300,11 +20888,16 @@ namespace net.crossly.Api
         /// Open NFT listings in the Crossly book — the cheapest per token. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3ListingsResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3ListingsResponse> ListWeb3ListingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3ListingsResponse> ListWeb3ListingsAsync(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> localVarResponse = await ListWeb3ListingsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3ListingsResponse> localVarResponse = await ListWeb3ListingsWithHttpInfoAsync(chain, contract, sort, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -19312,9 +20905,14 @@ namespace net.crossly.Api
         /// Open NFT listings in the Crossly book — the cheapest per token. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="contract"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3ListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3ListingsResponse>> ListWeb3ListingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3ListingsResponse>> ListWeb3ListingsWithHttpInfoAsync(string chain = default(string), string contract = default(string), string sort = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -19339,6 +20937,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (contract != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "contract", contract));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -19926,10 +21544,14 @@ namespace net.crossly.Api
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListWeb3RankingsResponse</returns>
-        public ListWeb3RankingsResponse ListWeb3Rankings()
+        public ListWeb3RankingsResponse ListWeb3Rankings(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> localVarResponse = ListWeb3RankingsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> localVarResponse = ListWeb3RankingsWithHttpInfo(window, chain, category, limit);
             return localVarResponse.Data;
         }
 
@@ -19937,8 +21559,12 @@ namespace net.crossly.Api
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3RankingsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> ListWeb3RankingsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> ListWeb3RankingsWithHttpInfo(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -19962,6 +21588,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (window != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "window", window));
+            }
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -19988,11 +21630,15 @@ namespace net.crossly.Api
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3RankingsResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3RankingsResponse> ListWeb3RankingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3RankingsResponse> ListWeb3RankingsAsync(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> localVarResponse = await ListWeb3RankingsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3RankingsResponse> localVarResponse = await ListWeb3RankingsWithHttpInfoAsync(window, chain, category, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20000,9 +21646,13 @@ namespace net.crossly.Api
         /// Collections by sales volume over 24h, 7d or 30d, in one coin: the ETH chains together, or Polygon / Solana on their own. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="window"> (optional)</param>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3RankingsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3RankingsResponse>> ListWeb3RankingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3RankingsResponse>> ListWeb3RankingsWithHttpInfoAsync(string window = default(string), string chain = default(string), string category = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -20027,6 +21677,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (window != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "window", window));
+            }
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20182,10 +21848,14 @@ namespace net.crossly.Api
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <returns>ListWeb3SalesResponse</returns>
-        public ListWeb3SalesResponse ListWeb3Sales()
+        public ListWeb3SalesResponse ListWeb3Sales(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string))
         {
-            net.crossly.Client.ApiResponse<ListWeb3SalesResponse> localVarResponse = ListWeb3SalesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3SalesResponse> localVarResponse = ListWeb3SalesWithHttpInfo(chain, category, limit, before);
             return localVarResponse.Data;
         }
 
@@ -20193,8 +21863,12 @@ namespace net.crossly.Api
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <returns>ApiResponse of ListWeb3SalesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3SalesResponse> ListWeb3SalesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3SalesResponse> ListWeb3SalesWithHttpInfo(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -20218,6 +21892,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20244,11 +21934,15 @@ namespace net.crossly.Api
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SalesResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3SalesResponse> ListWeb3SalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3SalesResponse> ListWeb3SalesAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3SalesResponse> localVarResponse = await ListWeb3SalesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3SalesResponse> localVarResponse = await ListWeb3SalesWithHttpInfoAsync(chain, category, limit, before, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20256,9 +21950,13 @@ namespace net.crossly.Api
         /// The latest NFT sales across the directory, from the chain (Seaport and Blur) and the Crossly book, newest first; page with &#x60;before&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chain"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="before"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SalesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SalesResponse>> ListWeb3SalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SalesResponse>> ListWeb3SalesWithHttpInfoAsync(string chain = default(string), string category = default(string), decimal? limit = default(decimal?), string before = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -20283,6 +21981,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (chain != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "chain", chain));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20310,10 +22024,11 @@ namespace net.crossly.Api
         /// Find collections by contract address (every chain) or by name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ListWeb3SearchResponse</returns>
-        public ListWeb3SearchResponse ListWeb3Search()
+        public ListWeb3SearchResponse ListWeb3Search(string q)
         {
-            net.crossly.Client.ApiResponse<ListWeb3SearchResponse> localVarResponse = ListWeb3SearchWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3SearchResponse> localVarResponse = ListWeb3SearchWithHttpInfo(q);
             return localVarResponse.Data;
         }
 
@@ -20321,9 +22036,16 @@ namespace net.crossly.Api
         /// Find collections by contract address (every chain) or by name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ApiResponse of ListWeb3SearchResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3SearchResponse> ListWeb3SearchWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3SearchResponse> ListWeb3SearchWithHttpInfo(string q)
         {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling Web3Api->ListWeb3Search");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -20346,6 +22068,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20372,11 +22095,12 @@ namespace net.crossly.Api
         /// Find collections by contract address (every chain) or by name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SearchResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3SearchResponse> ListWeb3SearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3SearchResponse> ListWeb3SearchAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3SearchResponse> localVarResponse = await ListWeb3SearchWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3SearchResponse> localVarResponse = await ListWeb3SearchWithHttpInfoAsync(q, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20384,10 +22108,17 @@ namespace net.crossly.Api
         /// Find collections by contract address (every chain) or by name. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SearchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SearchResponse>> ListWeb3SearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SearchResponse>> ListWeb3SearchWithHttpInfoAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling Web3Api->ListWeb3Search");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -20411,6 +22142,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20438,10 +22170,11 @@ namespace net.crossly.Api
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ListWeb3SearchTokensResponse</returns>
-        public ListWeb3SearchTokensResponse ListWeb3SearchTokens()
+        public ListWeb3SearchTokensResponse ListWeb3SearchTokens(string q)
         {
-            net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> localVarResponse = ListWeb3SearchTokensWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> localVarResponse = ListWeb3SearchTokensWithHttpInfo(q);
             return localVarResponse.Data;
         }
 
@@ -20449,9 +22182,16 @@ namespace net.crossly.Api
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <returns>ApiResponse of ListWeb3SearchTokensResponse</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> ListWeb3SearchTokensWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> ListWeb3SearchTokensWithHttpInfo(string q)
         {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling Web3Api->ListWeb3SearchTokens");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -20474,6 +22214,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20500,11 +22241,12 @@ namespace net.crossly.Api
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3SearchTokensResponse</returns>
-        public async System.Threading.Tasks.Task<ListWeb3SearchTokensResponse> ListWeb3SearchTokensAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3SearchTokensResponse> ListWeb3SearchTokensAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> localVarResponse = await ListWeb3SearchTokensWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse> localVarResponse = await ListWeb3SearchTokensWithHttpInfoAsync(q, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -20512,10 +22254,17 @@ namespace net.crossly.Api
         /// Find tokens by collection name and number: &#39;pudgy 42&#39;, &#39;Bored Ape #1234&#39;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3SearchTokensResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse>> ListWeb3SearchTokensWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3SearchTokensResponse>> ListWeb3SearchTokensWithHttpInfoAsync(string q, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'q' is set
+            if (q == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'q' when calling Web3Api->ListWeb3SearchTokens");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -20539,6 +22288,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -20681,6 +22431,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListWeb3StoreWalletBalances", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWeb3StoreWalletMarketplacesResponse</returns>
+        public ListWeb3StoreWalletMarketplacesResponse ListWeb3StoreWalletMarketplaces()
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletMarketplacesResponse> localVarResponse = ListWeb3StoreWalletMarketplacesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWeb3StoreWalletMarketplacesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWeb3StoreWalletMarketplacesResponse> ListWeb3StoreWalletMarketplacesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWeb3StoreWalletMarketplacesResponse>("/v1/web3/store-wallets/marketplaces", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWalletMarketplaces", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWeb3StoreWalletMarketplacesResponse</returns>
+        public async System.Threading.Tasks.Task<ListWeb3StoreWalletMarketplacesResponse> ListWeb3StoreWalletMarketplacesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWeb3StoreWalletMarketplacesResponse> localVarResponse = await ListWeb3StoreWalletMarketplacesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Each NFT marketplace&#39;s status for this store: Live only with a usable API key AND a verified store wallet of its network switched on for it. &#x60;keyMode&#x60; is &#x60;crossly&#x60; (Crossly&#39;s key, nothing to set up) or &#x60;own_key&#x60; (connect your own key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWeb3StoreWalletMarketplacesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3StoreWalletMarketplacesResponse>> ListWeb3StoreWalletMarketplacesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWeb3StoreWalletMarketplacesResponse>("/v1/web3/store-wallets/marketplaces", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWeb3StoreWalletMarketplaces", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -21078,11 +22956,12 @@ namespace net.crossly.Api
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <returns>UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        public UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk()
+        public UpdateWeb3HolderPerkResponse UpdateWeb3HolderPerk(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = UpdateWeb3HolderPerkWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = UpdateWeb3HolderPerkWithHttpInfo(updateWeb3HolderPerkRequest);
             return localVarResponse.Data;
         }
 
@@ -21090,13 +22969,21 @@ namespace net.crossly.Api
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <returns>ApiResponse of UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        public net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkWithHttpInfo(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest)
         {
+            // verify the required parameter 'updateWeb3HolderPerkRequest' is set
+            if (updateWeb3HolderPerkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3HolderPerkRequest' when calling Web3Api->UpdateWeb3HolderPerk");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21116,6 +23003,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWeb3HolderPerkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -21142,12 +23030,13 @@ namespace net.crossly.Api
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWeb3HolderPerkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWeb3HolderPerkResponse> UpdateWeb3HolderPerkAsync(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = await UpdateWeb3HolderPerkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse> localVarResponse = await UpdateWeb3HolderPerkWithHttpInfoAsync(updateWeb3HolderPerkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21155,15 +23044,23 @@ namespace net.crossly.Api
         /// DEPRECATED: use /api/v1/discounts/holders. Set the percent off (100–5000 bps) holders of a collection get in your store (the key’s store, else the default); one per collection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWeb3HolderPerkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWeb3HolderPerkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3HolderPerkResponse>> UpdateWeb3HolderPerkWithHttpInfoAsync(UpdateWeb3HolderPerkRequest updateWeb3HolderPerkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateWeb3HolderPerkRequest' is set
+            if (updateWeb3HolderPerkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3HolderPerkRequest' when calling Web3Api->UpdateWeb3HolderPerk");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21183,6 +23080,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWeb3HolderPerkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -21637,10 +23535,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ListWeb3MarketplaceKeysItem</returns>
-        public ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey(string marketplace)
+        public ListWeb3MarketplaceKeysItem UpdateWeb3MarketplaceKey(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest)
         {
-            net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> localVarResponse = UpdateWeb3MarketplaceKeyWithHttpInfo(marketplace);
+            net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> localVarResponse = UpdateWeb3MarketplaceKeyWithHttpInfo(marketplace, updateWeb3MarketplaceKeyRequest);
             return localVarResponse.Data;
         }
 
@@ -21649,8 +23548,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <returns>ApiResponse of ListWeb3MarketplaceKeysItem</returns>
-        public net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyWithHttpInfo(string marketplace)
+        public net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyWithHttpInfo(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest)
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -21658,9 +23558,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->UpdateWeb3MarketplaceKey");
             }
 
+            // verify the required parameter 'updateWeb3MarketplaceKeyRequest' is set
+            if (updateWeb3MarketplaceKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3MarketplaceKeyRequest' when calling Web3Api->UpdateWeb3MarketplaceKey");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21681,6 +23588,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = updateWeb3MarketplaceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -21708,11 +23616,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListWeb3MarketplaceKeysItem</returns>
-        public async System.Threading.Tasks.Task<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListWeb3MarketplaceKeysItem> UpdateWeb3MarketplaceKeyAsync(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> localVarResponse = await UpdateWeb3MarketplaceKeyWithHttpInfoAsync(marketplace, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem> localVarResponse = await UpdateWeb3MarketplaceKeyWithHttpInfoAsync(marketplace, updateWeb3MarketplaceKeyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21721,9 +23630,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="marketplace"></param>
+        /// <param name="updateWeb3MarketplaceKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWeb3MarketplaceKeysItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem>> UpdateWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWeb3MarketplaceKeysItem>> UpdateWeb3MarketplaceKeyWithHttpInfoAsync(string marketplace, UpdateWeb3MarketplaceKeyRequest updateWeb3MarketplaceKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'marketplace' is set
             if (marketplace == null)
@@ -21731,10 +23641,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->UpdateWeb3MarketplaceKey");
             }
 
+            // verify the required parameter 'updateWeb3MarketplaceKeyRequest' is set
+            if (updateWeb3MarketplaceKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3MarketplaceKeyRequest' when calling Web3Api->UpdateWeb3MarketplaceKey");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21755,6 +23672,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = updateWeb3MarketplaceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -21783,10 +23701,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <returns>UpdateWeb3StoreWalletResponse</returns>
-        public UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId)
+        public UpdateWeb3StoreWalletResponse UpdateWeb3StoreWallet(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = UpdateWeb3StoreWalletWithHttpInfo(walletId);
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = UpdateWeb3StoreWalletWithHttpInfo(walletId, updateWeb3StoreWalletRequest);
             return localVarResponse.Data;
         }
 
@@ -21795,12 +23714,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId)
+        public net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletWithHttpInfo(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest)
         {
+            // verify the required parameter 'updateWeb3StoreWalletRequest' is set
+            if (updateWeb3StoreWalletRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3StoreWalletRequest' when calling Web3Api->UpdateWeb3StoreWallet");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21821,6 +23748,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = updateWeb3StoreWalletRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -21848,11 +23776,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletAsync(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = await UpdateWeb3StoreWalletWithHttpInfoAsync(walletId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = await UpdateWeb3StoreWalletWithHttpInfoAsync(walletId, updateWeb3StoreWalletRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -21861,14 +23790,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="walletId"></param>
+        /// <param name="updateWeb3StoreWalletRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletWithHttpInfoAsync(Guid walletId, UpdateWeb3StoreWalletRequest updateWeb3StoreWalletRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateWeb3StoreWalletRequest' is set
+            if (updateWeb3StoreWalletRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateWeb3StoreWalletRequest' when calling Web3Api->UpdateWeb3StoreWallet");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -21889,6 +23826,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.Data = updateWeb3StoreWalletRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -22037,6 +23975,178 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWalletDefault", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <returns>UpdateWeb3StoreWalletResponse</returns>
+        public UpdateWeb3StoreWalletResponse UpdateWeb3StoreWalletMarketplace(Guid walletId, string marketplace, EnabledRequest enabledRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = UpdateWeb3StoreWalletMarketplaceWithHttpInfo(walletId, marketplace, enabledRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <returns>ApiResponse of UpdateWeb3StoreWalletResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletMarketplaceWithHttpInfo(Guid walletId, string marketplace, EnabledRequest enabledRequest)
+        {
+            // verify the required parameter 'marketplace' is set
+            if (marketplace == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->UpdateWeb3StoreWalletMarketplace");
+            }
+
+            // verify the required parameter 'enabledRequest' is set
+            if (enabledRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'enabledRequest' when calling Web3Api->UpdateWeb3StoreWalletMarketplace");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = enabledRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateWeb3StoreWalletResponse>("/v1/web3/store-wallets/{walletId}/marketplaces/{marketplace}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWalletMarketplace", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWeb3StoreWalletResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateWeb3StoreWalletResponse> UpdateWeb3StoreWalletMarketplaceAsync(Guid walletId, string marketplace, EnabledRequest enabledRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse> localVarResponse = await UpdateWeb3StoreWalletMarketplaceWithHttpInfoAsync(walletId, marketplace, enabledRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Switch one NFT marketplace (opensea, rarible on EVM; magic_eden, tensor on Solana) on or off for a store wallet: &#x60;{ enabled }&#x60;. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="walletId"></param>
+        /// <param name="marketplace"></param>
+        /// <param name="enabledRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWeb3StoreWalletResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWeb3StoreWalletResponse>> UpdateWeb3StoreWalletMarketplaceWithHttpInfoAsync(Guid walletId, string marketplace, EnabledRequest enabledRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'marketplace' is set
+            if (marketplace == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'marketplace' when calling Web3Api->UpdateWeb3StoreWalletMarketplace");
+            }
+
+            // verify the required parameter 'enabledRequest' is set
+            if (enabledRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'enabledRequest' when calling Web3Api->UpdateWeb3StoreWalletMarketplace");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("walletId", net.crossly.Client.ClientUtils.ParameterToString(walletId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marketplace", net.crossly.Client.ClientUtils.ParameterToString(marketplace)); // path parameter
+            localVarRequestOptions.Data = enabledRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateWeb3StoreWalletResponse>("/v1/web3/store-wallets/{walletId}/marketplaces/{marketplace}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWeb3StoreWalletMarketplace", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

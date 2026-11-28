@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Pending for value: pending
-            /// </summary>
-            [EnumMember(Value = "pending")]
-            Pending = 1,
-
-            /// <summary>
             /// Enum Live for value: live
             /// </summary>
             [EnumMember(Value = "live")]
-            Live = 2,
+            Live = 1,
 
             /// <summary>
             /// Enum Paused for value: paused
             /// </summary>
             [EnumMember(Value = "paused")]
-            Paused = 3,
+            Paused = 2,
+
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 3,
 
             /// <summary>
             /// Enum Failed for value: failed

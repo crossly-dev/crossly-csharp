@@ -40,15 +40,13 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateWebhookTestResponse" /> class.
         /// </summary>
         /// <param name="ok">ok (required).</param>
-        /// <param name="deliveryId">deliveryId (required).</param>
-        public CreateWebhookTestResponse(bool ok = default(bool), string deliveryId = default(string))
+        /// <param name="deliveryId">deliveryId.</param>
+        /// <param name="message">message.</param>
+        public CreateWebhookTestResponse(bool ok = default(bool), string deliveryId = default(string), string message = default(string))
         {
             this.Ok = ok;
-            // to ensure "deliveryId" is required (not null)
-            if (deliveryId == null) {
-                throw new ArgumentNullException("deliveryId is a required property for CreateWebhookTestResponse and cannot be null");
-            }
             this.DeliveryId = deliveryId;
+            this.Message = message;
         }
 
         /// <summary>
@@ -60,8 +58,14 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets DeliveryId
         /// </summary>
-        [DataMember(Name = "deliveryId", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "deliveryId", EmitDefaultValue = true)]
         public string DeliveryId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Message
+        /// </summary>
+        [DataMember(Name = "message", EmitDefaultValue = true)]
+        public string Message { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -73,6 +77,7 @@ namespace net.crossly.Model
             sb.Append("class CreateWebhookTestResponse {\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  DeliveryId: ").Append(DeliveryId).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,6 +121,11 @@ namespace net.crossly.Model
                     this.DeliveryId == input.DeliveryId ||
                     (this.DeliveryId != null &&
                     this.DeliveryId.Equals(input.DeliveryId))
+                ) && 
+                (
+                    this.Message == input.Message ||
+                    (this.Message != null &&
+                    this.Message.Equals(input.Message))
                 );
         }
 
@@ -132,6 +142,10 @@ namespace net.crossly.Model
                 if (this.DeliveryId != null)
                 {
                     hashCode = (hashCode * 59) + this.DeliveryId.GetHashCode();
+                }
+                if (this.Message != null)
+                {
+                    hashCode = (hashCode * 59) + this.Message.GetHashCode();
                 }
                 return hashCode;
             }

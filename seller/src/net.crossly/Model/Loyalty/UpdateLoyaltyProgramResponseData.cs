@@ -82,10 +82,12 @@ namespace net.crossly.Model
         /// <param name="downgrade">downgrade (required).</param>
         /// <param name="graceDays">graceDays (required).</param>
         /// <param name="paidMembership">paidMembership (required).</param>
+        /// <param name="earnRules">earnRules (required).</param>
+        /// <param name="rewards">E3: the rewards shelf (edited on its own page, saved by ./rewards.ts). (required).</param>
         /// <param name="evaluatedAt">evaluatedAt.</param>
         /// <param name="memberCount">memberCount (required).</param>
         /// <param name="tiers">tiers (required).</param>
-        public UpdateLoyaltyProgramResponseData(string id = default(string), string name = default(string), string description = default(string), bool active = default(bool), QualificationEnum qualification = default(QualificationEnum), string window = default(string), decimal pointsPerDollar = default(decimal), string joinMode = default(string), string downgrade = default(string), decimal graceDays = default(decimal), GetLoyaltyProgramResponseDataPaidMembership paidMembership = default(GetLoyaltyProgramResponseDataPaidMembership), string evaluatedAt = default(string), decimal memberCount = default(decimal), List<GetLoyaltyProgramResponseDataTiers> tiers = default(List<GetLoyaltyProgramResponseDataTiers>))
+        public UpdateLoyaltyProgramResponseData(string id = default(string), string name = default(string), string description = default(string), bool active = default(bool), QualificationEnum qualification = default(QualificationEnum), string window = default(string), decimal pointsPerDollar = default(decimal), string joinMode = default(string), string downgrade = default(string), decimal graceDays = default(decimal), GetLoyaltyProgramResponseDataPaidMembership paidMembership = default(GetLoyaltyProgramResponseDataPaidMembership), GetLoyaltyProgramResponseDataEarnRules earnRules = default(GetLoyaltyProgramResponseDataEarnRules), List<GetLoyaltyProgramResponseDataRewards> rewards = default(List<GetLoyaltyProgramResponseDataRewards>), string evaluatedAt = default(string), decimal memberCount = default(decimal), List<GetLoyaltyProgramResponseDataTiers> tiers = default(List<GetLoyaltyProgramResponseDataTiers>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -121,6 +123,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("paidMembership is a required property for UpdateLoyaltyProgramResponseData and cannot be null");
             }
             this.PaidMembership = paidMembership;
+            // to ensure "earnRules" is required (not null)
+            if (earnRules == null) {
+                throw new ArgumentNullException("earnRules is a required property for UpdateLoyaltyProgramResponseData and cannot be null");
+            }
+            this.EarnRules = earnRules;
+            // to ensure "rewards" is required (not null)
+            if (rewards == null) {
+                throw new ArgumentNullException("rewards is a required property for UpdateLoyaltyProgramResponseData and cannot be null");
+            }
+            this.Rewards = rewards;
             this.MemberCount = memberCount;
             // to ensure "tiers" is required (not null)
             if (tiers == null) {
@@ -192,6 +204,19 @@ namespace net.crossly.Model
         public GetLoyaltyProgramResponseDataPaidMembership PaidMembership { get; set; }
 
         /// <summary>
+        /// Gets or Sets EarnRules
+        /// </summary>
+        [DataMember(Name = "earnRules", IsRequired = true, EmitDefaultValue = false)]
+        public GetLoyaltyProgramResponseDataEarnRules EarnRules { get; set; }
+
+        /// <summary>
+        /// E3: the rewards shelf (edited on its own page, saved by ./rewards.ts).
+        /// </summary>
+        /// <value>E3: the rewards shelf (edited on its own page, saved by ./rewards.ts).</value>
+        [DataMember(Name = "rewards", IsRequired = true, EmitDefaultValue = false)]
+        public List<GetLoyaltyProgramResponseDataRewards> Rewards { get; set; }
+
+        /// <summary>
         /// Gets or Sets EvaluatedAt
         /// </summary>
         [DataMember(Name = "evaluatedAt", EmitDefaultValue = true)]
@@ -228,6 +253,8 @@ namespace net.crossly.Model
             sb.Append("  Downgrade: ").Append(Downgrade).Append("\n");
             sb.Append("  GraceDays: ").Append(GraceDays).Append("\n");
             sb.Append("  PaidMembership: ").Append(PaidMembership).Append("\n");
+            sb.Append("  EarnRules: ").Append(EarnRules).Append("\n");
+            sb.Append("  Rewards: ").Append(Rewards).Append("\n");
             sb.Append("  EvaluatedAt: ").Append(EvaluatedAt).Append("\n");
             sb.Append("  MemberCount: ").Append(MemberCount).Append("\n");
             sb.Append("  Tiers: ").Append(Tiers).Append("\n");
@@ -318,6 +345,17 @@ namespace net.crossly.Model
                     this.PaidMembership.Equals(input.PaidMembership))
                 ) && 
                 (
+                    this.EarnRules == input.EarnRules ||
+                    (this.EarnRules != null &&
+                    this.EarnRules.Equals(input.EarnRules))
+                ) && 
+                (
+                    this.Rewards == input.Rewards ||
+                    this.Rewards != null &&
+                    input.Rewards != null &&
+                    this.Rewards.SequenceEqual(input.Rewards)
+                ) && 
+                (
                     this.EvaluatedAt == input.EvaluatedAt ||
                     (this.EvaluatedAt != null &&
                     this.EvaluatedAt.Equals(input.EvaluatedAt))
@@ -374,6 +412,14 @@ namespace net.crossly.Model
                 if (this.PaidMembership != null)
                 {
                     hashCode = (hashCode * 59) + this.PaidMembership.GetHashCode();
+                }
+                if (this.EarnRules != null)
+                {
+                    hashCode = (hashCode * 59) + this.EarnRules.GetHashCode();
+                }
+                if (this.Rewards != null)
+                {
+                    hashCode = (hashCode * 59) + this.Rewards.GetHashCode();
                 }
                 if (this.EvaluatedAt != null)
                 {

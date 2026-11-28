@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 <a name="getstallstreetaerial"></a>
 # **GetStallStreetAerial**
-> GetStallStreetAerialResponse GetStallStreetAerial (string slug)
+> GetStallStreetAerialResponse GetStallStreetAerial (string slug, string from = null, decimal? days = null)
 
 A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
 
@@ -361,11 +361,13 @@ namespace Example
 
             var apiInstance = new StallsApi(config);
             var slug = "slug_example";  // string | 
+            var from = "from_example";  // string |  (optional) 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
-                GetStallStreetAerialResponse result = apiInstance.GetStallStreetAerial(slug);
+                GetStallStreetAerialResponse result = apiInstance.GetStallStreetAerial(slug, from, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -384,6 +386,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **from** | **string**|  | [optional] 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -718,7 +722,7 @@ Name | Type | Description  | Notes
 
 <a name="updatestallbooking"></a>
 # **UpdateStallBooking**
-> CreateStallBookResponse UpdateStallBooking (string id)
+> CreateStallBookResponse UpdateStallBooking (string id, UpdateStallBookingRequest updateStallBookingRequest = null)
 
 Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
 
@@ -743,11 +747,12 @@ namespace Example
 
             var apiInstance = new StallsApi(config);
             var id = "id_example";  // string | 
+            var updateStallBookingRequest = new UpdateStallBookingRequest(); // UpdateStallBookingRequest |  (optional) 
 
             try
             {
                 // Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
-                CreateStallBookResponse result = apiInstance.UpdateStallBooking(id);
+                CreateStallBookResponse result = apiInstance.UpdateStallBooking(id, updateStallBookingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -766,6 +771,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateStallBookingRequest** | **UpdateStallBookingRequest**|  | [optional] 
 
 ### Return type
 
@@ -777,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

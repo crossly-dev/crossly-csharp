@@ -100,34 +100,34 @@ namespace net.crossly.Model
         public enum StateEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Pending for value: pending
             /// </summary>
             [EnumMember(Value = "pending")]
-            Pending = 1,
+            Pending = 2,
 
             /// <summary>
             /// Enum Completed for value: completed
             /// </summary>
             [EnumMember(Value = "completed")]
-            Completed = 2,
+            Completed = 3,
 
             /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 3,
+            Cancelled = 4,
 
             /// <summary>
             /// Enum Failed for value: failed
             /// </summary>
             [EnumMember(Value = "failed")]
-            Failed = 4,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 5,
+            Failed = 5,
 
             /// <summary>
             /// Enum Acked for value: acked

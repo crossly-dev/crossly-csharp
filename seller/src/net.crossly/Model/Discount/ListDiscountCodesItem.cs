@@ -94,22 +94,22 @@ namespace net.crossly.Model
             Active = 1,
 
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 2,
+
+            /// <summary>
             /// Enum Paused for value: paused
             /// </summary>
             [EnumMember(Value = "paused")]
-            Paused = 2,
+            Paused = 3,
 
             /// <summary>
             /// Enum Archived for value: archived
             /// </summary>
             [EnumMember(Value = "archived")]
-            Archived = 3,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 4,
+            Archived = 4,
 
             /// <summary>
             /// Enum Scheduled for value: scheduled

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**CreateMagicAutoItem**](MagicApi.md#createmagicautoitem) | **POST** /v1/magic/auto/items | Scan one item and match it automatically (drafts only, never publishes).
 [**CreateMagicAutoRun**](MagicApi.md#createmagicautorun) | **POST** /v1/magic/auto/runs/{runId} | Score a Magic List run automatically; a confident match in auto mode becomes a draft.
 [**CreateMagicAutoRunSwipe**](MagicApi.md#createmagicautorunswipe) | **POST** /v1/magic/auto/runs/{runId}/swipes | Record a seller swipe session (kept and rejected match keys) for a Magic List run.
-[**CreateMagicScan**](MagicApi.md#createmagicscan) | **POST** /v1/magic/scan | Run a Magic List image scan.
+[**CreateMagicScan**](MagicApi.md#createmagicscan) | **POST** /v1/magic/scan | Run a Magic List image scan. Optional matchMode (off | auto | review_all) sets this scan&#39;s automated matching; omitted &#x3D; your remembered default.
 [**CreateMagicScanSynthesize**](MagicApi.md#createmagicscansynthesize) | **POST** /v1/magic/scan/{runId}/synthesize | Synthesize a draft from confirmed matches.
 [**GetMagicAutoSetting**](MagicApi.md#getmagicautosetting) | **GET** /v1/magic/auto/settings | The seller’s Magic List automated-matching mode.
 [**GetMagicDraft**](MagicApi.md#getmagicdraft) | **GET** /v1/magic/drafts/{draftId} | Get a synthesized Magic List draft.
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 <a name="createmagicautoitem"></a>
 # **CreateMagicAutoItem**
-> CreateMagicAutoItemResponse CreateMagicAutoItem ()
+> CreateMagicAutoItemResponse CreateMagicAutoItem (CreateMagicAutoItemRequest createMagicAutoItemRequest)
 
 Scan one item and match it automatically (drafts only, never publishes).
 
@@ -121,11 +121,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new MagicApi(config);
+            var createMagicAutoItemRequest = new CreateMagicAutoItemRequest(); // CreateMagicAutoItemRequest | 
 
             try
             {
                 // Scan one item and match it automatically (drafts only, never publishes).
-                CreateMagicAutoItemResponse result = apiInstance.CreateMagicAutoItem();
+                CreateMagicAutoItemResponse result = apiInstance.CreateMagicAutoItem(createMagicAutoItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -140,7 +141,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMagicAutoItemRequest** | **CreateMagicAutoItemRequest**|  | 
 
 ### Return type
 
@@ -152,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -171,7 +175,7 @@ This endpoint does not need any parameter.
 
 <a name="createmagicautorun"></a>
 # **CreateMagicAutoRun**
-> CreateMagicAutoRunResponse CreateMagicAutoRun (Guid runId)
+> CreateMagicAutoRunResponse CreateMagicAutoRun (Guid runId, CreateMagicAutoRunRequest createMagicAutoRunRequest = null)
 
 Score a Magic List run automatically; a confident match in auto mode becomes a draft.
 
@@ -196,11 +200,12 @@ namespace Example
 
             var apiInstance = new MagicApi(config);
             var runId = "runId_example";  // Guid | 
+            var createMagicAutoRunRequest = new CreateMagicAutoRunRequest(); // CreateMagicAutoRunRequest |  (optional) 
 
             try
             {
                 // Score a Magic List run automatically; a confident match in auto mode becomes a draft.
-                CreateMagicAutoRunResponse result = apiInstance.CreateMagicAutoRun(runId);
+                CreateMagicAutoRunResponse result = apiInstance.CreateMagicAutoRun(runId, createMagicAutoRunRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -219,6 +224,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **runId** | **Guid**|  | 
+ **createMagicAutoRunRequest** | **CreateMagicAutoRunRequest**|  | [optional] 
 
 ### Return type
 
@@ -230,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -249,7 +255,7 @@ Name | Type | Description  | Notes
 
 <a name="createmagicautorunswipe"></a>
 # **CreateMagicAutoRunSwipe**
-> CreateMagicAutoRunSwipeResponse CreateMagicAutoRunSwipe (Guid runId)
+> CreateMagicAutoRunSwipeResponse CreateMagicAutoRunSwipe (Guid runId, CreateMagicAutoRunSwipeRequest createMagicAutoRunSwipeRequest = null)
 
 Record a seller swipe session (kept and rejected match keys) for a Magic List run.
 
@@ -274,11 +280,12 @@ namespace Example
 
             var apiInstance = new MagicApi(config);
             var runId = "runId_example";  // Guid | 
+            var createMagicAutoRunSwipeRequest = new CreateMagicAutoRunSwipeRequest(); // CreateMagicAutoRunSwipeRequest |  (optional) 
 
             try
             {
                 // Record a seller swipe session (kept and rejected match keys) for a Magic List run.
-                CreateMagicAutoRunSwipeResponse result = apiInstance.CreateMagicAutoRunSwipe(runId);
+                CreateMagicAutoRunSwipeResponse result = apiInstance.CreateMagicAutoRunSwipe(runId, createMagicAutoRunSwipeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -297,6 +304,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **runId** | **Guid**|  | 
+ **createMagicAutoRunSwipeRequest** | **CreateMagicAutoRunSwipeRequest**|  | [optional] 
 
 ### Return type
 
@@ -308,7 +316,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -327,9 +335,9 @@ Name | Type | Description  | Notes
 
 <a name="createmagicscan"></a>
 # **CreateMagicScan**
-> CreateMagicScanResponse CreateMagicScan ()
+> CreateMagicScanResponse CreateMagicScan (CreateMagicScanRequest createMagicScanRequest)
 
-Run a Magic List image scan.
+Run a Magic List image scan. Optional matchMode (off | auto | review_all) sets this scan's automated matching; omitted = your remembered default.
 
 ### Example
 ```csharp
@@ -351,11 +359,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new MagicApi(config);
+            var createMagicScanRequest = new CreateMagicScanRequest(); // CreateMagicScanRequest | 
 
             try
             {
-                // Run a Magic List image scan.
-                CreateMagicScanResponse result = apiInstance.CreateMagicScan();
+                // Run a Magic List image scan. Optional matchMode (off | auto | review_all) sets this scan's automated matching; omitted = your remembered default.
+                CreateMagicScanResponse result = apiInstance.CreateMagicScan(createMagicScanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -370,7 +379,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMagicScanRequest** | **CreateMagicScanRequest**|  | 
 
 ### Return type
 
@@ -382,7 +394,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -401,7 +413,7 @@ This endpoint does not need any parameter.
 
 <a name="createmagicscansynthesize"></a>
 # **CreateMagicScanSynthesize**
-> CreateMagicScanSynthesizeResponse CreateMagicScanSynthesize (Guid runId)
+> CreateMagicScanSynthesizeResponse CreateMagicScanSynthesize (Guid runId, CreateMagicScanSynthesizeRequest createMagicScanSynthesizeRequest)
 
 Synthesize a draft from confirmed matches.
 
@@ -426,11 +438,12 @@ namespace Example
 
             var apiInstance = new MagicApi(config);
             var runId = "runId_example";  // Guid | 
+            var createMagicScanSynthesizeRequest = new CreateMagicScanSynthesizeRequest(); // CreateMagicScanSynthesizeRequest | 
 
             try
             {
                 // Synthesize a draft from confirmed matches.
-                CreateMagicScanSynthesizeResponse result = apiInstance.CreateMagicScanSynthesize(runId);
+                CreateMagicScanSynthesizeResponse result = apiInstance.CreateMagicScanSynthesize(runId, createMagicScanSynthesizeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -449,6 +462,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **runId** | **Guid**|  | 
+ **createMagicScanSynthesizeRequest** | **CreateMagicScanSynthesizeRequest**|  | 
 
 ### Return type
 
@@ -460,7 +474,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

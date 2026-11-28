@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createcompwatchlist"></a>
 # **CreateCompWatchlist**
-> ListCompWatchlistsItem CreateCompWatchlist ()
+> ListCompWatchlistsItem CreateCompWatchlist (CreateCompWatchlistRequest createCompWatchlistRequest)
 
 Create a sold-comp watchlist.
 
@@ -37,11 +37,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CompWatchlistsApi(config);
+            var createCompWatchlistRequest = new CreateCompWatchlistRequest(); // CreateCompWatchlistRequest | 
 
             try
             {
                 // Create a sold-comp watchlist.
-                ListCompWatchlistsItem result = apiInstance.CreateCompWatchlist();
+                ListCompWatchlistsItem result = apiInstance.CreateCompWatchlist(createCompWatchlistRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -56,7 +57,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCompWatchlistRequest** | **CreateCompWatchlistRequest**|  | 
 
 ### Return type
 
@@ -68,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -27,21 +27,23 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once).
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <returns>CreateWebhookResponse</returns>
-        CreateWebhookResponse CreateWebhook();
+        CreateWebhookResponse CreateWebhook(CreateWebhookRequest createWebhookRequest);
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once).
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <returns>ApiResponse of CreateWebhookResponse</returns>
-        ApiResponse<CreateWebhookResponse> CreateWebhookWithHttpInfo();
+        ApiResponse<CreateWebhookResponse> CreateWebhookWithHttpInfo(CreateWebhookRequest createWebhookRequest);
         /// <summary>
         /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
         /// </summary>
@@ -63,23 +65,46 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateWebhookDeliveryRedeliverResponse</returns>
         ApiResponse<CreateWebhookDeliveryRedeliverResponse> CreateWebhookDeliveryRedeliverWithHttpInfo(Guid id, Guid deliveryId);
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+        /// </summary>
+        /// <remarks>
+        /// Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateWebhookRotateSecretResponse</returns>
+        CreateWebhookRotateSecretResponse CreateWebhookRotateSecret(Guid id);
+
+        /// <summary>
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+        /// </summary>
+        /// <remarks>
+        /// Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateWebhookRotateSecretResponse</returns>
+        ApiResponse<CreateWebhookRotateSecretResponse> CreateWebhookRotateSecretWithHttpInfo(Guid id);
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
         /// <returns>CreateWebhookTestResponse</returns>
-        CreateWebhookTestResponse CreateWebhookTest(Guid id);
+        CreateWebhookTestResponse CreateWebhookTest(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest));
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWebhookTestResponse</returns>
-        ApiResponse<CreateWebhookTestResponse> CreateWebhookTestWithHttpInfo(Guid id);
+        ApiResponse<CreateWebhookTestResponse> CreateWebhookTestWithHttpInfo(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest));
         /// <summary>
         /// Delete a webhook endpoint.
         /// </summary>
@@ -140,14 +165,46 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListWebhookDeliveriesResponse</returns>
         ApiResponse<ListWebhookDeliveriesResponse> ListWebhookDeliveriesWithHttpInfo(Guid id, string status = default(string), int? limit = default(int?));
         /// <summary>
-        /// List your registered webhook endpoints.
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWebhookEventsResponse</returns>
+        ListWebhookEventsResponse ListWebhookEvents();
+
+        /// <summary>
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWebhookEventsResponse</returns>
+        ApiResponse<ListWebhookEventsResponse> ListWebhookEventsWithHttpInfo();
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWebhookTypesResponse</returns>
+        ListWebhookTypesResponse ListWebhookTypes();
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWebhookTypesResponse</returns>
+        ApiResponse<ListWebhookTypesResponse> ListWebhookTypesWithHttpInfo();
+        /// <summary>
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWebhooksResponse</returns>
         ListWebhooksResponse ListWebhooks();
 
         /// <summary>
-        /// List your registered webhook endpoints.
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -155,6 +212,26 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWebhooksResponse</returns>
         ApiResponse<ListWebhooksResponse> ListWebhooksWithHttpInfo();
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <returns>UpdateWebhookResponse</returns>
+        UpdateWebhookResponse UpdateWebhook(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest));
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateWebhookResponse</returns>
+        ApiResponse<UpdateWebhookResponse> UpdateWebhookWithHttpInfo(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest));
         #endregion Synchronous Operations
     }
 
@@ -165,26 +242,28 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once).
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWebhookResponse</returns>
-        System.Threading.Tasks.Task<CreateWebhookResponse> CreateWebhookAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWebhookResponse> CreateWebhookAsync(CreateWebhookRequest createWebhookRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once).
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWebhookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWebhookResponse>> CreateWebhookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWebhookResponse>> CreateWebhookWithHttpInfoAsync(CreateWebhookRequest createWebhookRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
         /// </summary>
@@ -211,28 +290,53 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateWebhookDeliveryRedeliverResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateWebhookDeliveryRedeliverResponse>> CreateWebhookDeliveryRedeliverWithHttpInfoAsync(Guid id, Guid deliveryId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateWebhookTestResponse</returns>
-        System.Threading.Tasks.Task<CreateWebhookTestResponse> CreateWebhookTestAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateWebhookRotateSecretResponse</returns>
+        System.Threading.Tasks.Task<CreateWebhookRotateSecretResponse> CreateWebhookRotateSecretAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+        /// </summary>
+        /// <remarks>
+        /// Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWebhookRotateSecretResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateWebhookRotateSecretResponse>> CreateWebhookRotateSecretWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWebhookTestResponse</returns>
+        System.Threading.Tasks.Task<CreateWebhookTestResponse> CreateWebhookTestAsync(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWebhookTestResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWebhookTestResponse>> CreateWebhookTestWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWebhookTestResponse>> CreateWebhookTestWithHttpInfoAsync(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a webhook endpoint.
         /// </summary>
@@ -305,7 +409,49 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListWebhookDeliveriesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWebhookDeliveriesResponse>> ListWebhookDeliveriesWithHttpInfoAsync(Guid id, string status = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List your registered webhook endpoints.
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookEventsResponse</returns>
+        System.Threading.Tasks.Task<ListWebhookEventsResponse> ListWebhookEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookEventsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWebhookEventsResponse>> ListWebhookEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookTypesResponse</returns>
+        System.Threading.Tasks.Task<ListWebhookTypesResponse> ListWebhookTypesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookTypesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWebhookTypesResponse>> ListWebhookTypesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -316,7 +462,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListWebhooksResponse> ListWebhooksAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List your registered webhook endpoints.
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize.
         /// </summary>
         /// <remarks>
         /// 
@@ -325,6 +471,31 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListWebhooksResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListWebhooksResponse>> ListWebhooksWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWebhookResponse</returns>
+        System.Threading.Tasks.Task<UpdateWebhookResponse> UpdateWebhookAsync(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWebhookResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateWebhookResponse>> UpdateWebhookWithHttpInfoAsync(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -446,26 +617,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once). 
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <returns>CreateWebhookResponse</returns>
-        public CreateWebhookResponse CreateWebhook()
+        public CreateWebhookResponse CreateWebhook(CreateWebhookRequest createWebhookRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWebhookResponse> localVarResponse = CreateWebhookWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateWebhookResponse> localVarResponse = CreateWebhookWithHttpInfo(createWebhookRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once). 
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <returns>ApiResponse of CreateWebhookResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWebhookResponse> CreateWebhookWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateWebhookResponse> CreateWebhookWithHttpInfo(CreateWebhookRequest createWebhookRequest)
         {
+            // verify the required parameter 'createWebhookRequest' is set
+            if (createWebhookRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWebhookRequest' when calling WebhooksApi->CreateWebhook");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -485,6 +665,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWebhookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -508,29 +689,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once). 
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWebhookResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWebhookResponse> CreateWebhookAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWebhookResponse> CreateWebhookAsync(CreateWebhookRequest createWebhookRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWebhookResponse> localVarResponse = await CreateWebhookWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWebhookResponse> localVarResponse = await CreateWebhookWithHttpInfoAsync(createWebhookRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Register a webhook endpoint (returns the signing secret once). 
+        /// Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWebhookRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWebhookResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookResponse>> CreateWebhookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookResponse>> CreateWebhookWithHttpInfoAsync(CreateWebhookRequest createWebhookRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWebhookRequest' is set
+            if (createWebhookRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWebhookRequest' when calling WebhooksApi->CreateWebhook");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -550,6 +740,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWebhookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -714,24 +905,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history. Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateWebhookTestResponse</returns>
-        public CreateWebhookTestResponse CreateWebhookTest(Guid id)
+        /// <returns>CreateWebhookRotateSecretResponse</returns>
+        public CreateWebhookRotateSecretResponse CreateWebhookRotateSecret(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateWebhookTestResponse> localVarResponse = CreateWebhookTestWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateWebhookRotateSecretResponse> localVarResponse = CreateWebhookRotateSecretWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history. Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateWebhookTestResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWebhookTestResponse> CreateWebhookTestWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of CreateWebhookRotateSecretResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWebhookRotateSecretResponse> CreateWebhookRotateSecretWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -765,10 +956,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateWebhookTestResponse>("/v1/webhooks/{id}/test", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateWebhookRotateSecretResponse>("/v1/webhooks/{id}/rotate-secret", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateWebhookTest", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateWebhookRotateSecret", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -779,26 +970,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history. Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateWebhookTestResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWebhookTestResponse> CreateWebhookTestAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateWebhookRotateSecretResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWebhookRotateSecretResponse> CreateWebhookRotateSecretAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWebhookTestResponse> localVarResponse = await CreateWebhookTestWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWebhookRotateSecretResponse> localVarResponse = await CreateWebhookRotateSecretWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// Rotate the signing secret of a webhook, keeping its id, events and delivery history. Returns the new &#x60;secret&#x60; once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateWebhookTestResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookTestResponse>> CreateWebhookTestWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateWebhookRotateSecretResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookRotateSecretResponse>> CreateWebhookRotateSecretWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -824,6 +1015,148 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateWebhookRotateSecretResponse>("/v1/webhooks/{id}/rotate-secret", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWebhookRotateSecret", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
+        /// <returns>CreateWebhookTestResponse</returns>
+        public CreateWebhookTestResponse CreateWebhookTest(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateWebhookTestResponse> localVarResponse = CreateWebhookTestWithHttpInfo(id, createWebhookTestRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateWebhookTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateWebhookTestResponse> CreateWebhookTestWithHttpInfo(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWebhookTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateWebhookTestResponse>("/v1/webhooks/{id}/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateWebhookTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateWebhookTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateWebhookTestResponse> CreateWebhookTestAsync(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateWebhookTestResponse> localVarResponse = await CreateWebhookTestWithHttpInfoAsync(id, createWebhookTestRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createWebhookTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateWebhookTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWebhookTestResponse>> CreateWebhookTestWithHttpInfoAsync(Guid id, CreateWebhookTestRequest createWebhookTestRequest = default(CreateWebhookTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWebhookTestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1270,7 +1603,263 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your registered webhook endpoints. 
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWebhookEventsResponse</returns>
+        public ListWebhookEventsResponse ListWebhookEvents()
+        {
+            net.crossly.Client.ApiResponse<ListWebhookEventsResponse> localVarResponse = ListWebhookEventsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWebhookEventsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWebhookEventsResponse> ListWebhookEventsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWebhookEventsResponse>("/v1/webhooks/events", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookEvents", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookEventsResponse</returns>
+        public async System.Threading.Tasks.Task<ListWebhookEventsResponse> ListWebhookEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWebhookEventsResponse> localVarResponse = await ListWebhookEventsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookEventsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWebhookEventsResponse>> ListWebhookEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWebhookEventsResponse>("/v1/webhooks/events", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookEvents", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWebhookTypesResponse</returns>
+        public ListWebhookTypesResponse ListWebhookTypes()
+        {
+            net.crossly.Client.ApiResponse<ListWebhookTypesResponse> localVarResponse = ListWebhookTypesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWebhookTypesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListWebhookTypesResponse> ListWebhookTypesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWebhookTypesResponse>("/v1/webhooks/types", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookTypes", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWebhookTypesResponse</returns>
+        public async System.Threading.Tasks.Task<ListWebhookTypesResponse> ListWebhookTypesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListWebhookTypesResponse> localVarResponse = await ListWebhookTypesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWebhookTypesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListWebhookTypesResponse>> ListWebhookTypesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWebhookTypesResponse>("/v1/webhooks/types", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWebhookTypes", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListWebhooksResponse</returns>
@@ -1281,7 +1870,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your registered webhook endpoints. 
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListWebhooksResponse</returns>
@@ -1332,7 +1921,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your registered webhook endpoints. 
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1344,7 +1933,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your registered webhook endpoints. 
+        /// List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1388,6 +1977,148 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListWebhooks", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <returns>UpdateWebhookResponse</returns>
+        public UpdateWebhookResponse UpdateWebhook(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest))
+        {
+            net.crossly.Client.ApiResponse<UpdateWebhookResponse> localVarResponse = UpdateWebhookWithHttpInfo(id, updateWebhookRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateWebhookResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateWebhookResponse> UpdateWebhookWithHttpInfo(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateWebhookRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateWebhookResponse>("/v1/webhooks/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWebhook", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateWebhookResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateWebhookResponse> UpdateWebhookAsync(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateWebhookResponse> localVarResponse = await UpdateWebhookWithHttpInfoAsync(id, updateWebhookRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateWebhookRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateWebhookResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWebhookResponse>> UpdateWebhookWithHttpInfoAsync(Guid id, UpdateWebhookRequest updateWebhookRequest = default(UpdateWebhookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateWebhookRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateWebhookResponse>("/v1/webhooks/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateWebhook", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum StateEnum
         {
             /// <summary>
+            /// Enum Flat for value: flat
+            /// </summary>
+            [EnumMember(Value = "flat")]
+            Flat = 1,
+
+            /// <summary>
             /// Enum None for value: none
             /// </summary>
             [EnumMember(Value = "none")]
-            None = 1,
+            None = 2,
 
             /// <summary>
             /// Enum Up for value: up
             /// </summary>
             [EnumMember(Value = "up")]
-            Up = 2,
+            Up = 3,
 
             /// <summary>
             /// Enum Down for value: down
             /// </summary>
             [EnumMember(Value = "down")]
-            Down = 3,
-
-            /// <summary>
-            /// Enum Flat for value: flat
-            /// </summary>
-            [EnumMember(Value = "flat")]
-            Flat = 4,
+            Down = 4,
 
             /// <summary>
             /// Enum New for value: new

@@ -35,7 +35,7 @@ Method | HTTP request | Description
 
 <a name="createtcgchallenge"></a>
 # **CreateTcgChallenge**
-> TcgResponse CreateTcgChallenge (string game)
+> TcgResponse CreateTcgChallenge (string game, DeckIdRequest deckIdRequest = null)
 
 Open a 1v1 challenge with one of your decks; another player joins it.
 
@@ -60,11 +60,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var deckIdRequest = new DeckIdRequest(); // DeckIdRequest |  (optional) 
 
             try
             {
                 // Open a 1v1 challenge with one of your decks; another player joins it.
-                TcgResponse result = apiInstance.CreateTcgChallenge(game);
+                TcgResponse result = apiInstance.CreateTcgChallenge(game, deckIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -83,6 +84,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **deckIdRequest** | **DeckIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -94,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgdeck"></a>
 # **CreateTcgDeck**
-> CreateTcgDeckResponse CreateTcgDeck (string game)
+> CreateTcgDeckResponse CreateTcgDeck (string game, CreateTcgDeckRequest createTcgDeckRequest = null)
 
 Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
 
@@ -138,11 +140,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var createTcgDeckRequest = new CreateTcgDeckRequest(); // CreateTcgDeckRequest |  (optional) 
 
             try
             {
                 // Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
-                CreateTcgDeckResponse result = apiInstance.CreateTcgDeck(game);
+                CreateTcgDeckResponse result = apiInstance.CreateTcgDeck(game, createTcgDeckRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -161,6 +164,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **createTcgDeckRequest** | **CreateTcgDeckRequest**|  | [optional] 
 
 ### Return type
 
@@ -172,7 +176,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -191,7 +195,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgmatchact"></a>
 # **CreateTcgMatchAct**
-> TcgResponse CreateTcgMatchAct (string id)
+> TcgResponse CreateTcgMatchAct (string id, CreateTcgMatchActRequest createTcgMatchActRequest = null)
 
 Make one move: { action } as listed in the match's legal moves. The engine checks it.
 
@@ -216,11 +220,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var id = "id_example";  // string | 
+            var createTcgMatchActRequest = new CreateTcgMatchActRequest(); // CreateTcgMatchActRequest |  (optional) 
 
             try
             {
                 // Make one move: { action } as listed in the match's legal moves. The engine checks it.
-                TcgResponse result = apiInstance.CreateTcgMatchAct(id);
+                TcgResponse result = apiInstance.CreateTcgMatchAct(id, createTcgMatchActRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -239,6 +244,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createTcgMatchActRequest** | **CreateTcgMatchActRequest**|  | [optional] 
 
 ### Return type
 
@@ -250,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -269,7 +275,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgmatchjoin"></a>
 # **CreateTcgMatchJoin**
-> TcgResponse CreateTcgMatchJoin (string id)
+> TcgResponse CreateTcgMatchJoin (string id, DeckIdRequest deckIdRequest = null)
 
 Join an open 1v1 challenge with one of your decks.
 
@@ -294,11 +300,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var id = "id_example";  // string | 
+            var deckIdRequest = new DeckIdRequest(); // DeckIdRequest |  (optional) 
 
             try
             {
                 // Join an open 1v1 challenge with one of your decks.
-                TcgResponse result = apiInstance.CreateTcgMatchJoin(id);
+                TcgResponse result = apiInstance.CreateTcgMatchJoin(id, deckIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -317,6 +324,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **deckIdRequest** | **DeckIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -328,7 +336,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -425,7 +433,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgpractice"></a>
 # **CreateTcgPractice**
-> TcgResponse CreateTcgPractice (string game)
+> TcgResponse CreateTcgPractice (string game, DeckIdRequest deckIdRequest = null)
 
 Start a practice match against the house bot with one of your decks.
 
@@ -450,11 +458,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var deckIdRequest = new DeckIdRequest(); // DeckIdRequest |  (optional) 
 
             try
             {
                 // Start a practice match against the house bot with one of your decks.
-                TcgResponse result = apiInstance.CreateTcgPractice(game);
+                TcgResponse result = apiInstance.CreateTcgPractice(game, deckIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -473,6 +482,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **deckIdRequest** | **DeckIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -484,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -503,7 +513,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgqueue"></a>
 # **CreateTcgQueue**
-> CreateTcgQueueResponse CreateTcgQueue (string game)
+> CreateTcgQueueResponse CreateTcgQueue (string game, DeckIdRequest deckIdRequest = null)
 
 Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
 
@@ -528,11 +538,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var deckIdRequest = new DeckIdRequest(); // DeckIdRequest |  (optional) 
 
             try
             {
                 // Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
-                CreateTcgQueueResponse result = apiInstance.CreateTcgQueue(game);
+                CreateTcgQueueResponse result = apiInstance.CreateTcgQueue(game, deckIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -551,6 +562,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **deckIdRequest** | **DeckIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -562,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -581,7 +593,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgstarter"></a>
 # **CreateTcgStarter**
-> CreateTcgStarterResponse CreateTcgStarter (string game)
+> CreateTcgStarterResponse CreateTcgStarter (string game, CreateTcgStarterRequest createTcgStarterRequest = null)
 
 Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
 
@@ -606,11 +618,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var createTcgStarterRequest = new CreateTcgStarterRequest(); // CreateTcgStarterRequest |  (optional) 
 
             try
             {
                 // Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
-                CreateTcgStarterResponse result = apiInstance.CreateTcgStarter(game);
+                CreateTcgStarterResponse result = apiInstance.CreateTcgStarter(game, createTcgStarterRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -629,6 +642,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **createTcgStarterRequest** | **CreateTcgStarterRequest**|  | [optional] 
 
 ### Return type
 
@@ -640,7 +654,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -659,7 +673,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgtable"></a>
 # **CreateTcgTable**
-> TcgResponse CreateTcgTable (string game)
+> TcgResponse CreateTcgTable (string game, CreateTcgTableRequest createTcgTableRequest = null)
 
 Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
 
@@ -684,11 +698,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var createTcgTableRequest = new CreateTcgTableRequest(); // CreateTcgTableRequest |  (optional) 
 
             try
             {
                 // Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
-                TcgResponse result = apiInstance.CreateTcgTable(game);
+                TcgResponse result = apiInstance.CreateTcgTable(game, createTcgTableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -707,6 +722,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **createTcgTableRequest** | **CreateTcgTableRequest**|  | [optional] 
 
 ### Return type
 
@@ -718,7 +734,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -737,7 +753,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgtournament"></a>
 # **CreateTcgTournament**
-> CreateTcgTournamentResponse CreateTcgTournament (string game)
+> CreateTcgTournamentResponse CreateTcgTournament (string game, CreateTcgTournamentRequest createTcgTournamentRequest = null)
 
 Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
 
@@ -762,11 +778,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var game = "game_example";  // string | 
+            var createTcgTournamentRequest = new CreateTcgTournamentRequest(); // CreateTcgTournamentRequest |  (optional) 
 
             try
             {
                 // Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
-                CreateTcgTournamentResponse result = apiInstance.CreateTcgTournament(game);
+                CreateTcgTournamentResponse result = apiInstance.CreateTcgTournament(game, createTcgTournamentRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -785,6 +802,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game** | **string**|  | 
+ **createTcgTournamentRequest** | **CreateTcgTournamentRequest**|  | [optional] 
 
 ### Return type
 
@@ -796,7 +814,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -893,7 +911,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgtournamentregister"></a>
 # **CreateTcgTournamentRegister**
-> TcgTournamentResponse CreateTcgTournamentRegister (string id)
+> TcgTournamentResponse CreateTcgTournamentRegister (string id, DeckIdRequest deckIdRequest = null)
 
 Enter a tournament with an owned, legal deck before it starts.
 
@@ -918,11 +936,12 @@ namespace Example
 
             var apiInstance = new TCGApi(config);
             var id = "id_example";  // string | 
+            var deckIdRequest = new DeckIdRequest(); // DeckIdRequest |  (optional) 
 
             try
             {
                 // Enter a tournament with an owned, legal deck before it starts.
-                TcgTournamentResponse result = apiInstance.CreateTcgTournamentRegister(id);
+                TcgTournamentResponse result = apiInstance.CreateTcgTournamentRegister(id, deckIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -941,6 +960,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **deckIdRequest** | **DeckIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -952,7 +972,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

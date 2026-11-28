@@ -78,7 +78,9 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="notes">notes.</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="source">source (required).</param>
+        /// <param name="images">images (required).</param>
         /// <param name="sku">sku.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
@@ -97,7 +99,6 @@ namespace net.crossly.Model
         /// <param name="sizeSystem">sizeSystem.</param>
         /// <param name="color">color (required).</param>
         /// <param name="defaultTitle">defaultTitle (required).</param>
-        /// <param name="images">images (required).</param>
         /// <param name="videoUrl">videoUrl.</param>
         /// <param name="provenanceReceiptId">provenanceReceiptId.</param>
         /// <param name="tags">tags (required).</param>
@@ -124,9 +125,11 @@ namespace net.crossly.Model
         /// <param name="dimensionLIn">dimensionLIn.</param>
         /// <param name="dimensionWIn">dimensionWIn.</param>
         /// <param name="dimensionHIn">dimensionHIn.</param>
+        /// <param name="parcelSource">parcelSource.</param>
         /// <param name="allowanceAppId">allowanceAppId.</param>
+        /// <param name="assigneeMemberId">assigneeMemberId.</param>
         /// <param name="category">category.</param>
-        public ListInventoryItem(string id = default(string), string brand = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string status = default(string), string notes = default(string), string source = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), decimal quantityReserved = default(decimal), decimal wholesaleReserve = default(decimal), decimal quantitySold = default(decimal), string originalPrice = default(string), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), string defaultTitle = default(string), List<string> images = default(List<string>), string videoUrl = default(string), string provenanceReceiptId = default(string), List<string> tags = default(List<string>), List<string> labels = default(List<string>), string customLabel = default(string), string warehouseLocation = default(string), string storageBin = default(string), string storageNote = default(string), string marketSkuId = default(string), string marketVariantId = default(string), string gradeKey = default(string), VaultSellFromEnum? vaultSellFrom = default(VaultSellFromEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), DateTime? firstListedAt = default(DateTime?), bool includeTaxInLanded = default(bool), decimal? costBasisCents = default(decimal?), ListInventoryItemSupplier supplier = default(ListInventoryItemSupplier), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? acquiredAt = default(DateTime?), string acquiredSource = default(string), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string allowanceAppId = default(string), MainSub category = default(MainSub))
+        public ListInventoryItem(string id = default(string), string brand = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string status = default(string), string notes = default(string), string storefrontId = default(string), string source = default(string), List<string> images = default(List<string>), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), decimal quantityReserved = default(decimal), decimal wholesaleReserve = default(decimal), decimal quantitySold = default(decimal), string originalPrice = default(string), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), string defaultTitle = default(string), string videoUrl = default(string), string provenanceReceiptId = default(string), List<string> tags = default(List<string>), List<string> labels = default(List<string>), string customLabel = default(string), string warehouseLocation = default(string), string storageBin = default(string), string storageNote = default(string), string marketSkuId = default(string), string marketVariantId = default(string), string gradeKey = default(string), VaultSellFromEnum? vaultSellFrom = default(VaultSellFromEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), DateTime? firstListedAt = default(DateTime?), bool includeTaxInLanded = default(bool), decimal? costBasisCents = default(decimal?), ListInventoryItemSupplier supplier = default(ListInventoryItemSupplier), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? acquiredAt = default(DateTime?), string acquiredSource = default(string), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string parcelSource = default(string), string allowanceAppId = default(string), string assigneeMemberId = default(string), MainSub category = default(MainSub))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -150,6 +153,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("source is a required property for ListInventoryItem and cannot be null");
             }
             this.Source = source;
+            // to ensure "images" is required (not null)
+            if (images == null) {
+                throw new ArgumentNullException("images is a required property for ListInventoryItem and cannot be null");
+            }
+            this.Images = images;
             this.Quantity = quantity;
             this.QuantityAvailable = quantityAvailable;
             this.QuantityReserved = quantityReserved;
@@ -165,11 +173,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("defaultTitle is a required property for ListInventoryItem and cannot be null");
             }
             this.DefaultTitle = defaultTitle;
-            // to ensure "images" is required (not null)
-            if (images == null) {
-                throw new ArgumentNullException("images is a required property for ListInventoryItem and cannot be null");
-            }
-            this.Images = images;
             // to ensure "tags" is required (not null)
             if (tags == null) {
                 throw new ArgumentNullException("tags is a required property for ListInventoryItem and cannot be null");
@@ -184,6 +187,7 @@ namespace net.crossly.Model
             this.FloorIsNet = floorIsNet;
             this.Brand = brand;
             this.Notes = notes;
+            this.StorefrontId = storefrontId;
             this.Sku = sku;
             this.OriginalPrice = originalPrice;
             this.Condition = condition;
@@ -217,7 +221,9 @@ namespace net.crossly.Model
             this.DimensionLIn = dimensionLIn;
             this.DimensionWIn = dimensionWIn;
             this.DimensionHIn = dimensionHIn;
+            this.ParcelSource = parcelSource;
             this.AllowanceAppId = allowanceAppId;
+            this.AssigneeMemberId = assigneeMemberId;
             this.Category = category;
         }
 
@@ -264,10 +270,22 @@ namespace net.crossly.Model
         public string Notes { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Source
         /// </summary>
         [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
         public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Images
+        /// </summary>
+        [DataMember(Name = "images", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Images { get; set; }
 
         /// <summary>
         /// Gets or Sets Sku
@@ -376,12 +394,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "defaultTitle", IsRequired = true, EmitDefaultValue = false)]
         public string DefaultTitle { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Images
-        /// </summary>
-        [DataMember(Name = "images", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> Images { get; set; }
 
         /// <summary>
         /// Gets or Sets VideoUrl
@@ -534,10 +546,22 @@ namespace net.crossly.Model
         public string DimensionHIn { get; set; }
 
         /// <summary>
+        /// Gets or Sets ParcelSource
+        /// </summary>
+        [DataMember(Name = "parcelSource", EmitDefaultValue = true)]
+        public string ParcelSource { get; set; }
+
+        /// <summary>
         /// Gets or Sets AllowanceAppId
         /// </summary>
         [DataMember(Name = "allowanceAppId", EmitDefaultValue = true)]
         public string AllowanceAppId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssigneeMemberId
+        /// </summary>
+        [DataMember(Name = "assigneeMemberId", EmitDefaultValue = true)]
+        public string AssigneeMemberId { get; set; }
 
         /// <summary>
         /// Gets or Sets Category
@@ -560,7 +584,9 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  Images: ").Append(Images).Append("\n");
             sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
@@ -579,7 +605,6 @@ namespace net.crossly.Model
             sb.Append("  SizeSystem: ").Append(SizeSystem).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
             sb.Append("  DefaultTitle: ").Append(DefaultTitle).Append("\n");
-            sb.Append("  Images: ").Append(Images).Append("\n");
             sb.Append("  VideoUrl: ").Append(VideoUrl).Append("\n");
             sb.Append("  ProvenanceReceiptId: ").Append(ProvenanceReceiptId).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
@@ -606,7 +631,9 @@ namespace net.crossly.Model
             sb.Append("  DimensionLIn: ").Append(DimensionLIn).Append("\n");
             sb.Append("  DimensionWIn: ").Append(DimensionWIn).Append("\n");
             sb.Append("  DimensionHIn: ").Append(DimensionHIn).Append("\n");
+            sb.Append("  ParcelSource: ").Append(ParcelSource).Append("\n");
             sb.Append("  AllowanceAppId: ").Append(AllowanceAppId).Append("\n");
+            sb.Append("  AssigneeMemberId: ").Append(AssigneeMemberId).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -679,9 +706,20 @@ namespace net.crossly.Model
                     this.Notes.Equals(input.Notes))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Source == input.Source ||
                     (this.Source != null &&
                     this.Source.Equals(input.Source))
+                ) && 
+                (
+                    this.Images == input.Images ||
+                    this.Images != null &&
+                    input.Images != null &&
+                    this.Images.SequenceEqual(input.Images)
                 ) && 
                 (
                     this.Sku == input.Sku ||
@@ -768,12 +806,6 @@ namespace net.crossly.Model
                     this.DefaultTitle == input.DefaultTitle ||
                     (this.DefaultTitle != null &&
                     this.DefaultTitle.Equals(input.DefaultTitle))
-                ) && 
-                (
-                    this.Images == input.Images ||
-                    this.Images != null &&
-                    input.Images != null &&
-                    this.Images.SequenceEqual(input.Images)
                 ) && 
                 (
                     this.VideoUrl == input.VideoUrl ||
@@ -905,9 +937,19 @@ namespace net.crossly.Model
                     this.DimensionHIn.Equals(input.DimensionHIn))
                 ) && 
                 (
+                    this.ParcelSource == input.ParcelSource ||
+                    (this.ParcelSource != null &&
+                    this.ParcelSource.Equals(input.ParcelSource))
+                ) && 
+                (
                     this.AllowanceAppId == input.AllowanceAppId ||
                     (this.AllowanceAppId != null &&
                     this.AllowanceAppId.Equals(input.AllowanceAppId))
+                ) && 
+                (
+                    this.AssigneeMemberId == input.AssigneeMemberId ||
+                    (this.AssigneeMemberId != null &&
+                    this.AssigneeMemberId.Equals(input.AssigneeMemberId))
                 ) && 
                 (
                     this.Category == input.Category ||
@@ -953,9 +995,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
                 }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.Images != null)
+                {
+                    hashCode = (hashCode * 59) + this.Images.GetHashCode();
                 }
                 if (this.Sku != null)
                 {
@@ -1013,10 +1063,6 @@ namespace net.crossly.Model
                 if (this.DefaultTitle != null)
                 {
                     hashCode = (hashCode * 59) + this.DefaultTitle.GetHashCode();
-                }
-                if (this.Images != null)
-                {
-                    hashCode = (hashCode * 59) + this.Images.GetHashCode();
                 }
                 if (this.VideoUrl != null)
                 {
@@ -1113,9 +1159,17 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DimensionHIn.GetHashCode();
                 }
+                if (this.ParcelSource != null)
+                {
+                    hashCode = (hashCode * 59) + this.ParcelSource.GetHashCode();
+                }
                 if (this.AllowanceAppId != null)
                 {
                     hashCode = (hashCode * 59) + this.AllowanceAppId.GetHashCode();
+                }
+                if (this.AssigneeMemberId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssigneeMemberId.GetHashCode();
                 }
                 if (this.Category != null)
                 {

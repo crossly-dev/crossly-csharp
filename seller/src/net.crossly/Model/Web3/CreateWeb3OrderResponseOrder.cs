@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 1,
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Open for value: open
             /// </summary>
             [EnumMember(Value = "open")]
-            Open = 2,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
+            Open = 3,
 
             /// <summary>
             /// Enum Filled for value: filled
@@ -82,22 +82,22 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum Listing for value: listing
+            /// </summary>
+            [EnumMember(Value = "listing")]
+            Listing = 1,
+
+            /// <summary>
             /// Enum Bundle for value: bundle
             /// </summary>
             [EnumMember(Value = "bundle")]
-            Bundle = 1,
+            Bundle = 2,
 
             /// <summary>
             /// Enum Offer for value: offer
             /// </summary>
             [EnumMember(Value = "offer")]
-            Offer = 2,
-
-            /// <summary>
-            /// Enum Listing for value: listing
-            /// </summary>
-            [EnumMember(Value = "listing")]
-            Listing = 3,
+            Offer = 3,
 
             /// <summary>
             /// Enum PrivateListing for value: private_listing
@@ -138,13 +138,13 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        /// <param name="inventoryItemId">inventoryItemId.</param>
         /// <param name="currency">currency (required).</param>
-        /// <param name="bundle">bundle.</param>
-        /// <param name="lastCheckedAt">lastCheckedAt.</param>
         /// <param name="storefrontId">storefrontId.</param>
         /// <param name="kind">kind (required).</param>
+        /// <param name="quantity">quantity (required).</param>
+        /// <param name="inventoryItemId">inventoryItemId.</param>
+        /// <param name="bundle">bundle.</param>
+        /// <param name="lastCheckedAt">lastCheckedAt.</param>
         /// <param name="marketplace">marketplace (required).</param>
         /// <param name="tokenId">tokenId.</param>
         /// <param name="externalUrl">externalUrl.</param>
@@ -167,7 +167,7 @@ namespace net.crossly.Model
         /// <param name="filledAt">filledAt.</param>
         /// <param name="criteria">criteria.</param>
         /// <param name="reservedFor">reservedFor.</param>
-        public CreateWeb3OrderResponseOrder(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), StatusEnum status = default(StatusEnum), decimal quantity = default(decimal), string inventoryItemId = default(string), string currency = default(string), List<CreateWeb3OrderResponseOrderBundle> bundle = default(List<CreateWeb3OrderResponseOrderBundle>), DateTime? lastCheckedAt = default(DateTime?), string storefrontId = default(string), KindEnum kind = default(KindEnum), string marketplace = default(string), string tokenId = default(string), string externalUrl = default(string), string chain = default(string), string contract = default(string), string orderHash = default(string), string walletId = default(string), string maker = default(string), string priceWei = default(string), string endPriceWei = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string signature = default(string), string statusReason = default(string), string itemName = default(string), string itemImage = default(string), string collectionName = default(string), string taker = default(string), string filledTx = default(string), DateTime? filledAt = default(DateTime?), CreateWeb3OrderResponseOrderCriteria criteria = default(CreateWeb3OrderResponseOrderCriteria), string reservedFor = default(string))
+        public CreateWeb3OrderResponseOrder(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), StatusEnum status = default(StatusEnum), string currency = default(string), string storefrontId = default(string), KindEnum kind = default(KindEnum), decimal quantity = default(decimal), string inventoryItemId = default(string), List<CreateWeb3OrderResponseOrderBundle> bundle = default(List<CreateWeb3OrderResponseOrderBundle>), DateTime? lastCheckedAt = default(DateTime?), string marketplace = default(string), string tokenId = default(string), string externalUrl = default(string), string chain = default(string), string contract = default(string), string orderHash = default(string), string walletId = default(string), string maker = default(string), string priceWei = default(string), string endPriceWei = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string signature = default(string), string statusReason = default(string), string itemName = default(string), string itemImage = default(string), string collectionName = default(string), string taker = default(string), string filledTx = default(string), DateTime? filledAt = default(DateTime?), CreateWeb3OrderResponseOrderCriteria criteria = default(CreateWeb3OrderResponseOrderCriteria), string reservedFor = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -177,13 +177,13 @@ namespace net.crossly.Model
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.Status = status;
-            this.Quantity = quantity;
             // to ensure "currency" is required (not null)
             if (currency == null) {
                 throw new ArgumentNullException("currency is a required property for CreateWeb3OrderResponseOrder and cannot be null");
             }
             this.Currency = currency;
             this.Kind = kind;
+            this.Quantity = quantity;
             // to ensure "marketplace" is required (not null)
             if (marketplace == null) {
                 throw new ArgumentNullException("marketplace is a required property for CreateWeb3OrderResponseOrder and cannot be null");
@@ -222,10 +222,10 @@ namespace net.crossly.Model
             }
             this.Signature = signature;
             this.UserId = userId;
+            this.StorefrontId = storefrontId;
             this.InventoryItemId = inventoryItemId;
             this.Bundle = bundle;
             this.LastCheckedAt = lastCheckedAt;
-            this.StorefrontId = storefrontId;
             this.TokenId = tokenId;
             this.ExternalUrl = externalUrl;
             this.WalletId = walletId;
@@ -266,6 +266,18 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = false)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
@@ -278,12 +290,6 @@ namespace net.crossly.Model
         public string InventoryItemId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = false)]
-        public string Currency { get; set; }
-
-        /// <summary>
         /// Gets or Sets Bundle
         /// </summary>
         [DataMember(Name = "bundle", EmitDefaultValue = true)]
@@ -294,12 +300,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "lastCheckedAt", EmitDefaultValue = true)]
         public DateTime? LastCheckedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StorefrontId
-        /// </summary>
-        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
-        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets Marketplace
@@ -446,13 +446,13 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  Bundle: ").Append(Bundle).Append("\n");
-            sb.Append("  LastCheckedAt: ").Append(LastCheckedAt).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
+            sb.Append("  Bundle: ").Append(Bundle).Append("\n");
+            sb.Append("  LastCheckedAt: ").Append(LastCheckedAt).Append("\n");
             sb.Append("  Marketplace: ").Append(Marketplace).Append("\n");
             sb.Append("  TokenId: ").Append(TokenId).Append("\n");
             sb.Append("  ExternalUrl: ").Append(ExternalUrl).Append("\n");
@@ -535,6 +535,20 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 ) && 
@@ -542,11 +556,6 @@ namespace net.crossly.Model
                     this.InventoryItemId == input.InventoryItemId ||
                     (this.InventoryItemId != null &&
                     this.InventoryItemId.Equals(input.InventoryItemId))
-                ) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
                 ) && 
                 (
                     this.Bundle == input.Bundle ||
@@ -558,15 +567,6 @@ namespace net.crossly.Model
                     this.LastCheckedAt == input.LastCheckedAt ||
                     (this.LastCheckedAt != null &&
                     this.LastCheckedAt.Equals(input.LastCheckedAt))
-                ) && 
-                (
-                    this.StorefrontId == input.StorefrontId ||
-                    (this.StorefrontId != null &&
-                    this.StorefrontId.Equals(input.StorefrontId))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    this.Kind.Equals(input.Kind)
                 ) && 
                 (
                     this.Marketplace == input.Marketplace ||
@@ -706,14 +706,19 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.InventoryItemId != null)
                 {
                     hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
-                }
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 if (this.Bundle != null)
                 {
@@ -723,11 +728,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.LastCheckedAt.GetHashCode();
                 }
-                if (this.StorefrontId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.Marketplace != null)
                 {
                     hashCode = (hashCode * 59) + this.Marketplace.GetHashCode();

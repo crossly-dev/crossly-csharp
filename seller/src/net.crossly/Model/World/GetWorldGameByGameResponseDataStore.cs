@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Product = 1,
 
             /// <summary>
-            /// Enum Subscription for value: subscription
-            /// </summary>
-            [EnumMember(Value = "subscription")]
-            Subscription = 2,
-
-            /// <summary>
             /// Enum Pass for value: pass
             /// </summary>
             [EnumMember(Value = "pass")]
-            Pass = 3,
+            Pass = 2,
+
+            /// <summary>
+            /// Enum Subscription for value: subscription
+            /// </summary>
+            [EnumMember(Value = "subscription")]
+            Subscription = 3,
 
             /// <summary>
             /// Enum PrivateServer for value: private_server

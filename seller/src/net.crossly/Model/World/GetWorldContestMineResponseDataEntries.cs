@@ -86,13 +86,13 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="stripePaymentIntentId">stripePaymentIntentId.</param>
         /// <param name="attempts">attempts (required).</param>
+        /// <param name="stripePaymentIntentId">stripePaymentIntentId.</param>
         /// <param name="contestId">contestId (required).</param>
         /// <param name="bestScore">bestScore.</param>
         /// <param name="bestAt">bestAt.</param>
         /// <param name="paymentState">paymentState (required).</param>
-        public GetWorldContestMineResponseDataEntries(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string stripePaymentIntentId = default(string), decimal attempts = default(decimal), string contestId = default(string), decimal? bestScore = default(decimal?), DateTime? bestAt = default(DateTime?), PaymentStateEnum paymentState = default(PaymentStateEnum))
+        public GetWorldContestMineResponseDataEntries(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), decimal attempts = default(decimal), string stripePaymentIntentId = default(string), string contestId = default(string), decimal? bestScore = default(decimal?), DateTime? bestAt = default(DateTime?), PaymentStateEnum paymentState = default(PaymentStateEnum))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -136,16 +136,16 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets StripePaymentIntentId
-        /// </summary>
-        [DataMember(Name = "stripePaymentIntentId", EmitDefaultValue = true)]
-        public string StripePaymentIntentId { get; set; }
-
-        /// <summary>
         /// Gets or Sets Attempts
         /// </summary>
         [DataMember(Name = "attempts", IsRequired = true, EmitDefaultValue = false)]
         public decimal Attempts { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StripePaymentIntentId
+        /// </summary>
+        [DataMember(Name = "stripePaymentIntentId", EmitDefaultValue = true)]
+        public string StripePaymentIntentId { get; set; }
 
         /// <summary>
         /// Gets or Sets ContestId
@@ -176,8 +176,8 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  StripePaymentIntentId: ").Append(StripePaymentIntentId).Append("\n");
             sb.Append("  Attempts: ").Append(Attempts).Append("\n");
+            sb.Append("  StripePaymentIntentId: ").Append(StripePaymentIntentId).Append("\n");
             sb.Append("  ContestId: ").Append(ContestId).Append("\n");
             sb.Append("  BestScore: ").Append(BestScore).Append("\n");
             sb.Append("  BestAt: ").Append(BestAt).Append("\n");
@@ -233,13 +233,13 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.Attempts == input.Attempts ||
+                    this.Attempts.Equals(input.Attempts)
+                ) && 
+                (
                     this.StripePaymentIntentId == input.StripePaymentIntentId ||
                     (this.StripePaymentIntentId != null &&
                     this.StripePaymentIntentId.Equals(input.StripePaymentIntentId))
-                ) && 
-                (
-                    this.Attempts == input.Attempts ||
-                    this.Attempts.Equals(input.Attempts)
                 ) && 
                 (
                     this.ContestId == input.ContestId ||
@@ -283,11 +283,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Attempts.GetHashCode();
                 if (this.StripePaymentIntentId != null)
                 {
                     hashCode = (hashCode * 59) + this.StripePaymentIntentId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Attempts.GetHashCode();
                 if (this.ContestId != null)
                 {
                     hashCode = (hashCode * 59) + this.ContestId.GetHashCode();

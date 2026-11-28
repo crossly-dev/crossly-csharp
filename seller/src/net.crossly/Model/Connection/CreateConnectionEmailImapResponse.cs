@@ -39,10 +39,16 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateConnectionEmailImapResponse" /> class.
         /// </summary>
+        /// <param name="data">data (required).</param>
         /// <param name="success">success (required).</param>
         /// <param name="id">id (required).</param>
-        public CreateConnectionEmailImapResponse(bool success = default(bool), string id = default(string))
+        public CreateConnectionEmailImapResponse(ListConnectionEmailItem data = default(ListConnectionEmailItem), bool success = default(bool), string id = default(string))
         {
+            // to ensure "data" is required (not null)
+            if (data == null) {
+                throw new ArgumentNullException("data is a required property for CreateConnectionEmailImapResponse and cannot be null");
+            }
+            this.Data = data;
             this.Success = success;
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -50,6 +56,12 @@ namespace net.crossly.Model
             }
             this.Id = id;
         }
+
+        /// <summary>
+        /// Gets or Sets Data
+        /// </summary>
+        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
+        public ListConnectionEmailItem Data { get; set; }
 
         /// <summary>
         /// Gets or Sets Success
@@ -71,6 +83,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateConnectionEmailImapResponse {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
@@ -109,6 +122,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
+                ) && 
+                (
                     this.Success == input.Success ||
                     this.Success.Equals(input.Success)
                 ) && 
@@ -128,6 +146,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Data != null)
+                {
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Success.GetHashCode();
                 if (this.Id != null)
                 {

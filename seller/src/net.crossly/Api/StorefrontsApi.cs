@@ -239,7 +239,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetHubSetupResponse</returns>
         ApiResponse<GetHubSetupResponse> GetHubSetupWithHttpInfo(string section);
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -247,7 +247,7 @@ namespace net.crossly.Api
         StorefrontResponse GetStorefrontById(string id);
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen).
         /// </summary>
         /// <remarks>
         /// 
@@ -330,8 +330,9 @@ namespace net.crossly.Api
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <returns>GetStorefrontSlugAvailableResponse</returns>
-        GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable();
+        GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable(string slug);
 
         /// <summary>
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
@@ -340,8 +341,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <returns>ApiResponse of GetStorefrontSlugAvailableResponse</returns>
-        ApiResponse<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableWithHttpInfo();
+        ApiResponse<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableWithHttpInfo(string slug);
         /// <summary>
         /// A store&#39;s sections in display order.
         /// </summary>
@@ -380,8 +382,9 @@ namespace net.crossly.Api
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <returns>ListStorefrontsResponse</returns>
-        ListStorefrontsResponse ListStorefronts();
+        ListStorefrontsResponse ListStorefronts(string includeArchived = default(string));
 
         /// <summary>
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones.
@@ -390,8 +393,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontsResponse</returns>
-        ApiResponse<ListStorefrontsResponse> ListStorefrontsWithHttpInfo();
+        ApiResponse<ListStorefrontsResponse> ListStorefrontsWithHttpInfo(string includeArchived = default(string));
         /// <summary>
         /// Rename a store. Never changes the slug or your @handle.
         /// </summary>
@@ -410,6 +414,24 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of StorefrontResponse</returns>
         ApiResponse<StorefrontResponse> UpdateStorefrontByIdWithHttpInfo(string id);
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>StorefrontResponse</returns>
+        StorefrontResponse UpdateStorefrontCurrency(string id);
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of StorefrontResponse</returns>
+        ApiResponse<StorefrontResponse> UpdateStorefrontCurrencyWithHttpInfo(string id);
         /// <summary>
         /// Make this store your default (where a Crossly publish with no storefrontId lands).
         /// </summary>
@@ -836,7 +858,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetHubSetupResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetHubSetupResponse>> GetHubSetupWithHttpInfoAsync(string section, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen).
         /// </summary>
         /// <remarks>
         /// 
@@ -848,7 +870,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<StorefrontResponse> GetStorefrontByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt.
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen).
         /// </summary>
         /// <remarks>
         /// 
@@ -955,9 +977,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontSlugAvailableResponse</returns>
-        System.Threading.Tasks.Task<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones.
@@ -966,9 +989,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontSlugAvailableResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetStorefrontSlugAvailableResponse>> GetStorefrontSlugAvailableWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetStorefrontSlugAvailableResponse>> GetStorefrontSlugAvailableWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A store&#39;s sections in display order.
         /// </summary>
@@ -1020,9 +1044,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontsResponse</returns>
-        System.Threading.Tasks.Task<ListStorefrontsResponse> ListStorefrontsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListStorefrontsResponse> ListStorefrontsAsync(string includeArchived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones.
@@ -1031,9 +1056,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListStorefrontsResponse>> ListStorefrontsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListStorefrontsResponse>> ListStorefrontsWithHttpInfoAsync(string includeArchived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rename a store. Never changes the slug or your @handle.
         /// </summary>
@@ -1057,6 +1083,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<StorefrontResponse>> UpdateStorefrontByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of StorefrontResponse</returns>
+        System.Threading.Tasks.Task<StorefrontResponse> UpdateStorefrontCurrencyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (StorefrontResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse>> UpdateStorefrontCurrencyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make this store your default (where a Crossly publish with no storefrontId lands).
         /// </summary>
@@ -3078,7 +3127,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt. 
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3090,7 +3139,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt. 
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3149,7 +3198,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt. 
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3162,7 +3211,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt. 
+        /// One store: name, slug, status (draft|live|paused|archived), isDefault, nameAuto, onboardedAt, currency (null &#x3D; never chosen). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -3793,10 +3842,11 @@ namespace net.crossly.Api
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <returns>GetStorefrontSlugAvailableResponse</returns>
-        public GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable()
+        public GetStorefrontSlugAvailableResponse GetStorefrontSlugAvailable(string slug)
         {
-            net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> localVarResponse = GetStorefrontSlugAvailableWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> localVarResponse = GetStorefrontSlugAvailableWithHttpInfo(slug);
             return localVarResponse.Data;
         }
 
@@ -3804,9 +3854,16 @@ namespace net.crossly.Api
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <returns>ApiResponse of GetStorefrontSlugAvailableResponse</returns>
-        public net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableWithHttpInfo(string slug)
         {
+            // verify the required parameter 'slug' is set
+            if (slug == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'slug' when calling StorefrontsApi->GetStorefrontSlugAvailable");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -3829,6 +3886,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "slug", slug));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3855,11 +3913,12 @@ namespace net.crossly.Api
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontSlugAvailableResponse</returns>
-        public async System.Threading.Tasks.Task<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetStorefrontSlugAvailableResponse> GetStorefrontSlugAvailableAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> localVarResponse = await GetStorefrontSlugAvailableWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse> localVarResponse = await GetStorefrontSlugAvailableWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3867,10 +3926,17 @@ namespace net.crossly.Api
         /// Is this store slug free? Checks shape, reserved words, current slugs and retired ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="slug"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontSlugAvailableResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse>> GetStorefrontSlugAvailableWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontSlugAvailableResponse>> GetStorefrontSlugAvailableWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'slug' is set
+            if (slug == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'slug' when calling StorefrontsApi->GetStorefrontSlugAvailable");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3894,6 +3960,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "slug", slug));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4195,10 +4262,11 @@ namespace net.crossly.Api
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <returns>ListStorefrontsResponse</returns>
-        public ListStorefrontsResponse ListStorefronts()
+        public ListStorefrontsResponse ListStorefronts(string includeArchived = default(string))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontsResponse> localVarResponse = ListStorefrontsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListStorefrontsResponse> localVarResponse = ListStorefrontsWithHttpInfo(includeArchived);
             return localVarResponse.Data;
         }
 
@@ -4206,8 +4274,9 @@ namespace net.crossly.Api
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListStorefrontsResponse> ListStorefrontsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListStorefrontsResponse> ListStorefrontsWithHttpInfo(string includeArchived = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4231,6 +4300,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (includeArchived != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "includeArchived", includeArchived));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4257,11 +4330,12 @@ namespace net.crossly.Api
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontsResponse</returns>
-        public async System.Threading.Tasks.Task<ListStorefrontsResponse> ListStorefrontsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListStorefrontsResponse> ListStorefrontsAsync(string includeArchived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontsResponse> localVarResponse = await ListStorefrontsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListStorefrontsResponse> localVarResponse = await ListStorefrontsWithHttpInfoAsync(includeArchived, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4269,9 +4343,10 @@ namespace net.crossly.Api
         /// Your stores (default first). includeArchived&#x3D;true adds archived ones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeArchived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontsResponse>> ListStorefrontsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontsResponse>> ListStorefrontsWithHttpInfoAsync(string includeArchived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4296,6 +4371,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (includeArchived != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "includeArchived", includeArchived));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4456,6 +4535,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateStorefrontById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>StorefrontResponse</returns>
+        public StorefrontResponse UpdateStorefrontCurrency(string id)
+        {
+            net.crossly.Client.ApiResponse<StorefrontResponse> localVarResponse = UpdateStorefrontCurrencyWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of StorefrontResponse</returns>
+        public net.crossly.Client.ApiResponse<StorefrontResponse> UpdateStorefrontCurrencyWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling StorefrontsApi->UpdateStorefrontCurrency");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<StorefrontResponse>("/v1/storefronts/{id}/currency", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateStorefrontCurrency", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of StorefrontResponse</returns>
+        public async System.Threading.Tasks.Task<StorefrontResponse> UpdateStorefrontCurrencyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<StorefrontResponse> localVarResponse = await UpdateStorefrontCurrencyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set a store&#39;s currency (ISO 4217, e.g. GBP): what its inventory values, totals and analytics show in, and what a price sent without a currency is stored in. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (StorefrontResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse>> UpdateStorefrontCurrencyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling StorefrontsApi->UpdateStorefrontCurrency");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<StorefrontResponse>("/v1/storefronts/{id}/currency", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateStorefrontCurrency", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

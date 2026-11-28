@@ -46,7 +46,10 @@ namespace net.crossly.Model
         /// <param name="ownerUserId">ownerUserId (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
         /// <param name="memberUserId">memberUserId (required).</param>
-        public ListStorefrontTeamAccessItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime? revokedAt = default(DateTime?), List<string> scopes = default(List<string>), string ownerUserId = default(string), string storefrontId = default(string), string memberUserId = default(string))
+        /// <param name="spendingCapCents">spendingCapCents.</param>
+        /// <param name="limits">limits (required).</param>
+        /// <param name="updatedByUserId">updatedByUserId.</param>
+        public ListStorefrontTeamAccessItem(string id = default(string), DateTime createdAt = default(DateTime), DateTime? revokedAt = default(DateTime?), List<string> scopes = default(List<string>), string ownerUserId = default(string), string storefrontId = default(string), string memberUserId = default(string), decimal? spendingCapCents = default(decimal?), Dictionary<string, Object> limits = default(Dictionary<string, Object>), string updatedByUserId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -69,8 +72,15 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("memberUserId is a required property for ListStorefrontTeamAccessItem and cannot be null");
             }
             this.MemberUserId = memberUserId;
+            // to ensure "limits" is required (not null)
+            if (limits == null) {
+                throw new ArgumentNullException("limits is a required property for ListStorefrontTeamAccessItem and cannot be null");
+            }
+            this.Limits = limits;
             this.RevokedAt = revokedAt;
             this.StorefrontId = storefrontId;
+            this.SpendingCapCents = spendingCapCents;
+            this.UpdatedByUserId = updatedByUserId;
         }
 
         /// <summary>
@@ -116,6 +126,24 @@ namespace net.crossly.Model
         public string MemberUserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets SpendingCapCents
+        /// </summary>
+        [DataMember(Name = "spendingCapCents", EmitDefaultValue = true)]
+        public decimal? SpendingCapCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Limits
+        /// </summary>
+        [DataMember(Name = "limits", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Limits { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedByUserId
+        /// </summary>
+        [DataMember(Name = "updatedByUserId", EmitDefaultValue = true)]
+        public string UpdatedByUserId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -130,6 +158,9 @@ namespace net.crossly.Model
             sb.Append("  OwnerUserId: ").Append(OwnerUserId).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  MemberUserId: ").Append(MemberUserId).Append("\n");
+            sb.Append("  SpendingCapCents: ").Append(SpendingCapCents).Append("\n");
+            sb.Append("  Limits: ").Append(Limits).Append("\n");
+            sb.Append("  UpdatedByUserId: ").Append(UpdatedByUserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -200,6 +231,22 @@ namespace net.crossly.Model
                     this.MemberUserId == input.MemberUserId ||
                     (this.MemberUserId != null &&
                     this.MemberUserId.Equals(input.MemberUserId))
+                ) && 
+                (
+                    this.SpendingCapCents == input.SpendingCapCents ||
+                    (this.SpendingCapCents != null &&
+                    this.SpendingCapCents.Equals(input.SpendingCapCents))
+                ) && 
+                (
+                    this.Limits == input.Limits ||
+                    this.Limits != null &&
+                    input.Limits != null &&
+                    this.Limits.SequenceEqual(input.Limits)
+                ) && 
+                (
+                    this.UpdatedByUserId == input.UpdatedByUserId ||
+                    (this.UpdatedByUserId != null &&
+                    this.UpdatedByUserId.Equals(input.UpdatedByUserId))
                 );
         }
 
@@ -239,6 +286,18 @@ namespace net.crossly.Model
                 if (this.MemberUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.MemberUserId.GetHashCode();
+                }
+                if (this.SpendingCapCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.SpendingCapCents.GetHashCode();
+                }
+                if (this.Limits != null)
+                {
+                    hashCode = (hashCode * 59) + this.Limits.GetHashCode();
+                }
+                if (this.UpdatedByUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedByUserId.GetHashCode();
                 }
                 return hashCode;
             }

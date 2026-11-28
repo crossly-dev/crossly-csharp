@@ -27,10 +27,10 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Start an upgrade to a higher plan.
+        /// Start an upgrade of a store&#39;s plan.
         /// </summary>
         /// <remarks>
-        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -38,15 +38,34 @@ namespace net.crossly.Api
         CreateBillingUpgradeResponse CreateBillingUpgrade(CreateBillingUpgradeRequest createBillingUpgradeRequest);
 
         /// <summary>
-        /// Start an upgrade to a higher plan.
+        /// Start an upgrade of a store&#39;s plan.
         /// </summary>
         /// <remarks>
-        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
         /// <returns>ApiResponse of CreateBillingUpgradeResponse</returns>
         ApiResponse<CreateBillingUpgradeResponse> CreateBillingUpgradeWithHttpInfo(CreateBillingUpgradeRequest createBillingUpgradeRequest);
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit).
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBillingUsageResponse</returns>
+        GetBillingUsageResponse GetBillingUsage();
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit).
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBillingUsageResponse</returns>
+        ApiResponse<GetBillingUsageResponse> GetBillingUsageWithHttpInfo();
         /// <summary>
         /// Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
         /// </summary>
@@ -66,6 +85,41 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListBillingAppAllowancesResponse</returns>
         ApiResponse<ListBillingAppAllowancesResponse> ListBillingAppAllowancesWithHttpInfo();
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters.
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListBillingInvoicesResponse</returns>
+        ListBillingInvoicesResponse ListBillingInvoices(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?));
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters.
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListBillingInvoicesResponse</returns>
+        ApiResponse<ListBillingInvoicesResponse> ListBillingInvoicesWithHttpInfo(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?));
         /// <summary>
         /// List the plans with their prices, limits and features.
         /// </summary>
@@ -95,10 +149,10 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Start an upgrade to a higher plan.
+        /// Start an upgrade of a store&#39;s plan.
         /// </summary>
         /// <remarks>
-        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -107,16 +161,37 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateBillingUpgradeResponse> CreateBillingUpgradeAsync(CreateBillingUpgradeRequest createBillingUpgradeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Start an upgrade to a higher plan.
+        /// Start an upgrade of a store&#39;s plan.
         /// </summary>
         /// <remarks>
-        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBillingUpgradeResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateBillingUpgradeResponse>> CreateBillingUpgradeWithHttpInfoAsync(CreateBillingUpgradeRequest createBillingUpgradeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit).
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBillingUsageResponse</returns>
+        System.Threading.Tasks.Task<GetBillingUsageResponse> GetBillingUsageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit).
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBillingUsageResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetBillingUsageResponse>> GetBillingUsageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your listing allowances through OAuth apps (used of limit, per app, with its platform scope).
         /// </summary>
@@ -138,6 +213,43 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBillingAppAllowancesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListBillingAppAllowancesResponse>> ListBillingAppAllowancesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters.
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBillingInvoicesResponse</returns>
+        System.Threading.Tasks.Task<ListBillingInvoicesResponse> ListBillingInvoicesAsync(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters.
+        /// </summary>
+        /// <remarks>
+        /// The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBillingInvoicesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListBillingInvoicesResponse>> ListBillingInvoicesWithHttpInfoAsync(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List the plans with their prices, limits and features.
         /// </summary>
@@ -280,7 +392,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start an upgrade to a higher plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Start an upgrade of a store&#39;s plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -292,7 +404,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start an upgrade to a higher plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Start an upgrade of a store&#39;s plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -352,7 +464,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start an upgrade to a higher plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Start an upgrade of a store&#39;s plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -365,7 +477,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Start an upgrade to a higher plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner.
+        /// Start an upgrade of a store&#39;s plan. Returns a Stripe Checkout URL. Nothing is charged by this call — a person completes the payment. Downgrades and cancellation are not available to a token at all; they stay with the account owner. Every store has its own plan: the store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). A store already on a plan answers 409 (change it in Billing); a store sharing a grandfathered plan can pass &#x60;separate: true&#x60; to take its own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createBillingUpgradeRequest"></param>
@@ -418,6 +530,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateBillingUpgrade", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit). The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetBillingUsageResponse</returns>
+        public GetBillingUsageResponse GetBillingUsage()
+        {
+            net.crossly.Client.ApiResponse<GetBillingUsageResponse> localVarResponse = GetBillingUsageWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit). The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetBillingUsageResponse</returns>
+        public net.crossly.Client.ApiResponse<GetBillingUsageResponse> GetBillingUsageWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetBillingUsageResponse>("/v1/billing/usage", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBillingUsage", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit). The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetBillingUsageResponse</returns>
+        public async System.Threading.Tasks.Task<GetBillingUsageResponse> GetBillingUsageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetBillingUsageResponse> localVarResponse = await GetBillingUsageWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A store&#39;s plan and its usage against the plan&#39;s limits (used of limit, per metered limit). The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). &#x60;pooled&#x60; is true when one plan covers several stores and its limits are shared by them; &#x60;used&#x60; is then the sum across those stores. A null &#x60;limit&#x60; means no cap. &#x60;upgradeTier&#x60; is the cheapest plan that raises a limit; &#x60;resetsAt&#x60; is when a monthly count starts again (null for a standing count). A teammate&#39;s token needs a billing grant on that store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetBillingUsageResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetBillingUsageResponse>> GetBillingUsageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBillingUsageResponse>("/v1/billing/usage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetBillingUsage", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -546,6 +786,230 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListBillingAppAllowances", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters. The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ListBillingInvoicesResponse</returns>
+        public ListBillingInvoicesResponse ListBillingInvoices(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListBillingInvoicesResponse> localVarResponse = ListBillingInvoicesWithHttpInfo(cursor, status, from, to, min, max, q, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters. The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <returns>ApiResponse of ListBillingInvoicesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListBillingInvoicesResponse> ListBillingInvoicesWithHttpInfo(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (min != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "min", min));
+            }
+            if (max != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "max", max));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListBillingInvoicesResponse>("/v1/billing/invoices", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBillingInvoices", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters. The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListBillingInvoicesResponse</returns>
+        public async System.Threading.Tasks.Task<ListBillingInvoicesResponse> ListBillingInvoicesAsync(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListBillingInvoicesResponse> localVarResponse = await ListBillingInvoicesWithHttpInfoAsync(cursor, status, from, to, min, max, q, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List a store&#39;s plan invoices, newest first, with search and filters. The store is &#x60;X-Storefront-Id&#x60; (omitted: the default store). Filters: &#x60;status&#x60;, &#x60;from&#x60;/&#x60;to&#x60; (YYYY-MM-DD, inclusive, UTC), &#x60;min&#x60;/&#x60;max&#x60; (amount in cents), &#x60;q&#x60; (part of the invoice number). Paged by &#x60;cursor&#x60;: pass &#x60;meta.nextCursor&#x60; of the previous page; null means the last page. Amounts are cents in &#x60;currency&#x60;.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="min"> (optional)</param>
+        /// <param name="max"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListBillingInvoicesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBillingInvoicesResponse>> ListBillingInvoicesWithHttpInfoAsync(string cursor = default(string), string status = default(string), string from = default(string), string to = default(string), int? min = default(int?), int? max = default(int?), string q = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (min != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "min", min));
+            }
+            if (max != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "max", max));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListBillingInvoicesResponse>("/v1/billing/invoices", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListBillingInvoices", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

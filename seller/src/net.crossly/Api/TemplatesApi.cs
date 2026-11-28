@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a template.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ListMeTemplatesItem</returns>
-        ListMeTemplatesItem CreateMeTemplate();
+        ListMeTemplatesItem CreateMeTemplate(CreateMeTemplateRequest createMeTemplateRequest);
 
         /// <summary>
         /// Create a template.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ApiResponse of ListMeTemplatesItem</returns>
-        ApiResponse<ListMeTemplatesItem> CreateMeTemplateWithHttpInfo();
+        ApiResponse<ListMeTemplatesItem> CreateMeTemplateWithHttpInfo(CreateMeTemplateRequest createMeTemplateRequest);
         /// <summary>
         /// Bulk-create templates from an exported payload.
         /// </summary>
@@ -66,8 +68,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <returns>CreateMeTemplateRenderResponse</returns>
-        CreateMeTemplateRenderResponse CreateMeTemplateRender(Guid id);
+        CreateMeTemplateRenderResponse CreateMeTemplateRender(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest));
 
         /// <summary>
         /// Render a template&#39;s title + description against a context.
@@ -77,15 +80,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateMeTemplateRenderResponse</returns>
-        ApiResponse<CreateMeTemplateRenderResponse> CreateMeTemplateRenderWithHttpInfo(Guid id);
+        ApiResponse<CreateMeTemplateRenderResponse> CreateMeTemplateRenderWithHttpInfo(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest));
         /// <summary>
         /// Mint or return an existing share token for a template.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateMeTemplateShareResponse</returns>
-        CreateMeTemplateShareResponse CreateMeTemplateShare(Guid id);
+        /// <returns>TokenObject</returns>
+        TokenObject CreateMeTemplateShare(Guid id);
 
         /// <summary>
         /// Mint or return an existing share token for a template.
@@ -95,8 +99,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateMeTemplateShareResponse</returns>
-        ApiResponse<CreateMeTemplateShareResponse> CreateMeTemplateShareWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of TokenObject</returns>
+        ApiResponse<TokenObject> CreateMeTemplateShareWithHttpInfo(Guid id);
         /// <summary>
         /// Delete a template.
         /// </summary>
@@ -195,8 +199,10 @@ namespace net.crossly.Api
         /// List the seller&#39;s templates.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ListMeTemplatesResponse</returns>
-        ListMeTemplatesResponse ListMeTemplates();
+        ListMeTemplatesResponse ListMeTemplates(string scope = default(string), string category = default(string));
 
         /// <summary>
         /// List the seller&#39;s templates.
@@ -205,15 +211,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ApiResponse of ListMeTemplatesResponse</returns>
-        ApiResponse<ListMeTemplatesResponse> ListMeTemplatesWithHttpInfo();
+        ApiResponse<ListMeTemplatesResponse> ListMeTemplatesWithHttpInfo(string scope = default(string), string category = default(string));
         /// <summary>
         /// Patch a template.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ListMeTemplatesItem</returns>
-        ListMeTemplatesItem UpdateMeTemplate(Guid id);
+        ListMeTemplatesItem UpdateMeTemplate(Guid id, CreateMeTemplateRequest createMeTemplateRequest);
 
         /// <summary>
         /// Patch a template.
@@ -223,8 +232,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ApiResponse of ListMeTemplatesItem</returns>
-        ApiResponse<ListMeTemplatesItem> UpdateMeTemplateWithHttpInfo(Guid id);
+        ApiResponse<ListMeTemplatesItem> UpdateMeTemplateWithHttpInfo(Guid id, CreateMeTemplateRequest createMeTemplateRequest);
         #endregion Synchronous Operations
     }
 
@@ -241,9 +251,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesItem</returns>
-        System.Threading.Tasks.Task<ListMeTemplatesItem> CreateMeTemplateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListMeTemplatesItem> CreateMeTemplateAsync(CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a template.
@@ -252,9 +263,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesItem>> CreateMeTemplateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesItem>> CreateMeTemplateWithHttpInfoAsync(CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk-create templates from an exported payload.
         /// </summary>
@@ -284,9 +296,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateMeTemplateRenderResponse</returns>
-        System.Threading.Tasks.Task<CreateMeTemplateRenderResponse> CreateMeTemplateRenderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateMeTemplateRenderResponse> CreateMeTemplateRenderAsync(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Render a template&#39;s title + description against a context.
@@ -296,9 +309,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateMeTemplateRenderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateMeTemplateRenderResponse>> CreateMeTemplateRenderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateMeTemplateRenderResponse>> CreateMeTemplateRenderWithHttpInfoAsync(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Mint or return an existing share token for a template.
         /// </summary>
@@ -308,8 +322,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateMeTemplateShareResponse</returns>
-        System.Threading.Tasks.Task<CreateMeTemplateShareResponse> CreateMeTemplateShareAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of TokenObject</returns>
+        System.Threading.Tasks.Task<TokenObject> CreateMeTemplateShareAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mint or return an existing share token for a template.
@@ -320,8 +334,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateMeTemplateShareResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateMeTemplateShareResponse>> CreateMeTemplateShareWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (TokenObject)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TokenObject>> CreateMeTemplateShareWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a template.
         /// </summary>
@@ -442,9 +456,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesResponse</returns>
-        System.Threading.Tasks.Task<ListMeTemplatesResponse> ListMeTemplatesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListMeTemplatesResponse> ListMeTemplatesAsync(string scope = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List the seller&#39;s templates.
@@ -453,9 +469,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesResponse>> ListMeTemplatesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesResponse>> ListMeTemplatesWithHttpInfoAsync(string scope = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Patch a template.
         /// </summary>
@@ -464,9 +482,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesItem</returns>
-        System.Threading.Tasks.Task<ListMeTemplatesItem> UpdateMeTemplateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListMeTemplatesItem> UpdateMeTemplateAsync(Guid id, CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Patch a template.
@@ -476,9 +495,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesItem>> UpdateMeTemplateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListMeTemplatesItem>> UpdateMeTemplateWithHttpInfoAsync(Guid id, CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -603,10 +623,11 @@ namespace net.crossly.Api
         /// Create a template. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ListMeTemplatesItem</returns>
-        public ListMeTemplatesItem CreateMeTemplate()
+        public ListMeTemplatesItem CreateMeTemplate(CreateMeTemplateRequest createMeTemplateRequest)
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = CreateMeTemplateWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = CreateMeTemplateWithHttpInfo(createMeTemplateRequest);
             return localVarResponse.Data;
         }
 
@@ -614,12 +635,20 @@ namespace net.crossly.Api
         /// Create a template. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ApiResponse of ListMeTemplatesItem</returns>
-        public net.crossly.Client.ApiResponse<ListMeTemplatesItem> CreateMeTemplateWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListMeTemplatesItem> CreateMeTemplateWithHttpInfo(CreateMeTemplateRequest createMeTemplateRequest)
         {
+            // verify the required parameter 'createMeTemplateRequest' is set
+            if (createMeTemplateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMeTemplateRequest' when calling TemplatesApi->CreateMeTemplate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -639,6 +668,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createMeTemplateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -665,11 +695,12 @@ namespace net.crossly.Api
         /// Create a template. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesItem</returns>
-        public async System.Threading.Tasks.Task<ListMeTemplatesItem> CreateMeTemplateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListMeTemplatesItem> CreateMeTemplateAsync(CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = await CreateMeTemplateWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = await CreateMeTemplateWithHttpInfoAsync(createMeTemplateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -677,14 +708,22 @@ namespace net.crossly.Api
         /// Create a template. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesItem>> CreateMeTemplateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesItem>> CreateMeTemplateWithHttpInfoAsync(CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createMeTemplateRequest' is set
+            if (createMeTemplateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMeTemplateRequest' when calling TemplatesApi->CreateMeTemplate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -704,6 +743,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createMeTemplateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -860,10 +900,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <returns>CreateMeTemplateRenderResponse</returns>
-        public CreateMeTemplateRenderResponse CreateMeTemplateRender(Guid id)
+        public CreateMeTemplateRenderResponse CreateMeTemplateRender(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest))
         {
-            net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> localVarResponse = CreateMeTemplateRenderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> localVarResponse = CreateMeTemplateRenderWithHttpInfo(id, createMeTemplateRenderRequest);
             return localVarResponse.Data;
         }
 
@@ -872,12 +913,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateMeTemplateRenderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> CreateMeTemplateRenderWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> CreateMeTemplateRenderWithHttpInfo(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -898,6 +941,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createMeTemplateRenderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -925,11 +969,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateMeTemplateRenderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateMeTemplateRenderResponse> CreateMeTemplateRenderAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateMeTemplateRenderResponse> CreateMeTemplateRenderAsync(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> localVarResponse = await CreateMeTemplateRenderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse> localVarResponse = await CreateMeTemplateRenderWithHttpInfoAsync(id, createMeTemplateRenderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -938,14 +983,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRenderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateMeTemplateRenderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse>> CreateMeTemplateRenderWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMeTemplateRenderResponse>> CreateMeTemplateRenderWithHttpInfoAsync(Guid id, CreateMeTemplateRenderRequest createMeTemplateRenderRequest = default(CreateMeTemplateRenderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -966,6 +1013,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createMeTemplateRenderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -994,10 +1042,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateMeTemplateShareResponse</returns>
-        public CreateMeTemplateShareResponse CreateMeTemplateShare(Guid id)
+        /// <returns>TokenObject</returns>
+        public TokenObject CreateMeTemplateShare(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateMeTemplateShareResponse> localVarResponse = CreateMeTemplateShareWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<TokenObject> localVarResponse = CreateMeTemplateShareWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -1006,8 +1054,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateMeTemplateShareResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateMeTemplateShareResponse> CreateMeTemplateShareWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of TokenObject</returns>
+        public net.crossly.Client.ApiResponse<TokenObject> CreateMeTemplateShareWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1041,7 +1089,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateMeTemplateShareResponse>("/v1/me/templates/{id}/share", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TokenObject>("/v1/me/templates/{id}/share", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateMeTemplateShare", localVarResponse);
@@ -1060,10 +1108,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateMeTemplateShareResponse</returns>
-        public async System.Threading.Tasks.Task<CreateMeTemplateShareResponse> CreateMeTemplateShareAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of TokenObject</returns>
+        public async System.Threading.Tasks.Task<TokenObject> CreateMeTemplateShareAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateMeTemplateShareResponse> localVarResponse = await CreateMeTemplateShareWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TokenObject> localVarResponse = await CreateMeTemplateShareWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1073,8 +1121,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateMeTemplateShareResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateMeTemplateShareResponse>> CreateMeTemplateShareWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (TokenObject)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TokenObject>> CreateMeTemplateShareWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1109,7 +1157,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateMeTemplateShareResponse>("/v1/me/templates/{id}/share", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TokenObject>("/v1/me/templates/{id}/share", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1791,10 +1839,12 @@ namespace net.crossly.Api
         /// List the seller&#39;s templates. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ListMeTemplatesResponse</returns>
-        public ListMeTemplatesResponse ListMeTemplates()
+        public ListMeTemplatesResponse ListMeTemplates(string scope = default(string), string category = default(string))
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesResponse> localVarResponse = ListMeTemplatesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListMeTemplatesResponse> localVarResponse = ListMeTemplatesWithHttpInfo(scope, category);
             return localVarResponse.Data;
         }
 
@@ -1802,8 +1852,10 @@ namespace net.crossly.Api
         /// List the seller&#39;s templates. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <returns>ApiResponse of ListMeTemplatesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListMeTemplatesResponse> ListMeTemplatesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListMeTemplatesResponse> ListMeTemplatesWithHttpInfo(string scope = default(string), string category = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1827,6 +1879,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1853,11 +1913,13 @@ namespace net.crossly.Api
         /// List the seller&#39;s templates. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesResponse</returns>
-        public async System.Threading.Tasks.Task<ListMeTemplatesResponse> ListMeTemplatesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListMeTemplatesResponse> ListMeTemplatesAsync(string scope = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesResponse> localVarResponse = await ListMeTemplatesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListMeTemplatesResponse> localVarResponse = await ListMeTemplatesWithHttpInfoAsync(scope, category, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1865,9 +1927,11 @@ namespace net.crossly.Api
         /// List the seller&#39;s templates. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"> (optional)</param>
+        /// <param name="category"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesResponse>> ListMeTemplatesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesResponse>> ListMeTemplatesWithHttpInfoAsync(string scope = default(string), string category = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1892,6 +1956,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (scope != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "scope", scope));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1920,10 +1992,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ListMeTemplatesItem</returns>
-        public ListMeTemplatesItem UpdateMeTemplate(Guid id)
+        public ListMeTemplatesItem UpdateMeTemplate(Guid id, CreateMeTemplateRequest createMeTemplateRequest)
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = UpdateMeTemplateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = UpdateMeTemplateWithHttpInfo(id, createMeTemplateRequest);
             return localVarResponse.Data;
         }
 
@@ -1932,12 +2005,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <returns>ApiResponse of ListMeTemplatesItem</returns>
-        public net.crossly.Client.ApiResponse<ListMeTemplatesItem> UpdateMeTemplateWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListMeTemplatesItem> UpdateMeTemplateWithHttpInfo(Guid id, CreateMeTemplateRequest createMeTemplateRequest)
         {
+            // verify the required parameter 'createMeTemplateRequest' is set
+            if (createMeTemplateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMeTemplateRequest' when calling TemplatesApi->UpdateMeTemplate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1958,6 +2039,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createMeTemplateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1985,11 +2067,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListMeTemplatesItem</returns>
-        public async System.Threading.Tasks.Task<ListMeTemplatesItem> UpdateMeTemplateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListMeTemplatesItem> UpdateMeTemplateAsync(Guid id, CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = await UpdateMeTemplateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListMeTemplatesItem> localVarResponse = await UpdateMeTemplateWithHttpInfoAsync(id, createMeTemplateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1998,14 +2081,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createMeTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListMeTemplatesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesItem>> UpdateMeTemplateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListMeTemplatesItem>> UpdateMeTemplateWithHttpInfoAsync(Guid id, CreateMeTemplateRequest createMeTemplateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createMeTemplateRequest' is set
+            if (createMeTemplateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createMeTemplateRequest' when calling TemplatesApi->UpdateMeTemplate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2026,6 +2117,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createMeTemplateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

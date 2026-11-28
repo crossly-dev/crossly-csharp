@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ModeEnum
         {
             /// <summary>
-            /// Enum Selection for value: selection
-            /// </summary>
-            [EnumMember(Value = "selection")]
-            Selection = 1,
-
-            /// <summary>
             /// Enum All for value: all
             /// </summary>
             [EnumMember(Value = "all")]
-            All = 2
+            All = 1,
+
+            /// <summary>
+            /// Enum Selection for value: selection
+            /// </summary>
+            [EnumMember(Value = "selection")]
+            Selection = 2
 
         }
 

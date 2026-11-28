@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulateinventory"></a>
 # **CreateSandboxSimulateInventory**
-> CreateInboxConversationBulkResponse CreateSandboxSimulateInventory ()
+> CreateInboxConversationBulkResponse CreateSandboxSimulateInventory (CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest)
 
 Change stock (set, increase or decrease); the new quantity is pushed to every channel.
 
@@ -116,11 +116,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var createSandboxSimulateInventoryRequest = new CreateSandboxSimulateInventoryRequest(); // CreateSandboxSimulateInventoryRequest | 
 
             try
             {
                 // Change stock (set, increase or decrease); the new quantity is pushed to every channel.
-                CreateInboxConversationBulkResponse result = apiInstance.CreateSandboxSimulateInventory();
+                CreateInboxConversationBulkResponse result = apiInstance.CreateSandboxSimulateInventory(createSandboxSimulateInventoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -135,7 +136,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSandboxSimulateInventoryRequest** | **CreateSandboxSimulateInventoryRequest**|  | 
 
 ### Return type
 
@@ -147,7 +151,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -166,7 +170,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulatelistingsoldout"></a>
 # **CreateSandboxSimulateListingSoldOut**
-> CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut ()
+> CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut (CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest)
 
 A listing sells out on a marketplace with no order (stock moves, other channels delist).
 
@@ -190,11 +194,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var createSandboxSimulateListingSoldOutRequest = new CreateSandboxSimulateListingSoldOutRequest(); // CreateSandboxSimulateListingSoldOutRequest | 
 
             try
             {
                 // A listing sells out on a marketplace with no order (stock moves, other channels delist).
-                CreateSandboxSimulateListingSoldOutResponse result = apiInstance.CreateSandboxSimulateListingSoldOut();
+                CreateSandboxSimulateListingSoldOutResponse result = apiInstance.CreateSandboxSimulateListingSoldOut(createSandboxSimulateListingSoldOutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -209,7 +214,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSandboxSimulateListingSoldOutRequest** | **CreateSandboxSimulateListingSoldOutRequest**|  | 
 
 ### Return type
 
@@ -221,7 +229,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -240,7 +248,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulateorder"></a>
 # **CreateSandboxSimulateOrder**
-> CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder ()
+> CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder (CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest)
 
 Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
 
@@ -264,11 +272,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var createSandboxSimulateOrderRequest = new CreateSandboxSimulateOrderRequest(); // CreateSandboxSimulateOrderRequest | 
 
             try
             {
                 // Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
-                CreateSandboxSimulateOrderResponse result = apiInstance.CreateSandboxSimulateOrder();
+                CreateSandboxSimulateOrderResponse result = apiInstance.CreateSandboxSimulateOrder(createSandboxSimulateOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -283,7 +292,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSandboxSimulateOrderRequest** | **CreateSandboxSimulateOrderRequest**|  | 
 
 ### Return type
 
@@ -295,7 +307,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -314,7 +326,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulateorderaddress"></a>
 # **CreateSandboxSimulateOrderAddress**
-> CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress ()
+> CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress (CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest)
 
 The buyer address of an order simulated with address \"delayed\" arrives now (order.address_available).
 
@@ -338,11 +350,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var createSandboxSimulateOrderAddressRequest = new CreateSandboxSimulateOrderAddressRequest(); // CreateSandboxSimulateOrderAddressRequest | 
 
             try
             {
                 // The buyer address of an order simulated with address \"delayed\" arrives now (order.address_available).
-                CreateSandboxSimulateOrderAddressResponse result = apiInstance.CreateSandboxSimulateOrderAddress();
+                CreateSandboxSimulateOrderAddressResponse result = apiInstance.CreateSandboxSimulateOrderAddress(createSandboxSimulateOrderAddressRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -357,7 +370,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSandboxSimulateOrderAddressRequest** | **CreateSandboxSimulateOrderAddressRequest**|  | 
 
 ### Return type
 
@@ -369,7 +385,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -388,7 +404,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulateordercancelled"></a>
 # **CreateSandboxSimulateOrderCancelled**
-> CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled ()
+> CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled (OrderIdReasonRequest orderIdReasonRequest)
 
 The buyer or the marketplace cancels an order (order.cancelled).
 
@@ -412,11 +428,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var orderIdReasonRequest = new OrderIdReasonRequest(); // OrderIdReasonRequest | 
 
             try
             {
                 // The buyer or the marketplace cancels an order (order.cancelled).
-                CreateSandboxSimulateOrderCancelledResponse result = apiInstance.CreateSandboxSimulateOrderCancelled();
+                CreateSandboxSimulateOrderCancelledResponse result = apiInstance.CreateSandboxSimulateOrderCancelled(orderIdReasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -431,7 +448,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderIdReasonRequest** | **OrderIdReasonRequest**|  | 
 
 ### Return type
 
@@ -443,7 +463,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -462,7 +482,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulateorderdelivered"></a>
 # **CreateSandboxSimulateOrderDelivered**
-> CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered ()
+> CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered (OrderIdReasonRequest orderIdReasonRequest)
 
 The carrier delivers a shipped order (order.delivered).
 
@@ -486,11 +506,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var orderIdReasonRequest = new OrderIdReasonRequest(); // OrderIdReasonRequest | 
 
             try
             {
                 // The carrier delivers a shipped order (order.delivered).
-                CreateSandboxSimulateOrderDeliveredResponse result = apiInstance.CreateSandboxSimulateOrderDelivered();
+                CreateSandboxSimulateOrderDeliveredResponse result = apiInstance.CreateSandboxSimulateOrderDelivered(orderIdReasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -505,7 +526,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderIdReasonRequest** | **OrderIdReasonRequest**|  | 
 
 ### Return type
 
@@ -517,7 +541,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -536,7 +560,7 @@ This endpoint does not need any parameter.
 
 <a name="createsandboxsimulaterefund"></a>
 # **CreateSandboxSimulateRefund**
-> CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund ()
+> CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund (CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest)
 
 Refund an order in full or in part (refund.issued).
 
@@ -560,11 +584,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var createSandboxSimulateRefundRequest = new CreateSandboxSimulateRefundRequest(); // CreateSandboxSimulateRefundRequest | 
 
             try
             {
                 // Refund an order in full or in part (refund.issued).
-                CreateSandboxSimulateRefundResponse result = apiInstance.CreateSandboxSimulateRefund();
+                CreateSandboxSimulateRefundResponse result = apiInstance.CreateSandboxSimulateRefund(createSandboxSimulateRefundRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -579,7 +604,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSandboxSimulateRefundRequest** | **CreateSandboxSimulateRefundRequest**|  | 
 
 ### Return type
 
@@ -591,7 +619,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -684,7 +712,7 @@ This endpoint does not need any parameter.
 
 <a name="listsandboxevents"></a>
 # **ListSandboxEvents**
-> ListSandboxEventsResponse ListSandboxEvents ()
+> ListSandboxEventsResponse ListSandboxEvents (decimal? limit = null)
 
 The simulated marketplaces' call log: verb, channel, outcome, latency.
 
@@ -708,11 +736,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SandboxApi(config);
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The simulated marketplaces' call log: verb, channel, outcome, latency.
-                ListSandboxEventsResponse result = apiInstance.ListSandboxEvents();
+                ListSandboxEventsResponse result = apiInstance.ListSandboxEvents(limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -727,7 +756,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 

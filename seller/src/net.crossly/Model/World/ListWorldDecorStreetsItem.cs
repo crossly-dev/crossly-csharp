@@ -44,7 +44,9 @@ namespace net.crossly.Model
         /// <param name="platform">Crossly&#39;s street (Main Street, a neighbourhood): only ops may change it. (required).</param>
         /// <param name="canEdit">Whether the caller may change it. (required).</param>
         /// <param name="decor">decor (required).</param>
-        public ListWorldDecorStreetsItem(string street = default(string), string name = default(string), bool platform = default(bool), bool canEdit = default(bool), ListWorldDecorStreetsItemDecor decor = default(ListWorldDecorStreetsItemDecor))
+        /// <param name="storeId">The store the street belongs to (s5-65; null: a platform street, or not stamped yet &#x3D; the default store)..</param>
+        /// <param name="store">store.</param>
+        public ListWorldDecorStreetsItem(string street = default(string), string name = default(string), bool platform = default(bool), bool canEdit = default(bool), ListWorldDecorStreetsItemDecor decor = default(ListWorldDecorStreetsItemDecor), string storeId = default(string), IdName2 store = default(IdName2))
         {
             // to ensure "street" is required (not null)
             if (street == null) {
@@ -63,6 +65,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("decor is a required property for ListWorldDecorStreetsItem and cannot be null");
             }
             this.Decor = decor;
+            this.StoreId = storeId;
+            this.Store = store;
         }
 
         /// <summary>
@@ -98,6 +102,19 @@ namespace net.crossly.Model
         public ListWorldDecorStreetsItemDecor Decor { get; set; }
 
         /// <summary>
+        /// The store the street belongs to (s5-65; null: a platform street, or not stamped yet &#x3D; the default store).
+        /// </summary>
+        /// <value>The store the street belongs to (s5-65; null: a platform street, or not stamped yet &#x3D; the default store).</value>
+        [DataMember(Name = "storeId", EmitDefaultValue = true)]
+        public string StoreId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Store
+        /// </summary>
+        [DataMember(Name = "store", EmitDefaultValue = true)]
+        public IdName2 Store { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +127,8 @@ namespace net.crossly.Model
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  CanEdit: ").Append(CanEdit).Append("\n");
             sb.Append("  Decor: ").Append(Decor).Append("\n");
+            sb.Append("  StoreId: ").Append(StoreId).Append("\n");
+            sb.Append("  Store: ").Append(Store).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +186,16 @@ namespace net.crossly.Model
                     this.Decor == input.Decor ||
                     (this.Decor != null &&
                     this.Decor.Equals(input.Decor))
+                ) && 
+                (
+                    this.StoreId == input.StoreId ||
+                    (this.StoreId != null &&
+                    this.StoreId.Equals(input.StoreId))
+                ) && 
+                (
+                    this.Store == input.Store ||
+                    (this.Store != null &&
+                    this.Store.Equals(input.Store))
                 );
         }
 
@@ -192,6 +221,14 @@ namespace net.crossly.Model
                 if (this.Decor != null)
                 {
                     hashCode = (hashCode * 59) + this.Decor.GetHashCode();
+                }
+                if (this.StoreId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StoreId.GetHashCode();
+                }
+                if (this.Store != null)
+                {
+                    hashCode = (hashCode * 59) + this.Store.GetHashCode();
                 }
                 return hashCode;
             }

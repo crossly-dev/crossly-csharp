@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a product set (filters, explicit picks, or both).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        ListProductSetsItem CreateProductSet();
+        ListProductSetsItem CreateProductSet(CreateProductSetRequest createProductSetRequest);
 
         /// <summary>
         /// Create a product set (filters, explicit picks, or both).
@@ -40,15 +41,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        ApiResponse<ListProductSetsItem> CreateProductSetWithHttpInfo();
+        ApiResponse<ListProductSetsItem> CreateProductSetWithHttpInfo(CreateProductSetRequest createProductSetRequest);
         /// <summary>
         /// Run a bulk action (delist / relist / check-status) against the set&#39;s current members.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <returns>CreateProductSetBulkResponse</returns>
-        CreateProductSetBulkResponse CreateProductSetBulk(Guid id);
+        CreateProductSetBulkResponse CreateProductSetBulk(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest);
 
         /// <summary>
         /// Run a bulk action (delist / relist / check-status) against the set&#39;s current members.
@@ -58,15 +61,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <returns>ApiResponse of CreateProductSetBulkResponse</returns>
-        ApiResponse<CreateProductSetBulkResponse> CreateProductSetBulkWithHttpInfo(Guid id);
+        ApiResponse<CreateProductSetBulkResponse> CreateProductSetBulkWithHttpInfo(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest);
         /// <summary>
         /// Add / exclude / remove explicit picks for a set.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        ListProductSetsItem CreateProductSetMember(Guid id);
+        ListProductSetsItem CreateProductSetMember(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest);
 
         /// <summary>
         /// Add / exclude / remove explicit picks for a set.
@@ -76,8 +81,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        ApiResponse<ListProductSetsItem> CreateProductSetMemberWithHttpInfo(Guid id);
+        ApiResponse<ListProductSetsItem> CreateProductSetMemberWithHttpInfo(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest);
         /// <summary>
         /// Delete a product set (its id is also dropped from any channel exclusion lists).
         /// </summary>
@@ -157,8 +163,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        ListProductSetsItem UpdateProductSet(Guid id);
+        ListProductSetsItem UpdateProductSet(Guid id, UpdateProductSetRequest updateProductSetRequest);
 
         /// <summary>
         /// Update a set: rename, description, or replace its filters.
@@ -168,8 +175,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        ApiResponse<ListProductSetsItem> UpdateProductSetWithHttpInfo(Guid id);
+        ApiResponse<ListProductSetsItem> UpdateProductSetWithHttpInfo(Guid id, UpdateProductSetRequest updateProductSetRequest);
         #endregion Synchronous Operations
     }
 
@@ -186,9 +194,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetAsync(CreateProductSetRequest createProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a product set (filters, explicit picks, or both).
@@ -197,9 +206,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> CreateProductSetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> CreateProductSetWithHttpInfoAsync(CreateProductSetRequest createProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run a bulk action (delist / relist / check-status) against the set&#39;s current members.
         /// </summary>
@@ -208,9 +218,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductSetBulkResponse</returns>
-        System.Threading.Tasks.Task<CreateProductSetBulkResponse> CreateProductSetBulkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductSetBulkResponse> CreateProductSetBulkAsync(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Run a bulk action (delist / relist / check-status) against the set&#39;s current members.
@@ -220,9 +231,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductSetBulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductSetBulkResponse>> CreateProductSetBulkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductSetBulkResponse>> CreateProductSetBulkWithHttpInfoAsync(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add / exclude / remove explicit picks for a set.
         /// </summary>
@@ -231,9 +243,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetMemberAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetMemberAsync(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add / exclude / remove explicit picks for a set.
@@ -243,9 +256,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> CreateProductSetMemberWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> CreateProductSetMemberWithHttpInfoAsync(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a product set (its id is also dropped from any channel exclusion lists).
         /// </summary>
@@ -348,9 +362,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        System.Threading.Tasks.Task<ListProductSetsItem> UpdateProductSetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductSetsItem> UpdateProductSetAsync(Guid id, UpdateProductSetRequest updateProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a set: rename, description, or replace its filters.
@@ -360,9 +375,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> UpdateProductSetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductSetsItem>> UpdateProductSetWithHttpInfoAsync(Guid id, UpdateProductSetRequest updateProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -487,10 +503,11 @@ namespace net.crossly.Api
         /// Create a product set (filters, explicit picks, or both). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        public ListProductSetsItem CreateProductSet()
+        public ListProductSetsItem CreateProductSet(CreateProductSetRequest createProductSetRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = CreateProductSetWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = CreateProductSetWithHttpInfo(createProductSetRequest);
             return localVarResponse.Data;
         }
 
@@ -498,12 +515,20 @@ namespace net.crossly.Api
         /// Create a product set (filters, explicit picks, or both). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductSetsItem> CreateProductSetWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListProductSetsItem> CreateProductSetWithHttpInfo(CreateProductSetRequest createProductSetRequest)
         {
+            // verify the required parameter 'createProductSetRequest' is set
+            if (createProductSetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetRequest' when calling ProductSetsApi->CreateProductSet");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -523,6 +548,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductSetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -549,11 +575,12 @@ namespace net.crossly.Api
         /// Create a product set (filters, explicit picks, or both). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetAsync(CreateProductSetRequest createProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await CreateProductSetWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await CreateProductSetWithHttpInfoAsync(createProductSetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -561,14 +588,22 @@ namespace net.crossly.Api
         /// Create a product set (filters, explicit picks, or both). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> CreateProductSetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> CreateProductSetWithHttpInfoAsync(CreateProductSetRequest createProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createProductSetRequest' is set
+            if (createProductSetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetRequest' when calling ProductSetsApi->CreateProductSet");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -588,6 +623,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductSetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -616,10 +652,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <returns>CreateProductSetBulkResponse</returns>
-        public CreateProductSetBulkResponse CreateProductSetBulk(Guid id)
+        public CreateProductSetBulkResponse CreateProductSetBulk(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> localVarResponse = CreateProductSetBulkWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> localVarResponse = CreateProductSetBulkWithHttpInfo(id, createProductSetBulkRequest);
             return localVarResponse.Data;
         }
 
@@ -628,12 +665,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <returns>ApiResponse of CreateProductSetBulkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> CreateProductSetBulkWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> CreateProductSetBulkWithHttpInfo(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest)
         {
+            // verify the required parameter 'createProductSetBulkRequest' is set
+            if (createProductSetBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetBulkRequest' when calling ProductSetsApi->CreateProductSetBulk");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -654,6 +699,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductSetBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -681,11 +727,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductSetBulkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductSetBulkResponse> CreateProductSetBulkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductSetBulkResponse> CreateProductSetBulkAsync(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> localVarResponse = await CreateProductSetBulkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductSetBulkResponse> localVarResponse = await CreateProductSetBulkWithHttpInfoAsync(id, createProductSetBulkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -694,14 +741,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductSetBulkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductSetBulkResponse>> CreateProductSetBulkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductSetBulkResponse>> CreateProductSetBulkWithHttpInfoAsync(Guid id, CreateProductSetBulkRequest createProductSetBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createProductSetBulkRequest' is set
+            if (createProductSetBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetBulkRequest' when calling ProductSetsApi->CreateProductSetBulk");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -722,6 +777,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductSetBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -750,10 +806,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        public ListProductSetsItem CreateProductSetMember(Guid id)
+        public ListProductSetsItem CreateProductSetMember(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = CreateProductSetMemberWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = CreateProductSetMemberWithHttpInfo(id, createProductSetMemberRequest);
             return localVarResponse.Data;
         }
 
@@ -762,12 +819,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductSetsItem> CreateProductSetMemberWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListProductSetsItem> CreateProductSetMemberWithHttpInfo(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest)
         {
+            // verify the required parameter 'createProductSetMemberRequest' is set
+            if (createProductSetMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetMemberRequest' when calling ProductSetsApi->CreateProductSetMember");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -788,6 +853,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductSetMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -815,11 +881,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetMemberAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductSetsItem> CreateProductSetMemberAsync(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await CreateProductSetMemberWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await CreateProductSetMemberWithHttpInfoAsync(id, createProductSetMemberRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -828,14 +895,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductSetMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> CreateProductSetMemberWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> CreateProductSetMemberWithHttpInfoAsync(Guid id, CreateProductSetMemberRequest createProductSetMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createProductSetMemberRequest' is set
+            if (createProductSetMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductSetMemberRequest' when calling ProductSetsApi->CreateProductSetMember");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -856,6 +931,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductSetMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1438,10 +1514,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <returns>ListProductSetsItem</returns>
-        public ListProductSetsItem UpdateProductSet(Guid id)
+        public ListProductSetsItem UpdateProductSet(Guid id, UpdateProductSetRequest updateProductSetRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = UpdateProductSetWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = UpdateProductSetWithHttpInfo(id, updateProductSetRequest);
             return localVarResponse.Data;
         }
 
@@ -1450,12 +1527,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <returns>ApiResponse of ListProductSetsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductSetsItem> UpdateProductSetWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListProductSetsItem> UpdateProductSetWithHttpInfo(Guid id, UpdateProductSetRequest updateProductSetRequest)
         {
+            // verify the required parameter 'updateProductSetRequest' is set
+            if (updateProductSetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductSetRequest' when calling ProductSetsApi->UpdateProductSet");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1476,6 +1561,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateProductSetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1503,11 +1589,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductSetsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductSetsItem> UpdateProductSetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductSetsItem> UpdateProductSetAsync(Guid id, UpdateProductSetRequest updateProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await UpdateProductSetWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductSetsItem> localVarResponse = await UpdateProductSetWithHttpInfoAsync(id, updateProductSetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1516,14 +1603,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductSetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductSetsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> UpdateProductSetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductSetsItem>> UpdateProductSetWithHttpInfoAsync(Guid id, UpdateProductSetRequest updateProductSetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateProductSetRequest' is set
+            if (updateProductSetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductSetRequest' when calling ProductSetsApi->UpdateProductSet");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1544,6 +1639,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateProductSetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

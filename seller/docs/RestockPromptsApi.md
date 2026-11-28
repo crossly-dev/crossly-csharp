@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateRestockPromptDismiss**](RestockPromptsApi.md#createrestockpromptdismiss) | **POST** /v1/restock-prompts/{id}/dismiss | Dismiss a pending restock prompt.
 [**CreateRestockPromptRepublish**](RestockPromptsApi.md#createrestockpromptrepublish) | **POST** /v1/restock-prompts/{id}/republish | Republish a restock prompt to platforms.
-[**GetRestockPromptSetting**](RestockPromptsApi.md#getrestockpromptsetting) | **GET** /v1/restock-prompts/settings | Whether restocked items are republished automatically.
+[**GetRestockPromptSetting**](RestockPromptsApi.md#getrestockpromptsetting) | **GET** /v1/restock-prompts/settings | Deprecated: whether every platform account of the store republishes restocked items automatically.
 [**ListRestockPrompts**](RestockPromptsApi.md#listrestockprompts) | **GET** /v1/restock-prompts | List pending restock prompts.
-[**UpdateRestockPromptSetting**](RestockPromptsApi.md#updaterestockpromptsetting) | **PUT** /v1/restock-prompts/settings | Turn automatic republish of restocked items on or off.
+[**UpdateRestockPromptSetting**](RestockPromptsApi.md#updaterestockpromptsetting) | **PUT** /v1/restock-prompts/settings | Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
 
 
 <a name="createrestockpromptdismiss"></a>
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 <a name="createrestockpromptrepublish"></a>
 # **CreateRestockPromptRepublish**
-> CreateRestockPromptRepublishResponse CreateRestockPromptRepublish (Guid id)
+> CreateRestockPromptRepublishResponse CreateRestockPromptRepublish (Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest)
 
 Republish a restock prompt to platforms.
 
@@ -116,11 +116,12 @@ namespace Example
 
             var apiInstance = new RestockPromptsApi(config);
             var id = "id_example";  // Guid | 
+            var createRestockPromptRepublishRequest = new CreateRestockPromptRepublishRequest(); // CreateRestockPromptRepublishRequest | 
 
             try
             {
                 // Republish a restock prompt to platforms.
-                CreateRestockPromptRepublishResponse result = apiInstance.CreateRestockPromptRepublish(id);
+                CreateRestockPromptRepublishResponse result = apiInstance.CreateRestockPromptRepublish(id, createRestockPromptRepublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -139,6 +140,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createRestockPromptRepublishRequest** | **CreateRestockPromptRepublishRequest**|  | 
 
 ### Return type
 
@@ -150,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -171,9 +173,9 @@ Name | Type | Description  | Notes
 # **GetRestockPromptSetting**
 > GetRestockPromptSettingResponse GetRestockPromptSetting ()
 
-Whether restocked items are republished automatically.
+Deprecated: whether every platform account of the store republishes restocked items automatically.
 
-autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
 
 ### Example
 ```csharp
@@ -198,7 +200,7 @@ namespace Example
 
             try
             {
-                // Whether restocked items are republished automatically.
+                // Deprecated: whether every platform account of the store republishes restocked items automatically.
                 GetRestockPromptSettingResponse result = apiInstance.GetRestockPromptSetting();
                 Debug.WriteLine(result);
             }
@@ -321,7 +323,7 @@ This endpoint does not need any parameter.
 # **UpdateRestockPromptSetting**
 > GetRestockPromptSettingResponse UpdateRestockPromptSetting (GetRestockPromptSettingResponse getRestockPromptSettingResponse)
 
-Turn automatic republish of restocked items on or off.
+Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
 
 ### Example
 ```csharp
@@ -347,7 +349,7 @@ namespace Example
 
             try
             {
-                // Turn automatic republish of restocked items on or off.
+                // Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
                 GetRestockPromptSettingResponse result = apiInstance.UpdateRestockPromptSetting(getRestockPromptSettingResponse);
                 Debug.WriteLine(result);
             }

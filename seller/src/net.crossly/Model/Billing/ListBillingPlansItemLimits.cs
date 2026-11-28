@@ -46,15 +46,19 @@ namespace net.crossly.Model
         /// <param name="aiEnhancements">aiEnhancements.</param>
         /// <param name="bulkActions">bulkActions (required).</param>
         /// <param name="teamMode">teamMode (required).</param>
-        public ListBillingPlansItemLimits(decimal? itemsPerMonth = default(decimal?), decimal? crosspostsPerMonth = default(decimal?), decimal? automationRules = default(decimal?), bool emailSaleDetection = default(bool), decimal? aiEnhancements = default(decimal?), bool bulkActions = default(bool), bool teamMode = default(bool))
+        /// <param name="visionCallsPerMonth">Magic List photo identifications a month..</param>
+        /// <param name="includedAccounts">Connection addresses (region slots) included before the extra-account add-on. (required).</param>
+        public ListBillingPlansItemLimits(decimal? itemsPerMonth = default(decimal?), decimal? crosspostsPerMonth = default(decimal?), decimal? automationRules = default(decimal?), bool emailSaleDetection = default(bool), decimal? aiEnhancements = default(decimal?), bool bulkActions = default(bool), bool teamMode = default(bool), decimal? visionCallsPerMonth = default(decimal?), decimal includedAccounts = default(decimal))
         {
             this.EmailSaleDetection = emailSaleDetection;
             this.BulkActions = bulkActions;
             this.TeamMode = teamMode;
+            this.IncludedAccounts = includedAccounts;
             this.ItemsPerMonth = itemsPerMonth;
             this.CrosspostsPerMonth = crosspostsPerMonth;
             this.AutomationRules = automationRules;
             this.AiEnhancements = aiEnhancements;
+            this.VisionCallsPerMonth = visionCallsPerMonth;
         }
 
         /// <summary>
@@ -100,6 +104,20 @@ namespace net.crossly.Model
         public bool TeamMode { get; set; }
 
         /// <summary>
+        /// Magic List photo identifications a month.
+        /// </summary>
+        /// <value>Magic List photo identifications a month.</value>
+        [DataMember(Name = "visionCallsPerMonth", EmitDefaultValue = true)]
+        public decimal? VisionCallsPerMonth { get; set; }
+
+        /// <summary>
+        /// Connection addresses (region slots) included before the extra-account add-on.
+        /// </summary>
+        /// <value>Connection addresses (region slots) included before the extra-account add-on.</value>
+        [DataMember(Name = "includedAccounts", IsRequired = true, EmitDefaultValue = false)]
+        public decimal IncludedAccounts { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -114,6 +132,8 @@ namespace net.crossly.Model
             sb.Append("  AiEnhancements: ").Append(AiEnhancements).Append("\n");
             sb.Append("  BulkActions: ").Append(BulkActions).Append("\n");
             sb.Append("  TeamMode: ").Append(TeamMode).Append("\n");
+            sb.Append("  VisionCallsPerMonth: ").Append(VisionCallsPerMonth).Append("\n");
+            sb.Append("  IncludedAccounts: ").Append(IncludedAccounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -180,6 +200,15 @@ namespace net.crossly.Model
                 (
                     this.TeamMode == input.TeamMode ||
                     this.TeamMode.Equals(input.TeamMode)
+                ) && 
+                (
+                    this.VisionCallsPerMonth == input.VisionCallsPerMonth ||
+                    (this.VisionCallsPerMonth != null &&
+                    this.VisionCallsPerMonth.Equals(input.VisionCallsPerMonth))
+                ) && 
+                (
+                    this.IncludedAccounts == input.IncludedAccounts ||
+                    this.IncludedAccounts.Equals(input.IncludedAccounts)
                 );
         }
 
@@ -211,6 +240,11 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.BulkActions.GetHashCode();
                 hashCode = (hashCode * 59) + this.TeamMode.GetHashCode();
+                if (this.VisionCallsPerMonth != null)
+                {
+                    hashCode = (hashCode * 59) + this.VisionCallsPerMonth.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.IncludedAccounts.GetHashCode();
                 return hashCode;
             }
         }

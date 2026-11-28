@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 
 <a name="createbulkbatchidentify"></a>
 # **CreateBulkBatchIdentify**
-> CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify (Guid id)
+> CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify (Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = null)
 
 Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
 
@@ -118,11 +118,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var createBulkBatchIdentifyRequest = new CreateBulkBatchIdentifyRequest(); // CreateBulkBatchIdentifyRequest |  (optional) 
 
             try
             {
                 // Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
-                CreateBulkBatchIdentifyResponse result = apiInstance.CreateBulkBatchIdentify(id);
+                CreateBulkBatchIdentifyResponse result = apiInstance.CreateBulkBatchIdentify(id, createBulkBatchIdentifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -141,6 +142,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBulkBatchIdentifyRequest** | **CreateBulkBatchIdentifyRequest**|  | [optional] 
 
 ### Return type
 
@@ -152,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -171,7 +173,7 @@ Name | Type | Description  | Notes
 
 <a name="createbulkbatchitem"></a>
 # **CreateBulkBatchItem**
-> CreateBulkBatchItemResponse CreateBulkBatchItem (Guid id)
+> CreateBulkBatchItemResponse CreateBulkBatchItem (Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest)
 
 Append one item (every photo of it, primary first).
 
@@ -196,11 +198,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var createBulkBatchItemRequest = new CreateBulkBatchItemRequest(); // CreateBulkBatchItemRequest | 
 
             try
             {
                 // Append one item (every photo of it, primary first).
-                CreateBulkBatchItemResponse result = apiInstance.CreateBulkBatchItem(id);
+                CreateBulkBatchItemResponse result = apiInstance.CreateBulkBatchItem(id, createBulkBatchItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -219,6 +222,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBulkBatchItemRequest** | **CreateBulkBatchItemRequest**|  | 
 
 ### Return type
 
@@ -230,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -249,7 +253,7 @@ Name | Type | Description  | Notes
 
 <a name="createbulkbatchitembulk"></a>
 # **CreateBulkBatchItemBulk**
-> UpdatedResponse CreateBulkBatchItemBulk (Guid id)
+> UpdatedResponse CreateBulkBatchItemBulk (Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest)
 
 Set price/quantity/condition/status on many items.
 
@@ -274,11 +278,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var createBulkBatchItemBulkRequest = new CreateBulkBatchItemBulkRequest(); // CreateBulkBatchItemBulkRequest | 
 
             try
             {
                 // Set price/quantity/condition/status on many items.
-                UpdatedResponse result = apiInstance.CreateBulkBatchItemBulk(id);
+                UpdatedResponse result = apiInstance.CreateBulkBatchItemBulk(id, createBulkBatchItemBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -297,6 +302,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBulkBatchItemBulkRequest** | **CreateBulkBatchItemBulkRequest**|  | 
 
 ### Return type
 
@@ -308,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -327,7 +333,7 @@ Name | Type | Description  | Notes
 
 <a name="createbulkbatchpublish"></a>
 # **CreateBulkBatchPublish**
-> CreateBulkBatchPublishResponse CreateBulkBatchPublish (Guid id)
+> CreateBulkBatchPublishResponse CreateBulkBatchPublish (Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = null)
 
 Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
 
@@ -352,11 +358,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var createBulkBatchPublishRequest = new CreateBulkBatchPublishRequest(); // CreateBulkBatchPublishRequest |  (optional) 
 
             try
             {
                 // Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
-                CreateBulkBatchPublishResponse result = apiInstance.CreateBulkBatchPublish(id);
+                CreateBulkBatchPublishResponse result = apiInstance.CreateBulkBatchPublish(id, createBulkBatchPublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -375,6 +382,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createBulkBatchPublishRequest** | **CreateBulkBatchPublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -386,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -717,7 +725,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebulkbatch"></a>
 # **UpdateBulkBatch**
-> ListBulkBatchesItem UpdateBulkBatch (Guid id)
+> ListBulkBatchesItem UpdateBulkBatch (Guid id, UpdateBulkBatchRequest updateBulkBatchRequest)
 
 Change batch settings, or set stage \"identify\" when capture is done.
 
@@ -742,11 +750,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var updateBulkBatchRequest = new UpdateBulkBatchRequest(); // UpdateBulkBatchRequest | 
 
             try
             {
                 // Change batch settings, or set stage \"identify\" when capture is done.
-                ListBulkBatchesItem result = apiInstance.UpdateBulkBatch(id);
+                ListBulkBatchesItem result = apiInstance.UpdateBulkBatch(id, updateBulkBatchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -765,6 +774,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateBulkBatchRequest** | **UpdateBulkBatchRequest**|  | 
 
 ### Return type
 
@@ -776,7 +786,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -795,7 +805,7 @@ Name | Type | Description  | Notes
 
 <a name="updatebulkbatchitem"></a>
 # **UpdateBulkBatchItem**
-> CreateBulkBatchItemResponse UpdateBulkBatchItem (Guid id)
+> CreateBulkBatchItemResponse UpdateBulkBatchItem (Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest)
 
 Correct one item (match, title, price, photos…).
 
@@ -820,11 +830,12 @@ namespace Example
 
             var apiInstance = new BulkBatchesApi(config);
             var id = "id_example";  // Guid | 
+            var updateBulkBatchItemRequest = new UpdateBulkBatchItemRequest(); // UpdateBulkBatchItemRequest | 
 
             try
             {
                 // Correct one item (match, title, price, photos…).
-                CreateBulkBatchItemResponse result = apiInstance.UpdateBulkBatchItem(id);
+                CreateBulkBatchItemResponse result = apiInstance.UpdateBulkBatchItem(id, updateBulkBatchItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -843,6 +854,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateBulkBatchItemRequest** | **UpdateBulkBatchItemRequest**|  | 
 
 ### Return type
 
@@ -854,7 +866,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum ModeEnum
         {
             /// <summary>
+            /// Enum All for value: all
+            /// </summary>
+            [EnumMember(Value = "all")]
+            All = 1,
+
+            /// <summary>
             /// Enum Category for value: category
             /// </summary>
             [EnumMember(Value = "category")]
-            Category = 1,
+            Category = 2,
 
             /// <summary>
             /// Enum Tags for value: tags
             /// </summary>
             [EnumMember(Value = "tags")]
-            Tags = 2,
+            Tags = 3,
 
             /// <summary>
             /// Enum Manual for value: manual
             /// </summary>
             [EnumMember(Value = "manual")]
-            Manual = 3,
-
-            /// <summary>
-            /// Enum All for value: all
-            /// </summary>
-            [EnumMember(Value = "all")]
-            All = 4,
+            Manual = 4,
 
             /// <summary>
             /// Enum Smart for value: smart

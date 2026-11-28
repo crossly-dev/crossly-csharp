@@ -40,15 +40,19 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreatePlatformAccountHistoryImportResponse" /> class.
         /// </summary>
         /// <param name="pendingAccounts">pendingAccounts (required).</param>
+        /// <param name="accountIds">The account rows the window was saved on (user_platform_accounts / platform_connections ids)..</param>
         /// <param name="ledgerFired">ledgerFired (required).</param>
         /// <param name="listingsFired">listingsFired (required).</param>
+        /// <param name="messagesFired">messagesFired.</param>
         /// <param name="ok">ok (required).</param>
-        public CreatePlatformAccountHistoryImportResponse(decimal pendingAccounts = default(decimal), bool ledgerFired = default(bool), bool listingsFired = default(bool), bool ok = default(bool))
+        public CreatePlatformAccountHistoryImportResponse(decimal pendingAccounts = default(decimal), List<string> accountIds = default(List<string>), bool ledgerFired = default(bool), bool listingsFired = default(bool), bool? messagesFired = default(bool?), bool ok = default(bool))
         {
             this.PendingAccounts = pendingAccounts;
             this.LedgerFired = ledgerFired;
             this.ListingsFired = listingsFired;
             this.Ok = ok;
+            this.AccountIds = accountIds;
+            this.MessagesFired = messagesFired;
         }
 
         /// <summary>
@@ -56,6 +60,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "pendingAccounts", IsRequired = true, EmitDefaultValue = false)]
         public decimal PendingAccounts { get; set; }
+
+        /// <summary>
+        /// The account rows the window was saved on (user_platform_accounts / platform_connections ids).
+        /// </summary>
+        /// <value>The account rows the window was saved on (user_platform_accounts / platform_connections ids).</value>
+        [DataMember(Name = "accountIds", EmitDefaultValue = true)]
+        public List<string> AccountIds { get; set; }
 
         /// <summary>
         /// Gets or Sets LedgerFired
@@ -68,6 +79,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "listingsFired", IsRequired = true, EmitDefaultValue = true)]
         public bool ListingsFired { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MessagesFired
+        /// </summary>
+        [DataMember(Name = "messagesFired", EmitDefaultValue = true)]
+        public bool? MessagesFired { get; set; }
 
         /// <summary>
         /// Gets or Sets Ok
@@ -84,8 +101,10 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreatePlatformAccountHistoryImportResponse {\n");
             sb.Append("  PendingAccounts: ").Append(PendingAccounts).Append("\n");
+            sb.Append("  AccountIds: ").Append(AccountIds).Append("\n");
             sb.Append("  LedgerFired: ").Append(LedgerFired).Append("\n");
             sb.Append("  ListingsFired: ").Append(ListingsFired).Append("\n");
+            sb.Append("  MessagesFired: ").Append(MessagesFired).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -127,12 +146,23 @@ namespace net.crossly.Model
                     this.PendingAccounts.Equals(input.PendingAccounts)
                 ) && 
                 (
+                    this.AccountIds == input.AccountIds ||
+                    this.AccountIds != null &&
+                    input.AccountIds != null &&
+                    this.AccountIds.SequenceEqual(input.AccountIds)
+                ) && 
+                (
                     this.LedgerFired == input.LedgerFired ||
                     this.LedgerFired.Equals(input.LedgerFired)
                 ) && 
                 (
                     this.ListingsFired == input.ListingsFired ||
                     this.ListingsFired.Equals(input.ListingsFired)
+                ) && 
+                (
+                    this.MessagesFired == input.MessagesFired ||
+                    (this.MessagesFired != null &&
+                    this.MessagesFired.Equals(input.MessagesFired))
                 ) && 
                 (
                     this.Ok == input.Ok ||
@@ -150,8 +180,16 @@ namespace net.crossly.Model
             {
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.PendingAccounts.GetHashCode();
+                if (this.AccountIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountIds.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.LedgerFired.GetHashCode();
                 hashCode = (hashCode * 59) + this.ListingsFired.GetHashCode();
+                if (this.MessagesFired != null)
+                {
+                    hashCode = (hashCode * 59) + this.MessagesFired.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 return hashCode;
             }

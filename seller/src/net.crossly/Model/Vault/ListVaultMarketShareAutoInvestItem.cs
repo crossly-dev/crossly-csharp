@@ -139,7 +139,7 @@ namespace net.crossly.Model
         /// <param name="lastRunAt">lastRunAt.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="note">note (required).</param>
-        public ListVaultMarketShareAutoInvestItem(string id = default(string), string venue = default(string), bool practice = default(bool), TargetKindEnum targetKind = default(TargetKindEnum), string basketId = default(string), List<ListVaultMarketShareAutoInvestItemTargets> targets = default(List<ListVaultMarketShareAutoInvestItemTargets>), decimal amountCents = default(decimal), EveryEnum every = default(EveryEnum), decimal carryCents = default(decimal), decimal maxPremiumBps = default(decimal), bool rebalance = default(bool), StatusEnum status = default(StatusEnum), string nextRunAt = default(string), string lastRunAt = default(string), string createdAt = default(string), string note = default(string))
+        public ListVaultMarketShareAutoInvestItem(string id = default(string), string venue = default(string), bool practice = default(bool), TargetKindEnum targetKind = default(TargetKindEnum), string basketId = default(string), List<SeriesIdWeightBps> targets = default(List<SeriesIdWeightBps>), decimal amountCents = default(decimal), EveryEnum every = default(EveryEnum), decimal carryCents = default(decimal), decimal maxPremiumBps = default(decimal), bool rebalance = default(bool), StatusEnum status = default(StatusEnum), string nextRunAt = default(string), string lastRunAt = default(string), string createdAt = default(string), string note = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -207,7 +207,7 @@ namespace net.crossly.Model
         /// Gets or Sets Targets
         /// </summary>
         [DataMember(Name = "targets", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListVaultMarketShareAutoInvestItemTargets> Targets { get; set; }
+        public List<SeriesIdWeightBps> Targets { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountCents

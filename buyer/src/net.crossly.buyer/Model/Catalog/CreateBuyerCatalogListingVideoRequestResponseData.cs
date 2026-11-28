@@ -44,12 +44,12 @@ namespace net.crossly.buyer.Model
         /// <param name="status">status (required).</param>
         /// <param name="videoUrl">videoUrl.</param>
         /// <param name="platformListingId">platformListingId (required).</param>
+        /// <param name="note">note.</param>
         /// <param name="buyerUserId">buyerUserId (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
-        /// <param name="note">note.</param>
         /// <param name="answeredAt">answeredAt.</param>
         /// <param name="sellerNote">sellerNote.</param>
-        public CreateBuyerCatalogListingVideoRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string videoUrl = default(string), string platformListingId = default(string), string buyerUserId = default(string), string sellerUserId = default(string), string note = default(string), DateTime? answeredAt = default(DateTime?), string sellerNote = default(string))
+        public CreateBuyerCatalogListingVideoRequestResponseData(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string videoUrl = default(string), string platformListingId = default(string), string note = default(string), string buyerUserId = default(string), string sellerUserId = default(string), DateTime? answeredAt = default(DateTime?), string sellerNote = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -114,6 +114,12 @@ namespace net.crossly.buyer.Model
         public string PlatformListingId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Gets or Sets BuyerUserId
         /// </summary>
         [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
@@ -124,12 +130,6 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
         public string SellerUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Note
-        /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
 
         /// <summary>
         /// Gets or Sets AnsweredAt
@@ -156,9 +156,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  VideoUrl: ").Append(VideoUrl).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  AnsweredAt: ").Append(AnsweredAt).Append("\n");
             sb.Append("  SellerNote: ").Append(SellerNote).Append("\n");
             sb.Append("}\n");
@@ -222,6 +222,11 @@ namespace net.crossly.buyer.Model
                     this.PlatformListingId.Equals(input.PlatformListingId))
                 ) && 
                 (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
                     this.BuyerUserId == input.BuyerUserId ||
                     (this.BuyerUserId != null &&
                     this.BuyerUserId.Equals(input.BuyerUserId))
@@ -230,11 +235,6 @@ namespace net.crossly.buyer.Model
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
                 ) && 
                 (
                     this.AnsweredAt == input.AnsweredAt ||
@@ -277,6 +277,10 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
                 }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 if (this.BuyerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.BuyerUserId.GetHashCode();
@@ -284,10 +288,6 @@ namespace net.crossly.buyer.Model
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
-                if (this.Note != null)
-                {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
                 }
                 if (this.AnsweredAt != null)
                 {

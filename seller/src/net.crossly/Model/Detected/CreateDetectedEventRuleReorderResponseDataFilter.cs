@@ -45,7 +45,8 @@ namespace net.crossly.Model
         /// <param name="apps">apps.</param>
         /// <param name="tags">tags.</param>
         /// <param name="itemIds">itemIds.</param>
-        public CreateDetectedEventRuleReorderResponseDataFilter(List<CreateDetectedEventRuleReorderResponseDataFilterKindsItem> kinds = default(List<CreateDetectedEventRuleReorderResponseDataFilterKindsItem>), List<string> platforms = default(List<string>), List<string> accounts = default(List<string>), List<string> apps = default(List<string>), List<string> tags = default(List<string>), List<string> itemIds = default(List<string>))
+        /// <param name="storefronts">The stores this rule applies in (storefront ids); unset &#x3D; every store of the account. \&quot;Copy to other stores…\&quot; writes a copy limited to each target store (api-sale detected-events/copy-rule.ts)..</param>
+        public CreateDetectedEventRuleReorderResponseDataFilter(List<CreateDetectedEventRuleReorderResponseDataFilterKindsItem> kinds = default(List<CreateDetectedEventRuleReorderResponseDataFilterKindsItem>), List<string> platforms = default(List<string>), List<string> accounts = default(List<string>), List<string> apps = default(List<string>), List<string> tags = default(List<string>), List<string> itemIds = default(List<string>), List<string> storefronts = default(List<string>))
         {
             // to ensure "kinds" is required (not null)
             if (kinds == null) {
@@ -57,6 +58,7 @@ namespace net.crossly.Model
             this.Apps = apps;
             this.Tags = tags;
             this.ItemIds = itemIds;
+            this.Storefronts = storefronts;
         }
 
         /// <summary>
@@ -96,6 +98,13 @@ namespace net.crossly.Model
         public List<string> ItemIds { get; set; }
 
         /// <summary>
+        /// The stores this rule applies in (storefront ids); unset &#x3D; every store of the account. \&quot;Copy to other stores…\&quot; writes a copy limited to each target store (api-sale detected-events/copy-rule.ts).
+        /// </summary>
+        /// <value>The stores this rule applies in (storefront ids); unset &#x3D; every store of the account. \&quot;Copy to other stores…\&quot; writes a copy limited to each target store (api-sale detected-events/copy-rule.ts).</value>
+        [DataMember(Name = "storefronts", EmitDefaultValue = true)]
+        public List<string> Storefronts { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -109,6 +118,7 @@ namespace net.crossly.Model
             sb.Append("  Apps: ").Append(Apps).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  ItemIds: ").Append(ItemIds).Append("\n");
+            sb.Append("  Storefronts: ").Append(Storefronts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -179,6 +189,12 @@ namespace net.crossly.Model
                     this.ItemIds != null &&
                     input.ItemIds != null &&
                     this.ItemIds.SequenceEqual(input.ItemIds)
+                ) && 
+                (
+                    this.Storefronts == input.Storefronts ||
+                    this.Storefronts != null &&
+                    input.Storefronts != null &&
+                    this.Storefronts.SequenceEqual(input.Storefronts)
                 );
         }
 
@@ -214,6 +230,10 @@ namespace net.crossly.Model
                 if (this.ItemIds != null)
                 {
                     hashCode = (hashCode * 59) + this.ItemIds.GetHashCode();
+                }
+                if (this.Storefronts != null)
+                {
+                    hashCode = (hashCode * 59) + this.Storefronts.GetHashCode();
                 }
                 return hashCode;
             }

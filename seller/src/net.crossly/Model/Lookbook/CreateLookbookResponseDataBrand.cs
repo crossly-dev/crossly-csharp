@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Inter = 2,
 
             /// <summary>
+            /// Enum SpaceGrotesk for value: space-grotesk
+            /// </summary>
+            [EnumMember(Value = "space-grotesk")]
+            SpaceGrotesk = 3,
+
+            /// <summary>
             /// Enum Playfair for value: playfair
             /// </summary>
             [EnumMember(Value = "playfair")]
-            Playfair = 3,
-
-            /// <summary>
-            /// Enum DmSerif for value: dm-serif
-            /// </summary>
-            [EnumMember(Value = "dm-serif")]
-            DmSerif = 4,
+            Playfair = 4,
 
             /// <summary>
             /// Enum Cormorant for value: cormorant
@@ -68,28 +68,28 @@ namespace net.crossly.Model
             Cormorant = 5,
 
             /// <summary>
-            /// Enum SpaceGrotesk for value: space-grotesk
+            /// Enum ArchivoBlack for value: archivo-black
             /// </summary>
-            [EnumMember(Value = "space-grotesk")]
-            SpaceGrotesk = 6,
+            [EnumMember(Value = "archivo-black")]
+            ArchivoBlack = 6,
+
+            /// <summary>
+            /// Enum DmSerif for value: dm-serif
+            /// </summary>
+            [EnumMember(Value = "dm-serif")]
+            DmSerif = 7,
 
             /// <summary>
             /// Enum Syne for value: syne
             /// </summary>
             [EnumMember(Value = "syne")]
-            Syne = 7,
+            Syne = 8,
 
             /// <summary>
             /// Enum Bebas for value: bebas
             /// </summary>
             [EnumMember(Value = "bebas")]
-            Bebas = 8,
-
-            /// <summary>
-            /// Enum ArchivoBlack for value: archivo-black
-            /// </summary>
-            [EnumMember(Value = "archivo-black")]
-            ArchivoBlack = 9,
+            Bebas = 9,
 
             /// <summary>
             /// Enum Caveat for value: caveat
@@ -136,16 +136,16 @@ namespace net.crossly.Model
             Inter = 2,
 
             /// <summary>
+            /// Enum SpaceGrotesk for value: space-grotesk
+            /// </summary>
+            [EnumMember(Value = "space-grotesk")]
+            SpaceGrotesk = 3,
+
+            /// <summary>
             /// Enum Playfair for value: playfair
             /// </summary>
             [EnumMember(Value = "playfair")]
-            Playfair = 3,
-
-            /// <summary>
-            /// Enum DmSerif for value: dm-serif
-            /// </summary>
-            [EnumMember(Value = "dm-serif")]
-            DmSerif = 4,
+            Playfair = 4,
 
             /// <summary>
             /// Enum Cormorant for value: cormorant
@@ -154,28 +154,28 @@ namespace net.crossly.Model
             Cormorant = 5,
 
             /// <summary>
-            /// Enum SpaceGrotesk for value: space-grotesk
+            /// Enum ArchivoBlack for value: archivo-black
             /// </summary>
-            [EnumMember(Value = "space-grotesk")]
-            SpaceGrotesk = 6,
+            [EnumMember(Value = "archivo-black")]
+            ArchivoBlack = 6,
+
+            /// <summary>
+            /// Enum DmSerif for value: dm-serif
+            /// </summary>
+            [EnumMember(Value = "dm-serif")]
+            DmSerif = 7,
 
             /// <summary>
             /// Enum Syne for value: syne
             /// </summary>
             [EnumMember(Value = "syne")]
-            Syne = 7,
+            Syne = 8,
 
             /// <summary>
             /// Enum Bebas for value: bebas
             /// </summary>
             [EnumMember(Value = "bebas")]
-            Bebas = 8,
-
-            /// <summary>
-            /// Enum ArchivoBlack for value: archivo-black
-            /// </summary>
-            [EnumMember(Value = "archivo-black")]
-            ArchivoBlack = 9,
+            Bebas = 9,
 
             /// <summary>
             /// Enum Caveat for value: caveat

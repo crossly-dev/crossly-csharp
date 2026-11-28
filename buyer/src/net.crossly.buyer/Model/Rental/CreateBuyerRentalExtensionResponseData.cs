@@ -42,8 +42,10 @@ namespace net.crossly.buyer.Model
         /// <param name="extensionId">extensionId (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="cents">cents (required).</param>
+        /// <param name="freeDays">freeDays (required).</param>
         /// <param name="clientSecret">clientSecret.</param>
-        public CreateBuyerRentalExtensionResponseData(string extensionId = default(string), string status = default(string), decimal cents = default(decimal), Object clientSecret = default(Object))
+        /// <param name="note">note.</param>
+        public CreateBuyerRentalExtensionResponseData(string extensionId = default(string), string status = default(string), decimal cents = default(decimal), decimal freeDays = default(decimal), Object clientSecret = default(Object), string note = default(string))
         {
             // to ensure "extensionId" is required (not null)
             if (extensionId == null) {
@@ -56,7 +58,9 @@ namespace net.crossly.buyer.Model
             }
             this.Status = status;
             this.Cents = cents;
+            this.FreeDays = freeDays;
             this.ClientSecret = clientSecret;
+            this.Note = note;
         }
 
         /// <summary>
@@ -78,10 +82,22 @@ namespace net.crossly.buyer.Model
         public decimal Cents { get; set; }
 
         /// <summary>
+        /// Gets or Sets FreeDays
+        /// </summary>
+        [DataMember(Name = "freeDays", IsRequired = true, EmitDefaultValue = false)]
+        public decimal FreeDays { get; set; }
+
+        /// <summary>
         /// Gets or Sets ClientSecret
         /// </summary>
         [DataMember(Name = "clientSecret", EmitDefaultValue = true)]
         public Object ClientSecret { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = false)]
+        public string Note { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,7 +110,9 @@ namespace net.crossly.buyer.Model
             sb.Append("  ExtensionId: ").Append(ExtensionId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
+            sb.Append("  FreeDays: ").Append(FreeDays).Append("\n");
             sb.Append("  ClientSecret: ").Append(ClientSecret).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -145,9 +163,18 @@ namespace net.crossly.buyer.Model
                     this.Cents.Equals(input.Cents)
                 ) && 
                 (
+                    this.FreeDays == input.FreeDays ||
+                    this.FreeDays.Equals(input.FreeDays)
+                ) && 
+                (
                     this.ClientSecret == input.ClientSecret ||
                     (this.ClientSecret != null &&
                     this.ClientSecret.Equals(input.ClientSecret))
+                ) && 
+                (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
                 );
         }
 
@@ -169,9 +196,14 @@ namespace net.crossly.buyer.Model
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Cents.GetHashCode();
+                hashCode = (hashCode * 59) + this.FreeDays.GetHashCode();
                 if (this.ClientSecret != null)
                 {
                     hashCode = (hashCode * 59) + this.ClientSecret.GetHashCode();
+                }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
                 }
                 return hashCode;
             }

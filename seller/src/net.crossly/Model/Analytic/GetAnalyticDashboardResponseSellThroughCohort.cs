@@ -47,7 +47,7 @@ namespace net.crossly.Model
         /// <param name="immature">immature (required).</param>
         /// <param name="prev">prev.</param>
         /// <param name="delta">delta (required).</param>
-        public GetAnalyticDashboardResponseSellThroughCohort(FromTo2 window = default(FromTo2), decimal maturityDays = default(decimal), decimal? rate = default(decimal?), decimal sold = default(decimal), decimal n = default(decimal), decimal immature = default(decimal), GetAnalyticDashboardResponseSellThroughCohortPrev prev = default(GetAnalyticDashboardResponseSellThroughCohortPrev), GetAnalyticOverviewResponseDataKpisNetSalesDelta delta = default(GetAnalyticOverviewResponseDataKpisNetSalesDelta))
+        public GetAnalyticDashboardResponseSellThroughCohort(CreateListingTagRenameRequest window = default(CreateListingTagRenameRequest), decimal maturityDays = default(decimal), decimal? rate = default(decimal?), decimal sold = default(decimal), decimal n = default(decimal), decimal immature = default(decimal), GetAnalyticDashboardResponseSellThroughCohortPrev prev = default(GetAnalyticDashboardResponseSellThroughCohortPrev), GetAnalyticOverviewResponseDataKpisNetSalesDelta delta = default(GetAnalyticOverviewResponseDataKpisNetSalesDelta))
         {
             // to ensure "window" is required (not null)
             if (window == null) {
@@ -71,7 +71,7 @@ namespace net.crossly.Model
         /// Gets or Sets Window
         /// </summary>
         [DataMember(Name = "window", IsRequired = true, EmitDefaultValue = false)]
-        public FromTo2 Window { get; set; }
+        public CreateListingTagRenameRequest Window { get; set; }
 
         /// <summary>
         /// Gets or Sets MaturityDays

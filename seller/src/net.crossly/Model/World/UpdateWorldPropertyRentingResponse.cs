@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="UpdateWorldPropertyRentingResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public UpdateWorldPropertyRentingResponse(UpdateWorldPropertyRentingResponseData data = default(UpdateWorldPropertyRentingResponseData))
+        public UpdateWorldPropertyRentingResponse(UpdateWorldPropertyRentingRequest data = default(UpdateWorldPropertyRentingRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public UpdateWorldPropertyRentingResponseData Data { get; set; }
+        public UpdateWorldPropertyRentingRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

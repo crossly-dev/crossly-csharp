@@ -44,12 +44,12 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="description">description.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="slug">slug (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="kind">kind (required).</param>
+        /// <param name="title">title (required).</param>
         /// <param name="endsAt">endsAt.</param>
         /// <param name="cancelledAt">cancelledAt.</param>
-        /// <param name="kind">kind (required).</param>
         /// <param name="config">config (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="coverImageUrl">coverImageUrl.</param>
@@ -76,7 +76,7 @@ namespace net.crossly.Model
         /// <param name="worldConfig">worldConfig.</param>
         /// <param name="worldRef">worldRef.</param>
         /// <param name="remindersSent">remindersSent (required).</param>
-        public CreateBrandingEventCancelResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), string status = default(string), string title = default(string), string slug = default(string), string storefrontId = default(string), DateTime? endsAt = default(DateTime?), DateTime? cancelledAt = default(DateTime?), string kind = default(string), Dictionary<string, Object> config = default(Dictionary<string, Object>), string sellerUserId = default(string), string coverImageUrl = default(string), decimal viewCount = default(decimal), DateTime startsAt = default(DateTime), string liveStreamId = default(string), string timezone = default(string), List<string> listingIds = default(List<string>), DateTime? notifiedAt = default(DateTime?), string discountCodeId = default(string), string cancelReason = default(string), string seriesId = default(string), decimal? capacity = default(decimal?), string locationType = default(string), string locationText = default(string), string locationUrl = default(string), bool rsvpEnabled = default(bool), bool featureOnStorefront = default(bool), bool notifyFollowers = default(bool), Dictionary<string, Object> recurrence = default(Dictionary<string, Object>), List<string> cohostUserIds = default(List<string>), bool ticketingEnabled = default(bool), bool checkInEnabled = default(bool), Dictionary<string, Object> worldConfig = default(Dictionary<string, Object>), CreateBrandingEventCancelResponseDataWorldRef worldRef = default(CreateBrandingEventCancelResponseDataWorldRef), List<decimal> remindersSent = default(List<decimal>))
+        public CreateBrandingEventCancelResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), string status = default(string), string slug = default(string), string storefrontId = default(string), string kind = default(string), string title = default(string), DateTime? endsAt = default(DateTime?), DateTime? cancelledAt = default(DateTime?), Dictionary<string, Object> config = default(Dictionary<string, Object>), string sellerUserId = default(string), string coverImageUrl = default(string), decimal viewCount = default(decimal), DateTime startsAt = default(DateTime), string liveStreamId = default(string), string timezone = default(string), List<string> listingIds = default(List<string>), DateTime? notifiedAt = default(DateTime?), string discountCodeId = default(string), string cancelReason = default(string), string seriesId = default(string), decimal? capacity = default(decimal?), string locationType = default(string), string locationText = default(string), string locationUrl = default(string), bool rsvpEnabled = default(bool), bool featureOnStorefront = default(bool), bool notifyFollowers = default(bool), Dictionary<string, Object> recurrence = default(Dictionary<string, Object>), List<string> cohostUserIds = default(List<string>), bool ticketingEnabled = default(bool), bool checkInEnabled = default(bool), Dictionary<string, Object> worldConfig = default(Dictionary<string, Object>), CreateBrandingEventCancelResponseDataWorldRef worldRef = default(CreateBrandingEventCancelResponseDataWorldRef), List<decimal> remindersSent = default(List<decimal>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -90,11 +90,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for CreateBrandingEventCancelResponseData and cannot be null");
             }
             this.Status = status;
-            // to ensure "title" is required (not null)
-            if (title == null) {
-                throw new ArgumentNullException("title is a required property for CreateBrandingEventCancelResponseData and cannot be null");
-            }
-            this.Title = title;
             // to ensure "slug" is required (not null)
             if (slug == null) {
                 throw new ArgumentNullException("slug is a required property for CreateBrandingEventCancelResponseData and cannot be null");
@@ -105,6 +100,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("kind is a required property for CreateBrandingEventCancelResponseData and cannot be null");
             }
             this.Kind = kind;
+            // to ensure "title" is required (not null)
+            if (title == null) {
+                throw new ArgumentNullException("title is a required property for CreateBrandingEventCancelResponseData and cannot be null");
+            }
+            this.Title = title;
             // to ensure "config" is required (not null)
             if (config == null) {
                 throw new ArgumentNullException("config is a required property for CreateBrandingEventCancelResponseData and cannot be null");
@@ -192,12 +192,6 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets Slug
         /// </summary>
         [DataMember(Name = "slug", IsRequired = true, EmitDefaultValue = false)]
@@ -210,6 +204,18 @@ namespace net.crossly.Model
         public string StorefrontId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
+
+        /// <summary>
         /// Gets or Sets EndsAt
         /// </summary>
         [DataMember(Name = "endsAt", EmitDefaultValue = true)]
@@ -220,12 +226,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "cancelledAt", EmitDefaultValue = true)]
         public DateTime? CancelledAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Kind
-        /// </summary>
-        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
-        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or Sets Config
@@ -396,12 +396,12 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  CancelledAt: ").Append(CancelledAt).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Config: ").Append(Config).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
@@ -489,11 +489,6 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
@@ -504,6 +499,16 @@ namespace net.crossly.Model
                     this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
+                ) && 
+                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
@@ -512,11 +517,6 @@ namespace net.crossly.Model
                     this.CancelledAt == input.CancelledAt ||
                     (this.CancelledAt != null &&
                     this.CancelledAt.Equals(input.CancelledAt))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    (this.Kind != null &&
-                    this.Kind.Equals(input.Kind))
                 ) && 
                 (
                     this.Config == input.Config ||
@@ -679,10 +679,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
@@ -691,6 +687,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
+                if (this.Kind != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
@@ -698,10 +702,6 @@ namespace net.crossly.Model
                 if (this.CancelledAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CancelledAt.GetHashCode();
-                }
-                if (this.Kind != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
                 if (this.Config != null)
                 {

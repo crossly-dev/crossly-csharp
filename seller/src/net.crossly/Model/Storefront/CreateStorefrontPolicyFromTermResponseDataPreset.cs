@@ -45,10 +45,11 @@ namespace net.crossly.Model
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="isDefault">isDefault (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="revision">revision (required).</param>
         /// <param name="hasDomesticRules">hasDomesticRules (required).</param>
-        public CreateStorefrontPolicyFromTermResponseDataPreset(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), bool isDefault = default(bool), string kind = default(string), decimal revision = default(decimal), bool hasDomesticRules = default(bool))
+        public CreateStorefrontPolicyFromTermResponseDataPreset(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), bool isDefault = default(bool), string storefrontId = default(string), string kind = default(string), decimal revision = default(decimal), bool hasDomesticRules = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -75,6 +76,7 @@ namespace net.crossly.Model
             this.Kind = kind;
             this.Revision = revision;
             this.HasDomesticRules = hasDomesticRules;
+            this.StorefrontId = storefrontId;
         }
 
         /// <summary>
@@ -114,6 +116,12 @@ namespace net.crossly.Model
         public bool IsDefault { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
@@ -145,6 +153,7 @@ namespace net.crossly.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  IsDefault: ").Append(IsDefault).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Revision: ").Append(Revision).Append("\n");
             sb.Append("  HasDomesticRules: ").Append(HasDomesticRules).Append("\n");
@@ -213,6 +222,11 @@ namespace net.crossly.Model
                     this.IsDefault.Equals(input.IsDefault)
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
@@ -257,6 +271,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IsDefault.GetHashCode();
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();

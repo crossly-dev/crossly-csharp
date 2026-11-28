@@ -89,9 +89,10 @@ namespace net.crossly.Api
         /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>IdResponse</returns>
         [Obsolete]
-        IdResponse CreateWorkflowChain();
+        IdResponse CreateWorkflowChain(CreateWorkflowChainRequest createWorkflowChainRequest);
 
         /// <summary>
         /// Create a multi-step workflow chain.
@@ -100,9 +101,10 @@ namespace net.crossly.Api
         /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
         [Obsolete]
-        ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo();
+        ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo(CreateWorkflowChainRequest createWorkflowChainRequest);
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
@@ -209,9 +211,9 @@ namespace net.crossly.Api
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <returns>CreateWorkflowImportResponse</returns>
-        CreateWorkflowImportResponse CreateWorkflowImport(Dictionary<string, Object> requestBody);
+        CreateWorkflowImportResponse CreateWorkflowImport(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest));
 
         /// <summary>
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
@@ -220,9 +222,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorkflowImportResponse</returns>
-        ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest));
         /// <summary>
         /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
         /// </summary>
@@ -379,8 +381,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <returns>WorkflowResponse</returns>
-        WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v);
+        WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest));
 
         /// <summary>
         /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
@@ -391,8 +394,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <returns>ApiResponse of WorkflowResponse</returns>
-        ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v);
+        ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest));
         /// <summary>
         /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
         /// </summary>
@@ -784,9 +788,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>OkResponse</returns>
         [Obsolete]
-        OkResponse UpdateWorkflowChain(Guid id);
+        OkResponse UpdateWorkflowChain(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest);
 
         /// <summary>
         /// Replace a workflow chain wholesale.
@@ -796,9 +801,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
         [Obsolete]
-        ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id);
+        ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest);
         #endregion Synchronous Operations
     }
 
@@ -886,10 +892,11 @@ namespace net.crossly.Api
         /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a multi-step workflow chain.
@@ -898,10 +905,11 @@ namespace net.crossly.Api
         /// Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Enqueue an ad-hoc run of a workflow chain.
         /// </summary>
@@ -1030,10 +1038,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowImportResponse</returns>
-        System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
@@ -1042,10 +1050,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowImportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run a workflow (active or paused) live now, on items you pass or on selected listings / orders / inventory items (one kind per call, up to 1,000). The graph must validate (422 with issues otherwise).
         /// </summary>
@@ -1245,9 +1253,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorkflowResponse</returns>
-        System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Restore an earlier version&#39;s graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
@@ -1258,9 +1267,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Issue a new inbound URL for an on.webhook trigger node (the old one stops working). The URL, and the signing secret when withSecret&#x3D;true, are returned ONCE: store them now.
         /// </summary>
@@ -1733,10 +1743,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace a workflow chain wholesale.
@@ -1746,10 +1757,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -2310,11 +2322,12 @@ namespace net.crossly.Api
         /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>IdResponse</returns>
         [Obsolete]
-        public IdResponse CreateWorkflowChain()
+        public IdResponse CreateWorkflowChain(CreateWorkflowChainRequest createWorkflowChainRequest)
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateWorkflowChainWithHttpInfo();
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateWorkflowChainWithHttpInfo(createWorkflowChainRequest);
             return localVarResponse.Data;
         }
 
@@ -2322,13 +2335,21 @@ namespace net.crossly.Api
         /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
         [Obsolete]
-        public net.crossly.Client.ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo()
+        public net.crossly.Client.ApiResponse<IdResponse> CreateWorkflowChainWithHttpInfo(CreateWorkflowChainRequest createWorkflowChainRequest)
         {
+            // verify the required parameter 'createWorkflowChainRequest' is set
+            if (createWorkflowChainRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowChainRequest' when calling WorkflowsApi->CreateWorkflowChain");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2348,6 +2369,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWorkflowChainRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2374,12 +2396,13 @@ namespace net.crossly.Api
         /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdResponse> CreateWorkflowChainAsync(CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateWorkflowChainWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateWorkflowChainWithHttpInfoAsync(createWorkflowChainRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2387,15 +2410,23 @@ namespace net.crossly.Api
         /// Create a multi-step workflow chain. Deprecated: workflow chains are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateWorkflowChainWithHttpInfoAsync(CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWorkflowChainRequest' is set
+            if (createWorkflowChainRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowChainRequest' when calling WorkflowsApi->CreateWorkflowChain");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2415,6 +2446,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createWorkflowChainRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3154,11 +3186,11 @@ namespace net.crossly.Api
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <returns>CreateWorkflowImportResponse</returns>
-        public CreateWorkflowImportResponse CreateWorkflowImport(Dictionary<string, Object> requestBody)
+        public CreateWorkflowImportResponse CreateWorkflowImport(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest))
         {
-            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = CreateWorkflowImportWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = CreateWorkflowImportWithHttpInfo(createWorkflowImportRequest);
             return localVarResponse.Data;
         }
 
@@ -3166,16 +3198,10 @@ namespace net.crossly.Api
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorkflowImportResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> CreateWorkflowImportWithHttpInfo(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowsApi->CreateWorkflowImport");
-            }
-
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -3199,7 +3225,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createWorkflowImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3226,12 +3252,12 @@ namespace net.crossly.Api
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorkflowImportResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorkflowImportResponse> CreateWorkflowImportAsync(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = await CreateWorkflowImportWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorkflowImportResponse> localVarResponse = await CreateWorkflowImportWithHttpInfoAsync(createWorkflowImportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3239,17 +3265,11 @@ namespace net.crossly.Api
         /// Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createWorkflowImportRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorkflowImportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorkflowImportResponse>> CreateWorkflowImportWithHttpInfoAsync(CreateWorkflowImportRequest createWorkflowImportRequest = default(CreateWorkflowImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
-            {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling WorkflowsApi->CreateWorkflowImport");
-            }
-
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3274,7 +3294,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createWorkflowImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4476,10 +4496,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <returns>WorkflowResponse</returns>
-        public WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v)
+        public WorkflowResponse CreateWorkflowVersionRestore(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest))
         {
-            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = CreateWorkflowVersionRestoreWithHttpInfo(id, v);
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = CreateWorkflowVersionRestoreWithHttpInfo(id, v, createWorkflowVersionRestoreRequest);
             return localVarResponse.Data;
         }
 
@@ -4489,12 +4510,14 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <returns>ApiResponse of WorkflowResponse</returns>
-        public net.crossly.Client.ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v)
+        public net.crossly.Client.ApiResponse<WorkflowResponse> CreateWorkflowVersionRestoreWithHttpInfo(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4516,6 +4539,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("v", net.crossly.Client.ClientUtils.ParameterToString(v)); // path parameter
+            localVarRequestOptions.Data = createWorkflowVersionRestoreRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4544,11 +4568,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorkflowResponse</returns>
-        public async System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorkflowResponse> CreateWorkflowVersionRestoreAsync(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await CreateWorkflowVersionRestoreWithHttpInfoAsync(id, v, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorkflowResponse> localVarResponse = await CreateWorkflowVersionRestoreWithHttpInfoAsync(id, v, createWorkflowVersionRestoreRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4558,14 +4583,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Workflow id.</param>
         /// <param name="v">The version number to restore.</param>
+        /// <param name="createWorkflowVersionRestoreRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorkflowResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorkflowResponse>> CreateWorkflowVersionRestoreWithHttpInfoAsync(Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = default(CreateWorkflowVersionRestoreRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4587,6 +4614,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("v", net.crossly.Client.ClientUtils.ParameterToString(v)); // path parameter
+            localVarRequestOptions.Data = createWorkflowVersionRestoreRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7373,11 +7401,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>OkResponse</returns>
         [Obsolete]
-        public OkResponse UpdateWorkflowChain(Guid id)
+        public OkResponse UpdateWorkflowChain(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateWorkflowChainWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateWorkflowChainWithHttpInfo(id, createWorkflowChainRequest);
             return localVarResponse.Data;
         }
 
@@ -7386,13 +7415,21 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
         [Obsolete]
-        public net.crossly.Client.ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<OkResponse> UpdateWorkflowChainWithHttpInfo(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest)
         {
+            // verify the required parameter 'createWorkflowChainRequest' is set
+            if (createWorkflowChainRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowChainRequest' when calling WorkflowsApi->UpdateWorkflowChain");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7413,6 +7450,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowChainRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7440,12 +7478,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> UpdateWorkflowChainAsync(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateWorkflowChainWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateWorkflowChainWithHttpInfoAsync(id, createWorkflowChainRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7454,15 +7493,23 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorkflowChainRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateWorkflowChainWithHttpInfoAsync(Guid id, CreateWorkflowChainRequest createWorkflowChainRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createWorkflowChainRequest' is set
+            if (createWorkflowChainRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorkflowChainRequest' when calling WorkflowsApi->UpdateWorkflowChain");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7483,6 +7530,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorkflowChainRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

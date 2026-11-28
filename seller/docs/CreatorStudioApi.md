@@ -4,6 +4,9 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateCreatorCardGame**](CreatorStudioApi.md#createcreatorcardgame) | **POST** /v1/creator/cards/games | Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+[**CreateCreatorCardGameCheck**](CreatorStudioApi.md#createcreatorcardgamecheck) | **POST** /v1/creator/cards/games/{id}/check | The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+[**CreateCreatorCardGamePublish**](CreatorStudioApi.md#createcreatorcardgamepublish) | **POST** /v1/creator/cards/games/{id}/publish | Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
 [**CreateCreatorCardSet**](CreatorStudioApi.md#createcreatorcardset) | **POST** /v1/creator/cards/sets | Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
 [**CreateCreatorCardSetArt**](CreatorStudioApi.md#createcreatorcardsetart) | **POST** /v1/creator/cards/sets/{id}/art/{slug} | One card&#39;s art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
 [**CreateCreatorCardSetCheck**](CreatorStudioApi.md#createcreatorcardsetcheck) | **POST** /v1/creator/cards/sets/{id}/check | The full check publish runs: draft issues, tcgStaticConformance and bot-vs-bot games of the set.
@@ -21,9 +24,11 @@ Method | HTTP request | Description
 [**CreateCreatorReviewReply**](CreatorStudioApi.md#createcreatorreviewreply) | **POST** /v1/creator/reviews/{reviewId}/reply | Reply to a buyer review of your creation (or change your reply).
 [**CreateCreatorReviewReport**](CreatorStudioApi.md#createcreatorreviewreport) | **POST** /v1/creator/reviews/{reviewId}/report | Report a buyer review to Crossly (abuse, spam, not a real buyer).
 [**CreateCreatorReviewUnhide**](CreatorStudioApi.md#createcreatorreviewunhide) | **POST** /v1/creator/reviews/{reviewId}/unhide | Show a hidden buyer review on your page again.
+[**DeleteCreatorCardGame**](CreatorStudioApi.md#deletecreatorcardgame) | **DELETE** /v1/creator/cards/games/{id} | Delete a composed card game that was never published.
 [**DeleteCreatorCardSet**](CreatorStudioApi.md#deletecreatorcardset) | **DELETE** /v1/creator/cards/sets/{id} | Delete a set draft that was never published.
 [**DeleteCreatorItemModel**](CreatorStudioApi.md#deletecreatoritemmodel) | **DELETE** /v1/creator/items/models/{id} | Delete a draft or rejected model.
 [**DeleteCreatorItemWearable**](CreatorStudioApi.md#deletecreatoritemwearable) | **DELETE** /v1/creator/items/wearables/{id} | Delete a draft wearable.
+[**GetCreatorCardGame**](CreatorStudioApi.md#getcreatorcardgame) | **GET** /v1/creator/cards/games/{id} | One composed card game with its check: issues by field and conformance problems.
 [**GetCreatorCardSet**](CreatorStudioApi.md#getcreatorcardset) | **GET** /v1/creator/cards/sets/{id} | One set draft with its check: draft issues by field and tcgStaticConformance problems.
 [**GetCreatorCardSetProgress**](CreatorStudioApi.md#getcreatorcardsetprogress) | **GET** /v1/creator/cards/sets/{id}/progress | A set&#39;s three steps: live on COSM, the mint threshold toward NFTs, and the print-run cost (trading_cards estimate) against production funding banked.
 [**GetCreatorCollection**](CreatorStudioApi.md#getcreatorcollection) | **GET** /v1/creator/collections/{collectionId} | One collection (a card set, a launch or a claimed contract): its six-stage road to the chain, the launch (phase timeline, proceeds, recent mints), sales by marketplace, royalty estimate, holders, its cards or creations with their earnings, holder perks set at mint, and which actions apply.
@@ -40,6 +45,7 @@ Method | HTTP request | Description
 [**GetCreatorOverview**](CreatorStudioApi.md#getcreatoroverview) | **GET** /v1/creator/overview | Creator Studio overview: earnings this month and last by rail, live creations, review queue, publish lock and next steps.
 [**GetCreatorTemplate**](CreatorStudioApi.md#getcreatortemplate) | **GET** /v1/creator/templates/{format} | The template files for a format (wearable, model, decor, interactive, card_set): crossly-creation.json, creations.csv where it applies, and a README.
 [**GetCreatorTemplateZip**](CreatorStudioApi.md#getcreatortemplatezip) | **GET** /v1/creator/templates/{format}/zip | A format&#39;s template as a .zip download (the same files as GET /templates/:format, plus its empty folders).
+[**ListCreatorCardGames**](CreatorStudioApi.md#listcreatorcardgames) | **GET** /v1/creator/cards/games | Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
 [**ListCreatorCardSets**](CreatorStudioApi.md#listcreatorcardsets) | **GET** /v1/creator/cards/sets | Your card set drafts, each with its road from COSM to print: live on COSM, the mint threshold (collectors, packs opened, resales) and the print-run cost against what NFT sales have banked.
 [**ListCreatorCreationReviews**](CreatorStudioApi.md#listcreatorcreationreviews) | **GET** /v1/creator/creations/{format}/{id}/reviews | Buyer reviews of one creation, newest first (hidden ones included).
 [**ListCreatorCreations**](CreatorStudioApi.md#listcreatorcreations) | **GET** /v1/creator/creations | Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
@@ -49,16 +55,17 @@ Method | HTTP request | Description
 [**ListCreatorItemWearables**](CreatorStudioApi.md#listcreatoritemwearables) | **GET** /v1/creator/items/wearables | Your wearables: drafts, in review, live or with changes requested, each with its automated checks and per-colourway designs.
 [**ListCreatorItems**](CreatorStudioApi.md#listcreatoritems) | **GET** /v1/creator/items | Every creation of your shop — wearables, decor, uploaded 3D models, interactive objects, Classic games, card games (incl. unpublished designer sets), physical runs — with status, price and earnings.
 [**ListCreatorReviews**](CreatorStudioApi.md#listcreatorreviews) | **GET** /v1/creator/reviews | Every creator submission (items, interactive objects, Classic games, card games) and its review decision with the reviewer note.
+[**UpdateCreatorCardGame**](CreatorStudioApi.md#updatecreatorcardgame) | **PUT** /v1/creator/cards/games/{id} | Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
 [**UpdateCreatorCardSet**](CreatorStudioApi.md#updatecreatorcardset) | **PUT** /v1/creator/cards/sets/{id} | Save the whole draft: cards (name, type, rarity, rules text, flavour, power/draw/guard), COSM prices and supply, frame colours, print plan. Every word goes through the text filter. Art is merged: a card without &#x60;art&#x60; (or with art as read) keeps its stored art, &#x60;art: null&#x60; clears it; only the art upload sets art. Answers the check.
 [**UpdateCreatorCollectionPerk**](CreatorStudioApi.md#updatecreatorcollectionperk) | **PUT** /v1/creator/collections/{collectionId}/perks | Replace a collection&#39;s holder perks: &#x60;{ perks: [...] }&#x60;, at most one of each type: percent_off { percent 1-50 }, early_access { hours 1-720 }, world_item { creationRef, name }, loyalty_tier { tierId, tierName } (one of your loyalty tiers), each with an optional note. 409 when the collection has no launch yet.
 [**UpdateCreatorItemWearable**](CreatorStudioApi.md#updatecreatoritemwearable) | **PATCH** /v1/creator/items/wearables/{id} | Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
 
 
-<a name="createcreatorcardset"></a>
-# **CreateCreatorCardSet**
-> CreatorCardSetResponse CreateCreatorCardSet ()
+<a name="createcreatorcardgame"></a>
+# **CreateCreatorCardGame**
+> CreatorCardGameResponse CreateCreatorCardGame ()
 
-Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
 
 ### Example
 ```csharp
@@ -70,7 +77,7 @@ using net.crossly.Model;
 
 namespace Example
 {
-    public class CreateCreatorCardSetExample
+    public class CreateCreatorCardGameExample
     {
         public static void Main()
         {
@@ -83,13 +90,13 @@ namespace Example
 
             try
             {
-                // Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
-                CreatorCardSetResponse result = apiInstance.CreateCreatorCardSet();
+                // Compose a card game from your card sets: a game id, its own set code, a name and the set ids; optionally the deck size (8-40), copies per card (1-4), the win condition (most points, or first to N) and the cover (a card with art, or a colour). Paid seller plans only.
+                CreatorCardGameResponse result = apiInstance.CreateCreatorCardGame();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling CreatorStudioApi.CreateCreatorCardSet: " + e.Message );
+                Debug.Print("Exception when calling CreatorStudioApi.CreateCreatorCardGame: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -103,7 +110,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**CreatorCardSetResponse**
+**CreatorCardGameResponse**
 
 ### Authorization
 
@@ -128,9 +135,243 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createcreatorcardgamecheck"></a>
+# **CreateCreatorCardGameCheck**
+> CreatorCardGameResponse CreateCreatorCardGameCheck (string id)
+
+The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateCreatorCardGameCheckExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // The full check publish runs: issues, tcgStaticConformance and bot-vs-bot games of the composed rules.
+                CreatorCardGameResponse result = apiInstance.CreateCreatorCardGameCheck(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.CreateCreatorCardGameCheck: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreatorCardGameResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createcreatorcardgamepublish"></a>
+# **CreateCreatorCardGamePublish**
+> CreateCreatorCardGamePublishResponse CreateCreatorCardGamePublish (string id)
+
+Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateCreatorCardGamePublishExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Publish: the composition must pass its check; its cards, the composed rules, art and cover are packaged and submitted as a new immutable version for review, through the same intake as every card game.
+                CreateCreatorCardGamePublishResponse result = apiInstance.CreateCreatorCardGamePublish(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.CreateCreatorCardGamePublish: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreateCreatorCardGamePublishResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createcreatorcardset"></a>
+# **CreateCreatorCardSet**
+> CreatorCardSetResponse CreateCreatorCardSet (CreateCreatorCardSetRequest createCreatorCardSetRequest = null)
+
+Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateCreatorCardSetExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var createCreatorCardSetRequest = new CreateCreatorCardSetRequest(); // CreateCreatorCardSetRequest |  (optional) 
+
+            try
+            {
+                // Start a card set: a game id (3-24 of a-z, 0-9, -), a set code (MG1) and a name. Answers a starter draft that already passes conformance. Paid seller plans only.
+                CreatorCardSetResponse result = apiInstance.CreateCreatorCardSet(createCreatorCardSetRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.CreateCreatorCardSet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorCardSetRequest** | **CreateCreatorCardSetRequest**|  | [optional] 
+
+### Return type
+
+**CreatorCardSetResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createcreatorcardsetart"></a>
 # **CreateCreatorCardSetArt**
-> CreatorCardSetResponse CreateCreatorCardSetArt (string id, string slug)
+> CreatorCardSetResponse CreateCreatorCardSetArt (string id, string slug, CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = null)
 
 One card's art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
 
@@ -156,11 +397,12 @@ namespace Example
             var apiInstance = new CreatorStudioApi(config);
             var id = "id_example";  // string | 
             var slug = "slug_example";  // string | 
+            var createCreatorCardSetArtRequest = new CreateCreatorCardSetArtRequest(); // CreateCreatorCardSetArtRequest |  (optional) 
 
             try
             {
                 // One card's art: a PNG (base64, at most 1 MB and 2048 px), scanned and stored until the version is approved.
-                CreatorCardSetResponse result = apiInstance.CreateCreatorCardSetArt(id, slug);
+                CreatorCardSetResponse result = apiInstance.CreateCreatorCardSetArt(id, slug, createCreatorCardSetArtRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -180,6 +422,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **slug** | **string**|  | 
+ **createCreatorCardSetArtRequest** | **CreateCreatorCardSetArtRequest**|  | [optional] 
 
 ### Return type
 
@@ -191,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -366,7 +609,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatorcreationsubmit"></a>
 # **CreateCreatorCreationSubmit**
-> CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit (string format, string id)
+> CreateCreatorCreationSubmitResponse CreateCreatorCreationSubmit (string format, string id, CreateCreatorCreationSubmitRequest createCreatorCreationSubmitRequest = null)
 
 Send one creation to review through its format's own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
 
@@ -392,11 +635,12 @@ namespace Example
             var apiInstance = new CreatorStudioApi(config);
             var format = "format_example";  // string | 
             var id = "id_example";  // string | 
+            var createCreatorCreationSubmitRequest = new CreateCreatorCreationSubmitRequest(); // CreateCreatorCreationSubmitRequest |  (optional) 
 
             try
             {
                 // Send one creation to review through its format's own submit (wearable, model, decor, interactive, card: its whole set). Games are published from world-kit.
-                CreateCreatorCreationSubmitResponse result = apiInstance.CreateCreatorCreationSubmit(format, id);
+                CreateCreatorCreationSubmitResponse result = apiInstance.CreateCreatorCreationSubmit(format, id, createCreatorCreationSubmitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -416,6 +660,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**|  | 
  **id** | **string**|  | 
+ **createCreatorCreationSubmitRequest** | **CreateCreatorCreationSubmitRequest**|  | [optional] 
 
 ### Return type
 
@@ -427,7 +672,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -446,7 +691,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatorimport"></a>
 # **CreateCreatorImport**
-> GetCreatorImportResponse CreateCreatorImport ()
+> GetCreatorImportResponse CreateCreatorImport (CreateCreatorImportRequest createCreatorImportRequest = null)
 
 Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
 
@@ -470,11 +715,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var createCreatorImportRequest = new CreateCreatorImportRequest(); // CreateCreatorImportRequest |  (optional) 
 
             try
             {
                 // Validate a filled-in template (manifest text, CSV text, every path in the upload): issues with file, line and column, and a preview. Creates nothing.
-                GetCreatorImportResponse result = apiInstance.CreateCreatorImport();
+                GetCreatorImportResponse result = apiInstance.CreateCreatorImport(createCreatorImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -489,7 +735,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorImportRequest** | **CreateCreatorImportRequest**|  | [optional] 
 
 ### Return type
 
@@ -501,7 +750,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -598,7 +847,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatoritemmodel"></a>
 # **CreateCreatorItemModel**
-> CreatorItemModelResponse CreateCreatorItemModel ()
+> CreatorItemModelResponse CreateCreatorItemModel (CreateCreatorItemModelRequest createCreatorItemModelRequest = null)
 
 Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
 
@@ -622,11 +871,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var createCreatorItemModelRequest = new CreateCreatorItemModelRequest(); // CreateCreatorItemModelRequest |  (optional) 
 
             try
             {
                 // Upload a .glb (base64, 4 MB): validated, measured and stored (quarantined until approved). An over-budget model is refused with every failing number.
-                CreatorItemModelResponse result = apiInstance.CreateCreatorItemModel();
+                CreatorItemModelResponse result = apiInstance.CreateCreatorItemModel(createCreatorItemModelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -641,7 +891,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorItemModelRequest** | **CreateCreatorItemModelRequest**|  | [optional] 
 
 ### Return type
 
@@ -653,7 +906,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -672,7 +925,7 @@ This endpoint does not need any parameter.
 
 <a name="createcreatoritemmodelcheck"></a>
 # **CreateCreatorItemModelCheck**
-> CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck ()
+> CreateCreatorItemModelCheckResponse CreateCreatorItemModelCheck (CreateCreatorItemModelCheckRequest createCreatorItemModelCheckRequest = null)
 
 The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
 
@@ -696,11 +949,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var createCreatorItemModelCheckRequest = new CreateCreatorItemModelCheckRequest(); // CreateCreatorItemModelCheckRequest |  (optional) 
 
             try
             {
                 // The budget report for a .glb (base64), storing nothing: every limit (triangles, draw calls, texture edge per phone/desktop; size, nodes, meshes, images, animations; bones for wearables) with pass/fail, problems and LOD suggestions.
-                CreateCreatorItemModelCheckResponse result = apiInstance.CreateCreatorItemModelCheck();
+                CreateCreatorItemModelCheckResponse result = apiInstance.CreateCreatorItemModelCheck(createCreatorItemModelCheckRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -715,7 +969,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorItemModelCheckRequest** | **CreateCreatorItemModelCheckRequest**|  | [optional] 
 
 ### Return type
 
@@ -727,7 +984,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -824,7 +1081,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatoritempreview"></a>
 # **CreateCreatorItemPreview**
-> CreateCreatorItemPreviewResponse CreateCreatorItemPreview ()
+> CreateCreatorItemPreviewResponse CreateCreatorItemPreview (CreateCreatorCardSetArtRequest createCreatorCardSetArtRequest = null)
 
 Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
 
@@ -848,11 +1105,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var createCreatorCardSetArtRequest = new CreateCreatorCardSetArtRequest(); // CreateCreatorCardSetArtRequest |  (optional) 
 
             try
             {
                 // Upload a preview PNG (base64, at most 1 MB and 2048 px): parsed, scanned and stored on the Crossly CDN; answers its https URL.
-                CreateCreatorItemPreviewResponse result = apiInstance.CreateCreatorItemPreview();
+                CreateCreatorItemPreviewResponse result = apiInstance.CreateCreatorItemPreview(createCreatorCardSetArtRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -867,7 +1125,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorCardSetArtRequest** | **CreateCreatorCardSetArtRequest**|  | [optional] 
 
 ### Return type
 
@@ -879,7 +1140,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -898,7 +1159,7 @@ This endpoint does not need any parameter.
 
 <a name="createcreatoritemwearable"></a>
 # **CreateCreatorItemWearable**
-> CreatorItemWearableResponse CreateCreatorItemWearable ()
+> CreatorItemWearableResponse CreateCreatorItemWearable (CreateCreatorItemWearableRequest createCreatorItemWearableRequest = null)
 
 Start a wearable from a template: slug, name, colourways (panel -> #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
 
@@ -922,11 +1183,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var createCreatorItemWearableRequest = new CreateCreatorItemWearableRequest(); // CreateCreatorItemWearableRequest |  (optional) 
 
             try
             {
                 // Start a wearable from a template: slug, name, colourways (panel -> #rrggbb), a COSM price and optional edition size. Text is filtered; answers the automated checks. Paid seller plans only.
-                CreatorItemWearableResponse result = apiInstance.CreateCreatorItemWearable();
+                CreatorItemWearableResponse result = apiInstance.CreateCreatorItemWearable(createCreatorItemWearableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -941,7 +1203,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorItemWearableRequest** | **CreateCreatorItemWearableRequest**|  | [optional] 
 
 ### Return type
 
@@ -953,7 +1218,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -972,7 +1237,7 @@ This endpoint does not need any parameter.
 
 <a name="createcreatoritemwearablesubmit"></a>
 # **CreateCreatorItemWearableSubmit**
-> CreatorItemWearableResponse CreateCreatorItemWearableSubmit (string id)
+> CreatorItemWearableResponse CreateCreatorItemWearableSubmit (string id, CreateCreatorItemWearableSubmitRequest createCreatorItemWearableSubmitRequest = null)
 
 Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
 
@@ -997,11 +1262,12 @@ namespace Example
 
             var apiInstance = new CreatorStudioApi(config);
             var id = "id_example";  // string | 
+            var createCreatorItemWearableSubmitRequest = new CreateCreatorItemWearableSubmitRequest(); // CreateCreatorItemWearableSubmitRequest |  (optional) 
 
             try
             {
                 // Submit a wearable whose checks pass: each colourway becomes a COSM design (inactive) filed for review. Needs an https preview image (POST /v1/creator/items/previews).
-                CreatorItemWearableResponse result = apiInstance.CreateCreatorItemWearableSubmit(id);
+                CreatorItemWearableResponse result = apiInstance.CreateCreatorItemWearableSubmit(id, createCreatorItemWearableSubmitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1020,6 +1286,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createCreatorItemWearableSubmitRequest** | **CreateCreatorItemWearableSubmitRequest**|  | [optional] 
 
 ### Return type
 
@@ -1031,7 +1298,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1050,7 +1317,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatorreviewhide"></a>
 # **CreateCreatorReviewHide**
-> CreatorReviewResponse CreateCreatorReviewHide (string reviewId)
+> CreatorReviewResponse CreateCreatorReviewHide (string reviewId, ReasonRequest2 reasonRequest2 = null)
 
 Hide a buyer review from your public page (it is kept, and its rating still counts).
 
@@ -1075,11 +1342,12 @@ namespace Example
 
             var apiInstance = new CreatorStudioApi(config);
             var reviewId = "reviewId_example";  // string | 
+            var reasonRequest2 = new ReasonRequest2(); // ReasonRequest2 |  (optional) 
 
             try
             {
                 // Hide a buyer review from your public page (it is kept, and its rating still counts).
-                CreatorReviewResponse result = apiInstance.CreateCreatorReviewHide(reviewId);
+                CreatorReviewResponse result = apiInstance.CreateCreatorReviewHide(reviewId, reasonRequest2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1098,6 +1366,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reviewId** | **string**|  | 
+ **reasonRequest2** | **ReasonRequest2**|  | [optional] 
 
 ### Return type
 
@@ -1109,7 +1378,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1128,7 +1397,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatorreviewreply"></a>
 # **CreateCreatorReviewReply**
-> CreatorReviewResponse CreateCreatorReviewReply (string reviewId)
+> CreatorReviewResponse CreateCreatorReviewReply (string reviewId, CreateCreatorReviewReplyRequest createCreatorReviewReplyRequest = null)
 
 Reply to a buyer review of your creation (or change your reply).
 
@@ -1153,11 +1422,12 @@ namespace Example
 
             var apiInstance = new CreatorStudioApi(config);
             var reviewId = "reviewId_example";  // string | 
+            var createCreatorReviewReplyRequest = new CreateCreatorReviewReplyRequest(); // CreateCreatorReviewReplyRequest |  (optional) 
 
             try
             {
                 // Reply to a buyer review of your creation (or change your reply).
-                CreatorReviewResponse result = apiInstance.CreateCreatorReviewReply(reviewId);
+                CreatorReviewResponse result = apiInstance.CreateCreatorReviewReply(reviewId, createCreatorReviewReplyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1176,6 +1446,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reviewId** | **string**|  | 
+ **createCreatorReviewReplyRequest** | **CreateCreatorReviewReplyRequest**|  | [optional] 
 
 ### Return type
 
@@ -1187,7 +1458,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1206,7 +1477,7 @@ Name | Type | Description  | Notes
 
 <a name="createcreatorreviewreport"></a>
 # **CreateCreatorReviewReport**
-> CreatorReviewResponse CreateCreatorReviewReport (string reviewId)
+> CreatorReviewResponse CreateCreatorReviewReport (string reviewId, ReasonRequest reasonRequest = null)
 
 Report a buyer review to Crossly (abuse, spam, not a real buyer).
 
@@ -1231,11 +1502,12 @@ namespace Example
 
             var apiInstance = new CreatorStudioApi(config);
             var reviewId = "reviewId_example";  // string | 
+            var reasonRequest = new ReasonRequest(); // ReasonRequest |  (optional) 
 
             try
             {
                 // Report a buyer review to Crossly (abuse, spam, not a real buyer).
-                CreatorReviewResponse result = apiInstance.CreateCreatorReviewReport(reviewId);
+                CreatorReviewResponse result = apiInstance.CreateCreatorReviewReport(reviewId, reasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1254,6 +1526,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reviewId** | **string**|  | 
+ **reasonRequest** | **ReasonRequest**|  | [optional] 
 
 ### Return type
 
@@ -1265,7 +1538,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1351,6 +1624,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deletecreatorcardgame"></a>
+# **DeleteCreatorCardGame**
+> void DeleteCreatorCardGame (string id)
+
+Delete a composed card game that was never published.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class DeleteCreatorCardGameExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Delete a composed card game that was never published.
+                apiInstance.DeleteCreatorCardGame(id);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.DeleteCreatorCardGame: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No Content — the request succeeded and there is no body. |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -1582,6 +1932,84 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **204** | No Content — the request succeeded and there is no body. |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getcreatorcardgame"></a>
+# **GetCreatorCardGame**
+> CreatorCardGameResponse GetCreatorCardGame (string id)
+
+One composed card game with its check: issues by field and conformance problems.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetCreatorCardGameExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // One composed card game with its check: issues by field and conformance problems.
+                CreatorCardGameResponse result = apiInstance.GetCreatorCardGame(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.GetCreatorCardGame: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreatorCardGameResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -2841,6 +3269,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listcreatorcardgames"></a>
+# **ListCreatorCardGames**
+> ListCreatorCardGamesResponse ListCreatorCardGames ()
+
+Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListCreatorCardGamesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+
+            try
+            {
+                // Your card games composed from several card sets: the sets, deck size, copies per card, win condition and cover, each with its check.
+                ListCreatorCardGamesResponse result = apiInstance.ListCreatorCardGames();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.ListCreatorCardGames: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListCreatorCardGamesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listcreatorcardsets"></a>
 # **ListCreatorCardSets**
 > ListCreatorCardSetsResponse ListCreatorCardSets ()
@@ -2917,7 +3419,7 @@ This endpoint does not need any parameter.
 
 <a name="listcreatorcreationreviews"></a>
 # **ListCreatorCreationReviews**
-> ListCreatorCreationReviewsResponse ListCreatorCreationReviews (string format, string id)
+> ListCreatorCreationReviewsResponse ListCreatorCreationReviews (string format, string id, string cursor = null, decimal? limit = null)
 
 Buyer reviews of one creation, newest first (hidden ones included).
 
@@ -2943,11 +3445,13 @@ namespace Example
             var apiInstance = new CreatorStudioApi(config);
             var format = "format_example";  // string | 
             var id = "id_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Buyer reviews of one creation, newest first (hidden ones included).
-                ListCreatorCreationReviewsResponse result = apiInstance.ListCreatorCreationReviews(format, id);
+                ListCreatorCreationReviewsResponse result = apiInstance.ListCreatorCreationReviews(format, id, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2967,6 +3471,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **format** | **string**|  | 
  **id** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -2997,7 +3503,7 @@ Name | Type | Description  | Notes
 
 <a name="listcreatorcreations"></a>
 # **ListCreatorCreations**
-> ListCreatorCreationsResponse ListCreatorCreations ()
+> ListCreatorCreationsResponse ListCreatorCreations (string kind = null, string format = null, string status = null, string collection = null, string q = null)
 
 Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
 
@@ -3021,11 +3527,16 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorStudioApi(config);
+            var kind = "item";  // string |  (optional) 
+            var format = "wearable";  // string |  (optional) 
+            var status = "draft";  // string |  (optional) 
+            var collection = "collection_example";  // string |  (optional) 
+            var q = "q_example";  // string |  (optional) 
 
             try
             {
                 // Every creation of your shop in one list: wearables, 3D objects, decor, interactive objects, each card of your card sets, Classic games and card games, with status, collection, rating, earnings and mint status.
-                ListCreatorCreationsResponse result = apiInstance.ListCreatorCreations();
+                ListCreatorCreationsResponse result = apiInstance.ListCreatorCreations(kind, format, status, collection, q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3040,7 +3551,14 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **collection** | **string**|  | [optional] 
+ **q** | **string**|  | [optional] 
 
 ### Return type
 
@@ -3563,6 +4081,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="updatecreatorcardgame"></a>
+# **UpdateCreatorCardGame**
+> CreatorCardGameResponse UpdateCreatorCardGame (string id)
+
+Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateCreatorCardGameExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CreatorStudioApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Save the whole composition: name, description, setTitle, the set ids, deck size, copies per card, win condition and cover. Every word goes through the text filter. Answers the check.
+                CreatorCardGameResponse result = apiInstance.UpdateCreatorCardGame(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CreatorStudioApi.UpdateCreatorCardGame: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**CreatorCardGameResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatecreatorcardset"></a>
 # **UpdateCreatorCardSet**
 > CreatorCardSetResponse UpdateCreatorCardSet (string id)
@@ -3721,7 +4317,7 @@ Name | Type | Description  | Notes
 
 <a name="updatecreatoritemwearable"></a>
 # **UpdateCreatorItemWearable**
-> CreatorItemWearableResponse UpdateCreatorItemWearable (string id)
+> CreatorItemWearableResponse UpdateCreatorItemWearable (string id, UpdateCreatorItemWearableRequest updateCreatorItemWearableRequest = null)
 
 Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
 
@@ -3746,11 +4342,12 @@ namespace Example
 
             var apiInstance = new CreatorStudioApi(config);
             var id = "id_example";  // string | 
+            var updateCreatorItemWearableRequest = new UpdateCreatorItemWearableRequest(); // UpdateCreatorItemWearableRequest |  (optional) 
 
             try
             {
                 // Edit a draft wearable (name, description, colourways, price, edition). Submitted wearables are frozen.
-                CreatorItemWearableResponse result = apiInstance.UpdateCreatorItemWearable(id);
+                CreatorItemWearableResponse result = apiInstance.UpdateCreatorItemWearable(id, updateCreatorItemWearableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3769,6 +4366,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateCreatorItemWearableRequest** | **UpdateCreatorItemWearableRequest**|  | [optional] 
 
 ### Return type
 
@@ -3780,7 +4378,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

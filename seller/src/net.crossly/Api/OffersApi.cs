@@ -27,7 +27,7 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Offer UUID.</param>
@@ -36,7 +36,7 @@ namespace net.crossly.Api
         CreateOfferRespondResponse CreateOfferRespond(string id, CreateOfferRespondRequest createOfferRespondRequest);
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
         /// </summary>
         /// <remarks>
         /// 
@@ -46,6 +46,26 @@ namespace net.crossly.Api
         /// <param name="createOfferRespondRequest"></param>
         /// <returns>ApiResponse of CreateOfferRespondResponse</returns>
         ApiResponse<CreateOfferRespondResponse> CreateOfferRespondWithHttpInfo(string id, CreateOfferRespondRequest createOfferRespondRequest);
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <returns>GetListingOfferFloorResponse</returns>
+        GetListingOfferFloorResponse GetListingOfferFloor(string platform, Guid id);
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetListingOfferFloorResponse</returns>
+        ApiResponse<GetListingOfferFloorResponse> GetListingOfferFloorWithHttpInfo(string platform, Guid id);
         /// <summary>
         /// List buyer offers on your Crossly marketplace listings, including bundles.
         /// </summary>
@@ -76,7 +96,7 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
         /// </summary>
         /// <remarks>
         /// 
@@ -89,7 +109,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateOfferRespondResponse> CreateOfferRespondAsync(string id, CreateOfferRespondRequest createOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing.
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle.
         /// </summary>
         /// <remarks>
         /// 
@@ -100,6 +120,31 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOfferRespondResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateOfferRespondResponse>> CreateOfferRespondWithHttpInfoAsync(string id, CreateOfferRespondRequest createOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetListingOfferFloorResponse</returns>
+        System.Threading.Tasks.Task<GetListingOfferFloorResponse> GetListingOfferFloorAsync(string platform, Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetListingOfferFloorResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetListingOfferFloorResponse>> GetListingOfferFloorWithHttpInfoAsync(string platform, Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List buyer offers on your Crossly marketplace listings, including bundles.
         /// </summary>
@@ -246,7 +291,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. 
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Offer UUID.</param>
@@ -259,7 +304,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. 
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Offer UUID.</param>
@@ -327,7 +372,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. 
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Offer UUID.</param>
@@ -341,7 +386,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. 
+        /// Accept, decline, or counter a buyer offer on a Crossly marketplace listing. The response carries floorCents and floorSource (listing | item | break_even | null): your floor for that listing, null for a bundle. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Offer UUID.</param>
@@ -402,6 +447,158 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateOfferRespond", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <returns>GetListingOfferFloorResponse</returns>
+        public GetListingOfferFloorResponse GetListingOfferFloor(string platform, Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetListingOfferFloorResponse> localVarResponse = GetListingOfferFloorWithHttpInfo(platform, id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetListingOfferFloorResponse</returns>
+        public net.crossly.Client.ApiResponse<GetListingOfferFloorResponse> GetListingOfferFloorWithHttpInfo(string platform, Guid id)
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling OffersApi->GetListingOfferFloor");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetListingOfferFloorResponse>("/v1/listings/{id}/offer-floor", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetListingOfferFloor", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetListingOfferFloorResponse</returns>
+        public async System.Threading.Tasks.Task<GetListingOfferFloorResponse> GetListingOfferFloorAsync(string platform, Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetListingOfferFloorResponse> localVarResponse = await GetListingOfferFloorWithHttpInfoAsync(platform, id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The lowest price an offer may be accepted or countered at for this listing on a platform: grossCents, origin (listing | item | break_even | null), text, and the same as floorCents + floorSource. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetListingOfferFloorResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetListingOfferFloorResponse>> GetListingOfferFloorWithHttpInfoAsync(string platform, Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'platform' is set
+            if (platform == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling OffersApi->GetListingOfferFloor");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "platform", platform));
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetListingOfferFloorResponse>("/v1/listings/{id}/offer-floor", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetListingOfferFloor", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

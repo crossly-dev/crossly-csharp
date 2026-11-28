@@ -176,7 +176,7 @@ namespace net.crossly.Model
         /// <param name="estimatedTax">estimatedTax (required).</param>
         /// <param name="salesTax">salesTax (required).</param>
         /// <param name="health">health (required).</param>
-        public GetBookResponseData(decimal year = default(decimal), decimal? firstSaleYear = default(decimal?), PeriodEnum period = default(PeriodEnum), GetBookExpenseResponseDataRange range = default(GetBookExpenseResponseDataRange), FromTo2 prevRange = default(FromTo2), GetBookResponseDataKpis kpis = default(GetBookResponseDataKpis), GetBookResponseDataPnl pnl = default(GetBookResponseDataPnl), List<GetBookResponseDataMonthly> monthly = default(List<GetBookResponseDataMonthly>), List<GetBookResponseDataByMarketplace> byMarketplace = default(List<GetBookResponseDataByMarketplace>), GetBookResponseDataCogsDetail cogsDetail = default(GetBookResponseDataCogsDetail), GetBookResponseDataMileage mileage = default(GetBookResponseDataMileage), List<GetBookResponseDataExpensesTotals> expensesTotals = default(List<GetBookResponseDataExpensesTotals>), GetBookResponseDataEstimatedTax estimatedTax = default(GetBookResponseDataEstimatedTax), GetBookResponseDataSalesTax salesTax = default(GetBookResponseDataSalesTax), GetBookResponseDataHealth health = default(GetBookResponseDataHealth))
+        public GetBookResponseData(decimal year = default(decimal), decimal? firstSaleYear = default(decimal?), PeriodEnum period = default(PeriodEnum), GetBookExpenseResponseDataRange range = default(GetBookExpenseResponseDataRange), CreateListingTagRenameRequest prevRange = default(CreateListingTagRenameRequest), GetBookResponseDataKpis kpis = default(GetBookResponseDataKpis), GetBookResponseDataPnl pnl = default(GetBookResponseDataPnl), List<GetBookResponseDataMonthly> monthly = default(List<GetBookResponseDataMonthly>), List<GetBookResponseDataByMarketplace> byMarketplace = default(List<GetBookResponseDataByMarketplace>), GetBookResponseDataCogsDetail cogsDetail = default(GetBookResponseDataCogsDetail), GetBookResponseDataMileage mileage = default(GetBookResponseDataMileage), List<GetBookResponseDataExpensesTotals> expensesTotals = default(List<GetBookResponseDataExpensesTotals>), GetBookResponseDataEstimatedTax estimatedTax = default(GetBookResponseDataEstimatedTax), GetBookResponseDataSalesTax salesTax = default(GetBookResponseDataSalesTax), GetBookResponseDataHealth health = default(GetBookResponseDataHealth))
         {
             this.Year = year;
             this.Period = period;
@@ -266,7 +266,7 @@ namespace net.crossly.Model
         /// Gets or Sets PrevRange
         /// </summary>
         [DataMember(Name = "prevRange", IsRequired = true, EmitDefaultValue = false)]
-        public FromTo2 PrevRange { get; set; }
+        public CreateListingTagRenameRequest PrevRange { get; set; }
 
         /// <summary>
         /// Gets or Sets Kpis

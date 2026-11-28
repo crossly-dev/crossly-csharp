@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a saved view preset.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <returns>ListSavedViewsItem</returns>
-        ListSavedViewsItem CreateSavedView();
+        ListSavedViewsItem CreateSavedView(CreateSavedViewRequest createSavedViewRequest);
 
         /// <summary>
         /// Create a saved view preset.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <returns>ApiResponse of ListSavedViewsItem</returns>
-        ApiResponse<ListSavedViewsItem> CreateSavedViewWithHttpInfo();
+        ApiResponse<ListSavedViewsItem> CreateSavedViewWithHttpInfo(CreateSavedViewRequest createSavedViewRequest);
         /// <summary>
         /// Delete a saved view preset.
         /// </summary>
@@ -83,8 +85,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <returns>ListSavedViewsItem</returns>
-        ListSavedViewsItem UpdateSavedView(Guid id);
+        ListSavedViewsItem UpdateSavedView(Guid id, UpdateSavedViewRequest updateSavedViewRequest);
 
         /// <summary>
         /// Update a saved view preset.
@@ -94,8 +97,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <returns>ApiResponse of ListSavedViewsItem</returns>
-        ApiResponse<ListSavedViewsItem> UpdateSavedViewWithHttpInfo(Guid id);
+        ApiResponse<ListSavedViewsItem> UpdateSavedViewWithHttpInfo(Guid id, UpdateSavedViewRequest updateSavedViewRequest);
         #endregion Synchronous Operations
     }
 
@@ -112,9 +116,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSavedViewsItem</returns>
-        System.Threading.Tasks.Task<ListSavedViewsItem> CreateSavedViewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSavedViewsItem> CreateSavedViewAsync(CreateSavedViewRequest createSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a saved view preset.
@@ -123,9 +128,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSavedViewsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSavedViewsItem>> CreateSavedViewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSavedViewsItem>> CreateSavedViewWithHttpInfoAsync(CreateSavedViewRequest createSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a saved view preset.
         /// </summary>
@@ -180,9 +186,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSavedViewsItem</returns>
-        System.Threading.Tasks.Task<ListSavedViewsItem> UpdateSavedViewAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSavedViewsItem> UpdateSavedViewAsync(Guid id, UpdateSavedViewRequest updateSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a saved view preset.
@@ -192,9 +199,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSavedViewsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSavedViewsItem>> UpdateSavedViewWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSavedViewsItem>> UpdateSavedViewWithHttpInfoAsync(Guid id, UpdateSavedViewRequest updateSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -319,10 +327,11 @@ namespace net.crossly.Api
         /// Create a saved view preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <returns>ListSavedViewsItem</returns>
-        public ListSavedViewsItem CreateSavedView()
+        public ListSavedViewsItem CreateSavedView(CreateSavedViewRequest createSavedViewRequest)
         {
-            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = CreateSavedViewWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = CreateSavedViewWithHttpInfo(createSavedViewRequest);
             return localVarResponse.Data;
         }
 
@@ -330,12 +339,20 @@ namespace net.crossly.Api
         /// Create a saved view preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <returns>ApiResponse of ListSavedViewsItem</returns>
-        public net.crossly.Client.ApiResponse<ListSavedViewsItem> CreateSavedViewWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSavedViewsItem> CreateSavedViewWithHttpInfo(CreateSavedViewRequest createSavedViewRequest)
         {
+            // verify the required parameter 'createSavedViewRequest' is set
+            if (createSavedViewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSavedViewRequest' when calling SavedViewsApi->CreateSavedView");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -355,6 +372,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSavedViewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -381,11 +399,12 @@ namespace net.crossly.Api
         /// Create a saved view preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSavedViewsItem</returns>
-        public async System.Threading.Tasks.Task<ListSavedViewsItem> CreateSavedViewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSavedViewsItem> CreateSavedViewAsync(CreateSavedViewRequest createSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = await CreateSavedViewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = await CreateSavedViewWithHttpInfoAsync(createSavedViewRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -393,14 +412,22 @@ namespace net.crossly.Api
         /// Create a saved view preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSavedViewsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSavedViewsItem>> CreateSavedViewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSavedViewsItem>> CreateSavedViewWithHttpInfoAsync(CreateSavedViewRequest createSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSavedViewRequest' is set
+            if (createSavedViewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSavedViewRequest' when calling SavedViewsApi->CreateSavedView");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -420,6 +447,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSavedViewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -722,10 +750,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <returns>ListSavedViewsItem</returns>
-        public ListSavedViewsItem UpdateSavedView(Guid id)
+        public ListSavedViewsItem UpdateSavedView(Guid id, UpdateSavedViewRequest updateSavedViewRequest)
         {
-            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = UpdateSavedViewWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = UpdateSavedViewWithHttpInfo(id, updateSavedViewRequest);
             return localVarResponse.Data;
         }
 
@@ -734,12 +763,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <returns>ApiResponse of ListSavedViewsItem</returns>
-        public net.crossly.Client.ApiResponse<ListSavedViewsItem> UpdateSavedViewWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListSavedViewsItem> UpdateSavedViewWithHttpInfo(Guid id, UpdateSavedViewRequest updateSavedViewRequest)
         {
+            // verify the required parameter 'updateSavedViewRequest' is set
+            if (updateSavedViewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSavedViewRequest' when calling SavedViewsApi->UpdateSavedView");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -760,6 +797,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateSavedViewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -787,11 +825,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSavedViewsItem</returns>
-        public async System.Threading.Tasks.Task<ListSavedViewsItem> UpdateSavedViewAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSavedViewsItem> UpdateSavedViewAsync(Guid id, UpdateSavedViewRequest updateSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = await UpdateSavedViewWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSavedViewsItem> localVarResponse = await UpdateSavedViewWithHttpInfoAsync(id, updateSavedViewRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -800,14 +839,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateSavedViewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSavedViewsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSavedViewsItem>> UpdateSavedViewWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSavedViewsItem>> UpdateSavedViewWithHttpInfoAsync(Guid id, UpdateSavedViewRequest updateSavedViewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateSavedViewRequest' is set
+            if (updateSavedViewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSavedViewRequest' when calling SavedViewsApi->UpdateSavedView");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -828,6 +875,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateSavedViewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

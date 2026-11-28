@@ -91,8 +91,8 @@ namespace net.crossly.Model
         /// <summary>
         /// Gets or Sets ActiveProvider
         /// </summary>
-        [DataMember(Name = "activeProvider", IsRequired = true, EmitDefaultValue = false)]
-        public ActiveProviderEnum ActiveProvider { get; set; }
+        [DataMember(Name = "activeProvider", EmitDefaultValue = true)]
+        public ActiveProviderEnum? ActiveProvider { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAiStatusResponse" /> class.
         /// </summary>
@@ -103,32 +103,32 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="hasKey">hasKey (required).</param>
         /// <param name="aiEnabled">aiEnabled (required).</param>
-        /// <param name="activeProvider">activeProvider (required).</param>
-        /// <param name="providers">providers (required).</param>
+        /// <param name="activeProvider">activeProvider.</param>
         /// <param name="capabilities">capabilities (required).</param>
+        /// <param name="actions">actions (required).</param>
+        /// <param name="limited">limited.</param>
+        /// <param name="providers">providers.</param>
         /// <param name="customConfig">customConfig.</param>
-        /// <param name="image">image (required).</param>
-        public GetAiStatusResponse(bool hasKey = default(bool), bool aiEnabled = default(bool), ActiveProviderEnum activeProvider = default(ActiveProviderEnum), Dictionary<string, Object> providers = default(Dictionary<string, Object>), GetAiStatusResponseCapabilities capabilities = default(GetAiStatusResponseCapabilities), GetAiStatusResponseCustomConfig customConfig = default(GetAiStatusResponseCustomConfig), GetAiStatusResponseImage image = default(GetAiStatusResponseImage))
+        /// <param name="image">image.</param>
+        public GetAiStatusResponse(bool hasKey = default(bool), bool aiEnabled = default(bool), ActiveProviderEnum? activeProvider = default(ActiveProviderEnum?), GetAiStatusResponseOneOfCapabilities capabilities = default(GetAiStatusResponseOneOfCapabilities), Object actions = default(Object), bool limited = default(bool), Dictionary<string, Object> providers = default(Dictionary<string, Object>), CreateAiKeyResponseKeyCustomConfig customConfig = default(CreateAiKeyResponseKeyCustomConfig), GetAiRoutingResponseImage image = default(GetAiRoutingResponseImage))
         {
             this.HasKey = hasKey;
             this.AiEnabled = aiEnabled;
-            this.ActiveProvider = activeProvider;
-            // to ensure "providers" is required (not null)
-            if (providers == null) {
-                throw new ArgumentNullException("providers is a required property for GetAiStatusResponse and cannot be null");
-            }
-            this.Providers = providers;
             // to ensure "capabilities" is required (not null)
             if (capabilities == null) {
                 throw new ArgumentNullException("capabilities is a required property for GetAiStatusResponse and cannot be null");
             }
             this.Capabilities = capabilities;
-            // to ensure "image" is required (not null)
-            if (image == null) {
-                throw new ArgumentNullException("image is a required property for GetAiStatusResponse and cannot be null");
+            // to ensure "actions" is required (not null)
+            if (actions == null) {
+                throw new ArgumentNullException("actions is a required property for GetAiStatusResponse and cannot be null");
             }
-            this.Image = image;
+            this.Actions = actions;
+            this.ActiveProvider = activeProvider;
+            this.Limited = limited;
+            this.Providers = providers;
             this.CustomConfig = customConfig;
+            this.Image = image;
         }
 
         /// <summary>
@@ -144,28 +144,40 @@ namespace net.crossly.Model
         public bool AiEnabled { get; set; }
 
         /// <summary>
-        /// Gets or Sets Providers
-        /// </summary>
-        [DataMember(Name = "providers", IsRequired = true, EmitDefaultValue = false)]
-        public Dictionary<string, Object> Providers { get; set; }
-
-        /// <summary>
         /// Gets or Sets Capabilities
         /// </summary>
         [DataMember(Name = "capabilities", IsRequired = true, EmitDefaultValue = false)]
-        public GetAiStatusResponseCapabilities Capabilities { get; set; }
+        public GetAiStatusResponseOneOfCapabilities Capabilities { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Actions
+        /// </summary>
+        [DataMember(Name = "actions", IsRequired = true, EmitDefaultValue = true)]
+        public Object Actions { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Limited
+        /// </summary>
+        [DataMember(Name = "limited", EmitDefaultValue = true)]
+        public bool Limited { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Providers
+        /// </summary>
+        [DataMember(Name = "providers", EmitDefaultValue = false)]
+        public Dictionary<string, Object> Providers { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomConfig
         /// </summary>
         [DataMember(Name = "customConfig", EmitDefaultValue = true)]
-        public GetAiStatusResponseCustomConfig CustomConfig { get; set; }
+        public CreateAiKeyResponseKeyCustomConfig CustomConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name = "image", IsRequired = true, EmitDefaultValue = false)]
-        public GetAiStatusResponseImage Image { get; set; }
+        [DataMember(Name = "image", EmitDefaultValue = false)]
+        public GetAiRoutingResponseImage Image { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -178,8 +190,10 @@ namespace net.crossly.Model
             sb.Append("  HasKey: ").Append(HasKey).Append("\n");
             sb.Append("  AiEnabled: ").Append(AiEnabled).Append("\n");
             sb.Append("  ActiveProvider: ").Append(ActiveProvider).Append("\n");
-            sb.Append("  Providers: ").Append(Providers).Append("\n");
             sb.Append("  Capabilities: ").Append(Capabilities).Append("\n");
+            sb.Append("  Actions: ").Append(Actions).Append("\n");
+            sb.Append("  Limited: ").Append(Limited).Append("\n");
+            sb.Append("  Providers: ").Append(Providers).Append("\n");
             sb.Append("  CustomConfig: ").Append(CustomConfig).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
@@ -230,15 +244,24 @@ namespace net.crossly.Model
                     this.ActiveProvider.Equals(input.ActiveProvider)
                 ) && 
                 (
+                    this.Capabilities == input.Capabilities ||
+                    (this.Capabilities != null &&
+                    this.Capabilities.Equals(input.Capabilities))
+                ) && 
+                (
+                    this.Actions == input.Actions ||
+                    (this.Actions != null &&
+                    this.Actions.Equals(input.Actions))
+                ) && 
+                (
+                    this.Limited == input.Limited ||
+                    this.Limited.Equals(input.Limited)
+                ) && 
+                (
                     this.Providers == input.Providers ||
                     this.Providers != null &&
                     input.Providers != null &&
                     this.Providers.SequenceEqual(input.Providers)
-                ) && 
-                (
-                    this.Capabilities == input.Capabilities ||
-                    (this.Capabilities != null &&
-                    this.Capabilities.Equals(input.Capabilities))
                 ) && 
                 (
                     this.CustomConfig == input.CustomConfig ||
@@ -264,13 +287,18 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.HasKey.GetHashCode();
                 hashCode = (hashCode * 59) + this.AiEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.ActiveProvider.GetHashCode();
-                if (this.Providers != null)
-                {
-                    hashCode = (hashCode * 59) + this.Providers.GetHashCode();
-                }
                 if (this.Capabilities != null)
                 {
                     hashCode = (hashCode * 59) + this.Capabilities.GetHashCode();
+                }
+                if (this.Actions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Actions.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Limited.GetHashCode();
+                if (this.Providers != null)
+                {
+                    hashCode = (hashCode * 59) + this.Providers.GetHashCode();
                 }
                 if (this.CustomConfig != null)
                 {

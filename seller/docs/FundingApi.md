@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**GetFundingControl**](FundingApi.md#getfundingcontrol) | **GET** /v1/funding/controls | Your funding spend controls: approved uses, supplier allow/block lists, the approval threshold, the two-person rule and each team member’s funding limit.
 [**GetFundingDraw**](FundingApi.md#getfundingdraw) | **GET** /v1/funding/draws/{id} | One draw: amount, use, supplier, stage and its timeline (requested → approved → disbursed → spent → repaid).
 [**GetFundingDrawInvoice**](FundingApi.md#getfundingdrawinvoice) | **GET** /v1/funding/draws/{id}/invoice | A 15-minute signed link to a draw&#39;s uploaded supplier invoice, with the file&#39;s name, type and size. 404 when the draw has no uploaded file.
+[**GetFundingInvoiceAdvanceEligibility**](FundingApi.md#getfundinginvoiceadvanceeligibility) | **GET** /v1/funding/invoice-advance-eligibility | What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
 [**GetFundingLine**](FundingApi.md#getfundingline) | **GET** /v1/funding/line | Your line: limit, available, outstanding (principal + interest), APR, interest accrued since the last posting, the payoff figure, next due date, anything overdue, the per-draw schedule and your auto-repay share.
 [**GetFundingOffer**](FundingApi.md#getfundingoffer) | **GET** /v1/funding/offer | Your pre-qualified Crossly Funding limit and the eligibility checklist: each rule, whether you pass it, and what to do if not. Works with or without a line.
 [**GetFundingPool**](FundingApi.md#getfundingpool) | **GET** /v1/funding/pool | The Crossly Funding pool: live or not and why (no token yet, no pool, no price, no capacity), capacity, utilisation, the reserve, and the uses and suppliers it allows.
@@ -40,7 +41,7 @@ Method | HTTP request | Description
 
 <a name="createfundingapply"></a>
 # **CreateFundingApply**
-> CreateFundingApplyResponse CreateFundingApply ()
+> CreateFundingApplyResponse CreateFundingApply (CreateFundingApplyRequest createFundingApplyRequest)
 
 Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit = 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
 
@@ -64,11 +65,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingApplyRequest = new CreateFundingApplyRequest(); // CreateFundingApplyRequest | 
 
             try
             {
                 // Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit = 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
-                CreateFundingApplyResponse result = apiInstance.CreateFundingApply();
+                CreateFundingApplyResponse result = apiInstance.CreateFundingApply(createFundingApplyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -83,7 +85,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingApplyRequest** | **CreateFundingApplyRequest**|  | 
 
 ### Return type
 
@@ -95,7 +100,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -114,7 +119,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingdraw"></a>
 # **CreateFundingDraw**
-> CreateFundingDrawResponse CreateFundingDraw ()
+> CreateFundingDrawResponse CreateFundingDraw (CreateFundingDrawRequest createFundingDrawRequest)
 
 Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
 
@@ -138,11 +143,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingDrawRequest = new CreateFundingDrawRequest(); // CreateFundingDrawRequest | 
 
             try
             {
                 // Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
-                CreateFundingDrawResponse result = apiInstance.CreateFundingDraw();
+                CreateFundingDrawResponse result = apiInstance.CreateFundingDraw(createFundingDrawRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -157,7 +163,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingDrawRequest** | **CreateFundingDrawRequest**|  | 
 
 ### Return type
 
@@ -169,7 +178,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -188,7 +197,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingdrawapprove"></a>
 # **CreateFundingDrawApprove**
-> CreateFundingDrawRejectResponse CreateFundingDrawApprove (string id)
+> CreateFundingDrawRejectResponse CreateFundingDrawApprove (string id, NoteRequest noteRequest = null)
 
 Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
 
@@ -213,11 +222,12 @@ namespace Example
 
             var apiInstance = new FundingApi(config);
             var id = "id_example";  // string | 
+            var noteRequest = new NoteRequest(); // NoteRequest |  (optional) 
 
             try
             {
                 // Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
-                CreateFundingDrawRejectResponse result = apiInstance.CreateFundingDrawApprove(id);
+                CreateFundingDrawRejectResponse result = apiInstance.CreateFundingDrawApprove(id, noteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -236,6 +246,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **noteRequest** | **NoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -247,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -266,7 +277,7 @@ Name | Type | Description  | Notes
 
 <a name="createfundingdrawquote"></a>
 # **CreateFundingDrawQuote**
-> CreateFundingDrawQuoteResponse CreateFundingDrawQuote ()
+> CreateFundingDrawQuoteResponse CreateFundingDrawQuote (CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest)
 
 The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
 
@@ -290,11 +301,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingDrawQuoteRequest = new CreateFundingDrawQuoteRequest(); // CreateFundingDrawQuoteRequest | 
 
             try
             {
                 // The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
-                CreateFundingDrawQuoteResponse result = apiInstance.CreateFundingDrawQuote();
+                CreateFundingDrawQuoteResponse result = apiInstance.CreateFundingDrawQuote(createFundingDrawQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -309,7 +321,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingDrawQuoteRequest** | **CreateFundingDrawQuoteRequest**|  | 
 
 ### Return type
 
@@ -321,7 +336,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -340,7 +355,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingdrawreject"></a>
 # **CreateFundingDrawReject**
-> CreateFundingDrawRejectResponse CreateFundingDrawReject (string id)
+> CreateFundingDrawRejectResponse CreateFundingDrawReject (string id, NoteRequest noteRequest = null)
 
 Reject a held draw. Nothing was drawn, so nothing is owed.
 
@@ -365,11 +380,12 @@ namespace Example
 
             var apiInstance = new FundingApi(config);
             var id = "id_example";  // string | 
+            var noteRequest = new NoteRequest(); // NoteRequest |  (optional) 
 
             try
             {
                 // Reject a held draw. Nothing was drawn, so nothing is owed.
-                CreateFundingDrawRejectResponse result = apiInstance.CreateFundingDrawReject(id);
+                CreateFundingDrawRejectResponse result = apiInstance.CreateFundingDrawReject(id, noteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -388,6 +404,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **noteRequest** | **NoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -399,7 +416,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -418,7 +435,7 @@ Name | Type | Description  | Notes
 
 <a name="createfundingdrawuse"></a>
 # **CreateFundingDrawUse**
-> CreateFundingDrawUseResponse CreateFundingDrawUse ()
+> CreateFundingDrawUseResponse CreateFundingDrawUse (CreateFundingDrawUseRequest createFundingDrawUseRequest)
 
 Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
 
@@ -442,11 +459,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingDrawUseRequest = new CreateFundingDrawUseRequest(); // CreateFundingDrawUseRequest | 
 
             try
             {
                 // Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
-                CreateFundingDrawUseResponse result = apiInstance.CreateFundingDrawUse();
+                CreateFundingDrawUseResponse result = apiInstance.CreateFundingDrawUse(createFundingDrawUseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -461,7 +479,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingDrawUseRequest** | **CreateFundingDrawUseRequest**|  | 
 
 ### Return type
 
@@ -473,7 +494,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -492,7 +513,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundinginvoicefile"></a>
 # **CreateFundingInvoiceFile**
-> CreateFundingInvoiceFileResponse CreateFundingInvoiceFile ()
+> CreateFundingInvoiceFileResponse CreateFundingInvoiceFile (CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
 
 Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId = file.id. Stored privately; one draw per file.
 
@@ -516,11 +537,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingInvoiceFileRequest = new CreateFundingInvoiceFileRequest(); // CreateFundingInvoiceFileRequest | 
 
             try
             {
                 // Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId = file.id. Stored privately; one draw per file.
-                CreateFundingInvoiceFileResponse result = apiInstance.CreateFundingInvoiceFile();
+                CreateFundingInvoiceFileResponse result = apiInstance.CreateFundingInvoiceFile(createFundingInvoiceFileRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -535,7 +557,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingInvoiceFileRequest** | **CreateFundingInvoiceFileRequest**|  | 
 
 ### Return type
 
@@ -547,7 +572,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -566,7 +591,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingpaycrosslyfee"></a>
 # **CreateFundingPayCrosslyFee**
-> CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee ()
+> CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee (CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest)
 
 Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
 
@@ -590,11 +615,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingPayCrosslyFeeRequest = new CreateFundingPayCrosslyFeeRequest(); // CreateFundingPayCrosslyFeeRequest | 
 
             try
             {
                 // Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
-                CreateFundingPayCrosslyFeeResponse result = apiInstance.CreateFundingPayCrosslyFee();
+                CreateFundingPayCrosslyFeeResponse result = apiInstance.CreateFundingPayCrosslyFee(createFundingPayCrosslyFeeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -609,7 +635,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingPayCrosslyFeeRequest** | **CreateFundingPayCrosslyFeeRequest**|  | 
 
 ### Return type
 
@@ -621,7 +650,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -640,7 +669,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingpayshippinglabel"></a>
 # **CreateFundingPayShippingLabel**
-> CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel ()
+> CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel (CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest)
 
 Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
 
@@ -664,11 +693,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingPayShippingLabelRequest = new CreateFundingPayShippingLabelRequest(); // CreateFundingPayShippingLabelRequest | 
 
             try
             {
                 // Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
-                CreateFundingPayShippingLabelResponse result = apiInstance.CreateFundingPayShippingLabel();
+                CreateFundingPayShippingLabelResponse result = apiInstance.CreateFundingPayShippingLabel(createFundingPayShippingLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -683,7 +713,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingPayShippingLabelRequest** | **CreateFundingPayShippingLabelRequest**|  | 
 
 ### Return type
 
@@ -695,7 +728,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -714,7 +747,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingpayvaultfee"></a>
 # **CreateFundingPayVaultFee**
-> CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee ()
+> CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee (CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest)
 
 Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
 
@@ -738,11 +771,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingPayVaultFeeRequest = new CreateFundingPayVaultFeeRequest(); // CreateFundingPayVaultFeeRequest | 
 
             try
             {
                 // Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
-                CreateFundingPayVaultFeeResponse result = apiInstance.CreateFundingPayVaultFee();
+                CreateFundingPayVaultFeeResponse result = apiInstance.CreateFundingPayVaultFee(createFundingPayVaultFeeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -757,7 +791,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingPayVaultFeeRequest** | **CreateFundingPayVaultFeeRequest**|  | 
 
 ### Return type
 
@@ -769,7 +806,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -788,7 +825,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingpoolstake"></a>
 # **CreateFundingPoolStake**
-> CreateFundingPoolStakeResponse CreateFundingPoolStake ()
+> CreateFundingPoolStakeResponse CreateFundingPoolStake (CreateFundingPoolStakeRequest createFundingPoolStakeRequest)
 
 Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
 
@@ -812,11 +849,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingPoolStakeRequest = new CreateFundingPoolStakeRequest(); // CreateFundingPoolStakeRequest | 
 
             try
             {
                 // Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
-                CreateFundingPoolStakeResponse result = apiInstance.CreateFundingPoolStake();
+                CreateFundingPoolStakeResponse result = apiInstance.CreateFundingPoolStake(createFundingPoolStakeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -831,7 +869,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingPoolStakeRequest** | **CreateFundingPoolStakeRequest**|  | 
 
 ### Return type
 
@@ -843,7 +884,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -862,7 +903,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingpoolunstake"></a>
 # **CreateFundingPoolUnstake**
-> FundingPoolResponse CreateFundingPoolUnstake ()
+> FundingPoolResponse CreateFundingPoolUnstake (CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest)
 
 Queue an unstake. Paid first-in first-out once your lockup has passed.
 
@@ -886,11 +927,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingPoolUnstakeRequest = new CreateFundingPoolUnstakeRequest(); // CreateFundingPoolUnstakeRequest | 
 
             try
             {
                 // Queue an unstake. Paid first-in first-out once your lockup has passed.
-                FundingPoolResponse result = apiInstance.CreateFundingPoolUnstake();
+                FundingPoolResponse result = apiInstance.CreateFundingPoolUnstake(createFundingPoolUnstakeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -905,7 +947,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingPoolUnstakeRequest** | **CreateFundingPoolUnstakeRequest**|  | 
 
 ### Return type
 
@@ -917,7 +962,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1088,7 +1133,7 @@ This endpoint does not need any parameter.
 
 <a name="createfundingrepay"></a>
 # **CreateFundingRepay**
-> CreateFundingRepayResponse CreateFundingRepay ()
+> CreateFundingRepayResponse CreateFundingRepay (CreateFundingRepayRequest createFundingRepayRequest)
 
 Repay. source \"balance\" (default) takes it from your available Stripe payout balance and applies it at once. source \"card\" returns a PaymentIntent client secret to confirm with Stripe; source \"checkout\" returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \"cbx\" pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
 
@@ -1112,11 +1157,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var createFundingRepayRequest = new CreateFundingRepayRequest(); // CreateFundingRepayRequest | 
 
             try
             {
                 // Repay. source \"balance\" (default) takes it from your available Stripe payout balance and applies it at once. source \"card\" returns a PaymentIntent client secret to confirm with Stripe; source \"checkout\" returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \"cbx\" pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
-                CreateFundingRepayResponse result = apiInstance.CreateFundingRepay();
+                CreateFundingRepayResponse result = apiInstance.CreateFundingRepay(createFundingRepayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1131,7 +1177,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingRepayRequest** | **CreateFundingRepayRequest**|  | 
 
 ### Return type
 
@@ -1143,7 +1192,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1444,6 +1493,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetFundingDrawInvoiceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getfundinginvoiceadvanceeligibility"></a>
+# **GetFundingInvoiceAdvanceEligibility**
+> GetFundingInvoiceAdvanceEligibilityResponse GetFundingInvoiceAdvanceEligibility ()
+
+What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetFundingInvoiceAdvanceEligibilityExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new FundingApi(config);
+
+            try
+            {
+                // What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+                GetFundingInvoiceAdvanceEligibilityResponse result = apiInstance.GetFundingInvoiceAdvanceEligibility();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling FundingApi.GetFundingInvoiceAdvanceEligibility: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetFundingInvoiceAdvanceEligibilityResponse**
 
 ### Authorization
 
@@ -2062,7 +2185,7 @@ This endpoint does not need any parameter.
 
 <a name="listfundingreceipts"></a>
 # **ListFundingReceipts**
-> ListFundingReceiptsResponse ListFundingReceipts ()
+> ListFundingReceiptsResponse ListFundingReceipts (decimal? limit = null)
 
 Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
 
@@ -2086,11 +2209,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
-                ListFundingReceiptsResponse result = apiInstance.ListFundingReceipts();
+                ListFundingReceiptsResponse result = apiInstance.ListFundingReceipts(limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2105,7 +2229,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -2210,7 +2337,7 @@ This endpoint does not need any parameter.
 
 <a name="updatefundingautorepay"></a>
 # **UpdateFundingAutorepay**
-> UpdateFundingAutorepayResponse UpdateFundingAutorepay ()
+> UpdateFundingAutorepayResponse UpdateFundingAutorepay (UpdateFundingAutorepayRequest updateFundingAutorepayRequest)
 
 Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
 
@@ -2234,11 +2361,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var updateFundingAutorepayRequest = new UpdateFundingAutorepayRequest(); // UpdateFundingAutorepayRequest | 
 
             try
             {
                 // Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
-                UpdateFundingAutorepayResponse result = apiInstance.UpdateFundingAutorepay();
+                UpdateFundingAutorepayResponse result = apiInstance.UpdateFundingAutorepay(updateFundingAutorepayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2253,7 +2381,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateFundingAutorepayRequest** | **UpdateFundingAutorepayRequest**|  | 
 
 ### Return type
 
@@ -2265,7 +2396,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2284,7 +2415,7 @@ This endpoint does not need any parameter.
 
 <a name="updatefundingcontrol"></a>
 # **UpdateFundingControl**
-> UpdateFundingControlResponse UpdateFundingControl ()
+> UpdateFundingControlResponse UpdateFundingControl (UpdateFundingControlRequest updateFundingControlRequest)
 
 Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
 
@@ -2308,11 +2439,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FundingApi(config);
+            var updateFundingControlRequest = new UpdateFundingControlRequest(); // UpdateFundingControlRequest | 
 
             try
             {
                 // Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
-                UpdateFundingControlResponse result = apiInstance.UpdateFundingControl();
+                UpdateFundingControlResponse result = apiInstance.UpdateFundingControl(updateFundingControlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2327,7 +2459,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateFundingControlRequest** | **UpdateFundingControlRequest**|  | 
 
 ### Return type
 
@@ -2339,7 +2474,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2358,7 +2493,7 @@ This endpoint does not need any parameter.
 
 <a name="updatefundingmember"></a>
 # **UpdateFundingMember**
-> UpdateFundingMemberResponse UpdateFundingMember (string memberUserId)
+> UpdateFundingMemberResponse UpdateFundingMember (string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest)
 
 Set a team member’s funding limit (per draw or per month).
 
@@ -2383,11 +2518,12 @@ namespace Example
 
             var apiInstance = new FundingApi(config);
             var memberUserId = "memberUserId_example";  // string | 
+            var updateFundingMemberRequest = new UpdateFundingMemberRequest(); // UpdateFundingMemberRequest | 
 
             try
             {
                 // Set a team member’s funding limit (per draw or per month).
-                UpdateFundingMemberResponse result = apiInstance.UpdateFundingMember(memberUserId);
+                UpdateFundingMemberResponse result = apiInstance.UpdateFundingMember(memberUserId, updateFundingMemberRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2406,6 +2542,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **memberUserId** | **string**|  | 
+ **updateFundingMemberRequest** | **UpdateFundingMemberRequest**|  | 
 
 ### Return type
 
@@ -2417,7 +2554,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

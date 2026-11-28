@@ -33,9 +33,9 @@ namespace net.crossly.Api
         /// Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <returns>CreateCosmDesignerChainAutoUnlockResponse</returns>
-        CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest);
 
         /// <summary>
         /// 
@@ -44,9 +44,9 @@ namespace net.crossly.Api
         /// Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerChainAutoUnlockResponse</returns>
-        ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockWithHttpInfo(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -54,9 +54,9 @@ namespace net.crossly.Api
         /// Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>CreateCosmDesignerChainUnlockResponse</returns>
-        CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest);
 
         /// <summary>
         /// 
@@ -65,9 +65,9 @@ namespace net.crossly.Api
         /// Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerChainUnlockResponse</returns>
-        ApiResponse<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockWithHttpInfo(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -75,9 +75,9 @@ namespace net.crossly.Api
         /// Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <returns>CreateCosmDesignerMaterialiseResponse</returns>
-        CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest);
 
         /// <summary>
         /// 
@@ -86,9 +86,9 @@ namespace net.crossly.Api
         /// Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerMaterialiseResponse</returns>
-        ApiResponse<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseWithHttpInfo(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -96,9 +96,9 @@ namespace net.crossly.Api
         /// Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <returns>CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest);
 
         /// <summary>
         /// 
@@ -107,9 +107,9 @@ namespace net.crossly.Api
         /// Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmWithHttpInfo(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -117,9 +117,9 @@ namespace net.crossly.Api
         /// Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <returns>CreateWorldJobShiftReleaseResponse</returns>
-        CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease(Dictionary<string, Object> requestBody);
+        CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest);
 
         /// <summary>
         /// 
@@ -128,9 +128,9 @@ namespace net.crossly.Api
         /// Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <returns>ApiResponse of CreateWorldJobShiftReleaseResponse</returns>
-        ApiResponse<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseWithHttpInfo(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -138,9 +138,9 @@ namespace net.crossly.Api
         /// Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>CreateCosmDesignerSubmitForReviewResponse</returns>
-        CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest);
 
         /// <summary>
         /// 
@@ -149,9 +149,9 @@ namespace net.crossly.Api
         /// Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerSubmitForReviewResponse</returns>
-        ApiResponse<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewWithHttpInfo(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -159,9 +159,9 @@ namespace net.crossly.Api
         /// Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <returns>CreateCosmDesignerTermResponse</returns>
-        CreateCosmDesignerTermResponse CreateCosmDesignerTerm(Dictionary<string, Object> requestBody);
+        CreateCosmDesignerTermResponse CreateCosmDesignerTerm(CreateCosmDesignerTermRequest createCosmDesignerTermRequest);
 
         /// <summary>
         /// 
@@ -170,9 +170,9 @@ namespace net.crossly.Api
         /// Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerTermResponse</returns>
-        ApiResponse<CreateCosmDesignerTermResponse> CreateCosmDesignerTermWithHttpInfo(Dictionary<string, Object> requestBody);
+        ApiResponse<CreateCosmDesignerTermResponse> CreateCosmDesignerTermWithHttpInfo(CreateCosmDesignerTermRequest createCosmDesignerTermRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -490,10 +490,10 @@ namespace net.crossly.Api
         /// Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerChainAutoUnlockResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockAsync(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -502,10 +502,10 @@ namespace net.crossly.Api
         /// Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerChainAutoUnlockResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -513,10 +513,10 @@ namespace net.crossly.Api
         /// Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerChainUnlockResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -525,10 +525,10 @@ namespace net.crossly.Api
         /// Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerChainUnlockResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerChainUnlockResponse>> CreateCosmDesignerChainUnlockWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerChainUnlockResponse>> CreateCosmDesignerChainUnlockWithHttpInfoAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -536,10 +536,10 @@ namespace net.crossly.Api
         /// Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerMaterialiseResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseAsync(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -548,10 +548,10 @@ namespace net.crossly.Api
         /// Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerMaterialiseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerMaterialiseResponse>> CreateCosmDesignerMaterialiseWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerMaterialiseResponse>> CreateCosmDesignerMaterialiseWithHttpInfoAsync(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -559,10 +559,10 @@ namespace net.crossly.Api
         /// Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmAsync(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -571,10 +571,10 @@ namespace net.crossly.Api
         /// Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerMaterialiseConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -582,10 +582,10 @@ namespace net.crossly.Api
         /// Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldJobShiftReleaseResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseAsync(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -594,10 +594,10 @@ namespace net.crossly.Api
         /// Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldJobShiftReleaseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldJobShiftReleaseResponse>> CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldJobShiftReleaseResponse>> CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -605,10 +605,10 @@ namespace net.crossly.Api
         /// Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerSubmitForReviewResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -617,10 +617,10 @@ namespace net.crossly.Api
         /// Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerSubmitForReviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerSubmitForReviewResponse>> CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerSubmitForReviewResponse>> CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -628,10 +628,10 @@ namespace net.crossly.Api
         /// Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerTermResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmDesignerTermResponse> CreateCosmDesignerTermAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmDesignerTermResponse> CreateCosmDesignerTermAsync(CreateCosmDesignerTermRequest createCosmDesignerTermRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -640,10 +640,10 @@ namespace net.crossly.Api
         /// Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerTermResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerTermResponse>> CreateCosmDesignerTermWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmDesignerTermResponse>> CreateCosmDesignerTermWithHttpInfoAsync(CreateCosmDesignerTermRequest createCosmDesignerTermRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1145,11 +1145,11 @@ namespace net.crossly.Api
         ///  Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <returns>CreateCosmDesignerChainAutoUnlockResponse</returns>
-        public CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> localVarResponse = CreateCosmDesignerChainAutoUnlockWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> localVarResponse = CreateCosmDesignerChainAutoUnlockWithHttpInfo(createCosmDesignerChainAutoUnlockRequest);
             return localVarResponse.Data;
         }
 
@@ -1157,14 +1157,14 @@ namespace net.crossly.Api
         ///  Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerChainAutoUnlockResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockWithHttpInfo(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainAutoUnlockRequest' is set
+            if (createCosmDesignerChainAutoUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerChainAutoUnlock");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainAutoUnlockRequest' when calling DefaultApi->CreateCosmDesignerChainAutoUnlock");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1190,7 +1190,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainAutoUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1217,12 +1217,12 @@ namespace net.crossly.Api
         ///  Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerChainAutoUnlockResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerChainAutoUnlockResponse> CreateCosmDesignerChainAutoUnlockAsync(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> localVarResponse = await CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse> localVarResponse = await CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(createCosmDesignerChainAutoUnlockRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1230,15 +1230,15 @@ namespace net.crossly.Api
         ///  Opt a design in or out of the free chain unlock a popular limited design earns (on by default). Designer-only. Answers the popularity of the design toward the bar.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainAutoUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerChainAutoUnlockResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerChainAutoUnlockResponse>> CreateCosmDesignerChainAutoUnlockWithHttpInfoAsync(CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainAutoUnlockRequest' is set
+            if (createCosmDesignerChainAutoUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerChainAutoUnlock");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainAutoUnlockRequest' when calling DefaultApi->CreateCosmDesignerChainAutoUnlock");
             }
 
 
@@ -1265,7 +1265,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainAutoUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1293,11 +1293,11 @@ namespace net.crossly.Api
         ///  Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>CreateCosmDesignerChainUnlockResponse</returns>
-        public CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> localVarResponse = CreateCosmDesignerChainUnlockWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> localVarResponse = CreateCosmDesignerChainUnlockWithHttpInfo(createCosmDesignerChainUnlockRequest);
             return localVarResponse.Data;
         }
 
@@ -1305,14 +1305,14 @@ namespace net.crossly.Api
         ///  Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerChainUnlockResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockWithHttpInfo(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainUnlockRequest' is set
+            if (createCosmDesignerChainUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerChainUnlock");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainUnlockRequest' when calling DefaultApi->CreateCosmDesignerChainUnlock");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1338,7 +1338,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1365,12 +1365,12 @@ namespace net.crossly.Api
         ///  Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerChainUnlockResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerChainUnlockResponse> CreateCosmDesignerChainUnlockAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> localVarResponse = await CreateCosmDesignerChainUnlockWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse> localVarResponse = await CreateCosmDesignerChainUnlockWithHttpInfoAsync(createCosmDesignerChainUnlockRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1378,15 +1378,15 @@ namespace net.crossly.Api
         ///  Burn COSM to make a design mintable on chain. Designer-only and idempotent: paying twice is impossible, and a second call returns the existing unlock without charging. The fee is DESTROYED rather than collected. Limited editions only. Once unlocked, any holder may take their own copy on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerChainUnlockResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse>> CreateCosmDesignerChainUnlockWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerChainUnlockResponse>> CreateCosmDesignerChainUnlockWithHttpInfoAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainUnlockRequest' is set
+            if (createCosmDesignerChainUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerChainUnlock");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainUnlockRequest' when calling DefaultApi->CreateCosmDesignerChainUnlock");
             }
 
 
@@ -1413,7 +1413,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1441,11 +1441,11 @@ namespace net.crossly.Api
         ///  Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <returns>CreateCosmDesignerMaterialiseResponse</returns>
-        public CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> localVarResponse = CreateCosmDesignerMaterialiseWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> localVarResponse = CreateCosmDesignerMaterialiseWithHttpInfo(createCosmDesignerMaterialiseRequest);
             return localVarResponse.Data;
         }
 
@@ -1453,14 +1453,14 @@ namespace net.crossly.Api
         ///  Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerMaterialiseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseWithHttpInfo(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseRequest' is set
+            if (createCosmDesignerMaterialiseRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialise");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseRequest' when calling DefaultApi->CreateCosmDesignerMaterialise");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1486,7 +1486,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1513,12 +1513,12 @@ namespace net.crossly.Api
         ///  Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerMaterialiseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseResponse> CreateCosmDesignerMaterialiseAsync(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> localVarResponse = await CreateCosmDesignerMaterialiseWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse> localVarResponse = await CreateCosmDesignerMaterialiseWithHttpInfoAsync(createCosmDesignerMaterialiseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1526,15 +1526,15 @@ namespace net.crossly.Api
         ///  Lock a copy and return an UNSIGNED Metaplex Core mint for the holder to sign. One call: it resolves the designer royalty, locks the copy, publishes immutable content-addressed metadata and builds the transaction — so a lock is never taken without a transaction to go with it, and a failure after the lock releases it. Does NOT void the copy; call confirm once the chain reaches FINALIZED commitment. Every royalty recipient needs a connected wallet first, and the designer must have unlocked the design.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerMaterialiseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse>> CreateCosmDesignerMaterialiseWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseResponse>> CreateCosmDesignerMaterialiseWithHttpInfoAsync(CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseRequest' is set
+            if (createCosmDesignerMaterialiseRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialise");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseRequest' when calling DefaultApi->CreateCosmDesignerMaterialise");
             }
 
 
@@ -1561,7 +1561,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1589,11 +1589,11 @@ namespace net.crossly.Api
         ///  Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <returns>CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        public CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> localVarResponse = CreateCosmDesignerMaterialiseConfirmWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> localVarResponse = CreateCosmDesignerMaterialiseConfirmWithHttpInfo(createCosmDesignerMaterialiseConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -1601,14 +1601,14 @@ namespace net.crossly.Api
         ///  Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmWithHttpInfo(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseConfirmRequest' is set
+            if (createCosmDesignerMaterialiseConfirmRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialiseConfirm");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseConfirmRequest' when calling DefaultApi->CreateCosmDesignerMaterialiseConfirm");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1634,7 +1634,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1661,12 +1661,12 @@ namespace net.crossly.Api
         ///  Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerMaterialiseConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerMaterialiseConfirmResponse> CreateCosmDesignerMaterialiseConfirmAsync(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> localVarResponse = await CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse> localVarResponse = await CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(createCosmDesignerMaterialiseConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1674,15 +1674,15 @@ namespace net.crossly.Api
         ///  Record a confirmed mint and void the in-world copy, in one transaction. The caller MUST have verified the transaction at finalized commitment first — an NFT recorded against a transaction that never landed cannot be recalled, and the copy it voided is gone. Idempotent on an already-confirmed request.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerMaterialiseConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerMaterialiseConfirmResponse>> CreateCosmDesignerMaterialiseConfirmWithHttpInfoAsync(CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseConfirmRequest' is set
+            if (createCosmDesignerMaterialiseConfirmRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialiseConfirm");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseConfirmRequest' when calling DefaultApi->CreateCosmDesignerMaterialiseConfirm");
             }
 
 
@@ -1709,7 +1709,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1737,11 +1737,11 @@ namespace net.crossly.Api
         ///  Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <returns>CreateWorldJobShiftReleaseResponse</returns>
-        public CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease(Dictionary<string, Object> requestBody)
+        public CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> localVarResponse = CreateCosmDesignerMaterialiseReleaseWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> localVarResponse = CreateCosmDesignerMaterialiseReleaseWithHttpInfo(createCosmDesignerMaterialiseReleaseRequest);
             return localVarResponse.Data;
         }
 
@@ -1749,14 +1749,14 @@ namespace net.crossly.Api
         ///  Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <returns>ApiResponse of CreateWorldJobShiftReleaseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseWithHttpInfo(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseReleaseRequest' is set
+            if (createCosmDesignerMaterialiseReleaseRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialiseRelease");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseReleaseRequest' when calling DefaultApi->CreateCosmDesignerMaterialiseRelease");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1782,7 +1782,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseReleaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1809,12 +1809,12 @@ namespace net.crossly.Api
         ///  Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldJobShiftReleaseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldJobShiftReleaseResponse> CreateCosmDesignerMaterialiseReleaseAsync(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> localVarResponse = await CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse> localVarResponse = await CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(createCosmDesignerMaterialiseReleaseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1822,15 +1822,15 @@ namespace net.crossly.Api
         ///  Release a mint lock that was never signed. The ordinary outcome of somebody closing a wallet prompt, and it leaves the copy exactly as it was. Refuses a request that has already minted, because releasing one would unlock a copy that is on chain.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerMaterialiseReleaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldJobShiftReleaseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse>> CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldJobShiftReleaseResponse>> CreateCosmDesignerMaterialiseReleaseWithHttpInfoAsync(CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerMaterialiseReleaseRequest' is set
+            if (createCosmDesignerMaterialiseReleaseRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerMaterialiseRelease");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerMaterialiseReleaseRequest' when calling DefaultApi->CreateCosmDesignerMaterialiseRelease");
             }
 
 
@@ -1857,7 +1857,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerMaterialiseReleaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1885,11 +1885,11 @@ namespace net.crossly.Api
         ///  Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>CreateCosmDesignerSubmitForReviewResponse</returns>
-        public CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> localVarResponse = CreateCosmDesignerSubmitForReviewWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> localVarResponse = CreateCosmDesignerSubmitForReviewWithHttpInfo(createCosmDesignerChainUnlockRequest);
             return localVarResponse.Data;
         }
 
@@ -1897,14 +1897,14 @@ namespace net.crossly.Api
         ///  Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerSubmitForReviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewWithHttpInfo(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainUnlockRequest' is set
+            if (createCosmDesignerChainUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerSubmitForReview");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainUnlockRequest' when calling DefaultApi->CreateCosmDesignerSubmitForReview");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1930,7 +1930,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1957,12 +1957,12 @@ namespace net.crossly.Api
         ///  Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerSubmitForReviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerSubmitForReviewResponse> CreateCosmDesignerSubmitForReviewAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> localVarResponse = await CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse> localVarResponse = await CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(createCosmDesignerChainUnlockRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1970,15 +1970,15 @@ namespace net.crossly.Api
         ///  Submit a user-authored design for moderation. Designer-only, and refuses a design with no preview image HERE rather than at approval so the designer learns what is missing while they can still fix it. Submitting twice returns the existing pending review instead of queueing a second one — a moderator facing two reviews of one piece does not know which they are deciding. A design already on sale is refused.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerChainUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerSubmitForReviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse>> CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerSubmitForReviewResponse>> CreateCosmDesignerSubmitForReviewWithHttpInfoAsync(CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerChainUnlockRequest' is set
+            if (createCosmDesignerChainUnlockRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerSubmitForReview");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerChainUnlockRequest' when calling DefaultApi->CreateCosmDesignerSubmitForReview");
             }
 
 
@@ -2005,7 +2005,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerChainUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2033,11 +2033,11 @@ namespace net.crossly.Api
         ///  Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <returns>CreateCosmDesignerTermResponse</returns>
-        public CreateCosmDesignerTermResponse CreateCosmDesignerTerm(Dictionary<string, Object> requestBody)
+        public CreateCosmDesignerTermResponse CreateCosmDesignerTerm(CreateCosmDesignerTermRequest createCosmDesignerTermRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> localVarResponse = CreateCosmDesignerTermWithHttpInfo(requestBody);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> localVarResponse = CreateCosmDesignerTermWithHttpInfo(createCosmDesignerTermRequest);
             return localVarResponse.Data;
         }
 
@@ -2045,14 +2045,14 @@ namespace net.crossly.Api
         ///  Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <returns>ApiResponse of CreateCosmDesignerTermResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> CreateCosmDesignerTermWithHttpInfo(Dictionary<string, Object> requestBody)
+        public net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> CreateCosmDesignerTermWithHttpInfo(CreateCosmDesignerTermRequest createCosmDesignerTermRequest)
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerTermRequest' is set
+            if (createCosmDesignerTermRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerTerm");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerTermRequest' when calling DefaultApi->CreateCosmDesignerTerm");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2078,7 +2078,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerTermRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2105,12 +2105,12 @@ namespace net.crossly.Api
         ///  Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmDesignerTermResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmDesignerTermResponse> CreateCosmDesignerTermAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmDesignerTermResponse> CreateCosmDesignerTermAsync(CreateCosmDesignerTermRequest createCosmDesignerTermRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> localVarResponse = await CreateCosmDesignerTermWithHttpInfoAsync(requestBody, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse> localVarResponse = await CreateCosmDesignerTermWithHttpInfoAsync(createCosmDesignerTermRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2118,15 +2118,15 @@ namespace net.crossly.Api
         ///  Publish terms for a design. Never edits: every change is a new version, and a copy sold under an earlier one keeps those terms forever. Only the designer may call it. Collaborator shares are of the ROYALTY rather than the sale price and may total at most 100%, with the remainder staying with the designer; a total above 100% is refused rather than scaled down.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="requestBody"></param>
+        /// <param name="createCosmDesignerTermRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmDesignerTermResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse>> CreateCosmDesignerTermWithHttpInfoAsync(Dictionary<string, Object> requestBody, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmDesignerTermResponse>> CreateCosmDesignerTermWithHttpInfoAsync(CreateCosmDesignerTermRequest createCosmDesignerTermRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'requestBody' is set
-            if (requestBody == null)
+            // verify the required parameter 'createCosmDesignerTermRequest' is set
+            if (createCosmDesignerTermRequest == null)
             {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'requestBody' when calling DefaultApi->CreateCosmDesignerTerm");
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmDesignerTermRequest' when calling DefaultApi->CreateCosmDesignerTerm");
             }
 
 
@@ -2153,7 +2153,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.Data = requestBody;
+            localVarRequestOptions.Data = createCosmDesignerTermRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

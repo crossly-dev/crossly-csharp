@@ -96,7 +96,7 @@ Name | Type | Description  | Notes
 
 <a name="createtradeblockevolutionrecipe"></a>
 # **CreateTradeBlockEvolutionRecipe**
-> CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe ()
+> CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe (CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest)
 
 Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
 
@@ -120,11 +120,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TradeBlockApi(config);
+            var createTradeBlockEvolutionRecipeRequest = new CreateTradeBlockEvolutionRecipeRequest(); // CreateTradeBlockEvolutionRecipeRequest | 
 
             try
             {
                 // Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
-                CreateTradeBlockEvolutionRecipeResponse result = apiInstance.CreateTradeBlockEvolutionRecipe();
+                CreateTradeBlockEvolutionRecipeResponse result = apiInstance.CreateTradeBlockEvolutionRecipe(createTradeBlockEvolutionRecipeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -139,7 +140,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTradeBlockEvolutionRecipeRequest** | **CreateTradeBlockEvolutionRecipeRequest**|  | 
 
 ### Return type
 
@@ -151,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -170,7 +174,7 @@ This endpoint does not need any parameter.
 
 <a name="createtradeblockofferrespond"></a>
 # **CreateTradeBlockOfferRespond**
-> CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond (string id)
+> CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond (string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest)
 
 Accept, decline, counter, or withdraw a Trade Block offer.
 
@@ -195,11 +199,12 @@ namespace Example
 
             var apiInstance = new TradeBlockApi(config);
             var id = "id_example";  // string | 
+            var createTradeBlockOfferRespondRequest = new CreateTradeBlockOfferRespondRequest(); // CreateTradeBlockOfferRespondRequest | 
 
             try
             {
                 // Accept, decline, counter, or withdraw a Trade Block offer.
-                CreateTradeBlockOfferRespondResponse result = apiInstance.CreateTradeBlockOfferRespond(id);
+                CreateTradeBlockOfferRespondResponse result = apiInstance.CreateTradeBlockOfferRespond(id, createTradeBlockOfferRespondRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -218,6 +223,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createTradeBlockOfferRespondRequest** | **CreateTradeBlockOfferRespondRequest**|  | 
 
 ### Return type
 
@@ -229,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -326,7 +332,7 @@ Name | Type | Description  | Notes
 
 <a name="createtradeblockpostoffer"></a>
 # **CreateTradeBlockPostOffer**
-> IdResponse CreateTradeBlockPostOffer (string id)
+> IdResponse CreateTradeBlockPostOffer (string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest)
 
 Respond to a post with a concrete swap: items on each side (0..N), optional cash.
 
@@ -351,11 +357,12 @@ namespace Example
 
             var apiInstance = new TradeBlockApi(config);
             var id = "id_example";  // string | 
+            var createTradeBlockPostOfferRequest = new CreateTradeBlockPostOfferRequest(); // CreateTradeBlockPostOfferRequest | 
 
             try
             {
                 // Respond to a post with a concrete swap: items on each side (0..N), optional cash.
-                IdResponse result = apiInstance.CreateTradeBlockPostOffer(id);
+                IdResponse result = apiInstance.CreateTradeBlockPostOffer(id, createTradeBlockPostOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -374,6 +381,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createTradeBlockPostOfferRequest** | **CreateTradeBlockPostOfferRequest**|  | 
 
 ### Return type
 
@@ -385,7 +393,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -404,7 +412,7 @@ Name | Type | Description  | Notes
 
 <a name="createtradeblocksetrecipe"></a>
 # **CreateTradeBlockSetRecipe**
-> CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe ()
+> CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe (CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest)
 
 Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
 
@@ -428,11 +436,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TradeBlockApi(config);
+            var createTradeBlockSetRecipeRequest = new CreateTradeBlockSetRecipeRequest(); // CreateTradeBlockSetRecipeRequest | 
 
             try
             {
                 // Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
-                CreateTradeBlockSetRecipeResponse result = apiInstance.CreateTradeBlockSetRecipe();
+                CreateTradeBlockSetRecipeResponse result = apiInstance.CreateTradeBlockSetRecipe(createTradeBlockSetRecipeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -447,7 +456,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTradeBlockSetRecipeRequest** | **CreateTradeBlockSetRecipeRequest**|  | 
 
 ### Return type
 
@@ -459,7 +471,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

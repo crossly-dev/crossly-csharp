@@ -32,32 +32,6 @@ namespace net.crossly.Model
     public partial class CreateTeamInviteResponse : IEquatable<CreateTeamInviteResponse>, IValidatableObject
     {
         /// <summary>
-        /// Defines Role
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum RoleEnum
-        {
-            /// <summary>
-            /// Enum Va for value: va
-            /// </summary>
-            [EnumMember(Value = "va")]
-            Va = 1,
-
-            /// <summary>
-            /// Enum Admin for value: admin
-            /// </summary>
-            [EnumMember(Value = "admin")]
-            Admin = 2
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Role
-        /// </summary>
-        [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = false)]
-        public RoleEnum Role { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="CreateTeamInviteResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -65,67 +39,21 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTeamInviteResponse" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="inviteeEmail">inviteeEmail (required).</param>
-        /// <param name="role">role (required).</param>
-        /// <param name="scopes">scopes (required).</param>
-        /// <param name="expiresAt">expiresAt (required).</param>
-        /// <param name="acceptUrl">acceptUrl.</param>
-        public CreateTeamInviteResponse(string id = default(string), string inviteeEmail = default(string), RoleEnum role = default(RoleEnum), List<string> scopes = default(List<string>), string expiresAt = default(string), string acceptUrl = default(string))
+        /// <param name="data">data (required).</param>
+        public CreateTeamInviteResponse(CreateTeamInviteResponseData data = default(CreateTeamInviteResponseData))
         {
-            // to ensure "id" is required (not null)
-            if (id == null) {
-                throw new ArgumentNullException("id is a required property for CreateTeamInviteResponse and cannot be null");
+            // to ensure "data" is required (not null)
+            if (data == null) {
+                throw new ArgumentNullException("data is a required property for CreateTeamInviteResponse and cannot be null");
             }
-            this.Id = id;
-            // to ensure "inviteeEmail" is required (not null)
-            if (inviteeEmail == null) {
-                throw new ArgumentNullException("inviteeEmail is a required property for CreateTeamInviteResponse and cannot be null");
-            }
-            this.InviteeEmail = inviteeEmail;
-            this.Role = role;
-            // to ensure "scopes" is required (not null)
-            if (scopes == null) {
-                throw new ArgumentNullException("scopes is a required property for CreateTeamInviteResponse and cannot be null");
-            }
-            this.Scopes = scopes;
-            // to ensure "expiresAt" is required (not null)
-            if (expiresAt == null) {
-                throw new ArgumentNullException("expiresAt is a required property for CreateTeamInviteResponse and cannot be null");
-            }
-            this.ExpiresAt = expiresAt;
-            this.AcceptUrl = acceptUrl;
+            this.Data = data;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets InviteeEmail
-        /// </summary>
-        [DataMember(Name = "inviteeEmail", IsRequired = true, EmitDefaultValue = false)]
-        public string InviteeEmail { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Scopes
-        /// </summary>
-        [DataMember(Name = "scopes", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> Scopes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExpiresAt
-        /// </summary>
-        [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = false)]
-        public string ExpiresAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AcceptUrl
-        /// </summary>
-        [DataMember(Name = "acceptUrl", EmitDefaultValue = true)]
-        public string AcceptUrl { get; set; }
+        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
+        public CreateTeamInviteResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,12 +63,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTeamInviteResponse {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InviteeEmail: ").Append(InviteeEmail).Append("\n");
-            sb.Append("  Role: ").Append(Role).Append("\n");
-            sb.Append("  Scopes: ").Append(Scopes).Append("\n");
-            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
-            sb.Append("  AcceptUrl: ").Append(AcceptUrl).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -177,34 +100,9 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.InviteeEmail == input.InviteeEmail ||
-                    (this.InviteeEmail != null &&
-                    this.InviteeEmail.Equals(input.InviteeEmail))
-                ) && 
-                (
-                    this.Role == input.Role ||
-                    this.Role.Equals(input.Role)
-                ) && 
-                (
-                    this.Scopes == input.Scopes ||
-                    this.Scopes != null &&
-                    input.Scopes != null &&
-                    this.Scopes.SequenceEqual(input.Scopes)
-                ) && 
-                (
-                    this.ExpiresAt == input.ExpiresAt ||
-                    (this.ExpiresAt != null &&
-                    this.ExpiresAt.Equals(input.ExpiresAt))
-                ) && 
-                (
-                    this.AcceptUrl == input.AcceptUrl ||
-                    (this.AcceptUrl != null &&
-                    this.AcceptUrl.Equals(input.AcceptUrl))
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -217,26 +115,9 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.Data != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.InviteeEmail != null)
-                {
-                    hashCode = (hashCode * 59) + this.InviteeEmail.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Role.GetHashCode();
-                if (this.Scopes != null)
-                {
-                    hashCode = (hashCode * 59) + this.Scopes.GetHashCode();
-                }
-                if (this.ExpiresAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
-                }
-                if (this.AcceptUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.AcceptUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
                 return hashCode;
             }

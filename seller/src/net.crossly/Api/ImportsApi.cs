@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Start a bulk-import job for an existing platform connection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <returns>CreateImportResponse</returns>
-        CreateImportResponse CreateImport();
+        CreateImportResponse CreateImport(CreateImportRequest createImportRequest);
 
         /// <summary>
         /// Start a bulk-import job for an existing platform connection.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <returns>ApiResponse of CreateImportResponse</returns>
-        ApiResponse<CreateImportResponse> CreateImportWithHttpInfo();
+        ApiResponse<CreateImportResponse> CreateImportWithHttpInfo(CreateImportRequest createImportRequest);
         /// <summary>
         /// Get one import job.
         /// </summary>
@@ -110,9 +112,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateImportResponse</returns>
-        System.Threading.Tasks.Task<CreateImportResponse> CreateImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateImportResponse> CreateImportAsync(CreateImportRequest createImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a bulk-import job for an existing platform connection.
@@ -121,9 +124,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateImportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateImportResponse>> CreateImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateImportResponse>> CreateImportWithHttpInfoAsync(CreateImportRequest createImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get one import job.
         /// </summary>
@@ -315,10 +319,11 @@ namespace net.crossly.Api
         /// Start a bulk-import job for an existing platform connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <returns>CreateImportResponse</returns>
-        public CreateImportResponse CreateImport()
+        public CreateImportResponse CreateImport(CreateImportRequest createImportRequest)
         {
-            net.crossly.Client.ApiResponse<CreateImportResponse> localVarResponse = CreateImportWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateImportResponse> localVarResponse = CreateImportWithHttpInfo(createImportRequest);
             return localVarResponse.Data;
         }
 
@@ -326,12 +331,20 @@ namespace net.crossly.Api
         /// Start a bulk-import job for an existing platform connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <returns>ApiResponse of CreateImportResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateImportResponse> CreateImportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateImportResponse> CreateImportWithHttpInfo(CreateImportRequest createImportRequest)
         {
+            // verify the required parameter 'createImportRequest' is set
+            if (createImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createImportRequest' when calling ImportsApi->CreateImport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -351,6 +364,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -377,11 +391,12 @@ namespace net.crossly.Api
         /// Start a bulk-import job for an existing platform connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateImportResponse</returns>
-        public async System.Threading.Tasks.Task<CreateImportResponse> CreateImportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateImportResponse> CreateImportAsync(CreateImportRequest createImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateImportResponse> localVarResponse = await CreateImportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateImportResponse> localVarResponse = await CreateImportWithHttpInfoAsync(createImportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -389,14 +404,22 @@ namespace net.crossly.Api
         /// Start a bulk-import job for an existing platform connection. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createImportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateImportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateImportResponse>> CreateImportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateImportResponse>> CreateImportWithHttpInfoAsync(CreateImportRequest createImportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createImportRequest' is set
+            if (createImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createImportRequest' when calling ImportsApi->CreateImport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -416,6 +439,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

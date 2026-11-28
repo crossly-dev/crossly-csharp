@@ -44,9 +44,9 @@ namespace net.crossly.Model
         /// <param name="active">active (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="note">note.</param>
         /// <param name="version">version (required).</param>
         /// <param name="reviewedAt">reviewedAt.</param>
-        /// <param name="note">note.</param>
         /// <param name="merchantId">merchantId (required).</param>
         /// <param name="creatorSubjectId">creatorSubjectId (required).</param>
         /// <param name="outputCosmeticId">outputCosmeticId (required).</param>
@@ -57,7 +57,7 @@ namespace net.crossly.Model
         /// <param name="inputBCondition">inputBCondition.</param>
         /// <param name="inputBGradeKey">inputBGradeKey.</param>
         /// <param name="frozenAt">frozenAt.</param>
-        public CreateTradeBlockEvolutionRecipeResponseRecipe(string id = default(string), string name = default(string), bool active = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), decimal version = default(decimal), DateTime? reviewedAt = default(DateTime?), string note = default(string), string merchantId = default(string), string creatorSubjectId = default(string), string outputCosmeticId = default(string), string inputAVariantId = default(string), string inputACondition = default(string), string inputAGradeKey = default(string), string inputBVariantId = default(string), string inputBCondition = default(string), string inputBGradeKey = default(string), DateTime? frozenAt = default(DateTime?))
+        public CreateTradeBlockEvolutionRecipeResponseRecipe(string id = default(string), string name = default(string), bool active = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string note = default(string), decimal version = default(decimal), DateTime? reviewedAt = default(DateTime?), string merchantId = default(string), string creatorSubjectId = default(string), string outputCosmeticId = default(string), string inputAVariantId = default(string), string inputACondition = default(string), string inputAGradeKey = default(string), string inputBVariantId = default(string), string inputBCondition = default(string), string inputBGradeKey = default(string), DateTime? frozenAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -93,8 +93,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("inputAVariantId is a required property for CreateTradeBlockEvolutionRecipeResponseRecipe and cannot be null");
             }
             this.InputAVariantId = inputAVariantId;
-            this.ReviewedAt = reviewedAt;
             this.Note = note;
+            this.ReviewedAt = reviewedAt;
             this.InputACondition = inputACondition;
             this.InputAGradeKey = inputAGradeKey;
             this.InputBVariantId = inputBVariantId;
@@ -134,6 +134,12 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Gets or Sets _Version
         /// </summary>
         [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = false)]
@@ -144,12 +150,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "reviewedAt", EmitDefaultValue = true)]
         public DateTime? ReviewedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Note
-        /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantId
@@ -224,9 +224,9 @@ namespace net.crossly.Model
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  _Version: ").Append(_Version).Append("\n");
             sb.Append("  ReviewedAt: ").Append(ReviewedAt).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  MerchantId: ").Append(MerchantId).Append("\n");
             sb.Append("  CreatorSubjectId: ").Append(CreatorSubjectId).Append("\n");
             sb.Append("  OutputCosmeticId: ").Append(OutputCosmeticId).Append("\n");
@@ -297,6 +297,11 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
                     this._Version == input._Version ||
                     this._Version.Equals(input._Version)
                 ) && 
@@ -304,11 +309,6 @@ namespace net.crossly.Model
                     this.ReviewedAt == input.ReviewedAt ||
                     (this.ReviewedAt != null &&
                     this.ReviewedAt.Equals(input.ReviewedAt))
-                ) && 
-                (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
                 ) && 
                 (
                     this.MerchantId == input.MerchantId ||
@@ -388,14 +388,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this._Version.GetHashCode();
                 if (this.ReviewedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ReviewedAt.GetHashCode();
-                }
-                if (this.Note != null)
-                {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
                 }
                 if (this.MerchantId != null)
                 {

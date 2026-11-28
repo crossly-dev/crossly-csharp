@@ -116,9 +116,11 @@ namespace net.crossly.Model
         /// <param name="unitsAvailable">Units on offer now (released waves, else the format&#39;s units), null &#x3D; the listings&#39; stock..</param>
         /// <param name="currentPriceCents">The dutch price right now, else the configured price..</param>
         /// <param name="href">href (required).</param>
+        /// <param name="linkedGroupBuy">linkedGroupBuy.</param>
+        /// <param name="restockListings">E5: the drop&#39;s Crossly listings with their stock now; only set by getSellerDrop..</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public CreateBrandingDropPublishResponseData(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), string storefrontId = default(string), string status = default(string), PhaseEnum phase = default(PhaseEnum), string format = default(string), List<string> placements = default(List<string>), string announceAt = default(string), string countdownAt = default(string), string dropAt = default(string), string endsAt = default(string), string pausedAt = default(string), string timezone = default(string), string liveStreamId = default(string), string eventId = default(string), string spatialDropId = default(string), string featuredStatus = default(string), string partnerId = default(string), string reviewNote = default(string), CreateBrandingDropPublishResponseDataConfig config = default(CreateBrandingDropPublishResponseDataConfig), List<ListBrandingDropsItemWaves> waves = default(List<ListBrandingDropsItemWaves>), ListBrandingDropsItemCounts counts = default(ListBrandingDropsItemCounts), decimal? unitsAvailable = default(decimal?), decimal? currentPriceCents = default(decimal?), string href = default(string), string createdAt = default(string), string updatedAt = default(string))
+        public CreateBrandingDropPublishResponseData(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), string storefrontId = default(string), string status = default(string), PhaseEnum phase = default(PhaseEnum), string format = default(string), List<string> placements = default(List<string>), string announceAt = default(string), string countdownAt = default(string), string dropAt = default(string), string endsAt = default(string), string pausedAt = default(string), string timezone = default(string), string liveStreamId = default(string), string eventId = default(string), string spatialDropId = default(string), string featuredStatus = default(string), string partnerId = default(string), string reviewNote = default(string), CreateBrandingDropPublishResponseDataConfig config = default(CreateBrandingDropPublishResponseDataConfig), List<ListBrandingDropsItemWaves> waves = default(List<ListBrandingDropsItemWaves>), ListBrandingDropsItemCounts counts = default(ListBrandingDropsItemCounts), decimal? unitsAvailable = default(decimal?), decimal? currentPriceCents = default(decimal?), string href = default(string), ListBrandingDropsItemLinkedGroupBuy linkedGroupBuy = default(ListBrandingDropsItemLinkedGroupBuy), List<ListBrandingDropsItemRestockListings> restockListings = default(List<ListBrandingDropsItemRestockListings>), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -197,6 +199,8 @@ namespace net.crossly.Model
             this.ReviewNote = reviewNote;
             this.UnitsAvailable = unitsAvailable;
             this.CurrentPriceCents = currentPriceCents;
+            this.LinkedGroupBuy = linkedGroupBuy;
+            this.RestockListings = restockListings;
         }
 
         /// <summary>
@@ -358,6 +362,19 @@ namespace net.crossly.Model
         public string Href { get; set; }
 
         /// <summary>
+        /// Gets or Sets LinkedGroupBuy
+        /// </summary>
+        [DataMember(Name = "linkedGroupBuy", EmitDefaultValue = true)]
+        public ListBrandingDropsItemLinkedGroupBuy LinkedGroupBuy { get; set; }
+
+        /// <summary>
+        /// E5: the drop&#39;s Crossly listings with their stock now; only set by getSellerDrop.
+        /// </summary>
+        /// <value>E5: the drop&#39;s Crossly listings with their stock now; only set by getSellerDrop.</value>
+        [DataMember(Name = "restockListings", EmitDefaultValue = true)]
+        public List<ListBrandingDropsItemRestockListings> RestockListings { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -404,6 +421,8 @@ namespace net.crossly.Model
             sb.Append("  UnitsAvailable: ").Append(UnitsAvailable).Append("\n");
             sb.Append("  CurrentPriceCents: ").Append(CurrentPriceCents).Append("\n");
             sb.Append("  Href: ").Append(Href).Append("\n");
+            sb.Append("  LinkedGroupBuy: ").Append(LinkedGroupBuy).Append("\n");
+            sb.Append("  RestockListings: ").Append(RestockListings).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -578,6 +597,17 @@ namespace net.crossly.Model
                     this.Href.Equals(input.Href))
                 ) && 
                 (
+                    this.LinkedGroupBuy == input.LinkedGroupBuy ||
+                    (this.LinkedGroupBuy != null &&
+                    this.LinkedGroupBuy.Equals(input.LinkedGroupBuy))
+                ) && 
+                (
+                    this.RestockListings == input.RestockListings ||
+                    this.RestockListings != null &&
+                    input.RestockListings != null &&
+                    this.RestockListings.SequenceEqual(input.RestockListings)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -702,6 +732,14 @@ namespace net.crossly.Model
                 if (this.Href != null)
                 {
                     hashCode = (hashCode * 59) + this.Href.GetHashCode();
+                }
+                if (this.LinkedGroupBuy != null)
+                {
+                    hashCode = (hashCode * 59) + this.LinkedGroupBuy.GetHashCode();
+                }
+                if (this.RestockListings != null)
+                {
+                    hashCode = (hashCode * 59) + this.RestockListings.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

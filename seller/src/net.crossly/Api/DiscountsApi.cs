@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create an automatic discount.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>CreateAutomaticDiscountResponse</returns>
-        CreateAutomaticDiscountResponse CreateAutomaticDiscount();
+        CreateAutomaticDiscountResponse CreateAutomaticDiscount(CreateAutomaticDiscountRequest createAutomaticDiscountRequest);
 
         /// <summary>
         /// Create an automatic discount.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountResponse</returns>
-        ApiResponse<CreateAutomaticDiscountResponse> CreateAutomaticDiscountWithHttpInfo();
+        ApiResponse<CreateAutomaticDiscountResponse> CreateAutomaticDiscountWithHttpInfo(CreateAutomaticDiscountRequest createAutomaticDiscountRequest);
         /// <summary>
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <returns>CreateAutomaticDiscountPreviewResponse</returns>
-        CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview();
+        CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest);
 
         /// <summary>
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
@@ -56,14 +59,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountPreviewResponse</returns>
-        ApiResponse<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewWithHttpInfo();
+        ApiResponse<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewWithHttpInfo(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest);
         /// <summary>
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        DiscountCodeResponse CreateDiscountCode();
+        DiscountCodeResponse CreateDiscountCode(CreateDiscountCodeRequest createDiscountCodeRequest);
 
         /// <summary>
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
@@ -72,15 +77,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        ApiResponse<DiscountCodeResponse> CreateDiscountCodeWithHttpInfo();
+        ApiResponse<DiscountCodeResponse> CreateDiscountCodeWithHttpInfo(CreateDiscountCodeRequest createDiscountCodeRequest);
         /// <summary>
         /// Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <returns>CreateDiscountCodeGenerateResponse</returns>
-        CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate(string id);
+        CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest);
 
         /// <summary>
         /// Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
@@ -90,15 +97,35 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <returns>ApiResponse of CreateDiscountCodeGenerateResponse</returns>
-        ApiResponse<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateWithHttpInfo(string id);
+        ApiResponse<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateWithHttpInfo(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest);
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <returns>CreateDiscountCodePauseAllResponse</returns>
+        CreateDiscountCodePauseAllResponse CreateDiscountCodePauseAll(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest);
+
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <returns>ApiResponse of CreateDiscountCodePauseAllResponse</returns>
+        ApiResponse<CreateDiscountCodePauseAllResponse> CreateDiscountCodePauseAllWithHttpInfo(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest);
         /// <summary>
         /// Pause, resume (active) or archive a discount code.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        DiscountCodeResponse CreateDiscountCodeStatus(string id);
+        DiscountCodeResponse CreateDiscountCodeStatus(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest);
 
         /// <summary>
         /// Pause, resume (active) or archive a discount code.
@@ -108,8 +135,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        ApiResponse<DiscountCodeResponse> CreateDiscountCodeStatusWithHttpInfo(string id);
+        ApiResponse<DiscountCodeResponse> CreateDiscountCodeStatusWithHttpInfo(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest);
         /// <summary>
         /// Create a Collection holders deal in the store (X-Storefront-Id; default store when omitted).
         /// </summary>
@@ -237,8 +265,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListDiscountCodeRedemptionsResponse</returns>
-        ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions(string id);
+        ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// A code’s usage history: orders, masked buyers, region, channel and the amount given, newest first.
@@ -248,14 +278,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListDiscountCodeRedemptionsResponse</returns>
-        ApiResponse<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsWithHttpInfo(string id);
+        ApiResponse<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsWithHttpInfo(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <returns>ListDiscountCodesResponse</returns>
-        ListDiscountCodesResponse ListDiscountCodes();
+        ListDiscountCodesResponse ListDiscountCodes(string archived = default(string));
 
         /// <summary>
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
@@ -264,8 +297,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <returns>ApiResponse of ListDiscountCodesResponse</returns>
-        ApiResponse<ListDiscountCodesResponse> ListDiscountCodesWithHttpInfo();
+        ApiResponse<ListDiscountCodesResponse> ListDiscountCodesWithHttpInfo(string archived = default(string));
         /// <summary>
         /// The store’s Collection holders deals: a percent off for buyers holding any token of a collection (by chain + contract), with scope, channels, schedule, stacking and limits.
         /// </summary>
@@ -287,8 +321,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>CreateAutomaticDiscountResponse</returns>
-        CreateAutomaticDiscountResponse UpdateAutomaticDiscount(string id);
+        CreateAutomaticDiscountResponse UpdateAutomaticDiscount(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest);
 
         /// <summary>
         /// Replace an automatic discount.
@@ -298,15 +333,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountResponse</returns>
-        ApiResponse<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountWithHttpInfo(string id);
+        ApiResponse<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountWithHttpInfo(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest);
         /// <summary>
         /// Update a discount code. The code itself can be renamed only until it is first used.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        DiscountCodeResponse UpdateDiscountCode(string id);
+        DiscountCodeResponse UpdateDiscountCode(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest);
 
         /// <summary>
         /// Update a discount code. The code itself can be renamed only until it is first used.
@@ -316,8 +353,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        ApiResponse<DiscountCodeResponse> UpdateDiscountCodeWithHttpInfo(string id);
+        ApiResponse<DiscountCodeResponse> UpdateDiscountCodeWithHttpInfo(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest);
         /// <summary>
         /// Replace a Collection holders deal.
         /// </summary>
@@ -352,9 +390,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> CreateAutomaticDiscountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> CreateAutomaticDiscountAsync(CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create an automatic discount.
@@ -363,9 +402,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountResponse>> CreateAutomaticDiscountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountResponse>> CreateAutomaticDiscountWithHttpInfoAsync(CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
         /// </summary>
@@ -373,9 +413,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountPreviewResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewAsync(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
@@ -384,9 +425,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountPreviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountPreviewResponse>> CreateAutomaticDiscountPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountPreviewResponse>> CreateAutomaticDiscountPreviewWithHttpInfoAsync(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
         /// </summary>
@@ -394,9 +436,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeAsync(CreateDiscountCodeRequest createDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
@@ -405,9 +448,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> CreateDiscountCodeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> CreateDiscountCodeWithHttpInfoAsync(CreateDiscountCodeRequest createDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
         /// </summary>
@@ -416,9 +460,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDiscountCodeGenerateResponse</returns>
-        System.Threading.Tasks.Task<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateAsync(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
@@ -428,9 +473,33 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDiscountCodeGenerateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDiscountCodeGenerateResponse>> CreateDiscountCodeGenerateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateDiscountCodeGenerateResponse>> CreateDiscountCodeGenerateWithHttpInfoAsync(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDiscountCodePauseAllResponse</returns>
+        System.Threading.Tasks.Task<CreateDiscountCodePauseAllResponse> CreateDiscountCodePauseAllAsync(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDiscountCodePauseAllResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDiscountCodePauseAllResponse>> CreateDiscountCodePauseAllWithHttpInfoAsync(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pause, resume (active) or archive a discount code.
         /// </summary>
@@ -439,9 +508,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeStatusAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeStatusAsync(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pause, resume (active) or archive a discount code.
@@ -451,9 +521,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> CreateDiscountCodeStatusWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> CreateDiscountCodeStatusWithHttpInfoAsync(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a Collection holders deal in the store (X-Storefront-Id; default store when omitted).
         /// </summary>
@@ -619,9 +690,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDiscountCodeRedemptionsResponse</returns>
-        System.Threading.Tasks.Task<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsAsync(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A code’s usage history: orders, masked buyers, region, channel and the amount given, newest first.
@@ -631,9 +704,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDiscountCodeRedemptionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDiscountCodeRedemptionsResponse>> ListDiscountCodeRedemptionsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListDiscountCodeRedemptionsResponse>> ListDiscountCodeRedemptionsWithHttpInfoAsync(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
         /// </summary>
@@ -641,9 +716,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDiscountCodesResponse</returns>
-        System.Threading.Tasks.Task<ListDiscountCodesResponse> ListDiscountCodesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListDiscountCodesResponse> ListDiscountCodesAsync(string archived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
@@ -652,9 +728,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDiscountCodesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDiscountCodesResponse>> ListDiscountCodesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListDiscountCodesResponse>> ListDiscountCodesWithHttpInfoAsync(string archived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The store’s Collection holders deals: a percent off for buyers holding any token of a collection (by chain + contract), with scope, channels, schedule, stacking and limits.
         /// </summary>
@@ -684,9 +761,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountAsync(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace an automatic discount.
@@ -696,9 +774,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountResponse>> UpdateAutomaticDiscountWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomaticDiscountResponse>> UpdateAutomaticDiscountWithHttpInfoAsync(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update a discount code. The code itself can be renamed only until it is first used.
         /// </summary>
@@ -707,9 +786,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        System.Threading.Tasks.Task<DiscountCodeResponse> UpdateDiscountCodeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DiscountCodeResponse> UpdateDiscountCodeAsync(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a discount code. The code itself can be renamed only until it is first used.
@@ -719,9 +799,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> UpdateDiscountCodeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DiscountCodeResponse>> UpdateDiscountCodeWithHttpInfoAsync(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace a Collection holders deal.
         /// </summary>
@@ -869,10 +950,11 @@ namespace net.crossly.Api
         /// Create an automatic discount. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>CreateAutomaticDiscountResponse</returns>
-        public CreateAutomaticDiscountResponse CreateAutomaticDiscount()
+        public CreateAutomaticDiscountResponse CreateAutomaticDiscount(CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = CreateAutomaticDiscountWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = CreateAutomaticDiscountWithHttpInfo(createAutomaticDiscountRequest);
             return localVarResponse.Data;
         }
 
@@ -880,12 +962,20 @@ namespace net.crossly.Api
         /// Create an automatic discount. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> CreateAutomaticDiscountWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> CreateAutomaticDiscountWithHttpInfo(CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
         {
+            // verify the required parameter 'createAutomaticDiscountRequest' is set
+            if (createAutomaticDiscountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountRequest' when calling DiscountsApi->CreateAutomaticDiscount");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -905,6 +995,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomaticDiscountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -931,11 +1022,12 @@ namespace net.crossly.Api
         /// Create an automatic discount. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> CreateAutomaticDiscountAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> CreateAutomaticDiscountAsync(CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = await CreateAutomaticDiscountWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = await CreateAutomaticDiscountWithHttpInfoAsync(createAutomaticDiscountRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -943,14 +1035,22 @@ namespace net.crossly.Api
         /// Create an automatic discount. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse>> CreateAutomaticDiscountWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse>> CreateAutomaticDiscountWithHttpInfoAsync(CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAutomaticDiscountRequest' is set
+            if (createAutomaticDiscountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountRequest' when calling DiscountsApi->CreateAutomaticDiscount");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -970,6 +1070,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomaticDiscountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -997,10 +1098,11 @@ namespace net.crossly.Api
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <returns>CreateAutomaticDiscountPreviewResponse</returns>
-        public CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview()
+        public CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> localVarResponse = CreateAutomaticDiscountPreviewWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> localVarResponse = CreateAutomaticDiscountPreviewWithHttpInfo(createAutomaticDiscountPreviewRequest);
             return localVarResponse.Data;
         }
 
@@ -1008,12 +1110,20 @@ namespace net.crossly.Api
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountPreviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewWithHttpInfo(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest)
         {
+            // verify the required parameter 'createAutomaticDiscountPreviewRequest' is set
+            if (createAutomaticDiscountPreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountPreviewRequest' when calling DiscountsApi->CreateAutomaticDiscountPreview");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1033,6 +1143,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomaticDiscountPreviewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1059,11 +1170,12 @@ namespace net.crossly.Api
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountPreviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAutomaticDiscountPreviewResponse> CreateAutomaticDiscountPreviewAsync(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> localVarResponse = await CreateAutomaticDiscountPreviewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse> localVarResponse = await CreateAutomaticDiscountPreviewWithHttpInfoAsync(createAutomaticDiscountPreviewRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1071,14 +1183,22 @@ namespace net.crossly.Api
         /// Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomaticDiscountPreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountPreviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse>> CreateAutomaticDiscountPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountPreviewResponse>> CreateAutomaticDiscountPreviewWithHttpInfoAsync(CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAutomaticDiscountPreviewRequest' is set
+            if (createAutomaticDiscountPreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountPreviewRequest' when calling DiscountsApi->CreateAutomaticDiscountPreview");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1098,6 +1218,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomaticDiscountPreviewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1125,10 +1246,11 @@ namespace net.crossly.Api
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        public DiscountCodeResponse CreateDiscountCode()
+        public DiscountCodeResponse CreateDiscountCode(CreateDiscountCodeRequest createDiscountCodeRequest)
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = CreateDiscountCodeWithHttpInfo();
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = CreateDiscountCodeWithHttpInfo(createDiscountCodeRequest);
             return localVarResponse.Data;
         }
 
@@ -1136,12 +1258,20 @@ namespace net.crossly.Api
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        public net.crossly.Client.ApiResponse<DiscountCodeResponse> CreateDiscountCodeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<DiscountCodeResponse> CreateDiscountCodeWithHttpInfo(CreateDiscountCodeRequest createDiscountCodeRequest)
         {
+            // verify the required parameter 'createDiscountCodeRequest' is set
+            if (createDiscountCodeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeRequest' when calling DiscountsApi->CreateDiscountCode");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1161,6 +1291,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createDiscountCodeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1187,11 +1318,12 @@ namespace net.crossly.Api
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        public async System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeAsync(CreateDiscountCodeRequest createDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await CreateDiscountCodeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await CreateDiscountCodeWithHttpInfoAsync(createDiscountCodeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1199,14 +1331,22 @@ namespace net.crossly.Api
         /// Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> CreateDiscountCodeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> CreateDiscountCodeWithHttpInfoAsync(CreateDiscountCodeRequest createDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createDiscountCodeRequest' is set
+            if (createDiscountCodeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeRequest' when calling DiscountsApi->CreateDiscountCode");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1226,6 +1366,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createDiscountCodeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1254,10 +1395,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <returns>CreateDiscountCodeGenerateResponse</returns>
-        public CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate(string id)
+        public CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> localVarResponse = CreateDiscountCodeGenerateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> localVarResponse = CreateDiscountCodeGenerateWithHttpInfo(id, createDiscountCodeGenerateRequest);
             return localVarResponse.Data;
         }
 
@@ -1266,8 +1408,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <returns>ApiResponse of CreateDiscountCodeGenerateResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateWithHttpInfo(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1275,9 +1418,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->CreateDiscountCodeGenerate");
             }
 
+            // verify the required parameter 'createDiscountCodeGenerateRequest' is set
+            if (createDiscountCodeGenerateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeGenerateRequest' when calling DiscountsApi->CreateDiscountCodeGenerate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1298,6 +1448,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDiscountCodeGenerateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1325,11 +1476,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDiscountCodeGenerateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateDiscountCodeGenerateResponse> CreateDiscountCodeGenerateAsync(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> localVarResponse = await CreateDiscountCodeGenerateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse> localVarResponse = await CreateDiscountCodeGenerateWithHttpInfoAsync(id, createDiscountCodeGenerateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1338,9 +1490,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeGenerateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDiscountCodeGenerateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse>> CreateDiscountCodeGenerateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDiscountCodeGenerateResponse>> CreateDiscountCodeGenerateWithHttpInfoAsync(string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1348,10 +1501,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->CreateDiscountCodeGenerate");
             }
 
+            // verify the required parameter 'createDiscountCodeGenerateRequest' is set
+            if (createDiscountCodeGenerateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeGenerateRequest' when calling DiscountsApi->CreateDiscountCodeGenerate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1372,6 +1532,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDiscountCodeGenerateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1396,14 +1557,163 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <returns>CreateDiscountCodePauseAllResponse</returns>
+        public CreateDiscountCodePauseAllResponse CreateDiscountCodePauseAll(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateDiscountCodePauseAllResponse> localVarResponse = CreateDiscountCodePauseAllWithHttpInfo(createDiscountCodePauseAllRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <returns>ApiResponse of CreateDiscountCodePauseAllResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateDiscountCodePauseAllResponse> CreateDiscountCodePauseAllWithHttpInfo(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest)
+        {
+            // verify the required parameter 'createDiscountCodePauseAllRequest' is set
+            if (createDiscountCodePauseAllRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodePauseAllRequest' when calling DiscountsApi->CreateDiscountCodePauseAll");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createDiscountCodePauseAllRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDiscountCodePauseAllResponse>("/v1/discount-codes/pause-all", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDiscountCodePauseAll", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDiscountCodePauseAllResponse</returns>
+        public async System.Threading.Tasks.Task<CreateDiscountCodePauseAllResponse> CreateDiscountCodePauseAllAsync(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateDiscountCodePauseAllResponse> localVarResponse = await CreateDiscountCodePauseAllWithHttpInfoAsync(createDiscountCodePauseAllRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDiscountCodePauseAllRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDiscountCodePauseAllResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDiscountCodePauseAllResponse>> CreateDiscountCodePauseAllWithHttpInfoAsync(CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createDiscountCodePauseAllRequest' is set
+            if (createDiscountCodePauseAllRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodePauseAllRequest' when calling DiscountsApi->CreateDiscountCodePauseAll");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createDiscountCodePauseAllRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDiscountCodePauseAllResponse>("/v1/discount-codes/pause-all", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDiscountCodePauseAll", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Pause, resume (active) or archive a discount code. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        public DiscountCodeResponse CreateDiscountCodeStatus(string id)
+        public DiscountCodeResponse CreateDiscountCodeStatus(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest)
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = CreateDiscountCodeStatusWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = CreateDiscountCodeStatusWithHttpInfo(id, createDiscountCodeStatusRequest);
             return localVarResponse.Data;
         }
 
@@ -1412,8 +1722,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        public net.crossly.Client.ApiResponse<DiscountCodeResponse> CreateDiscountCodeStatusWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<DiscountCodeResponse> CreateDiscountCodeStatusWithHttpInfo(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1421,9 +1732,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->CreateDiscountCodeStatus");
             }
 
+            // verify the required parameter 'createDiscountCodeStatusRequest' is set
+            if (createDiscountCodeStatusRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeStatusRequest' when calling DiscountsApi->CreateDiscountCodeStatus");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1444,6 +1762,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDiscountCodeStatusRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1471,11 +1790,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        public async System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeStatusAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DiscountCodeResponse> CreateDiscountCodeStatusAsync(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await CreateDiscountCodeStatusWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await CreateDiscountCodeStatusWithHttpInfoAsync(id, createDiscountCodeStatusRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1484,9 +1804,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createDiscountCodeStatusRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> CreateDiscountCodeStatusWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> CreateDiscountCodeStatusWithHttpInfoAsync(string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1494,10 +1815,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->CreateDiscountCodeStatus");
             }
 
+            // verify the required parameter 'createDiscountCodeStatusRequest' is set
+            if (createDiscountCodeStatusRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDiscountCodeStatusRequest' when calling DiscountsApi->CreateDiscountCodeStatus");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1518,6 +1846,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDiscountCodeStatusRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2508,10 +2837,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListDiscountCodeRedemptionsResponse</returns>
-        public ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions(string id)
+        public ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> localVarResponse = ListDiscountCodeRedemptionsWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> localVarResponse = ListDiscountCodeRedemptionsWithHttpInfo(id, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -2520,8 +2851,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListDiscountCodeRedemptionsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsWithHttpInfo(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2552,6 +2885,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2579,11 +2920,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDiscountCodeRedemptionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListDiscountCodeRedemptionsResponse> ListDiscountCodeRedemptionsAsync(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> localVarResponse = await ListDiscountCodeRedemptionsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse> localVarResponse = await ListDiscountCodeRedemptionsWithHttpInfoAsync(id, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2592,9 +2935,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDiscountCodeRedemptionsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse>> ListDiscountCodeRedemptionsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDiscountCodeRedemptionsResponse>> ListDiscountCodeRedemptionsWithHttpInfoAsync(string id, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2626,6 +2971,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2653,10 +3006,11 @@ namespace net.crossly.Api
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <returns>ListDiscountCodesResponse</returns>
-        public ListDiscountCodesResponse ListDiscountCodes()
+        public ListDiscountCodesResponse ListDiscountCodes(string archived = default(string))
         {
-            net.crossly.Client.ApiResponse<ListDiscountCodesResponse> localVarResponse = ListDiscountCodesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListDiscountCodesResponse> localVarResponse = ListDiscountCodesWithHttpInfo(archived);
             return localVarResponse.Data;
         }
 
@@ -2664,8 +3018,9 @@ namespace net.crossly.Api
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <returns>ApiResponse of ListDiscountCodesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListDiscountCodesResponse> ListDiscountCodesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListDiscountCodesResponse> ListDiscountCodesWithHttpInfo(string archived = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2689,6 +3044,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (archived != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "archived", archived));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2715,11 +3074,12 @@ namespace net.crossly.Api
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDiscountCodesResponse</returns>
-        public async System.Threading.Tasks.Task<ListDiscountCodesResponse> ListDiscountCodesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListDiscountCodesResponse> ListDiscountCodesAsync(string archived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListDiscountCodesResponse> localVarResponse = await ListDiscountCodesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListDiscountCodesResponse> localVarResponse = await ListDiscountCodesWithHttpInfoAsync(archived, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2727,9 +3087,10 @@ namespace net.crossly.Api
         /// Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="archived"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDiscountCodesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDiscountCodesResponse>> ListDiscountCodesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDiscountCodesResponse>> ListDiscountCodesWithHttpInfoAsync(string archived = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2754,6 +3115,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (archived != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "archived", archived));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2910,10 +3275,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>CreateAutomaticDiscountResponse</returns>
-        public CreateAutomaticDiscountResponse UpdateAutomaticDiscount(string id)
+        public CreateAutomaticDiscountResponse UpdateAutomaticDiscount(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = UpdateAutomaticDiscountWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = UpdateAutomaticDiscountWithHttpInfo(id, createAutomaticDiscountRequest);
             return localVarResponse.Data;
         }
 
@@ -2922,8 +3288,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <returns>ApiResponse of CreateAutomaticDiscountResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountWithHttpInfo(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2931,9 +3298,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->UpdateAutomaticDiscount");
             }
 
+            // verify the required parameter 'createAutomaticDiscountRequest' is set
+            if (createAutomaticDiscountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountRequest' when calling DiscountsApi->UpdateAutomaticDiscount");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2954,6 +3328,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createAutomaticDiscountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2981,11 +3356,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomaticDiscountResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAutomaticDiscountResponse> UpdateAutomaticDiscountAsync(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = await UpdateAutomaticDiscountWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse> localVarResponse = await UpdateAutomaticDiscountWithHttpInfoAsync(id, createAutomaticDiscountRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2994,9 +3370,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createAutomaticDiscountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomaticDiscountResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse>> UpdateAutomaticDiscountWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomaticDiscountResponse>> UpdateAutomaticDiscountWithHttpInfoAsync(string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3004,10 +3381,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->UpdateAutomaticDiscount");
             }
 
+            // verify the required parameter 'createAutomaticDiscountRequest' is set
+            if (createAutomaticDiscountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomaticDiscountRequest' when calling DiscountsApi->UpdateAutomaticDiscount");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3028,6 +3412,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createAutomaticDiscountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3056,10 +3441,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <returns>DiscountCodeResponse</returns>
-        public DiscountCodeResponse UpdateDiscountCode(string id)
+        public DiscountCodeResponse UpdateDiscountCode(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest)
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = UpdateDiscountCodeWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = UpdateDiscountCodeWithHttpInfo(id, updateDiscountCodeRequest);
             return localVarResponse.Data;
         }
 
@@ -3068,8 +3454,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <returns>ApiResponse of DiscountCodeResponse</returns>
-        public net.crossly.Client.ApiResponse<DiscountCodeResponse> UpdateDiscountCodeWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<DiscountCodeResponse> UpdateDiscountCodeWithHttpInfo(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3077,9 +3464,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->UpdateDiscountCode");
             }
 
+            // verify the required parameter 'updateDiscountCodeRequest' is set
+            if (updateDiscountCodeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDiscountCodeRequest' when calling DiscountsApi->UpdateDiscountCode");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3100,6 +3494,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateDiscountCodeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3127,11 +3522,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DiscountCodeResponse</returns>
-        public async System.Threading.Tasks.Task<DiscountCodeResponse> UpdateDiscountCodeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DiscountCodeResponse> UpdateDiscountCodeAsync(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await UpdateDiscountCodeWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DiscountCodeResponse> localVarResponse = await UpdateDiscountCodeWithHttpInfoAsync(id, updateDiscountCodeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3140,9 +3536,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateDiscountCodeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DiscountCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> UpdateDiscountCodeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DiscountCodeResponse>> UpdateDiscountCodeWithHttpInfoAsync(string id, UpdateDiscountCodeRequest updateDiscountCodeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3150,10 +3547,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling DiscountsApi->UpdateDiscountCode");
             }
 
+            // verify the required parameter 'updateDiscountCodeRequest' is set
+            if (updateDiscountCodeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDiscountCodeRequest' when calling DiscountsApi->UpdateDiscountCode");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3174,6 +3578,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateDiscountCodeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

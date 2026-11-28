@@ -66,8 +66,11 @@ Method | HTTP request | Description
 [**GetPassportPrint**](ListingsApi.md#getpassportprint) | **GET** /v1/passports/print/{jobId} | Where a passport print job sent to your agent is: queued, sent, done, failed, expired or duplicate.
 [**GetPricingSetting**](ListingsApi.md#getpricingsetting) | **GET** /v1/pricing/settings | Selling options: own-price match (Crossly sells your items at your own lower price for the same item on another marketplace; dollar-priced copies only) and layaway (buyers may put items on layaway). Both on by default.
 [**GetPricingSoldComp**](ListingsApi.md#getpricingsoldcomp) | **GET** /v1/pricing/sold-comps | What one catalog product (market_sku_id, in one condition) actually sold for across Crossly in the last 180 days: median, p25/p75, p10/p90 (null under 10 sales), sale count, last sold, and days from listing to sale (median, p25, p75). Pass marketSkuId (+ optional condition) or one of your listingIds. comps is null until there are 3+ sales from 2+ sellers; holdCode says why there is nothing (no_market_sku, mixed_inventory, below_privacy_floor) — the same reasons a sold_median reprice rule holds.
+[**GetRentalPolicy**](ListingsApi.md#getrentalpolicy) | **GET** /v1/rentals/policy | The return and payment policies a rental inherits from Settings › Policies, resolved for the store (or for one listing with ?listingId): preset ids and names, the level each came from, the return line, protections, arrival photos, the deposit claim window in days, a required deposit in basis points, accepted methods, and editPath.
 [**GetRentalSetting**](ListingsApi.md#getrentalsetting) | **GET** /v1/rentals/settings | The store’s rental defaults (every item inherits them) and its payout timing.
 [**GetShopLimit**](ListingsApi.md#getshoplimit) | **GET** /v1/shop-limits | Your Crossly Shop selling limit: live listings and listed value, used of limit, per store, and the next step.
+[**GetStockxCatalog**](ListingsApi.md#getstockxcatalog) | **GET** /v1/stockx/catalog | Search the StockX catalog (style code, SKU or words) to pick the product a StockX ask is on.
+[**GetStockxCatalogVariantMarketData**](ListingsApi.md#getstockxcatalogvariantmarketdata) | **GET** /v1/stockx/catalog/{productId}/variants/{variantId}/market-data | Lowest ask, highest bid and suggested prices for one StockX size.
 [**ListEventAttendees**](ListingsApi.md#listeventattendees) | **GET** /v1/events/{id}/attendees | Who RSVPd: display name, avatar, going or interested, and when. No contact details.
 [**ListEvents**](ListingsApi.md#listevents) | **GET** /v1/events | Your events (launches, sales, live shows, drops, meetups, pop-ups, workshops, parties): schedule, status, phase, and going/interested counts.
 [**ListListingAiDetections**](ListingsApi.md#listlistingaidetections) | **GET** /v1/listings/{id}/ai-detections | Crossly&#39;s AI-image detections for a listing&#39;s photos.
@@ -80,11 +83,14 @@ Method | HTTP request | Description
 [**ListPassportEvents**](ListingsApi.md#listpassportevents) | **GET** /v1/passports/{id}/events | A passport’s event history, newest first (never a buyer or a price).
 [**ListPassportPrintTargets**](ListingsApi.md#listpassportprinttargets) | **GET** /v1/passports/print-targets | Your printer agents (online, printers, default) and the passport label templates each can print.
 [**ListPassports**](ListingsApi.md#listpassports) | **GET** /v1/passports | Product passports you registered (optionally for one Crossly listing): the code and URL each tag carries.
-[**ListRentalOffers**](ListingsApi.md#listrentaloffers) | **GET** /v1/rentals/offers | What you offer for rent.
+[**ListRentalOffers**](ListingsApi.md#listrentaloffers) | **GET** /v1/rentals/offers | What you offer for rent. Each offer carries &#x60;policy&#x60;: the return and payment policies it inherits from Settings › Policies, resolved (preset ids and names, the level they came from, protections, claim window, deposit, accepted methods, and editPath), with &#x60;returnPolicyOverride&#x60; when the offer writes its own return text.
+[**ListStockxCatalogVariants**](ListingsApi.md#liststockxcatalogvariants) | **GET** /v1/stockx/catalog/{productId}/variants | List the sizes (variants) of a StockX catalog product.
 [**ListStories**](ListingsApi.md#liststories) | **GET** /v1/stories | Your active story slides (newest run first, each run in play order), with their overlays: text, listing stickers, @mentions, links, emoji and drawing.
 [**UpdateEvent**](ListingsApi.md#updateevent) | **PATCH** /v1/events/{id} | Edit an event. Omitted fields are unchanged; null clears.
 [**UpdateHotspot**](ListingsApi.md#updatehotspot) | **PUT** /v1/hotspots | Tag your listings at points on a story or lookbook photo (shop the look). Replaces that photo’s tags; at most 12.
 [**UpdateListing**](ListingsApi.md#updatelisting) | **PATCH** /v1/listings/{id} | Edit a listing and fan out update jobs to existing platform listings.
+[**UpdateListingAssignee**](ListingsApi.md#updatelistingassignee) | **PATCH** /v1/listings/assignee | Assign many listings to a teammate, round robin across several, or unassign them (null).
+[**UpdateListingAssigneeById**](ListingsApi.md#updatelistingassigneebyid) | **PATCH** /v1/listings/{id}/assignee | Assign one listing to a teammate, or unassign it (null).
 [**UpdateListingCustom**](ListingsApi.md#updatelistingcustom) | **PUT** /v1/listings/{id}/customs | Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
 [**UpdateListingPlatformListing**](ListingsApi.md#updatelistingplatformlisting) | **PATCH** /v1/listings/{id}/platform-listings/{plId} | Set one marketplace copy&#39;s price (e.g. the ebay.com copy of a listing also live on ebay.co.uk), in that copy&#39;s own currency.
 [**UpdateLiveStream**](ListingsApi.md#updatelivestream) | **PATCH** /v1/live-streams/{id} | Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
@@ -177,7 +183,7 @@ Name | Type | Description  | Notes
 
 <a name="createevent"></a>
 # **CreateEvent**
-> EventResponse CreateEvent ()
+> EventResponse CreateEvent (CreateEventRequest createEventRequest)
 
 Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
 
@@ -201,11 +207,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createEventRequest = new CreateEventRequest(); // CreateEventRequest | 
 
             try
             {
                 // Create an event. A draft unless publish:true. Linked listings, the live show, the drop and the discount code must all be yours.
-                EventResponse result = apiInstance.CreateEvent();
+                EventResponse result = apiInstance.CreateEvent(createEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -220,7 +227,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createEventRequest** | **CreateEventRequest**|  | 
 
 ### Return type
 
@@ -232,7 +242,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -329,7 +339,7 @@ Name | Type | Description  | Notes
 
 <a name="createlisting"></a>
 # **CreateListing**
-> CreateListingResponse CreateListing ()
+> CreateListingResponse CreateListing (CreateListingRequest createListingRequest)
 
 Create a listing and fan out crosspost jobs across platforms.
 
@@ -355,11 +365,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingRequest = new CreateListingRequest(); // CreateListingRequest | 
 
             try
             {
                 // Create a listing and fan out crosspost jobs across platforms.
-                CreateListingResponse result = apiInstance.CreateListing();
+                CreateListingResponse result = apiInstance.CreateListing(createListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -374,7 +385,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingRequest** | **CreateListingRequest**|  | 
 
 ### Return type
 
@@ -386,7 +400,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -405,7 +419,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulk"></a>
 # **CreateListingBulk**
-> CreateListingBulkResponse CreateListingBulk ()
+> CreateListingBulkResponse CreateListingBulk (CreateListingBulkRequest createListingBulkRequest)
 
 Create up to 50 listings in one call, with a result per item.
 
@@ -431,11 +445,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkRequest = new CreateListingBulkRequest(); // CreateListingBulkRequest | 
 
             try
             {
                 // Create up to 50 listings in one call, with a result per item.
-                CreateListingBulkResponse result = apiInstance.CreateListingBulk();
+                CreateListingBulkResponse result = apiInstance.CreateListingBulk(createListingBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -450,7 +465,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkRequest** | **CreateListingBulkRequest**|  | 
 
 ### Return type
 
@@ -462,7 +480,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -481,7 +499,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkcheckstatus"></a>
 # **CreateListingBulkCheckStatus**
-> CreateListingBulkDeleteResponse CreateListingBulkCheckStatus ()
+> CreateListingBulkDeleteResponse CreateListingBulkCheckStatus (CreateListingBulkDeleteRequest createListingBulkDeleteRequest)
 
 Check listing status on platforms
 
@@ -505,11 +523,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkDeleteRequest = new CreateListingBulkDeleteRequest(); // CreateListingBulkDeleteRequest | 
 
             try
             {
                 // Check listing status on platforms
-                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkCheckStatus();
+                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkCheckStatus(createListingBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -524,7 +543,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkDeleteRequest** | **CreateListingBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -536,7 +558,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -555,7 +577,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkcrosspost"></a>
 # **CreateListingBulkCrosspost**
-> CreateListingBulkDeleteResponse CreateListingBulkCrosspost ()
+> CreateListingBulkDeleteResponse CreateListingBulkCrosspost (CreateListingBulkRelistRequest createListingBulkRelistRequest)
 
 Bulk crosspost (no delist phase)
 
@@ -579,11 +601,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkRelistRequest = new CreateListingBulkRelistRequest(); // CreateListingBulkRelistRequest | 
 
             try
             {
                 // Bulk crosspost (no delist phase)
-                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkCrosspost();
+                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkCrosspost(createListingBulkRelistRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -598,7 +621,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkRelistRequest** | **CreateListingBulkRelistRequest**|  | 
 
 ### Return type
 
@@ -610,7 +636,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -629,7 +655,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkdelete"></a>
 # **CreateListingBulkDelete**
-> CreateListingBulkDeleteResponse CreateListingBulkDelete ()
+> CreateListingBulkDeleteResponse CreateListingBulkDelete (CreateListingBulkDeleteRequest createListingBulkDeleteRequest)
 
 Bulk archive + delist
 
@@ -653,11 +679,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkDeleteRequest = new CreateListingBulkDeleteRequest(); // CreateListingBulkDeleteRequest | 
 
             try
             {
                 // Bulk archive + delist
-                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkDelete();
+                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkDelete(createListingBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -672,7 +699,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkDeleteRequest** | **CreateListingBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -684,7 +714,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -703,7 +733,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkdelist"></a>
 # **CreateListingBulkDelist**
-> CreateListingBulkDeleteResponse CreateListingBulkDelist ()
+> CreateListingBulkDeleteResponse CreateListingBulkDelist (CreateListingBulkDeleteRequest createListingBulkDeleteRequest)
 
 Bulk delist from platforms
 
@@ -727,11 +757,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkDeleteRequest = new CreateListingBulkDeleteRequest(); // CreateListingBulkDeleteRequest | 
 
             try
             {
                 // Bulk delist from platforms
-                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkDelist();
+                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkDelist(createListingBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -746,7 +777,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkDeleteRequest** | **CreateListingBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -758,7 +792,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -777,7 +811,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkdelistpreview"></a>
 # **CreateListingBulkDelistPreview**
-> CreateListingBulkDelistPreviewResponse CreateListingBulkDelistPreview ()
+> CreateListingBulkDelistPreviewResponse CreateListingBulkDelistPreview (CreateListingBulkDeleteRequest createListingBulkDeleteRequest)
 
 Preview which marketplaces a delist would touch
 
@@ -801,11 +835,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkDeleteRequest = new CreateListingBulkDeleteRequest(); // CreateListingBulkDeleteRequest | 
 
             try
             {
                 // Preview which marketplaces a delist would touch
-                CreateListingBulkDelistPreviewResponse result = apiInstance.CreateListingBulkDelistPreview();
+                CreateListingBulkDelistPreviewResponse result = apiInstance.CreateListingBulkDelistPreview(createListingBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -820,7 +855,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkDeleteRequest** | **CreateListingBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -832,7 +870,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -851,7 +889,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkharddelete"></a>
 # **CreateListingBulkHardDelete**
-> CreateListingBulkHardDeleteResponse CreateListingBulkHardDelete ()
+> CreateListingBulkHardDeleteResponse CreateListingBulkHardDelete (CreateListingBulkDeleteRequest createListingBulkDeleteRequest)
 
 Permanently delete listings (live ones need allowLive)
 
@@ -875,11 +913,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkDeleteRequest = new CreateListingBulkDeleteRequest(); // CreateListingBulkDeleteRequest | 
 
             try
             {
                 // Permanently delete listings (live ones need allowLive)
-                CreateListingBulkHardDeleteResponse result = apiInstance.CreateListingBulkHardDelete();
+                CreateListingBulkHardDeleteResponse result = apiInstance.CreateListingBulkHardDelete(createListingBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -894,7 +933,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkDeleteRequest** | **CreateListingBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -906,7 +948,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -925,7 +967,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkrelist"></a>
 # **CreateListingBulkRelist**
-> CreateListingBulkDeleteResponse CreateListingBulkRelist ()
+> CreateListingBulkDeleteResponse CreateListingBulkRelist (CreateListingBulkRelistRequest createListingBulkRelistRequest)
 
 Bulk relist across platforms
 
@@ -949,11 +991,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkRelistRequest = new CreateListingBulkRelistRequest(); // CreateListingBulkRelistRequest | 
 
             try
             {
                 // Bulk relist across platforms
-                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkRelist();
+                CreateListingBulkDeleteResponse result = apiInstance.CreateListingBulkRelist(createListingBulkRelistRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -968,7 +1011,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkRelistRequest** | **CreateListingBulkRelistRequest**|  | 
 
 ### Return type
 
@@ -980,7 +1026,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -999,7 +1045,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbulkupdate"></a>
 # **CreateListingBulkUpdate**
-> CreateListingBulkUpdateResponse CreateListingBulkUpdate ()
+> CreateListingBulkUpdateResponse CreateListingBulkUpdate (CreateListingBulkUpdateRequest createListingBulkUpdateRequest)
 
 Bulk update listing fields
 
@@ -1023,11 +1069,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingBulkUpdateRequest = new CreateListingBulkUpdateRequest(); // CreateListingBulkUpdateRequest | 
 
             try
             {
                 // Bulk update listing fields
-                CreateListingBulkUpdateResponse result = apiInstance.CreateListingBulkUpdate();
+                CreateListingBulkUpdateResponse result = apiInstance.CreateListingBulkUpdate(createListingBulkUpdateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1042,7 +1089,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingBulkUpdateRequest** | **CreateListingBulkUpdateRequest**|  | 
 
 ### Return type
 
@@ -1054,7 +1104,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1073,7 +1123,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingbyid"></a>
 # **CreateListingById**
-> CreateListingByIdResponse CreateListingById ()
+> CreateListingByIdResponse CreateListingById (CreateListingByIdRequest createListingByIdRequest)
 
 Fetch hydrated listings by ID
 
@@ -1097,11 +1147,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest | 
 
             try
             {
                 // Fetch hydrated listings by ID
-                CreateListingByIdResponse result = apiInstance.CreateListingById();
+                CreateListingByIdResponse result = apiInstance.CreateListingById(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1116,7 +1167,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | 
 
 ### Return type
 
@@ -1128,7 +1182,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1147,7 +1201,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingcheckduplicate"></a>
 # **CreateListingCheckDuplicate**
-> CreateListingCheckDuplicateResponse CreateListingCheckDuplicate ()
+> CreateListingCheckDuplicateResponse CreateListingCheckDuplicate (CreateListingCheckDuplicateRequest createListingCheckDuplicateRequest = null)
 
 Check whether the seller already owns something matching this title/photo, and what to do about it.
 
@@ -1171,11 +1225,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingCheckDuplicateRequest = new CreateListingCheckDuplicateRequest(); // CreateListingCheckDuplicateRequest |  (optional) 
 
             try
             {
                 // Check whether the seller already owns something matching this title/photo, and what to do about it.
-                CreateListingCheckDuplicateResponse result = apiInstance.CreateListingCheckDuplicate();
+                CreateListingCheckDuplicateResponse result = apiInstance.CreateListingCheckDuplicate(createListingCheckDuplicateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1190,7 +1245,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingCheckDuplicateRequest** | **CreateListingCheckDuplicateRequest**|  | [optional] 
 
 ### Return type
 
@@ -1202,7 +1260,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1221,7 +1279,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingcombine"></a>
 # **CreateListingCombine**
-> CreateListingCombineResponse CreateListingCombine ()
+> CreateListingCombineResponse CreateListingCombine (CreateListingMergeRequest createListingMergeRequest)
 
 Combine duplicate listings into one: sums their stock, delists and archives the rest.
 
@@ -1245,11 +1303,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingMergeRequest = new CreateListingMergeRequest(); // CreateListingMergeRequest | 
 
             try
             {
                 // Combine duplicate listings into one: sums their stock, delists and archives the rest.
-                CreateListingCombineResponse result = apiInstance.CreateListingCombine();
+                CreateListingCombineResponse result = apiInstance.CreateListingCombine(createListingMergeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1264,7 +1323,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingMergeRequest** | **CreateListingMergeRequest**|  | 
 
 ### Return type
 
@@ -1276,7 +1338,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1295,7 +1357,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingdiscrepancyresolve"></a>
 # **CreateListingDiscrepancyResolve**
-> CreateListingDiscrepancyResolveResponse CreateListingDiscrepancyResolve (Guid id, Guid discrepancyId)
+> CreateListingDiscrepancyResolveResponse CreateListingDiscrepancyResolve (Guid id, Guid discrepancyId, CreateListingDiscrepancyResolveRequest createListingDiscrepancyResolveRequest)
 
 Resolve a detected marketplace-drift discrepancy: accept the platform value, push ours back, relist to apply it, or dismiss.
 
@@ -1321,11 +1383,12 @@ namespace Example
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // Guid | 
             var discrepancyId = "discrepancyId_example";  // Guid | 
+            var createListingDiscrepancyResolveRequest = new CreateListingDiscrepancyResolveRequest(); // CreateListingDiscrepancyResolveRequest | 
 
             try
             {
                 // Resolve a detected marketplace-drift discrepancy: accept the platform value, push ours back, relist to apply it, or dismiss.
-                CreateListingDiscrepancyResolveResponse result = apiInstance.CreateListingDiscrepancyResolve(id, discrepancyId);
+                CreateListingDiscrepancyResolveResponse result = apiInstance.CreateListingDiscrepancyResolve(id, discrepancyId, createListingDiscrepancyResolveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1345,6 +1408,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
  **discrepancyId** | **Guid**|  | 
+ **createListingDiscrepancyResolveRequest** | **CreateListingDiscrepancyResolveRequest**|  | 
 
 ### Return type
 
@@ -1356,7 +1420,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1375,7 +1439,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingimportbyurl"></a>
 # **CreateListingImportByUrl**
-> CreateListingImportByUrlResponse CreateListingImportByUrl (Guid id)
+> CreateListingImportByUrlResponse CreateListingImportByUrl (Guid id, CreateListingImportByUrlRequest createListingImportByUrlRequest)
 
 Attach a real platform listing to this listing by pasting its live URL.
 
@@ -1400,11 +1464,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createListingImportByUrlRequest = new CreateListingImportByUrlRequest(); // CreateListingImportByUrlRequest | 
 
             try
             {
                 // Attach a real platform listing to this listing by pasting its live URL.
-                CreateListingImportByUrlResponse result = apiInstance.CreateListingImportByUrl(id);
+                CreateListingImportByUrlResponse result = apiInstance.CreateListingImportByUrl(id, createListingImportByUrlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1423,6 +1488,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createListingImportByUrlRequest** | **CreateListingImportByUrlRequest**|  | 
 
 ### Return type
 
@@ -1434,7 +1500,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1453,7 +1519,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingmagicfill"></a>
 # **CreateListingMagicFill**
-> CreateListingMagicFillResponse CreateListingMagicFill (Guid id)
+> CreateListingMagicFillResponse CreateListingMagicFill (Guid id, CreateListingMagicFillRequest createListingMagicFillRequest)
 
 Auto-fill empty fields on one platform tab from the master listing + AI/deterministic taxonomy resolution.
 
@@ -1478,11 +1544,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // Guid | 
+            var createListingMagicFillRequest = new CreateListingMagicFillRequest(); // CreateListingMagicFillRequest | 
 
             try
             {
                 // Auto-fill empty fields on one platform tab from the master listing + AI/deterministic taxonomy resolution.
-                CreateListingMagicFillResponse result = apiInstance.CreateListingMagicFill(id);
+                CreateListingMagicFillResponse result = apiInstance.CreateListingMagicFill(id, createListingMagicFillRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1501,6 +1568,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createListingMagicFillRequest** | **CreateListingMagicFillRequest**|  | 
 
 ### Return type
 
@@ -1512,7 +1580,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1531,7 +1599,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingmerge"></a>
 # **CreateListingMerge**
-> CreateListingMergeResponse CreateListingMerge ()
+> CreateListingMergeResponse CreateListingMerge (CreateListingMergeRequest createListingMergeRequest)
 
 Merge the same item listed on different marketplaces into one listing; all stay live.
 
@@ -1555,11 +1623,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingMergeRequest = new CreateListingMergeRequest(); // CreateListingMergeRequest | 
 
             try
             {
                 // Merge the same item listed on different marketplaces into one listing; all stay live.
-                CreateListingMergeResponse result = apiInstance.CreateListingMerge();
+                CreateListingMergeResponse result = apiInstance.CreateListingMerge(createListingMergeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1574,7 +1643,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingMergeRequest** | **CreateListingMergeRequest**|  | 
 
 ### Return type
 
@@ -1586,7 +1658,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1605,7 +1677,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingtagbulk"></a>
 # **CreateListingTagBulk**
-> CreateListingTagBulkResponse CreateListingTagBulk ()
+> CreateListingTagBulkResponse CreateListingTagBulk (CreateListingTagBulkRequest createListingTagBulkRequest)
 
 Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
 
@@ -1629,11 +1701,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingTagBulkRequest = new CreateListingTagBulkRequest(); // CreateListingTagBulkRequest | 
 
             try
             {
                 // Add and/or remove tags on many listings (yours only; max 30 tags a listing, 40 chars a tag). `dryRun` reports what would change.
-                CreateListingTagBulkResponse result = apiInstance.CreateListingTagBulk();
+                CreateListingTagBulkResponse result = apiInstance.CreateListingTagBulk(createListingTagBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1648,7 +1721,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingTagBulkRequest** | **CreateListingTagBulkRequest**|  | 
 
 ### Return type
 
@@ -1660,7 +1736,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1679,7 +1755,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingtagrename"></a>
 # **CreateListingTagRename**
-> CreateListingTagRenameResponse CreateListingTagRename ()
+> CreateListingTagRenameResponse CreateListingTagRename (CreateListingTagRenameRequest createListingTagRenameRequest)
 
 Rename a tag on every listing; merges into `to` when it already exists.
 
@@ -1703,11 +1779,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createListingTagRenameRequest = new CreateListingTagRenameRequest(); // CreateListingTagRenameRequest | 
 
             try
             {
                 // Rename a tag on every listing; merges into `to` when it already exists.
-                CreateListingTagRenameResponse result = apiInstance.CreateListingTagRename();
+                CreateListingTagRenameResponse result = apiInstance.CreateListingTagRename(createListingTagRenameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1722,7 +1799,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingTagRenameRequest** | **CreateListingTagRenameRequest**|  | 
 
 ### Return type
 
@@ -1734,7 +1814,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1753,7 +1833,7 @@ This endpoint does not need any parameter.
 
 <a name="createlivestream"></a>
 # **CreateLiveStream**
-> LiveStreamResponse CreateLiveStream ()
+> LiveStreamResponse CreateLiveStream (CreateLiveStreamRequest createLiveStreamRequest)
 
 Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
 
@@ -1777,11 +1857,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createLiveStreamRequest = new CreateLiveStreamRequest(); // CreateLiveStreamRequest | 
 
             try
             {
                 // Schedule a live show: title, start time, optional cover, category and the listings to feature (becomes the lineup, in order).
-                LiveStreamResponse result = apiInstance.CreateLiveStream();
+                LiveStreamResponse result = apiInstance.CreateLiveStream(createLiveStreamRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1796,7 +1877,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createLiveStreamRequest** | **CreateLiveStreamRequest**|  | 
 
 ### Return type
 
@@ -1808,7 +1892,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2217,7 +2301,7 @@ Name | Type | Description  | Notes
 
 <a name="createpassport"></a>
 # **CreatePassport**
-> PassportResponse CreatePassport ()
+> PassportResponse CreatePassport (CreatePassportRequest createPassportRequest)
 
 Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
 
@@ -2241,11 +2325,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createPassportRequest = new CreatePassportRequest(); // CreatePassportRequest | 
 
             try
             {
                 // Register a product passport for a Crossly listing or an inventory item you sell, optionally bound to an NFC tag UID (hex). Active at once. Returns the URL to write to the NFC tag or print as a QR; ownership then follows the item’s sales. For several items with photos and labels, use the drafts flow (POST /passports/drafts).
-                PassportResponse result = apiInstance.CreatePassport();
+                PassportResponse result = apiInstance.CreatePassport(createPassportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2260,7 +2345,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPassportRequest** | **CreatePassportRequest**|  | 
 
 ### Return type
 
@@ -2272,7 +2360,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2291,7 +2379,7 @@ This endpoint does not need any parameter.
 
 <a name="createpassportdraft"></a>
 # **CreatePassportDraft**
-> PassportDraftResponse CreatePassportDraft ()
+> PassportDraftResponse CreatePassportDraft (CreatePassportDraftRequest createPassportDraftRequest = null)
 
 Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
 
@@ -2315,11 +2403,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createPassportDraftRequest = new CreatePassportDraftRequest(); // CreatePassportDraftRequest |  (optional) 
 
             try
             {
                 // Start a passport draft for up to 100 inventory items (or Crossly listings): one draft passport per item with its code reserved. Items whose every unit already has a passport come back in skipped.
-                PassportDraftResponse result = apiInstance.CreatePassportDraft();
+                PassportDraftResponse result = apiInstance.CreatePassportDraft(createPassportDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2334,7 +2423,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPassportDraftRequest** | **CreatePassportDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -2346,7 +2438,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2521,7 +2613,7 @@ Name | Type | Description  | Notes
 
 <a name="createpassportprint"></a>
 # **CreatePassportPrint**
-> CreatePassportPrintResponse CreatePassportPrint ()
+> CreatePassportPrintResponse CreatePassportPrint (CreatePassportPrintRequest createPassportPrintRequest = null)
 
 Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
 
@@ -2545,11 +2637,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createPassportPrintRequest = new CreatePassportPrintRequest(); // CreatePassportPrintRequest |  (optional) 
 
             try
             {
                 // Print passport labels: sent to your printer agent (the Crossly desktop app includes one) when it is online and prints the template, else a signed PDF link with the reason. Templates: sticker-2in, sticker-1in, label-4x6, hang-tag, sheet-letter, sheet-a4, transfer-card.
-                CreatePassportPrintResponse result = apiInstance.CreatePassportPrint();
+                CreatePassportPrintResponse result = apiInstance.CreatePassportPrint(createPassportPrintRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2564,7 +2657,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPassportPrintRequest** | **CreatePassportPrintRequest**|  | [optional] 
 
 ### Return type
 
@@ -2576,7 +2672,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2673,7 +2769,7 @@ Name | Type | Description  | Notes
 
 <a name="createpassporttag"></a>
 # **CreatePassportTag**
-> PassportResponse CreatePassportTag (string id)
+> PassportResponse CreatePassportTag (string id, CreatePassportTagRequest createPassportTagRequest)
 
 Bind (or re-bind) a passport to the NFC tag you wrote its nfcUrl to: the tag UID (hex), and whether you locked the tag read-only. Refused once the item has sold, for a locked tag, or a tag already on another item.
 
@@ -2698,11 +2794,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var createPassportTagRequest = new CreatePassportTagRequest(); // CreatePassportTagRequest | 
 
             try
             {
                 // Bind (or re-bind) a passport to the NFC tag you wrote its nfcUrl to: the tag UID (hex), and whether you locked the tag read-only. Refused once the item has sold, for a locked tag, or a tag already on another item.
-                PassportResponse result = apiInstance.CreatePassportTag(id);
+                PassportResponse result = apiInstance.CreatePassportTag(id, createPassportTagRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2721,6 +2818,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createPassportTagRequest** | **CreatePassportTagRequest**|  | 
 
 ### Return type
 
@@ -2732,7 +2830,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2751,7 +2849,7 @@ Name | Type | Description  | Notes
 
 <a name="createrentalbulkrentable"></a>
 # **CreateRentalBulkRentable**
-> CreateRentalBulkRentableResponse CreateRentalBulkRentable ()
+> CreateRentalBulkRentableResponse CreateRentalBulkRentable (CreateRentalBulkRentableRequest createRentalBulkRentableRequest)
 
 Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
 
@@ -2775,11 +2873,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createRentalBulkRentableRequest = new CreateRentalBulkRentableRequest(); // CreateRentalBulkRentableRequest | 
 
             try
             {
                 // Make up to 200 Crossly listings rentable with the same options (a day rate, or a share of each price).
-                CreateRentalBulkRentableResponse result = apiInstance.CreateRentalBulkRentable();
+                CreateRentalBulkRentableResponse result = apiInstance.CreateRentalBulkRentable(createRentalBulkRentableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2794,7 +2893,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createRentalBulkRentableRequest** | **CreateRentalBulkRentableRequest**|  | 
 
 ### Return type
 
@@ -2806,7 +2908,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2905,7 +3007,7 @@ Name | Type | Description  | Notes
 
 <a name="createstory"></a>
 # **CreateStory**
-> CreateStoryResponse CreateStory ()
+> CreateStoryResponse CreateStory (CreateStoryRequest createStoryRequest)
 
 Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
 
@@ -2929,11 +3031,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createStoryRequest = new CreateStoryRequest(); // CreateStoryRequest | 
 
             try
             {
                 // Share a story: 1–10 slides played in order. Each slide is a photo or video plus optional overlays (positions are fractions of the 9:16 frame). Listing stickers must be your own Crossly listings and also tag the slide; @mentions must be real shops. audience: everyone | followers; expiresInHours: 6, 12, 24 or 48.
-                CreateStoryResponse result = apiInstance.CreateStory();
+                CreateStoryResponse result = apiInstance.CreateStory(createStoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2948,7 +3051,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStoryRequest** | **CreateStoryRequest**|  | 
 
 ### Return type
 
@@ -2960,7 +3066,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2979,7 +3085,7 @@ This endpoint does not need any parameter.
 
 <a name="createvariationgroup"></a>
 # **CreateVariationGroup**
-> CreateVariationGroupResponse CreateVariationGroup ()
+> CreateVariationGroupResponse CreateVariationGroup (CreateVariationGroupRequest createVariationGroupRequest)
 
 Group listings you already have: a variation (one product, an axis such as Size) or a purchase-rule group (\"buy any 3\").
 
@@ -3003,11 +3109,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createVariationGroupRequest = new CreateVariationGroupRequest(); // CreateVariationGroupRequest | 
 
             try
             {
                 // Group listings you already have: a variation (one product, an axis such as Size) or a purchase-rule group (\"buy any 3\").
-                CreateVariationGroupResponse result = apiInstance.CreateVariationGroup();
+                CreateVariationGroupResponse result = apiInstance.CreateVariationGroup(createVariationGroupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3022,7 +3129,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVariationGroupRequest** | **CreateVariationGroupRequest**|  | 
 
 ### Return type
 
@@ -3034,7 +3144,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3053,7 +3163,7 @@ This endpoint does not need any parameter.
 
 <a name="createvariationgroupgenerate"></a>
 # **CreateVariationGroupGenerate**
-> CreateVariationGroupGenerateResponse CreateVariationGroupGenerate ()
+> CreateVariationGroupGenerateResponse CreateVariationGroupGenerate (CreateVariationGroupGenerateRequest createVariationGroupGenerateRequest)
 
 Turn one listing into a variation group: each new value becomes its own listing (a copy, with its own price, quantity and SKU) and all of them one group.
 
@@ -3077,11 +3187,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createVariationGroupGenerateRequest = new CreateVariationGroupGenerateRequest(); // CreateVariationGroupGenerateRequest | 
 
             try
             {
                 // Turn one listing into a variation group: each new value becomes its own listing (a copy, with its own price, quantity and SKU) and all of them one group.
-                CreateVariationGroupGenerateResponse result = apiInstance.CreateVariationGroupGenerate();
+                CreateVariationGroupGenerateResponse result = apiInstance.CreateVariationGroupGenerate(createVariationGroupGenerateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3096,7 +3207,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVariationGroupGenerateRequest** | **CreateVariationGroupGenerateRequest**|  | 
 
 ### Return type
 
@@ -3108,7 +3222,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3127,7 +3241,7 @@ This endpoint does not need any parameter.
 
 <a name="createvariationgroupgeneratematrix"></a>
 # **CreateVariationGroupGenerateMatrix**
-> CreateVariationGroupGenerateMatrixResponse CreateVariationGroupGenerateMatrix ()
+> CreateVariationGroupGenerateMatrixResponse CreateVariationGroupGenerateMatrix (CreateVariationGroupGenerateMatrixRequest createVariationGroupGenerateMatrixRequest)
 
 Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
 
@@ -3151,11 +3265,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createVariationGroupGenerateMatrixRequest = new CreateVariationGroupGenerateMatrixRequest(); // CreateVariationGroupGenerateMatrixRequest | 
 
             try
             {
                 // Turn one listing into a variation group over up to three axes (Size × Color): each other cell is a listing you already have (listingId) or a new copy of this one with its own price, quantity and SKU.
-                CreateVariationGroupGenerateMatrixResponse result = apiInstance.CreateVariationGroupGenerateMatrix();
+                CreateVariationGroupGenerateMatrixResponse result = apiInstance.CreateVariationGroupGenerateMatrix(createVariationGroupGenerateMatrixRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3170,7 +3285,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVariationGroupGenerateMatrixRequest** | **CreateVariationGroupGenerateMatrixRequest**|  | 
 
 ### Return type
 
@@ -3182,7 +3300,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3201,7 +3319,7 @@ This endpoint does not need any parameter.
 
 <a name="createvariationgrouppublish"></a>
 # **CreateVariationGroupPublish**
-> CreateVariationGroupPublishResponse CreateVariationGroupPublish (string id)
+> CreateVariationGroupPublishResponse CreateVariationGroupPublish (string id, CreateVariationGroupPublishRequest createVariationGroupPublishRequest)
 
 Publish a variation group per platform: one listing with a variation picker where the platform supports it (eBay, Shopify, Etsy), one per option elsewhere. Each platform reports its own outcome.
 
@@ -3226,11 +3344,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var createVariationGroupPublishRequest = new CreateVariationGroupPublishRequest(); // CreateVariationGroupPublishRequest | 
 
             try
             {
                 // Publish a variation group per platform: one listing with a variation picker where the platform supports it (eBay, Shopify, Etsy), one per option elsewhere. Each platform reports its own outcome.
-                CreateVariationGroupPublishResponse result = apiInstance.CreateVariationGroupPublish(id);
+                CreateVariationGroupPublishResponse result = apiInstance.CreateVariationGroupPublish(id, createVariationGroupPublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3249,6 +3368,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVariationGroupPublishRequest** | **CreateVariationGroupPublishRequest**|  | 
 
 ### Return type
 
@@ -3260,7 +3380,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3279,7 +3399,7 @@ Name | Type | Description  | Notes
 
 <a name="createvideostudiofinalize"></a>
 # **CreateVideoStudioFinalize**
-> CreateVideoStudioFinalizeResponse CreateVideoStudioFinalize ()
+> CreateVideoStudioFinalizeResponse CreateVideoStudioFinalize (CreateVideoStudioFinalizeRequest createVideoStudioFinalizeRequest = null)
 
 Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing's video.
 
@@ -3303,11 +3423,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var createVideoStudioFinalizeRequest = new CreateVideoStudioFinalizeRequest(); // CreateVideoStudioFinalizeRequest |  (optional) 
 
             try
             {
                 // Check an uploaded listing video (exists, MP4, size) and, with listingId, set it as that listing's video.
-                CreateVideoStudioFinalizeResponse result = apiInstance.CreateVideoStudioFinalize();
+                CreateVideoStudioFinalizeResponse result = apiInstance.CreateVideoStudioFinalize(createVideoStudioFinalizeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3322,7 +3443,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVideoStudioFinalizeRequest** | **CreateVideoStudioFinalizeRequest**|  | [optional] 
 
 ### Return type
 
@@ -3334,7 +3458,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4749,7 +4873,7 @@ This endpoint does not need any parameter.
 
 <a name="getpricingsoldcomp"></a>
 # **GetPricingSoldComp**
-> GetPricingSoldCompResponse GetPricingSoldComp ()
+> GetPricingSoldCompResponse GetPricingSoldComp (string marketSkuId = null, string condition = null, string listingId = null)
 
 What one catalog product (market_sku_id, in one condition) actually sold for across Crossly in the last 180 days: median, p25/p75, p10/p90 (null under 10 sales), sale count, last sold, and days from listing to sale (median, p25, p75). Pass marketSkuId (+ optional condition) or one of your listingIds. comps is null until there are 3+ sales from 2+ sellers; holdCode says why there is nothing (no_market_sku, mixed_inventory, below_privacy_floor) — the same reasons a sold_median reprice rule holds.
 
@@ -4773,11 +4897,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var marketSkuId = "marketSkuId_example";  // string |  (optional) 
+            var condition = "condition_example";  // string |  (optional) 
+            var listingId = "listingId_example";  // string |  (optional) 
 
             try
             {
                 // What one catalog product (market_sku_id, in one condition) actually sold for across Crossly in the last 180 days: median, p25/p75, p10/p90 (null under 10 sales), sale count, last sold, and days from listing to sale (median, p25, p75). Pass marketSkuId (+ optional condition) or one of your listingIds. comps is null until there are 3+ sales from 2+ sellers; holdCode says why there is nothing (no_market_sku, mixed_inventory, below_privacy_floor) — the same reasons a sold_median reprice rule holds.
-                GetPricingSoldCompResponse result = apiInstance.GetPricingSoldComp();
+                GetPricingSoldCompResponse result = apiInstance.GetPricingSoldComp(marketSkuId, condition, listingId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4792,11 +4919,94 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **marketSkuId** | **string**|  | [optional] 
+ **condition** | **string**|  | [optional] 
+ **listingId** | **string**|  | [optional] 
 
 ### Return type
 
 **GetPricingSoldCompResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getrentalpolicy"></a>
+# **GetRentalPolicy**
+> GetRentalPolicyResponse GetRentalPolicy (string listingId = null)
+
+The return and payment policies a rental inherits from Settings › Policies, resolved for the store (or for one listing with ?listingId): preset ids and names, the level each came from, the return line, protections, arrival photos, the deposit claim window in days, a required deposit in basis points, accepted methods, and editPath.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetRentalPolicyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var listingId = "listingId_example";  // string |  (optional) 
+
+            try
+            {
+                // The return and payment policies a rental inherits from Settings › Policies, resolved for the store (or for one listing with ?listingId): preset ids and names, the level each came from, the return line, protections, arrival photos, the deposit claim window in days, a required deposit in basis points, accepted methods, and editPath.
+                GetRentalPolicyResponse result = apiInstance.GetRentalPolicy(listingId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.GetRentalPolicy: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listingId** | **string**|  | [optional] 
+
+### Return type
+
+**GetRentalPolicyResponse**
 
 ### Authorization
 
@@ -4947,6 +5157,170 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetShopLimitResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getstockxcatalog"></a>
+# **GetStockxCatalog**
+> GetStockxCatalogResponse GetStockxCatalog (string q, int? page = null, int? pageSize = null)
+
+Search the StockX catalog (style code, SKU or words) to pick the product a StockX ask is on.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetStockxCatalogExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var q = "q_example";  // string | 
+            var page = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
+
+            try
+            {
+                // Search the StockX catalog (style code, SKU or words) to pick the product a StockX ask is on.
+                GetStockxCatalogResponse result = apiInstance.GetStockxCatalog(q, page, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.GetStockxCatalog: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | 
+ **page** | **int?**|  | [optional] 
+ **pageSize** | **int?**|  | [optional] 
+
+### Return type
+
+**GetStockxCatalogResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getstockxcatalogvariantmarketdata"></a>
+# **GetStockxCatalogVariantMarketData**
+> GetStockxCatalogVariantMarketDataResponse GetStockxCatalogVariantMarketData (string productId, string variantId, string currency = null)
+
+Lowest ask, highest bid and suggested prices for one StockX size.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetStockxCatalogVariantMarketDataExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var productId = "productId_example";  // string | 
+            var variantId = "variantId_example";  // string | 
+            var currency = "currency_example";  // string |  (optional) 
+
+            try
+            {
+                // Lowest ask, highest bid and suggested prices for one StockX size.
+                GetStockxCatalogVariantMarketDataResponse result = apiInstance.GetStockxCatalogVariantMarketData(productId, variantId, currency);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.GetStockxCatalogVariantMarketData: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **string**|  | 
+ **variantId** | **string**|  | 
+ **currency** | **string**|  | [optional] 
+
+### Return type
+
+**GetStockxCatalogVariantMarketDataResponse**
 
 ### Authorization
 
@@ -5513,7 +5887,7 @@ Name | Type | Description  | Notes
 
 <a name="listlistings"></a>
 # **ListListings**
-> ListListingsResponse ListListings (int? page = null, int? limit = null, string platform = null, string status = null, string sku = null, DateTime? updatedSince = null, string kind = null, AnyOfstringarray tag = null, bool? stillLive = null)
+> ListListingsResponse ListListings (int? page = null, int? limit = null, string platform = null, string status = null, string sku = null, DateTime? updatedSince = null, string kind = null, List<string> tag = null, bool? stillLive = null, string assignee = null)
 
 List active platform listings.
 
@@ -5546,13 +5920,14 @@ namespace Example
             var sku = "sku_example";  // string | Exact SKU match: look up the row a supplier product maps to. (optional) 
             var updatedSince = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional) 
             var kind = "physical";  // string | Physical goods or Web3 assets (NFT listings). Omit for both. (optional) 
-            var tag = new AnyOfstringarray(); // AnyOfstringarray | Only listings carrying ANY of these tags (case-insensitive): repeat `tag` or comma-separate. (optional) 
+            var tag = new List<string>(); // List<string> | Only listings carrying ANY of these tags (case-insensitive): repeat `tag` or comma-separate. (optional) 
             var stillLive = true;  // bool? | Only listings still active on at least one marketplace. With status=sold: sold items still buyable somewhere (a delist failed, is pending or never ran). (optional) 
+            var assignee = "assignee_example";  // string | Work assignment: 'me' (your own seat), 'none' (unassigned), 'any' (assigned to someone) or a team member id. (optional) 
 
             try
             {
                 // List active platform listings.
-                ListListingsResponse result = apiInstance.ListListings(page, limit, platform, status, sku, updatedSince, kind, tag, stillLive);
+                ListListingsResponse result = apiInstance.ListListings(page, limit, platform, status, sku, updatedSince, kind, tag, stillLive, assignee);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5577,8 +5952,9 @@ Name | Type | Description  | Notes
  **sku** | **string**| Exact SKU match: look up the row a supplier product maps to. | [optional] 
  **updatedSince** | **DateTime?**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional] 
  **kind** | **string**| Physical goods or Web3 assets (NFT listings). Omit for both. | [optional] 
- **tag** | **AnyOfstringarray**| Only listings carrying ANY of these tags (case-insensitive): repeat &#x60;tag&#x60; or comma-separate. | [optional] 
+ **tag** | **List&lt;string&gt;**| Only listings carrying ANY of these tags (case-insensitive): repeat &#x60;tag&#x60; or comma-separate. | [optional] 
  **stillLive** | **bool?**| Only listings still active on at least one marketplace. With status&#x3D;sold: sold items still buyable somewhere (a delist failed, is pending or never ran). | [optional] 
+ **assignee** | **string**| Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. | [optional] 
 
 ### Return type
 
@@ -5835,7 +6211,7 @@ This endpoint does not need any parameter.
 
 <a name="listpassports"></a>
 # **ListPassports**
-> ListPassportsResponse ListPassports ()
+> ListPassportsResponse ListPassports (string q = null, string status = null, string custody = null, string tag = null, string printed = null, string itemId = null, string platformListingId = null, string cursor = null, decimal? limit = null)
 
 Product passports you registered (optionally for one Crossly listing): the code and URL each tag carries.
 
@@ -5859,11 +6235,20 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var status = "active";  // string |  (optional) 
+            var custody = "in_vault";  // string |  (optional) 
+            var tag = "none";  // string |  (optional) 
+            var printed = "no";  // string |  (optional) 
+            var itemId = "itemId_example";  // string |  (optional) 
+            var platformListingId = "platformListingId_example";  // string |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Product passports you registered (optionally for one Crossly listing): the code and URL each tag carries.
-                ListPassportsResponse result = apiInstance.ListPassports();
+                ListPassportsResponse result = apiInstance.ListPassports(q, status, custody, tag, printed, itemId, platformListingId, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5878,7 +6263,18 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **custody** | **string**|  | [optional] 
+ **tag** | **string**|  | [optional] 
+ **printed** | **string**|  | [optional] 
+ **itemId** | **string**|  | [optional] 
+ **platformListingId** | **string**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -5911,7 +6307,7 @@ This endpoint does not need any parameter.
 # **ListRentalOffers**
 > ListRentalOffersResponse ListRentalOffers ()
 
-What you offer for rent.
+What you offer for rent. Each offer carries `policy`: the return and payment policies it inherits from Settings › Policies, resolved (preset ids and names, the level they came from, protections, claim window, deposit, accepted methods, and editPath), with `returnPolicyOverride` when the offer writes its own return text.
 
 ### Example
 ```csharp
@@ -5936,7 +6332,7 @@ namespace Example
 
             try
             {
-                // What you offer for rent.
+                // What you offer for rent. Each offer carries `policy`: the return and payment policies it inherits from Settings › Policies, resolved (preset ids and names, the level they came from, protections, claim window, deposit, accepted methods, and editPath), with `returnPolicyOverride` when the offer writes its own return text.
                 ListRentalOffersResponse result = apiInstance.ListRentalOffers();
                 Debug.WriteLine(result);
             }
@@ -5957,6 +6353,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListRentalOffersResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="liststockxcatalogvariants"></a>
+# **ListStockxCatalogVariants**
+> ListStockxCatalogVariantsResponse ListStockxCatalogVariants (string productId)
+
+List the sizes (variants) of a StockX catalog product.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListStockxCatalogVariantsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var productId = "productId_example";  // string | 
+
+            try
+            {
+                // List the sizes (variants) of a StockX catalog product.
+                ListStockxCatalogVariantsResponse result = apiInstance.ListStockxCatalogVariants(productId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.ListStockxCatalogVariants: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **productId** | **string**|  | 
+
+### Return type
+
+**ListStockxCatalogVariantsResponse**
 
 ### Authorization
 
@@ -6057,7 +6531,7 @@ This endpoint does not need any parameter.
 
 <a name="updateevent"></a>
 # **UpdateEvent**
-> EventResponse UpdateEvent (string id)
+> EventResponse UpdateEvent (string id, UpdateEventRequest updateEventRequest)
 
 Edit an event. Omitted fields are unchanged; null clears.
 
@@ -6082,11 +6556,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updateEventRequest = new UpdateEventRequest(); // UpdateEventRequest | 
 
             try
             {
                 // Edit an event. Omitted fields are unchanged; null clears.
-                EventResponse result = apiInstance.UpdateEvent(id);
+                EventResponse result = apiInstance.UpdateEvent(id, updateEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6105,6 +6580,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateEventRequest** | **UpdateEventRequest**|  | 
 
 ### Return type
 
@@ -6116,7 +6592,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6135,7 +6611,7 @@ Name | Type | Description  | Notes
 
 <a name="updatehotspot"></a>
 # **UpdateHotspot**
-> UpdateHotspotResponse UpdateHotspot ()
+> UpdateHotspotResponse UpdateHotspot (UpdateHotspotRequest updateHotspotRequest)
 
 Tag your listings at points on a story or lookbook photo (shop the look). Replaces that photo’s tags; at most 12.
 
@@ -6159,11 +6635,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var updateHotspotRequest = new UpdateHotspotRequest(); // UpdateHotspotRequest | 
 
             try
             {
                 // Tag your listings at points on a story or lookbook photo (shop the look). Replaces that photo’s tags; at most 12.
-                UpdateHotspotResponse result = apiInstance.UpdateHotspot();
+                UpdateHotspotResponse result = apiInstance.UpdateHotspot(updateHotspotRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6178,7 +6655,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateHotspotRequest** | **UpdateHotspotRequest**|  | 
 
 ### Return type
 
@@ -6190,7 +6670,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6287,11 +6767,11 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
-<a name="updatelistingcustom"></a>
-# **UpdateListingCustom**
-> UpdateListingCustomResponse UpdateListingCustom (Guid id)
+<a name="updatelistingassignee"></a>
+# **UpdateListingAssignee**
+> UpdateOrderAssigneeResponse UpdateListingAssignee ()
 
-Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
+Assign many listings to a teammate, round robin across several, or unassign them (null).
 
 ### Example
 ```csharp
@@ -6303,7 +6783,7 @@ using net.crossly.Model;
 
 namespace Example
 {
-    public class UpdateListingCustomExample
+    public class UpdateListingAssigneeExample
     {
         public static void Main()
         {
@@ -6313,17 +6793,16 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
-            var id = "id_example";  // Guid | 
 
             try
             {
-                // Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
-                UpdateListingCustomResponse result = apiInstance.UpdateListingCustom(id);
+                // Assign many listings to a teammate, round robin across several, or unassign them (null).
+                UpdateOrderAssigneeResponse result = apiInstance.UpdateListingAssignee();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
             {
-                Debug.Print("Exception when calling ListingsApi.UpdateListingCustom: " + e.Message );
+                Debug.Print("Exception when calling ListingsApi.UpdateListingAssignee: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -6333,14 +6812,11 @@ namespace Example
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Guid**|  | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-**UpdateListingCustomResponse**
+**UpdateOrderAssigneeResponse**
 
 ### Authorization
 
@@ -6365,9 +6841,167 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="updatelistingassigneebyid"></a>
+# **UpdateListingAssigneeById**
+> UpdateOrderAssigneeByIdResponse UpdateListingAssigneeById (string id)
+
+Assign one listing to a teammate, or unassign it (null).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateListingAssigneeByIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Assign one listing to a teammate, or unassign it (null).
+                UpdateOrderAssigneeByIdResponse result = apiInstance.UpdateListingAssigneeById(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.UpdateListingAssigneeById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**UpdateOrderAssigneeByIdResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatelistingcustom"></a>
+# **UpdateListingCustom**
+> UpdateListingCustomResponse UpdateListingCustom (Guid id, UpdateListingCustomRequest updateListingCustomRequest)
+
+Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateListingCustomExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ListingsApi(config);
+            var id = "id_example";  // Guid | 
+            var updateListingCustomRequest = new UpdateListingCustomRequest(); // UpdateListingCustomRequest | 
+
+            try
+            {
+                // Set a listing’s customs: HS code (6–10 digits), country of origin, and countries this item must not ship to on Crossly. Omitted fields are left alone; null (or [] for restrictedCountries) clears.
+                UpdateListingCustomResponse result = apiInstance.UpdateListingCustom(id, updateListingCustomRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ListingsApi.UpdateListingCustom: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **updateListingCustomRequest** | **UpdateListingCustomRequest**|  | 
+
+### Return type
+
+**UpdateListingCustomResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatelistingplatformlisting"></a>
 # **UpdateListingPlatformListing**
-> UpdateListingPlatformListingResponse UpdateListingPlatformListing (Guid id, Guid plId)
+> UpdateListingPlatformListingResponse UpdateListingPlatformListing (Guid id, Guid plId, UpdateListingPlatformListingRequest updateListingPlatformListingRequest)
 
 Set one marketplace copy's price (e.g. the ebay.com copy of a listing also live on ebay.co.uk), in that copy's own currency.
 
@@ -6393,11 +7027,12 @@ namespace Example
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // Guid | 
             var plId = "plId_example";  // Guid | 
+            var updateListingPlatformListingRequest = new UpdateListingPlatformListingRequest(); // UpdateListingPlatformListingRequest | 
 
             try
             {
                 // Set one marketplace copy's price (e.g. the ebay.com copy of a listing also live on ebay.co.uk), in that copy's own currency.
-                UpdateListingPlatformListingResponse result = apiInstance.UpdateListingPlatformListing(id, plId);
+                UpdateListingPlatformListingResponse result = apiInstance.UpdateListingPlatformListing(id, plId, updateListingPlatformListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6417,6 +7052,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
  **plId** | **Guid**|  | 
+ **updateListingPlatformListingRequest** | **UpdateListingPlatformListingRequest**|  | 
 
 ### Return type
 
@@ -6428,7 +7064,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6447,7 +7083,7 @@ Name | Type | Description  | Notes
 
 <a name="updatelivestream"></a>
 # **UpdateLiveStream**
-> LiveStreamResponse UpdateLiveStream (string id)
+> LiveStreamResponse UpdateLiveStream (string id, UpdateLiveStreamRequest updateLiveStreamRequest = null)
 
 Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
 
@@ -6472,11 +7108,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updateLiveStreamRequest = new UpdateLiveStreamRequest(); // UpdateLiveStreamRequest |  (optional) 
 
             try
             {
                 // Edit a show that has not ended: title, description, cover, category, start time (not once live) or connection method (browser | phone | encoder).
-                LiveStreamResponse result = apiInstance.UpdateLiveStream(id);
+                LiveStreamResponse result = apiInstance.UpdateLiveStream(id, updateLiveStreamRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6495,6 +7132,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateLiveStreamRequest** | **UpdateLiveStreamRequest**|  | [optional] 
 
 ### Return type
 
@@ -6506,7 +7144,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6525,7 +7163,7 @@ Name | Type | Description  | Notes
 
 <a name="updatelivestreamlineup"></a>
 # **UpdateLiveStreamLineup**
-> UpdateLiveStreamLineupResponse UpdateLiveStreamLineup (string id)
+> UpdateLiveStreamLineupResponse UpdateLiveStreamLineup (string id, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
 
 Set a live show’s lineup: your Crossly listings, in the order you will sell them. Buyers see it before they join; a sale of a lineup item while the show is live is recorded at its replay moment.
 
@@ -6550,11 +7188,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updateLiveStreamLineupRequest = new UpdateLiveStreamLineupRequest(); // UpdateLiveStreamLineupRequest | 
 
             try
             {
                 // Set a live show’s lineup: your Crossly listings, in the order you will sell them. Buyers see it before they join; a sale of a lineup item while the show is live is recorded at its replay moment.
-                UpdateLiveStreamLineupResponse result = apiInstance.UpdateLiveStreamLineup(id);
+                UpdateLiveStreamLineupResponse result = apiInstance.UpdateLiveStreamLineup(id, updateLiveStreamLineupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6573,6 +7212,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateLiveStreamLineupRequest** | **UpdateLiveStreamLineupRequest**|  | 
 
 ### Return type
 
@@ -6584,7 +7224,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6603,7 +7243,7 @@ Name | Type | Description  | Notes
 
 <a name="updatepassport"></a>
 # **UpdatePassport**
-> UpdatePassportResponse UpdatePassport (string id)
+> UpdatePassportResponse UpdatePassport (string id, UpdatePassportRequest updatePassportRequest = null)
 
 Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
 
@@ -6628,11 +7268,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updatePassportRequest = new UpdatePassportRequest(); // UpdatePassportRequest |  (optional) 
 
             try
             {
                 // Change what a passport says (title, condition, maker, year, materials, notes) or add photo URLs (photos append: a passport keeps the ones it was registered with).
-                UpdatePassportResponse result = apiInstance.UpdatePassport(id);
+                UpdatePassportResponse result = apiInstance.UpdatePassport(id, updatePassportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6651,6 +7292,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updatePassportRequest** | **UpdatePassportRequest**|  | [optional] 
 
 ### Return type
 
@@ -6662,7 +7304,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6681,7 +7323,7 @@ Name | Type | Description  | Notes
 
 <a name="updatepassportdraft"></a>
 # **UpdatePassportDraft**
-> PassportDraftResponse UpdatePassportDraft (string id)
+> PassportDraftResponse UpdatePassportDraft (string id, UpdatePassportDraftRequest updatePassportDraftRequest = null)
 
 Move a draft to a step, pick its label template, add items or remove draft passports.
 
@@ -6706,11 +7348,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updatePassportDraftRequest = new UpdatePassportDraftRequest(); // UpdatePassportDraftRequest |  (optional) 
 
             try
             {
                 // Move a draft to a step, pick its label template, add items or remove draft passports.
-                PassportDraftResponse result = apiInstance.UpdatePassportDraft(id);
+                PassportDraftResponse result = apiInstance.UpdatePassportDraft(id, updatePassportDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6729,6 +7372,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updatePassportDraftRequest** | **UpdatePassportDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -6740,7 +7384,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6759,7 +7403,7 @@ Name | Type | Description  | Notes
 
 <a name="updatepricingsetting"></a>
 # **UpdatePricingSetting**
-> GetPricingSettingResponse UpdatePricingSetting ()
+> GetPricingSettingResponse UpdatePricingSetting (UpdatePricingSettingRequest updatePricingSettingRequest)
 
 Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
 
@@ -6783,11 +7427,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var updatePricingSettingRequest = new UpdatePricingSettingRequest(); // UpdatePricingSettingRequest | 
 
             try
             {
                 // Turn own-price match and/or layaway on or off for every one of your stores. One store: PUT /v1/storefronts/{id}/settings.
-                GetPricingSettingResponse result = apiInstance.UpdatePricingSetting();
+                GetPricingSettingResponse result = apiInstance.UpdatePricingSetting(updatePricingSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6802,7 +7447,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updatePricingSettingRequest** | **UpdatePricingSettingRequest**|  | 
 
 ### Return type
 
@@ -6814,7 +7462,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6833,7 +7481,7 @@ This endpoint does not need any parameter.
 
 <a name="updaterentaloffer"></a>
 # **UpdateRentalOffer**
-> UpdateRentalOfferResponse UpdateRentalOffer (string platformListingId)
+> UpdateRentalOfferResponse UpdateRentalOffer (string platformListingId, UpdateRentalOfferRequest updateRentalOfferRequest)
 
 Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
 
@@ -6858,11 +7506,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var platformListingId = "platformListingId_example";  // string | 
+            var updateRentalOfferRequest = new UpdateRentalOfferRequest(); // UpdateRentalOfferRequest | 
 
             try
             {
                 // Offer a Crossly listing for rent: day rate, optional week rate, deposit, min/max days, turnaround buffer, rent-only (off sale while offered), seller approval, unavailable date ranges (blackoutRanges, inclusive YYYY-MM-DD) and a return policy. Keeps the listing’s own rental terms in step. Needs a ship-from address.
-                UpdateRentalOfferResponse result = apiInstance.UpdateRentalOffer(platformListingId);
+                UpdateRentalOfferResponse result = apiInstance.UpdateRentalOffer(platformListingId, updateRentalOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6881,6 +7530,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platformListingId** | **string**|  | 
+ **updateRentalOfferRequest** | **UpdateRentalOfferRequest**|  | 
 
 ### Return type
 
@@ -6892,7 +7542,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6911,7 +7561,7 @@ Name | Type | Description  | Notes
 
 <a name="updaterentalsetting"></a>
 # **UpdateRentalSetting**
-> GetRentalSettingResponse UpdateRentalSetting ()
+> GetRentalSettingResponse UpdateRentalSetting (UpdateRentalSettingRequest updateRentalSettingRequest = null)
 
 Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
 
@@ -6935,11 +7585,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ListingsApi(config);
+            var updateRentalSettingRequest = new UpdateRentalSettingRequest(); // UpdateRentalSettingRequest |  (optional) 
 
             try
             {
                 // Set the store’s rental defaults and payout timing (on_start needs 3 rentals that came back).
-                GetRentalSettingResponse result = apiInstance.UpdateRentalSetting();
+                GetRentalSettingResponse result = apiInstance.UpdateRentalSetting(updateRentalSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6954,7 +7605,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateRentalSettingRequest** | **UpdateRentalSettingRequest**|  | [optional] 
 
 ### Return type
 
@@ -6966,7 +7620,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6985,7 +7639,7 @@ This endpoint does not need any parameter.
 
 <a name="updatevariationgroup"></a>
 # **UpdateVariationGroup**
-> CreateVariationGroupResponse UpdateVariationGroup (string id)
+> CreateVariationGroupResponse UpdateVariationGroup (string id, UpdateVariationGroupRequest updateVariationGroupRequest = null)
 
 Retitle a group, rename its axis, or change a group's purchase rule (written into every member's description).
 
@@ -7010,11 +7664,12 @@ namespace Example
 
             var apiInstance = new ListingsApi(config);
             var id = "id_example";  // string | 
+            var updateVariationGroupRequest = new UpdateVariationGroupRequest(); // UpdateVariationGroupRequest |  (optional) 
 
             try
             {
                 // Retitle a group, rename its axis, or change a group's purchase rule (written into every member's description).
-                CreateVariationGroupResponse result = apiInstance.UpdateVariationGroup(id);
+                CreateVariationGroupResponse result = apiInstance.UpdateVariationGroup(id, updateVariationGroupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7033,6 +7688,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateVariationGroupRequest** | **UpdateVariationGroupRequest**|  | [optional] 
 
 ### Return type
 
@@ -7044,7 +7700,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

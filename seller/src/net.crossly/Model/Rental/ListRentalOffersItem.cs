@@ -39,6 +39,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListRentalOffersItem" /> class.
         /// </summary>
+        /// <param name="policy">policy.</param>
         /// <param name="slug">slug (required).</param>
         /// <param name="listingId">listingId (required).</param>
         /// <param name="title">title (required).</param>
@@ -46,9 +47,9 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="active">active (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="platformListingId">platformListingId (required).</param>
-        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="options">options (required).</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="depositCents">depositCents (required).</param>
@@ -61,7 +62,7 @@ namespace net.crossly.Model
         /// <param name="requireApproval">requireApproval (required).</param>
         /// <param name="blackoutRanges">blackoutRanges (required).</param>
         /// <param name="returnPolicy">returnPolicy.</param>
-        public ListRentalOffersItem(string slug = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), string createdAt = default(string), string updatedAt = default(string), bool active = default(bool), decimal quantity = default(decimal), string platformListingId = default(string), string storefrontId = default(string), Dictionary<string, Object> options = default(Dictionary<string, Object>), string sellerUserId = default(string), decimal depositCents = default(decimal), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), List<StartEnd> blackoutRanges = default(List<StartEnd>), string returnPolicy = default(string))
+        public ListRentalOffersItem(GetRentalPolicyResponseData policy = default(GetRentalPolicyResponseData), string slug = default(string), string listingId = default(string), string title = default(string), string imageUrl = default(string), string createdAt = default(string), string updatedAt = default(string), bool active = default(bool), string storefrontId = default(string), decimal quantity = default(decimal), string platformListingId = default(string), Dictionary<string, Object> options = default(Dictionary<string, Object>), string sellerUserId = default(string), decimal depositCents = default(decimal), decimal minDays = default(decimal), decimal maxDays = default(decimal), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal bufferDays = default(decimal), bool rentOnly = default(bool), bool requireApproval = default(bool), List<StartEnd> blackoutRanges = default(List<StartEnd>), string returnPolicy = default(string))
         {
             // to ensure "slug" is required (not null)
             if (slug == null) {
@@ -122,10 +123,17 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("blackoutRanges is a required property for ListRentalOffersItem and cannot be null");
             }
             this.BlackoutRanges = blackoutRanges;
+            this.Policy = policy;
             this.StorefrontId = storefrontId;
             this.WeeklyCents = weeklyCents;
             this.ReturnPolicy = returnPolicy;
         }
+
+        /// <summary>
+        /// Gets or Sets Policy
+        /// </summary>
+        [DataMember(Name = "policy", EmitDefaultValue = true)]
+        public GetRentalPolicyResponseData Policy { get; set; }
 
         /// <summary>
         /// Gets or Sets Slug
@@ -170,6 +178,12 @@ namespace net.crossly.Model
         public bool Active { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
@@ -180,12 +194,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "platformListingId", IsRequired = true, EmitDefaultValue = false)]
         public string PlatformListingId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets StorefrontId
-        /// </summary>
-        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
-        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets Options
@@ -267,6 +275,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListRentalOffersItem {\n");
+            sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
@@ -274,9 +283,9 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  PlatformListingId: ").Append(PlatformListingId).Append("\n");
-            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  DepositCents: ").Append(DepositCents).Append("\n");
@@ -325,6 +334,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Policy == input.Policy ||
+                    (this.Policy != null &&
+                    this.Policy.Equals(input.Policy))
+                ) && 
+                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
@@ -359,6 +373,11 @@ namespace net.crossly.Model
                     this.Active.Equals(input.Active)
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 ) && 
@@ -366,11 +385,6 @@ namespace net.crossly.Model
                     this.PlatformListingId == input.PlatformListingId ||
                     (this.PlatformListingId != null &&
                     this.PlatformListingId.Equals(input.PlatformListingId))
-                ) && 
-                (
-                    this.StorefrontId == input.StorefrontId ||
-                    (this.StorefrontId != null &&
-                    this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
                     this.Options == input.Options ||
@@ -438,6 +452,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Policy != null)
+                {
+                    hashCode = (hashCode * 59) + this.Policy.GetHashCode();
+                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
@@ -463,14 +481,14 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Active.GetHashCode();
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.PlatformListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlatformListingId.GetHashCode();
-                }
-                if (this.StorefrontId != null)
-                {
-                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.Options != null)
                 {

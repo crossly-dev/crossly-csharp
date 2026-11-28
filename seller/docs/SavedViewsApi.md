@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createsavedview"></a>
 # **CreateSavedView**
-> ListSavedViewsItem CreateSavedView ()
+> ListSavedViewsItem CreateSavedView (CreateSavedViewRequest createSavedViewRequest)
 
 Create a saved view preset.
 
@@ -36,11 +36,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SavedViewsApi(config);
+            var createSavedViewRequest = new CreateSavedViewRequest(); // CreateSavedViewRequest | 
 
             try
             {
                 // Create a saved view preset.
-                ListSavedViewsItem result = apiInstance.CreateSavedView();
+                ListSavedViewsItem result = apiInstance.CreateSavedView(createSavedViewRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSavedViewRequest** | **CreateSavedViewRequest**|  | 
 
 ### Return type
 
@@ -67,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -242,7 +246,7 @@ Name | Type | Description  | Notes
 
 <a name="updatesavedview"></a>
 # **UpdateSavedView**
-> ListSavedViewsItem UpdateSavedView (Guid id)
+> ListSavedViewsItem UpdateSavedView (Guid id, UpdateSavedViewRequest updateSavedViewRequest)
 
 Update a saved view preset.
 
@@ -267,11 +271,12 @@ namespace Example
 
             var apiInstance = new SavedViewsApi(config);
             var id = "id_example";  // Guid | 
+            var updateSavedViewRequest = new UpdateSavedViewRequest(); // UpdateSavedViewRequest | 
 
             try
             {
                 // Update a saved view preset.
-                ListSavedViewsItem result = apiInstance.UpdateSavedView(id);
+                ListSavedViewsItem result = apiInstance.UpdateSavedView(id, updateSavedViewRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -290,6 +295,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateSavedViewRequest** | **UpdateSavedViewRequest**|  | 
 
 ### Return type
 
@@ -301,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -70,16 +70,16 @@ namespace net.crossly.Model
         public enum FetchStatusEnum
         {
             /// <summary>
-            /// Enum Error for value: error
-            /// </summary>
-            [EnumMember(Value = "error")]
-            Error = 1,
-
-            /// <summary>
             /// Enum Ok for value: ok
             /// </summary>
             [EnumMember(Value = "ok")]
-            Ok = 2,
+            Ok = 1,
+
+            /// <summary>
+            /// Enum Error for value: error
+            /// </summary>
+            [EnumMember(Value = "error")]
+            Error = 2,
 
             /// <summary>
             /// Enum Unsupported for value: unsupported

@@ -44,6 +44,7 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="notes">notes.</param>
+        /// <param name="assigneeMemberId">assigneeMemberId.</param>
         /// <param name="refundAmount">refundAmount.</param>
         /// <param name="orderId">orderId (required).</param>
         /// <param name="reason">reason.</param>
@@ -56,7 +57,7 @@ namespace net.crossly.Model
         /// <param name="identityCheck">identityCheck (required).</param>
         /// <param name="restockedAt">restockedAt.</param>
         /// <param name="disputeCaseId">disputeCaseId.</param>
-        public GetReturnResponse(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string notes = default(string), string refundAmount = default(string), string orderId = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string restockedToInventoryItemId = default(string), DateTime requestedAt = default(DateTime), DateTime? inspectedAt = default(DateTime?), string inspectedUnitId = default(string), string inspectedIdentifier = default(string), string identityCheck = default(string), DateTime? restockedAt = default(DateTime?), string disputeCaseId = default(string))
+        public GetReturnResponse(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string notes = default(string), string assigneeMemberId = default(string), string refundAmount = default(string), string orderId = default(string), string reason = default(string), DateTime? receivedAt = default(DateTime?), string restockedToInventoryItemId = default(string), DateTime requestedAt = default(DateTime), DateTime? inspectedAt = default(DateTime?), string inspectedUnitId = default(string), string inspectedIdentifier = default(string), string identityCheck = default(string), DateTime? restockedAt = default(DateTime?), string disputeCaseId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -86,6 +87,7 @@ namespace net.crossly.Model
             }
             this.IdentityCheck = identityCheck;
             this.Notes = notes;
+            this.AssigneeMemberId = assigneeMemberId;
             this.RefundAmount = refundAmount;
             this.Reason = reason;
             this.ReceivedAt = receivedAt;
@@ -126,6 +128,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "notes", EmitDefaultValue = true)]
         public string Notes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AssigneeMemberId
+        /// </summary>
+        [DataMember(Name = "assigneeMemberId", EmitDefaultValue = true)]
+        public string AssigneeMemberId { get; set; }
 
         /// <summary>
         /// Gets or Sets RefundAmount
@@ -212,6 +220,7 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
+            sb.Append("  AssigneeMemberId: ").Append(AssigneeMemberId).Append("\n");
             sb.Append("  RefundAmount: ").Append(RefundAmount).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  Reason: ").Append(Reason).Append("\n");
@@ -283,6 +292,11 @@ namespace net.crossly.Model
                     this.Notes == input.Notes ||
                     (this.Notes != null &&
                     this.Notes.Equals(input.Notes))
+                ) && 
+                (
+                    this.AssigneeMemberId == input.AssigneeMemberId ||
+                    (this.AssigneeMemberId != null &&
+                    this.AssigneeMemberId.Equals(input.AssigneeMemberId))
                 ) && 
                 (
                     this.RefundAmount == input.RefundAmount ||
@@ -374,6 +388,10 @@ namespace net.crossly.Model
                 if (this.Notes != null)
                 {
                     hashCode = (hashCode * 59) + this.Notes.GetHashCode();
+                }
+                if (this.AssigneeMemberId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssigneeMemberId.GetHashCode();
                 }
                 if (this.RefundAmount != null)
                 {

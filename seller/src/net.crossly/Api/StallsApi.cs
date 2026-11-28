@@ -111,8 +111,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetStallStreetAerialResponse</returns>
-        GetStallStreetAerialResponse GetStallStreetAerial(string slug);
+        GetStallStreetAerialResponse GetStallStreetAerial(string slug, string from = default(string), decimal? days = default(decimal?));
 
         /// <summary>
         /// A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
@@ -122,8 +124,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetStallStreetAerialResponse</returns>
-        ApiResponse<GetStallStreetAerialResponse> GetStallStreetAerialWithHttpInfo(string slug);
+        ApiResponse<GetStallStreetAerialResponse> GetStallStreetAerialWithHttpInfo(string slug, string from = default(string), decimal? days = default(decimal?));
         /// <summary>
         /// Search ANY of your live Crossly listings for a stall counter or convention booth: q, category, min, max (cents), street (marks what its terms allow), limit, offset.
         /// </summary>
@@ -197,8 +201,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <returns>CreateStallBookResponse</returns>
-        CreateStallBookResponse UpdateStallBooking(string id);
+        CreateStallBookResponse UpdateStallBooking(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest));
 
         /// <summary>
         /// Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
@@ -208,8 +213,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStallBookResponse</returns>
-        ApiResponse<CreateStallBookResponse> UpdateStallBookingWithHttpInfo(string id);
+        ApiResponse<CreateStallBookResponse> UpdateStallBookingWithHttpInfo(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest));
         #endregion Synchronous Operations
     }
 
@@ -327,9 +333,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStallStreetAerialResponse</returns>
-        System.Threading.Tasks.Task<GetStallStreetAerialResponse> GetStallStreetAerialAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetStallStreetAerialResponse> GetStallStreetAerialAsync(string slug, string from = default(string), decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A street from above for booking: every spot with its owner, booth size, counter capacity and price, the street events, and who is booked on each date.
@@ -339,9 +347,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStallStreetAerialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetStallStreetAerialResponse>> GetStallStreetAerialWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetStallStreetAerialResponse>> GetStallStreetAerialWithHttpInfoAsync(string slug, string from = default(string), decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Search ANY of your live Crossly listings for a stall counter or convention booth: q, category, min, max (cents), street (marks what its terms allow), limit, offset.
         /// </summary>
@@ -438,9 +448,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStallBookResponse</returns>
-        System.Threading.Tasks.Task<CreateStallBookResponse> UpdateStallBookingAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateStallBookResponse> UpdateStallBookingAsync(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change a booked stall before or while it is up: listingIds (up to 6 of your live listings), awning { colour, pattern }, booth { canopy, pattern, lights, counter, piece } (premium values need holding), sign, attendant.
@@ -450,9 +461,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStallBookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateStallBookResponse>> UpdateStallBookingWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateStallBookResponse>> UpdateStallBookingWithHttpInfoAsync(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1198,10 +1210,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetStallStreetAerialResponse</returns>
-        public GetStallStreetAerialResponse GetStallStreetAerial(string slug)
+        public GetStallStreetAerialResponse GetStallStreetAerial(string slug, string from = default(string), decimal? days = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> localVarResponse = GetStallStreetAerialWithHttpInfo(slug);
+            net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> localVarResponse = GetStallStreetAerialWithHttpInfo(slug, from, days);
             return localVarResponse.Data;
         }
 
@@ -1210,8 +1224,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetStallStreetAerialResponse</returns>
-        public net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> GetStallStreetAerialWithHttpInfo(string slug)
+        public net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> GetStallStreetAerialWithHttpInfo(string slug, string from = default(string), decimal? days = default(decimal?))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -1242,6 +1258,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1269,11 +1293,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStallStreetAerialResponse</returns>
-        public async System.Threading.Tasks.Task<GetStallStreetAerialResponse> GetStallStreetAerialAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetStallStreetAerialResponse> GetStallStreetAerialAsync(string slug, string from = default(string), decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> localVarResponse = await GetStallStreetAerialWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetStallStreetAerialResponse> localVarResponse = await GetStallStreetAerialWithHttpInfoAsync(slug, from, days, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1282,9 +1308,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStallStreetAerialResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStallStreetAerialResponse>> GetStallStreetAerialWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStallStreetAerialResponse>> GetStallStreetAerialWithHttpInfoAsync(string slug, string from = default(string), decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -1316,6 +1344,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1892,10 +1928,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <returns>CreateStallBookResponse</returns>
-        public CreateStallBookResponse UpdateStallBooking(string id)
+        public CreateStallBookResponse UpdateStallBooking(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest))
         {
-            net.crossly.Client.ApiResponse<CreateStallBookResponse> localVarResponse = UpdateStallBookingWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateStallBookResponse> localVarResponse = UpdateStallBookingWithHttpInfo(id, updateStallBookingRequest);
             return localVarResponse.Data;
         }
 
@@ -1904,8 +1941,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStallBookResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateStallBookResponse> UpdateStallBookingWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateStallBookResponse> UpdateStallBookingWithHttpInfo(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1916,6 +1954,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1936,6 +1975,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStallBookingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1963,11 +2003,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStallBookResponse</returns>
-        public async System.Threading.Tasks.Task<CreateStallBookResponse> UpdateStallBookingAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateStallBookResponse> UpdateStallBookingAsync(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateStallBookResponse> localVarResponse = await UpdateStallBookingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateStallBookResponse> localVarResponse = await UpdateStallBookingWithHttpInfoAsync(id, updateStallBookingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1976,9 +2017,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStallBookingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStallBookResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStallBookResponse>> UpdateStallBookingWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStallBookResponse>> UpdateStallBookingWithHttpInfoAsync(string id, UpdateStallBookingRequest updateStallBookingRequest = default(UpdateStallBookingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1990,6 +2032,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2010,6 +2053,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStallBookingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

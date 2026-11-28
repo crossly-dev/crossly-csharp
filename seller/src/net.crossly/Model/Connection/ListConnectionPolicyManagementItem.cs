@@ -56,22 +56,22 @@ namespace net.crossly.Model
             Shopify = 3,
 
             /// <summary>
+            /// Enum GoogleShopping for value: google_shopping
+            /// </summary>
+            [EnumMember(Value = "google_shopping")]
+            GoogleShopping = 4,
+
+            /// <summary>
             /// Enum Allegro for value: allegro
             /// </summary>
             [EnumMember(Value = "allegro")]
-            Allegro = 4,
+            Allegro = 5,
 
             /// <summary>
             /// Enum Trademe for value: trademe
             /// </summary>
             [EnumMember(Value = "trademe")]
-            Trademe = 5,
-
-            /// <summary>
-            /// Enum GoogleShopping for value: google_shopping
-            /// </summary>
-            [EnumMember(Value = "google_shopping")]
-            GoogleShopping = 6
+            Trademe = 6
 
         }
 

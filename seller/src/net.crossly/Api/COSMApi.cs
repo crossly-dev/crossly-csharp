@@ -34,8 +34,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <returns>CreateCosmAttestationAnchorResponse</returns>
-        CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor(string id);
+        CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest);
 
         /// <summary>
         /// Record a signature for a commitment anchored BY HAND.
@@ -45,8 +46,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <returns>ApiResponse of CreateCosmAttestationAnchorResponse</returns>
-        ApiResponse<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorWithHttpInfo(string id);
+        ApiResponse<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorWithHttpInfo(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest);
         /// <summary>
         /// List an owned cosmetic for COSM.
         /// </summary>
@@ -54,8 +56,9 @@ namespace net.crossly.Api
         /// Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <returns>CreateCosmAuctionResponse</returns>
-        CreateCosmAuctionResponse CreateCosmAuction();
+        CreateCosmAuctionResponse CreateCosmAuction(CreateCosmAuctionRequest createCosmAuctionRequest);
 
         /// <summary>
         /// List an owned cosmetic for COSM.
@@ -64,8 +67,9 @@ namespace net.crossly.Api
         /// Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <returns>ApiResponse of CreateCosmAuctionResponse</returns>
-        ApiResponse<CreateCosmAuctionResponse> CreateCosmAuctionWithHttpInfo();
+        ApiResponse<CreateCosmAuctionResponse> CreateCosmAuctionWithHttpInfo(CreateCosmAuctionRequest createCosmAuctionRequest);
         /// <summary>
         /// Buy an open listing.
         /// </summary>
@@ -74,8 +78,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmFusionResponse</returns>
-        CreateCosmFusionResponse CreateCosmAuctionBuy(string id);
+        CreateCosmFusionResponse CreateCosmAuctionBuy(string id, SubjectIdRequest subjectIdRequest);
 
         /// <summary>
         /// Buy an open listing.
@@ -85,8 +90,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmFusionResponse</returns>
-        ApiResponse<CreateCosmFusionResponse> CreateCosmAuctionBuyWithHttpInfo(string id);
+        ApiResponse<CreateCosmFusionResponse> CreateCosmAuctionBuyWithHttpInfo(string id, SubjectIdRequest subjectIdRequest);
         /// <summary>
         /// Buy an earned-tier cosmetic. The COSM is DESTROYED.
         /// </summary>
@@ -95,8 +101,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmCosmeticBuyResponse</returns>
-        CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy(string id);
+        CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy(string id, SubjectIdRequest subjectIdRequest);
 
         /// <summary>
         /// Buy an earned-tier cosmetic. The COSM is DESTROYED.
@@ -106,8 +113,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticBuyResponse</returns>
-        ApiResponse<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyWithHttpInfo(string id);
+        ApiResponse<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyWithHttpInfo(string id, SubjectIdRequest subjectIdRequest);
         /// <summary>
         /// Buy a dollar-priced cosmetic, paying in CBX.
         /// </summary>
@@ -116,8 +124,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <returns>CreateCosmCosmeticBuyCbxResponse</returns>
-        CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx(string id);
+        CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest);
 
         /// <summary>
         /// Buy a dollar-priced cosmetic, paying in CBX.
@@ -127,8 +136,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticBuyCbxResponse</returns>
-        ApiResponse<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxWithHttpInfo(string id);
+        ApiResponse<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxWithHttpInfo(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest);
         /// <summary>
         /// Claim a stake-exclusive cosmetic once tenure qualifies.
         /// </summary>
@@ -137,8 +147,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmCosmeticClaimResponse</returns>
-        CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim(string id);
+        CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim(string id, SubjectIdRequest subjectIdRequest);
 
         /// <summary>
         /// Claim a stake-exclusive cosmetic once tenure qualifies.
@@ -148,8 +159,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticClaimResponse</returns>
-        ApiResponse<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimWithHttpInfo(string id);
+        ApiResponse<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimWithHttpInfo(string id, SubjectIdRequest subjectIdRequest);
         /// <summary>
         /// Fuse two cosmetics plus COSM into a rarer one.
         /// </summary>
@@ -158,8 +170,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmFusionResponse</returns>
-        CreateCosmFusionResponse CreateCosmFusion(string recipeId);
+        CreateCosmFusionResponse CreateCosmFusion(string recipeId, SubjectIdRequest subjectIdRequest);
 
         /// <summary>
         /// Fuse two cosmetics plus COSM into a rarer one.
@@ -169,8 +182,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmFusionResponse</returns>
-        ApiResponse<CreateCosmFusionResponse> CreateCosmFusionWithHttpInfo(string recipeId);
+        ApiResponse<CreateCosmFusionResponse> CreateCosmFusionWithHttpInfo(string recipeId, SubjectIdRequest subjectIdRequest);
         /// <summary>
         /// Claim a vanity handle, burning COSM.
         /// </summary>
@@ -178,8 +192,9 @@ namespace net.crossly.Api
         /// One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <returns>CreateCosmHandleResponse</returns>
-        CreateCosmHandleResponse CreateCosmHandle();
+        CreateCosmHandleResponse CreateCosmHandle(CreateCosmHandleRequest createCosmHandleRequest);
 
         /// <summary>
         /// Claim a vanity handle, burning COSM.
@@ -188,8 +203,9 @@ namespace net.crossly.Api
         /// One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <returns>ApiResponse of CreateCosmHandleResponse</returns>
-        ApiResponse<CreateCosmHandleResponse> CreateCosmHandleWithHttpInfo();
+        ApiResponse<CreateCosmHandleResponse> CreateCosmHandleWithHttpInfo(CreateCosmHandleRequest createCosmHandleRequest);
         /// <summary>
         /// Request a withdrawal to your own proven wallet. REFUSES today.
         /// </summary>
@@ -197,8 +213,9 @@ namespace net.crossly.Api
         /// Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <returns>CreateCosmWithdrawalResponse</returns>
-        CreateCosmWithdrawalResponse CreateCosmWithdrawal();
+        CreateCosmWithdrawalResponse CreateCosmWithdrawal(CreateCosmWithdrawalRequest createCosmWithdrawalRequest);
 
         /// <summary>
         /// Request a withdrawal to your own proven wallet. REFUSES today.
@@ -207,8 +224,9 @@ namespace net.crossly.Api
         /// Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <returns>ApiResponse of CreateCosmWithdrawalResponse</returns>
-        ApiResponse<CreateCosmWithdrawalResponse> CreateCosmWithdrawalWithHttpInfo();
+        ApiResponse<CreateCosmWithdrawalResponse> CreateCosmWithdrawalWithHttpInfo(CreateCosmWithdrawalRequest createCosmWithdrawalRequest);
         /// <summary>
         /// Release a handle. NOTHING IS REFUNDED.
         /// </summary>
@@ -216,8 +234,9 @@ namespace net.crossly.Api
         /// The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <returns>DeleteCosmHandleResponse</returns>
-        DeleteCosmHandleResponse DeleteCosmHandle();
+        DeleteCosmHandleResponse DeleteCosmHandle(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest));
 
         /// <summary>
         /// Release a handle. NOTHING IS REFUNDED.
@@ -226,8 +245,9 @@ namespace net.crossly.Api
         /// The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteCosmHandleResponse</returns>
-        ApiResponse<DeleteCosmHandleResponse> DeleteCosmHandleWithHttpInfo();
+        ApiResponse<DeleteCosmHandleResponse> DeleteCosmHandleWithHttpInfo(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest));
         /// <summary>
         /// Stop repricing. The current ask stays where it is.
         /// </summary>
@@ -236,8 +256,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <returns>DeleteCosmPegResponse</returns>
-        DeleteCosmPegResponse DeleteCosmPeg(string listingId);
+        DeleteCosmPegResponse DeleteCosmPeg(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest));
 
         /// <summary>
         /// Stop repricing. The current ask stays where it is.
@@ -247,8 +268,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteCosmPegResponse</returns>
-        ApiResponse<DeleteCosmPegResponse> DeleteCosmPegWithHttpInfo(string listingId);
+        ApiResponse<DeleteCosmPegResponse> DeleteCosmPegWithHttpInfo(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest));
         /// <summary>
         /// A Merkle inclusion proof for one subject, against a published root.
         /// </summary>
@@ -257,8 +279,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmAttestationProofResponse</returns>
-        GetCosmAttestationProofResponse GetCosmAttestationProof(string id);
+        GetCosmAttestationProofResponse GetCosmAttestationProof(string id, string subjectId);
 
         /// <summary>
         /// A Merkle inclusion proof for one subject, against a published root.
@@ -268,8 +291,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmAttestationProofResponse</returns>
-        ApiResponse<GetCosmAttestationProofResponse> GetCosmAttestationProofWithHttpInfo(string id);
+        ApiResponse<GetCosmAttestationProofResponse> GetCosmAttestationProofWithHttpInfo(string id, string subjectId);
         /// <summary>
         /// What an auction listing would cost in fees.
         /// </summary>
@@ -296,8 +320,9 @@ namespace net.crossly.Api
         /// Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmBalanceResponse</returns>
-        GetCosmBalanceResponse GetCosmBalance();
+        GetCosmBalanceResponse GetCosmBalance(string subjectId);
 
         /// <summary>
         /// A subject&#39;s COSM balance and the earn rate in force.
@@ -306,8 +331,9 @@ namespace net.crossly.Api
         /// Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmBalanceResponse</returns>
-        ApiResponse<GetCosmBalanceResponse> GetCosmBalanceWithHttpInfo();
+        ApiResponse<GetCosmBalanceResponse> GetCosmBalanceWithHttpInfo(string subjectId);
         /// <summary>
         /// What one shop-employee conversation will cost, in COSM.
         /// </summary>
@@ -315,8 +341,9 @@ namespace net.crossly.Api
         /// A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <returns>GetCosmEmployeeFeeQuoteResponse</returns>
-        GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote();
+        GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote(decimal totalCents);
 
         /// <summary>
         /// What one shop-employee conversation will cost, in COSM.
@@ -325,8 +352,9 @@ namespace net.crossly.Api
         /// A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <returns>ApiResponse of GetCosmEmployeeFeeQuoteResponse</returns>
-        ApiResponse<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteWithHttpInfo();
+        ApiResponse<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteWithHttpInfo(decimal totalCents);
         /// <summary>
         /// Is this handle available, and what does it cost?
         /// </summary>
@@ -355,8 +383,9 @@ namespace net.crossly.Api
         /// The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmStakeTenureResponse</returns>
-        GetCosmStakeTenureResponse GetCosmStakeTenure();
+        GetCosmStakeTenureResponse GetCosmStakeTenure(string subjectId);
 
         /// <summary>
         /// How long a subject has held a stake continuously, in days.
@@ -365,8 +394,9 @@ namespace net.crossly.Api
         /// The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmStakeTenureResponse</returns>
-        ApiResponse<GetCosmStakeTenureResponse> GetCosmStakeTenureWithHttpInfo();
+        ApiResponse<GetCosmStakeTenureResponse> GetCosmStakeTenureWithHttpInfo(string subjectId);
         /// <summary>
         /// Total supply — minted, burned, circulating.
         /// </summary>
@@ -393,8 +423,10 @@ namespace net.crossly.Api
         /// Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListCosmAttestationsResponse</returns>
-        ListCosmAttestationsResponse ListCosmAttestations();
+        ListCosmAttestationsResponse ListCosmAttestations(string kind = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Published Merkle commitments. What you can check instead of trusting us.
@@ -403,8 +435,10 @@ namespace net.crossly.Api
         /// Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListCosmAttestationsResponse</returns>
-        ApiResponse<ListCosmAttestationsResponse> ListCosmAttestationsWithHttpInfo();
+        ApiResponse<ListCosmAttestationsResponse> ListCosmAttestationsWithHttpInfo(string kind = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Open auction listings, priced in COSM.
         /// </summary>
@@ -412,8 +446,9 @@ namespace net.crossly.Api
         /// A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <returns>ListCosmAuctionResponse</returns>
-        ListCosmAuctionResponse ListCosmAuction();
+        ListCosmAuctionResponse ListCosmAuction(string cosmeticId = default(string));
 
         /// <summary>
         /// Open auction listings, priced in COSM.
@@ -422,8 +457,9 @@ namespace net.crossly.Api
         /// A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <returns>ApiResponse of ListCosmAuctionResponse</returns>
-        ApiResponse<ListCosmAuctionResponse> ListCosmAuctionWithHttpInfo();
+        ApiResponse<ListCosmAuctionResponse> ListCosmAuctionWithHttpInfo(string cosmeticId = default(string));
         /// <summary>
         /// The cosmetics catalogue.
         /// </summary>
@@ -431,8 +467,10 @@ namespace net.crossly.Api
         /// Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <returns>ListCosmCosmeticsResponse</returns>
-        ListCosmCosmeticsResponse ListCosmCosmetics();
+        ListCosmCosmeticsResponse ListCosmCosmetics(string tier = default(string), string slot = default(string));
 
         /// <summary>
         /// The cosmetics catalogue.
@@ -441,8 +479,10 @@ namespace net.crossly.Api
         /// Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <returns>ApiResponse of ListCosmCosmeticsResponse</returns>
-        ApiResponse<ListCosmCosmeticsResponse> ListCosmCosmeticsWithHttpInfo();
+        ApiResponse<ListCosmCosmeticsResponse> ListCosmCosmeticsWithHttpInfo(string tier = default(string), string slot = default(string));
         /// <summary>
         /// Community burn goal progress.
         /// </summary>
@@ -469,8 +509,9 @@ namespace net.crossly.Api
         /// &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmInventoryResponse</returns>
-        ListCosmInventoryResponse ListCosmInventory();
+        ListCosmInventoryResponse ListCosmInventory(string subjectId);
 
         /// <summary>
         /// Cosmetics a subject holds.
@@ -479,8 +520,9 @@ namespace net.crossly.Api
         /// &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmInventoryResponse</returns>
-        ApiResponse<ListCosmInventoryResponse> ListCosmInventoryWithHttpInfo();
+        ApiResponse<ListCosmInventoryResponse> ListCosmInventoryWithHttpInfo(string subjectId);
         /// <summary>
         /// CBX-pegged listings and why each last moved.
         /// </summary>
@@ -488,8 +530,9 @@ namespace net.crossly.Api
         /// A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <returns>ListCosmPegsResponse</returns>
-        ListCosmPegsResponse ListCosmPegs();
+        ListCosmPegsResponse ListCosmPegs(string sellerUserId);
 
         /// <summary>
         /// CBX-pegged listings and why each last moved.
@@ -498,8 +541,9 @@ namespace net.crossly.Api
         /// A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <returns>ApiResponse of ListCosmPegsResponse</returns>
-        ApiResponse<ListCosmPegsResponse> ListCosmPegsWithHttpInfo();
+        ApiResponse<ListCosmPegsResponse> ListCosmPegsWithHttpInfo(string sellerUserId);
         /// <summary>
         /// Per-epoch emission against the backstop.
         /// </summary>
@@ -545,8 +589,9 @@ namespace net.crossly.Api
         /// Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmUnlocksResponse</returns>
-        ListCosmUnlocksResponse ListCosmUnlocks();
+        ListCosmUnlocksResponse ListCosmUnlocks(string subjectId);
 
         /// <summary>
         /// Which spatial cosmetic values this subject may apply.
@@ -555,8 +600,9 @@ namespace net.crossly.Api
         /// Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmUnlocksResponse</returns>
-        ApiResponse<ListCosmUnlocksResponse> ListCosmUnlocksWithHttpInfo();
+        ApiResponse<ListCosmUnlocksResponse> ListCosmUnlocksWithHttpInfo(string subjectId);
         /// <summary>
         /// Withdrawal history, and whether withdrawals are open at all.
         /// </summary>
@@ -564,8 +610,9 @@ namespace net.crossly.Api
         /// COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmWithdrawalsResponse</returns>
-        ListCosmWithdrawalsResponse ListCosmWithdrawals();
+        ListCosmWithdrawalsResponse ListCosmWithdrawals(string subjectId);
 
         /// <summary>
         /// Withdrawal history, and whether withdrawals are open at all.
@@ -574,8 +621,9 @@ namespace net.crossly.Api
         /// COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmWithdrawalsResponse</returns>
-        ApiResponse<ListCosmWithdrawalsResponse> ListCosmWithdrawalsWithHttpInfo();
+        ApiResponse<ListCosmWithdrawalsResponse> ListCosmWithdrawalsWithHttpInfo(string subjectId);
         /// <summary>
         /// Set (or clear) what a cosmetic unlocks spatially.
         /// </summary>
@@ -584,8 +632,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <returns>UpdateCosmCosmeticUnlockResponse</returns>
-        UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock(string id);
+        UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest);
 
         /// <summary>
         /// Set (or clear) what a cosmetic unlocks spatially.
@@ -595,8 +644,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <returns>ApiResponse of UpdateCosmCosmeticUnlockResponse</returns>
-        ApiResponse<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockWithHttpInfo(string id);
+        ApiResponse<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockWithHttpInfo(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest);
         /// <summary>
         /// Set or update a CBX price peg. OFF unless you turn it on.
         /// </summary>
@@ -604,8 +654,9 @@ namespace net.crossly.Api
         /// Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <returns>UpdateCosmPegResponse</returns>
-        UpdateCosmPegResponse UpdateCosmPeg();
+        UpdateCosmPegResponse UpdateCosmPeg(UpdateCosmPegRequest updateCosmPegRequest);
 
         /// <summary>
         /// Set or update a CBX price peg. OFF unless you turn it on.
@@ -614,8 +665,9 @@ namespace net.crossly.Api
         /// Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <returns>ApiResponse of UpdateCosmPegResponse</returns>
-        ApiResponse<UpdateCosmPegResponse> UpdateCosmPegWithHttpInfo();
+        ApiResponse<UpdateCosmPegResponse> UpdateCosmPegWithHttpInfo(UpdateCosmPegRequest updateCosmPegRequest);
         #endregion Synchronous Operations
     }
 
@@ -633,9 +685,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmAttestationAnchorResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorAsync(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record a signature for a commitment anchored BY HAND.
@@ -645,9 +698,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmAttestationAnchorResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmAttestationAnchorResponse>> CreateCosmAttestationAnchorWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmAttestationAnchorResponse>> CreateCosmAttestationAnchorWithHttpInfoAsync(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List an owned cosmetic for COSM.
         /// </summary>
@@ -655,9 +709,10 @@ namespace net.crossly.Api
         /// Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmAuctionResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmAuctionResponse> CreateCosmAuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmAuctionResponse> CreateCosmAuctionAsync(CreateCosmAuctionRequest createCosmAuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List an owned cosmetic for COSM.
@@ -666,9 +721,10 @@ namespace net.crossly.Api
         /// Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmAuctionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmAuctionResponse>> CreateCosmAuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmAuctionResponse>> CreateCosmAuctionWithHttpInfoAsync(CreateCosmAuctionRequest createCosmAuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy an open listing.
         /// </summary>
@@ -677,9 +733,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmFusionResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmAuctionBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmAuctionBuyAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy an open listing.
@@ -689,9 +746,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmFusionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmFusionResponse>> CreateCosmAuctionBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmFusionResponse>> CreateCosmAuctionBuyWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy an earned-tier cosmetic. The COSM is DESTROYED.
         /// </summary>
@@ -700,9 +758,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticBuyResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy an earned-tier cosmetic. The COSM is DESTROYED.
@@ -712,9 +771,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticBuyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticBuyResponse>> CreateCosmCosmeticBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticBuyResponse>> CreateCosmCosmeticBuyWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy a dollar-priced cosmetic, paying in CBX.
         /// </summary>
@@ -723,9 +783,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticBuyCbxResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxAsync(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy a dollar-priced cosmetic, paying in CBX.
@@ -735,9 +796,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticBuyCbxResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticBuyCbxResponse>> CreateCosmCosmeticBuyCbxWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticBuyCbxResponse>> CreateCosmCosmeticBuyCbxWithHttpInfoAsync(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Claim a stake-exclusive cosmetic once tenure qualifies.
         /// </summary>
@@ -746,9 +808,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticClaimResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim a stake-exclusive cosmetic once tenure qualifies.
@@ -758,9 +821,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticClaimResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticClaimResponse>> CreateCosmCosmeticClaimWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmCosmeticClaimResponse>> CreateCosmCosmeticClaimWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Fuse two cosmetics plus COSM into a rarer one.
         /// </summary>
@@ -769,9 +833,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmFusionResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmFusionAsync(string recipeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmFusionAsync(string recipeId, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fuse two cosmetics plus COSM into a rarer one.
@@ -781,9 +846,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmFusionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmFusionResponse>> CreateCosmFusionWithHttpInfoAsync(string recipeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmFusionResponse>> CreateCosmFusionWithHttpInfoAsync(string recipeId, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Claim a vanity handle, burning COSM.
         /// </summary>
@@ -791,9 +857,10 @@ namespace net.crossly.Api
         /// One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmHandleResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmHandleResponse> CreateCosmHandleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmHandleResponse> CreateCosmHandleAsync(CreateCosmHandleRequest createCosmHandleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim a vanity handle, burning COSM.
@@ -802,9 +869,10 @@ namespace net.crossly.Api
         /// One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmHandleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmHandleResponse>> CreateCosmHandleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmHandleResponse>> CreateCosmHandleWithHttpInfoAsync(CreateCosmHandleRequest createCosmHandleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Request a withdrawal to your own proven wallet. REFUSES today.
         /// </summary>
@@ -812,9 +880,10 @@ namespace net.crossly.Api
         /// Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmWithdrawalResponse</returns>
-        System.Threading.Tasks.Task<CreateCosmWithdrawalResponse> CreateCosmWithdrawalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCosmWithdrawalResponse> CreateCosmWithdrawalAsync(CreateCosmWithdrawalRequest createCosmWithdrawalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Request a withdrawal to your own proven wallet. REFUSES today.
@@ -823,9 +892,10 @@ namespace net.crossly.Api
         /// Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmWithdrawalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCosmWithdrawalResponse>> CreateCosmWithdrawalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCosmWithdrawalResponse>> CreateCosmWithdrawalWithHttpInfoAsync(CreateCosmWithdrawalRequest createCosmWithdrawalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Release a handle. NOTHING IS REFUNDED.
         /// </summary>
@@ -833,9 +903,10 @@ namespace net.crossly.Api
         /// The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteCosmHandleResponse</returns>
-        System.Threading.Tasks.Task<DeleteCosmHandleResponse> DeleteCosmHandleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteCosmHandleResponse> DeleteCosmHandleAsync(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Release a handle. NOTHING IS REFUNDED.
@@ -844,9 +915,10 @@ namespace net.crossly.Api
         /// The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteCosmHandleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteCosmHandleResponse>> DeleteCosmHandleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteCosmHandleResponse>> DeleteCosmHandleWithHttpInfoAsync(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop repricing. The current ask stays where it is.
         /// </summary>
@@ -855,9 +927,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteCosmPegResponse</returns>
-        System.Threading.Tasks.Task<DeleteCosmPegResponse> DeleteCosmPegAsync(string listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteCosmPegResponse> DeleteCosmPegAsync(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stop repricing. The current ask stays where it is.
@@ -867,9 +940,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteCosmPegResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteCosmPegResponse>> DeleteCosmPegWithHttpInfoAsync(string listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteCosmPegResponse>> DeleteCosmPegWithHttpInfoAsync(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A Merkle inclusion proof for one subject, against a published root.
         /// </summary>
@@ -878,9 +952,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmAttestationProofResponse</returns>
-        System.Threading.Tasks.Task<GetCosmAttestationProofResponse> GetCosmAttestationProofAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetCosmAttestationProofResponse> GetCosmAttestationProofAsync(string id, string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A Merkle inclusion proof for one subject, against a published root.
@@ -890,9 +965,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmAttestationProofResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetCosmAttestationProofResponse>> GetCosmAttestationProofWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetCosmAttestationProofResponse>> GetCosmAttestationProofWithHttpInfoAsync(string id, string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What an auction listing would cost in fees.
         /// </summary>
@@ -921,9 +997,10 @@ namespace net.crossly.Api
         /// Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmBalanceResponse</returns>
-        System.Threading.Tasks.Task<GetCosmBalanceResponse> GetCosmBalanceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetCosmBalanceResponse> GetCosmBalanceAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A subject&#39;s COSM balance and the earn rate in force.
@@ -932,9 +1009,10 @@ namespace net.crossly.Api
         /// Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmBalanceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetCosmBalanceResponse>> GetCosmBalanceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetCosmBalanceResponse>> GetCosmBalanceWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What one shop-employee conversation will cost, in COSM.
         /// </summary>
@@ -942,9 +1020,10 @@ namespace net.crossly.Api
         /// A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmEmployeeFeeQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteAsync(decimal totalCents, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What one shop-employee conversation will cost, in COSM.
@@ -953,9 +1032,10 @@ namespace net.crossly.Api
         /// A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmEmployeeFeeQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetCosmEmployeeFeeQuoteResponse>> GetCosmEmployeeFeeQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetCosmEmployeeFeeQuoteResponse>> GetCosmEmployeeFeeQuoteWithHttpInfoAsync(decimal totalCents, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Is this handle available, and what does it cost?
         /// </summary>
@@ -986,9 +1066,10 @@ namespace net.crossly.Api
         /// The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmStakeTenureResponse</returns>
-        System.Threading.Tasks.Task<GetCosmStakeTenureResponse> GetCosmStakeTenureAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetCosmStakeTenureResponse> GetCosmStakeTenureAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// How long a subject has held a stake continuously, in days.
@@ -997,9 +1078,10 @@ namespace net.crossly.Api
         /// The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmStakeTenureResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetCosmStakeTenureResponse>> GetCosmStakeTenureWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetCosmStakeTenureResponse>> GetCosmStakeTenureWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Total supply — minted, burned, circulating.
         /// </summary>
@@ -1028,9 +1110,11 @@ namespace net.crossly.Api
         /// Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmAttestationsResponse</returns>
-        System.Threading.Tasks.Task<ListCosmAttestationsResponse> ListCosmAttestationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmAttestationsResponse> ListCosmAttestationsAsync(string kind = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Published Merkle commitments. What you can check instead of trusting us.
@@ -1039,9 +1123,11 @@ namespace net.crossly.Api
         /// Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmAttestationsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmAttestationsResponse>> ListCosmAttestationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmAttestationsResponse>> ListCosmAttestationsWithHttpInfoAsync(string kind = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open auction listings, priced in COSM.
         /// </summary>
@@ -1049,9 +1135,10 @@ namespace net.crossly.Api
         /// A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmAuctionResponse</returns>
-        System.Threading.Tasks.Task<ListCosmAuctionResponse> ListCosmAuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmAuctionResponse> ListCosmAuctionAsync(string cosmeticId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open auction listings, priced in COSM.
@@ -1060,9 +1147,10 @@ namespace net.crossly.Api
         /// A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmAuctionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmAuctionResponse>> ListCosmAuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmAuctionResponse>> ListCosmAuctionWithHttpInfoAsync(string cosmeticId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The cosmetics catalogue.
         /// </summary>
@@ -1070,9 +1158,11 @@ namespace net.crossly.Api
         /// Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmCosmeticsResponse</returns>
-        System.Threading.Tasks.Task<ListCosmCosmeticsResponse> ListCosmCosmeticsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmCosmeticsResponse> ListCosmCosmeticsAsync(string tier = default(string), string slot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The cosmetics catalogue.
@@ -1081,9 +1171,11 @@ namespace net.crossly.Api
         /// Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmCosmeticsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmCosmeticsResponse>> ListCosmCosmeticsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmCosmeticsResponse>> ListCosmCosmeticsWithHttpInfoAsync(string tier = default(string), string slot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Community burn goal progress.
         /// </summary>
@@ -1112,9 +1204,10 @@ namespace net.crossly.Api
         /// &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmInventoryResponse</returns>
-        System.Threading.Tasks.Task<ListCosmInventoryResponse> ListCosmInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmInventoryResponse> ListCosmInventoryAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cosmetics a subject holds.
@@ -1123,9 +1216,10 @@ namespace net.crossly.Api
         /// &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmInventoryResponse>> ListCosmInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmInventoryResponse>> ListCosmInventoryWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// CBX-pegged listings and why each last moved.
         /// </summary>
@@ -1133,9 +1227,10 @@ namespace net.crossly.Api
         /// A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmPegsResponse</returns>
-        System.Threading.Tasks.Task<ListCosmPegsResponse> ListCosmPegsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmPegsResponse> ListCosmPegsAsync(string sellerUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// CBX-pegged listings and why each last moved.
@@ -1144,9 +1239,10 @@ namespace net.crossly.Api
         /// A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmPegsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmPegsResponse>> ListCosmPegsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmPegsResponse>> ListCosmPegsWithHttpInfoAsync(string sellerUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Per-epoch emission against the backstop.
         /// </summary>
@@ -1196,9 +1292,10 @@ namespace net.crossly.Api
         /// Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmUnlocksResponse</returns>
-        System.Threading.Tasks.Task<ListCosmUnlocksResponse> ListCosmUnlocksAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmUnlocksResponse> ListCosmUnlocksAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Which spatial cosmetic values this subject may apply.
@@ -1207,9 +1304,10 @@ namespace net.crossly.Api
         /// Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmUnlocksResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmUnlocksResponse>> ListCosmUnlocksWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmUnlocksResponse>> ListCosmUnlocksWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Withdrawal history, and whether withdrawals are open at all.
         /// </summary>
@@ -1217,9 +1315,10 @@ namespace net.crossly.Api
         /// COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmWithdrawalsResponse</returns>
-        System.Threading.Tasks.Task<ListCosmWithdrawalsResponse> ListCosmWithdrawalsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCosmWithdrawalsResponse> ListCosmWithdrawalsAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Withdrawal history, and whether withdrawals are open at all.
@@ -1228,9 +1327,10 @@ namespace net.crossly.Api
         /// COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmWithdrawalsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCosmWithdrawalsResponse>> ListCosmWithdrawalsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCosmWithdrawalsResponse>> ListCosmWithdrawalsWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set (or clear) what a cosmetic unlocks spatially.
         /// </summary>
@@ -1239,9 +1339,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCosmCosmeticUnlockResponse</returns>
-        System.Threading.Tasks.Task<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockAsync(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set (or clear) what a cosmetic unlocks spatially.
@@ -1251,9 +1352,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCosmCosmeticUnlockResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateCosmCosmeticUnlockResponse>> UpdateCosmCosmeticUnlockWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateCosmCosmeticUnlockResponse>> UpdateCosmCosmeticUnlockWithHttpInfoAsync(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set or update a CBX price peg. OFF unless you turn it on.
         /// </summary>
@@ -1261,9 +1363,10 @@ namespace net.crossly.Api
         /// Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCosmPegResponse</returns>
-        System.Threading.Tasks.Task<UpdateCosmPegResponse> UpdateCosmPegAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateCosmPegResponse> UpdateCosmPegAsync(UpdateCosmPegRequest updateCosmPegRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set or update a CBX price peg. OFF unless you turn it on.
@@ -1272,9 +1375,10 @@ namespace net.crossly.Api
         /// Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCosmPegResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateCosmPegResponse>> UpdateCosmPegWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateCosmPegResponse>> UpdateCosmPegWithHttpInfoAsync(UpdateCosmPegRequest updateCosmPegRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1400,10 +1504,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <returns>CreateCosmAttestationAnchorResponse</returns>
-        public CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor(string id)
+        public CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> localVarResponse = CreateCosmAttestationAnchorWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> localVarResponse = CreateCosmAttestationAnchorWithHttpInfo(id, createCosmAttestationAnchorRequest);
             return localVarResponse.Data;
         }
 
@@ -1412,8 +1517,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <returns>ApiResponse of CreateCosmAttestationAnchorResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorWithHttpInfo(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1421,9 +1527,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmAttestationAnchor");
             }
 
+            // verify the required parameter 'createCosmAttestationAnchorRequest' is set
+            if (createCosmAttestationAnchorRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmAttestationAnchorRequest' when calling COSMApi->CreateCosmAttestationAnchor");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1444,6 +1557,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCosmAttestationAnchorRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1471,11 +1585,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmAttestationAnchorResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmAttestationAnchorResponse> CreateCosmAttestationAnchorAsync(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> localVarResponse = await CreateCosmAttestationAnchorWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse> localVarResponse = await CreateCosmAttestationAnchorWithHttpInfoAsync(id, createCosmAttestationAnchorRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1484,9 +1599,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmAttestationAnchorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmAttestationAnchorResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse>> CreateCosmAttestationAnchorWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmAttestationAnchorResponse>> CreateCosmAttestationAnchorWithHttpInfoAsync(string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1494,10 +1610,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmAttestationAnchor");
             }
 
+            // verify the required parameter 'createCosmAttestationAnchorRequest' is set
+            if (createCosmAttestationAnchorRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmAttestationAnchorRequest' when calling COSMApi->CreateCosmAttestationAnchor");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1518,6 +1641,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCosmAttestationAnchorRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1545,10 +1669,11 @@ namespace net.crossly.Api
         /// List an owned cosmetic for COSM. Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <returns>CreateCosmAuctionResponse</returns>
-        public CreateCosmAuctionResponse CreateCosmAuction()
+        public CreateCosmAuctionResponse CreateCosmAuction(CreateCosmAuctionRequest createCosmAuctionRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> localVarResponse = CreateCosmAuctionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> localVarResponse = CreateCosmAuctionWithHttpInfo(createCosmAuctionRequest);
             return localVarResponse.Data;
         }
 
@@ -1556,12 +1681,20 @@ namespace net.crossly.Api
         /// List an owned cosmetic for COSM. Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <returns>ApiResponse of CreateCosmAuctionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> CreateCosmAuctionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> CreateCosmAuctionWithHttpInfo(CreateCosmAuctionRequest createCosmAuctionRequest)
         {
+            // verify the required parameter 'createCosmAuctionRequest' is set
+            if (createCosmAuctionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmAuctionRequest' when calling COSMApi->CreateCosmAuction");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1581,6 +1714,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmAuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1607,11 +1741,12 @@ namespace net.crossly.Api
         /// List an owned cosmetic for COSM. Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmAuctionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmAuctionResponse> CreateCosmAuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmAuctionResponse> CreateCosmAuctionAsync(CreateCosmAuctionRequest createCosmAuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> localVarResponse = await CreateCosmAuctionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmAuctionResponse> localVarResponse = await CreateCosmAuctionWithHttpInfoAsync(createCosmAuctionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1619,14 +1754,22 @@ namespace net.crossly.Api
         /// List an owned cosmetic for COSM. Refuses a BOUND item with 403. The bound flag is CHECK-derived from how the item was acquired, so the refusal cannot be bypassed by writing a different flag. One open listing per item, enforced by a unique index — otherwise the same cosmetic could be listed twice and sold to two buyers. &#x60;askBaseUnits&#x60; is a STRING of base units and must exceed 1.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmAuctionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmAuctionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmAuctionResponse>> CreateCosmAuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmAuctionResponse>> CreateCosmAuctionWithHttpInfoAsync(CreateCosmAuctionRequest createCosmAuctionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCosmAuctionRequest' is set
+            if (createCosmAuctionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmAuctionRequest' when calling COSMApi->CreateCosmAuction");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1646,6 +1789,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmAuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1674,10 +1818,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmFusionResponse</returns>
-        public CreateCosmFusionResponse CreateCosmAuctionBuy(string id)
+        public CreateCosmFusionResponse CreateCosmAuctionBuy(string id, SubjectIdRequest subjectIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = CreateCosmAuctionBuyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = CreateCosmAuctionBuyWithHttpInfo(id, subjectIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1686,8 +1831,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmFusionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmFusionResponse> CreateCosmAuctionBuyWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCosmFusionResponse> CreateCosmAuctionBuyWithHttpInfo(string id, SubjectIdRequest subjectIdRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1695,9 +1841,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmAuctionBuy");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmAuctionBuy");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1718,6 +1871,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1745,11 +1899,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmFusionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmAuctionBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmAuctionBuyAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = await CreateCosmAuctionBuyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = await CreateCosmAuctionBuyWithHttpInfoAsync(id, subjectIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1758,9 +1913,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmFusionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmFusionResponse>> CreateCosmAuctionBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmFusionResponse>> CreateCosmAuctionBuyWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1768,10 +1924,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmAuctionBuy");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmAuctionBuy");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1792,6 +1955,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1820,10 +1984,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmCosmeticBuyResponse</returns>
-        public CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy(string id)
+        public CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy(string id, SubjectIdRequest subjectIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> localVarResponse = CreateCosmCosmeticBuyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> localVarResponse = CreateCosmCosmeticBuyWithHttpInfo(id, subjectIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1832,8 +1997,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticBuyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyWithHttpInfo(string id, SubjectIdRequest subjectIdRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1841,9 +2007,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticBuy");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmCosmeticBuy");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1864,6 +2037,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1891,11 +2065,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticBuyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmCosmeticBuyResponse> CreateCosmCosmeticBuyAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> localVarResponse = await CreateCosmCosmeticBuyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse> localVarResponse = await CreateCosmCosmeticBuyWithHttpInfoAsync(id, subjectIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1904,9 +2079,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticBuyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse>> CreateCosmCosmeticBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyResponse>> CreateCosmCosmeticBuyWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1914,10 +2090,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticBuy");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmCosmeticBuy");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1938,6 +2121,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1966,10 +2150,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <returns>CreateCosmCosmeticBuyCbxResponse</returns>
-        public CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx(string id)
+        public CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> localVarResponse = CreateCosmCosmeticBuyCbxWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> localVarResponse = CreateCosmCosmeticBuyCbxWithHttpInfo(id, createCosmCosmeticBuyCbxRequest);
             return localVarResponse.Data;
         }
 
@@ -1978,8 +2163,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticBuyCbxResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxWithHttpInfo(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1987,9 +2173,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticBuyCbx");
             }
 
+            // verify the required parameter 'createCosmCosmeticBuyCbxRequest' is set
+            if (createCosmCosmeticBuyCbxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmCosmeticBuyCbxRequest' when calling COSMApi->CreateCosmCosmeticBuyCbx");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2010,6 +2203,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCosmCosmeticBuyCbxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2037,11 +2231,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticBuyCbxResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmCosmeticBuyCbxResponse> CreateCosmCosmeticBuyCbxAsync(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> localVarResponse = await CreateCosmCosmeticBuyCbxWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse> localVarResponse = await CreateCosmCosmeticBuyCbxWithHttpInfoAsync(id, createCosmCosmeticBuyCbxRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2050,9 +2245,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCosmCosmeticBuyCbxRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticBuyCbxResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse>> CreateCosmCosmeticBuyCbxWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticBuyCbxResponse>> CreateCosmCosmeticBuyCbxWithHttpInfoAsync(string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2060,10 +2256,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticBuyCbx");
             }
 
+            // verify the required parameter 'createCosmCosmeticBuyCbxRequest' is set
+            if (createCosmCosmeticBuyCbxRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmCosmeticBuyCbxRequest' when calling COSMApi->CreateCosmCosmeticBuyCbx");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2084,6 +2287,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCosmCosmeticBuyCbxRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2112,10 +2316,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmCosmeticClaimResponse</returns>
-        public CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim(string id)
+        public CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim(string id, SubjectIdRequest subjectIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> localVarResponse = CreateCosmCosmeticClaimWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> localVarResponse = CreateCosmCosmeticClaimWithHttpInfo(id, subjectIdRequest);
             return localVarResponse.Data;
         }
 
@@ -2124,8 +2329,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmCosmeticClaimResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimWithHttpInfo(string id, SubjectIdRequest subjectIdRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2133,9 +2339,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticClaim");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmCosmeticClaim");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2156,6 +2369,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2183,11 +2397,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmCosmeticClaimResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmCosmeticClaimResponse> CreateCosmCosmeticClaimAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> localVarResponse = await CreateCosmCosmeticClaimWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse> localVarResponse = await CreateCosmCosmeticClaimWithHttpInfoAsync(id, subjectIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2196,9 +2411,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmCosmeticClaimResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse>> CreateCosmCosmeticClaimWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmCosmeticClaimResponse>> CreateCosmCosmeticClaimWithHttpInfoAsync(string id, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2206,10 +2422,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->CreateCosmCosmeticClaim");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmCosmeticClaim");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2230,6 +2453,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2258,10 +2482,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>CreateCosmFusionResponse</returns>
-        public CreateCosmFusionResponse CreateCosmFusion(string recipeId)
+        public CreateCosmFusionResponse CreateCosmFusion(string recipeId, SubjectIdRequest subjectIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = CreateCosmFusionWithHttpInfo(recipeId);
+            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = CreateCosmFusionWithHttpInfo(recipeId, subjectIdRequest);
             return localVarResponse.Data;
         }
 
@@ -2270,8 +2495,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <returns>ApiResponse of CreateCosmFusionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmFusionResponse> CreateCosmFusionWithHttpInfo(string recipeId)
+        public net.crossly.Client.ApiResponse<CreateCosmFusionResponse> CreateCosmFusionWithHttpInfo(string recipeId, SubjectIdRequest subjectIdRequest)
         {
             // verify the required parameter 'recipeId' is set
             if (recipeId == null)
@@ -2279,9 +2505,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'recipeId' when calling COSMApi->CreateCosmFusion");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmFusion");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2302,6 +2535,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("recipeId", net.crossly.Client.ClientUtils.ParameterToString(recipeId)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2329,11 +2563,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmFusionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmFusionAsync(string recipeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmFusionResponse> CreateCosmFusionAsync(string recipeId, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = await CreateCosmFusionWithHttpInfoAsync(recipeId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmFusionResponse> localVarResponse = await CreateCosmFusionWithHttpInfoAsync(recipeId, subjectIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2342,9 +2577,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="recipeId"></param>
+        /// <param name="subjectIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmFusionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmFusionResponse>> CreateCosmFusionWithHttpInfoAsync(string recipeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmFusionResponse>> CreateCosmFusionWithHttpInfoAsync(string recipeId, SubjectIdRequest subjectIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'recipeId' is set
             if (recipeId == null)
@@ -2352,10 +2588,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'recipeId' when calling COSMApi->CreateCosmFusion");
             }
 
+            // verify the required parameter 'subjectIdRequest' is set
+            if (subjectIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectIdRequest' when calling COSMApi->CreateCosmFusion");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2376,6 +2619,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("recipeId", net.crossly.Client.ClientUtils.ParameterToString(recipeId)); // path parameter
+            localVarRequestOptions.Data = subjectIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2403,10 +2647,11 @@ namespace net.crossly.Api
         /// Claim a vanity handle, burning COSM. One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <returns>CreateCosmHandleResponse</returns>
-        public CreateCosmHandleResponse CreateCosmHandle()
+        public CreateCosmHandleResponse CreateCosmHandle(CreateCosmHandleRequest createCosmHandleRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmHandleResponse> localVarResponse = CreateCosmHandleWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCosmHandleResponse> localVarResponse = CreateCosmHandleWithHttpInfo(createCosmHandleRequest);
             return localVarResponse.Data;
         }
 
@@ -2414,12 +2659,20 @@ namespace net.crossly.Api
         /// Claim a vanity handle, burning COSM. One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <returns>ApiResponse of CreateCosmHandleResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmHandleResponse> CreateCosmHandleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCosmHandleResponse> CreateCosmHandleWithHttpInfo(CreateCosmHandleRequest createCosmHandleRequest)
         {
+            // verify the required parameter 'createCosmHandleRequest' is set
+            if (createCosmHandleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmHandleRequest' when calling COSMApi->CreateCosmHandle");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2439,6 +2692,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmHandleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2465,11 +2719,12 @@ namespace net.crossly.Api
         /// Claim a vanity handle, burning COSM. One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmHandleResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmHandleResponse> CreateCosmHandleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmHandleResponse> CreateCosmHandleAsync(CreateCosmHandleRequest createCosmHandleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmHandleResponse> localVarResponse = await CreateCosmHandleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmHandleResponse> localVarResponse = await CreateCosmHandleWithHttpInfoAsync(createCosmHandleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2477,14 +2732,22 @@ namespace net.crossly.Api
         /// Claim a vanity handle, burning COSM. One live handle per subject, enforced by a unique index. Collecting handles is a land grab that makes the good names unavailable, not a sink. A handle is released rather than deleted when given up, so the record of who held it survives — a handle that silently changed owner is the same impersonation problem from the other direction. There is no refund on release: the COSM was burned, and refunding would mean minting.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmHandleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmHandleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmHandleResponse>> CreateCosmHandleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmHandleResponse>> CreateCosmHandleWithHttpInfoAsync(CreateCosmHandleRequest createCosmHandleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCosmHandleRequest' is set
+            if (createCosmHandleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmHandleRequest' when calling COSMApi->CreateCosmHandle");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2504,6 +2767,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmHandleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2531,10 +2795,11 @@ namespace net.crossly.Api
         /// Request a withdrawal to your own proven wallet. REFUSES today. Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <returns>CreateCosmWithdrawalResponse</returns>
-        public CreateCosmWithdrawalResponse CreateCosmWithdrawal()
+        public CreateCosmWithdrawalResponse CreateCosmWithdrawal(CreateCosmWithdrawalRequest createCosmWithdrawalRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> localVarResponse = CreateCosmWithdrawalWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> localVarResponse = CreateCosmWithdrawalWithHttpInfo(createCosmWithdrawalRequest);
             return localVarResponse.Data;
         }
 
@@ -2542,12 +2807,20 @@ namespace net.crossly.Api
         /// Request a withdrawal to your own proven wallet. REFUSES today. Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <returns>ApiResponse of CreateCosmWithdrawalResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> CreateCosmWithdrawalWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> CreateCosmWithdrawalWithHttpInfo(CreateCosmWithdrawalRequest createCosmWithdrawalRequest)
         {
+            // verify the required parameter 'createCosmWithdrawalRequest' is set
+            if (createCosmWithdrawalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmWithdrawalRequest' when calling COSMApi->CreateCosmWithdrawal");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2567,6 +2840,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmWithdrawalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2593,11 +2867,12 @@ namespace net.crossly.Api
         /// Request a withdrawal to your own proven wallet. REFUSES today. Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCosmWithdrawalResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCosmWithdrawalResponse> CreateCosmWithdrawalAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCosmWithdrawalResponse> CreateCosmWithdrawalAsync(CreateCosmWithdrawalRequest createCosmWithdrawalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> localVarResponse = await CreateCosmWithdrawalWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse> localVarResponse = await CreateCosmWithdrawalWithHttpInfoAsync(createCosmWithdrawalRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2605,14 +2880,22 @@ namespace net.crossly.Api
         /// Request a withdrawal to your own proven wallet. REFUSES today. Returns 409 with the outstanding preconditions until COSM is transferable. Built and switched off deliberately: a withdrawal rail written in a hurry the week it is cleared is the one that ships with mistakes. THE DESTINATION IS NOT A PARAMETER. It resolves to this subject’s own VERIFIED connected wallet, because a per-request destination is how a compromised session drains a balance to somebody else’s address. Idempotent on &#x60;externalId&#x60;. The debit lands before anything is minted, so a crash leaves a recoverable state rather than tokens in a wallet with no debit behind them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCosmWithdrawalRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCosmWithdrawalResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse>> CreateCosmWithdrawalWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCosmWithdrawalResponse>> CreateCosmWithdrawalWithHttpInfoAsync(CreateCosmWithdrawalRequest createCosmWithdrawalRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCosmWithdrawalRequest' is set
+            if (createCosmWithdrawalRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCosmWithdrawalRequest' when calling COSMApi->CreateCosmWithdrawal");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2632,6 +2915,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCosmWithdrawalRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2659,10 +2943,11 @@ namespace net.crossly.Api
         /// Release a handle. NOTHING IS REFUNDED. The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <returns>DeleteCosmHandleResponse</returns>
-        public DeleteCosmHandleResponse DeleteCosmHandle()
+        public DeleteCosmHandleResponse DeleteCosmHandle(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest))
         {
-            net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> localVarResponse = DeleteCosmHandleWithHttpInfo();
+            net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> localVarResponse = DeleteCosmHandleWithHttpInfo(deleteCosmHandleRequest);
             return localVarResponse.Data;
         }
 
@@ -2670,12 +2955,14 @@ namespace net.crossly.Api
         /// Release a handle. NOTHING IS REFUNDED. The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteCosmHandleResponse</returns>
-        public net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> DeleteCosmHandleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> DeleteCosmHandleWithHttpInfo(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2695,6 +2982,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = deleteCosmHandleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2721,11 +3009,12 @@ namespace net.crossly.Api
         /// Release a handle. NOTHING IS REFUNDED. The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteCosmHandleResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteCosmHandleResponse> DeleteCosmHandleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteCosmHandleResponse> DeleteCosmHandleAsync(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> localVarResponse = await DeleteCosmHandleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DeleteCosmHandleResponse> localVarResponse = await DeleteCosmHandleWithHttpInfoAsync(deleteCosmHandleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2733,14 +3022,16 @@ namespace net.crossly.Api
         /// Release a handle. NOTHING IS REFUNDED. The COSM paid for a handle was BURNED, so there is nothing to give back — refunding would mean minting, which no support flow should be able to do. Say that in the UI before calling this; a user who expects a refund will read silence as a bug. The handle returns to the pool and can be claimed by anyone, including somebody else, so releasing is not a way to park one. Returns &#x60;released: false&#x60; when the subject held none.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="deleteCosmHandleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteCosmHandleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteCosmHandleResponse>> DeleteCosmHandleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteCosmHandleResponse>> DeleteCosmHandleWithHttpInfoAsync(DeleteCosmHandleRequest deleteCosmHandleRequest = default(DeleteCosmHandleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2760,6 +3051,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = deleteCosmHandleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2788,10 +3080,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <returns>DeleteCosmPegResponse</returns>
-        public DeleteCosmPegResponse DeleteCosmPeg(string listingId)
+        public DeleteCosmPegResponse DeleteCosmPeg(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest))
         {
-            net.crossly.Client.ApiResponse<DeleteCosmPegResponse> localVarResponse = DeleteCosmPegWithHttpInfo(listingId);
+            net.crossly.Client.ApiResponse<DeleteCosmPegResponse> localVarResponse = DeleteCosmPegWithHttpInfo(listingId, deleteCosmPegRequest);
             return localVarResponse.Data;
         }
 
@@ -2800,8 +3093,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <returns>ApiResponse of DeleteCosmPegResponse</returns>
-        public net.crossly.Client.ApiResponse<DeleteCosmPegResponse> DeleteCosmPegWithHttpInfo(string listingId)
+        public net.crossly.Client.ApiResponse<DeleteCosmPegResponse> DeleteCosmPegWithHttpInfo(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest))
         {
             // verify the required parameter 'listingId' is set
             if (listingId == null)
@@ -2812,6 +3106,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2832,6 +3127,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            localVarRequestOptions.Data = deleteCosmPegRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2859,11 +3155,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteCosmPegResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteCosmPegResponse> DeleteCosmPegAsync(string listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteCosmPegResponse> DeleteCosmPegAsync(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<DeleteCosmPegResponse> localVarResponse = await DeleteCosmPegWithHttpInfoAsync(listingId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DeleteCosmPegResponse> localVarResponse = await DeleteCosmPegWithHttpInfoAsync(listingId, deleteCosmPegRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2872,9 +3169,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="listingId"></param>
+        /// <param name="deleteCosmPegRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteCosmPegResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteCosmPegResponse>> DeleteCosmPegWithHttpInfoAsync(string listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteCosmPegResponse>> DeleteCosmPegWithHttpInfoAsync(string listingId, DeleteCosmPegRequest deleteCosmPegRequest = default(DeleteCosmPegRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'listingId' is set
             if (listingId == null)
@@ -2886,6 +3184,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2906,6 +3205,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            localVarRequestOptions.Data = deleteCosmPegRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2934,10 +3234,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmAttestationProofResponse</returns>
-        public GetCosmAttestationProofResponse GetCosmAttestationProof(string id)
+        public GetCosmAttestationProofResponse GetCosmAttestationProof(string id, string subjectId)
         {
-            net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> localVarResponse = GetCosmAttestationProofWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> localVarResponse = GetCosmAttestationProofWithHttpInfo(id, subjectId);
             return localVarResponse.Data;
         }
 
@@ -2946,13 +3247,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmAttestationProofResponse</returns>
-        public net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> GetCosmAttestationProofWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> GetCosmAttestationProofWithHttpInfo(string id, string subjectId)
         {
             // verify the required parameter 'id' is set
             if (id == null)
             {
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->GetCosmAttestationProof");
+            }
+
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmAttestationProof");
             }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2978,6 +3286,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3005,11 +3314,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmAttestationProofResponse</returns>
-        public async System.Threading.Tasks.Task<GetCosmAttestationProofResponse> GetCosmAttestationProofAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetCosmAttestationProofResponse> GetCosmAttestationProofAsync(string id, string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> localVarResponse = await GetCosmAttestationProofWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse> localVarResponse = await GetCosmAttestationProofWithHttpInfoAsync(id, subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3018,14 +3328,21 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmAttestationProofResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse>> GetCosmAttestationProofWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmAttestationProofResponse>> GetCosmAttestationProofWithHttpInfoAsync(string id, string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
             {
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->GetCosmAttestationProof");
+            }
+
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmAttestationProof");
             }
 
 
@@ -3052,6 +3369,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3207,10 +3525,11 @@ namespace net.crossly.Api
         /// A subject&#39;s COSM balance and the earn rate in force. Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmBalanceResponse</returns>
-        public GetCosmBalanceResponse GetCosmBalance()
+        public GetCosmBalanceResponse GetCosmBalance(string subjectId)
         {
-            net.crossly.Client.ApiResponse<GetCosmBalanceResponse> localVarResponse = GetCosmBalanceWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetCosmBalanceResponse> localVarResponse = GetCosmBalanceWithHttpInfo(subjectId);
             return localVarResponse.Data;
         }
 
@@ -3218,9 +3537,16 @@ namespace net.crossly.Api
         /// A subject&#39;s COSM balance and the earn rate in force. Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmBalanceResponse</returns>
-        public net.crossly.Client.ApiResponse<GetCosmBalanceResponse> GetCosmBalanceWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetCosmBalanceResponse> GetCosmBalanceWithHttpInfo(string subjectId)
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmBalance");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -3243,6 +3569,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3269,11 +3596,12 @@ namespace net.crossly.Api
         /// A subject&#39;s COSM balance and the earn rate in force. Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmBalanceResponse</returns>
-        public async System.Threading.Tasks.Task<GetCosmBalanceResponse> GetCosmBalanceAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetCosmBalanceResponse> GetCosmBalanceAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetCosmBalanceResponse> localVarResponse = await GetCosmBalanceWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetCosmBalanceResponse> localVarResponse = await GetCosmBalanceWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3281,10 +3609,17 @@ namespace net.crossly.Api
         /// A subject&#39;s COSM balance and the earn rate in force. Balances are STRINGS of base units, and COSM has six decimals — divide by 1e6 to display. They are strings because a JSON number loses precision past 2^53, which is only about nine billion COSM: it would work in testing and corrupt balances at scale. &#x60;taper&#x60; is the emission step currently in force, which depends on lifetime supply rather than on anything about this subject — two sellers earning the same week always see the same taper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmBalanceResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmBalanceResponse>> GetCosmBalanceWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmBalanceResponse>> GetCosmBalanceWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmBalance");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3308,6 +3643,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3335,10 +3671,11 @@ namespace net.crossly.Api
         /// What one shop-employee conversation will cost, in COSM. A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <returns>GetCosmEmployeeFeeQuoteResponse</returns>
-        public GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote()
+        public GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote(decimal totalCents)
         {
-            net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> localVarResponse = GetCosmEmployeeFeeQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> localVarResponse = GetCosmEmployeeFeeQuoteWithHttpInfo(totalCents);
             return localVarResponse.Data;
         }
 
@@ -3346,8 +3683,9 @@ namespace net.crossly.Api
         /// What one shop-employee conversation will cost, in COSM. A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <returns>ApiResponse of GetCosmEmployeeFeeQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteWithHttpInfo(decimal totalCents)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3371,6 +3709,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "totalCents", totalCents));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3397,11 +3736,12 @@ namespace net.crossly.Api
         /// What one shop-employee conversation will cost, in COSM. A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmEmployeeFeeQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetCosmEmployeeFeeQuoteResponse> GetCosmEmployeeFeeQuoteAsync(decimal totalCents, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> localVarResponse = await GetCosmEmployeeFeeQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse> localVarResponse = await GetCosmEmployeeFeeQuoteWithHttpInfoAsync(totalCents, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3409,9 +3749,10 @@ namespace net.crossly.Api
         /// What one shop-employee conversation will cost, in COSM. A quote, priced with the SAME functions the charge uses, so the figure shown is the figure taken. Half of the fee BURNS and half moves to the market pool as a tax; the two always sum to the total exactly, because the split is applied in cents and the remainder is handed to the pool rather than derived from the complementary basis points. A pure burn would make the employee a deflation lever and nothing else; a pure transfer would make it a tax with no sink. Reads nothing and charges nothing — safe to call on every keystroke.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="totalCents"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmEmployeeFeeQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse>> GetCosmEmployeeFeeQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmEmployeeFeeQuoteResponse>> GetCosmEmployeeFeeQuoteWithHttpInfoAsync(decimal totalCents, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3436,6 +3777,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "totalCents", totalCents));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3609,10 +3951,11 @@ namespace net.crossly.Api
         /// How long a subject has held a stake continuously, in days. The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>GetCosmStakeTenureResponse</returns>
-        public GetCosmStakeTenureResponse GetCosmStakeTenure()
+        public GetCosmStakeTenureResponse GetCosmStakeTenure(string subjectId)
         {
-            net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> localVarResponse = GetCosmStakeTenureWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> localVarResponse = GetCosmStakeTenureWithHttpInfo(subjectId);
             return localVarResponse.Data;
         }
 
@@ -3620,9 +3963,16 @@ namespace net.crossly.Api
         /// How long a subject has held a stake continuously, in days. The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of GetCosmStakeTenureResponse</returns>
-        public net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> GetCosmStakeTenureWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> GetCosmStakeTenureWithHttpInfo(string subjectId)
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmStakeTenure");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -3645,6 +3995,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3671,11 +4022,12 @@ namespace net.crossly.Api
         /// How long a subject has held a stake continuously, in days. The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetCosmStakeTenureResponse</returns>
-        public async System.Threading.Tasks.Task<GetCosmStakeTenureResponse> GetCosmStakeTenureAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetCosmStakeTenureResponse> GetCosmStakeTenureAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> localVarResponse = await GetCosmStakeTenureWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse> localVarResponse = await GetCosmStakeTenureWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3683,10 +4035,17 @@ namespace net.crossly.Api
         /// How long a subject has held a stake continuously, in days. The figure every stake-exclusive grant is decided on, readable on its own so a UI can show progress rather than only reporting failure at claim time. LONGEST CONTINUOUS active stake — a gap resets it, and a cooling stake does not count.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetCosmStakeTenureResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse>> GetCosmStakeTenureWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetCosmStakeTenureResponse>> GetCosmStakeTenureWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->GetCosmStakeTenure");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3710,6 +4069,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3865,10 +4225,12 @@ namespace net.crossly.Api
         /// Published Merkle commitments. What you can check instead of trusting us. Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListCosmAttestationsResponse</returns>
-        public ListCosmAttestationsResponse ListCosmAttestations()
+        public ListCosmAttestationsResponse ListCosmAttestations(string kind = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> localVarResponse = ListCosmAttestationsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> localVarResponse = ListCosmAttestationsWithHttpInfo(kind, limit);
             return localVarResponse.Data;
         }
 
@@ -3876,8 +4238,10 @@ namespace net.crossly.Api
         /// Published Merkle commitments. What you can check instead of trusting us. Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListCosmAttestationsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> ListCosmAttestationsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> ListCosmAttestationsWithHttpInfo(string kind = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3901,6 +4265,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3927,11 +4299,13 @@ namespace net.crossly.Api
         /// Published Merkle commitments. What you can check instead of trusting us. Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmAttestationsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmAttestationsResponse> ListCosmAttestationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmAttestationsResponse> ListCosmAttestationsAsync(string kind = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> localVarResponse = await ListCosmAttestationsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmAttestationsResponse> localVarResponse = await ListCosmAttestationsWithHttpInfoAsync(kind, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3939,9 +4313,11 @@ namespace net.crossly.Api
         /// Published Merkle commitments. What you can check instead of trusting us. Two claims become verifiable here. &#x60;cosm_emission&#x60; commits an epoch’s activity claims, so anybody can confirm emission never exceeded the sum of committed real activity — and every input is in the leaf, so the payout arithmetic can be rechecked, not just membership. &#x60;cbx_liability&#x60; commits every balance, which is the half of proof-of-reserve usually hand-waved. READ &#x60;anchoredAt&#x60; BEFORE RELYING ON A ROOT. Null means the commitment is computed and stored but NOT yet on chain — which makes it a row we could edit, so it proves nothing to somebody who does not already trust us. &#x60;totalBaseUnits&#x60; lets you check the sum without rebuilding the tree.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmAttestationsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmAttestationsResponse>> ListCosmAttestationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmAttestationsResponse>> ListCosmAttestationsWithHttpInfoAsync(string kind = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3966,6 +4342,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3993,10 +4377,11 @@ namespace net.crossly.Api
         /// Open auction listings, priced in COSM. A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <returns>ListCosmAuctionResponse</returns>
-        public ListCosmAuctionResponse ListCosmAuction()
+        public ListCosmAuctionResponse ListCosmAuction(string cosmeticId = default(string))
         {
-            net.crossly.Client.ApiResponse<ListCosmAuctionResponse> localVarResponse = ListCosmAuctionWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmAuctionResponse> localVarResponse = ListCosmAuctionWithHttpInfo(cosmeticId);
             return localVarResponse.Data;
         }
 
@@ -4004,8 +4389,9 @@ namespace net.crossly.Api
         /// Open auction listings, priced in COSM. A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <returns>ApiResponse of ListCosmAuctionResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmAuctionResponse> ListCosmAuctionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmAuctionResponse> ListCosmAuctionWithHttpInfo(string cosmeticId = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4029,6 +4415,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (cosmeticId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cosmeticId", cosmeticId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4055,11 +4445,12 @@ namespace net.crossly.Api
         /// Open auction listings, priced in COSM. A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmAuctionResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmAuctionResponse> ListCosmAuctionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmAuctionResponse> ListCosmAuctionAsync(string cosmeticId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmAuctionResponse> localVarResponse = await ListCosmAuctionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmAuctionResponse> localVarResponse = await ListCosmAuctionWithHttpInfoAsync(cosmeticId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4067,9 +4458,10 @@ namespace net.crossly.Api
         /// Open auction listings, priced in COSM. A COSM-denominated peer market: buyers pay COSM, sellers receive COSM, and the 8% fee BURNS. It is not a cash market — a cash resale market for COSM-bought items would reintroduce the arbitrage between a fixed COSM price and a floating market price. &#x60;feeBaseUnits&#x60; was quoted when the listing was created and is held, because a fee recomputed at sale time is a quote nobody can rely on.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cosmeticId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmAuctionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmAuctionResponse>> ListCosmAuctionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmAuctionResponse>> ListCosmAuctionWithHttpInfoAsync(string cosmeticId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4094,6 +4486,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (cosmeticId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cosmeticId", cosmeticId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4121,10 +4517,12 @@ namespace net.crossly.Api
         /// The cosmetics catalogue. Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <returns>ListCosmCosmeticsResponse</returns>
-        public ListCosmCosmeticsResponse ListCosmCosmetics()
+        public ListCosmCosmeticsResponse ListCosmCosmetics(string tier = default(string), string slot = default(string))
         {
-            net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> localVarResponse = ListCosmCosmeticsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> localVarResponse = ListCosmCosmeticsWithHttpInfo(tier, slot);
             return localVarResponse.Data;
         }
 
@@ -4132,8 +4530,10 @@ namespace net.crossly.Api
         /// The cosmetics catalogue. Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <returns>ApiResponse of ListCosmCosmeticsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> ListCosmCosmeticsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> ListCosmCosmeticsWithHttpInfo(string tier = default(string), string slot = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4157,6 +4557,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (tier != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tier", tier));
+            }
+            if (slot != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "slot", slot));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4183,11 +4591,13 @@ namespace net.crossly.Api
         /// The cosmetics catalogue. Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmCosmeticsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmCosmeticsResponse> ListCosmCosmeticsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmCosmeticsResponse> ListCosmCosmeticsAsync(string tier = default(string), string slot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> localVarResponse = await ListCosmCosmeticsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse> localVarResponse = await ListCosmCosmeticsWithHttpInfoAsync(tier, slot, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4195,9 +4605,11 @@ namespace net.crossly.Api
         /// The cosmetics catalogue. Tiers are DISJOINT and no SKU carries two prices: &#x60;premium&#x60; is cash only, &#x60;earned&#x60; is COSM only, &#x60;stake_exclusive&#x60; cannot be bought at any price in any currency. That is not a presentation choice — pricing one SKU in both currencies would expose a fixed COSM price to a floating market price, which is free money in the gap and hands limited editions to whoever automates it. &#x60;priceCents&#x60; is set only on premium, &#x60;priceBaseUnits&#x60; only on earned.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="slot"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmCosmeticsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse>> ListCosmCosmeticsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmCosmeticsResponse>> ListCosmCosmeticsWithHttpInfoAsync(string tier = default(string), string slot = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4222,6 +4634,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (tier != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tier", tier));
+            }
+            if (slot != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "slot", slot));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4377,10 +4797,11 @@ namespace net.crossly.Api
         /// Cosmetics a subject holds. &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmInventoryResponse</returns>
-        public ListCosmInventoryResponse ListCosmInventory()
+        public ListCosmInventoryResponse ListCosmInventory(string subjectId)
         {
-            net.crossly.Client.ApiResponse<ListCosmInventoryResponse> localVarResponse = ListCosmInventoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmInventoryResponse> localVarResponse = ListCosmInventoryWithHttpInfo(subjectId);
             return localVarResponse.Data;
         }
 
@@ -4388,9 +4809,16 @@ namespace net.crossly.Api
         /// Cosmetics a subject holds. &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmInventoryResponse> ListCosmInventoryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmInventoryResponse> ListCosmInventoryWithHttpInfo(string subjectId)
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmInventory");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -4413,6 +4841,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4439,11 +4868,12 @@ namespace net.crossly.Api
         /// Cosmetics a subject holds. &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmInventoryResponse> ListCosmInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmInventoryResponse> ListCosmInventoryAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmInventoryResponse> localVarResponse = await ListCosmInventoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmInventoryResponse> localVarResponse = await ListCosmInventoryWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4451,10 +4881,17 @@ namespace net.crossly.Api
         /// Cosmetics a subject holds. &#x60;bound&#x60; is derived from how it was acquired and is enforced by a database CHECK, not set by hand: a stake-exclusive grant and a make-good are bound forever, everything else trades. Bound items cannot be listed on the auction house or used as a fusion input. &#x60;editionNumber&#x60; identifies the ITEM and travels with it through a sale, because a reissued #7 would falsify every scarcity claim a market has priced.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmInventoryResponse>> ListCosmInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmInventoryResponse>> ListCosmInventoryWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmInventory");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4478,6 +4915,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4505,10 +4943,11 @@ namespace net.crossly.Api
         /// CBX-pegged listings and why each last moved. A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <returns>ListCosmPegsResponse</returns>
-        public ListCosmPegsResponse ListCosmPegs()
+        public ListCosmPegsResponse ListCosmPegs(string sellerUserId)
         {
-            net.crossly.Client.ApiResponse<ListCosmPegsResponse> localVarResponse = ListCosmPegsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmPegsResponse> localVarResponse = ListCosmPegsWithHttpInfo(sellerUserId);
             return localVarResponse.Data;
         }
 
@@ -4516,9 +4955,16 @@ namespace net.crossly.Api
         /// CBX-pegged listings and why each last moved. A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <returns>ApiResponse of ListCosmPegsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmPegsResponse> ListCosmPegsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmPegsResponse> ListCosmPegsWithHttpInfo(string sellerUserId)
         {
+            // verify the required parameter 'sellerUserId' is set
+            if (sellerUserId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'sellerUserId' when calling COSMApi->ListCosmPegs");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -4541,6 +4987,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sellerUserId", sellerUserId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4567,11 +5014,12 @@ namespace net.crossly.Api
         /// CBX-pegged listings and why each last moved. A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmPegsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmPegsResponse> ListCosmPegsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmPegsResponse> ListCosmPegsAsync(string sellerUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmPegsResponse> localVarResponse = await ListCosmPegsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmPegsResponse> localVarResponse = await ListCosmPegsWithHttpInfoAsync(sellerUserId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4579,10 +5027,17 @@ namespace net.crossly.Api
         /// CBX-pegged listings and why each last moved. A peg holds a CBX ask at a dollar target. &#x60;lastReason&#x60; says what the last cycle did: repriced, no_rate, below_threshold, clamped_floor, clamped_ceiling or clamped_change. A seller asking why their price has not moved deserves an answer that is not “it should have”. The repricer reads a 24h MINIMUM rate, never spot — tracking spot would let somebody pump CBX, watch the ask drop, and pay with cheaply bought tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="sellerUserId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmPegsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmPegsResponse>> ListCosmPegsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmPegsResponse>> ListCosmPegsWithHttpInfoAsync(string sellerUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'sellerUserId' is set
+            if (sellerUserId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'sellerUserId' when calling COSMApi->ListCosmPegs");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4606,6 +5061,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sellerUserId", sellerUserId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4889,10 +5345,11 @@ namespace net.crossly.Api
         /// Which spatial cosmetic values this subject may apply. Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmUnlocksResponse</returns>
-        public ListCosmUnlocksResponse ListCosmUnlocks()
+        public ListCosmUnlocksResponse ListCosmUnlocks(string subjectId)
         {
-            net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> localVarResponse = ListCosmUnlocksWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> localVarResponse = ListCosmUnlocksWithHttpInfo(subjectId);
             return localVarResponse.Data;
         }
 
@@ -4900,9 +5357,16 @@ namespace net.crossly.Api
         /// Which spatial cosmetic values this subject may apply. Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmUnlocksResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> ListCosmUnlocksWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> ListCosmUnlocksWithHttpInfo(string subjectId)
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmUnlocks");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -4925,6 +5389,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4951,11 +5416,12 @@ namespace net.crossly.Api
         /// Which spatial cosmetic values this subject may apply. Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmUnlocksResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmUnlocksResponse> ListCosmUnlocksAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmUnlocksResponse> ListCosmUnlocksAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> localVarResponse = await ListCosmUnlocksWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmUnlocksResponse> localVarResponse = await ListCosmUnlocksWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4963,10 +5429,17 @@ namespace net.crossly.Api
         /// Which spatial cosmetic values this subject may apply. Owning a cosmetic is what permits setting the room value it claims. Values no SKU claims — the stock walls, floors and themes — are free and are not listed here. Paint a picker from this rather than discovering a refusal on submit: the redecorate endpoint returns the locked items by name so a swatch can be greyed out instead.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmUnlocksResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmUnlocksResponse>> ListCosmUnlocksWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmUnlocksResponse>> ListCosmUnlocksWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmUnlocks");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4990,6 +5463,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5017,10 +5491,11 @@ namespace net.crossly.Api
         /// Withdrawal history, and whether withdrawals are open at all. COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ListCosmWithdrawalsResponse</returns>
-        public ListCosmWithdrawalsResponse ListCosmWithdrawals()
+        public ListCosmWithdrawalsResponse ListCosmWithdrawals(string subjectId)
         {
-            net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> localVarResponse = ListCosmWithdrawalsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> localVarResponse = ListCosmWithdrawalsWithHttpInfo(subjectId);
             return localVarResponse.Data;
         }
 
@@ -5028,9 +5503,16 @@ namespace net.crossly.Api
         /// Withdrawal history, and whether withdrawals are open at all. COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <returns>ApiResponse of ListCosmWithdrawalsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> ListCosmWithdrawalsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> ListCosmWithdrawalsWithHttpInfo(string subjectId)
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmWithdrawals");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -5053,6 +5535,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5079,11 +5562,12 @@ namespace net.crossly.Api
         /// Withdrawal history, and whether withdrawals are open at all. COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCosmWithdrawalsResponse</returns>
-        public async System.Threading.Tasks.Task<ListCosmWithdrawalsResponse> ListCosmWithdrawalsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCosmWithdrawalsResponse> ListCosmWithdrawalsAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> localVarResponse = await ListCosmWithdrawalsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse> localVarResponse = await ListCosmWithdrawalsWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5091,10 +5575,17 @@ namespace net.crossly.Api
         /// Withdrawal history, and whether withdrawals are open at all. COSM does not leave the platform yet. &#x60;open&#x60; is false and &#x60;outstanding&#x60; lists the preconditions still to be met: an audited minter, a securities opinion, a money-transmission review, and the emission invariant proven under real volume. None of them has a date, so do not present one. The endpoint exists so a client can show that state honestly rather than hiding the feature and surprising somebody later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subjectId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCosmWithdrawalsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse>> ListCosmWithdrawalsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCosmWithdrawalsResponse>> ListCosmWithdrawalsWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'subjectId' is set
+            if (subjectId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling COSMApi->ListCosmWithdrawals");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5118,6 +5609,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "subjectId", subjectId));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5146,10 +5638,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <returns>UpdateCosmCosmeticUnlockResponse</returns>
-        public UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock(string id)
+        public UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> localVarResponse = UpdateCosmCosmeticUnlockWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> localVarResponse = UpdateCosmCosmeticUnlockWithHttpInfo(id, updateCosmCosmeticUnlockRequest);
             return localVarResponse.Data;
         }
 
@@ -5158,8 +5651,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <returns>ApiResponse of UpdateCosmCosmeticUnlockResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockWithHttpInfo(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5167,9 +5661,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->UpdateCosmCosmeticUnlock");
             }
 
+            // verify the required parameter 'updateCosmCosmeticUnlockRequest' is set
+            if (updateCosmCosmeticUnlockRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateCosmCosmeticUnlockRequest' when calling COSMApi->UpdateCosmCosmeticUnlock");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5190,6 +5691,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCosmCosmeticUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5217,11 +5719,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCosmCosmeticUnlockResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateCosmCosmeticUnlockResponse> UpdateCosmCosmeticUnlockAsync(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> localVarResponse = await UpdateCosmCosmeticUnlockWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse> localVarResponse = await UpdateCosmCosmeticUnlockWithHttpInfoAsync(id, updateCosmCosmeticUnlockRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5230,9 +5733,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCosmCosmeticUnlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCosmCosmeticUnlockResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse>> UpdateCosmCosmeticUnlockWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateCosmCosmeticUnlockResponse>> UpdateCosmCosmeticUnlockWithHttpInfoAsync(string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5240,10 +5744,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling COSMApi->UpdateCosmCosmeticUnlock");
             }
 
+            // verify the required parameter 'updateCosmCosmeticUnlockRequest' is set
+            if (updateCosmCosmeticUnlockRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateCosmCosmeticUnlockRequest' when calling COSMApi->UpdateCosmCosmeticUnlock");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5264,6 +5775,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCosmCosmeticUnlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5291,10 +5803,11 @@ namespace net.crossly.Api
         /// Set or update a CBX price peg. OFF unless you turn it on. Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <returns>UpdateCosmPegResponse</returns>
-        public UpdateCosmPegResponse UpdateCosmPeg()
+        public UpdateCosmPegResponse UpdateCosmPeg(UpdateCosmPegRequest updateCosmPegRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateCosmPegResponse> localVarResponse = UpdateCosmPegWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateCosmPegResponse> localVarResponse = UpdateCosmPegWithHttpInfo(updateCosmPegRequest);
             return localVarResponse.Data;
         }
 
@@ -5302,12 +5815,20 @@ namespace net.crossly.Api
         /// Set or update a CBX price peg. OFF unless you turn it on. Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <returns>ApiResponse of UpdateCosmPegResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateCosmPegResponse> UpdateCosmPegWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateCosmPegResponse> UpdateCosmPegWithHttpInfo(UpdateCosmPegRequest updateCosmPegRequest)
         {
+            // verify the required parameter 'updateCosmPegRequest' is set
+            if (updateCosmPegRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateCosmPegRequest' when calling COSMApi->UpdateCosmPeg");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5327,6 +5848,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateCosmPegRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5353,11 +5875,12 @@ namespace net.crossly.Api
         /// Set or update a CBX price peg. OFF unless you turn it on. Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCosmPegResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateCosmPegResponse> UpdateCosmPegAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateCosmPegResponse> UpdateCosmPegAsync(UpdateCosmPegRequest updateCosmPegRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateCosmPegResponse> localVarResponse = await UpdateCosmPegWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateCosmPegResponse> localVarResponse = await UpdateCosmPegWithHttpInfoAsync(updateCosmPegRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5365,14 +5888,22 @@ namespace net.crossly.Api
         /// Set or update a CBX price peg. OFF unless you turn it on. Holds a CBX ask at a dollar target, repriced hourly against a 24h MINIMUM rate. Three bounds, each for a different failure: &#x60;maxChangeBps&#x60; stops one bad reading posting an absurd ask (it converges over cycles instead), &#x60;floorBaseUnits&#x60; and &#x60;ceilingBaseUnits&#x60; are YOUR limits so a sustained real move never posts a price you did not consider, and &#x60;minChangeBps&#x60; stops the ask being rewritten for a fraction of a percent. Accepting CBX means holding CBX. The peg protects the dollar value of the ASK; it cannot protect the value of tokens once you have them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateCosmPegRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCosmPegResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateCosmPegResponse>> UpdateCosmPegWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateCosmPegResponse>> UpdateCosmPegWithHttpInfoAsync(UpdateCosmPegRequest updateCosmPegRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateCosmPegRequest' is set
+            if (updateCosmPegRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateCosmPegRequest' when calling COSMApi->UpdateCosmPeg");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5392,6 +5923,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateCosmPegRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

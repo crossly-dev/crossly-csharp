@@ -40,44 +40,20 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetConnectionEmailResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        /// <param name="imap">imap (required).</param>
-        /// <param name="oauth">oauth (required).</param>
-        public GetConnectionEmailResponse(List<GetConnectionEmailResponseData> data = default(List<GetConnectionEmailResponseData>), List<GetConnectionEmailResponseData> imap = default(List<GetConnectionEmailResponseData>), List<GetConnectionEmailResponseOauth> oauth = default(List<GetConnectionEmailResponseOauth>))
+        public GetConnectionEmailResponse(GetConnectionEmailResponseData data = default(GetConnectionEmailResponseData))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
                 throw new ArgumentNullException("data is a required property for GetConnectionEmailResponse and cannot be null");
             }
             this.Data = data;
-            // to ensure "imap" is required (not null)
-            if (imap == null) {
-                throw new ArgumentNullException("imap is a required property for GetConnectionEmailResponse and cannot be null");
-            }
-            this.Imap = imap;
-            // to ensure "oauth" is required (not null)
-            if (oauth == null) {
-                throw new ArgumentNullException("oauth is a required property for GetConnectionEmailResponse and cannot be null");
-            }
-            this.Oauth = oauth;
         }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetConnectionEmailResponseData> Data { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Imap
-        /// </summary>
-        [DataMember(Name = "imap", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetConnectionEmailResponseData> Imap { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Oauth
-        /// </summary>
-        [DataMember(Name = "oauth", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetConnectionEmailResponseOauth> Oauth { get; set; }
+        public GetConnectionEmailResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,8 +64,6 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetConnectionEmailResponse {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Imap: ").Append(Imap).Append("\n");
-            sb.Append("  Oauth: ").Append(Oauth).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,21 +101,8 @@ namespace net.crossly.Model
             return 
                 (
                     this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
-                ) && 
-                (
-                    this.Imap == input.Imap ||
-                    this.Imap != null &&
-                    input.Imap != null &&
-                    this.Imap.SequenceEqual(input.Imap)
-                ) && 
-                (
-                    this.Oauth == input.Oauth ||
-                    this.Oauth != null &&
-                    input.Oauth != null &&
-                    this.Oauth.SequenceEqual(input.Oauth)
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -157,14 +118,6 @@ namespace net.crossly.Model
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Imap != null)
-                {
-                    hashCode = (hashCode * 59) + this.Imap.GetHashCode();
-                }
-                if (this.Oauth != null)
-                {
-                    hashCode = (hashCode * 59) + this.Oauth.GetHashCode();
                 }
                 return hashCode;
             }

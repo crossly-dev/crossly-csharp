@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <returns>IdResponse</returns>
-        IdResponse CreateGradingRunReserve(string id);
+        IdResponse CreateGradingRunReserve(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest));
 
         /// <summary>
         /// Hold a slot in a Grading Run. Free now; charged on your saved card only if the run locks. Full-access token and Idempotency-Key required.
@@ -42,8 +43,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> CreateGradingRunReserveWithHttpInfo(string id);
+        ApiResponse<IdResponse> CreateGradingRunReserveWithHttpInfo(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest));
         /// <summary>
         /// Pull a reserved card out of its run. Only while it is reserved; nothing was charged.
         /// </summary>
@@ -67,8 +69,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>OkResponse</returns>
-        OkResponse CreateGradingSubmissionShipped(string id);
+        OkResponse CreateGradingSubmissionShipped(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest));
 
         /// <summary>
         /// Say you mailed a charged card to the hub, with optional tracking.
@@ -78,14 +81,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateGradingSubmissionShippedWithHttpInfo(string id);
+        ApiResponse<OkResponse> CreateGradingSubmissionShippedWithHttpInfo(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest));
         /// <summary>
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <returns>CreateGradingVerifyCertResponse</returns>
-        CreateGradingVerifyCertResponse CreateGradingVerifyCert();
+        CreateGradingVerifyCertResponse CreateGradingVerifyCert(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest));
 
         /// <summary>
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record.
@@ -94,14 +99,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGradingVerifyCertResponse</returns>
-        ApiResponse<CreateGradingVerifyCertResponse> CreateGradingVerifyCertWithHttpInfo();
+        ApiResponse<CreateGradingVerifyCertResponse> CreateGradingVerifyCertWithHttpInfo(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest));
         /// <summary>
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <returns>CreateVaultMarketGradingOrderResponse</returns>
-        CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder();
+        CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest));
 
         /// <summary>
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
@@ -110,8 +117,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketGradingOrderResponse</returns>
-        ApiResponse<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderWithHttpInfo();
+        ApiResponse<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderWithHttpInfo(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest));
         /// <summary>
         /// Cancel a draft submission; its vault units go back on their shelf. A paid submission cannot be cancelled here.
         /// </summary>
@@ -135,8 +143,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <returns>CreateVaultMarketGradingOrderPayResponse</returns>
-        CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay(string id);
+        CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest));
 
         /// <summary>
         /// Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
@@ -146,15 +155,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketGradingOrderPayResponse</returns>
-        ApiResponse<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayWithHttpInfo(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest));
         /// <summary>
         /// After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <returns>StatusResponse</returns>
-        StatusResponse CreateVaultMarketGradingOrderPayConfirm(string id);
+        StatusResponse CreateVaultMarketGradingOrderPayConfirm(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest));
 
         /// <summary>
         /// After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
@@ -164,8 +175,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        ApiResponse<StatusResponse> CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(string id);
+        ApiResponse<StatusResponse> CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest));
         /// <summary>
         /// The grading price book: every grader, its services (per-card price, minimum cards, max declared value, turnaround) and add-ons, plus Crossly handling. The same data the dashboard prices from.
         /// </summary>
@@ -182,6 +194,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetGradingPriceBookResponse</returns>
         ApiResponse<GetGradingPriceBookResponse> GetGradingPriceBookWithHttpInfo();
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetGradingSettingResponse</returns>
+        GetGradingSettingResponse GetGradingSetting();
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetGradingSettingResponse</returns>
+        ApiResponse<GetGradingSettingResponse> GetGradingSettingWithHttpInfo();
         /// <summary>
         /// Worth grading? Raw value vs what each grade is worth at each grader, against the cost. Never predicts the grade.
         /// </summary>
@@ -272,8 +300,9 @@ namespace net.crossly.Api
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListVaultMarketGradingCandidatesResponse</returns>
-        ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates();
+        ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates(string q = default(string));
 
         /// <summary>
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
@@ -282,14 +311,24 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradingCandidatesResponse</returns>
-        ApiResponse<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesWithHttpInfo();
+        ApiResponse<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesWithHttpInfo(string q = default(string));
         /// <summary>
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListVaultMarketGradingOrdersResponse</returns>
-        ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders();
+        ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
@@ -298,8 +337,35 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradingOrdersResponse</returns>
-        ApiResponse<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersWithHttpInfo();
+        ApiResponse<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersWithHttpInfo(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <returns>GetGradingSettingResponse</returns>
+        GetGradingSettingResponse UpdateGradingSetting(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest));
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <returns>ApiResponse of GetGradingSettingResponse</returns>
+        ApiResponse<GetGradingSettingResponse> UpdateGradingSettingWithHttpInfo(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest));
         #endregion Synchronous Operations
     }
 
@@ -317,9 +383,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> CreateGradingRunReserveAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdResponse> CreateGradingRunReserveAsync(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Hold a slot in a Grading Run. Free now; charged on your saved card only if the run locks. Full-access token and Idempotency-Key required.
@@ -329,9 +396,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateGradingRunReserveWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateGradingRunReserveWithHttpInfoAsync(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pull a reserved card out of its run. Only while it is reserved; nothing was charged.
         /// </summary>
@@ -363,9 +431,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateGradingSubmissionShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> CreateGradingSubmissionShippedAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Say you mailed a charged card to the hub, with optional tracking.
@@ -375,9 +444,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateGradingSubmissionShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateGradingSubmissionShippedWithHttpInfoAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record.
         /// </summary>
@@ -385,9 +455,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGradingVerifyCertResponse</returns>
-        System.Threading.Tasks.Task<CreateGradingVerifyCertResponse> CreateGradingVerifyCertAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateGradingVerifyCertResponse> CreateGradingVerifyCertAsync(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record.
@@ -396,9 +467,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGradingVerifyCertResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateGradingVerifyCertResponse>> CreateGradingVerifyCertWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateGradingVerifyCertResponse>> CreateGradingVerifyCertWithHttpInfoAsync(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
         /// </summary>
@@ -406,9 +478,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketGradingOrderResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderAsync(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
@@ -417,9 +490,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketGradingOrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketGradingOrderResponse>> CreateVaultMarketGradingOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketGradingOrderResponse>> CreateVaultMarketGradingOrderWithHttpInfoAsync(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a draft submission; its vault units go back on their shelf. A paid submission cannot be cancelled here.
         /// </summary>
@@ -451,9 +525,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketGradingOrderPayResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayAsync(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
@@ -463,9 +538,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketGradingOrderPayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketGradingOrderPayResponse>> CreateVaultMarketGradingOrderPayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketGradingOrderPayResponse>> CreateVaultMarketGradingOrderPayWithHttpInfoAsync(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
         /// </summary>
@@ -474,9 +550,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        System.Threading.Tasks.Task<StatusResponse> CreateVaultMarketGradingOrderPayConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StatusResponse> CreateVaultMarketGradingOrderPayConfirmAsync(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
@@ -486,9 +563,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StatusResponse>> CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The grading price book: every grader, its services (per-card price, minimum cards, max declared value, turnaround) and add-ons, plus Crossly handling. The same data the dashboard prices from.
         /// </summary>
@@ -510,6 +588,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetGradingPriceBookResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetGradingPriceBookResponse>> GetGradingPriceBookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGradingSettingResponse</returns>
+        System.Threading.Tasks.Task<GetGradingSettingResponse> GetGradingSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGradingSettingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetGradingSettingResponse>> GetGradingSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Worth grading? Raw value vs what each grade is worth at each grader, against the cost. Never predicts the grade.
         /// </summary>
@@ -628,9 +727,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradingCandidatesResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
@@ -639,9 +739,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradingCandidatesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradingCandidatesResponse>> ListVaultMarketGradingCandidatesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradingCandidatesResponse>> ListVaultMarketGradingCandidatesWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
         /// </summary>
@@ -649,9 +750,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradingOrdersResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersAsync(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
@@ -660,9 +770,41 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradingOrdersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradingOrdersResponse>> ListVaultMarketGradingOrdersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradingOrdersResponse>> ListVaultMarketGradingOrdersWithHttpInfoAsync(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGradingSettingResponse</returns>
+        System.Threading.Tasks.Task<GetGradingSettingResponse> UpdateGradingSettingAsync(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGradingSettingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetGradingSettingResponse>> UpdateGradingSettingWithHttpInfoAsync(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -788,10 +930,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <returns>IdResponse</returns>
-        public IdResponse CreateGradingRunReserve(string id)
+        public IdResponse CreateGradingRunReserve(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateGradingRunReserveWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateGradingRunReserveWithHttpInfo(id, createGradingRunReserveRequest);
             return localVarResponse.Data;
         }
 
@@ -800,8 +943,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <returns>ApiResponse of IdResponse</returns>
-        public net.crossly.Client.ApiResponse<IdResponse> CreateGradingRunReserveWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<IdResponse> CreateGradingRunReserveWithHttpInfo(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -812,6 +956,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -832,6 +977,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingRunReserveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -859,11 +1005,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> CreateGradingRunReserveAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdResponse> CreateGradingRunReserveAsync(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateGradingRunReserveWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateGradingRunReserveWithHttpInfoAsync(id, createGradingRunReserveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -872,9 +1019,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingRunReserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateGradingRunReserveWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateGradingRunReserveWithHttpInfoAsync(string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = default(CreateGradingRunReserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -886,6 +1034,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -906,6 +1055,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingRunReserveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1080,10 +1230,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>OkResponse</returns>
-        public OkResponse CreateGradingSubmissionShipped(string id)
+        public OkResponse CreateGradingSubmissionShipped(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateGradingSubmissionShippedWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateGradingSubmissionShippedWithHttpInfo(id, createGradingSubmissionShippedRequest);
             return localVarResponse.Data;
         }
 
@@ -1092,8 +1243,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateGradingSubmissionShippedWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<OkResponse> CreateGradingSubmissionShippedWithHttpInfo(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1104,6 +1256,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1124,6 +1277,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingSubmissionShippedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1151,11 +1305,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateGradingSubmissionShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> CreateGradingSubmissionShippedAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateGradingSubmissionShippedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateGradingSubmissionShippedWithHttpInfoAsync(id, createGradingSubmissionShippedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1164,9 +1319,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateGradingSubmissionShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateGradingSubmissionShippedWithHttpInfoAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1178,6 +1334,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1198,6 +1355,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingSubmissionShippedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1225,10 +1383,11 @@ namespace net.crossly.Api
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <returns>CreateGradingVerifyCertResponse</returns>
-        public CreateGradingVerifyCertResponse CreateGradingVerifyCert()
+        public CreateGradingVerifyCertResponse CreateGradingVerifyCert(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest))
         {
-            net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> localVarResponse = CreateGradingVerifyCertWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> localVarResponse = CreateGradingVerifyCertWithHttpInfo(createGradingVerifyCertRequest);
             return localVarResponse.Data;
         }
 
@@ -1236,12 +1395,14 @@ namespace net.crossly.Api
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateGradingVerifyCertResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> CreateGradingVerifyCertWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> CreateGradingVerifyCertWithHttpInfo(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1261,6 +1422,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGradingVerifyCertRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1287,11 +1449,12 @@ namespace net.crossly.Api
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGradingVerifyCertResponse</returns>
-        public async System.Threading.Tasks.Task<CreateGradingVerifyCertResponse> CreateGradingVerifyCertAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateGradingVerifyCertResponse> CreateGradingVerifyCertAsync(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> localVarResponse = await CreateGradingVerifyCertWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse> localVarResponse = await CreateGradingVerifyCertWithHttpInfoAsync(createGradingVerifyCertRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1299,14 +1462,16 @@ namespace net.crossly.Api
         /// Look a cert number up with its grader. found&#x3D;false when the grader has no record. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGradingVerifyCertRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGradingVerifyCertResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse>> CreateGradingVerifyCertWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGradingVerifyCertResponse>> CreateGradingVerifyCertWithHttpInfoAsync(CreateGradingVerifyCertRequest createGradingVerifyCertRequest = default(CreateGradingVerifyCertRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1326,6 +1491,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGradingVerifyCertRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1353,10 +1519,11 @@ namespace net.crossly.Api
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <returns>CreateVaultMarketGradingOrderResponse</returns>
-        public CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder()
+        public CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> localVarResponse = CreateVaultMarketGradingOrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> localVarResponse = CreateVaultMarketGradingOrderWithHttpInfo(createVaultMarketGradingOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -1364,12 +1531,14 @@ namespace net.crossly.Api
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketGradingOrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderWithHttpInfo(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1389,6 +1558,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketGradingOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1415,11 +1585,12 @@ namespace net.crossly.Api
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketGradingOrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketGradingOrderResponse> CreateVaultMarketGradingOrderAsync(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> localVarResponse = await CreateVaultMarketGradingOrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse> localVarResponse = await CreateVaultMarketGradingOrderWithHttpInfoAsync(createVaultMarketGradingOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1427,14 +1598,16 @@ namespace net.crossly.Api
         /// Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradingOrderRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketGradingOrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse>> CreateVaultMarketGradingOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderResponse>> CreateVaultMarketGradingOrderWithHttpInfoAsync(CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = default(CreateVaultMarketGradingOrderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1454,6 +1627,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketGradingOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1628,10 +1802,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <returns>CreateVaultMarketGradingOrderPayResponse</returns>
-        public CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay(string id)
+        public CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> localVarResponse = CreateVaultMarketGradingOrderPayWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> localVarResponse = CreateVaultMarketGradingOrderPayWithHttpInfo(id, createVaultMarketGradingOrderPayRequest);
             return localVarResponse.Data;
         }
 
@@ -1640,8 +1815,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketGradingOrderPayResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayWithHttpInfo(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1652,6 +1828,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1672,6 +1849,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradingOrderPayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1699,11 +1877,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketGradingOrderPayResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketGradingOrderPayResponse> CreateVaultMarketGradingOrderPayAsync(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> localVarResponse = await CreateVaultMarketGradingOrderPayWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse> localVarResponse = await CreateVaultMarketGradingOrderPayWithHttpInfoAsync(id, createVaultMarketGradingOrderPayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1712,9 +1891,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketGradingOrderPayResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse>> CreateVaultMarketGradingOrderPayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketGradingOrderPayResponse>> CreateVaultMarketGradingOrderPayWithHttpInfoAsync(string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = default(CreateVaultMarketGradingOrderPayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1726,6 +1906,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1746,6 +1927,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradingOrderPayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1774,10 +1956,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <returns>StatusResponse</returns>
-        public StatusResponse CreateVaultMarketGradingOrderPayConfirm(string id)
+        public StatusResponse CreateVaultMarketGradingOrderPayConfirm(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest))
         {
-            net.crossly.Client.ApiResponse<StatusResponse> localVarResponse = CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<StatusResponse> localVarResponse = CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(id, createVaultMarketGradingOrderPayConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -1786,8 +1969,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of StatusResponse</returns>
-        public net.crossly.Client.ApiResponse<StatusResponse> CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<StatusResponse> CreateVaultMarketGradingOrderPayConfirmWithHttpInfo(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1798,6 +1982,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1818,6 +2003,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradingOrderPayConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1845,11 +2031,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StatusResponse</returns>
-        public async System.Threading.Tasks.Task<StatusResponse> CreateVaultMarketGradingOrderPayConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StatusResponse> CreateVaultMarketGradingOrderPayConfirmAsync(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StatusResponse> localVarResponse = await CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StatusResponse> localVarResponse = await CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(id, createVaultMarketGradingOrderPayConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1858,9 +2045,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradingOrderPayConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StatusResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StatusResponse>> CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StatusResponse>> CreateVaultMarketGradingOrderPayConfirmWithHttpInfoAsync(string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = default(CreateVaultMarketGradingOrderPayConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1872,6 +2060,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1892,6 +2081,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradingOrderPayConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2034,6 +2224,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetGradingPriceBook", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetGradingSettingResponse</returns>
+        public GetGradingSettingResponse GetGradingSetting()
+        {
+            net.crossly.Client.ApiResponse<GetGradingSettingResponse> localVarResponse = GetGradingSettingWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetGradingSettingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetGradingSettingResponse> GetGradingSettingWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetGradingSettingResponse>("/v1/grading/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGradingSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGradingSettingResponse</returns>
+        public async System.Threading.Tasks.Task<GetGradingSettingResponse> GetGradingSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetGradingSettingResponse> localVarResponse = await GetGradingSettingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGradingSettingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetGradingSettingResponse>> GetGradingSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetGradingSettingResponse>("/v1/grading/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetGradingSetting", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2735,10 +3053,11 @@ namespace net.crossly.Api
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ListVaultMarketGradingCandidatesResponse</returns>
-        public ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates()
+        public ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates(string q = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> localVarResponse = ListVaultMarketGradingCandidatesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> localVarResponse = ListVaultMarketGradingCandidatesWithHttpInfo(q);
             return localVarResponse.Data;
         }
 
@@ -2746,8 +3065,9 @@ namespace net.crossly.Api
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradingCandidatesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesWithHttpInfo(string q = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2771,6 +3091,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2797,11 +3121,12 @@ namespace net.crossly.Api
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradingCandidatesResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradingCandidatesResponse> ListVaultMarketGradingCandidatesAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> localVarResponse = await ListVaultMarketGradingCandidatesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse> localVarResponse = await ListVaultMarketGradingCandidatesWithHttpInfoAsync(q, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2809,9 +3134,10 @@ namespace net.crossly.Api
         /// What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradingCandidatesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse>> ListVaultMarketGradingCandidatesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradingCandidatesResponse>> ListVaultMarketGradingCandidatesWithHttpInfoAsync(string q = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2836,6 +3162,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2863,10 +3193,19 @@ namespace net.crossly.Api
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ListVaultMarketGradingOrdersResponse</returns>
-        public ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders()
+        public ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> localVarResponse = ListVaultMarketGradingOrdersWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> localVarResponse = ListVaultMarketGradingOrdersWithHttpInfo(status, active, grader, tier, q, from, to, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -2874,8 +3213,17 @@ namespace net.crossly.Api
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradingOrdersResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersWithHttpInfo(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2899,6 +3247,42 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (active != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "active", active));
+            }
+            if (grader != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "grader", grader));
+            }
+            if (tier != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tier", tier));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2925,11 +3309,20 @@ namespace net.crossly.Api
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradingOrdersResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradingOrdersResponse> ListVaultMarketGradingOrdersAsync(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> localVarResponse = await ListVaultMarketGradingOrdersWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse> localVarResponse = await ListVaultMarketGradingOrdersWithHttpInfoAsync(status, active, grader, tier, q, from, to, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2937,9 +3330,18 @@ namespace net.crossly.Api
         /// Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="active"> (optional)</param>
+        /// <param name="grader"> (optional)</param>
+        /// <param name="tier"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradingOrdersResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse>> ListVaultMarketGradingOrdersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradingOrdersResponse>> ListVaultMarketGradingOrdersWithHttpInfoAsync(string status = default(string), string active = default(string), string grader = default(string), string tier = default(string), string q = default(string), string from = default(string), string to = default(string), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2964,6 +3366,42 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (active != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "active", active));
+            }
+            if (grader != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "grader", grader));
+            }
+            if (tier != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tier", tier));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2978,6 +3416,142 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListVaultMarketGradingOrders", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <returns>GetGradingSettingResponse</returns>
+        public GetGradingSettingResponse UpdateGradingSetting(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest))
+        {
+            net.crossly.Client.ApiResponse<GetGradingSettingResponse> localVarResponse = UpdateGradingSettingWithHttpInfo(updateGradingSettingRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <returns>ApiResponse of GetGradingSettingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetGradingSettingResponse> UpdateGradingSettingWithHttpInfo(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateGradingSettingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetGradingSettingResponse>("/v1/grading/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateGradingSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetGradingSettingResponse</returns>
+        public async System.Threading.Tasks.Task<GetGradingSettingResponse> UpdateGradingSettingAsync(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetGradingSettingResponse> localVarResponse = await UpdateGradingSettingWithHttpInfoAsync(updateGradingSettingRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateGradingSettingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetGradingSettingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetGradingSettingResponse>> UpdateGradingSettingWithHttpInfoAsync(UpdateGradingSettingRequest updateGradingSettingRequest = default(UpdateGradingSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateGradingSettingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetGradingSettingResponse>("/v1/grading/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateGradingSetting", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

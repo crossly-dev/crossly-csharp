@@ -36,10 +36,32 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="fallbackBrand">Brand to send when a listing has none. Google and Meta both want a brand; a shop&#39;s own goods are legitimately branded with the shop name..</param>
         /// <param name="idPrefix">Prefix added to every item id, so two feeds into one catalogue cannot collide..</param>
-        public ListProductFeedsItemSettings(string fallbackBrand = default(string), string idPrefix = default(string))
+        /// <param name="fieldMap">Per output column: where its value comes from (absent column &#x3D; Crossly&#39;s own mapping)..</param>
+        /// <param name="defaultGoogleCategory">Google product category id sent when none can be derived from the listing&#39;s category..</param>
+        /// <param name="columns">Generic CSV / JSON / RSS feeds: which columns, in order (absent &#x3D; all)..</param>
+        /// <param name="currency">ISO 4217 currency the prices are sent in (converted at the daily rate). Absent &#x3D; USD, no conversion..</param>
+        /// <param name="targetCountry">ISO 3166-1 alpha-2 country the feed targets (shipping rows default to it)..</param>
+        /// <param name="language">BCP 47 language of the content (\&quot;en\&quot;, \&quot;en-GB\&quot;); generic RSS/Atom/JSON carry it..</param>
+        /// <param name="shipping">Flat shipping rates to state per item..</param>
+        /// <param name="images">images.</param>
+        /// <param name="utm">utm.</param>
+        /// <param name="refresh">refresh.</param>
+        /// <param name="rotationGraceHours">Rotation grace: how long the old URL keeps answering after a rotation, in hours (0 &#x3D; dead at once)..</param>
+        public ListProductFeedsItemSettings(string fallbackBrand = default(string), string idPrefix = default(string), Dictionary<string, Object> fieldMap = default(Dictionary<string, Object>), string defaultGoogleCategory = default(string), List<string> columns = default(List<string>), string currency = default(string), string targetCountry = default(string), string language = default(string), List<ListProductFeedsItemSettingsShipping> shipping = default(List<ListProductFeedsItemSettingsShipping>), ListProductFeedsItemSettingsImages images = default(ListProductFeedsItemSettingsImages), ListProductFeedsItemSettingsUtm utm = default(ListProductFeedsItemSettingsUtm), ListProductFeedsItemSettingsRefresh refresh = default(ListProductFeedsItemSettingsRefresh), decimal? rotationGraceHours = default(decimal?))
         {
             this.FallbackBrand = fallbackBrand;
             this.IdPrefix = idPrefix;
+            this.FieldMap = fieldMap;
+            this.DefaultGoogleCategory = defaultGoogleCategory;
+            this.Columns = columns;
+            this.Currency = currency;
+            this.TargetCountry = targetCountry;
+            this.Language = language;
+            this.Shipping = shipping;
+            this.Images = images;
+            this.Utm = utm;
+            this.Refresh = refresh;
+            this.RotationGraceHours = rotationGraceHours;
         }
 
         /// <summary>
@@ -57,6 +79,80 @@ namespace net.crossly.Model
         public string IdPrefix { get; set; }
 
         /// <summary>
+        /// Per output column: where its value comes from (absent column &#x3D; Crossly&#39;s own mapping).
+        /// </summary>
+        /// <value>Per output column: where its value comes from (absent column &#x3D; Crossly&#39;s own mapping).</value>
+        [DataMember(Name = "fieldMap", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMap { get; set; }
+
+        /// <summary>
+        /// Google product category id sent when none can be derived from the listing&#39;s category.
+        /// </summary>
+        /// <value>Google product category id sent when none can be derived from the listing&#39;s category.</value>
+        [DataMember(Name = "defaultGoogleCategory", EmitDefaultValue = true)]
+        public string DefaultGoogleCategory { get; set; }
+
+        /// <summary>
+        /// Generic CSV / JSON / RSS feeds: which columns, in order (absent &#x3D; all).
+        /// </summary>
+        /// <value>Generic CSV / JSON / RSS feeds: which columns, in order (absent &#x3D; all).</value>
+        [DataMember(Name = "columns", EmitDefaultValue = true)]
+        public List<string> Columns { get; set; }
+
+        /// <summary>
+        /// ISO 4217 currency the prices are sent in (converted at the daily rate). Absent &#x3D; USD, no conversion.
+        /// </summary>
+        /// <value>ISO 4217 currency the prices are sent in (converted at the daily rate). Absent &#x3D; USD, no conversion.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// ISO 3166-1 alpha-2 country the feed targets (shipping rows default to it).
+        /// </summary>
+        /// <value>ISO 3166-1 alpha-2 country the feed targets (shipping rows default to it).</value>
+        [DataMember(Name = "targetCountry", EmitDefaultValue = true)]
+        public string TargetCountry { get; set; }
+
+        /// <summary>
+        /// BCP 47 language of the content (\&quot;en\&quot;, \&quot;en-GB\&quot;); generic RSS/Atom/JSON carry it.
+        /// </summary>
+        /// <value>BCP 47 language of the content (\&quot;en\&quot;, \&quot;en-GB\&quot;); generic RSS/Atom/JSON carry it.</value>
+        [DataMember(Name = "language", EmitDefaultValue = true)]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Flat shipping rates to state per item.
+        /// </summary>
+        /// <value>Flat shipping rates to state per item.</value>
+        [DataMember(Name = "shipping", EmitDefaultValue = true)]
+        public List<ListProductFeedsItemSettingsShipping> Shipping { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Images
+        /// </summary>
+        [DataMember(Name = "images", EmitDefaultValue = true)]
+        public ListProductFeedsItemSettingsImages Images { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Utm
+        /// </summary>
+        [DataMember(Name = "utm", EmitDefaultValue = true)]
+        public ListProductFeedsItemSettingsUtm Utm { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Refresh
+        /// </summary>
+        [DataMember(Name = "refresh", EmitDefaultValue = true)]
+        public ListProductFeedsItemSettingsRefresh Refresh { get; set; }
+
+        /// <summary>
+        /// Rotation grace: how long the old URL keeps answering after a rotation, in hours (0 &#x3D; dead at once).
+        /// </summary>
+        /// <value>Rotation grace: how long the old URL keeps answering after a rotation, in hours (0 &#x3D; dead at once).</value>
+        [DataMember(Name = "rotationGraceHours", EmitDefaultValue = true)]
+        public decimal? RotationGraceHours { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -66,6 +162,17 @@ namespace net.crossly.Model
             sb.Append("class ListProductFeedsItemSettings {\n");
             sb.Append("  FallbackBrand: ").Append(FallbackBrand).Append("\n");
             sb.Append("  IdPrefix: ").Append(IdPrefix).Append("\n");
+            sb.Append("  FieldMap: ").Append(FieldMap).Append("\n");
+            sb.Append("  DefaultGoogleCategory: ").Append(DefaultGoogleCategory).Append("\n");
+            sb.Append("  Columns: ").Append(Columns).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  TargetCountry: ").Append(TargetCountry).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  Shipping: ").Append(Shipping).Append("\n");
+            sb.Append("  Images: ").Append(Images).Append("\n");
+            sb.Append("  Utm: ").Append(Utm).Append("\n");
+            sb.Append("  Refresh: ").Append(Refresh).Append("\n");
+            sb.Append("  RotationGraceHours: ").Append(RotationGraceHours).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,6 +217,64 @@ namespace net.crossly.Model
                     this.IdPrefix == input.IdPrefix ||
                     (this.IdPrefix != null &&
                     this.IdPrefix.Equals(input.IdPrefix))
+                ) && 
+                (
+                    this.FieldMap == input.FieldMap ||
+                    this.FieldMap != null &&
+                    input.FieldMap != null &&
+                    this.FieldMap.SequenceEqual(input.FieldMap)
+                ) && 
+                (
+                    this.DefaultGoogleCategory == input.DefaultGoogleCategory ||
+                    (this.DefaultGoogleCategory != null &&
+                    this.DefaultGoogleCategory.Equals(input.DefaultGoogleCategory))
+                ) && 
+                (
+                    this.Columns == input.Columns ||
+                    this.Columns != null &&
+                    input.Columns != null &&
+                    this.Columns.SequenceEqual(input.Columns)
+                ) && 
+                (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.TargetCountry == input.TargetCountry ||
+                    (this.TargetCountry != null &&
+                    this.TargetCountry.Equals(input.TargetCountry))
+                ) && 
+                (
+                    this.Language == input.Language ||
+                    (this.Language != null &&
+                    this.Language.Equals(input.Language))
+                ) && 
+                (
+                    this.Shipping == input.Shipping ||
+                    this.Shipping != null &&
+                    input.Shipping != null &&
+                    this.Shipping.SequenceEqual(input.Shipping)
+                ) && 
+                (
+                    this.Images == input.Images ||
+                    (this.Images != null &&
+                    this.Images.Equals(input.Images))
+                ) && 
+                (
+                    this.Utm == input.Utm ||
+                    (this.Utm != null &&
+                    this.Utm.Equals(input.Utm))
+                ) && 
+                (
+                    this.Refresh == input.Refresh ||
+                    (this.Refresh != null &&
+                    this.Refresh.Equals(input.Refresh))
+                ) && 
+                (
+                    this.RotationGraceHours == input.RotationGraceHours ||
+                    (this.RotationGraceHours != null &&
+                    this.RotationGraceHours.Equals(input.RotationGraceHours))
                 );
         }
 
@@ -129,6 +294,50 @@ namespace net.crossly.Model
                 if (this.IdPrefix != null)
                 {
                     hashCode = (hashCode * 59) + this.IdPrefix.GetHashCode();
+                }
+                if (this.FieldMap != null)
+                {
+                    hashCode = (hashCode * 59) + this.FieldMap.GetHashCode();
+                }
+                if (this.DefaultGoogleCategory != null)
+                {
+                    hashCode = (hashCode * 59) + this.DefaultGoogleCategory.GetHashCode();
+                }
+                if (this.Columns != null)
+                {
+                    hashCode = (hashCode * 59) + this.Columns.GetHashCode();
+                }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.TargetCountry != null)
+                {
+                    hashCode = (hashCode * 59) + this.TargetCountry.GetHashCode();
+                }
+                if (this.Language != null)
+                {
+                    hashCode = (hashCode * 59) + this.Language.GetHashCode();
+                }
+                if (this.Shipping != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shipping.GetHashCode();
+                }
+                if (this.Images != null)
+                {
+                    hashCode = (hashCode * 59) + this.Images.GetHashCode();
+                }
+                if (this.Utm != null)
+                {
+                    hashCode = (hashCode * 59) + this.Utm.GetHashCode();
+                }
+                if (this.Refresh != null)
+                {
+                    hashCode = (hashCode * 59) + this.Refresh.GetHashCode();
+                }
+                if (this.RotationGraceHours != null)
+                {
+                    hashCode = (hashCode * 59) + this.RotationGraceHours.GetHashCode();
                 }
                 return hashCode;
             }

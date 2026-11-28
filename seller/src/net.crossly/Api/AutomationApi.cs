@@ -54,10 +54,11 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        CreateAutomationRuleImportResponse CreateAutomationRuleImport(bool? activate = default(bool?));
+        CreateAutomationRuleImportResponse CreateAutomationRuleImport(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?));
 
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
@@ -66,10 +67,11 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(bool? activate = default(bool?));
+        ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?));
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
@@ -123,9 +125,10 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <returns>CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe();
+        CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest);
 
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
@@ -134,9 +137,10 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <returns>ApiResponse of CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo();
+        ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest);
         /// <summary>
         /// Apply a pending reprice proposal: the recorded price goes to the recorded platform listing. Proposals older than three days expire instead.
         /// </summary>
@@ -174,6 +178,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateRepriceEventSkipResponse</returns>
         ApiResponse<CreateRepriceEventSkipResponse> CreateRepriceEventSkipWithHttpInfo(string id);
         /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>CreateRepricingAssignmentResponse</returns>
+        CreateRepricingAssignmentResponse CreateRepricingAssignment(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest));
+
+        /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateRepricingAssignmentResponse</returns>
+        ApiResponse<CreateRepricingAssignmentResponse> CreateRepricingAssignmentWithHttpInfo(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest));
+        /// <summary>
         /// Delete an automation rule.
         /// </summary>
         /// <remarks>
@@ -196,6 +218,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         [Obsolete]
         ApiResponse<OkResponse> DeleteAutomationRuleWithHttpInfo(Guid id);
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>DeleteStoryResponse</returns>
+        DeleteStoryResponse DeleteRepricingAssignment(string id);
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        ApiResponse<DeleteStoryResponse> DeleteRepricingAssignmentWithHttpInfo(string id);
         /// <summary>
         /// Supported triggerType / actionType / conditionType values for automation rules.
         /// </summary>
@@ -280,6 +320,22 @@ namespace net.crossly.Api
         [Obsolete]
         ApiResponse<GetAutomationRuleExportByIdResponse> GetAutomationRuleExportByIdWithHttpInfo(Guid id);
         /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetRepricingStrategyResponse</returns>
+        GetRepricingStrategyResponse GetRepricingStrategy();
+
+        /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetRepricingStrategyResponse</returns>
+        ApiResponse<GetRepricingStrategyResponse> GetRepricingStrategyWithHttpInfo();
+        /// <summary>
         /// List automation rules.
         /// </summary>
         /// <remarks>
@@ -331,8 +387,11 @@ namespace net.crossly.Api
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListRepriceEventsResponse</returns>
-        ListRepriceEventsResponse ListRepriceEvents();
+        ListRepriceEventsResponse ListRepriceEvents(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
@@ -341,8 +400,27 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListRepriceEventsResponse</returns>
-        ApiResponse<ListRepriceEventsResponse> ListRepriceEventsWithHttpInfo();
+        ApiResponse<ListRepriceEventsResponse> ListRepriceEventsWithHttpInfo(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?));
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListRepricingAssignmentsResponse</returns>
+        ListRepricingAssignmentsResponse ListRepricingAssignments();
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListRepricingAssignmentsResponse</returns>
+        ApiResponse<ListRepricingAssignmentsResponse> ListRepricingAssignmentsWithHttpInfo();
         /// <summary>
         /// Update an automation rule (full replace).
         /// </summary>
@@ -366,6 +444,26 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetAutomationRuleResponse</returns>
         [Obsolete]
         ApiResponse<GetAutomationRuleResponse> UpdateAutomationRuleWithHttpInfo(Guid id);
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>CreateRepricingAssignmentResponse</returns>
+        CreateRepricingAssignmentResponse UpdateRepricingAssignment(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest));
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateRepricingAssignmentResponse</returns>
+        ApiResponse<CreateRepricingAssignmentResponse> UpdateRepricingAssignmentWithHttpInfo(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest));
         #endregion Synchronous Operations
     }
 
@@ -405,11 +503,12 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Import one or more rules from recipe JSON (single or bundle).
@@ -418,11 +517,12 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleImportResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Fire an automation rule immediately.
         /// </summary>
@@ -480,10 +580,11 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Dry-run validate one or more recipes against the live catalog.
@@ -492,10 +593,11 @@ namespace net.crossly.Api
         /// Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleValidateRecipeResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply a pending reprice proposal: the recorded price goes to the recorded platform listing. Proposals older than three days expire instead.
         /// </summary>
@@ -543,6 +645,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateRepriceEventSkipResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateRepriceEventSkipResponse>> CreateRepriceEventSkipWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRepricingAssignmentResponse</returns>
+        System.Threading.Tasks.Task<CreateRepricingAssignmentResponse> CreateRepricingAssignmentAsync(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRepricingAssignmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateRepricingAssignmentResponse>> CreateRepricingAssignmentWithHttpInfoAsync(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Delete an automation rule.
         /// </summary>
         /// <remarks>
@@ -567,6 +692,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteStoryResponse</returns>
+        System.Threading.Tasks.Task<DeleteStoryResponse> DeleteRepricingAssignmentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DeleteStoryResponse>> DeleteRepricingAssignmentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Supported triggerType / actionType / conditionType values for automation rules.
         /// </summary>
@@ -662,6 +810,27 @@ namespace net.crossly.Api
         [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleExportByIdResponse>> GetAutomationRuleExportByIdWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRepricingStrategyResponse</returns>
+        System.Threading.Tasks.Task<GetRepricingStrategyResponse> GetRepricingStrategyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRepricingStrategyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetRepricingStrategyResponse>> GetRepricingStrategyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// List automation rules.
         /// </summary>
         /// <remarks>
@@ -720,9 +889,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListRepriceEventsResponse</returns>
-        System.Threading.Tasks.Task<ListRepriceEventsResponse> ListRepriceEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListRepriceEventsResponse> ListRepriceEventsAsync(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting).
@@ -731,9 +903,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListRepriceEventsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListRepriceEventsResponse>> ListRepriceEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListRepriceEventsResponse>> ListRepriceEventsWithHttpInfoAsync(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListRepricingAssignmentsResponse</returns>
+        System.Threading.Tasks.Task<ListRepricingAssignmentsResponse> ListRepricingAssignmentsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListRepricingAssignmentsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListRepricingAssignmentsResponse>> ListRepricingAssignmentsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update an automation rule (full replace).
         /// </summary>
@@ -759,6 +955,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetAutomationRuleResponse)</returns>
         [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetAutomationRuleResponse>> UpdateAutomationRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRepricingAssignmentResponse</returns>
+        System.Threading.Tasks.Task<CreateRepricingAssignmentResponse> UpdateRepricingAssignmentAsync(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRepricingAssignmentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateRepricingAssignmentResponse>> UpdateRepricingAssignmentWithHttpInfoAsync(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1015,12 +1236,13 @@ namespace net.crossly.Api
         /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        public CreateAutomationRuleImportResponse CreateAutomationRuleImport(bool? activate = default(bool?))
+        public CreateAutomationRuleImportResponse CreateAutomationRuleImport(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?))
         {
-            net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = CreateAutomationRuleImportWithHttpInfo(activate);
+            net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = CreateAutomationRuleImportWithHttpInfo(createAutomationRuleImportRequest, activate);
             return localVarResponse.Data;
         }
 
@@ -1028,14 +1250,22 @@ namespace net.crossly.Api
         /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <returns>ApiResponse of CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        public net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(bool? activate = default(bool?))
+        public net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> CreateAutomationRuleImportWithHttpInfo(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?))
         {
+            // verify the required parameter 'createAutomationRuleImportRequest' is set
+            if (createAutomationRuleImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomationRuleImportRequest' when calling AutomationApi->CreateAutomationRuleImport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1059,6 +1289,7 @@ namespace net.crossly.Api
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "activate", activate));
             }
+            localVarRequestOptions.Data = createAutomationRuleImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1085,13 +1316,14 @@ namespace net.crossly.Api
         /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleImportResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAutomationRuleImportResponse> CreateAutomationRuleImportAsync(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = await CreateAutomationRuleImportWithHttpInfoAsync(activate, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse> localVarResponse = await CreateAutomationRuleImportWithHttpInfoAsync(createAutomationRuleImportRequest, activate, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1099,16 +1331,24 @@ namespace net.crossly.Api
         /// Import one or more rules from recipe JSON (single or bundle). Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleImportRequest"></param>
         /// <param name="activate"> (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleImportResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleImportResponse>> CreateAutomationRuleImportWithHttpInfoAsync(CreateAutomationRuleImportRequest createAutomationRuleImportRequest, bool? activate = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAutomationRuleImportRequest' is set
+            if (createAutomationRuleImportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomationRuleImportRequest' when calling AutomationApi->CreateAutomationRuleImport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1132,6 +1372,7 @@ namespace net.crossly.Api
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "activate", activate));
             }
+            localVarRequestOptions.Data = createAutomationRuleImportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1435,11 +1676,12 @@ namespace net.crossly.Api
         /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <returns>CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        public CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe()
+        public CreateAutomationRuleValidateRecipeResponse CreateAutomationRuleValidateRecipe(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = CreateAutomationRuleValidateRecipeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = CreateAutomationRuleValidateRecipeWithHttpInfo(createAutomationRuleValidateRecipeRequest);
             return localVarResponse.Data;
         }
 
@@ -1447,13 +1689,21 @@ namespace net.crossly.Api
         /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <returns>ApiResponse of CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        public net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeWithHttpInfo(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest)
         {
+            // verify the required parameter 'createAutomationRuleValidateRecipeRequest' is set
+            if (createAutomationRuleValidateRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomationRuleValidateRecipeRequest' when calling AutomationApi->CreateAutomationRuleValidateRecipe");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1473,6 +1723,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomationRuleValidateRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1499,12 +1750,13 @@ namespace net.crossly.Api
         /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationRuleValidateRecipeResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAutomationRuleValidateRecipeResponse> CreateAutomationRuleValidateRecipeAsync(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = await CreateAutomationRuleValidateRecipeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse> localVarResponse = await CreateAutomationRuleValidateRecipeWithHttpInfoAsync(createAutomationRuleValidateRecipeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1512,15 +1764,23 @@ namespace net.crossly.Api
         /// Dry-run validate one or more recipes against the live catalog. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAutomationRuleValidateRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationRuleValidateRecipeResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAutomationRuleValidateRecipeResponse>> CreateAutomationRuleValidateRecipeWithHttpInfoAsync(CreateAutomationRuleValidateRecipeRequest createAutomationRuleValidateRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAutomationRuleValidateRecipeRequest' is set
+            if (createAutomationRuleValidateRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAutomationRuleValidateRecipeRequest' when calling AutomationApi->CreateAutomationRuleValidateRecipe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1540,6 +1800,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAutomationRuleValidateRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1856,6 +2117,142 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>CreateRepricingAssignmentResponse</returns>
+        public CreateRepricingAssignmentResponse CreateRepricingAssignment(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> localVarResponse = CreateRepricingAssignmentWithHttpInfo(createRepricingAssignmentRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateRepricingAssignmentResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> CreateRepricingAssignmentWithHttpInfo(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createRepricingAssignmentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateRepricingAssignmentResponse>("/v1/repricing/assignments", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRepricingAssignment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRepricingAssignmentResponse</returns>
+        public async System.Threading.Tasks.Task<CreateRepricingAssignmentResponse> CreateRepricingAssignmentAsync(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> localVarResponse = await CreateRepricingAssignmentWithHttpInfoAsync(createRepricingAssignmentRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reprice a listing set, a saved listings view or a category with one strategy. The floor is never breached (breakEvenFloor raises it to cover cost); approvalMode \&quot;ask\&quot; records each change for approval instead of applying it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRepricingAssignmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse>> CreateRepricingAssignmentWithHttpInfoAsync(CreateRepricingAssignmentRequest createRepricingAssignmentRequest = default(CreateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createRepricingAssignmentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateRepricingAssignmentResponse>("/v1/repricing/assignments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateRepricingAssignment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Delete an automation rule. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1984,6 +2381,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteAutomationRule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>DeleteStoryResponse</returns>
+        public DeleteStoryResponse DeleteRepricingAssignment(string id)
+        {
+            net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = DeleteRepricingAssignmentWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        public net.crossly.Client.ApiResponse<DeleteStoryResponse> DeleteRepricingAssignmentWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AutomationApi->DeleteRepricingAssignment");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<DeleteStoryResponse>("/v1/repricing/assignments/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteRepricingAssignment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DeleteStoryResponse</returns>
+        public async System.Threading.Tasks.Task<DeleteStoryResponse> DeleteRepricingAssignmentAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = await DeleteRepricingAssignmentWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Stop a repricing assignment. Its past decisions stay in /v1/reprice-events. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteStoryResponse>> DeleteRepricingAssignmentWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AutomationApi->DeleteRepricingAssignment");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteStoryResponse>("/v1/repricing/assignments/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteRepricingAssignment", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2530,6 +3073,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetRepricingStrategyResponse</returns>
+        public GetRepricingStrategyResponse GetRepricingStrategy()
+        {
+            net.crossly.Client.ApiResponse<GetRepricingStrategyResponse> localVarResponse = GetRepricingStrategyWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetRepricingStrategyResponse</returns>
+        public net.crossly.Client.ApiResponse<GetRepricingStrategyResponse> GetRepricingStrategyWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetRepricingStrategyResponse>("/v1/repricing/strategies", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRepricingStrategy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetRepricingStrategyResponse</returns>
+        public async System.Threading.Tasks.Task<GetRepricingStrategyResponse> GetRepricingStrategyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetRepricingStrategyResponse> localVarResponse = await GetRepricingStrategyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The repricing strategies with the settings each takes, the settings every strategy takes, how often an assignment can check, and the approval modes. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetRepricingStrategyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetRepricingStrategyResponse>> GetRepricingStrategyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetRepricingStrategyResponse>("/v1/repricing/strategies", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetRepricingStrategy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List automation rules. Deprecated: automation rules are workflows now. Use /v1/workflows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2833,10 +3504,13 @@ namespace net.crossly.Api
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListRepriceEventsResponse</returns>
-        public ListRepriceEventsResponse ListRepriceEvents()
+        public ListRepriceEventsResponse ListRepriceEvents(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListRepriceEventsResponse> localVarResponse = ListRepriceEventsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListRepriceEventsResponse> localVarResponse = ListRepriceEventsWithHttpInfo(pending, listingId, limit);
             return localVarResponse.Data;
         }
 
@@ -2844,8 +3518,11 @@ namespace net.crossly.Api
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListRepriceEventsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListRepriceEventsResponse> ListRepriceEventsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListRepriceEventsResponse> ListRepriceEventsWithHttpInfo(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2869,6 +3546,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (pending != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pending", pending));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2895,11 +3584,14 @@ namespace net.crossly.Api
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListRepriceEventsResponse</returns>
-        public async System.Threading.Tasks.Task<ListRepriceEventsResponse> ListRepriceEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListRepriceEventsResponse> ListRepriceEventsAsync(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListRepriceEventsResponse> localVarResponse = await ListRepriceEventsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListRepriceEventsResponse> localVarResponse = await ListRepriceEventsWithHttpInfoAsync(pending, listingId, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2907,9 +3599,152 @@ namespace net.crossly.Api
         /// Reprice decisions, newest first: applied, held at a floor, or pending approval (pending&#x3D;true for only those waiting). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="pending"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListRepriceEventsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListRepriceEventsResponse>> ListRepriceEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListRepriceEventsResponse>> ListRepriceEventsWithHttpInfoAsync(string pending = default(string), string listingId = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (pending != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pending", pending));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListRepriceEventsResponse>("/v1/reprice-events", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListRepriceEvents", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListRepricingAssignmentsResponse</returns>
+        public ListRepricingAssignmentsResponse ListRepricingAssignments()
+        {
+            net.crossly.Client.ApiResponse<ListRepricingAssignmentsResponse> localVarResponse = ListRepricingAssignmentsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListRepricingAssignmentsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListRepricingAssignmentsResponse> ListRepricingAssignmentsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListRepricingAssignmentsResponse>("/v1/repricing/assignments", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListRepricingAssignments", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListRepricingAssignmentsResponse</returns>
+        public async System.Threading.Tasks.Task<ListRepricingAssignmentsResponse> ListRepricingAssignmentsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListRepricingAssignmentsResponse> localVarResponse = await ListRepricingAssignmentsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Repricing assignments: which listings are repriced with which strategy, floor and approval mode, with the last price moved, the next check and how many changes wait for approval. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListRepricingAssignmentsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListRepricingAssignmentsResponse>> ListRepricingAssignmentsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2943,11 +3778,11 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListRepriceEventsResponse>("/v1/reprice-events", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListRepricingAssignmentsResponse>("/v1/repricing/assignments", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListRepriceEvents", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListRepricingAssignments", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3086,6 +3921,160 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateAutomationRule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>CreateRepricingAssignmentResponse</returns>
+        public CreateRepricingAssignmentResponse UpdateRepricingAssignment(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> localVarResponse = UpdateRepricingAssignmentWithHttpInfo(id, updateRepricingAssignmentRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateRepricingAssignmentResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> UpdateRepricingAssignmentWithHttpInfo(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AutomationApi->UpdateRepricingAssignment");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateRepricingAssignmentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CreateRepricingAssignmentResponse>("/v1/repricing/assignments/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateRepricingAssignment", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateRepricingAssignmentResponse</returns>
+        public async System.Threading.Tasks.Task<CreateRepricingAssignmentResponse> UpdateRepricingAssignmentAsync(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse> localVarResponse = await UpdateRepricingAssignmentWithHttpInfoAsync(id, updateRepricingAssignmentRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a repricing assignment (any field; a new strategy starts from the params sent with it), or pause / resume it with enabled. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateRepricingAssignmentRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateRepricingAssignmentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateRepricingAssignmentResponse>> UpdateRepricingAssignmentWithHttpInfoAsync(string id, UpdateRepricingAssignmentRequest updateRepricingAssignmentRequest = default(UpdateRepricingAssignmentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AutomationApi->UpdateRepricingAssignment");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateRepricingAssignmentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreateRepricingAssignmentResponse>("/v1/repricing/assignments/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateRepricingAssignment", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

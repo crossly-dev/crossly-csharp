@@ -34,25 +34,16 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetNetworkPoolResponse" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetNetworkPoolResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetNetworkPoolResponse" /> class.
-        /// </summary>
-        /// <param name="member">member (required).</param>
+        /// <param name="member">member.</param>
         public GetNetworkPoolResponse(GetNetworkPoolResponseMember member = default(GetNetworkPoolResponseMember))
         {
-            // to ensure "member" is required (not null)
-            if (member == null) {
-                throw new ArgumentNullException("member is a required property for GetNetworkPoolResponse and cannot be null");
-            }
             this.Member = member;
         }
 
         /// <summary>
         /// Gets or Sets Member
         /// </summary>
-        [DataMember(Name = "member", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "member", EmitDefaultValue = true)]
         public GetNetworkPoolResponseMember Member { get; set; }
 
         /// <summary>

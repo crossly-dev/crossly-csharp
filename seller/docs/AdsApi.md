@@ -45,7 +45,7 @@ Method | HTTP request | Description
 
 <a name="createadoffsitecampaign"></a>
 # **CreateAdOffsiteCampaign**
-> CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign ()
+> CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign (CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest)
 
 Launch an offsite campaign for an item.
 
@@ -71,11 +71,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var createAdOffsiteCampaignRequest = new CreateAdOffsiteCampaignRequest(); // CreateAdOffsiteCampaignRequest | 
 
             try
             {
                 // Launch an offsite campaign for an item.
-                CreateAdOffsiteCampaignResponse result = apiInstance.CreateAdOffsiteCampaign();
+                CreateAdOffsiteCampaignResponse result = apiInstance.CreateAdOffsiteCampaign(createAdOffsiteCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -90,7 +91,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAdOffsiteCampaignRequest** | **CreateAdOffsiteCampaignRequest**|  | 
 
 ### Return type
 
@@ -102,7 +106,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -197,7 +201,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingadbulkadd"></a>
 # **CreateListingAdBulkAdd**
-> CreateListingAdBulkAddResponse CreateListingAdBulkAdd ()
+> CreateListingAdBulkAddResponse CreateListingAdBulkAdd (CreateListingAdBulkAddRequest createListingAdBulkAddRequest)
 
 Add listings to a campaign by master listing id: each listing's live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace's campaign id). A listing not live there is its own failed result.
 
@@ -221,11 +225,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var createListingAdBulkAddRequest = new CreateListingAdBulkAddRequest(); // CreateListingAdBulkAddRequest | 
 
             try
             {
                 // Add listings to a campaign by master listing id: each listing's live row on `platform` joins campaignId (a Crossly campaign uuid, or the marketplace's campaign id). A listing not live there is its own failed result.
-                CreateListingAdBulkAddResponse result = apiInstance.CreateListingAdBulkAdd();
+                CreateListingAdBulkAddResponse result = apiInstance.CreateListingAdBulkAdd(createListingAdBulkAddRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -240,7 +245,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingAdBulkAddRequest** | **CreateListingAdBulkAddRequest**|  | 
 
 ### Return type
 
@@ -252,7 +260,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -271,7 +279,7 @@ This endpoint does not need any parameter.
 
 <a name="createlistingadcampaign"></a>
 # **CreateListingAdCampaign**
-> CreateListingAdCampaignResponse CreateListingAdCampaign (string platform)
+> CreateListingAdCampaignResponse CreateListingAdCampaign (string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest)
 
 Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
 
@@ -296,11 +304,12 @@ namespace Example
 
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
+            var createListingAdCampaignRequest = new CreateListingAdCampaignRequest(); // CreateListingAdCampaignRequest | 
 
             try
             {
                 // Create a campaign on the marketplace: program (promoted_listing_rate = eBay General, a % of the sale; cpc_campaign = eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
-                CreateListingAdCampaignResponse result = apiInstance.CreateListingAdCampaign(platform);
+                CreateListingAdCampaignResponse result = apiInstance.CreateListingAdCampaign(platform, createListingAdCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -319,6 +328,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
+ **createListingAdCampaignRequest** | **CreateListingAdCampaignRequest**|  | 
 
 ### Return type
 
@@ -330,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -349,7 +359,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingadcampaignlisting"></a>
 # **CreateListingAdCampaignListing**
-> CreateListingAdCampaignListingResponse CreateListingAdCampaignListing (string platform, string campaignId)
+> CreateListingAdCampaignListingResponse CreateListingAdCampaignListing (string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest)
 
 Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
 
@@ -375,11 +385,12 @@ namespace Example
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
             var campaignId = "campaignId_example";  // string | 
+            var createListingAdCampaignListingRequest = new CreateListingAdCampaignListingRequest(); // CreateListingAdCampaignListingRequest | 
 
             try
             {
                 // Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
-                CreateListingAdCampaignListingResponse result = apiInstance.CreateListingAdCampaignListing(platform, campaignId);
+                CreateListingAdCampaignListingResponse result = apiInstance.CreateListingAdCampaignListing(platform, campaignId, createListingAdCampaignListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -399,6 +410,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
  **campaignId** | **string**|  | 
+ **createListingAdCampaignListingRequest** | **CreateListingAdCampaignListingRequest**|  | 
 
 ### Return type
 
@@ -410,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -429,7 +441,7 @@ Name | Type | Description  | Notes
 
 <a name="createlistingadcampaignlistingremove"></a>
 # **CreateListingAdCampaignListingRemove**
-> CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove (string platform, string campaignId)
+> CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove (string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
 
 Stop promoting listings in a marketplace campaign. One result per listing.
 
@@ -455,11 +467,12 @@ namespace Example
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
             var campaignId = "campaignId_example";  // string | 
+            var updateLiveStreamLineupRequest = new UpdateLiveStreamLineupRequest(); // UpdateLiveStreamLineupRequest | 
 
             try
             {
                 // Stop promoting listings in a marketplace campaign. One result per listing.
-                CreateListingAdCampaignListingResponse result = apiInstance.CreateListingAdCampaignListingRemove(platform, campaignId);
+                CreateListingAdCampaignListingResponse result = apiInstance.CreateListingAdCampaignListingRemove(platform, campaignId, updateLiveStreamLineupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -479,6 +492,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
  **campaignId** | **string**|  | 
+ **updateLiveStreamLineupRequest** | **UpdateLiveStreamLineupRequest**|  | 
 
 ### Return type
 
@@ -490,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -509,7 +523,7 @@ Name | Type | Description  | Notes
 
 <a name="createsponsoredadbillingtopuplink"></a>
 # **CreateSponsoredAdBillingTopupLink**
-> CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink ()
+> CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink (CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest)
 
 A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
 
@@ -533,11 +547,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var createSponsoredAdBillingTopupLinkRequest = new CreateSponsoredAdBillingTopupLinkRequest(); // CreateSponsoredAdBillingTopupLinkRequest | 
 
             try
             {
                 // A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
-                CreateSponsoredAdBillingTopupLinkResponse result = apiInstance.CreateSponsoredAdBillingTopupLink();
+                CreateSponsoredAdBillingTopupLinkResponse result = apiInstance.CreateSponsoredAdBillingTopupLink(createSponsoredAdBillingTopupLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -552,7 +567,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSponsoredAdBillingTopupLinkRequest** | **CreateSponsoredAdBillingTopupLinkRequest**|  | 
 
 ### Return type
 
@@ -564,7 +582,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -583,7 +601,7 @@ This endpoint does not need any parameter.
 
 <a name="createsponsoredadboostremove"></a>
 # **CreateSponsoredAdBoostRemove**
-> CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove ()
+> CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove (UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
 
 Stop boosting listings in bulk.
 
@@ -607,11 +625,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var updateLiveStreamLineupRequest = new UpdateLiveStreamLineupRequest(); // UpdateLiveStreamLineupRequest | 
 
             try
             {
                 // Stop boosting listings in bulk.
-                CreateSponsoredAdBoostRemoveResponse result = apiInstance.CreateSponsoredAdBoostRemove();
+                CreateSponsoredAdBoostRemoveResponse result = apiInstance.CreateSponsoredAdBoostRemove(updateLiveStreamLineupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -626,7 +645,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateLiveStreamLineupRequest** | **UpdateLiveStreamLineupRequest**|  | 
 
 ### Return type
 
@@ -638,7 +660,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -963,7 +985,7 @@ This endpoint does not need any parameter.
 
 <a name="getadoffsiteeligibility"></a>
 # **GetAdOffsiteEligibility**
-> GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility ()
+> GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility (string network, string category)
 
 Whether an item can run offsite, and why not.
 
@@ -989,11 +1011,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var network = "google";  // string | 
+            var category = "category_example";  // string | 
 
             try
             {
                 // Whether an item can run offsite, and why not.
-                GetAdOffsiteEligibilityResponse result = apiInstance.GetAdOffsiteEligibility();
+                GetAdOffsiteEligibilityResponse result = apiInstance.GetAdOffsiteEligibility(network, category);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1008,7 +1032,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **network** | **string**|  | 
+ **category** | **string**|  | 
 
 ### Return type
 
@@ -1193,7 +1221,7 @@ Name | Type | Description  | Notes
 
 <a name="getsponsoredadbilling"></a>
 # **GetSponsoredAdBilling**
-> GetSponsoredAdBillingResponse GetSponsoredAdBilling ()
+> GetSponsoredAdBillingResponse GetSponsoredAdBilling (string refresh = null)
 
 What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
 
@@ -1217,11 +1245,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var refresh = "true";  // string |  (optional) 
 
             try
             {
                 // What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh=true re-reads the balance.
-                GetSponsoredAdBillingResponse result = apiInstance.GetSponsoredAdBilling();
+                GetSponsoredAdBillingResponse result = apiInstance.GetSponsoredAdBilling(refresh);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1236,7 +1265,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **refresh** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1501,7 +1533,7 @@ Name | Type | Description  | Notes
 
 <a name="getsponsoredadcampaign"></a>
 # **GetSponsoredAdCampaign**
-> SponsoredAdCampaignResponse GetSponsoredAdCampaign (string id)
+> SponsoredAdCampaignResponse GetSponsoredAdCampaign (string id, string from = null, string to = null)
 
 One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has `catalogs`: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
 
@@ -1526,11 +1558,13 @@ namespace Example
 
             var apiInstance = new AdsApi(config);
             var id = "id_example";  // string | 
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
 
             try
             {
                 // One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has `catalogs`: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
-                SponsoredAdCampaignResponse result = apiInstance.GetSponsoredAdCampaign(id);
+                SponsoredAdCampaignResponse result = apiInstance.GetSponsoredAdCampaign(id, from, to);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1549,6 +1583,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1579,7 +1615,7 @@ Name | Type | Description  | Notes
 
 <a name="getsponsoredadfund"></a>
 # **GetSponsoredAdFund**
-> GetSponsoredAdFundResponse GetSponsoredAdFund ()
+> GetSponsoredAdFundResponse GetSponsoredAdFund (string refresh = null)
 
 What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
 
@@ -1603,11 +1639,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var refresh = "true";  // string |  (optional) 
 
             try
             {
                 // What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh=true re-reads CBX.
-                GetSponsoredAdFundResponse result = apiInstance.GetSponsoredAdFund();
+                GetSponsoredAdFundResponse result = apiInstance.GetSponsoredAdFund(refresh);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1622,7 +1659,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **refresh** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1653,7 +1693,7 @@ This endpoint does not need any parameter.
 
 <a name="getsponsoredadreport"></a>
 # **GetSponsoredAdReport**
-> GetSponsoredAdReportResponse GetSponsoredAdReport ()
+> GetSponsoredAdReportResponse GetSponsoredAdReport (string from = null, string to = null)
 
 Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
 
@@ -1677,11 +1717,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
 
             try
             {
                 // Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and `catalogs`, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
-                GetSponsoredAdReportResponse result = apiInstance.GetSponsoredAdReport();
+                GetSponsoredAdReportResponse result = apiInstance.GetSponsoredAdReport(from, to);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1696,7 +1738,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1801,7 +1847,7 @@ This endpoint does not need any parameter.
 
 <a name="listlistingadcampaigns"></a>
 # **ListListingAdCampaigns**
-> ListListingAdCampaignsResponse ListListingAdCampaigns (string platform)
+> ListListingAdCampaignsResponse ListListingAdCampaigns (string platform, string refresh = null)
 
 Your ad campaigns on one marketplace (cached up to 15 minutes; refresh=true asks the marketplace now).
 
@@ -1826,11 +1872,12 @@ namespace Example
 
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
+            var refresh = "0";  // string |  (optional) 
 
             try
             {
                 // Your ad campaigns on one marketplace (cached up to 15 minutes; refresh=true asks the marketplace now).
-                ListListingAdCampaignsResponse result = apiInstance.ListListingAdCampaigns(platform);
+                ListListingAdCampaignsResponse result = apiInstance.ListListingAdCampaigns(platform, refresh);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1849,6 +1896,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
+ **refresh** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1953,7 +2001,7 @@ This endpoint does not need any parameter.
 
 <a name="listsponsoredadbillinghistory"></a>
 # **ListSponsoredAdBillingHistory**
-> ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory ()
+> ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory (string kind = null, string before = null, decimal? limit = null)
 
 Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
 
@@ -1977,11 +2025,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var kind = "topup";  // string |  (optional) 
+            var before = "before_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
-                ListSponsoredAdBillingHistoryResponse result = apiInstance.ListSponsoredAdBillingHistory();
+                ListSponsoredAdBillingHistoryResponse result = apiInstance.ListSponsoredAdBillingHistory(kind, before, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1996,7 +2047,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | [optional] 
+ **before** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -2175,7 +2231,7 @@ This endpoint does not need any parameter.
 
 <a name="listsponsoredadcampaigns"></a>
 # **ListSponsoredAdCampaigns**
-> ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns ()
+> ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns (string from = null, string to = null)
 
 Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
 
@@ -2199,11 +2255,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
 
             try
             {
                 // Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
-                ListSponsoredAdCampaignsResponse result = apiInstance.ListSponsoredAdCampaigns();
+                ListSponsoredAdCampaignsResponse result = apiInstance.ListSponsoredAdCampaigns(from, to);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2218,7 +2276,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2249,7 +2311,7 @@ This endpoint does not need any parameter.
 
 <a name="listsponsoredadlistings"></a>
 # **ListSponsoredAdListings**
-> ListSponsoredAdListingsResponse ListSponsoredAdListings ()
+> ListSponsoredAdListingsResponse ListSponsoredAdListings (string from = null, string to = null)
 
 Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
 
@@ -2273,11 +2335,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
 
             try
             {
                 // Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
-                ListSponsoredAdListingsResponse result = apiInstance.ListSponsoredAdListings();
+                ListSponsoredAdListingsResponse result = apiInstance.ListSponsoredAdListings(from, to);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2292,7 +2356,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2323,7 +2391,7 @@ This endpoint does not need any parameter.
 
 <a name="updateadoffsite"></a>
 # **UpdateAdOffsite**
-> UpdateAdOffsiteResponse UpdateAdOffsite ()
+> UpdateAdOffsiteResponse UpdateAdOffsite (UpdateAdOffsiteRequest updateAdOffsiteRequest)
 
 Turn offsite ads on or off. Yours alone to set.
 
@@ -2349,11 +2417,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var updateAdOffsiteRequest = new UpdateAdOffsiteRequest(); // UpdateAdOffsiteRequest | 
 
             try
             {
                 // Turn offsite ads on or off. Yours alone to set.
-                UpdateAdOffsiteResponse result = apiInstance.UpdateAdOffsite();
+                UpdateAdOffsiteResponse result = apiInstance.UpdateAdOffsite(updateAdOffsiteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2368,7 +2437,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateAdOffsiteRequest** | **UpdateAdOffsiteRequest**|  | 
 
 ### Return type
 
@@ -2380,7 +2452,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2399,7 +2471,7 @@ This endpoint does not need any parameter.
 
 <a name="updatelistingadcampaign"></a>
 # **UpdateListingAdCampaign**
-> CreateListingAdCampaignResponse UpdateListingAdCampaign (string platform, string campaignId)
+> CreateListingAdCampaignResponse UpdateListingAdCampaign (string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest)
 
 Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
 
@@ -2425,11 +2497,12 @@ namespace Example
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
             var campaignId = "campaignId_example";  // string | 
+            var updateListingAdCampaignRequest = new UpdateListingAdCampaignRequest(); // UpdateListingAdCampaignRequest | 
 
             try
             {
                 // Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
-                CreateListingAdCampaignResponse result = apiInstance.UpdateListingAdCampaign(platform, campaignId);
+                CreateListingAdCampaignResponse result = apiInstance.UpdateListingAdCampaign(platform, campaignId, updateListingAdCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2449,6 +2522,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
  **campaignId** | **string**|  | 
+ **updateListingAdCampaignRequest** | **UpdateListingAdCampaignRequest**|  | 
 
 ### Return type
 
@@ -2460,7 +2534,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2479,7 +2553,7 @@ Name | Type | Description  | Notes
 
 <a name="updatelistingadlistingrate"></a>
 # **UpdateListingAdListingRate**
-> UpdateListingAdListingRateResponse UpdateListingAdListingRate (string platform, string platformListingId)
+> UpdateListingAdListingRateResponse UpdateListingAdListingRate (string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest)
 
 Change one promoted listing's ad rate (percent of the sale) in the campaign it is in.
 
@@ -2505,11 +2579,12 @@ namespace Example
             var apiInstance = new AdsApi(config);
             var platform = "platform_example";  // string | 
             var platformListingId = "platformListingId_example";  // string | 
+            var updateListingAdListingRateRequest = new UpdateListingAdListingRateRequest(); // UpdateListingAdListingRateRequest | 
 
             try
             {
                 // Change one promoted listing's ad rate (percent of the sale) in the campaign it is in.
-                UpdateListingAdListingRateResponse result = apiInstance.UpdateListingAdListingRate(platform, platformListingId);
+                UpdateListingAdListingRateResponse result = apiInstance.UpdateListingAdListingRate(platform, platformListingId, updateListingAdListingRateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2529,6 +2604,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
  **platformListingId** | **string**|  | 
+ **updateListingAdListingRateRequest** | **UpdateListingAdListingRateRequest**|  | 
 
 ### Return type
 
@@ -2540,7 +2616,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2559,7 +2635,7 @@ Name | Type | Description  | Notes
 
 <a name="updatesponsoredadbillingautotopup"></a>
 # **UpdateSponsoredAdBillingAutoTopup**
-> SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup ()
+> SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup (UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest)
 
 Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
 
@@ -2583,11 +2659,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var updateSponsoredAdBillingAutoTopupRequest = new UpdateSponsoredAdBillingAutoTopupRequest(); // UpdateSponsoredAdBillingAutoTopupRequest | 
 
             try
             {
                 // Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
-                SponsoredAdResponse result = apiInstance.UpdateSponsoredAdBillingAutoTopup();
+                SponsoredAdResponse result = apiInstance.UpdateSponsoredAdBillingAutoTopup(updateSponsoredAdBillingAutoTopupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2602,7 +2679,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateSponsoredAdBillingAutoTopupRequest** | **UpdateSponsoredAdBillingAutoTopupRequest**|  | 
 
 ### Return type
 
@@ -2614,7 +2694,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2633,7 +2713,7 @@ This endpoint does not need any parameter.
 
 <a name="updatesponsoredadboost"></a>
 # **UpdateSponsoredAdBoost**
-> UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost ()
+> UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost (UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest)
 
 Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
 
@@ -2657,11 +2737,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AdsApi(config);
+            var updateSponsoredAdBoostRequest = new UpdateSponsoredAdBoostRequest(); // UpdateSponsoredAdBoostRequest | 
 
             try
             {
                 // Boost listings in bulk (platformListingIds, upliftBps 100–2000 = 1–20%), or change their rate. Your own live Crossly listings only.
-                UpdateSponsoredAdBoostResponse result = apiInstance.UpdateSponsoredAdBoost();
+                UpdateSponsoredAdBoostResponse result = apiInstance.UpdateSponsoredAdBoost(updateSponsoredAdBoostRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2676,7 +2757,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateSponsoredAdBoostRequest** | **UpdateSponsoredAdBoostRequest**|  | 
 
 ### Return type
 
@@ -2688,7 +2772,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

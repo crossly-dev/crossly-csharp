@@ -30,7 +30,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperienceassetmesh"></a>
 # **CreateWorldExperienceAssetMesh**
-> CreateWorldExperienceAssetMeshResponse CreateWorldExperienceAssetMesh (string experienceId)
+> CreateWorldExperienceAssetMeshResponse CreateWorldExperienceAssetMesh (string experienceId, CreateWorldExperienceAssetMeshRequest createWorldExperienceAssetMeshRequest = null)
 
 Import a .glb (base64) as a MeshPart: safety parse + budgets, stored on the Crossly CDN, a phone LOD over 5k triangles, collision Box or convex Hull. Returns the asset and the MeshPart node; with placeId it is inserted into that place through its co-editing session.
 
@@ -55,11 +55,12 @@ namespace Example
 
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceAssetMeshRequest = new CreateWorldExperienceAssetMeshRequest(); // CreateWorldExperienceAssetMeshRequest |  (optional) 
 
             try
             {
                 // Import a .glb (base64) as a MeshPart: safety parse + budgets, stored on the Crossly CDN, a phone LOD over 5k triangles, collision Box or convex Hull. Returns the asset and the MeshPart node; with placeId it is inserted into that place through its co-editing session.
-                CreateWorldExperienceAssetMeshResponse result = apiInstance.CreateWorldExperienceAssetMesh(experienceId);
+                CreateWorldExperienceAssetMeshResponse result = apiInstance.CreateWorldExperienceAssetMesh(experienceId, createWorldExperienceAssetMeshRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -78,6 +79,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceAssetMeshRequest** | **CreateWorldExperienceAssetMeshRequest**|  | [optional] 
 
 ### Return type
 
@@ -89,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -108,7 +110,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceassetmeshcheck"></a>
 # **CreateWorldExperienceAssetMeshCheck**
-> CreateWorldExperienceAssetMeshCheckResponse CreateWorldExperienceAssetMeshCheck (string experienceId)
+> CreateWorldExperienceAssetMeshCheckResponse CreateWorldExperienceAssetMeshCheck (string experienceId, CreateWorldExperienceAssetMeshCheckRequest createWorldExperienceAssetMeshCheckRequest = null)
 
 Check a .glb (base64) for import without storing it: the budget report per device, plain-English errors with a fix list, whether a phone LOD will be made, mesh bounds and hull points.
 
@@ -133,11 +135,12 @@ namespace Example
 
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceAssetMeshCheckRequest = new CreateWorldExperienceAssetMeshCheckRequest(); // CreateWorldExperienceAssetMeshCheckRequest |  (optional) 
 
             try
             {
                 // Check a .glb (base64) for import without storing it: the budget report per device, plain-English errors with a fix list, whether a phone LOD will be made, mesh bounds and hull points.
-                CreateWorldExperienceAssetMeshCheckResponse result = apiInstance.CreateWorldExperienceAssetMeshCheck(experienceId);
+                CreateWorldExperienceAssetMeshCheckResponse result = apiInstance.CreateWorldExperienceAssetMeshCheck(experienceId, createWorldExperienceAssetMeshCheckRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -156,6 +159,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceAssetMeshCheckRequest** | **CreateWorldExperienceAssetMeshCheckRequest**|  | [optional] 
 
 ### Return type
 
@@ -167,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -186,7 +190,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplaceassistant"></a>
 # **CreateWorldExperiencePlaceAssistant**
-> CreateWorldExperiencePlaceAssistantResponse CreateWorldExperiencePlaceAssistant (string experienceId, string placeId)
+> CreateWorldExperiencePlaceAssistantResponse CreateWorldExperiencePlaceAssistant (string experienceId, string placeId, CreateWorldExperiencePlaceAssistantRequest createWorldExperiencePlaceAssistantRequest = null)
 
 Ask the Studio Assistant (mode explain | edit | build): returns an explanation and a proposed change set (scripts, inserts, edits) checked against your role and linted. Nothing is applied.
 
@@ -212,11 +216,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceAssistantRequest = new CreateWorldExperiencePlaceAssistantRequest(); // CreateWorldExperiencePlaceAssistantRequest |  (optional) 
 
             try
             {
                 // Ask the Studio Assistant (mode explain | edit | build): returns an explanation and a proposed change set (scripts, inserts, edits) checked against your role and linted. Nothing is applied.
-                CreateWorldExperiencePlaceAssistantResponse result = apiInstance.CreateWorldExperiencePlaceAssistant(experienceId, placeId);
+                CreateWorldExperiencePlaceAssistantResponse result = apiInstance.CreateWorldExperiencePlaceAssistant(experienceId, placeId, createWorldExperiencePlaceAssistantRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -236,6 +241,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceAssistantRequest** | **CreateWorldExperiencePlaceAssistantRequest**|  | [optional] 
 
 ### Return type
 
@@ -247,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -266,7 +272,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplaceassistantapply"></a>
 # **CreateWorldExperiencePlaceAssistantApply**
-> CreateWorldExperiencePlaceAssistantApplyResponse CreateWorldExperiencePlaceAssistantApply (string experienceId, string placeId)
+> CreateWorldExperiencePlaceAssistantApplyResponse CreateWorldExperiencePlaceAssistantApply (string experienceId, string placeId, CreateWorldExperiencePlaceAssistantApplyRequest createWorldExperiencePlaceAssistantApplyRequest = null)
 
 Apply accepted Assistant changes to the place as one co-editing batch (activity via assistant, revertible). Re-checked against the place as it is now.
 
@@ -292,11 +298,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceAssistantApplyRequest = new CreateWorldExperiencePlaceAssistantApplyRequest(); // CreateWorldExperiencePlaceAssistantApplyRequest |  (optional) 
 
             try
             {
                 // Apply accepted Assistant changes to the place as one co-editing batch (activity via assistant, revertible). Re-checked against the place as it is now.
-                CreateWorldExperiencePlaceAssistantApplyResponse result = apiInstance.CreateWorldExperiencePlaceAssistantApply(experienceId, placeId);
+                CreateWorldExperiencePlaceAssistantApplyResponse result = apiInstance.CreateWorldExperiencePlaceAssistantApply(experienceId, placeId, createWorldExperiencePlaceAssistantApplyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -316,6 +323,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceAssistantApplyRequest** | **CreateWorldExperiencePlaceAssistantApplyRequest**|  | [optional] 
 
 ### Return type
 
@@ -327,7 +335,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -346,7 +354,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacestudioedit"></a>
 # **CreateWorldExperiencePlaceStudioEdit**
-> CreateWorldExperiencePlaceStudioEditResponse CreateWorldExperiencePlaceStudioEdit (string experienceId, string placeId)
+> CreateWorldExperiencePlaceStudioEditResponse CreateWorldExperiencePlaceStudioEdit (string experienceId, string placeId, CreateWorldExperiencePlaceStudioEditRequest createWorldExperiencePlaceStudioEditRequest = null)
 
 Apply set / insert / move / delete steps by path as ONE batch through Team Create (live in every open Studio, one revertible activity entry). All-or-nothing: any bad step refuses the batch with every problem listed.
 
@@ -372,11 +380,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceStudioEditRequest = new CreateWorldExperiencePlaceStudioEditRequest(); // CreateWorldExperiencePlaceStudioEditRequest |  (optional) 
 
             try
             {
                 // Apply set / insert / move / delete steps by path as ONE batch through Team Create (live in every open Studio, one revertible activity entry). All-or-nothing: any bad step refuses the batch with every problem listed.
-                CreateWorldExperiencePlaceStudioEditResponse result = apiInstance.CreateWorldExperiencePlaceStudioEdit(experienceId, placeId);
+                CreateWorldExperiencePlaceStudioEditResponse result = apiInstance.CreateWorldExperiencePlaceStudioEdit(experienceId, placeId, createWorldExperiencePlaceStudioEditRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -396,6 +405,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceStudioEditRequest** | **CreateWorldExperiencePlaceStudioEditRequest**|  | [optional] 
 
 ### Return type
 
@@ -407,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -426,7 +436,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacestudioinsertasset"></a>
 # **CreateWorldExperiencePlaceStudioInsertAsset**
-> CreateWorldExperiencePlaceStudioInsertAssetResponse CreateWorldExperiencePlaceStudioInsertAsset (string experienceId, string placeId)
+> CreateWorldExperiencePlaceStudioInsertAssetResponse CreateWorldExperiencePlaceStudioInsertAsset (string experienceId, string placeId, CreateWorldExperiencePlaceStudioInsertAssetRequest createWorldExperiencePlaceStudioInsertAssetRequest = null)
 
 Insert a Toolbox asset under a path (default Workspace; ServerScripts for scripts). Paid assets need the experience owner's licence.
 
@@ -452,11 +462,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceStudioInsertAssetRequest = new CreateWorldExperiencePlaceStudioInsertAssetRequest(); // CreateWorldExperiencePlaceStudioInsertAssetRequest |  (optional) 
 
             try
             {
                 // Insert a Toolbox asset under a path (default Workspace; ServerScripts for scripts). Paid assets need the experience owner's licence.
-                CreateWorldExperiencePlaceStudioInsertAssetResponse result = apiInstance.CreateWorldExperiencePlaceStudioInsertAsset(experienceId, placeId);
+                CreateWorldExperiencePlaceStudioInsertAssetResponse result = apiInstance.CreateWorldExperiencePlaceStudioInsertAsset(experienceId, placeId, createWorldExperiencePlaceStudioInsertAssetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -476,6 +487,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceStudioInsertAssetRequest** | **CreateWorldExperiencePlaceStudioInsertAssetRequest**|  | [optional] 
 
 ### Return type
 
@@ -487,7 +499,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -666,7 +678,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacestudiopublish"></a>
 # **CreateWorldExperiencePlaceStudioPublish**
-> CreateWorldExperiencePlaceStudioPublishResponse CreateWorldExperiencePlaceStudioPublish (string experienceId, string placeId)
+> CreateWorldExperiencePlaceStudioPublishResponse CreateWorldExperiencePlaceStudioPublish (string experienceId, string placeId, CreateWorldExperiencePlaceStudioPublishRequest createWorldExperiencePlaceStudioPublishRequest = null)
 
 Prepare a publish from the live session: checks, details, rating answers, access. Never submits and never acknowledges the money review — the person does (or submit_worlds_publish).
 
@@ -692,11 +704,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceStudioPublishRequest = new CreateWorldExperiencePlaceStudioPublishRequest(); // CreateWorldExperiencePlaceStudioPublishRequest |  (optional) 
 
             try
             {
                 // Prepare a publish from the live session: checks, details, rating answers, access. Never submits and never acknowledges the money review — the person does (or submit_worlds_publish).
-                CreateWorldExperiencePlaceStudioPublishResponse result = apiInstance.CreateWorldExperiencePlaceStudioPublish(experienceId, placeId);
+                CreateWorldExperiencePlaceStudioPublishResponse result = apiInstance.CreateWorldExperiencePlaceStudioPublish(experienceId, placeId, createWorldExperiencePlaceStudioPublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -716,6 +729,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceStudioPublishRequest** | **CreateWorldExperiencePlaceStudioPublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -727,7 +741,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -746,7 +760,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacestudioscriptcommit"></a>
 # **CreateWorldExperiencePlaceStudioScriptCommit**
-> CreateWorldExperiencePlaceStudioScriptCommitResponse CreateWorldExperiencePlaceStudioScriptCommit (string experienceId, string placeId)
+> CreateWorldExperiencePlaceStudioScriptCommitResponse CreateWorldExperiencePlaceStudioScriptCommit (string experienceId, string placeId, CreateWorldExperiencePlaceStudioScriptCommitRequest createWorldExperiencePlaceStudioScriptCommitRequest = null)
 
 Commit your draft with a three-way merge onto the script as it is now (collaborators' edits kept). 409 merge_conflict carries merged text with conflict blocks and theirs.
 
@@ -772,11 +786,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceStudioScriptCommitRequest = new CreateWorldExperiencePlaceStudioScriptCommitRequest(); // CreateWorldExperiencePlaceStudioScriptCommitRequest |  (optional) 
 
             try
             {
                 // Commit your draft with a three-way merge onto the script as it is now (collaborators' edits kept). 409 merge_conflict carries merged text with conflict blocks and theirs.
-                CreateWorldExperiencePlaceStudioScriptCommitResponse result = apiInstance.CreateWorldExperiencePlaceStudioScriptCommit(experienceId, placeId);
+                CreateWorldExperiencePlaceStudioScriptCommitResponse result = apiInstance.CreateWorldExperiencePlaceStudioScriptCommit(experienceId, placeId, createWorldExperiencePlaceStudioScriptCommitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -796,6 +811,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceStudioScriptCommitRequest** | **CreateWorldExperiencePlaceStudioScriptCommitRequest**|  | [optional] 
 
 ### Return type
 
@@ -807,7 +823,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -826,7 +842,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteworldexperienceplacestudioscript"></a>
 # **DeleteWorldExperiencePlaceStudioScript**
-> DeleteWorldExperiencePlaceCollabScriptResponse DeleteWorldExperiencePlaceStudioScript (string experienceId, string placeId)
+> DeleteWorldExperiencePlaceCollabScriptResponse DeleteWorldExperiencePlaceStudioScript (string experienceId, string placeId, string path)
 
 Discard your draft of a script.
 
@@ -852,11 +868,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var path = "path_example";  // string | 
 
             try
             {
                 // Discard your draft of a script.
-                DeleteWorldExperiencePlaceCollabScriptResponse result = apiInstance.DeleteWorldExperiencePlaceStudioScript(experienceId, placeId);
+                DeleteWorldExperiencePlaceCollabScriptResponse result = apiInstance.DeleteWorldExperiencePlaceStudioScript(experienceId, placeId, path);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -876,6 +893,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **path** | **string**|  | 
 
 ### Return type
 
@@ -980,7 +998,7 @@ This endpoint does not need any parameter.
 
 <a name="getworldexperienceplacestudiofind"></a>
 # **GetWorldExperiencePlaceStudioFind**
-> GetWorldExperiencePlaceStudioFindResponse GetWorldExperiencePlaceStudioFind (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioFindResponse GetWorldExperiencePlaceStudioFind (string experienceId, string placeId, string name = null, string _class = null, string tag = null, decimal? limit = null)
 
 Find instances by name (contains), exact class and/or tag.
 
@@ -1006,11 +1024,15 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var name = "name_example";  // string |  (optional) 
+            var _class = "_class_example";  // string |  (optional) 
+            var tag = "tag_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Find instances by name (contains), exact class and/or tag.
-                GetWorldExperiencePlaceStudioFindResponse result = apiInstance.GetWorldExperiencePlaceStudioFind(experienceId, placeId);
+                GetWorldExperiencePlaceStudioFindResponse result = apiInstance.GetWorldExperiencePlaceStudioFind(experienceId, placeId, name, _class, tag, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1030,6 +1052,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **name** | **string**|  | [optional] 
+ **_class** | **string**|  | [optional] 
+ **tag** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1060,7 +1086,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacestudioinstance"></a>
 # **GetWorldExperiencePlaceStudioInstance**
-> GetWorldExperiencePlaceStudioInstanceResponse GetWorldExperiencePlaceStudioInstance (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioInstanceResponse GetWorldExperiencePlaceStudioInstance (string experienceId, string placeId, string path = null, string id = null)
 
 One instance by path (or session id): class, properties, attributes, tags, children. Script source is read with …/studio/script.
 
@@ -1086,11 +1112,13 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var path = "path_example";  // string |  (optional) 
+            var id = "id_example";  // string |  (optional) 
 
             try
             {
                 // One instance by path (or session id): class, properties, attributes, tags, children. Script source is read with …/studio/script.
-                GetWorldExperiencePlaceStudioInstanceResponse result = apiInstance.GetWorldExperiencePlaceStudioInstance(experienceId, placeId);
+                GetWorldExperiencePlaceStudioInstanceResponse result = apiInstance.GetWorldExperiencePlaceStudioInstance(experienceId, placeId, path, id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1110,6 +1138,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **path** | **string**|  | [optional] 
+ **id** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1140,7 +1170,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacestudiooutput"></a>
 # **GetWorldExperiencePlaceStudioOutput**
-> GetWorldExperiencePlaceStudioOutputResponse GetWorldExperiencePlaceStudioOutput (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioOutputResponse GetWorldExperiencePlaceStudioOutput (string experienceId, string placeId, decimal? since = null, string serverId = null, string level = null, string scope = null, decimal? limit = null)
 
 Server Output (print, warnings, errors) after a cursor: every line of cloud tests, errors of live servers (scope=all). Kept 24 hours.
 
@@ -1166,11 +1196,16 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var since = 8.14D;  // decimal? |  (optional) 
+            var serverId = "serverId_example";  // string |  (optional) 
+            var level = "info";  // string |  (optional) 
+            var scope = "all";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Server Output (print, warnings, errors) after a cursor: every line of cloud tests, errors of live servers (scope=all). Kept 24 hours.
-                GetWorldExperiencePlaceStudioOutputResponse result = apiInstance.GetWorldExperiencePlaceStudioOutput(experienceId, placeId);
+                GetWorldExperiencePlaceStudioOutputResponse result = apiInstance.GetWorldExperiencePlaceStudioOutput(experienceId, placeId, since, serverId, level, scope, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1190,6 +1225,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **since** | **decimal?**|  | [optional] 
+ **serverId** | **string**|  | [optional] 
+ **level** | **string**|  | [optional] 
+ **scope** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1300,7 +1340,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacestudioscript"></a>
 # **GetWorldExperiencePlaceStudioScript**
-> GetWorldExperiencePlaceStudioScriptResponse GetWorldExperiencePlaceStudioScript (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioScriptResponse GetWorldExperiencePlaceStudioScript (string experienceId, string placeId, string path)
 
 A script's current source, your draft of it (if any, with whether someone committed since) and the lint of each.
 
@@ -1326,11 +1366,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var path = "path_example";  // string | 
 
             try
             {
                 // A script's current source, your draft of it (if any, with whether someone committed since) and the lint of each.
-                GetWorldExperiencePlaceStudioScriptResponse result = apiInstance.GetWorldExperiencePlaceStudioScript(experienceId, placeId);
+                GetWorldExperiencePlaceStudioScriptResponse result = apiInstance.GetWorldExperiencePlaceStudioScript(experienceId, placeId, path);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1350,6 +1391,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **path** | **string**|  | 
 
 ### Return type
 
@@ -1380,7 +1422,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacestudiosnapshot"></a>
 # **GetWorldExperiencePlaceStudioSnapshot**
-> GetWorldExperiencePlaceStudioSnapshotResponse GetWorldExperiencePlaceStudioSnapshot (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioSnapshotResponse GetWorldExperiencePlaceStudioSnapshot (string experienceId, string placeId, string path = null, string view = null, string labels = null)
 
 A plan (top) or front drawing of the parts under a path as SVG, with bounds, spawns and unanchored parts that will fall.
 
@@ -1406,11 +1448,14 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var path = "path_example";  // string |  (optional) 
+            var view = "top";  // string |  (optional) 
+            var labels = "true";  // string |  (optional) 
 
             try
             {
                 // A plan (top) or front drawing of the parts under a path as SVG, with bounds, spawns and unanchored parts that will fall.
-                GetWorldExperiencePlaceStudioSnapshotResponse result = apiInstance.GetWorldExperiencePlaceStudioSnapshot(experienceId, placeId);
+                GetWorldExperiencePlaceStudioSnapshotResponse result = apiInstance.GetWorldExperiencePlaceStudioSnapshot(experienceId, placeId, path, view, labels);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1430,6 +1475,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **path** | **string**|  | [optional] 
+ **view** | **string**|  | [optional] 
+ **labels** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1460,7 +1508,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacestudiotree"></a>
 # **GetWorldExperiencePlaceStudioTree**
-> GetWorldExperiencePlaceStudioTreeResponse GetWorldExperiencePlaceStudioTree (string experienceId, string placeId)
+> GetWorldExperiencePlaceStudioTreeResponse GetWorldExperiencePlaceStudioTree (string experienceId, string placeId, string path = null, decimal? depth = null)
 
 The live instance tree (what every open Studio shows) by dotted path, depth levels down (default 3, max 12).
 
@@ -1486,11 +1534,13 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var path = "path_example";  // string |  (optional) 
+            var depth = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The live instance tree (what every open Studio shows) by dotted path, depth levels down (default 3, max 12).
-                GetWorldExperiencePlaceStudioTreeResponse result = apiInstance.GetWorldExperiencePlaceStudioTree(experienceId, placeId);
+                GetWorldExperiencePlaceStudioTreeResponse result = apiInstance.GetWorldExperiencePlaceStudioTree(experienceId, placeId, path, depth);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1510,6 +1560,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **path** | **string**|  | [optional] 
+ **depth** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1540,7 +1592,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldstudioclass"></a>
 # **GetWorldStudioClass**
-> GetWorldStudioClassResponse GetWorldStudioClass ()
+> GetWorldStudioClassResponse GetWorldStudioClass (string name = null)
 
 The engine's class table: insertable classes, services, and for ?name= one class with every property, its type, default and the exact JSON a place (and a studio edit) takes.
 
@@ -1564,11 +1616,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsStudioApi(config);
+            var name = "name_example";  // string |  (optional) 
 
             try
             {
                 // The engine's class table: insertable classes, services, and for ?name= one class with every property, its type, default and the exact JSON a place (and a studio edit) takes.
-                GetWorldStudioClassResponse result = apiInstance.GetWorldStudioClass();
+                GetWorldStudioClassResponse result = apiInstance.GetWorldStudioClass(name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1583,7 +1636,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1614,7 +1670,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldexperienceassets"></a>
 # **ListWorldExperienceAssets**
-> ListWorldExperienceAssetsResponse ListWorldExperienceAssets (string experienceId)
+> ListWorldExperienceAssetsResponse ListWorldExperienceAssets (string experienceId, decimal? limit = null)
 
 Meshes imported into this experience, newest first: paths, phone LOD, bounds, hull size, budget report, moderation (pending until a reviewed publish uses them) and a URL you can load now.
 
@@ -1639,11 +1695,12 @@ namespace Example
 
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Meshes imported into this experience, newest first: paths, phone LOD, bounds, hull size, budget report, moderation (pending until a reviewed publish uses them) and a URL you can load now.
-                ListWorldExperienceAssetsResponse result = apiInstance.ListWorldExperienceAssets(experienceId);
+                ListWorldExperienceAssetsResponse result = apiInstance.ListWorldExperienceAssets(experienceId, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1662,6 +1719,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1692,7 +1750,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceplacestudioscript"></a>
 # **UpdateWorldExperiencePlaceStudioScript**
-> UpdateWorldExperiencePlaceStudioScriptResponse UpdateWorldExperiencePlaceStudioScript (string experienceId, string placeId)
+> UpdateWorldExperiencePlaceStudioScriptResponse UpdateWorldExperiencePlaceStudioScript (string experienceId, string placeId, UpdateWorldExperiencePlaceStudioScriptRequest updateWorldExperiencePlaceStudioScriptRequest = null)
 
 Save your draft of a script (the place does not change until you commit). Returns lint and the diff from the current source.
 
@@ -1718,11 +1776,12 @@ namespace Example
             var apiInstance = new WorldsStudioApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var updateWorldExperiencePlaceStudioScriptRequest = new UpdateWorldExperiencePlaceStudioScriptRequest(); // UpdateWorldExperiencePlaceStudioScriptRequest |  (optional) 
 
             try
             {
                 // Save your draft of a script (the place does not change until you commit). Returns lint and the diff from the current source.
-                UpdateWorldExperiencePlaceStudioScriptResponse result = apiInstance.UpdateWorldExperiencePlaceStudioScript(experienceId, placeId);
+                UpdateWorldExperiencePlaceStudioScriptResponse result = apiInstance.UpdateWorldExperiencePlaceStudioScript(experienceId, placeId, updateWorldExperiencePlaceStudioScriptRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1742,6 +1801,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **updateWorldExperiencePlaceStudioScriptRequest** | **UpdateWorldExperiencePlaceStudioScriptRequest**|  | [optional] 
 
 ### Return type
 
@@ -1753,7 +1813,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

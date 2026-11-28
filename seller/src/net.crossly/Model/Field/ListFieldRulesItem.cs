@@ -46,12 +46,12 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="platform">platform (required).</param>
         /// <param name="accountSlot">accountSlot.</param>
+        /// <param name="enabled">enabled (required).</param>
         /// <param name="position">position (required).</param>
         /// <param name="target">target (required).</param>
-        /// <param name="enabled">enabled (required).</param>
         /// <param name="targetKey">targetKey.</param>
         /// <param name="stopAfter">stopAfter (required).</param>
-        public ListFieldRulesItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), decimal? accountSlot = default(decimal?), decimal position = default(decimal), string target = default(string), bool enabled = default(bool), string targetKey = default(string), bool stopAfter = default(bool))
+        public ListFieldRulesItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string platform = default(string), decimal? accountSlot = default(decimal?), bool enabled = default(bool), decimal position = default(decimal), string target = default(string), string targetKey = default(string), bool stopAfter = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -75,13 +75,13 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("platform is a required property for ListFieldRulesItem and cannot be null");
             }
             this.Platform = platform;
+            this.Enabled = enabled;
             this.Position = position;
             // to ensure "target" is required (not null)
             if (target == null) {
                 throw new ArgumentNullException("target is a required property for ListFieldRulesItem and cannot be null");
             }
             this.Target = target;
-            this.Enabled = enabled;
             this.StopAfter = stopAfter;
             this.AccountSlot = accountSlot;
             this.TargetKey = targetKey;
@@ -130,6 +130,12 @@ namespace net.crossly.Model
         public decimal? AccountSlot { get; set; }
 
         /// <summary>
+        /// Gets or Sets Enabled
+        /// </summary>
+        [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// Gets or Sets Position
         /// </summary>
         [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = false)]
@@ -140,12 +146,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "target", IsRequired = true, EmitDefaultValue = false)]
         public string Target { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Enabled
-        /// </summary>
-        [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
-        public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetKey
@@ -174,9 +174,9 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  TargetKey: ").Append(TargetKey).Append("\n");
             sb.Append("  StopAfter: ").Append(StopAfter).Append("\n");
             sb.Append("}\n");
@@ -250,6 +250,10 @@ namespace net.crossly.Model
                     this.AccountSlot.Equals(input.AccountSlot))
                 ) && 
                 (
+                    this.Enabled == input.Enabled ||
+                    this.Enabled.Equals(input.Enabled)
+                ) && 
+                (
                     this.Position == input.Position ||
                     this.Position.Equals(input.Position)
                 ) && 
@@ -257,10 +261,6 @@ namespace net.crossly.Model
                     this.Target == input.Target ||
                     (this.Target != null &&
                     this.Target.Equals(input.Target))
-                ) && 
-                (
-                    this.Enabled == input.Enabled ||
-                    this.Enabled.Equals(input.Enabled)
                 ) && 
                 (
                     this.TargetKey == input.TargetKey ||
@@ -310,12 +310,12 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.AccountSlot.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.Position.GetHashCode();
                 if (this.Target != null)
                 {
                     hashCode = (hashCode * 59) + this.Target.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
                 if (this.TargetKey != null)
                 {
                     hashCode = (hashCode * 59) + this.TargetKey.GetHashCode();

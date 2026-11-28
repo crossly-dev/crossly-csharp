@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// AI reply suggestion for a conversation.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <returns>CreateInboxAiSuggestResponse</returns>
-        CreateInboxAiSuggestResponse CreateInboxAiSuggest();
+        CreateInboxAiSuggestResponse CreateInboxAiSuggest(CreateInboxAiSuggestRequest createInboxAiSuggestRequest);
 
         /// <summary>
         /// AI reply suggestion for a conversation.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <returns>ApiResponse of CreateInboxAiSuggestResponse</returns>
-        ApiResponse<CreateInboxAiSuggestResponse> CreateInboxAiSuggestWithHttpInfo();
+        ApiResponse<CreateInboxAiSuggestResponse> CreateInboxAiSuggestWithHttpInfo(CreateInboxAiSuggestRequest createInboxAiSuggestRequest);
         /// <summary>
         /// Create a canned response (added to the end of the list).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <returns>CreateInboxCannedResponseResponse</returns>
-        CreateInboxCannedResponseResponse CreateInboxCannedResponse();
+        CreateInboxCannedResponseResponse CreateInboxCannedResponse(CreateInboxCannedResponseRequest createInboxCannedResponseRequest);
 
         /// <summary>
         /// Create a canned response (added to the end of the list).
@@ -56,14 +59,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
-        ApiResponse<CreateInboxCannedResponseResponse> CreateInboxCannedResponseWithHttpInfo();
+        ApiResponse<CreateInboxCannedResponseResponse> CreateInboxCannedResponseWithHttpInfo(CreateInboxCannedResponseRequest createInboxCannedResponseRequest);
         /// <summary>
         /// Bulk mark read / mark unread / soft-delete conversations.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <returns>CreateInboxConversationBulkResponse</returns>
-        CreateInboxConversationBulkResponse CreateInboxConversationBulk();
+        CreateInboxConversationBulkResponse CreateInboxConversationBulk(CreateInboxConversationBulkRequest createInboxConversationBulkRequest);
 
         /// <summary>
         /// Bulk mark read / mark unread / soft-delete conversations.
@@ -72,14 +77,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkResponse</returns>
-        ApiResponse<CreateInboxConversationBulkResponse> CreateInboxConversationBulkWithHttpInfo();
+        ApiResponse<CreateInboxConversationBulkResponse> CreateInboxConversationBulkWithHttpInfo(CreateInboxConversationBulkRequest createInboxConversationBulkRequest);
         /// <summary>
         /// AI reply suggestion for multiple conversations — draft or send.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <returns>CreateInboxConversationBulkAiRespondResponse</returns>
-        CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond();
+        CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest);
 
         /// <summary>
         /// AI reply suggestion for multiple conversations — draft or send.
@@ -88,15 +95,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkAiRespondResponse</returns>
-        ApiResponse<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondWithHttpInfo();
+        ApiResponse<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondWithHttpInfo(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest);
         /// <summary>
         /// Accept / counter / decline an active offer on a conversation.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <returns>UpdateInboxConversationResponse</returns>
-        UpdateInboxConversationResponse CreateInboxConversationOfferAction(Guid id);
+        UpdateInboxConversationResponse CreateInboxConversationOfferAction(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest);
 
         /// <summary>
         /// Accept / counter / decline an active offer on a conversation.
@@ -106,8 +115,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <returns>ApiResponse of UpdateInboxConversationResponse</returns>
-        ApiResponse<UpdateInboxConversationResponse> CreateInboxConversationOfferActionWithHttpInfo(Guid id);
+        ApiResponse<UpdateInboxConversationResponse> CreateInboxConversationOfferActionWithHttpInfo(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest);
         /// <summary>
         /// Manually re-triage a buyer message.
         /// </summary>
@@ -131,8 +141,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <returns>CreateInboxOfferResponse</returns>
-        CreateInboxOfferResponse CreateInboxOffer(Guid id);
+        CreateInboxOfferResponse CreateInboxOffer(Guid id, CreateInboxOfferRequest createInboxOfferRequest);
 
         /// <summary>
         /// Accept, counter, or decline an offer on a conversation.
@@ -142,15 +153,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <returns>ApiResponse of CreateInboxOfferResponse</returns>
-        ApiResponse<CreateInboxOfferResponse> CreateInboxOfferWithHttpInfo(Guid id);
+        ApiResponse<CreateInboxOfferResponse> CreateInboxOfferWithHttpInfo(Guid id, CreateInboxOfferRequest createInboxOfferRequest);
         /// <summary>
         /// Send a reply to a conversation thread.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>CreateInboxReplyResponse</returns>
-        CreateInboxReplyResponse CreateInboxReply(Guid id);
+        CreateInboxReplyResponse CreateInboxReply(Guid id, BodyRequest bodyRequest);
 
         /// <summary>
         /// Send a reply to a conversation thread.
@@ -160,8 +173,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>ApiResponse of CreateInboxReplyResponse</returns>
-        ApiResponse<CreateInboxReplyResponse> CreateInboxReplyWithHttpInfo(Guid id);
+        ApiResponse<CreateInboxReplyResponse> CreateInboxReplyWithHttpInfo(Guid id, BodyRequest bodyRequest);
         /// <summary>
         /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
         /// </summary>
@@ -187,8 +201,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <returns>CreateVideoRequestAnswerResponse</returns>
-        CreateVideoRequestAnswerResponse CreateVideoRequestAnswer(string id);
+        CreateVideoRequestAnswerResponse CreateVideoRequestAnswer(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest);
 
         /// <summary>
         /// Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
@@ -198,15 +213,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <returns>ApiResponse of CreateVideoRequestAnswerResponse</returns>
-        ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerWithHttpInfo(string id);
+        ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerWithHttpInfo(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest);
         /// <summary>
         /// Decline a video request, with an optional note to the buyer.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <returns>CreateVideoRequestAnswerResponse</returns>
-        CreateVideoRequestAnswerResponse CreateVideoRequestDecline(string id);
+        CreateVideoRequestAnswerResponse CreateVideoRequestDecline(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest));
 
         /// <summary>
         /// Decline a video request, with an optional note to the buyer.
@@ -216,14 +233,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVideoRequestAnswerResponse</returns>
-        ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineWithHttpInfo(string id);
+        ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineWithHttpInfo(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest));
         /// <summary>
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>CreateVideoRequestUploadUrlResponse</returns>
-        CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl();
+        CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest);
 
         /// <summary>
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
@@ -232,8 +251,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>ApiResponse of CreateVideoRequestUploadUrlResponse</returns>
-        ApiResponse<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlWithHttpInfo();
+        ApiResponse<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlWithHttpInfo(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest);
         /// <summary>
         /// Delete a canned response.
         /// </summary>
@@ -362,8 +382,9 @@ namespace net.crossly.Api
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <returns>ListVideoRequestsResponse</returns>
-        ListVideoRequestsResponse ListVideoRequests();
+        ListVideoRequestsResponse ListVideoRequests(string status = default(string));
 
         /// <summary>
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all.
@@ -372,15 +393,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of ListVideoRequestsResponse</returns>
-        ApiResponse<ListVideoRequestsResponse> ListVideoRequestsWithHttpInfo();
+        ApiResponse<ListVideoRequestsResponse> ListVideoRequestsWithHttpInfo(string status = default(string));
         /// <summary>
         /// Update a canned response.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <returns>CreateInboxCannedResponseResponse</returns>
-        CreateInboxCannedResponseResponse UpdateInboxCannedResponse(Guid id);
+        CreateInboxCannedResponseResponse UpdateInboxCannedResponse(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest);
 
         /// <summary>
         /// Update a canned response.
@@ -390,8 +413,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
-        ApiResponse<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseWithHttpInfo(Guid id);
+        ApiResponse<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseWithHttpInfo(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest);
         /// <summary>
         /// Reorder canned responses.
         /// </summary>
@@ -418,8 +442,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <returns>UpdateInboxConversationResponse</returns>
-        UpdateInboxConversationResponse UpdateInboxConversation(Guid id);
+        UpdateInboxConversationResponse UpdateInboxConversation(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest);
 
         /// <summary>
         /// Mark read / change status / close conversation.
@@ -429,8 +454,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <returns>ApiResponse of UpdateInboxConversationResponse</returns>
-        ApiResponse<UpdateInboxConversationResponse> UpdateInboxConversationWithHttpInfo(Guid id);
+        ApiResponse<UpdateInboxConversationResponse> UpdateInboxConversationWithHttpInfo(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest);
         #endregion Synchronous Operations
     }
 
@@ -447,9 +473,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxAiSuggestResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxAiSuggestResponse> CreateInboxAiSuggestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxAiSuggestResponse> CreateInboxAiSuggestAsync(CreateInboxAiSuggestRequest createInboxAiSuggestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// AI reply suggestion for a conversation.
@@ -458,9 +485,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxAiSuggestResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxAiSuggestResponse>> CreateInboxAiSuggestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxAiSuggestResponse>> CreateInboxAiSuggestWithHttpInfoAsync(CreateInboxAiSuggestRequest createInboxAiSuggestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a canned response (added to the end of the list).
         /// </summary>
@@ -468,9 +496,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxCannedResponseResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> CreateInboxCannedResponseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> CreateInboxCannedResponseAsync(CreateInboxCannedResponseRequest createInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a canned response (added to the end of the list).
@@ -479,9 +508,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxCannedResponseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxCannedResponseResponse>> CreateInboxCannedResponseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxCannedResponseResponse>> CreateInboxCannedResponseWithHttpInfoAsync(CreateInboxCannedResponseRequest createInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk mark read / mark unread / soft-delete conversations.
         /// </summary>
@@ -489,9 +519,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateInboxConversationBulkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateInboxConversationBulkAsync(CreateInboxConversationBulkRequest createInboxConversationBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk mark read / mark unread / soft-delete conversations.
@@ -500,9 +531,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkResponse>> CreateInboxConversationBulkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkResponse>> CreateInboxConversationBulkWithHttpInfoAsync(CreateInboxConversationBulkRequest createInboxConversationBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// AI reply suggestion for multiple conversations — draft or send.
         /// </summary>
@@ -510,9 +542,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkAiRespondResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondAsync(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// AI reply suggestion for multiple conversations — draft or send.
@@ -521,9 +554,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkAiRespondResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkAiRespondResponse>> CreateInboxConversationBulkAiRespondWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkAiRespondResponse>> CreateInboxConversationBulkAiRespondWithHttpInfoAsync(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accept / counter / decline an active offer on a conversation.
         /// </summary>
@@ -532,9 +566,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateInboxConversationResponse</returns>
-        System.Threading.Tasks.Task<UpdateInboxConversationResponse> CreateInboxConversationOfferActionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateInboxConversationResponse> CreateInboxConversationOfferActionAsync(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept / counter / decline an active offer on a conversation.
@@ -544,9 +579,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateInboxConversationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateInboxConversationResponse>> CreateInboxConversationOfferActionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateInboxConversationResponse>> CreateInboxConversationOfferActionWithHttpInfoAsync(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Manually re-triage a buyer message.
         /// </summary>
@@ -578,9 +614,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxOfferResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateInboxOfferAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateInboxOfferAsync(Guid id, CreateInboxOfferRequest createInboxOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept, counter, or decline an offer on a conversation.
@@ -590,9 +627,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxOfferResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxOfferResponse>> CreateInboxOfferWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxOfferResponse>> CreateInboxOfferWithHttpInfoAsync(Guid id, CreateInboxOfferRequest createInboxOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send a reply to a conversation thread.
         /// </summary>
@@ -601,9 +639,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxReplyResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxReplyResponse> CreateInboxReplyAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxReplyResponse> CreateInboxReplyAsync(Guid id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send a reply to a conversation thread.
@@ -613,9 +652,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxReplyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxReplyResponse>> CreateInboxReplyWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxReplyResponse>> CreateInboxReplyWithHttpInfoAsync(Guid id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make the buyer an offer inside a conversation (seller → buyer). Only where the conversation&#39;s canSendOffer is true (Grailed today). &#x60;amount&#x60; is in the listing&#39;s currency, above 0 and below the listing price (whole dollars on Grailed). The offer is in the thread at once as a message with offerAmount + offerStatus, deliveryStatus &#39;sending&#39; until the platform confirms.
         /// </summary>
@@ -649,9 +689,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestAnswerResponse</returns>
-        System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerAsync(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
@@ -661,9 +702,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestAnswerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestAnswerWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestAnswerWithHttpInfoAsync(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Decline a video request, with an optional note to the buyer.
         /// </summary>
@@ -672,9 +714,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestAnswerResponse</returns>
-        System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineAsync(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Decline a video request, with an optional note to the buyer.
@@ -684,9 +727,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestAnswerResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestDeclineWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestDeclineWithHttpInfoAsync(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
         /// </summary>
@@ -694,9 +738,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestUploadUrlResponse</returns>
-        System.Threading.Tasks.Task<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
@@ -705,9 +750,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestUploadUrlResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestUploadUrlResponse>> CreateVideoRequestUploadUrlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVideoRequestUploadUrlResponse>> CreateVideoRequestUploadUrlWithHttpInfoAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a canned response.
         /// </summary>
@@ -874,9 +920,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVideoRequestsResponse</returns>
-        System.Threading.Tasks.Task<ListVideoRequestsResponse> ListVideoRequestsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVideoRequestsResponse> ListVideoRequestsAsync(string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all.
@@ -885,9 +932,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVideoRequestsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVideoRequestsResponse>> ListVideoRequestsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVideoRequestsResponse>> ListVideoRequestsWithHttpInfoAsync(string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update a canned response.
         /// </summary>
@@ -896,9 +944,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxCannedResponseResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseAsync(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a canned response.
@@ -908,9 +957,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxCannedResponseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxCannedResponseResponse>> UpdateInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxCannedResponseResponse>> UpdateInboxCannedResponseWithHttpInfoAsync(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Reorder canned responses.
         /// </summary>
@@ -942,9 +992,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateInboxConversationResponse</returns>
-        System.Threading.Tasks.Task<UpdateInboxConversationResponse> UpdateInboxConversationAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateInboxConversationResponse> UpdateInboxConversationAsync(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mark read / change status / close conversation.
@@ -954,9 +1005,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateInboxConversationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateInboxConversationResponse>> UpdateInboxConversationWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateInboxConversationResponse>> UpdateInboxConversationWithHttpInfoAsync(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1081,10 +1133,11 @@ namespace net.crossly.Api
         /// AI reply suggestion for a conversation. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <returns>CreateInboxAiSuggestResponse</returns>
-        public CreateInboxAiSuggestResponse CreateInboxAiSuggest()
+        public CreateInboxAiSuggestResponse CreateInboxAiSuggest(CreateInboxAiSuggestRequest createInboxAiSuggestRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> localVarResponse = CreateInboxAiSuggestWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> localVarResponse = CreateInboxAiSuggestWithHttpInfo(createInboxAiSuggestRequest);
             return localVarResponse.Data;
         }
 
@@ -1092,12 +1145,20 @@ namespace net.crossly.Api
         /// AI reply suggestion for a conversation. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <returns>ApiResponse of CreateInboxAiSuggestResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> CreateInboxAiSuggestWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> CreateInboxAiSuggestWithHttpInfo(CreateInboxAiSuggestRequest createInboxAiSuggestRequest)
         {
+            // verify the required parameter 'createInboxAiSuggestRequest' is set
+            if (createInboxAiSuggestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxAiSuggestRequest' when calling InboxApi->CreateInboxAiSuggest");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1117,6 +1178,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxAiSuggestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1143,11 +1205,12 @@ namespace net.crossly.Api
         /// AI reply suggestion for a conversation. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxAiSuggestResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxAiSuggestResponse> CreateInboxAiSuggestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxAiSuggestResponse> CreateInboxAiSuggestAsync(CreateInboxAiSuggestRequest createInboxAiSuggestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> localVarResponse = await CreateInboxAiSuggestWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse> localVarResponse = await CreateInboxAiSuggestWithHttpInfoAsync(createInboxAiSuggestRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1155,14 +1218,22 @@ namespace net.crossly.Api
         /// AI reply suggestion for a conversation. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxAiSuggestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxAiSuggestResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse>> CreateInboxAiSuggestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxAiSuggestResponse>> CreateInboxAiSuggestWithHttpInfoAsync(CreateInboxAiSuggestRequest createInboxAiSuggestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxAiSuggestRequest' is set
+            if (createInboxAiSuggestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxAiSuggestRequest' when calling InboxApi->CreateInboxAiSuggest");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1182,6 +1253,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxAiSuggestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1209,10 +1281,11 @@ namespace net.crossly.Api
         /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <returns>CreateInboxCannedResponseResponse</returns>
-        public CreateInboxCannedResponseResponse CreateInboxCannedResponse()
+        public CreateInboxCannedResponseResponse CreateInboxCannedResponse(CreateInboxCannedResponseRequest createInboxCannedResponseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = CreateInboxCannedResponseWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = CreateInboxCannedResponseWithHttpInfo(createInboxCannedResponseRequest);
             return localVarResponse.Data;
         }
 
@@ -1220,12 +1293,20 @@ namespace net.crossly.Api
         /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> CreateInboxCannedResponseWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> CreateInboxCannedResponseWithHttpInfo(CreateInboxCannedResponseRequest createInboxCannedResponseRequest)
         {
+            // verify the required parameter 'createInboxCannedResponseRequest' is set
+            if (createInboxCannedResponseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxCannedResponseRequest' when calling InboxApi->CreateInboxCannedResponse");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1245,6 +1326,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxCannedResponseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1271,11 +1353,12 @@ namespace net.crossly.Api
         /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxCannedResponseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> CreateInboxCannedResponseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> CreateInboxCannedResponseAsync(CreateInboxCannedResponseRequest createInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = await CreateInboxCannedResponseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = await CreateInboxCannedResponseWithHttpInfoAsync(createInboxCannedResponseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1283,14 +1366,22 @@ namespace net.crossly.Api
         /// Create a canned response (added to the end of the list). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxCannedResponseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse>> CreateInboxCannedResponseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse>> CreateInboxCannedResponseWithHttpInfoAsync(CreateInboxCannedResponseRequest createInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxCannedResponseRequest' is set
+            if (createInboxCannedResponseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxCannedResponseRequest' when calling InboxApi->CreateInboxCannedResponse");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1310,6 +1401,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxCannedResponseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1337,10 +1429,11 @@ namespace net.crossly.Api
         /// Bulk mark read / mark unread / soft-delete conversations. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <returns>CreateInboxConversationBulkResponse</returns>
-        public CreateInboxConversationBulkResponse CreateInboxConversationBulk()
+        public CreateInboxConversationBulkResponse CreateInboxConversationBulk(CreateInboxConversationBulkRequest createInboxConversationBulkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = CreateInboxConversationBulkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = CreateInboxConversationBulkWithHttpInfo(createInboxConversationBulkRequest);
             return localVarResponse.Data;
         }
 
@@ -1348,12 +1441,20 @@ namespace net.crossly.Api
         /// Bulk mark read / mark unread / soft-delete conversations. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> CreateInboxConversationBulkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> CreateInboxConversationBulkWithHttpInfo(CreateInboxConversationBulkRequest createInboxConversationBulkRequest)
         {
+            // verify the required parameter 'createInboxConversationBulkRequest' is set
+            if (createInboxConversationBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationBulkRequest' when calling InboxApi->CreateInboxConversationBulk");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1373,6 +1474,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxConversationBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1399,11 +1501,12 @@ namespace net.crossly.Api
         /// Bulk mark read / mark unread / soft-delete conversations. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateInboxConversationBulkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateInboxConversationBulkAsync(CreateInboxConversationBulkRequest createInboxConversationBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = await CreateInboxConversationBulkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = await CreateInboxConversationBulkWithHttpInfoAsync(createInboxConversationBulkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1411,14 +1514,22 @@ namespace net.crossly.Api
         /// Bulk mark read / mark unread / soft-delete conversations. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse>> CreateInboxConversationBulkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse>> CreateInboxConversationBulkWithHttpInfoAsync(CreateInboxConversationBulkRequest createInboxConversationBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxConversationBulkRequest' is set
+            if (createInboxConversationBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationBulkRequest' when calling InboxApi->CreateInboxConversationBulk");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1438,6 +1549,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxConversationBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1465,10 +1577,11 @@ namespace net.crossly.Api
         /// AI reply suggestion for multiple conversations — draft or send. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <returns>CreateInboxConversationBulkAiRespondResponse</returns>
-        public CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond()
+        public CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> localVarResponse = CreateInboxConversationBulkAiRespondWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> localVarResponse = CreateInboxConversationBulkAiRespondWithHttpInfo(createInboxConversationBulkAiRespondRequest);
             return localVarResponse.Data;
         }
 
@@ -1476,12 +1589,20 @@ namespace net.crossly.Api
         /// AI reply suggestion for multiple conversations — draft or send. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkAiRespondResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondWithHttpInfo(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest)
         {
+            // verify the required parameter 'createInboxConversationBulkAiRespondRequest' is set
+            if (createInboxConversationBulkAiRespondRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationBulkAiRespondRequest' when calling InboxApi->CreateInboxConversationBulkAiRespond");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1501,6 +1622,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxConversationBulkAiRespondRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1527,11 +1649,12 @@ namespace net.crossly.Api
         /// AI reply suggestion for multiple conversations — draft or send. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkAiRespondResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxConversationBulkAiRespondResponse> CreateInboxConversationBulkAiRespondAsync(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> localVarResponse = await CreateInboxConversationBulkAiRespondWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse> localVarResponse = await CreateInboxConversationBulkAiRespondWithHttpInfoAsync(createInboxConversationBulkAiRespondRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1539,14 +1662,22 @@ namespace net.crossly.Api
         /// AI reply suggestion for multiple conversations — draft or send. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createInboxConversationBulkAiRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkAiRespondResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse>> CreateInboxConversationBulkAiRespondWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkAiRespondResponse>> CreateInboxConversationBulkAiRespondWithHttpInfoAsync(CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxConversationBulkAiRespondRequest' is set
+            if (createInboxConversationBulkAiRespondRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationBulkAiRespondRequest' when calling InboxApi->CreateInboxConversationBulkAiRespond");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1566,6 +1697,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createInboxConversationBulkAiRespondRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1594,10 +1726,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <returns>UpdateInboxConversationResponse</returns>
-        public UpdateInboxConversationResponse CreateInboxConversationOfferAction(Guid id)
+        public UpdateInboxConversationResponse CreateInboxConversationOfferAction(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = CreateInboxConversationOfferActionWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = CreateInboxConversationOfferActionWithHttpInfo(id, createInboxConversationOfferActionRequest);
             return localVarResponse.Data;
         }
 
@@ -1606,12 +1739,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <returns>ApiResponse of UpdateInboxConversationResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> CreateInboxConversationOfferActionWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> CreateInboxConversationOfferActionWithHttpInfo(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest)
         {
+            // verify the required parameter 'createInboxConversationOfferActionRequest' is set
+            if (createInboxConversationOfferActionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationOfferActionRequest' when calling InboxApi->CreateInboxConversationOfferAction");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1632,6 +1773,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxConversationOfferActionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1659,11 +1801,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateInboxConversationResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateInboxConversationResponse> CreateInboxConversationOfferActionAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateInboxConversationResponse> CreateInboxConversationOfferActionAsync(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = await CreateInboxConversationOfferActionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = await CreateInboxConversationOfferActionWithHttpInfoAsync(id, createInboxConversationOfferActionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1672,14 +1815,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxConversationOfferActionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateInboxConversationResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateInboxConversationResponse>> CreateInboxConversationOfferActionWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateInboxConversationResponse>> CreateInboxConversationOfferActionWithHttpInfoAsync(Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxConversationOfferActionRequest' is set
+            if (createInboxConversationOfferActionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxConversationOfferActionRequest' when calling InboxApi->CreateInboxConversationOfferAction");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1700,6 +1851,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxConversationOfferActionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1862,10 +2014,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <returns>CreateInboxOfferResponse</returns>
-        public CreateInboxOfferResponse CreateInboxOffer(Guid id)
+        public CreateInboxOfferResponse CreateInboxOffer(Guid id, CreateInboxOfferRequest createInboxOfferRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = CreateInboxOfferWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = CreateInboxOfferWithHttpInfo(id, createInboxOfferRequest);
             return localVarResponse.Data;
         }
 
@@ -1874,12 +2027,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <returns>ApiResponse of CreateInboxOfferResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxOfferResponse> CreateInboxOfferWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateInboxOfferResponse> CreateInboxOfferWithHttpInfo(Guid id, CreateInboxOfferRequest createInboxOfferRequest)
         {
+            // verify the required parameter 'createInboxOfferRequest' is set
+            if (createInboxOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxOfferRequest' when calling InboxApi->CreateInboxOffer");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1900,6 +2061,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1927,11 +2089,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxOfferResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateInboxOfferAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxOfferResponse> CreateInboxOfferAsync(Guid id, CreateInboxOfferRequest createInboxOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = await CreateInboxOfferWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxOfferResponse> localVarResponse = await CreateInboxOfferWithHttpInfoAsync(id, createInboxOfferRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1940,14 +2103,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createInboxOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxOfferResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxOfferResponse>> CreateInboxOfferWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxOfferResponse>> CreateInboxOfferWithHttpInfoAsync(Guid id, CreateInboxOfferRequest createInboxOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createInboxOfferRequest' is set
+            if (createInboxOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createInboxOfferRequest' when calling InboxApi->CreateInboxOffer");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1968,6 +2139,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createInboxOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1996,10 +2168,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>CreateInboxReplyResponse</returns>
-        public CreateInboxReplyResponse CreateInboxReply(Guid id)
+        public CreateInboxReplyResponse CreateInboxReply(Guid id, BodyRequest bodyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxReplyResponse> localVarResponse = CreateInboxReplyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateInboxReplyResponse> localVarResponse = CreateInboxReplyWithHttpInfo(id, bodyRequest);
             return localVarResponse.Data;
         }
 
@@ -2008,12 +2181,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>ApiResponse of CreateInboxReplyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxReplyResponse> CreateInboxReplyWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateInboxReplyResponse> CreateInboxReplyWithHttpInfo(Guid id, BodyRequest bodyRequest)
         {
+            // verify the required parameter 'bodyRequest' is set
+            if (bodyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bodyRequest' when calling InboxApi->CreateInboxReply");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2034,6 +2215,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = bodyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2061,11 +2243,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxReplyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxReplyResponse> CreateInboxReplyAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxReplyResponse> CreateInboxReplyAsync(Guid id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxReplyResponse> localVarResponse = await CreateInboxReplyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxReplyResponse> localVarResponse = await CreateInboxReplyWithHttpInfoAsync(id, bodyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2074,14 +2257,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxReplyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxReplyResponse>> CreateInboxReplyWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxReplyResponse>> CreateInboxReplyWithHttpInfoAsync(Guid id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'bodyRequest' is set
+            if (bodyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bodyRequest' when calling InboxApi->CreateInboxReply");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2102,6 +2293,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = bodyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2284,10 +2476,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <returns>CreateVideoRequestAnswerResponse</returns>
-        public CreateVideoRequestAnswerResponse CreateVideoRequestAnswer(string id)
+        public CreateVideoRequestAnswerResponse CreateVideoRequestAnswer(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = CreateVideoRequestAnswerWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = CreateVideoRequestAnswerWithHttpInfo(id, createVideoRequestAnswerRequest);
             return localVarResponse.Data;
         }
 
@@ -2296,8 +2489,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <returns>ApiResponse of CreateVideoRequestAnswerResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerWithHttpInfo(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2305,9 +2499,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InboxApi->CreateVideoRequestAnswer");
             }
 
+            // verify the required parameter 'createVideoRequestAnswerRequest' is set
+            if (createVideoRequestAnswerRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVideoRequestAnswerRequest' when calling InboxApi->CreateVideoRequestAnswer");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2328,6 +2529,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVideoRequestAnswerRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2355,11 +2557,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestAnswerResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestAnswerAsync(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = await CreateVideoRequestAnswerWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = await CreateVideoRequestAnswerWithHttpInfoAsync(id, createVideoRequestAnswerRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2368,9 +2571,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestAnswerRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestAnswerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestAnswerWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestAnswerWithHttpInfoAsync(string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2378,10 +2582,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling InboxApi->CreateVideoRequestAnswer");
             }
 
+            // verify the required parameter 'createVideoRequestAnswerRequest' is set
+            if (createVideoRequestAnswerRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVideoRequestAnswerRequest' when calling InboxApi->CreateVideoRequestAnswer");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2402,6 +2613,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVideoRequestAnswerRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2430,10 +2642,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <returns>CreateVideoRequestAnswerResponse</returns>
-        public CreateVideoRequestAnswerResponse CreateVideoRequestDecline(string id)
+        public CreateVideoRequestAnswerResponse CreateVideoRequestDecline(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = CreateVideoRequestDeclineWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = CreateVideoRequestDeclineWithHttpInfo(id, createVideoRequestDeclineRequest);
             return localVarResponse.Data;
         }
 
@@ -2442,8 +2655,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVideoRequestAnswerResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineWithHttpInfo(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2454,6 +2668,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2474,6 +2689,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVideoRequestDeclineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2501,11 +2717,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestAnswerResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVideoRequestAnswerResponse> CreateVideoRequestDeclineAsync(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = await CreateVideoRequestDeclineWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse> localVarResponse = await CreateVideoRequestDeclineWithHttpInfoAsync(id, createVideoRequestDeclineRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2514,9 +2731,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVideoRequestDeclineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestAnswerResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestDeclineWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestAnswerResponse>> CreateVideoRequestDeclineWithHttpInfoAsync(string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = default(CreateVideoRequestDeclineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2528,6 +2746,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2548,6 +2767,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVideoRequestDeclineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2575,10 +2795,11 @@ namespace net.crossly.Api
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>CreateVideoRequestUploadUrlResponse</returns>
-        public CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl()
+        public CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> localVarResponse = CreateVideoRequestUploadUrlWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> localVarResponse = CreateVideoRequestUploadUrlWithHttpInfo(createFundingInvoiceFileRequest);
             return localVarResponse.Data;
         }
 
@@ -2586,12 +2807,20 @@ namespace net.crossly.Api
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>ApiResponse of CreateVideoRequestUploadUrlResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlWithHttpInfo(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
         {
+            // verify the required parameter 'createFundingInvoiceFileRequest' is set
+            if (createFundingInvoiceFileRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingInvoiceFileRequest' when calling InboxApi->CreateVideoRequestUploadUrl");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2611,6 +2840,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingInvoiceFileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2637,11 +2867,12 @@ namespace net.crossly.Api
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVideoRequestUploadUrlResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVideoRequestUploadUrlResponse> CreateVideoRequestUploadUrlAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> localVarResponse = await CreateVideoRequestUploadUrlWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse> localVarResponse = await CreateVideoRequestUploadUrlWithHttpInfoAsync(createFundingInvoiceFileRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2649,14 +2880,22 @@ namespace net.crossly.Api
         /// A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVideoRequestUploadUrlResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse>> CreateVideoRequestUploadUrlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVideoRequestUploadUrlResponse>> CreateVideoRequestUploadUrlWithHttpInfoAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingInvoiceFileRequest' is set
+            if (createFundingInvoiceFileRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingInvoiceFileRequest' when calling InboxApi->CreateVideoRequestUploadUrl");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2676,6 +2915,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingInvoiceFileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3651,10 +3891,11 @@ namespace net.crossly.Api
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <returns>ListVideoRequestsResponse</returns>
-        public ListVideoRequestsResponse ListVideoRequests()
+        public ListVideoRequestsResponse ListVideoRequests(string status = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVideoRequestsResponse> localVarResponse = ListVideoRequestsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVideoRequestsResponse> localVarResponse = ListVideoRequestsWithHttpInfo(status);
             return localVarResponse.Data;
         }
 
@@ -3662,8 +3903,9 @@ namespace net.crossly.Api
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of ListVideoRequestsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVideoRequestsResponse> ListVideoRequestsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVideoRequestsResponse> ListVideoRequestsWithHttpInfo(string status = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3687,6 +3929,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3713,11 +3959,12 @@ namespace net.crossly.Api
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVideoRequestsResponse</returns>
-        public async System.Threading.Tasks.Task<ListVideoRequestsResponse> ListVideoRequestsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVideoRequestsResponse> ListVideoRequestsAsync(string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVideoRequestsResponse> localVarResponse = await ListVideoRequestsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVideoRequestsResponse> localVarResponse = await ListVideoRequestsWithHttpInfoAsync(status, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3725,9 +3972,10 @@ namespace net.crossly.Api
         /// Buyers asking for a video of your items. status: open (default), answered, declined or all. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVideoRequestsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVideoRequestsResponse>> ListVideoRequestsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVideoRequestsResponse>> ListVideoRequestsWithHttpInfoAsync(string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3752,6 +4000,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3780,10 +4032,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <returns>CreateInboxCannedResponseResponse</returns>
-        public CreateInboxCannedResponseResponse UpdateInboxCannedResponse(Guid id)
+        public CreateInboxCannedResponseResponse UpdateInboxCannedResponse(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = UpdateInboxCannedResponseWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = UpdateInboxCannedResponseWithHttpInfo(id, updateInboxCannedResponseRequest);
             return localVarResponse.Data;
         }
 
@@ -3792,12 +4045,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <returns>ApiResponse of CreateInboxCannedResponseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseWithHttpInfo(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest)
         {
+            // verify the required parameter 'updateInboxCannedResponseRequest' is set
+            if (updateInboxCannedResponseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxCannedResponseRequest' when calling InboxApi->UpdateInboxCannedResponse");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3818,6 +4079,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInboxCannedResponseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3845,11 +4107,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxCannedResponseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxCannedResponseResponse> UpdateInboxCannedResponseAsync(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = await UpdateInboxCannedResponseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse> localVarResponse = await UpdateInboxCannedResponseWithHttpInfoAsync(id, updateInboxCannedResponseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3858,14 +4121,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxCannedResponseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxCannedResponseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse>> UpdateInboxCannedResponseWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxCannedResponseResponse>> UpdateInboxCannedResponseWithHttpInfoAsync(Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateInboxCannedResponseRequest' is set
+            if (updateInboxCannedResponseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxCannedResponseRequest' when calling InboxApi->UpdateInboxCannedResponse");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3886,6 +4157,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInboxCannedResponseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4062,10 +4334,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <returns>UpdateInboxConversationResponse</returns>
-        public UpdateInboxConversationResponse UpdateInboxConversation(Guid id)
+        public UpdateInboxConversationResponse UpdateInboxConversation(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = UpdateInboxConversationWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = UpdateInboxConversationWithHttpInfo(id, updateInboxConversationRequest);
             return localVarResponse.Data;
         }
 
@@ -4074,12 +4347,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <returns>ApiResponse of UpdateInboxConversationResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> UpdateInboxConversationWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> UpdateInboxConversationWithHttpInfo(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest)
         {
+            // verify the required parameter 'updateInboxConversationRequest' is set
+            if (updateInboxConversationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxConversationRequest' when calling InboxApi->UpdateInboxConversation");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4100,6 +4381,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInboxConversationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4127,11 +4409,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateInboxConversationResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateInboxConversationResponse> UpdateInboxConversationAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateInboxConversationResponse> UpdateInboxConversationAsync(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = await UpdateInboxConversationWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateInboxConversationResponse> localVarResponse = await UpdateInboxConversationWithHttpInfoAsync(id, updateInboxConversationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4140,14 +4423,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateInboxConversationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateInboxConversationResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateInboxConversationResponse>> UpdateInboxConversationWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateInboxConversationResponse>> UpdateInboxConversationWithHttpInfoAsync(Guid id, UpdateInboxConversationRequest updateInboxConversationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateInboxConversationRequest' is set
+            if (updateInboxConversationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateInboxConversationRequest' when calling InboxApi->UpdateInboxConversation");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4168,6 +4459,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateInboxConversationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

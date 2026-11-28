@@ -7,12 +7,12 @@ Method | HTTP request | Description
 [**CreatePat**](PATApi.md#createpat) | **POST** /v1/pat | Mint a new PAT. Full token returned ONCE — store it on the client.
 [**DeletePat**](PATApi.md#deletepat) | **DELETE** /v1/pat/{id} | Revoke a PAT by id.
 [**GetPatScope**](PATApi.md#getpatscope) | **GET** /v1/pat/scopes | List the canonical scope catalog.
-[**ListPat**](PATApi.md#listpat) | **GET** /v1/pat | List the caller&#39;s PATs (preview only).
+[**ListPat**](PATApi.md#listpat) | **GET** /v1/pat | List the caller&#39;s PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
 
 
 <a name="createpat"></a>
 # **CreatePat**
-> CreatePatResponse CreatePat ()
+> CreatePatResponse CreatePat (CreatePatRequest createPatRequest)
 
 Mint a new PAT. Full token returned ONCE — store it on the client.
 
@@ -36,11 +36,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new PATApi(config);
+            var createPatRequest = new CreatePatRequest(); // CreatePatRequest | 
 
             try
             {
                 // Mint a new PAT. Full token returned ONCE — store it on the client.
-                CreatePatResponse result = apiInstance.CreatePat();
+                CreatePatResponse result = apiInstance.CreatePat(createPatRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPatRequest** | **CreatePatRequest**|  | 
 
 ### Return type
 
@@ -67,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -240,7 +244,7 @@ This endpoint does not need any parameter.
 # **ListPat**
 > ListPatResponse ListPat ()
 
-List the caller's PATs (preview only).
+List the caller's PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
 
 ### Example
 ```csharp
@@ -265,7 +269,7 @@ namespace Example
 
             try
             {
-                // List the caller's PATs (preview only).
+                // List the caller's PATs (preview only). Optional: q (name or prefix), scope, lastUsed (7d|30d|90d|never|stale), status (active|expired|revoked|all), page, pageSize.
                 ListPatResponse result = apiInstance.ListPat();
                 Debug.WriteLine(result);
             }

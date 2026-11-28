@@ -50,9 +50,12 @@ namespace net.crossly.Model
         /// <param name="isDefault">isDefault (required).</param>
         /// <param name="lastTestedAt">lastTestedAt.</param>
         /// <param name="lastTestOk">lastTestOk.</param>
-        /// <param name="lastTestError">lastTestError.</param>
+        /// <param name="lastTestError">A sanitized line (spec SE4), never the provider&#39;s own text..</param>
+        /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="lastUsedAt">lastUsedAt.</param>
+        /// <param name="uses">What it sends (migration 1483; store-send.ts EMAIL_SENDER_USES): lookbooks, and on request invoices, receipts. (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public ListEmailProvidersItem(string id = default(string), string provider = default(string), string providerLabel = default(string), string label = default(string), string fromEmail = default(string), string fromName = default(string), string replyTo = default(string), Dictionary<string, Object> configPreview = default(Dictionary<string, Object>), bool isDefault = default(bool), DateTime? lastTestedAt = default(DateTime?), bool? lastTestOk = default(bool?), string lastTestError = default(string), DateTime createdAt = default(DateTime))
+        public ListEmailProvidersItem(string id = default(string), string provider = default(string), string providerLabel = default(string), string label = default(string), string fromEmail = default(string), string fromName = default(string), string replyTo = default(string), Dictionary<string, Object> configPreview = default(Dictionary<string, Object>), bool isDefault = default(bool), DateTime? lastTestedAt = default(DateTime?), bool? lastTestOk = default(bool?), string lastTestError = default(string), string storefrontId = default(string), DateTime? lastUsedAt = default(DateTime?), List<string> uses = default(List<string>), DateTime createdAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -85,12 +88,19 @@ namespace net.crossly.Model
             }
             this.ConfigPreview = configPreview;
             this.IsDefault = isDefault;
+            // to ensure "uses" is required (not null)
+            if (uses == null) {
+                throw new ArgumentNullException("uses is a required property for ListEmailProvidersItem and cannot be null");
+            }
+            this.Uses = uses;
             this.CreatedAt = createdAt;
             this.FromName = fromName;
             this.ReplyTo = replyTo;
             this.LastTestedAt = lastTestedAt;
             this.LastTestOk = lastTestOk;
             this.LastTestError = lastTestError;
+            this.StorefrontId = storefrontId;
+            this.LastUsedAt = lastUsedAt;
         }
 
         /// <summary>
@@ -160,10 +170,30 @@ namespace net.crossly.Model
         public bool? LastTestOk { get; set; }
 
         /// <summary>
-        /// Gets or Sets LastTestError
+        /// A sanitized line (spec SE4), never the provider&#39;s own text.
         /// </summary>
+        /// <value>A sanitized line (spec SE4), never the provider&#39;s own text.</value>
         [DataMember(Name = "lastTestError", EmitDefaultValue = true)]
         public string LastTestError { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastUsedAt
+        /// </summary>
+        [DataMember(Name = "lastUsedAt", EmitDefaultValue = true)]
+        public DateTime? LastUsedAt { get; set; }
+
+        /// <summary>
+        /// What it sends (migration 1483; store-send.ts EMAIL_SENDER_USES): lookbooks, and on request invoices, receipts.
+        /// </summary>
+        /// <value>What it sends (migration 1483; store-send.ts EMAIL_SENDER_USES): lookbooks, and on request invoices, receipts.</value>
+        [DataMember(Name = "uses", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Uses { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -191,6 +221,9 @@ namespace net.crossly.Model
             sb.Append("  LastTestedAt: ").Append(LastTestedAt).Append("\n");
             sb.Append("  LastTestOk: ").Append(LastTestOk).Append("\n");
             sb.Append("  LastTestError: ").Append(LastTestError).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  LastUsedAt: ").Append(LastUsedAt).Append("\n");
+            sb.Append("  Uses: ").Append(Uses).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -288,6 +321,22 @@ namespace net.crossly.Model
                     this.LastTestError.Equals(input.LastTestError))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.LastUsedAt == input.LastUsedAt ||
+                    (this.LastUsedAt != null &&
+                    this.LastUsedAt.Equals(input.LastUsedAt))
+                ) && 
+                (
+                    this.Uses == input.Uses ||
+                    this.Uses != null &&
+                    input.Uses != null &&
+                    this.Uses.SequenceEqual(input.Uses)
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -347,6 +396,18 @@ namespace net.crossly.Model
                 if (this.LastTestError != null)
                 {
                     hashCode = (hashCode * 59) + this.LastTestError.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                if (this.LastUsedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastUsedAt.GetHashCode();
+                }
+                if (this.Uses != null)
+                {
+                    hashCode = (hashCode * 59) + this.Uses.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

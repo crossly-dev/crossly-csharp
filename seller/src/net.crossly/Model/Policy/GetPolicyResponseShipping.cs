@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="defaultPresetId">defaultPresetId.</param>
         /// <param name="presets">presets (required).</param>
-        public GetPolicyResponseShipping(string defaultPresetId = default(string), List<ListPolicyPresetsItem> presets = default(List<ListPolicyPresetsItem>))
+        public GetPolicyResponseShipping(string defaultPresetId = default(string), List<GetPolicyResponseShippingPresets> presets = default(List<GetPolicyResponseShippingPresets>))
         {
             // to ensure "presets" is required (not null)
             if (presets == null) {
@@ -61,7 +61,7 @@ namespace net.crossly.Model
         /// Gets or Sets Presets
         /// </summary>
         [DataMember(Name = "presets", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListPolicyPresetsItem> Presets { get; set; }
+        public List<GetPolicyResponseShippingPresets> Presets { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -41,7 +41,9 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="summary">summary (required).</param>
         /// <param name="ledger">ledger (required).</param>
-        public GetAppEarningResponse(GetAppEarningResponseSummary summary = default(GetAppEarningResponseSummary), List<GetAppEarningResponseLedger> ledger = default(List<GetAppEarningResponseLedger>))
+        /// <param name="store">store.</param>
+        /// <param name="held">True while the app has no store: earnings keep accruing and wait here, never lost. (required).</param>
+        public GetAppEarningResponse(GetAppEarningResponseSummary summary = default(GetAppEarningResponseSummary), List<GetAppEarningResponseLedger> ledger = default(List<GetAppEarningResponseLedger>), IdName2 store = default(IdName2), bool held = default(bool))
         {
             // to ensure "summary" is required (not null)
             if (summary == null) {
@@ -53,6 +55,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("ledger is a required property for GetAppEarningResponse and cannot be null");
             }
             this.Ledger = ledger;
+            this.Held = held;
+            this.Store = store;
         }
 
         /// <summary>
@@ -68,6 +72,19 @@ namespace net.crossly.Model
         public List<GetAppEarningResponseLedger> Ledger { get; set; }
 
         /// <summary>
+        /// Gets or Sets Store
+        /// </summary>
+        [DataMember(Name = "store", EmitDefaultValue = true)]
+        public IdName2 Store { get; set; }
+
+        /// <summary>
+        /// True while the app has no store: earnings keep accruing and wait here, never lost.
+        /// </summary>
+        /// <value>True while the app has no store: earnings keep accruing and wait here, never lost.</value>
+        [DataMember(Name = "held", IsRequired = true, EmitDefaultValue = true)]
+        public bool Held { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -77,6 +94,8 @@ namespace net.crossly.Model
             sb.Append("class GetAppEarningResponse {\n");
             sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  Ledger: ").Append(Ledger).Append("\n");
+            sb.Append("  Store: ").Append(Store).Append("\n");
+            sb.Append("  Held: ").Append(Held).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +141,15 @@ namespace net.crossly.Model
                     this.Ledger != null &&
                     input.Ledger != null &&
                     this.Ledger.SequenceEqual(input.Ledger)
+                ) && 
+                (
+                    this.Store == input.Store ||
+                    (this.Store != null &&
+                    this.Store.Equals(input.Store))
+                ) && 
+                (
+                    this.Held == input.Held ||
+                    this.Held.Equals(input.Held)
                 );
         }
 
@@ -142,6 +170,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Ledger.GetHashCode();
                 }
+                if (this.Store != null)
+                {
+                    hashCode = (hashCode * 59) + this.Store.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Held.GetHashCode();
                 return hashCode;
             }
         }

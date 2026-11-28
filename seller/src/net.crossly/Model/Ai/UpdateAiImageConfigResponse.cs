@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="success">success (required).</param>
         /// <param name="image">image (required).</param>
-        public UpdateAiImageConfigResponse(bool success = default(bool), GetAiStatusResponseImage image = default(GetAiStatusResponseImage))
+        public UpdateAiImageConfigResponse(bool success = default(bool), GetAiRoutingResponseImage image = default(GetAiRoutingResponseImage))
         {
             this.Success = success;
             // to ensure "image" is required (not null)
@@ -61,7 +61,7 @@ namespace net.crossly.Model
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name = "image", IsRequired = true, EmitDefaultValue = false)]
-        public GetAiStatusResponseImage Image { get; set; }
+        public GetAiRoutingResponseImage Image { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

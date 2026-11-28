@@ -33,8 +33,9 @@ namespace net.crossly.buyer.Api
         /// Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <returns>ListBuyerMonitorsItem</returns>
-        ListBuyerMonitorsItem CreateBuyerMonitor();
+        ListBuyerMonitorsItem CreateBuyerMonitor(CreateBuyerMonitorRequest createBuyerMonitorRequest);
 
         /// <summary>
         /// Watch a search, and be told when it matches.
@@ -43,8 +44,9 @@ namespace net.crossly.buyer.Api
         /// Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <returns>ApiResponse of ListBuyerMonitorsItem</returns>
-        ApiResponse<ListBuyerMonitorsItem> CreateBuyerMonitorWithHttpInfo();
+        ApiResponse<ListBuyerMonitorsItem> CreateBuyerMonitorWithHttpInfo(CreateBuyerMonitorRequest createBuyerMonitorRequest);
         /// <summary>
         /// Delete a monitor.
         /// </summary>
@@ -105,8 +107,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <returns>ListBuyerMonitorsItem</returns>
-        ListBuyerMonitorsItem UpdateBuyerMonitor(Guid id);
+        ListBuyerMonitorsItem UpdateBuyerMonitor(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest));
 
         /// <summary>
         /// Pause, resume or rename a monitor.
@@ -116,8 +119,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerMonitorsItem</returns>
-        ApiResponse<ListBuyerMonitorsItem> UpdateBuyerMonitorWithHttpInfo(Guid id);
+        ApiResponse<ListBuyerMonitorsItem> UpdateBuyerMonitorWithHttpInfo(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest));
         #endregion Synchronous Operations
     }
 
@@ -134,9 +138,10 @@ namespace net.crossly.buyer.Api
         /// Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerMonitorsItem</returns>
-        System.Threading.Tasks.Task<ListBuyerMonitorsItem> CreateBuyerMonitorAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerMonitorsItem> CreateBuyerMonitorAsync(CreateBuyerMonitorRequest createBuyerMonitorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Watch a search, and be told when it matches.
@@ -145,9 +150,10 @@ namespace net.crossly.buyer.Api
         /// Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerMonitorsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerMonitorsItem>> CreateBuyerMonitorWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerMonitorsItem>> CreateBuyerMonitorWithHttpInfoAsync(CreateBuyerMonitorRequest createBuyerMonitorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a monitor.
         /// </summary>
@@ -223,9 +229,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerMonitorsItem</returns>
-        System.Threading.Tasks.Task<ListBuyerMonitorsItem> UpdateBuyerMonitorAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerMonitorsItem> UpdateBuyerMonitorAsync(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pause, resume or rename a monitor.
@@ -235,9 +242,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerMonitorsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerMonitorsItem>> UpdateBuyerMonitorWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerMonitorsItem>> UpdateBuyerMonitorWithHttpInfoAsync(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -362,10 +370,11 @@ namespace net.crossly.buyer.Api
         /// Watch a search, and be told when it matches. Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <returns>ListBuyerMonitorsItem</returns>
-        public ListBuyerMonitorsItem CreateBuyerMonitor()
+        public ListBuyerMonitorsItem CreateBuyerMonitor(CreateBuyerMonitorRequest createBuyerMonitorRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = CreateBuyerMonitorWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = CreateBuyerMonitorWithHttpInfo(createBuyerMonitorRequest);
             return localVarResponse.Data;
         }
 
@@ -373,12 +382,20 @@ namespace net.crossly.buyer.Api
         /// Watch a search, and be told when it matches. Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <returns>ApiResponse of ListBuyerMonitorsItem</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> CreateBuyerMonitorWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> CreateBuyerMonitorWithHttpInfo(CreateBuyerMonitorRequest createBuyerMonitorRequest)
         {
+            // verify the required parameter 'createBuyerMonitorRequest' is set
+            if (createBuyerMonitorRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerMonitorRequest' when calling BuyerMonitorsApi->CreateBuyerMonitor");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -398,6 +415,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerMonitorRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -424,11 +442,12 @@ namespace net.crossly.buyer.Api
         /// Watch a search, and be told when it matches. Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerMonitorsItem</returns>
-        public async System.Threading.Tasks.Task<ListBuyerMonitorsItem> CreateBuyerMonitorAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerMonitorsItem> CreateBuyerMonitorAsync(CreateBuyerMonitorRequest createBuyerMonitorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = await CreateBuyerMonitorWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = await CreateBuyerMonitorWithHttpInfoAsync(createBuyerMonitorRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -436,14 +455,22 @@ namespace net.crossly.buyer.Api
         /// Watch a search, and be told when it matches. Works immediately — there is no review step. The signing secret is returned ONCE, here; it is never readable again. The first sweep SEEDS without firing: a restock alert created while the item is already in stock has not observed a restock, and a new-listing monitor would otherwise deliver the entire back catalogue.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerMonitorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerMonitorsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem>> CreateBuyerMonitorWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem>> CreateBuyerMonitorWithHttpInfoAsync(CreateBuyerMonitorRequest createBuyerMonitorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerMonitorRequest' is set
+            if (createBuyerMonitorRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerMonitorRequest' when calling BuyerMonitorsApi->CreateBuyerMonitor");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -463,6 +490,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerMonitorRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -885,10 +913,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <returns>ListBuyerMonitorsItem</returns>
-        public ListBuyerMonitorsItem UpdateBuyerMonitor(Guid id)
+        public ListBuyerMonitorsItem UpdateBuyerMonitor(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = UpdateBuyerMonitorWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = UpdateBuyerMonitorWithHttpInfo(id, updateBuyerMonitorRequest);
             return localVarResponse.Data;
         }
 
@@ -897,12 +926,14 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerMonitorsItem</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> UpdateBuyerMonitorWithHttpInfo(Guid id)
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> UpdateBuyerMonitorWithHttpInfo(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -923,6 +954,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerMonitorRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -950,11 +982,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerMonitorsItem</returns>
-        public async System.Threading.Tasks.Task<ListBuyerMonitorsItem> UpdateBuyerMonitorAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerMonitorsItem> UpdateBuyerMonitorAsync(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = await UpdateBuyerMonitorWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem> localVarResponse = await UpdateBuyerMonitorWithHttpInfoAsync(id, updateBuyerMonitorRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -963,14 +996,16 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBuyerMonitorRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerMonitorsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem>> UpdateBuyerMonitorWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerMonitorsItem>> UpdateBuyerMonitorWithHttpInfoAsync(Guid id, UpdateBuyerMonitorRequest updateBuyerMonitorRequest = default(UpdateBuyerMonitorRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -991,6 +1026,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBuyerMonitorRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required

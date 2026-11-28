@@ -1738,7 +1738,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketblock"></a>
 # **CreateVaultMarketBlock**
-> ListVaultMarketBlocksItem CreateVaultMarketBlock ()
+> ListVaultMarketBlocksItem CreateVaultMarketBlock (CreateVaultMarketBlockRequest createVaultMarketBlockRequest)
 
 Place a block buy for an entity: one order booked to the first sub-account in `plan` (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share's cash moves between the entity's own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
 
@@ -1762,11 +1762,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketBlockRequest = new CreateVaultMarketBlockRequest(); // CreateVaultMarketBlockRequest | 
 
             try
             {
                 // Place a block buy for an entity: one order booked to the first sub-account in `plan` (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share's cash moves between the entity's own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
-                ListVaultMarketBlocksItem result = apiInstance.CreateVaultMarketBlock();
+                ListVaultMarketBlocksItem result = apiInstance.CreateVaultMarketBlock(createVaultMarketBlockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1781,7 +1782,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketBlockRequest** | **CreateVaultMarketBlockRequest**|  | 
 
 ### Return type
 
@@ -1793,7 +1797,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2342,7 +2346,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketdcmlink"></a>
 # **CreateVaultMarketDcmLink**
-> CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink ()
+> CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink (CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest)
 
 Link a partner exchange account to your account (or to a firm sub-account you manage, `subaccountId`) so Crossly can show its positions: `accountRef` (the account id there) and `code` (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
 
@@ -2366,11 +2370,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketDcmLinkRequest = new CreateVaultMarketDcmLinkRequest(); // CreateVaultMarketDcmLinkRequest | 
 
             try
             {
                 // Link a partner exchange account to your account (or to a firm sub-account you manage, `subaccountId`) so Crossly can show its positions: `accountRef` (the account id there) and `code` (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
-                CreateVaultMarketDcmLinkResponse result = apiInstance.CreateVaultMarketDcmLink();
+                CreateVaultMarketDcmLinkResponse result = apiInstance.CreateVaultMarketDcmLink(createVaultMarketDcmLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2385,7 +2390,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketDcmLinkRequest** | **CreateVaultMarketDcmLinkRequest**|  | 
 
 ### Return type
 
@@ -2397,7 +2405,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2416,7 +2424,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketdcmunlink"></a>
 # **CreateVaultMarketDcmUnlink**
-> CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink ()
+> CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink (CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = null)
 
 Unlink the partner exchange account from your account (or the firm sub-account `subaccountId`): Crossly stops reading it and its hedges leave portfolio margin.
 
@@ -2440,11 +2448,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketDcmUnlinkRequest = new CreateVaultMarketDcmUnlinkRequest(); // CreateVaultMarketDcmUnlinkRequest |  (optional) 
 
             try
             {
                 // Unlink the partner exchange account from your account (or the firm sub-account `subaccountId`): Crossly stops reading it and its hedges leave portfolio margin.
-                CreateVaultMarketDcmUnlinkResponse result = apiInstance.CreateVaultMarketDcmUnlink();
+                CreateVaultMarketDcmUnlinkResponse result = apiInstance.CreateVaultMarketDcmUnlink(createVaultMarketDcmUnlinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2459,7 +2468,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketDcmUnlinkRequest** | **CreateVaultMarketDcmUnlinkRequest**|  | [optional] 
 
 ### Return type
 
@@ -2471,7 +2483,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3012,7 +3024,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketentity"></a>
 # **CreateVaultMarketEntity**
-> CreateVaultMarketEntityResponse CreateVaultMarketEntity ()
+> CreateVaultMarketEntityResponse CreateVaultMarketEntity (CreateVaultMarketEntityRequest createVaultMarketEntityRequest)
 
 Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
 
@@ -3036,11 +3048,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketEntityRequest = new CreateVaultMarketEntityRequest(); // CreateVaultMarketEntityRequest | 
 
             try
             {
                 // Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
-                CreateVaultMarketEntityResponse result = apiInstance.CreateVaultMarketEntity();
+                CreateVaultMarketEntityResponse result = apiInstance.CreateVaultMarketEntity(createVaultMarketEntityRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3055,7 +3068,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketEntityRequest** | **CreateVaultMarketEntityRequest**|  | 
 
 ### Return type
 
@@ -3067,7 +3083,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3164,7 +3180,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketentityhalt"></a>
 # **CreateVaultMarketEntityHalt**
-> CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt (string id)
+> CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt (string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest)
 
 Admin or risk: the firm kill switch. Halts the entity (no `subaccountId`) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
 
@@ -3189,11 +3205,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketEntityHaltRequest = new CreateVaultMarketEntityHaltRequest(); // CreateVaultMarketEntityHaltRequest | 
 
             try
             {
                 // Admin or risk: the firm kill switch. Halts the entity (no `subaccountId`) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
-                CreateVaultMarketEntityHaltResponse result = apiInstance.CreateVaultMarketEntityHalt(id);
+                CreateVaultMarketEntityHaltResponse result = apiInstance.CreateVaultMarketEntityHalt(id, createVaultMarketEntityHaltRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3212,6 +3229,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketEntityHaltRequest** | **CreateVaultMarketEntityHaltRequest**|  | 
 
 ### Return type
 
@@ -3223,7 +3241,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3322,7 +3340,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketentityinvitation"></a>
 # **CreateVaultMarketEntityInvitation**
-> GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation (string id)
+> GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation (string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest)
 
 Accept or decline an invitation (`accept`). Trading, admin and risk roles need a verified ID to accept.
 
@@ -3347,11 +3365,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createWorldSpaceRequestByUserIdRequest = new CreateWorldSpaceRequestByUserIdRequest(); // CreateWorldSpaceRequestByUserIdRequest | 
 
             try
             {
                 // Accept or decline an invitation (`accept`). Trading, admin and risk roles need a verified ID to accept.
-                GetVaultMarketEntityResponse result = apiInstance.CreateVaultMarketEntityInvitation(id);
+                GetVaultMarketEntityResponse result = apiInstance.CreateVaultMarketEntityInvitation(id, createWorldSpaceRequestByUserIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3370,6 +3389,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldSpaceRequestByUserIdRequest** | **CreateWorldSpaceRequestByUserIdRequest**|  | 
 
 ### Return type
 
@@ -3381,7 +3401,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3478,7 +3498,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketentitymember"></a>
 # **CreateVaultMarketEntityMember**
-> GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember (string id)
+> GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember (string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest)
 
 Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
 
@@ -3503,11 +3523,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketEntityMemberRequest = new CreateVaultMarketEntityMemberRequest(); // CreateVaultMarketEntityMemberRequest | 
 
             try
             {
                 // Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
-                GetVaultMarketEntityByIdResponse result = apiInstance.CreateVaultMarketEntityMember(id);
+                GetVaultMarketEntityByIdResponse result = apiInstance.CreateVaultMarketEntityMember(id, createVaultMarketEntityMemberRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3526,6 +3547,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketEntityMemberRequest** | **CreateVaultMarketEntityMemberRequest**|  | 
 
 ### Return type
 
@@ -3537,7 +3559,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3556,7 +3578,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketentitysubaccount"></a>
 # **CreateVaultMarketEntitySubaccount**
-> GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount (string id)
+> GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount (string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest)
 
 Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity's caps.
 
@@ -3581,11 +3603,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketEntitySubaccountRequest = new CreateVaultMarketEntitySubaccountRequest(); // CreateVaultMarketEntitySubaccountRequest | 
 
             try
             {
                 // Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity's caps.
-                GetVaultMarketEntityByIdResponse result = apiInstance.CreateVaultMarketEntitySubaccount(id);
+                GetVaultMarketEntityByIdResponse result = apiInstance.CreateVaultMarketEntitySubaccount(id, createVaultMarketEntitySubaccountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3604,6 +3627,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketEntitySubaccountRequest** | **CreateVaultMarketEntitySubaccountRequest**|  | 
 
 ### Return type
 
@@ -3615,7 +3639,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4096,7 +4120,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketgradetovault"></a>
 # **CreateVaultMarketGradeToVault**
-> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault ()
+> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault (CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = null)
 
 Start Grade to Vault on one item (`source` inventory or vault_unit). With `runId` the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
 
@@ -4120,11 +4144,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketGradeToVaultRequest = new CreateVaultMarketGradeToVaultRequest(); // CreateVaultMarketGradeToVaultRequest |  (optional) 
 
             try
             {
                 // Start Grade to Vault on one item (`source` inventory or vault_unit). With `runId` the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
-                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVault();
+                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVault(createVaultMarketGradeToVaultRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4139,7 +4164,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketGradeToVaultRequest** | **CreateVaultMarketGradeToVaultRequest**|  | [optional] 
 
 ### Return type
 
@@ -4151,7 +4179,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4170,7 +4198,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketgradetovaultbook"></a>
 # **CreateVaultMarketGradeToVaultBook**
-> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook (string id)
+> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook (string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = null)
 
 Book (or re-book) the grading slot of a flow still at \"picked\". Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
 
@@ -4195,11 +4223,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketGradeToVaultBookRequest = new CreateVaultMarketGradeToVaultBookRequest(); // CreateVaultMarketGradeToVaultBookRequest |  (optional) 
 
             try
             {
                 // Book (or re-book) the grading slot of a flow still at \"picked\". Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
-                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultBook(id);
+                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultBook(id, createVaultMarketGradeToVaultBookRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4218,6 +4247,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketGradeToVaultBookRequest** | **CreateVaultMarketGradeToVaultBookRequest**|  | [optional] 
 
 ### Return type
 
@@ -4229,7 +4259,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4404,7 +4434,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketgradetovaultlist"></a>
 # **CreateVaultMarketGradeToVaultList**
-> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList (string id)
+> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList (string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = null)
 
 Confirm the price for the grade the unit came back with (`confirm: true`, `gradeKey` must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
 
@@ -4429,11 +4459,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketGradeToVaultListRequest = new CreateVaultMarketGradeToVaultListRequest(); // CreateVaultMarketGradeToVaultListRequest |  (optional) 
 
             try
             {
                 // Confirm the price for the grade the unit came back with (`confirm: true`, `gradeKey` must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
-                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultList(id);
+                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultList(id, createVaultMarketGradeToVaultListRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4452,6 +4483,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketGradeToVaultListRequest** | **CreateVaultMarketGradeToVaultListRequest**|  | [optional] 
 
 ### Return type
 
@@ -4463,7 +4495,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4482,7 +4514,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketgradetovaultshipped"></a>
 # **CreateVaultMarketGradeToVaultShipped**
-> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped (string id)
+> ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped (string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = null)
 
 You mailed the card to the grading hub (an inventory card, once its run locked).
 
@@ -4507,11 +4539,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createGradingSubmissionShippedRequest = new CreateGradingSubmissionShippedRequest(); // CreateGradingSubmissionShippedRequest |  (optional) 
 
             try
             {
                 // You mailed the card to the grading hub (an inventory card, once its run locked).
-                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultShipped(id);
+                ListVaultMarketGradeToVaultItem result = apiInstance.CreateVaultMarketGradeToVaultShipped(id, createGradingSubmissionShippedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4530,6 +4563,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGradingSubmissionShippedRequest** | **CreateGradingSubmissionShippedRequest**|  | [optional] 
 
 ### Return type
 
@@ -4541,7 +4575,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7630,7 +7664,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketoptioncombo"></a>
 # **CreateVaultMarketOptionCombo**
-> CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo ()
+> CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo (CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest)
 
 Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
 
@@ -7654,11 +7688,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketOptionComboRequest = new CreateVaultMarketOptionComboRequest(); // CreateVaultMarketOptionComboRequest | 
 
             try
             {
                 // Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs' own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
-                CreateVaultMarketOptionComboResponse result = apiInstance.CreateVaultMarketOptionCombo();
+                CreateVaultMarketOptionComboResponse result = apiInstance.CreateVaultMarketOptionCombo(createVaultMarketOptionComboRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7673,7 +7708,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketOptionComboRequest** | **CreateVaultMarketOptionComboRequest**|  | 
 
 ### Return type
 
@@ -7685,7 +7723,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8168,7 +8206,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketoptioncoveredcall"></a>
 # **CreateVaultMarketOptionCoveredCall**
-> CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall ()
+> CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall (CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest)
 
 Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
 
@@ -8192,11 +8230,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketOptionCoveredCallRequest = new CreateVaultMarketOptionCoveredCallRequest(); // CreateVaultMarketOptionCoveredCallRequest | 
 
             try
             {
                 // Write a covered call: lock a stored vault unit (`vaultItemId`) as collateral and sell up to one call on its own key (`contractId`, `quantity` <= 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
-                CreateVaultMarketOptionCoveredCallResponse result = apiInstance.CreateVaultMarketOptionCoveredCall();
+                CreateVaultMarketOptionCoveredCallResponse result = apiInstance.CreateVaultMarketOptionCoveredCall(createVaultMarketOptionCoveredCallRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8211,7 +8250,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketOptionCoveredCallRequest** | **CreateVaultMarketOptionCoveredCallRequest**|  | 
 
 ### Return type
 
@@ -8223,7 +8265,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8542,7 +8584,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketoptionorder"></a>
 # **CreateVaultMarketOptionOrder**
-> CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder ()
+> CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder (CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest)
 
 Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
 
@@ -8566,11 +8608,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketOptionOrderRequest = new CreateVaultMarketOptionOrderRequest(); // CreateVaultMarketOptionOrderRequest | 
 
             try
             {
                 // Place an options order: `contractId`, `side`, `quantity` in contracts (three decimals), a `priceCents` or an `iv` (`quoteMode`), `tif` gtc / gtd (with `expiresAt`) / ioc, `postOnly`. Idempotent on `clientOrderId`. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its `termsVersion`). `subaccountId` trades for a firm sub-account you may trade.
-                CreateVaultMarketOptionOrderResponse result = apiInstance.CreateVaultMarketOptionOrder();
+                CreateVaultMarketOptionOrderResponse result = apiInstance.CreateVaultMarketOptionOrder(createVaultMarketOptionOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8585,7 +8628,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketOptionOrderRequest** | **CreateVaultMarketOptionOrderRequest**|  | 
 
 ### Return type
 
@@ -8597,7 +8643,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8994,7 +9040,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketoptionquote"></a>
 # **CreateVaultMarketOptionQuote**
-> CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote ()
+> CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote (CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest)
 
 Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
 
@@ -9018,11 +9064,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketOptionQuoteRequest = new CreateVaultMarketOptionQuoteRequest(); // CreateVaultMarketOptionQuoteRequest | 
 
             try
             {
                 // Price a ticket without placing it: give a price per contract or an implied vol (`quoteMode`), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
-                CreateVaultMarketOptionQuoteResponse result = apiInstance.CreateVaultMarketOptionQuote();
+                CreateVaultMarketOptionQuoteResponse result = apiInstance.CreateVaultMarketOptionQuote(createVaultMarketOptionQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9037,7 +9084,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketOptionQuoteRequest** | **CreateVaultMarketOptionQuoteRequest**|  | 
 
 ### Return type
 
@@ -9049,7 +9099,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9454,7 +9504,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketoptionroll"></a>
 # **CreateVaultMarketOptionRoll**
-> CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll ()
+> CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll (CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest)
 
 Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
 
@@ -9478,11 +9528,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketOptionRollRequest = new CreateVaultMarketOptionRollRequest(); // CreateVaultMarketOptionRollRequest | 
 
             try
             {
                 // Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. `practice` rolls a practice position.
-                CreateVaultMarketOptionRollResponse result = apiInstance.CreateVaultMarketOptionRoll();
+                CreateVaultMarketOptionRollResponse result = apiInstance.CreateVaultMarketOptionRoll(createVaultMarketOptionRollRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9497,7 +9548,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketOptionRollRequest** | **CreateVaultMarketOptionRollRequest**|  | 
 
 ### Return type
 
@@ -9509,7 +9563,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9758,7 +9812,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketp2ploanrefiauction"></a>
 # **CreateVaultMarketP2pLoanRefiAuction**
-> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction (string id)
+> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction (string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = null)
 
 Borrower: look for a cheaper lender. A refinancing auction runs for `hours` (1-72, default 24); the rate a new lender gets climbs from `startAprBps` (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
 
@@ -9783,11 +9837,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketP2pLoanRefiAuctionRequest = new CreateVaultMarketP2pLoanRefiAuctionRequest(); // CreateVaultMarketP2pLoanRefiAuctionRequest |  (optional) 
 
             try
             {
                 // Borrower: look for a cheaper lender. A refinancing auction runs for `hours` (1-72, default 24); the rate a new lender gets climbs from `startAprBps` (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
-                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRefiAuction(id);
+                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRefiAuction(id, createVaultMarketP2pLoanRefiAuctionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9806,6 +9861,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketP2pLoanRefiAuctionRequest** | **CreateVaultMarketP2pLoanRefiAuctionRequest**|  | [optional] 
 
 ### Return type
 
@@ -9817,7 +9873,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9914,7 +9970,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketp2ploanrefinance"></a>
 # **CreateVaultMarketP2pLoanRefinance**
-> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance (string id)
+> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance (string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = null)
 
 Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above `maxPayoffCents`), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass `requestId` to make a retry safe.
 
@@ -9939,11 +9995,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketP2pLoanRefinanceRequest = new CreateVaultMarketP2pLoanRefinanceRequest(); // CreateVaultMarketP2pLoanRefinanceRequest |  (optional) 
 
             try
             {
                 // Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above `maxPayoffCents`), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass `requestId` to make a retry safe.
-                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRefinance(id);
+                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRefinance(id, createVaultMarketP2pLoanRefinanceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9962,6 +10019,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketP2pLoanRefinanceRequest** | **CreateVaultMarketP2pLoanRefinanceRequest**|  | [optional] 
 
 ### Return type
 
@@ -9973,7 +10031,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9992,7 +10050,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketp2ploanrepay"></a>
 # **CreateVaultMarketP2pLoanRepay**
-> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay (string id)
+> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay (string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = null)
 
 Borrower: repay from your custodian account to the lender. Without `amountCents`, in full (principal plus interest to the second; the unit is free once the custodian has it). With `amountCents` below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass `requestId` to make a retry safe.
 
@@ -10017,11 +10075,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketP2pLoanRepayRequest = new CreateVaultMarketP2pLoanRepayRequest(); // CreateVaultMarketP2pLoanRepayRequest |  (optional) 
 
             try
             {
                 // Borrower: repay from your custodian account to the lender. Without `amountCents`, in full (principal plus interest to the second; the unit is free once the custodian has it). With `amountCents` below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass `requestId` to make a retry safe.
-                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRepay(id);
+                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pLoanRepay(id, createVaultMarketP2pLoanRepayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10040,6 +10099,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketP2pLoanRepayRequest** | **CreateVaultMarketP2pLoanRepayRequest**|  | [optional] 
 
 ### Return type
 
@@ -10051,7 +10111,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10070,7 +10130,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketp2poffer"></a>
 # **CreateVaultMarketP2pOffer**
-> ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer ()
+> ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer (CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest)
 
 Offer to lend: `principalCents` per loan at `aprBps` a year against an item (`bookKey`) or one unit (`vaultItemId`), for up to `maxLoans` loans, lasting `expiresInDays` (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
 
@@ -10094,11 +10154,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketP2pOfferRequest = new CreateVaultMarketP2pOfferRequest(); // CreateVaultMarketP2pOfferRequest | 
 
             try
             {
                 // Offer to lend: `principalCents` per loan at `aprBps` a year against an item (`bookKey`) or one unit (`vaultItemId`), for up to `maxLoans` loans, lasting `expiresInDays` (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
-                ListVaultMarketP2pOffersItem result = apiInstance.CreateVaultMarketP2pOffer();
+                ListVaultMarketP2pOffersItem result = apiInstance.CreateVaultMarketP2pOffer(createVaultMarketP2pOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10113,7 +10174,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketP2pOfferRequest** | **CreateVaultMarketP2pOfferRequest**|  | 
 
 ### Return type
 
@@ -10125,7 +10189,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10222,7 +10286,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketp2poffertake"></a>
 # **CreateVaultMarketP2pOfferTake**
-> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake (string id)
+> GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake (string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest)
 
 Borrow: take an offer against one of your stored vault units (`vaultItemId`). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass `requestId` to make a retry safe.
 
@@ -10247,11 +10311,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketP2pOfferTakeRequest = new CreateVaultMarketP2pOfferTakeRequest(); // CreateVaultMarketP2pOfferTakeRequest | 
 
             try
             {
                 // Borrow: take an offer against one of your stored vault units (`vaultItemId`). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass `requestId` to make a retry safe.
-                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pOfferTake(id);
+                GetVaultMarketP2pLoanResponse result = apiInstance.CreateVaultMarketP2pOfferTake(id, createVaultMarketP2pOfferTakeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10270,6 +10335,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketP2pOfferTakeRequest** | **CreateVaultMarketP2pOfferTakeRequest**|  | 
 
 ### Return type
 
@@ -10281,7 +10347,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10900,7 +10966,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketportfoliomarginenroll"></a>
 # **CreateVaultMarketPortfolioMarginEnroll**
-> CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll ()
+> CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll (CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
 
 Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
 
@@ -10924,11 +10990,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketPortfolioMarginLeaveRequest = new CreateVaultMarketPortfolioMarginLeaveRequest(); // CreateVaultMarketPortfolioMarginLeaveRequest | 
 
             try
             {
                 // Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
-                CreateVaultMarketPortfolioMarginEnrollResponse result = apiInstance.CreateVaultMarketPortfolioMarginEnroll();
+                CreateVaultMarketPortfolioMarginEnrollResponse result = apiInstance.CreateVaultMarketPortfolioMarginEnroll(createVaultMarketPortfolioMarginLeaveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10943,7 +11010,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketPortfolioMarginLeaveRequest** | **CreateVaultMarketPortfolioMarginLeaveRequest**|  | 
 
 ### Return type
 
@@ -10955,7 +11025,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10974,7 +11044,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketportfoliomarginleave"></a>
 # **CreateVaultMarketPortfolioMarginLeave**
-> CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave ()
+> CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave (CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
 
 Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
 
@@ -10998,11 +11068,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketPortfolioMarginLeaveRequest = new CreateVaultMarketPortfolioMarginLeaveRequest(); // CreateVaultMarketPortfolioMarginLeaveRequest | 
 
             try
             {
                 // Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
-                CreateVaultMarketPortfolioMarginLeaveResponse result = apiInstance.CreateVaultMarketPortfolioMarginLeave();
+                CreateVaultMarketPortfolioMarginLeaveResponse result = apiInstance.CreateVaultMarketPortfolioMarginLeave(createVaultMarketPortfolioMarginLeaveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -11017,7 +11088,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketPortfolioMarginLeaveRequest** | **CreateVaultMarketPortfolioMarginLeaveRequest**|  | 
 
 ### Return type
 
@@ -11029,7 +11103,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -13916,7 +13990,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketproorder"></a>
 # **CreateVaultMarketProOrder**
-> CreateVaultMarketProOrderResponse CreateVaultMarketProOrder ()
+> CreateVaultMarketProOrderResponse CreateVaultMarketProOrder (CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest)
 
 Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg `displayQuantity`; a TWAP or VWAP algo over a window. Idempotent on `clientOrderId`. `subaccountId` trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
 
@@ -13940,11 +14014,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketProOrderRequest = new CreateVaultMarketProOrderRequest(); // CreateVaultMarketProOrderRequest | 
 
             try
             {
                 // Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg `displayQuantity`; a TWAP or VWAP algo over a window. Idempotent on `clientOrderId`. `subaccountId` trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
-                CreateVaultMarketProOrderResponse result = apiInstance.CreateVaultMarketProOrder();
+                CreateVaultMarketProOrderResponse result = apiInstance.CreateVaultMarketProOrder(createVaultMarketProOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -13959,7 +14034,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketProOrderRequest** | **CreateVaultMarketProOrderRequest**|  | 
 
 ### Return type
 
@@ -13971,7 +14049,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -14068,7 +14146,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketproordercancelall"></a>
 # **CreateVaultMarketProOrderCancelAll**
-> CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll ()
+> CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll (CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = null)
 
 Cancel every open order, or every one on a book key. Returns `{ cancelled }`.
 
@@ -14092,11 +14170,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketProOrderCancelAllRequest = new CreateVaultMarketProOrderCancelAllRequest(); // CreateVaultMarketProOrderCancelAllRequest |  (optional) 
 
             try
             {
                 // Cancel every open order, or every one on a book key. Returns `{ cancelled }`.
-                CreateVaultMarketProOrderCancelAllResponse result = apiInstance.CreateVaultMarketProOrderCancelAll();
+                CreateVaultMarketProOrderCancelAllResponse result = apiInstance.CreateVaultMarketProOrderCancelAll(createVaultMarketProOrderCancelAllRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -14111,7 +14190,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketProOrderCancelAllRequest** | **CreateVaultMarketProOrderCancelAllRequest**|  | [optional] 
 
 ### Return type
 
@@ -14123,7 +14205,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -15210,7 +15292,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareautoinvest"></a>
 # **CreateVaultMarketShareAutoInvest**
-> ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest ()
+> ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest (CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest)
 
 Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
 
@@ -15234,11 +15316,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketShareAutoInvestRequest = new CreateVaultMarketShareAutoInvestRequest(); // CreateVaultMarketShareAutoInvestRequest | 
 
             try
             {
                 // Start auto-invest: `amountCents` ($5-$10,000) `every` week or month into `seriesIds` (equal weights) or `targets` (seriesId + weightBps summing to 10,000) or a `basketId` (with `rebalance` to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to `maxPremiumBps` over the indicative value. `practice` runs it on paper.
-                ListVaultMarketShareAutoInvestItem result = apiInstance.CreateVaultMarketShareAutoInvest();
+                ListVaultMarketShareAutoInvestItem result = apiInstance.CreateVaultMarketShareAutoInvest(createVaultMarketShareAutoInvestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -15253,7 +15336,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketShareAutoInvestRequest** | **CreateVaultMarketShareAutoInvestRequest**|  | 
 
 ### Return type
 
@@ -15265,7 +15351,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -15362,7 +15448,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareautoinvestupdate"></a>
 # **CreateVaultMarketShareAutoInvestUpdate**
-> ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate (string id)
+> ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate (string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest)
 
 Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
 
@@ -15387,11 +15473,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareAutoInvestUpdateRequest = new CreateVaultMarketShareAutoInvestUpdateRequest(); // CreateVaultMarketShareAutoInvestUpdateRequest | 
 
             try
             {
                 // Change a plan (amount, cadence, series or weights, cap, rebalance) or set its `status` active, paused or cancelled.
-                ListVaultMarketShareAutoInvestItem result = apiInstance.CreateVaultMarketShareAutoInvestUpdate(id);
+                ListVaultMarketShareAutoInvestItem result = apiInstance.CreateVaultMarketShareAutoInvestUpdate(id, createVaultMarketShareAutoInvestUpdateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -15410,6 +15497,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareAutoInvestUpdateRequest** | **CreateVaultMarketShareAutoInvestUpdateRequest**|  | 
 
 ### Return type
 
@@ -15421,7 +15509,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -15440,7 +15528,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketsharebasketbuy"></a>
 # **CreateVaultMarketShareBasketBuy**
-> CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy (string id)
+> CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy (string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest)
 
 Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
 
@@ -15465,11 +15553,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareBasketBuyRequest = new CreateVaultMarketShareBasketBuyRequest(); // CreateVaultMarketShareBasketBuyRequest | 
 
             try
             {
                 // Buy a basket once: `amountCents` split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to `maxPremiumBps`). `practice` buys on paper.
-                CreateVaultMarketShareBasketBuyResponse result = apiInstance.CreateVaultMarketShareBasketBuy(id);
+                CreateVaultMarketShareBasketBuyResponse result = apiInstance.CreateVaultMarketShareBasketBuy(id, createVaultMarketShareBasketBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -15488,6 +15577,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareBasketBuyRequest** | **CreateVaultMarketShareBasketBuyRequest**|  | 
 
 ### Return type
 
@@ -15499,7 +15589,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -15596,7 +15686,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketsharebuyoutvote"></a>
 # **CreateVaultMarketShareBuyoutVote**
-> CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote (string id)
+> CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote (string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest)
 
 Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
 
@@ -15621,11 +15711,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareBuyoutVoteRequest = new CreateVaultMarketShareBuyoutVoteRequest(); // CreateVaultMarketShareBuyoutVoteRequest | 
 
             try
             {
                 // Vote `yes` or `no` on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
-                CreateVaultMarketShareBuyoutFundResponse result = apiInstance.CreateVaultMarketShareBuyoutVote(id);
+                CreateVaultMarketShareBuyoutFundResponse result = apiInstance.CreateVaultMarketShareBuyoutVote(id, createVaultMarketShareBuyoutVoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -15644,6 +15735,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareBuyoutVoteRequest** | **CreateVaultMarketShareBuyoutVoteRequest**|  | 
 
 ### Return type
 
@@ -15655,7 +15747,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16060,7 +16152,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareinvestor"></a>
 # **CreateVaultMarketShareInvestor**
-> GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor ()
+> GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor (CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest)
 
 Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
 
@@ -16084,11 +16176,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketShareInvestorRequest = new CreateVaultMarketShareInvestorRequest(); // CreateVaultMarketShareInvestorRequest | 
 
             try
             {
                 // Open or update your investor account at the venue: accept the current investor terms (`acceptTerms`), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
-                GetVaultMarketShareInvestorResponse result = apiInstance.CreateVaultMarketShareInvestor();
+                GetVaultMarketShareInvestorResponse result = apiInstance.CreateVaultMarketShareInvestor(createVaultMarketShareInvestorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16103,7 +16196,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketShareInvestorRequest** | **CreateVaultMarketShareInvestorRequest**|  | 
 
 ### Return type
 
@@ -16115,7 +16211,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16364,7 +16460,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketsharepaperseryorder"></a>
 # **CreateVaultMarketSharePaperSeryOrder**
-> CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder (string id)
+> CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder (string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
 
 Place a practice order (play money) with the same rules as the real share book.
 
@@ -16389,11 +16485,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryOrderRequest = new CreateVaultMarketShareSeryOrderRequest(); // CreateVaultMarketShareSeryOrderRequest | 
 
             try
             {
                 // Place a practice order (play money) with the same rules as the real share book.
-                CreateVaultMarketSharePaperSeryOrderResponse result = apiInstance.CreateVaultMarketSharePaperSeryOrder(id);
+                CreateVaultMarketSharePaperSeryOrderResponse result = apiInstance.CreateVaultMarketSharePaperSeryOrder(id, createVaultMarketShareSeryOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16412,6 +16509,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryOrderRequest** | **CreateVaultMarketShareSeryOrderRequest**|  | 
 
 ### Return type
 
@@ -16423,7 +16521,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16442,7 +16540,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketsharepaperserysubscribe"></a>
 # **CreateVaultMarketSharePaperSerySubscribe**
-> GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe (string id)
+> GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe (string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest)
 
 Subscribe with play money to a practice series’ offering.
 
@@ -16467,11 +16565,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketSharePaperSerySubscribeRequest = new CreateVaultMarketSharePaperSerySubscribeRequest(); // CreateVaultMarketSharePaperSerySubscribeRequest | 
 
             try
             {
                 // Subscribe with play money to a practice series’ offering.
-                GetVaultMarketSharePaperResponse result = apiInstance.CreateVaultMarketSharePaperSerySubscribe(id);
+                GetVaultMarketSharePaperResponse result = apiInstance.CreateVaultMarketSharePaperSerySubscribe(id, createVaultMarketSharePaperSerySubscribeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16490,6 +16589,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketSharePaperSerySubscribeRequest** | **CreateVaultMarketSharePaperSerySubscribeRequest**|  | 
 
 ### Return type
 
@@ -16501,7 +16601,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16520,7 +16620,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareroomhide"></a>
 # **CreateVaultMarketShareRoomHide**
-> CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide (string id)
+> CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide (string id, ReasonRequest reasonRequest)
 
 Take down one of your own holder-room posts (`reason`).
 
@@ -16545,11 +16645,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var reasonRequest = new ReasonRequest(); // ReasonRequest | 
 
             try
             {
                 // Take down one of your own holder-room posts (`reason`).
-                CreateVaultMarketShareRoomHideResponse result = apiInstance.CreateVaultMarketShareRoomHide(id);
+                CreateVaultMarketShareRoomHideResponse result = apiInstance.CreateVaultMarketShareRoomHide(id, reasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16568,6 +16669,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **reasonRequest** | **ReasonRequest**|  | 
 
 ### Return type
 
@@ -16579,7 +16681,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16598,7 +16700,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketsharesery"></a>
 # **CreateVaultMarketShareSery**
-> ListVaultMarketShareSeriesItem CreateVaultMarketShareSery ()
+> ListVaultMarketShareSeriesItem CreateVaultMarketShareSery (CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest)
 
 Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
 
@@ -16622,11 +16724,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketShareSeryRequest = new CreateVaultMarketShareSeryRequest(); // CreateVaultMarketShareSeryRequest | 
 
             try
             {
                 // Propose a Vault Shares series for one of your units (`vaultItemId`), keeping `retainedShares` (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass `requestId` to make a retry safe.
-                ListVaultMarketShareSeriesItem result = apiInstance.CreateVaultMarketShareSery();
+                ListVaultMarketShareSeriesItem result = apiInstance.CreateVaultMarketShareSery(createVaultMarketShareSeryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16641,7 +16744,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketShareSeryRequest** | **CreateVaultMarketShareSeryRequest**|  | 
 
 ### Return type
 
@@ -16653,7 +16759,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16672,7 +16778,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketshareserybuyout"></a>
 # **CreateVaultMarketShareSeryBuyout**
-> CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout (string id)
+> CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout (string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest)
 
 Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
 
@@ -16697,11 +16803,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryBuyoutRequest = new CreateVaultMarketShareSeryBuyoutRequest(); // CreateVaultMarketShareSeryBuyoutRequest | 
 
             try
             {
                 // Bid for the whole item (`offerCents`, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
-                CreateVaultMarketShareBuyoutFundResponse result = apiInstance.CreateVaultMarketShareSeryBuyout(id);
+                CreateVaultMarketShareBuyoutFundResponse result = apiInstance.CreateVaultMarketShareSeryBuyout(id, createVaultMarketShareSeryBuyoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16720,6 +16827,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryBuyoutRequest** | **CreateVaultMarketShareSeryBuyoutRequest**|  | 
 
 ### Return type
 
@@ -16731,7 +16839,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16750,7 +16858,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareserygift"></a>
 # **CreateVaultMarketShareSeryGift**
-> ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift (string id)
+> ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift (string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest)
 
 Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
 
@@ -16775,11 +16883,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryGiftRequest = new CreateVaultMarketShareSeryGiftRequest(); // CreateVaultMarketShareSeryGiftRequest | 
 
             try
             {
                 // Give whole `shares` of a series to someone (`to`: their @handle, email or user id), with an optional `message`. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
-                ListVaultMarketShareGiftsItem result = apiInstance.CreateVaultMarketShareSeryGift(id);
+                ListVaultMarketShareGiftsItem result = apiInstance.CreateVaultMarketShareSeryGift(id, createVaultMarketShareSeryGiftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16798,6 +16907,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryGiftRequest** | **CreateVaultMarketShareSeryGiftRequest**|  | 
 
 ### Return type
 
@@ -16809,7 +16919,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16828,7 +16938,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareseryorder"></a>
 # **CreateVaultMarketShareSeryOrder**
-> ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder (string id)
+> ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder (string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
 
 Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
 
@@ -16853,11 +16963,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryOrderRequest = new CreateVaultMarketShareSeryOrderRequest(); // CreateVaultMarketShareSeryOrderRequest | 
 
             try
             {
                 // Place an order on a series’ share book: `side`, `type` limit or market (immediate-or-cancel inside a 10% band), `tif` gtc / gtd (`expiresAt`) / ioc, whole `shares` or a buy’s `amountCents` (turned into whole shares at the most it could pay), integer `limitCents` a share, `postOnly`. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass `requestId` to make a retry safe.
-                ListVaultMarketShareOrdersItem result = apiInstance.CreateVaultMarketShareSeryOrder(id);
+                ListVaultMarketShareOrdersItem result = apiInstance.CreateVaultMarketShareSeryOrder(id, createVaultMarketShareSeryOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16876,6 +16987,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryOrderRequest** | **CreateVaultMarketShareSeryOrderRequest**|  | 
 
 ### Return type
 
@@ -16887,7 +16999,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16906,7 +17018,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareseryrecombine"></a>
 # **CreateVaultMarketShareSeryRecombine**
-> CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine (string id)
+> CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine (string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = null)
 
 You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
 
@@ -16931,11 +17043,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryRecombineRequest = new CreateVaultMarketShareSeryRecombineRequest(); // CreateVaultMarketShareSeryRecombineRequest |  (optional) 
 
             try
             {
                 // You hold every share: take the item back whole. With `withdraw`, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
-                CreateVaultMarketShareSeryRecombineResponse result = apiInstance.CreateVaultMarketShareSeryRecombine(id);
+                CreateVaultMarketShareSeryRecombineResponse result = apiInstance.CreateVaultMarketShareSeryRecombine(id, createVaultMarketShareSeryRecombineRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16954,6 +17067,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryRecombineRequest** | **CreateVaultMarketShareSeryRecombineRequest**|  | [optional] 
 
 ### Return type
 
@@ -16965,7 +17079,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -16984,7 +17098,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareseryroom"></a>
 # **CreateVaultMarketShareSeryRoom**
-> CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom (string id)
+> CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom (string id, BodyRequest bodyRequest)
 
 Post in the holder room (shareholders only), up to 1,000 characters.
 
@@ -17009,11 +17123,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var bodyRequest = new BodyRequest(); // BodyRequest | 
 
             try
             {
                 // Post in the holder room (shareholders only), up to 1,000 characters.
-                CreateVaultMarketShareSeryRoomResponse result = apiInstance.CreateVaultMarketShareSeryRoom(id);
+                CreateVaultMarketShareSeryRoomResponse result = apiInstance.CreateVaultMarketShareSeryRoom(id, bodyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17032,6 +17147,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **bodyRequest** | **BodyRequest**|  | 
 
 ### Return type
 
@@ -17043,7 +17159,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17062,7 +17178,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareserysubscribe"></a>
 # **CreateVaultMarketShareSerySubscribe**
-> ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe (string id)
+> ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe (string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest)
 
 Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
 
@@ -17087,11 +17203,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSerySubscribeRequest = new CreateVaultMarketShareSerySubscribeRequest(); // CreateVaultMarketShareSerySubscribeRequest | 
 
             try
             {
                 // Subscribe for whole `shares` in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass `jointVaultId`. Pass `requestId` to make a retry safe.
-                ListVaultMarketShareSubscriptionsItem result = apiInstance.CreateVaultMarketShareSerySubscribe(id);
+                ListVaultMarketShareSubscriptionsItem result = apiInstance.CreateVaultMarketShareSerySubscribe(id, createVaultMarketShareSerySubscribeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17110,6 +17227,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSerySubscribeRequest** | **CreateVaultMarketShareSerySubscribeRequest**|  | 
 
 ### Return type
 
@@ -17121,7 +17239,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17140,7 +17258,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareseryunwatch"></a>
 # **CreateVaultMarketShareSeryUnwatch**
-> CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch (string id)
+> CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch (string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = null)
 
 Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
 
@@ -17165,11 +17283,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryUnwatchRequest = new CreateVaultMarketShareSeryUnwatchRequest(); // CreateVaultMarketShareSeryUnwatchRequest |  (optional) 
 
             try
             {
                 // Stop being told about a drop (`kind` notify) or leave its waitlist (`kind` waitlist).
-                CreateVaultMarketShareSeryWatchResponse result = apiInstance.CreateVaultMarketShareSeryUnwatch(id);
+                CreateVaultMarketShareSeryWatchResponse result = apiInstance.CreateVaultMarketShareSeryUnwatch(id, createVaultMarketShareSeryUnwatchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17188,6 +17307,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryUnwatchRequest** | **CreateVaultMarketShareSeryUnwatchRequest**|  | [optional] 
 
 ### Return type
 
@@ -17199,7 +17319,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17218,7 +17338,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareseryupdate"></a>
 # **CreateVaultMarketShareSeryUpdate**
-> IdResponse CreateVaultMarketShareSeryUpdate (string id)
+> IdResponse CreateVaultMarketShareSeryUpdate (string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest)
 
 Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
 
@@ -17243,11 +17363,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryUpdateRequest = new CreateVaultMarketShareSeryUpdateRequest(); // CreateVaultMarketShareSeryUpdateRequest | 
 
             try
             {
                 // Post an update on your own item’s series (you are its originator): `kind` story, provenance, condition, appraisal, exhibition or event, a `title`, a `body`, an optional https `mediaUrl`, `holdersOnly`. Holders are told.
-                IdResponse result = apiInstance.CreateVaultMarketShareSeryUpdate(id);
+                IdResponse result = apiInstance.CreateVaultMarketShareSeryUpdate(id, createVaultMarketShareSeryUpdateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17266,6 +17387,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryUpdateRequest** | **CreateVaultMarketShareSeryUpdateRequest**|  | 
 
 ### Return type
 
@@ -17277,7 +17399,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17296,7 +17418,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareserywatch"></a>
 # **CreateVaultMarketShareSeryWatch**
-> CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch (string id)
+> CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch (string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest)
 
 Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
 
@@ -17321,11 +17443,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareSeryWatchRequest = new CreateVaultMarketShareSeryWatchRequest(); // CreateVaultMarketShareSeryWatchRequest | 
 
             try
             {
                 // Ask to be told about a drop (`kind` notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (`kind` waitlist, with the `shares` you want).
-                CreateVaultMarketShareSeryWatchResponse result = apiInstance.CreateVaultMarketShareSeryWatch(id);
+                CreateVaultMarketShareSeryWatchResponse result = apiInstance.CreateVaultMarketShareSeryWatch(id, createVaultMarketShareSeryWatchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17344,6 +17467,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareSeryWatchRequest** | **CreateVaultMarketShareSeryWatchRequest**|  | 
 
 ### Return type
 
@@ -17355,7 +17479,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17530,7 +17654,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketshareviewingbook"></a>
 # **CreateVaultMarketShareViewingBook**
-> CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook (string id)
+> CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook (string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = null)
 
 Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
 
@@ -17555,11 +17679,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketShareViewingBookRequest = new CreateVaultMarketShareViewingBookRequest(); // CreateVaultMarketShareViewingBookRequest |  (optional) 
 
             try
             {
                 // Book a place on a viewing day (shareholders only), with up to the day’s `guests`. Bookings close a day before; booking again changes your guests.
-                CreateVaultMarketShareViewingBookResponse result = apiInstance.CreateVaultMarketShareViewingBook(id);
+                CreateVaultMarketShareViewingBookResponse result = apiInstance.CreateVaultMarketShareViewingBook(id, createVaultMarketShareViewingBookRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17578,6 +17703,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketShareViewingBookRequest** | **CreateVaultMarketShareViewingBookRequest**|  | [optional] 
 
 ### Return type
 
@@ -17589,7 +17715,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17760,7 +17886,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketsupplybatchlabel"></a>
 # **CreateVaultMarketSupplyBatchLabel**
-> GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel (string id)
+> GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel (string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = null)
 
 Buy a box's prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
 
@@ -17785,11 +17911,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketSupplyBatchLabelRequest = new CreateVaultMarketSupplyBatchLabelRequest(); // CreateVaultMarketSupplyBatchLabelRequest |  (optional) 
 
             try
             {
                 // Buy a box's prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
-                GetVaultMarketSupplyBatchResponse result = apiInstance.CreateVaultMarketSupplyBatchLabel(id);
+                GetVaultMarketSupplyBatchResponse result = apiInstance.CreateVaultMarketSupplyBatchLabel(id, createVaultMarketSupplyBatchLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17808,6 +17935,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketSupplyBatchLabelRequest** | **CreateVaultMarketSupplyBatchLabelRequest**|  | [optional] 
 
 ### Return type
 
@@ -17819,7 +17947,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17916,7 +18044,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketsupplysend"></a>
 # **CreateVaultMarketSupplySend**
-> CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend ()
+> CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend (CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest)
 
 Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
 
@@ -17940,11 +18068,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketSupplySendRequest = new CreateVaultMarketSupplySendRequest(); // CreateVaultMarketSupplySendRequest | 
 
             try
             {
                 // Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
-                CreateVaultMarketSupplySendResponse result = apiInstance.CreateVaultMarketSupplySend();
+                CreateVaultMarketSupplySendResponse result = apiInstance.CreateVaultMarketSupplySend(createVaultMarketSupplySendRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17959,7 +18088,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketSupplySendRequest** | **CreateVaultMarketSupplySendRequest**|  | 
 
 ### Return type
 
@@ -17971,7 +18103,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -17990,7 +18122,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketsupplysendin"></a>
 # **CreateVaultMarketSupplySendIn**
-> CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn ()
+> CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn (CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest)
 
 Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
 
@@ -18014,11 +18146,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketSupplySendInRequest = new CreateVaultMarketSupplySendInRequest(); // CreateVaultMarketSupplySendInRequest | 
 
             try
             {
                 // Send inventory items to the vault: `method: label` (one box on a prepaid label) or `dropoff` at a partner (`partnerId`, from the finder; you get a counter code). Each item can carry its declared value; `insured` insures the box for it.
-                CreateVaultMarketSupplySendInResponse result = apiInstance.CreateVaultMarketSupplySendIn();
+                CreateVaultMarketSupplySendInResponse result = apiInstance.CreateVaultMarketSupplySendIn(createVaultMarketSupplySendInRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -18033,7 +18166,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketSupplySendInRequest** | **CreateVaultMarketSupplySendInRequest**|  | 
 
 ### Return type
 
@@ -18045,7 +18181,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -18754,7 +18890,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketvaluationstatement"></a>
 # **CreateVaultMarketValuationStatement**
-> CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement ()
+> CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement (CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest)
 
 Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
 
@@ -18778,11 +18914,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketValuationStatementRequest = new CreateVaultMarketValuationStatementRequest(); // CreateVaultMarketValuationStatementRequest | 
 
             try
             {
                 // Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
-                CreateVaultMarketValuationStatementResponse result = apiInstance.CreateVaultMarketValuationStatement();
+                CreateVaultMarketValuationStatementResponse result = apiInstance.CreateVaultMarketValuationStatement(createVaultMarketValuationStatementRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -18797,7 +18934,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketValuationStatementRequest** | **CreateVaultMarketValuationStatementRequest**|  | 
 
 ### Return type
 
@@ -18809,7 +18949,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -18902,7 +19042,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketwidgettoken"></a>
 # **CreateVaultMarketWidgetToken**
-> CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken ()
+> CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken (CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = null)
 
 Mint a widget token for one phone (`deviceName`, `installId`); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
 
@@ -18926,11 +19066,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultMarketWidgetTokenRequest = new CreateVaultMarketWidgetTokenRequest(); // CreateVaultMarketWidgetTokenRequest |  (optional) 
 
             try
             {
                 // Mint a widget token for one phone (`deviceName`, `installId`); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
-                CreateVaultMarketWidgetTokenResponse result = apiInstance.CreateVaultMarketWidgetToken();
+                CreateVaultMarketWidgetTokenResponse result = apiInstance.CreateVaultMarketWidgetToken(createVaultMarketWidgetTokenRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -18945,7 +19086,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketWidgetTokenRequest** | **CreateVaultMarketWidgetTokenRequest**|  | [optional] 
 
 ### Return type
 
@@ -18957,7 +19101,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -18976,7 +19120,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultreceipttokenconfirm"></a>
 # **CreateVaultReceiptTokenConfirm**
-> CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm (string id)
+> CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm (string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = null)
 
 After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the `signature` your wallet returned to record it (kept only if it landed).
 
@@ -19001,11 +19145,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultReceiptTokenConfirmRequest = new CreateVaultReceiptTokenConfirmRequest(); // CreateVaultReceiptTokenConfirmRequest |  (optional) 
 
             try
             {
                 // After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the `signature` your wallet returned to record it (kept only if it landed).
-                CreateVaultReceiptTokenConfirmResponse result = apiInstance.CreateVaultReceiptTokenConfirm(id);
+                CreateVaultReceiptTokenConfirmResponse result = apiInstance.CreateVaultReceiptTokenConfirm(id, createVaultReceiptTokenConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19024,6 +19169,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultReceiptTokenConfirmRequest** | **CreateVaultReceiptTokenConfirmRequest**|  | [optional] 
 
 ### Return type
 
@@ -19035,7 +19181,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -19054,7 +19200,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultreceipttokenexport"></a>
 # **CreateVaultReceiptTokenExport**
-> CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport ()
+> CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport (CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest)
 
 Send one unit (`vaultItemId`) warehouse receipt to one of your verified Solana wallets (`wallet`) as a token, accepting the current terms (`acceptTerms`). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
 
@@ -19078,11 +19224,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultReceiptTokenExportRequest = new CreateVaultReceiptTokenExportRequest(); // CreateVaultReceiptTokenExportRequest | 
 
             try
             {
                 // Send one unit (`vaultItemId`) warehouse receipt to one of your verified Solana wallets (`wallet`) as a token, accepting the current terms (`acceptTerms`). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
-                CreateVaultReceiptTokenExportResponse result = apiInstance.CreateVaultReceiptTokenExport();
+                CreateVaultReceiptTokenExportResponse result = apiInstance.CreateVaultReceiptTokenExport(createVaultReceiptTokenExportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19097,7 +19244,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultReceiptTokenExportRequest** | **CreateVaultReceiptTokenExportRequest**|  | 
 
 ### Return type
 
@@ -19109,7 +19259,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -19128,7 +19278,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultreceipttokenredeem"></a>
 # **CreateVaultReceiptTokenRedeem**
-> CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem (string id)
+> CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem (string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
 
 Redeem a receipt token held in one of your verified Solana wallets (`wallet`): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
 
@@ -19153,11 +19303,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultReceiptTokenRedeemRequest = new CreateVaultReceiptTokenRedeemRequest(); // CreateVaultReceiptTokenRedeemRequest | 
 
             try
             {
                 // Redeem a receipt token held in one of your verified Solana wallets (`wallet`): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
-                CreateVaultReceiptTokenRedeemResponse result = apiInstance.CreateVaultReceiptTokenRedeem(id);
+                CreateVaultReceiptTokenRedeemResponse result = apiInstance.CreateVaultReceiptTokenRedeem(id, createVaultReceiptTokenRedeemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19176,6 +19327,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultReceiptTokenRedeemRequest** | **CreateVaultReceiptTokenRedeemRequest**|  | 
 
 ### Return type
 
@@ -19187,7 +19339,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -19206,7 +19358,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultreceipttokenredeemconfirm"></a>
 # **CreateVaultReceiptTokenRedeemConfirm**
-> CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm (string id)
+> CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm (string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = null)
 
 After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the `signature` to record it.
 
@@ -19231,11 +19383,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var createVaultReceiptTokenConfirmRequest = new CreateVaultReceiptTokenConfirmRequest(); // CreateVaultReceiptTokenConfirmRequest |  (optional) 
 
             try
             {
                 // After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the `signature` to record it.
-                CreateVaultReceiptTokenRedeemConfirmResponse result = apiInstance.CreateVaultReceiptTokenRedeemConfirm(id);
+                CreateVaultReceiptTokenRedeemConfirmResponse result = apiInstance.CreateVaultReceiptTokenRedeemConfirm(id, createVaultReceiptTokenConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19254,6 +19407,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultReceiptTokenConfirmRequest** | **CreateVaultReceiptTokenConfirmRequest**|  | [optional] 
 
 ### Return type
 
@@ -19265,7 +19419,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -19284,7 +19438,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultreceipttokenwalletallow"></a>
 # **CreateVaultReceiptTokenWalletAllow**
-> CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow ()
+> CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow (CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
 
 Put one of your verified Solana wallets (`wallet`) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
 
@@ -19308,11 +19462,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var createVaultReceiptTokenRedeemRequest = new CreateVaultReceiptTokenRedeemRequest(); // CreateVaultReceiptTokenRedeemRequest | 
 
             try
             {
                 // Put one of your verified Solana wallets (`wallet`) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
-                CreateVaultReceiptTokenWalletAllowResponse result = apiInstance.CreateVaultReceiptTokenWalletAllow();
+                CreateVaultReceiptTokenWalletAllowResponse result = apiInstance.CreateVaultReceiptTokenWalletAllow(createVaultReceiptTokenRedeemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19327,7 +19482,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultReceiptTokenRedeemRequest** | **CreateVaultReceiptTokenRedeemRequest**|  | 
 
 ### Return type
 
@@ -19339,7 +19497,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25530,7 +25688,7 @@ Name | Type | Description  | Notes
 
 <a name="getvaultmarketindexfeedfunding"></a>
 # **GetVaultMarketIndexFeedFunding**
-> GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding (string slug)
+> GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding (string slug, decimal premiumBps, decimal? interestBps = null)
 
 Reference funding for a perpetual-style future on the index: your premium `premiumBps` (TWAP of (impact mid - index)/index) through F = P + clamp(I - P, ±0.05%) per 8 h, |F| capped at 0.5%/day, with the index level it is relative to. The partner DCM computes and settles funding; this is the reference math.
 
@@ -25555,11 +25713,13 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var slug = "slug_example";  // string | 
+            var premiumBps = 8.14D;  // decimal | 
+            var interestBps = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Reference funding for a perpetual-style future on the index: your premium `premiumBps` (TWAP of (impact mid - index)/index) through F = P + clamp(I - P, ±0.05%) per 8 h, |F| capped at 0.5%/day, with the index level it is relative to. The partner DCM computes and settles funding; this is the reference math.
-                GetVaultMarketIndexFeedFundingResponse result = apiInstance.GetVaultMarketIndexFeedFunding(slug);
+                GetVaultMarketIndexFeedFundingResponse result = apiInstance.GetVaultMarketIndexFeedFunding(slug, premiumBps, interestBps);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25578,6 +25738,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **premiumBps** | **decimal**|  | 
+ **interestBps** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -25608,7 +25770,7 @@ Name | Type | Description  | Notes
 
 <a name="getvaultmarketindexfeedsettlement"></a>
 # **GetVaultMarketIndexFeedSettlement**
-> GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement (string slug)
+> GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement (string slug, decimal? days = null)
 
 The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
 
@@ -25633,11 +25795,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var slug = "slug_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
-                GetVaultMarketIndexFeedSettlementResponse result = apiInstance.GetVaultMarketIndexFeedSettlement(slug);
+                GetVaultMarketIndexFeedSettlementResponse result = apiInstance.GetVaultMarketIndexFeedSettlement(slug, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25656,6 +25819,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -31818,7 +31982,7 @@ This endpoint does not need any parameter.
 
 <a name="getvaultmarketpredictionstream"></a>
 # **GetVaultMarketPredictionStream**
-> string GetVaultMarketPredictionStream ()
+> string GetVaultMarketPredictionStream (string markets)
 
 A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
 
@@ -31842,11 +32006,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var markets = "markets_example";  // string | 
 
             try
             {
                 // A server-sent event stream for up to 50 markets (`markets`=id,id): `ready`, then `pm_depth`, `pm_trades`, `pm_probability`, `pm_status` and `pm_settlement`, each carrying its marketId.
-                string result = apiInstance.GetVaultMarketPredictionStream();
+                string result = apiInstance.GetVaultMarketPredictionStream(markets);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -31861,7 +32026,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **markets** | **string**|  | 
 
 ### Return type
 
@@ -32492,7 +32660,7 @@ This endpoint does not need any parameter.
 
 <a name="getvaultmarketprostream"></a>
 # **GetVaultMarketProStream**
-> string GetVaultMarketProStream ()
+> string GetVaultMarketProStream (string bookKey)
 
 A long-lived text/event-stream for a book key: `snapshot` first, then `depth`, `trades`, `mark` and `halt` events as they change.
 
@@ -32516,11 +32684,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var bookKey = "bookKey_example";  // string | 
 
             try
             {
                 // A long-lived text/event-stream for a book key: `snapshot` first, then `depth`, `trades`, `mark` and `halt` events as they change.
-                string result = apiInstance.GetVaultMarketProStream();
+                string result = apiInstance.GetVaultMarketProStream(bookKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -32535,7 +32704,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bookKey** | **string**|  | 
 
 ### Return type
 
@@ -39964,7 +40136,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketgradetovault"></a>
 # **ListVaultMarketGradeToVault**
-> ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault ()
+> ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault (string live = null)
 
 Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. `live=1` for those still going.
 
@@ -39988,11 +40160,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var live = "0";  // string |  (optional) 
 
             try
             {
                 // Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. `live=1` for those still going.
-                ListVaultMarketGradeToVaultResponse result = apiInstance.ListVaultMarketGradeToVault();
+                ListVaultMarketGradeToVaultResponse result = apiInstance.ListVaultMarketGradeToVault(live);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -40007,7 +40180,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live** | **string**|  | [optional] 
 
 ### Return type
 
@@ -43914,7 +44090,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketpartnerfinder"></a>
 # **ListVaultMarketPartnerFinder**
-> ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder ()
+> ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder (string postalCode = null, string service = null)
 
 Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
 
@@ -43938,11 +44114,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var postalCode = "postalCode_example";  // string |  (optional) 
+            var service = "consignment";  // string |  (optional) 
 
             try
             {
                 // Vault drop-off partners near a `postalCode`, optionally offering a `service`: address, hours and services.
-                ListVaultMarketPartnerFinderResponse result = apiInstance.ListVaultMarketPartnerFinder();
+                ListVaultMarketPartnerFinderResponse result = apiInstance.ListVaultMarketPartnerFinder(postalCode, service);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -43957,7 +44135,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postalCode** | **string**|  | [optional] 
+ **service** | **string**|  | [optional] 
 
 ### Return type
 
@@ -47720,7 +47902,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketsupplydeclaredvalues"></a>
 # **ListVaultMarketSupplyDeclaredValues**
-> ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues ()
+> ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues (string inventoryItemIds = null)
 
 What each item's declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
 
@@ -47744,11 +47926,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var inventoryItemIds = "inventoryItemIds_example";  // string |  (optional) 
 
             try
             {
                 // What each item's declared value starts at, by your insurance rule (market, cost or price). `inventoryItemIds` comma-separated.
-                ListVaultMarketSupplyDeclaredValuesResponse result = apiInstance.ListVaultMarketSupplyDeclaredValues();
+                ListVaultMarketSupplyDeclaredValuesResponse result = apiInstance.ListVaultMarketSupplyDeclaredValues(inventoryItemIds);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -47763,7 +47946,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inventoryItemIds** | **string**|  | [optional] 
 
 ### Return type
 
@@ -47794,7 +47980,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketsupplydeposits"></a>
 # **ListVaultMarketSupplyDeposits**
-> ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits ()
+> ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits (string inventoryItemIds = null)
 
 Your units sent to the vault, newest first, each with its state and its key's Instant Exit line (\"Instant Exit now: $X (N% of mark)\" or \"No market yet\"). Filter with `inventoryItemIds` (comma-separated).
 
@@ -47818,11 +48004,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var inventoryItemIds = "inventoryItemIds_example";  // string |  (optional) 
 
             try
             {
                 // Your units sent to the vault, newest first, each with its state and its key's Instant Exit line (\"Instant Exit now: $X (N% of mark)\" or \"No market yet\"). Filter with `inventoryItemIds` (comma-separated).
-                ListVaultMarketSupplyDepositsResponse result = apiInstance.ListVaultMarketSupplyDeposits();
+                ListVaultMarketSupplyDepositsResponse result = apiInstance.ListVaultMarketSupplyDeposits(inventoryItemIds);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -47837,7 +48024,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inventoryItemIds** | **string**|  | [optional] 
 
 ### Return type
 
@@ -47868,7 +48058,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketsupplyeligibility"></a>
 # **ListVaultMarketSupplyEligibility**
-> ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility ()
+> ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility (string inventoryItemIds = null, string listingId = null)
 
 Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
 
@@ -47892,11 +48082,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var inventoryItemIds = "inventoryItemIds_example";  // string |  (optional) 
+            var listingId = "listingId_example";  // string |  (optional) 
 
             try
             {
                 // Can these inventory items (`inventoryItemIds`, comma-separated, or every item linked to `listingId`) be sent to the vault now? Each says why not.
-                ListVaultMarketSupplyEligibilityResponse result = apiInstance.ListVaultMarketSupplyEligibility();
+                ListVaultMarketSupplyEligibilityResponse result = apiInstance.ListVaultMarketSupplyEligibility(inventoryItemIds, listingId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -47911,7 +48103,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inventoryItemIds** | **string**|  | [optional] 
+ **listingId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -48978,7 +49174,7 @@ This endpoint does not need any parameter.
 
 <a name="updatevaultmarketautobuy"></a>
 # **UpdateVaultMarketAutoBuy**
-> UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy ()
+> UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy (UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest)
 
 Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
 
@@ -49002,11 +49198,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var updateVaultMarketAutoBuyRequest = new UpdateVaultMarketAutoBuyRequest(); // UpdateVaultMarketAutoBuyRequest | 
 
             try
             {
                 // Set up or change Auto-buy with payouts: `shareBps` (1–50%) and the whole want list in order, each with an optional `maxPriceCents` (fee included).
-                UpdateVaultMarketAutoBuyResponse result = apiInstance.UpdateVaultMarketAutoBuy();
+                UpdateVaultMarketAutoBuyResponse result = apiInstance.UpdateVaultMarketAutoBuy(updateVaultMarketAutoBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49021,7 +49218,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateVaultMarketAutoBuyRequest** | **UpdateVaultMarketAutoBuyRequest**|  | 
 
 ### Return type
 
@@ -49033,7 +49233,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -49052,7 +49252,7 @@ This endpoint does not need any parameter.
 
 <a name="updatevaultmarketblockallocation"></a>
 # **UpdateVaultMarketBlockAllocation**
-> ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation (string orderId)
+> ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation (string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest)
 
 Post-trade allocation: set or replace the plan for a buy you placed for one of the entity's sub-accounts (that sub-account leads). Refused once any share has moved.
 
@@ -49077,11 +49277,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var orderId = "orderId_example";  // string | 
+            var updateVaultMarketBlockAllocationRequest = new UpdateVaultMarketBlockAllocationRequest(); // UpdateVaultMarketBlockAllocationRequest | 
 
             try
             {
                 // Post-trade allocation: set or replace the plan for a buy you placed for one of the entity's sub-accounts (that sub-account leads). Refused once any share has moved.
-                ListVaultMarketBlocksItem result = apiInstance.UpdateVaultMarketBlockAllocation(orderId);
+                ListVaultMarketBlocksItem result = apiInstance.UpdateVaultMarketBlockAllocation(orderId, updateVaultMarketBlockAllocationRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49100,6 +49301,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **string**|  | 
+ **updateVaultMarketBlockAllocationRequest** | **UpdateVaultMarketBlockAllocationRequest**|  | 
 
 ### Return type
 
@@ -49111,7 +49313,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -49356,7 +49558,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketentitymember"></a>
 # **UpdateVaultMarketEntityMember**
-> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember (string id, string memberId)
+> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember (string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = null)
 
 Admin: change a member's role, limits or sub-accounts. The last admin cannot be demoted.
 
@@ -49382,11 +49584,12 @@ namespace Example
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
             var memberId = "memberId_example";  // string | 
+            var updateVaultMarketEntityMemberRequest = new UpdateVaultMarketEntityMemberRequest(); // UpdateVaultMarketEntityMemberRequest |  (optional) 
 
             try
             {
                 // Admin: change a member's role, limits or sub-accounts. The last admin cannot be demoted.
-                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntityMember(id, memberId);
+                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntityMember(id, memberId, updateVaultMarketEntityMemberRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49406,6 +49609,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **memberId** | **string**|  | 
+ **updateVaultMarketEntityMemberRequest** | **UpdateVaultMarketEntityMemberRequest**|  | [optional] 
 
 ### Return type
 
@@ -49417,7 +49621,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -49436,7 +49640,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketentitysubaccountlimit"></a>
 # **UpdateVaultMarketEntitySubaccountLimit**
-> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit (string id, string subId)
+> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit (string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest)
 
 Admin: set a sub-account's limits (per-order notional, units per key, gross, net, leverage), held to the entity's caps. `limits: null` clears them.
 
@@ -49462,11 +49666,12 @@ namespace Example
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
             var subId = "subId_example";  // string | 
+            var updateVaultMarketEntitySubaccountLimitRequest = new UpdateVaultMarketEntitySubaccountLimitRequest(); // UpdateVaultMarketEntitySubaccountLimitRequest | 
 
             try
             {
                 // Admin: set a sub-account's limits (per-order notional, units per key, gross, net, leverage), held to the entity's caps. `limits: null` clears them.
-                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntitySubaccountLimit(id, subId);
+                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntitySubaccountLimit(id, subId, updateVaultMarketEntitySubaccountLimitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49486,6 +49691,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **subId** | **string**|  | 
+ **updateVaultMarketEntitySubaccountLimitRequest** | **UpdateVaultMarketEntitySubaccountLimitRequest**|  | 
 
 ### Return type
 
@@ -49497,7 +49703,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -49516,7 +49722,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketentityusdelection"></a>
 # **UpdateVaultMarketEntityUsdElection**
-> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection (string id)
+> GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection (string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest)
 
 Admin: elect USD for the entity (`usdOnly`). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
 
@@ -49541,11 +49747,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var updateVaultMarketEntityUsdElectionRequest = new UpdateVaultMarketEntityUsdElectionRequest(); // UpdateVaultMarketEntityUsdElectionRequest | 
 
             try
             {
                 // Admin: elect USD for the entity (`usdOnly`). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
-                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntityUsdElection(id);
+                GetVaultMarketEntityByIdResponse result = apiInstance.UpdateVaultMarketEntityUsdElection(id, updateVaultMarketEntityUsdElectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49564,6 +49771,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateVaultMarketEntityUsdElectionRequest** | **UpdateVaultMarketEntityUsdElectionRequest**|  | 
 
 ### Return type
 
@@ -49575,7 +49783,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -49898,7 +50106,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketitemsellfrom"></a>
 # **UpdateVaultMarketItemSellFrom**
-> GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom (string inventoryItemId)
+> GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom (string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest)
 
 Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
 
@@ -49923,11 +50131,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var inventoryItemId = "inventoryItemId_example";  // string | 
+            var updateVaultMarketItemSellFromRequest = new UpdateVaultMarketItemSellFromRequest(); // UpdateVaultMarketItemSellFromRequest | 
 
             try
             {
                 // Set which unit a sale of this item ships first: `vault_first`, `warehouse_first` or `cheapest` (to ship); null = your default. Quantities stay the same on every channel: only who ships changes.
-                GetVaultMarketItemLocationResponse result = apiInstance.UpdateVaultMarketItemSellFrom(inventoryItemId);
+                GetVaultMarketItemLocationResponse result = apiInstance.UpdateVaultMarketItemSellFrom(inventoryItemId, updateVaultMarketItemSellFromRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -49946,6 +50155,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **inventoryItemId** | **string**|  | 
+ **updateVaultMarketItemSellFromRequest** | **UpdateVaultMarketItemSellFromRequest**|  | 
 
 ### Return type
 
@@ -49957,7 +50167,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -50420,7 +50630,7 @@ This endpoint does not need any parameter.
 
 <a name="updatevaultmarketpartnerme"></a>
 # **UpdateVaultMarketPartnerMe**
-> UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe ()
+> UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe (UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = null)
 
 Your drop-off partnership's finder profile: postal code, opening hours, services and whether you are listed.
 
@@ -50444,11 +50654,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var updateVaultMarketPartnerMeRequest = new UpdateVaultMarketPartnerMeRequest(); // UpdateVaultMarketPartnerMeRequest |  (optional) 
 
             try
             {
                 // Your drop-off partnership's finder profile: postal code, opening hours, services and whether you are listed.
-                UpdateVaultMarketPartnerMeResponse result = apiInstance.UpdateVaultMarketPartnerMe();
+                UpdateVaultMarketPartnerMeResponse result = apiInstance.UpdateVaultMarketPartnerMe(updateVaultMarketPartnerMeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -50463,7 +50674,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateVaultMarketPartnerMeRequest** | **UpdateVaultMarketPartnerMeRequest**|  | [optional] 
 
 ### Return type
 
@@ -50475,7 +50689,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -51106,7 +51320,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketsetting"></a>
 # **UpdateVaultMarketSetting**
-> GetVaultMarketSettingResponse UpdateVaultMarketSetting ()
+> GetVaultMarketSettingResponse UpdateVaultMarketSetting (UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = null)
 
 Change your vault defaults; send only the fields you change.
 
@@ -51130,11 +51344,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new VaultMarketsApi(config);
+            var updateVaultMarketSettingRequest = new UpdateVaultMarketSettingRequest(); // UpdateVaultMarketSettingRequest |  (optional) 
 
             try
             {
                 // Change your vault defaults; send only the fields you change.
-                GetVaultMarketSettingResponse result = apiInstance.UpdateVaultMarketSetting();
+                GetVaultMarketSettingResponse result = apiInstance.UpdateVaultMarketSetting(updateVaultMarketSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -51149,7 +51364,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateVaultMarketSettingRequest** | **UpdateVaultMarketSettingRequest**|  | [optional] 
 
 ### Return type
 
@@ -51161,7 +51379,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -51258,7 +51476,7 @@ Name | Type | Description  | Notes
 
 <a name="updatevaultmarketsupplydeposit"></a>
 # **UpdateVaultMarketSupplyDeposit**
-> UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit (string id)
+> UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit (string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest)
 
 Change a deposit's toggles: `autoListBps` (list at that share of the mark once stored; null = do not) and `lendWhenIdle`.
 
@@ -51283,11 +51501,12 @@ namespace Example
 
             var apiInstance = new VaultMarketsApi(config);
             var id = "id_example";  // string | 
+            var updateVaultMarketSupplyDepositRequest = new UpdateVaultMarketSupplyDepositRequest(); // UpdateVaultMarketSupplyDepositRequest | 
 
             try
             {
                 // Change a deposit's toggles: `autoListBps` (list at that share of the mark once stored; null = do not) and `lendWhenIdle`.
-                UpdateVaultMarketSupplyDepositResponse result = apiInstance.UpdateVaultMarketSupplyDeposit(id);
+                UpdateVaultMarketSupplyDepositResponse result = apiInstance.UpdateVaultMarketSupplyDeposit(id, updateVaultMarketSupplyDepositRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -51306,6 +51525,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateVaultMarketSupplyDepositRequest** | **UpdateVaultMarketSupplyDepositRequest**|  | 
 
 ### Return type
 
@@ -51317,7 +51537,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

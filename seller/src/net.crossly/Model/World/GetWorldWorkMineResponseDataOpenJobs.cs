@@ -105,23 +105,23 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="description">description.</param>
         /// <param name="status">status (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
-        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="role">role (required).</param>
+        /// <param name="title">title (required).</param>
+        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="target">target (required).</param>
         /// <param name="startsAt">startsAt (required).</param>
         /// <param name="timezone">timezone (required).</param>
         /// <param name="visibility">visibility (required).</param>
         /// <param name="recurrence">recurrence (required).</param>
+        /// <param name="checkIn">checkIn (required).</param>
         /// <param name="breaks">breaks.</param>
         /// <param name="pay">pay (required).</param>
-        /// <param name="checkIn">checkIn (required).</param>
         /// <param name="noShow">noShow (required).</param>
         /// <param name="minWorkerRep">minWorkerRep.</param>
         /// <param name="requiredBadges">requiredBadges (required).</param>
         /// <param name="maxStaff">maxStaff (required).</param>
-        public GetWorldWorkMineResponseDataOpenJobs(GetWorldWorkMineResponseDataOpenJobsEmployer employer = default(GetWorldWorkMineResponseDataOpenJobsEmployer), GetWorldWorkMineResponseDataOpenJobsNextShift nextShift = default(GetWorldWorkMineResponseDataOpenJobsNextShift), decimal openSeats = default(decimal), GetWorldWorkMineResponseDataOpenJobsMyApplication myApplication = default(GetWorldWorkMineResponseDataOpenJobsMyApplication), string id = default(string), string createdAt = default(string), string description = default(string), StatusEnum status = default(StatusEnum), string title = default(string), string storefrontId = default(string), string endsAt = default(string), string role = default(string), WorldStaffPostingResponseDataTarget target = default(WorldStaffPostingResponseDataTarget), string startsAt = default(string), string timezone = default(string), VisibilityEnum visibility = default(VisibilityEnum), WorldStaffPostingResponseDataRecurrence recurrence = default(WorldStaffPostingResponseDataRecurrence), WorldStaffPostingResponseDataBreaks breaks = default(WorldStaffPostingResponseDataBreaks), WorldStaffPostingResponseDataPay pay = default(WorldStaffPostingResponseDataPay), WorldStaffPostingResponseDataCheckIn checkIn = default(WorldStaffPostingResponseDataCheckIn), PenaltyRepStrikesToBlock noShow = default(PenaltyRepStrikesToBlock), decimal? minWorkerRep = default(decimal?), List<string> requiredBadges = default(List<string>), decimal maxStaff = default(decimal))
+        public GetWorldWorkMineResponseDataOpenJobs(GetWorldWorkMineResponseDataOpenJobsEmployer employer = default(GetWorldWorkMineResponseDataOpenJobsEmployer), GetWorldWorkMineResponseDataOpenJobsNextShift nextShift = default(GetWorldWorkMineResponseDataOpenJobsNextShift), decimal openSeats = default(decimal), GetWorldWorkMineResponseDataOpenJobsMyApplication myApplication = default(GetWorldWorkMineResponseDataOpenJobsMyApplication), string id = default(string), string createdAt = default(string), string description = default(string), StatusEnum status = default(StatusEnum), string storefrontId = default(string), string role = default(string), string title = default(string), string endsAt = default(string), WorldStaffPostingResponseDataTarget target = default(WorldStaffPostingResponseDataTarget), string startsAt = default(string), string timezone = default(string), VisibilityEnum visibility = default(VisibilityEnum), WorldStaffPostingResponseDataRecurrence recurrence = default(WorldStaffPostingResponseDataRecurrence), WorldStaffPostingResponseDataCheckIn checkIn = default(WorldStaffPostingResponseDataCheckIn), WorldStaffPostingResponseDataBreaks breaks = default(WorldStaffPostingResponseDataBreaks), WorldStaffPostingResponseDataPay pay = default(WorldStaffPostingResponseDataPay), PenaltyRepStrikesToBlock noShow = default(PenaltyRepStrikesToBlock), decimal? minWorkerRep = default(decimal?), List<string> requiredBadges = default(List<string>), decimal maxStaff = default(decimal))
         {
             // to ensure "employer" is required (not null)
             if (employer == null) {
@@ -140,6 +140,11 @@ namespace net.crossly.Model
             }
             this.CreatedAt = createdAt;
             this.Status = status;
+            // to ensure "role" is required (not null)
+            if (role == null) {
+                throw new ArgumentNullException("role is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
+            }
+            this.Role = role;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
@@ -150,11 +155,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("endsAt is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
             }
             this.EndsAt = endsAt;
-            // to ensure "role" is required (not null)
-            if (role == null) {
-                throw new ArgumentNullException("role is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
-            }
-            this.Role = role;
             // to ensure "target" is required (not null)
             if (target == null) {
                 throw new ArgumentNullException("target is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
@@ -176,16 +176,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("recurrence is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
             }
             this.Recurrence = recurrence;
-            // to ensure "pay" is required (not null)
-            if (pay == null) {
-                throw new ArgumentNullException("pay is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
-            }
-            this.Pay = pay;
             // to ensure "checkIn" is required (not null)
             if (checkIn == null) {
                 throw new ArgumentNullException("checkIn is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
             }
             this.CheckIn = checkIn;
+            // to ensure "pay" is required (not null)
+            if (pay == null) {
+                throw new ArgumentNullException("pay is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
+            }
+            this.Pay = pay;
             // to ensure "noShow" is required (not null)
             if (noShow == null) {
                 throw new ArgumentNullException("noShow is a required property for GetWorldWorkMineResponseDataOpenJobs and cannot be null");
@@ -248,28 +248,28 @@ namespace net.crossly.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets StorefrontId
         /// </summary>
         [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
         public string StorefrontId { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndsAt
-        /// </summary>
-        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
-        public string EndsAt { get; set; }
-
-        /// <summary>
         /// Gets or Sets Role
         /// </summary>
         [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = false)]
         public string Role { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EndsAt
+        /// </summary>
+        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = false)]
+        public string EndsAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Target
@@ -296,6 +296,12 @@ namespace net.crossly.Model
         public WorldStaffPostingResponseDataRecurrence Recurrence { get; set; }
 
         /// <summary>
+        /// Gets or Sets CheckIn
+        /// </summary>
+        [DataMember(Name = "checkIn", IsRequired = true, EmitDefaultValue = false)]
+        public WorldStaffPostingResponseDataCheckIn CheckIn { get; set; }
+
+        /// <summary>
         /// Gets or Sets Breaks
         /// </summary>
         [DataMember(Name = "breaks", EmitDefaultValue = true)]
@@ -306,12 +312,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "pay", IsRequired = true, EmitDefaultValue = false)]
         public WorldStaffPostingResponseDataPay Pay { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CheckIn
-        /// </summary>
-        [DataMember(Name = "checkIn", IsRequired = true, EmitDefaultValue = false)]
-        public WorldStaffPostingResponseDataCheckIn CheckIn { get; set; }
 
         /// <summary>
         /// Gets or Sets NoShow
@@ -353,18 +353,18 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Target: ").Append(Target).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
             sb.Append("  Timezone: ").Append(Timezone).Append("\n");
             sb.Append("  Visibility: ").Append(Visibility).Append("\n");
             sb.Append("  Recurrence: ").Append(Recurrence).Append("\n");
+            sb.Append("  CheckIn: ").Append(CheckIn).Append("\n");
             sb.Append("  Breaks: ").Append(Breaks).Append("\n");
             sb.Append("  Pay: ").Append(Pay).Append("\n");
-            sb.Append("  CheckIn: ").Append(CheckIn).Append("\n");
             sb.Append("  NoShow: ").Append(NoShow).Append("\n");
             sb.Append("  MinWorkerRep: ").Append(MinWorkerRep).Append("\n");
             sb.Append("  RequiredBadges: ").Append(RequiredBadges).Append("\n");
@@ -443,24 +443,24 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
-                ) && 
-                (
                     this.StorefrontId == input.StorefrontId ||
                     (this.StorefrontId != null &&
                     this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
-                    this.EndsAt == input.EndsAt ||
-                    (this.EndsAt != null &&
-                    this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
                     this.Role == input.Role ||
                     (this.Role != null &&
                     this.Role.Equals(input.Role))
+                ) && 
+                (
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
+                ) && 
+                (
+                    this.EndsAt == input.EndsAt ||
+                    (this.EndsAt != null &&
+                    this.EndsAt.Equals(input.EndsAt))
                 ) && 
                 (
                     this.Target == input.Target ||
@@ -487,6 +487,11 @@ namespace net.crossly.Model
                     this.Recurrence.Equals(input.Recurrence))
                 ) && 
                 (
+                    this.CheckIn == input.CheckIn ||
+                    (this.CheckIn != null &&
+                    this.CheckIn.Equals(input.CheckIn))
+                ) && 
+                (
                     this.Breaks == input.Breaks ||
                     (this.Breaks != null &&
                     this.Breaks.Equals(input.Breaks))
@@ -495,11 +500,6 @@ namespace net.crossly.Model
                     this.Pay == input.Pay ||
                     (this.Pay != null &&
                     this.Pay.Equals(input.Pay))
-                ) && 
-                (
-                    this.CheckIn == input.CheckIn ||
-                    (this.CheckIn != null &&
-                    this.CheckIn.Equals(input.CheckIn))
                 ) && 
                 (
                     this.NoShow == input.NoShow ||
@@ -558,21 +558,21 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                if (this.Title != null)
-                {
-                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
-                }
                 if (this.StorefrontId != null)
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
-                if (this.EndsAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
-                }
                 if (this.Role != null)
                 {
                     hashCode = (hashCode * 59) + this.Role.GetHashCode();
+                }
+                if (this.Title != null)
+                {
+                    hashCode = (hashCode * 59) + this.Title.GetHashCode();
+                }
+                if (this.EndsAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
                 if (this.Target != null)
                 {
@@ -591,6 +591,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Recurrence.GetHashCode();
                 }
+                if (this.CheckIn != null)
+                {
+                    hashCode = (hashCode * 59) + this.CheckIn.GetHashCode();
+                }
                 if (this.Breaks != null)
                 {
                     hashCode = (hashCode * 59) + this.Breaks.GetHashCode();
@@ -598,10 +602,6 @@ namespace net.crossly.Model
                 if (this.Pay != null)
                 {
                     hashCode = (hashCode * 59) + this.Pay.GetHashCode();
-                }
-                if (this.CheckIn != null)
-                {
-                    hashCode = (hashCode * 59) + this.CheckIn.GetHashCode();
                 }
                 if (this.NoShow != null)
                 {

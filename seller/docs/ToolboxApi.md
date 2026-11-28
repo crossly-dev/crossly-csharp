@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="createtoolboxasset"></a>
 # **CreateToolboxAsset**
-> ToolboxAssetResponse CreateToolboxAsset ()
+> ToolboxAssetResponse CreateToolboxAsset (CreateToolboxAssetRequest createToolboxAssetRequest = null)
 
 Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
 
@@ -48,11 +48,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ToolboxApi(config);
+            var createToolboxAssetRequest = new CreateToolboxAssetRequest(); // CreateToolboxAssetRequest |  (optional) 
 
             try
             {
                 // Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
-                ToolboxAssetResponse result = apiInstance.CreateToolboxAsset();
+                ToolboxAssetResponse result = apiInstance.CreateToolboxAsset(createToolboxAssetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -67,7 +68,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createToolboxAssetRequest** | **CreateToolboxAssetRequest**|  | [optional] 
 
 ### Return type
 
@@ -79,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -254,7 +258,7 @@ Name | Type | Description  | Notes
 
 <a name="createtoolboxassetuse"></a>
 # **CreateToolboxAssetUse**
-> CreateToolboxAssetUseResponse CreateToolboxAssetUse (string assetId)
+> CreateToolboxAssetUseResponse CreateToolboxAssetUse (string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = null)
 
 Get the asset's nodes stamped with its id for a place you can edit; insert:true also inserts them into the place's live session. Paid assets need the experience owner's licence.
 
@@ -279,11 +283,12 @@ namespace Example
 
             var apiInstance = new ToolboxApi(config);
             var assetId = "assetId_example";  // string | 
+            var createToolboxAssetUseRequest = new CreateToolboxAssetUseRequest(); // CreateToolboxAssetUseRequest |  (optional) 
 
             try
             {
                 // Get the asset's nodes stamped with its id for a place you can edit; insert:true also inserts them into the place's live session. Paid assets need the experience owner's licence.
-                CreateToolboxAssetUseResponse result = apiInstance.CreateToolboxAssetUse(assetId);
+                CreateToolboxAssetUseResponse result = apiInstance.CreateToolboxAssetUse(assetId, createToolboxAssetUseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -302,6 +307,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assetId** | **string**|  | 
+ **createToolboxAssetUseRequest** | **CreateToolboxAssetUseRequest**|  | [optional] 
 
 ### Return type
 
@@ -313,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -332,7 +338,7 @@ Name | Type | Description  | Notes
 
 <a name="createtoolboxassetversion"></a>
 # **CreateToolboxAssetVersion**
-> ToolboxAssetResponse CreateToolboxAssetVersion (string assetId)
+> ToolboxAssetResponse CreateToolboxAssetVersion (string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = null)
 
 A new version (reviewed); the live one keeps serving until it is approved.
 
@@ -357,11 +363,12 @@ namespace Example
 
             var apiInstance = new ToolboxApi(config);
             var assetId = "assetId_example";  // string | 
+            var createToolboxAssetVersionRequest = new CreateToolboxAssetVersionRequest(); // CreateToolboxAssetVersionRequest |  (optional) 
 
             try
             {
                 // A new version (reviewed); the live one keeps serving until it is approved.
-                ToolboxAssetResponse result = apiInstance.CreateToolboxAssetVersion(assetId);
+                ToolboxAssetResponse result = apiInstance.CreateToolboxAssetVersion(assetId, createToolboxAssetVersionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -380,6 +387,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assetId** | **string**|  | 
+ **createToolboxAssetVersionRequest** | **CreateToolboxAssetVersionRequest**|  | [optional] 
 
 ### Return type
 
@@ -391,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -410,7 +418,7 @@ Name | Type | Description  | Notes
 
 <a name="createtoolboxpurchaserefund"></a>
 # **CreateToolboxPurchaseRefund**
-> CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund (string purchaseId)
+> CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund (string purchaseId, ReasonRequest2 reasonRequest2 = null)
 
 Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author's share is reversed.
 
@@ -435,11 +443,12 @@ namespace Example
 
             var apiInstance = new ToolboxApi(config);
             var purchaseId = "purchaseId_example";  // string | 
+            var reasonRequest2 = new ReasonRequest2(); // ReasonRequest2 |  (optional) 
 
             try
             {
                 // Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author's share is reversed.
-                CreateWorldMeReceiptRefundResponse result = apiInstance.CreateToolboxPurchaseRefund(purchaseId);
+                CreateWorldMeReceiptRefundResponse result = apiInstance.CreateToolboxPurchaseRefund(purchaseId, reasonRequest2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -458,6 +467,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **purchaseId** | **string**|  | 
+ **reasonRequest2** | **ReasonRequest2**|  | [optional] 
 
 ### Return type
 
@@ -469,7 +479,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -800,7 +810,7 @@ Name | Type | Description  | Notes
 
 <a name="listtoolboxassets"></a>
 # **ListToolboxAssets**
-> ListToolboxAssetsResponse ListToolboxAssets ()
+> ListToolboxAssetsResponse ListToolboxAssets (string q = null, string kind = null, string price = null, string sort = null, decimal? minRating = null, string cursor = null, decimal? limit = null)
 
 Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; `owned` says whether you may insert it now.
 
@@ -824,11 +834,18 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ToolboxApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var kind = "package";  // string |  (optional) 
+            var price = "free";  // string |  (optional) 
+            var sort = "price";  // string |  (optional) 
+            var minRating = 8.14D;  // decimal? |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; `owned` says whether you may insert it now.
-                ListToolboxAssetsResponse result = apiInstance.ListToolboxAssets();
+                ListToolboxAssetsResponse result = apiInstance.ListToolboxAssets(q, kind, price, sort, minRating, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -843,7 +860,16 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **kind** | **string**|  | [optional] 
+ **price** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **minRating** | **decimal?**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1022,7 +1048,7 @@ This endpoint does not need any parameter.
 
 <a name="listtoolboxsales"></a>
 # **ListToolboxSales**
-> ListToolboxSalesResponse ListToolboxSales ()
+> ListToolboxSalesResponse ListToolboxSales (string cursor = null, decimal? limit = null)
 
 Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
 
@@ -1046,11 +1072,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ToolboxApi(config);
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
-                ListToolboxSalesResponse result = apiInstance.ListToolboxSales();
+                ListToolboxSalesResponse result = apiInstance.ListToolboxSales(cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1065,7 +1093,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1096,7 +1128,7 @@ This endpoint does not need any parameter.
 
 <a name="updatetoolboxasset"></a>
 # **UpdateToolboxAsset**
-> ToolboxAssetResponse UpdateToolboxAsset (string assetId)
+> ToolboxAssetResponse UpdateToolboxAsset (string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = null)
 
 Edit name, description, tags, thumbnail or price.
 
@@ -1121,11 +1153,12 @@ namespace Example
 
             var apiInstance = new ToolboxApi(config);
             var assetId = "assetId_example";  // string | 
+            var updateToolboxAssetRequest = new UpdateToolboxAssetRequest(); // UpdateToolboxAssetRequest |  (optional) 
 
             try
             {
                 // Edit name, description, tags, thumbnail or price.
-                ToolboxAssetResponse result = apiInstance.UpdateToolboxAsset(assetId);
+                ToolboxAssetResponse result = apiInstance.UpdateToolboxAsset(assetId, updateToolboxAssetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1144,6 +1177,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assetId** | **string**|  | 
+ **updateToolboxAssetRequest** | **UpdateToolboxAssetRequest**|  | [optional] 
 
 ### Return type
 
@@ -1155,7 +1189,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1174,7 +1208,7 @@ Name | Type | Description  | Notes
 
 <a name="updatetoolboxassetratingmine"></a>
 # **UpdateToolboxAssetRatingMine**
-> UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine (string assetId)
+> UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine (string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = null)
 
 Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
 
@@ -1199,11 +1233,12 @@ namespace Example
 
             var apiInstance = new ToolboxApi(config);
             var assetId = "assetId_example";  // string | 
+            var updateToolboxAssetRatingMineRequest = new UpdateToolboxAssetRatingMineRequest(); // UpdateToolboxAssetRatingMineRequest |  (optional) 
 
             try
             {
                 // Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
-                UpdateToolboxAssetRatingMineResponse result = apiInstance.UpdateToolboxAssetRatingMine(assetId);
+                UpdateToolboxAssetRatingMineResponse result = apiInstance.UpdateToolboxAssetRatingMine(assetId, updateToolboxAssetRatingMineRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1222,6 +1257,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assetId** | **string**|  | 
+ **updateToolboxAssetRatingMineRequest** | **UpdateToolboxAssetRatingMineRequest**|  | [optional] 
 
 ### Return type
 
@@ -1233,7 +1269,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

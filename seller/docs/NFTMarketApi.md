@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createnftmarketexternalresale"></a>
 # **CreateNftMarketExternalResale**
-> CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale ()
+> CreateNftMarketExternalResaleResponse CreateNftMarketExternalResale (CreateNftMarketExternalResaleRequest createNftMarketExternalResaleRequest)
 
 Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
 
@@ -37,11 +37,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new NFTMarketApi(config);
+            var createNftMarketExternalResaleRequest = new CreateNftMarketExternalResaleRequest(); // CreateNftMarketExternalResaleRequest | 
 
             try
             {
                 // Ops: record a Crossly NFT resold on ANY marketplace — maps mint → design and funds the pot. Admin PAT only.
-                CreateNftMarketExternalResaleResponse result = apiInstance.CreateNftMarketExternalResale();
+                CreateNftMarketExternalResaleResponse result = apiInstance.CreateNftMarketExternalResale(createNftMarketExternalResaleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -56,7 +57,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createNftMarketExternalResaleRequest** | **CreateNftMarketExternalResaleRequest**|  | 
 
 ### Return type
 
@@ -68,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -87,7 +91,7 @@ This endpoint does not need any parameter.
 
 <a name="createnftmarketlisting"></a>
 # **CreateNftMarketListing**
-> CreateNftMarketListingResponse CreateNftMarketListing ()
+> CreateNftMarketListingResponse CreateNftMarketListing (CreateNftMarketListingRequest createNftMarketListingRequest)
 
 List an NFT you own for resale on the Crossly marketplace.
 
@@ -111,11 +115,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new NFTMarketApi(config);
+            var createNftMarketListingRequest = new CreateNftMarketListingRequest(); // CreateNftMarketListingRequest | 
 
             try
             {
                 // List an NFT you own for resale on the Crossly marketplace.
-                CreateNftMarketListingResponse result = apiInstance.CreateNftMarketListing();
+                CreateNftMarketListingResponse result = apiInstance.CreateNftMarketListing(createNftMarketListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -130,7 +135,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createNftMarketListingRequest** | **CreateNftMarketListingRequest**|  | 
 
 ### Return type
 
@@ -142,7 +150,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -239,7 +247,7 @@ Name | Type | Description  | Notes
 
 <a name="createnftmarketlistingconfirmsale"></a>
 # **CreateNftMarketListingConfirmSale**
-> OkResponse CreateNftMarketListingConfirmSale (string id)
+> OkResponse CreateNftMarketListingConfirmSale (string id, CreateNftMarketListingConfirmSaleRequest createNftMarketListingConfirmSaleRequest)
 
 Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
 
@@ -264,11 +272,12 @@ namespace Example
 
             var apiInstance = new NFTMarketApi(config);
             var id = "id_example";  // string | 
+            var createNftMarketListingConfirmSaleRequest = new CreateNftMarketListingConfirmSaleRequest(); // CreateNftMarketListingConfirmSaleRequest | 
 
             try
             {
                 // Ops: record a finalized on-Crossly NFT sale (verifies the royalty landed, funds the pot). Admin PAT only.
-                OkResponse result = apiInstance.CreateNftMarketListingConfirmSale(id);
+                OkResponse result = apiInstance.CreateNftMarketListingConfirmSale(id, createNftMarketListingConfirmSaleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -287,6 +296,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createNftMarketListingConfirmSaleRequest** | **CreateNftMarketListingConfirmSaleRequest**|  | 
 
 ### Return type
 
@@ -298,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

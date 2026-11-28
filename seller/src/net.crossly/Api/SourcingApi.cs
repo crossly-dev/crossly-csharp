@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Append a parsed receipt to the sourcing ledger.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <returns>CreateSourcingReceiptResponse</returns>
-        CreateSourcingReceiptResponse CreateSourcingReceipt();
+        CreateSourcingReceiptResponse CreateSourcingReceipt(CreateSourcingReceiptRequest createSourcingReceiptRequest);
 
         /// <summary>
         /// Append a parsed receipt to the sourcing ledger.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <returns>ApiResponse of CreateSourcingReceiptResponse</returns>
-        ApiResponse<CreateSourcingReceiptResponse> CreateSourcingReceiptWithHttpInfo();
+        ApiResponse<CreateSourcingReceiptResponse> CreateSourcingReceiptWithHttpInfo(CreateSourcingReceiptRequest createSourcingReceiptRequest);
         /// <summary>
         /// List parsed sourcing receipts in this user&#39;s ledger.
         /// </summary>
@@ -121,9 +123,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSourcingReceiptResponse</returns>
-        System.Threading.Tasks.Task<CreateSourcingReceiptResponse> CreateSourcingReceiptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSourcingReceiptResponse> CreateSourcingReceiptAsync(CreateSourcingReceiptRequest createSourcingReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Append a parsed receipt to the sourcing ledger.
@@ -132,9 +135,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSourcingReceiptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSourcingReceiptResponse>> CreateSourcingReceiptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSourcingReceiptResponse>> CreateSourcingReceiptWithHttpInfoAsync(CreateSourcingReceiptRequest createSourcingReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List parsed sourcing receipts in this user&#39;s ledger.
         /// </summary>
@@ -334,10 +338,11 @@ namespace net.crossly.Api
         /// Append a parsed receipt to the sourcing ledger. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <returns>CreateSourcingReceiptResponse</returns>
-        public CreateSourcingReceiptResponse CreateSourcingReceipt()
+        public CreateSourcingReceiptResponse CreateSourcingReceipt(CreateSourcingReceiptRequest createSourcingReceiptRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> localVarResponse = CreateSourcingReceiptWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> localVarResponse = CreateSourcingReceiptWithHttpInfo(createSourcingReceiptRequest);
             return localVarResponse.Data;
         }
 
@@ -345,12 +350,20 @@ namespace net.crossly.Api
         /// Append a parsed receipt to the sourcing ledger. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <returns>ApiResponse of CreateSourcingReceiptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> CreateSourcingReceiptWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> CreateSourcingReceiptWithHttpInfo(CreateSourcingReceiptRequest createSourcingReceiptRequest)
         {
+            // verify the required parameter 'createSourcingReceiptRequest' is set
+            if (createSourcingReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSourcingReceiptRequest' when calling SourcingApi->CreateSourcingReceipt");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -370,6 +383,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSourcingReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -396,11 +410,12 @@ namespace net.crossly.Api
         /// Append a parsed receipt to the sourcing ledger. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSourcingReceiptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSourcingReceiptResponse> CreateSourcingReceiptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSourcingReceiptResponse> CreateSourcingReceiptAsync(CreateSourcingReceiptRequest createSourcingReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> localVarResponse = await CreateSourcingReceiptWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse> localVarResponse = await CreateSourcingReceiptWithHttpInfoAsync(createSourcingReceiptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -408,14 +423,22 @@ namespace net.crossly.Api
         /// Append a parsed receipt to the sourcing ledger. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSourcingReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSourcingReceiptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse>> CreateSourcingReceiptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSourcingReceiptResponse>> CreateSourcingReceiptWithHttpInfoAsync(CreateSourcingReceiptRequest createSourcingReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSourcingReceiptRequest' is set
+            if (createSourcingReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSourcingReceiptRequest' when calling SourcingApi->CreateSourcingReceipt");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -435,6 +458,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSourcingReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

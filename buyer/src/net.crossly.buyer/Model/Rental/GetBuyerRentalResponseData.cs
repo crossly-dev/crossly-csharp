@@ -98,6 +98,8 @@ namespace net.crossly.buyer.Model
         /// <param name="inspection">inspection (required).</param>
         /// <param name="checklist">checklist (required).</param>
         /// <param name="returnPolicy">returnPolicy.</param>
+        /// <param name="policy">policy.</param>
+        /// <param name="claimWindowDays">claimWindowDays (required).</param>
         /// <param name="cancellation">cancellation (required).</param>
         /// <param name="claimWindowEndsAt">claimWindowEndsAt.</param>
         /// <param name="daysLeft">daysLeft.</param>
@@ -150,7 +152,7 @@ namespace net.crossly.buyer.Model
         /// <param name="returnShippedAt">returnShippedAt.</param>
         /// <param name="inspectedAt">inspectedAt.</param>
         /// <param name="boughtOutAt">boughtOutAt.</param>
-        public GetBuyerRentalResponseData(string listingId = default(string), string threadId = default(string), GetBuyerRentalResponseDataShipping shipping = default(GetBuyerRentalResponseDataShipping), DepositStatusEnum depositStatus = default(DepositStatusEnum), string statusLabel = default(string), bool overdue = default(bool), string renterName = default(string), List<GetBuyerRentalResponseDataTimeline> timeline = default(List<GetBuyerRentalResponseDataTimeline>), List<GetBuyerRentalResponseDataEvents> events = default(List<GetBuyerRentalResponseDataEvents>), List<GetBuyerRentalResponseDataExtensions> extensions = default(List<GetBuyerRentalResponseDataExtensions>), GetBuyerRentalResponseDataExtension extension = default(GetBuyerRentalResponseDataExtension), GetBuyerRentalResponseDataBuyout buyout = default(GetBuyerRentalResponseDataBuyout), List<BuyerRentalResponseDataInspection> inspection = default(List<BuyerRentalResponseDataInspection>), List<string> checklist = default(List<string>), string returnPolicy = default(string), CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation = default(CreateBuyerCatalogListingRentalQuoteResponseDataCancellation), string claimWindowEndsAt = default(string), decimal? daysLeft = default(decimal?), List<string> actions = default(List<string>), GetBuyerRentalResponseDataPayments payments = default(GetBuyerRentalResponseDataPayments), string shippedAt = default(string), string returnedAt = default(string), string closedAt = default(string), string createdAt = default(string), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string platformListingId = default(string), string payoutTiming = default(string), string payoutReleasedAt = default(string), string orderId = default(string), decimal? crosslyFeeCents = default(decimal?), string id = default(string), string status = default(string), string slug = default(string), string title = default(string), string imageUrl = default(string), string startDate = default(string), string endDate = default(string), decimal days = default(decimal), decimal rentCents = default(decimal), decimal shippingCents = default(decimal), decimal depositCents = default(decimal), string outboundTracking = default(string), string returnTracking = default(string), string labelUrl = default(string), decimal claimCents = default(decimal), string claimNote = default(string), List<string> claimPhotos = default(List<string>), bool claimDisputed = default(bool), List<string> conditionPhotosOut = default(List<string>), List<string> conditionPhotosIn = default(List<string>), string approvalDueAt = default(string), decimal depositRefundedCents = default(decimal), decimal unit = default(decimal), string fulfilment = default(string), decimal cleaningFeeCents = default(decimal), bool damageWaiver = default(bool), decimal damageWaiverCents = default(decimal), decimal lateFeeCents = default(decimal), decimal rentRefundedCents = default(decimal), decimal? buyoutCents = default(decimal?), Dictionary<string, Object> charges = default(Dictionary<string, Object>), List<string> conditionPhotosReturn = default(List<string>), string approvedAt = default(string), string deliveredAt = default(string), string returnShippedAt = default(string), string inspectedAt = default(string), string boughtOutAt = default(string))
+        public GetBuyerRentalResponseData(string listingId = default(string), string threadId = default(string), GetBuyerRentalResponseDataShipping shipping = default(GetBuyerRentalResponseDataShipping), DepositStatusEnum depositStatus = default(DepositStatusEnum), string statusLabel = default(string), bool overdue = default(bool), string renterName = default(string), List<GetBuyerRentalResponseDataTimeline> timeline = default(List<GetBuyerRentalResponseDataTimeline>), List<GetBuyerRentalResponseDataEvents> events = default(List<GetBuyerRentalResponseDataEvents>), List<GetBuyerRentalResponseDataExtensions> extensions = default(List<GetBuyerRentalResponseDataExtensions>), GetBuyerRentalResponseDataExtension extension = default(GetBuyerRentalResponseDataExtension), GetBuyerRentalResponseDataBuyout buyout = default(GetBuyerRentalResponseDataBuyout), List<BuyerRentalResponseDataInspection> inspection = default(List<BuyerRentalResponseDataInspection>), List<string> checklist = default(List<string>), string returnPolicy = default(string), Dictionary<string, Object> policy = default(Dictionary<string, Object>), decimal claimWindowDays = default(decimal), CreateBuyerCatalogListingRentalQuoteResponseDataCancellation cancellation = default(CreateBuyerCatalogListingRentalQuoteResponseDataCancellation), string claimWindowEndsAt = default(string), decimal? daysLeft = default(decimal?), List<string> actions = default(List<string>), GetBuyerRentalResponseDataPayments payments = default(GetBuyerRentalResponseDataPayments), string shippedAt = default(string), string returnedAt = default(string), string closedAt = default(string), string createdAt = default(string), Dictionary<string, Object> shipTo = default(Dictionary<string, Object>), string platformListingId = default(string), string payoutTiming = default(string), string payoutReleasedAt = default(string), string orderId = default(string), decimal? crosslyFeeCents = default(decimal?), string id = default(string), string status = default(string), string slug = default(string), string title = default(string), string imageUrl = default(string), string startDate = default(string), string endDate = default(string), decimal days = default(decimal), decimal rentCents = default(decimal), decimal shippingCents = default(decimal), decimal depositCents = default(decimal), string outboundTracking = default(string), string returnTracking = default(string), string labelUrl = default(string), decimal claimCents = default(decimal), string claimNote = default(string), List<string> claimPhotos = default(List<string>), bool claimDisputed = default(bool), List<string> conditionPhotosOut = default(List<string>), List<string> conditionPhotosIn = default(List<string>), string approvalDueAt = default(string), decimal depositRefundedCents = default(decimal), decimal unit = default(decimal), string fulfilment = default(string), decimal cleaningFeeCents = default(decimal), bool damageWaiver = default(bool), decimal damageWaiverCents = default(decimal), decimal lateFeeCents = default(decimal), decimal rentRefundedCents = default(decimal), decimal? buyoutCents = default(decimal?), Dictionary<string, Object> charges = default(Dictionary<string, Object>), List<string> conditionPhotosReturn = default(List<string>), string approvedAt = default(string), string deliveredAt = default(string), string returnShippedAt = default(string), string inspectedAt = default(string), string boughtOutAt = default(string))
         {
             // to ensure "shipping" is required (not null)
             if (shipping == null) {
@@ -199,6 +201,7 @@ namespace net.crossly.buyer.Model
                 throw new ArgumentNullException("checklist is a required property for GetBuyerRentalResponseData and cannot be null");
             }
             this.Checklist = checklist;
+            this.ClaimWindowDays = claimWindowDays;
             // to ensure "cancellation" is required (not null)
             if (cancellation == null) {
                 throw new ArgumentNullException("cancellation is a required property for GetBuyerRentalResponseData and cannot be null");
@@ -296,6 +299,7 @@ namespace net.crossly.buyer.Model
             this.ThreadId = threadId;
             this.RenterName = renterName;
             this.ReturnPolicy = returnPolicy;
+            this.Policy = policy;
             this.ClaimWindowEndsAt = claimWindowEndsAt;
             this.DaysLeft = daysLeft;
             this.ShippedAt = shippedAt;
@@ -404,6 +408,18 @@ namespace net.crossly.buyer.Model
         /// </summary>
         [DataMember(Name = "returnPolicy", EmitDefaultValue = true)]
         public string ReturnPolicy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Policy
+        /// </summary>
+        [DataMember(Name = "policy", EmitDefaultValue = true)]
+        public Dictionary<string, Object> Policy { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ClaimWindowDays
+        /// </summary>
+        [DataMember(Name = "claimWindowDays", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ClaimWindowDays { get; set; }
 
         /// <summary>
         /// Gets or Sets Cancellation
@@ -740,6 +756,8 @@ namespace net.crossly.buyer.Model
             sb.Append("  Inspection: ").Append(Inspection).Append("\n");
             sb.Append("  Checklist: ").Append(Checklist).Append("\n");
             sb.Append("  ReturnPolicy: ").Append(ReturnPolicy).Append("\n");
+            sb.Append("  Policy: ").Append(Policy).Append("\n");
+            sb.Append("  ClaimWindowDays: ").Append(ClaimWindowDays).Append("\n");
             sb.Append("  Cancellation: ").Append(Cancellation).Append("\n");
             sb.Append("  ClaimWindowEndsAt: ").Append(ClaimWindowEndsAt).Append("\n");
             sb.Append("  DaysLeft: ").Append(DaysLeft).Append("\n");
@@ -904,6 +922,16 @@ namespace net.crossly.buyer.Model
                     this.ReturnPolicy == input.ReturnPolicy ||
                     (this.ReturnPolicy != null &&
                     this.ReturnPolicy.Equals(input.ReturnPolicy))
+                ) && 
+                (
+                    this.Policy == input.Policy ||
+                    this.Policy != null &&
+                    input.Policy != null &&
+                    this.Policy.SequenceEqual(input.Policy)
+                ) && 
+                (
+                    this.ClaimWindowDays == input.ClaimWindowDays ||
+                    this.ClaimWindowDays.Equals(input.ClaimWindowDays)
                 ) && 
                 (
                     this.Cancellation == input.Cancellation ||
@@ -1224,6 +1252,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.ReturnPolicy.GetHashCode();
                 }
+                if (this.Policy != null)
+                {
+                    hashCode = (hashCode * 59) + this.Policy.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ClaimWindowDays.GetHashCode();
                 if (this.Cancellation != null)
                 {
                     hashCode = (hashCode * 59) + this.Cancellation.GetHashCode();

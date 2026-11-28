@@ -98,7 +98,7 @@ namespace net.crossly.Model
         /// <param name="interestedCount">interestedCount (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public DeleteEventResponseDataEvent(string id = default(string), string slug = default(string), string kind = default(string), string title = default(string), string description = default(string), string coverImageUrl = default(string), string startsAt = default(string), string endsAt = default(string), string locationType = default(string), string locationText = default(string), string locationUrl = default(string), string status = default(string), PhaseEnum phase = default(PhaseEnum), bool rsvpEnabled = default(bool), decimal? capacity = default(decimal?), List<string> listingIds = default(List<string>), string liveStreamId = default(string), ListEventsItemDropRef dropRef = default(ListEventsItemDropRef), string discountCodeId = default(string), bool featureOnStorefront = default(bool), bool notifyFollowers = default(bool), string notifiedAt = default(string), decimal viewCount = default(decimal), decimal goingCount = default(decimal), decimal interestedCount = default(decimal), string createdAt = default(string), string updatedAt = default(string))
+        public DeleteEventResponseDataEvent(string id = default(string), string slug = default(string), string kind = default(string), string title = default(string), string description = default(string), string coverImageUrl = default(string), string startsAt = default(string), string endsAt = default(string), string locationType = default(string), string locationText = default(string), string locationUrl = default(string), string status = default(string), PhaseEnum phase = default(PhaseEnum), bool rsvpEnabled = default(bool), decimal? capacity = default(decimal?), List<string> listingIds = default(List<string>), string liveStreamId = default(string), TypeId2 dropRef = default(TypeId2), string discountCodeId = default(string), bool featureOnStorefront = default(bool), bool notifyFollowers = default(bool), string notifiedAt = default(string), decimal viewCount = default(decimal), decimal goingCount = default(decimal), decimal interestedCount = default(decimal), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -269,7 +269,7 @@ namespace net.crossly.Model
         /// Gets or Sets DropRef
         /// </summary>
         [DataMember(Name = "dropRef", EmitDefaultValue = true)]
-        public ListEventsItemDropRef DropRef { get; set; }
+        public TypeId2 DropRef { get; set; }
 
         /// <summary>
         /// Gets or Sets DiscountCodeId

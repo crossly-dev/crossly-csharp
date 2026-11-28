@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Solid = 1,
 
             /// <summary>
-            /// Enum Pill for value: pill
-            /// </summary>
-            [EnumMember(Value = "pill")]
-            Pill = 2,
-
-            /// <summary>
             /// Enum Outline for value: outline
             /// </summary>
             [EnumMember(Value = "outline")]
-            Outline = 3,
+            Outline = 2,
+
+            /// <summary>
+            /// Enum Pill for value: pill
+            /// </summary>
+            [EnumMember(Value = "pill")]
+            Pill = 3,
 
             /// <summary>
             /// Enum Soft for value: soft

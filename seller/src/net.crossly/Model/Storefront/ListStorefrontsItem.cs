@@ -87,7 +87,8 @@ namespace net.crossly.Model
         /// <param name="slug">slug (required).</param>
         /// <param name="nameAuto">nameAuto (required).</param>
         /// <param name="onboardedAt">onboardedAt.</param>
-        public ListStorefrontsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StatusEnum status = default(StatusEnum), bool isDefault = default(bool), string ownerUserId = default(string), string slug = default(string), bool nameAuto = default(bool), DateTime? onboardedAt = default(DateTime?))
+        /// <param name="currency">currency.</param>
+        public ListStorefrontsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), StatusEnum status = default(StatusEnum), bool isDefault = default(bool), string ownerUserId = default(string), string slug = default(string), bool nameAuto = default(bool), DateTime? onboardedAt = default(DateTime?), string currency = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -115,6 +116,7 @@ namespace net.crossly.Model
             this.Slug = slug;
             this.NameAuto = nameAuto;
             this.OnboardedAt = onboardedAt;
+            this.Currency = currency;
         }
 
         /// <summary>
@@ -172,6 +174,12 @@ namespace net.crossly.Model
         public DateTime? OnboardedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -189,6 +197,7 @@ namespace net.crossly.Model
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  NameAuto: ").Append(NameAuto).Append("\n");
             sb.Append("  OnboardedAt: ").Append(OnboardedAt).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -270,6 +279,11 @@ namespace net.crossly.Model
                     this.OnboardedAt == input.OnboardedAt ||
                     (this.OnboardedAt != null &&
                     this.OnboardedAt.Equals(input.OnboardedAt))
+                ) && 
+                (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 );
         }
 
@@ -312,6 +326,10 @@ namespace net.crossly.Model
                 if (this.OnboardedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.OnboardedAt.GetHashCode();
+                }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 return hashCode;
             }

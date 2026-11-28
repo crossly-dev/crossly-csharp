@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="UpdateLookbookDesignResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public UpdateLookbookDesignResponse(UpdateLookbookDesignResponseData data = default(UpdateLookbookDesignResponseData))
+        public UpdateLookbookDesignResponse(CreateWorldExperienceConfigRollbackRequest data = default(CreateWorldExperienceConfigRollbackRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public UpdateLookbookDesignResponseData Data { get; set; }
+        public CreateWorldExperienceConfigRollbackRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

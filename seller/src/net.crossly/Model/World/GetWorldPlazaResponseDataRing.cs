@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Other = 2,
 
             /// <summary>
-            /// Enum Strategy for value: strategy
-            /// </summary>
-            [EnumMember(Value = "strategy")]
-            Strategy = 3,
-
-            /// <summary>
             /// Enum Social for value: social
             /// </summary>
             [EnumMember(Value = "social")]
-            Social = 4,
+            Social = 3,
+
+            /// <summary>
+            /// Enum Strategy for value: strategy
+            /// </summary>
+            [EnumMember(Value = "strategy")]
+            Strategy = 4,
 
             /// <summary>
             /// Enum Hangout for value: hangout

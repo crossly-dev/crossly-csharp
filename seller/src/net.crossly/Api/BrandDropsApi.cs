@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <returns>BrandDropResponse</returns>
-        BrandDropResponse CreateBrandDrop();
+        BrandDropResponse CreateBrandDrop(CreateBrandDropRequest createBrandDropRequest);
 
         /// <summary>
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <returns>ApiResponse of BrandDropResponse</returns>
-        ApiResponse<BrandDropResponse> CreateBrandDropWithHttpInfo();
+        ApiResponse<BrandDropResponse> CreateBrandDropWithHttpInfo(CreateBrandDropRequest createBrandDropRequest);
         /// <summary>
         /// One of your brand drops, with its status and any note from Crossly’s review.
         /// </summary>
@@ -98,8 +100,10 @@ namespace net.crossly.Api
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListBrandDropsResponse</returns>
-        ListBrandDropsResponse ListBrandDrops();
+        ListBrandDropsResponse ListBrandDrops(string status = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
@@ -108,15 +112,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListBrandDropsResponse</returns>
-        ApiResponse<ListBrandDropsResponse> ListBrandDropsWithHttpInfo();
+        ApiResponse<ListBrandDropsResponse> ListBrandDropsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <returns>BrandDropResponse</returns>
-        BrandDropResponse UpdateBrandDrop(Guid id);
+        BrandDropResponse UpdateBrandDrop(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest));
 
         /// <summary>
         /// Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
@@ -126,15 +133,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <returns>ApiResponse of BrandDropResponse</returns>
-        ApiResponse<BrandDropResponse> UpdateBrandDropWithHttpInfo(Guid id);
+        ApiResponse<BrandDropResponse> UpdateBrandDropWithHttpInfo(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest));
         /// <summary>
         /// Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <returns>ListBrandDropListingsResponse</returns>
-        ListBrandDropListingsResponse UpdateBrandDropListing(Guid id);
+        ListBrandDropListingsResponse UpdateBrandDropListing(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest);
 
         /// <summary>
         /// Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
@@ -144,8 +153,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <returns>ApiResponse of ListBrandDropListingsResponse</returns>
-        ApiResponse<ListBrandDropListingsResponse> UpdateBrandDropListingWithHttpInfo(Guid id);
+        ApiResponse<ListBrandDropListingsResponse> UpdateBrandDropListingWithHttpInfo(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest);
         #endregion Synchronous Operations
     }
 
@@ -162,9 +172,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BrandDropResponse</returns>
-        System.Threading.Tasks.Task<BrandDropResponse> CreateBrandDropAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BrandDropResponse> CreateBrandDropAsync(CreateBrandDropRequest createBrandDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted).
@@ -173,9 +184,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BrandDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BrandDropResponse>> CreateBrandDropWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BrandDropResponse>> CreateBrandDropWithHttpInfoAsync(CreateBrandDropRequest createBrandDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One of your brand drops, with its status and any note from Crossly’s review.
         /// </summary>
@@ -250,9 +262,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBrandDropsResponse</returns>
-        System.Threading.Tasks.Task<ListBrandDropsResponse> ListBrandDropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBrandDropsResponse> ListBrandDropsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner.
@@ -261,9 +275,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBrandDropsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBrandDropsResponse>> ListBrandDropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBrandDropsResponse>> ListBrandDropsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
         /// </summary>
@@ -272,9 +288,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BrandDropResponse</returns>
-        System.Threading.Tasks.Task<BrandDropResponse> UpdateBrandDropAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BrandDropResponse> UpdateBrandDropAsync(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a brand drop and/or change its status: draft (withdraw / unschedule), pending_review (submit for review), scheduled (only with canSelfPublish — 403 drop_review_required otherwise), cancelled. Editing name, time or description of a reviewed drop sends it back to review. Live and finished drops cannot be changed.
@@ -284,9 +301,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BrandDropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BrandDropResponse>> UpdateBrandDropWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BrandDropResponse>> UpdateBrandDropWithHttpInfoAsync(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
         /// </summary>
@@ -295,9 +313,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBrandDropListingsResponse</returns>
-        System.Threading.Tasks.Task<ListBrandDropListingsResponse> UpdateBrandDropListingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBrandDropListingsResponse> UpdateBrandDropListingAsync(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace the listings a brand drop releases, by master listing id (up to 100). Each must already be listed on Crossly — otherwise 400 listing_not_on_crossly naming them. Not allowed once the drop is live or finished.
@@ -307,9 +326,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBrandDropListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBrandDropListingsResponse>> UpdateBrandDropListingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBrandDropListingsResponse>> UpdateBrandDropListingWithHttpInfoAsync(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -434,10 +454,11 @@ namespace net.crossly.Api
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <returns>BrandDropResponse</returns>
-        public BrandDropResponse CreateBrandDrop()
+        public BrandDropResponse CreateBrandDrop(CreateBrandDropRequest createBrandDropRequest)
         {
-            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = CreateBrandDropWithHttpInfo();
+            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = CreateBrandDropWithHttpInfo(createBrandDropRequest);
             return localVarResponse.Data;
         }
 
@@ -445,12 +466,20 @@ namespace net.crossly.Api
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <returns>ApiResponse of BrandDropResponse</returns>
-        public net.crossly.Client.ApiResponse<BrandDropResponse> CreateBrandDropWithHttpInfo()
+        public net.crossly.Client.ApiResponse<BrandDropResponse> CreateBrandDropWithHttpInfo(CreateBrandDropRequest createBrandDropRequest)
         {
+            // verify the required parameter 'createBrandDropRequest' is set
+            if (createBrandDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandDropRequest' when calling BrandDropsApi->CreateBrandDrop");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -470,6 +499,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBrandDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -496,11 +526,12 @@ namespace net.crossly.Api
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BrandDropResponse</returns>
-        public async System.Threading.Tasks.Task<BrandDropResponse> CreateBrandDropAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BrandDropResponse> CreateBrandDropAsync(CreateBrandDropRequest createBrandDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = await CreateBrandDropWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = await CreateBrandDropWithHttpInfoAsync(createBrandDropRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -508,14 +539,22 @@ namespace net.crossly.Api
         /// Create a brand drop as a draft (name, dropAt in the future, optional description, cover image and Crossly platform-listing ids). Approved partners only (403 drop_partner_required); counts against your monthly allowance (403 drop_quota_exhausted). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBrandDropRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BrandDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<BrandDropResponse>> CreateBrandDropWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<BrandDropResponse>> CreateBrandDropWithHttpInfoAsync(CreateBrandDropRequest createBrandDropRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBrandDropRequest' is set
+            if (createBrandDropRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBrandDropRequest' when calling BrandDropsApi->CreateBrandDrop");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -535,6 +574,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBrandDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -958,10 +998,12 @@ namespace net.crossly.Api
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListBrandDropsResponse</returns>
-        public ListBrandDropsResponse ListBrandDrops()
+        public ListBrandDropsResponse ListBrandDrops(string status = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListBrandDropsResponse> localVarResponse = ListBrandDropsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListBrandDropsResponse> localVarResponse = ListBrandDropsWithHttpInfo(status, limit);
             return localVarResponse.Data;
         }
 
@@ -969,8 +1011,10 @@ namespace net.crossly.Api
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListBrandDropsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListBrandDropsResponse> ListBrandDropsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListBrandDropsResponse> ListBrandDropsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -994,6 +1038,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1020,11 +1072,13 @@ namespace net.crossly.Api
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBrandDropsResponse</returns>
-        public async System.Threading.Tasks.Task<ListBrandDropsResponse> ListBrandDropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBrandDropsResponse> ListBrandDropsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListBrandDropsResponse> localVarResponse = await ListBrandDropsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListBrandDropsResponse> localVarResponse = await ListBrandDropsWithHttpInfoAsync(status, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1032,9 +1086,11 @@ namespace net.crossly.Api
         /// Your brand drops, newest start time first. Filter with ?status&#x3D;draft|pending_review|scheduled|live|sold_out|ended|cancelled. Empty when you are not a partner. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBrandDropsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandDropsResponse>> ListBrandDropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandDropsResponse>> ListBrandDropsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1059,6 +1115,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1087,10 +1151,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <returns>BrandDropResponse</returns>
-        public BrandDropResponse UpdateBrandDrop(Guid id)
+        public BrandDropResponse UpdateBrandDrop(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest))
         {
-            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = UpdateBrandDropWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = UpdateBrandDropWithHttpInfo(id, updateBrandDropRequest);
             return localVarResponse.Data;
         }
 
@@ -1099,12 +1164,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <returns>ApiResponse of BrandDropResponse</returns>
-        public net.crossly.Client.ApiResponse<BrandDropResponse> UpdateBrandDropWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<BrandDropResponse> UpdateBrandDropWithHttpInfo(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1125,6 +1192,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1152,11 +1220,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BrandDropResponse</returns>
-        public async System.Threading.Tasks.Task<BrandDropResponse> UpdateBrandDropAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BrandDropResponse> UpdateBrandDropAsync(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = await UpdateBrandDropWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<BrandDropResponse> localVarResponse = await UpdateBrandDropWithHttpInfoAsync(id, updateBrandDropRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1165,14 +1234,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BrandDropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<BrandDropResponse>> UpdateBrandDropWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<BrandDropResponse>> UpdateBrandDropWithHttpInfoAsync(Guid id, UpdateBrandDropRequest updateBrandDropRequest = default(UpdateBrandDropRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1193,6 +1264,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandDropRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1221,10 +1293,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <returns>ListBrandDropListingsResponse</returns>
-        public ListBrandDropListingsResponse UpdateBrandDropListing(Guid id)
+        public ListBrandDropListingsResponse UpdateBrandDropListing(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest)
         {
-            net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> localVarResponse = UpdateBrandDropListingWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> localVarResponse = UpdateBrandDropListingWithHttpInfo(id, updateBrandDropListingRequest);
             return localVarResponse.Data;
         }
 
@@ -1233,12 +1306,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <returns>ApiResponse of ListBrandDropListingsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> UpdateBrandDropListingWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> UpdateBrandDropListingWithHttpInfo(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest)
         {
+            // verify the required parameter 'updateBrandDropListingRequest' is set
+            if (updateBrandDropListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandDropListingRequest' when calling BrandDropsApi->UpdateBrandDropListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1259,6 +1340,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandDropListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1286,11 +1368,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBrandDropListingsResponse</returns>
-        public async System.Threading.Tasks.Task<ListBrandDropListingsResponse> UpdateBrandDropListingAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBrandDropListingsResponse> UpdateBrandDropListingAsync(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> localVarResponse = await UpdateBrandDropListingWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListBrandDropListingsResponse> localVarResponse = await UpdateBrandDropListingWithHttpInfoAsync(id, updateBrandDropListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1299,14 +1382,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBrandDropListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBrandDropListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandDropListingsResponse>> UpdateBrandDropListingWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBrandDropListingsResponse>> UpdateBrandDropListingWithHttpInfoAsync(Guid id, UpdateBrandDropListingRequest updateBrandDropListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBrandDropListingRequest' is set
+            if (updateBrandDropListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBrandDropListingRequest' when calling BrandDropsApi->UpdateBrandDropListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1327,6 +1418,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBrandDropListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

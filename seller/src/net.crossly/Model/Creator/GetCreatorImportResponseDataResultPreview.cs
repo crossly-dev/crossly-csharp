@@ -65,7 +65,13 @@ namespace net.crossly.Model
             /// Enum Interactive for value: interactive
             /// </summary>
             [EnumMember(Value = "interactive")]
-            Interactive = 5
+            Interactive = 5,
+
+            /// <summary>
+            /// Enum CardGame for value: card_game
+            /// </summary>
+            [EnumMember(Value = "card_game")]
+            CardGame = 6
 
         }
 

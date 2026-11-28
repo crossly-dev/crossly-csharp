@@ -46,8 +46,8 @@ namespace net.crossly.Model
         /// <param name="description">description.</param>
         /// <param name="status">status (required).</param>
         /// <param name="releasedAt">releasedAt.</param>
-        /// <param name="published">published (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="published">published (required).</param>
         /// <param name="endsAt">endsAt.</param>
         /// <param name="eventId">eventId.</param>
         /// <param name="format">format (required).</param>
@@ -83,7 +83,7 @@ namespace net.crossly.Model
         /// <param name="shipBy">shipBy.</param>
         /// <param name="balanceNetDays">balanceNetDays.</param>
         /// <param name="listingCount">listingCount (required).</param>
-        public ListBrandDropsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), string status = default(string), DateTime? releasedAt = default(DateTime?), bool published = default(bool), string storefrontId = default(string), DateTime? endsAt = default(DateTime?), string eventId = default(string), string format = default(string), Dictionary<string, Object> config = default(Dictionary<string, Object>), string sellerUserId = default(string), string coverImageUrl = default(string), List<string> platformListingIds = default(List<string>), DateTime dropAt = default(DateTime), string partnerId = default(string), decimal? wholesaleUnitCostCents = default(decimal?), decimal? unitsPurchased = default(decimal?), string supplierName = default(string), string poReference = default(string), decimal? retailUnitPriceCents = default(decimal?), bool buyerApiEnabled = default(bool), decimal? perCustomerLimit = default(decimal?), DateTime? previewFrom = default(DateTime?), DateTime? publishedAt = default(DateTime?), string reviewNote = default(string), DateTime? reviewedAt = default(DateTime?), List<string> placements = default(List<string>), DateTime? announceAt = default(DateTime?), DateTime? countdownAt = default(DateTime?), DateTime? pausedAt = default(DateTime?), string liveStreamId = default(string), string spatialDropId = default(string), string timezone = default(string), string featuredStatus = default(string), string audience = default(string), string audienceCatalogId = default(string), string dropKind = default(string), decimal? depositBps = default(decimal?), string shipBy = default(string), decimal? balanceNetDays = default(decimal?), decimal listingCount = default(decimal))
+        public ListBrandDropsItem(string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string description = default(string), string status = default(string), DateTime? releasedAt = default(DateTime?), string storefrontId = default(string), bool published = default(bool), DateTime? endsAt = default(DateTime?), string eventId = default(string), string format = default(string), Dictionary<string, Object> config = default(Dictionary<string, Object>), string sellerUserId = default(string), string coverImageUrl = default(string), List<string> platformListingIds = default(List<string>), DateTime dropAt = default(DateTime), string partnerId = default(string), decimal? wholesaleUnitCostCents = default(decimal?), decimal? unitsPurchased = default(decimal?), string supplierName = default(string), string poReference = default(string), decimal? retailUnitPriceCents = default(decimal?), bool buyerApiEnabled = default(bool), decimal? perCustomerLimit = default(decimal?), DateTime? previewFrom = default(DateTime?), DateTime? publishedAt = default(DateTime?), string reviewNote = default(string), DateTime? reviewedAt = default(DateTime?), List<string> placements = default(List<string>), DateTime? announceAt = default(DateTime?), DateTime? countdownAt = default(DateTime?), DateTime? pausedAt = default(DateTime?), string liveStreamId = default(string), string spatialDropId = default(string), string timezone = default(string), string featuredStatus = default(string), string audience = default(string), string audienceCatalogId = default(string), string dropKind = default(string), decimal? depositBps = default(decimal?), string shipBy = default(string), decimal? balanceNetDays = default(decimal?), decimal listingCount = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -210,16 +210,16 @@ namespace net.crossly.Model
         public DateTime? ReleasedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Published
-        /// </summary>
-        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
-        public bool Published { get; set; }
-
-        /// <summary>
         /// Gets or Sets StorefrontId
         /// </summary>
         [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
         public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Published
+        /// </summary>
+        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
+        public bool Published { get; set; }
 
         /// <summary>
         /// Gets or Sets EndsAt
@@ -446,8 +446,8 @@ namespace net.crossly.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ReleasedAt: ").Append(ReleasedAt).Append("\n");
-            sb.Append("  Published: ").Append(Published).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Published: ").Append(Published).Append("\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
@@ -554,13 +554,13 @@ namespace net.crossly.Model
                     this.ReleasedAt.Equals(input.ReleasedAt))
                 ) && 
                 (
-                    this.Published == input.Published ||
-                    this.Published.Equals(input.Published)
-                ) && 
-                (
                     this.StorefrontId == input.StorefrontId ||
                     (this.StorefrontId != null &&
                     this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Published == input.Published ||
+                    this.Published.Equals(input.Published)
                 ) && 
                 (
                     this.EndsAt == input.EndsAt ||
@@ -777,11 +777,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ReleasedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Published.GetHashCode();
                 if (this.StorefrontId != null)
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Published.GetHashCode();
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();

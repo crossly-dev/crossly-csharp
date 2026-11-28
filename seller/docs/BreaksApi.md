@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createbreak"></a>
 # **CreateBreak**
-> CreateBreakResponse CreateBreak ()
+> CreateBreakResponse CreateBreak (CreateBreakRequest createBreakRequest)
 
 Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
 
@@ -39,11 +39,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BreaksApi(config);
+            var createBreakRequest = new CreateBreakRequest(); // CreateBreakRequest | 
 
             try
             {
                 // Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
-                CreateBreakResponse result = apiInstance.CreateBreak();
+                CreateBreakResponse result = apiInstance.CreateBreak(createBreakRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +59,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBreakRequest** | **CreateBreakRequest**|  | 
 
 ### Return type
 
@@ -70,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -323,7 +327,7 @@ Name | Type | Description  | Notes
 
 <a name="createbreakspothit"></a>
 # **CreateBreakSpotHit**
-> UpdateGroupBuyResponse CreateBreakSpotHit (string id, string spotId)
+> UpdateGroupBuyResponse CreateBreakSpotHit (string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest)
 
 Record what a spot pulled.
 
@@ -349,11 +353,12 @@ namespace Example
             var apiInstance = new BreaksApi(config);
             var id = "id_example";  // string | 
             var spotId = "spotId_example";  // string | 
+            var createBreakSpotHitRequest = new CreateBreakSpotHitRequest(); // CreateBreakSpotHitRequest | 
 
             try
             {
                 // Record what a spot pulled.
-                UpdateGroupBuyResponse result = apiInstance.CreateBreakSpotHit(id, spotId);
+                UpdateGroupBuyResponse result = apiInstance.CreateBreakSpotHit(id, spotId, createBreakSpotHitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -373,6 +378,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **spotId** | **string**|  | 
+ **createBreakSpotHitRequest** | **CreateBreakSpotHitRequest**|  | 
 
 ### Return type
 
@@ -384,7 +390,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

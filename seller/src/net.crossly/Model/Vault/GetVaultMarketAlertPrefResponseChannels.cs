@@ -50,16 +50,16 @@ namespace net.crossly.Model
             Push = 2,
 
             /// <summary>
-            /// Enum Webhook for value: webhook
-            /// </summary>
-            [EnumMember(Value = "webhook")]
-            Webhook = 3,
-
-            /// <summary>
             /// Enum Telegram for value: telegram
             /// </summary>
             [EnumMember(Value = "telegram")]
-            Telegram = 4,
+            Telegram = 3,
+
+            /// <summary>
+            /// Enum Webhook for value: webhook
+            /// </summary>
+            [EnumMember(Value = "webhook")]
+            Webhook = 4,
 
             /// <summary>
             /// Enum Terminal for value: terminal

@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Accept a team invitation by the raw token from its link.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <returns>CreateTeamAcceptResponse</returns>
-        CreateTeamAcceptResponse CreateTeamAccept();
+        CreateTeamAcceptResponse CreateTeamAccept(TokenObject tokenObject);
 
         /// <summary>
         /// Accept a team invitation by the raw token from its link.
@@ -40,14 +41,34 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <returns>ApiResponse of CreateTeamAcceptResponse</returns>
-        ApiResponse<CreateTeamAcceptResponse> CreateTeamAcceptWithHttpInfo();
+        ApiResponse<CreateTeamAcceptResponse> CreateTeamAcceptWithHttpInfo(TokenObject tokenObject);
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <returns>CreateTeamInviteResponse</returns>
+        CreateTeamInviteResponse CreateTeamInvite(CreateTeamInviteRequest createTeamInviteRequest);
+
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
+        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(CreateTeamInviteRequest createTeamInviteRequest);
         /// <summary>
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateTeamInviteResponse</returns>
-        CreateTeamInviteResponse CreateTeamInvite();
+        /// <param name="createTeamInvite2Request"></param>
+        /// <returns>CreateTeamInvite2Response</returns>
+        CreateTeamInvite2Response CreateTeamInvite2(CreateTeamInvite2Request createTeamInvite2Request);
 
         /// <summary>
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
@@ -56,8 +77,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo();
+        /// <param name="createTeamInvite2Request"></param>
+        /// <returns>ApiResponse of CreateTeamInvite2Response</returns>
+        ApiResponse<CreateTeamInvite2Response> CreateTeamInvite2WithHttpInfo(CreateTeamInvite2Request createTeamInvite2Request);
         /// <summary>
         /// Leave every team this user is currently a member of.
         /// </summary>
@@ -75,11 +97,32 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateTeamLeaveResponse</returns>
         ApiResponse<CreateTeamLeaveResponse> CreateTeamLeaveWithHttpInfo();
         /// <summary>
+        /// Add a team member to a store with its permissions.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        TeamMemberStoreResponse CreateTeamMemberStore(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest);
+
+        /// <summary>
+        /// Add a team member to a store with its permissions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        ApiResponse<TeamMemberStoreResponse> CreateTeamMemberStoreWithHttpInfo(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest);
+        /// <summary>
         /// Revoke a pending invite OR an active team member.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <returns>CreateTeamRevokeResponse</returns>
-        CreateTeamRevokeResponse CreateTeamRevoke();
+        CreateTeamRevokeResponse CreateTeamRevoke(CreateTeamRevokeRequest createTeamRevokeRequest);
 
         /// <summary>
         /// Revoke a pending invite OR an active team member.
@@ -88,8 +131,45 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <returns>ApiResponse of CreateTeamRevokeResponse</returns>
-        ApiResponse<CreateTeamRevokeResponse> CreateTeamRevokeWithHttpInfo();
+        ApiResponse<CreateTeamRevokeResponse> CreateTeamRevokeWithHttpInfo(CreateTeamRevokeRequest createTeamRevokeRequest);
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeleteTeamMemberStore(string id, string store);
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeleteTeamMemberStoreWithHttpInfo(string id, string store);
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAssigneeResponse</returns>
+        GetAssigneeResponse GetAssignee();
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAssigneeResponse</returns>
+        ApiResponse<GetAssigneeResponse> GetAssigneeWithHttpInfo();
         /// <summary>
         /// List pending team invitations + active members.
         /// </summary>
@@ -107,12 +187,129 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetTeamResponse</returns>
         ApiResponse<GetTeamResponse> GetTeamWithHttpInfo();
         /// <summary>
+        /// One team member: added, last active and the stores they staff.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetTeamMemberResponse</returns>
+        GetTeamMemberResponse GetTeamMember(string id);
+
+        /// <summary>
+        /// One team member: added, last active and the stores they staff.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetTeamMemberResponse</returns>
+        ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(string id);
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        TeamMemberStoreResponse GetTeamMemberStore(string id, string store);
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        ApiResponse<TeamMemberStoreResponse> GetTeamMemberStoreWithHttpInfo(string id, string store);
+        /// <summary>
+        /// List team invitations with the stores each adds the person to.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListTeamInvitesResponse</returns>
+        ListTeamInvitesResponse ListTeamInvites(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?));
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
+        ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?));
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListTeamMembersResponse</returns>
+        ListTeamMembersResponse ListTeamMembers(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?));
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListTeamMembersResponse</returns>
+        ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?));
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListTeamStoresResponse</returns>
+        ListTeamStoresResponse ListTeamStores();
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListTeamStoresResponse</returns>
+        ApiResponse<ListTeamStoresResponse> ListTeamStoresWithHttpInfo();
+        /// <summary>
         /// Update a team member&#39;s scopes (owner only).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse UpdateTeam(Guid memberId);
+        OkResponse UpdateTeam(Guid memberId, UpdateTeamRequest updateTeamRequest);
 
         /// <summary>
         /// Update a team member&#39;s scopes (owner only).
@@ -122,8 +319,31 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> UpdateTeamWithHttpInfo(Guid memberId);
+        ApiResponse<OkResponse> UpdateTeamWithHttpInfo(Guid memberId, UpdateTeamRequest updateTeamRequest);
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        TeamMemberStoreResponse UpdateTeamMemberStore(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest);
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        ApiResponse<TeamMemberStoreResponse> UpdateTeamMemberStoreWithHttpInfo(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest);
         #endregion Synchronous Operations
     }
 
@@ -140,9 +360,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamAcceptResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamAcceptResponse> CreateTeamAcceptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTeamAcceptResponse> CreateTeamAcceptAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept a team invitation by the raw token from its link.
@@ -151,9 +372,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamAcceptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamAcceptResponse>> CreateTeamAcceptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamAcceptResponse>> CreateTeamAcceptWithHttpInfoAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateTeamInviteResponse</returns>
+        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
         /// </summary>
@@ -161,9 +406,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInvite2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateTeamInviteResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateTeamInvite2Response</returns>
+        System.Threading.Tasks.Task<CreateTeamInvite2Response> CreateTeamInvite2Async(CreateTeamInvite2Request createTeamInvite2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed).
@@ -172,9 +418,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInvite2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateTeamInvite2Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamInvite2Response>> CreateTeamInvite2WithHttpInfoAsync(CreateTeamInvite2Request createTeamInvite2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Leave every team this user is currently a member of.
         /// </summary>
@@ -197,15 +444,41 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateTeamLeaveResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateTeamLeaveResponse>> CreateTeamLeaveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Add a team member to a store with its permissions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        System.Threading.Tasks.Task<TeamMemberStoreResponse> CreateTeamMemberStoreAsync(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Add a team member to a store with its permissions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TeamMemberStoreResponse>> CreateTeamMemberStoreWithHttpInfoAsync(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Revoke a pending invite OR an active team member.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamRevokeResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamRevokeResponse> CreateTeamRevokeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTeamRevokeResponse> CreateTeamRevokeAsync(CreateTeamRevokeRequest createTeamRevokeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Revoke a pending invite OR an active team member.
@@ -214,9 +487,56 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamRevokeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamRevokeResponse>> CreateTeamRevokeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamRevokeResponse>> CreateTeamRevokeWithHttpInfoAsync(CreateTeamRevokeRequest createTeamRevokeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteTeamMemberStoreAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeleteTeamMemberStoreWithHttpInfoAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssigneeResponse</returns>
+        System.Threading.Tasks.Task<GetAssigneeResponse> GetAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssigneeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssigneeResponse>> GetAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List pending team invitations + active members.
         /// </summary>
@@ -239,6 +559,147 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetTeamResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTeamResponse>> GetTeamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// One team member: added, last active and the stores they staff.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetTeamMemberResponse</returns>
+        System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One team member: added, last active and the stores they staff.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetTeamMemberResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        System.Threading.Tasks.Task<TeamMemberStoreResponse> GetTeamMemberStoreAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TeamMemberStoreResponse>> GetTeamMemberStoreWithHttpInfoAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List team invitations with the stores each adds the person to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamInvitesResponse</returns>
+        System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamMembersResponse</returns>
+        System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamMembersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamStoresResponse</returns>
+        System.Threading.Tasks.Task<ListTeamStoresResponse> ListTeamStoresAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamStoresResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListTeamStoresResponse>> ListTeamStoresWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Update a team member&#39;s scopes (owner only).
         /// </summary>
         /// <remarks>
@@ -246,9 +707,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> UpdateTeamAsync(Guid memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> UpdateTeamAsync(Guid memberId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a team member&#39;s scopes (owner only).
@@ -258,9 +720,37 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateTeamWithHttpInfoAsync(Guid memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateTeamWithHttpInfoAsync(Guid memberId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        System.Threading.Tasks.Task<TeamMemberStoreResponse> UpdateTeamMemberStoreAsync(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TeamMemberStoreResponse>> UpdateTeamMemberStoreWithHttpInfoAsync(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -385,10 +875,11 @@ namespace net.crossly.Api
         /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <returns>CreateTeamAcceptResponse</returns>
-        public CreateTeamAcceptResponse CreateTeamAccept()
+        public CreateTeamAcceptResponse CreateTeamAccept(TokenObject tokenObject)
         {
-            net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> localVarResponse = CreateTeamAcceptWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> localVarResponse = CreateTeamAcceptWithHttpInfo(tokenObject);
             return localVarResponse.Data;
         }
 
@@ -396,12 +887,20 @@ namespace net.crossly.Api
         /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <returns>ApiResponse of CreateTeamAcceptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> CreateTeamAcceptWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> CreateTeamAcceptWithHttpInfo(TokenObject tokenObject)
         {
+            // verify the required parameter 'tokenObject' is set
+            if (tokenObject == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenObject' when calling TeamApi->CreateTeamAccept");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -421,6 +920,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = tokenObject;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -447,11 +947,12 @@ namespace net.crossly.Api
         /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamAcceptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamAcceptResponse> CreateTeamAcceptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTeamAcceptResponse> CreateTeamAcceptAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> localVarResponse = await CreateTeamAcceptWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTeamAcceptResponse> localVarResponse = await CreateTeamAcceptWithHttpInfoAsync(tokenObject, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -459,14 +960,22 @@ namespace net.crossly.Api
         /// Accept a team invitation by the raw token from its link. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamAcceptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamAcceptResponse>> CreateTeamAcceptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamAcceptResponse>> CreateTeamAcceptWithHttpInfoAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'tokenObject' is set
+            if (tokenObject == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenObject' when calling TeamApi->CreateTeamAccept");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -486,6 +995,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = tokenObject;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -510,26 +1020,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
         /// <returns>CreateTeamInviteResponse</returns>
-        public CreateTeamInviteResponse CreateTeamInvite()
+        public CreateTeamInviteResponse CreateTeamInvite(CreateTeamInviteRequest createTeamInviteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = CreateTeamInviteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = CreateTeamInviteWithHttpInfo(createTeamInviteRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(CreateTeamInviteRequest createTeamInviteRequest)
         {
+            // verify the required parameter 'createTeamInviteRequest' is set
+            if (createTeamInviteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamInviteRequest' when calling TeamApi->CreateTeamInvite");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -549,6 +1068,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTeamInviteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -558,7 +1078,83 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateTeamInviteResponse>("/v1/team/invite", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateTeamInviteResponse>("/v1/team/invites", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTeamInvite", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateTeamInviteResponse</returns>
+        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = await CreateTeamInviteWithHttpInfoAsync(createTeamInviteRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Invite someone to one or more stores, each with its permissions; returns the one-time accept URL. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInviteRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createTeamInviteRequest' is set
+            if (createTeamInviteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamInviteRequest' when calling TeamApi->CreateTeamInvite");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createTeamInviteRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamInviteResponse>("/v1/team/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateTeamInvite", localVarResponse);
@@ -575,11 +1171,11 @@ namespace net.crossly.Api
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateTeamInviteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <param name="createTeamInvite2Request"></param>
+        /// <returns>CreateTeamInvite2Response</returns>
+        public CreateTeamInvite2Response CreateTeamInvite2(CreateTeamInvite2Request createTeamInvite2Request)
         {
-            net.crossly.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = await CreateTeamInviteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTeamInvite2Response> localVarResponse = CreateTeamInvite2WithHttpInfo(createTeamInvite2Request);
             return localVarResponse.Data;
         }
 
@@ -587,14 +1183,20 @@ namespace net.crossly.Api
         /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <param name="createTeamInvite2Request"></param>
+        /// <returns>ApiResponse of CreateTeamInvite2Response</returns>
+        public net.crossly.Client.ApiResponse<CreateTeamInvite2Response> CreateTeamInvite2WithHttpInfo(CreateTeamInvite2Request createTeamInvite2Request)
         {
+            // verify the required parameter 'createTeamInvite2Request' is set
+            if (createTeamInvite2Request == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamInvite2Request' when calling TeamApi->CreateTeamInvite2");
+            }
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -614,6 +1216,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTeamInvite2Request;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -623,11 +1226,86 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamInviteResponse>("/v1/team/invite", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = this.Client.Post<CreateTeamInvite2Response>("/v1/team/invite", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTeamInvite2", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInvite2Request"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateTeamInvite2Response</returns>
+        public async System.Threading.Tasks.Task<CreateTeamInvite2Response> CreateTeamInvite2Async(CreateTeamInvite2Request createTeamInvite2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateTeamInvite2Response> localVarResponse = await CreateTeamInvite2WithHttpInfoAsync(createTeamInvite2Request, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Issue a team invitation; returns the one-time accept URL (nothing is emailed). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamInvite2Request"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateTeamInvite2Response)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamInvite2Response>> CreateTeamInvite2WithHttpInfoAsync(CreateTeamInvite2Request createTeamInvite2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createTeamInvite2Request' is set
+            if (createTeamInvite2Request == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamInvite2Request' when calling TeamApi->CreateTeamInvite2");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createTeamInvite2Request;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamInvite2Response>("/v1/team/invite", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTeamInvite", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateTeamInvite2", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -766,26 +1444,43 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Revoke a pending invite OR an active team member. 
+        /// Add a team member to a store with its permissions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateTeamRevokeResponse</returns>
-        public CreateTeamRevokeResponse CreateTeamRevoke()
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        public TeamMemberStoreResponse CreateTeamMemberStore(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest)
         {
-            net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> localVarResponse = CreateTeamRevokeWithHttpInfo();
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = CreateTeamMemberStoreWithHttpInfo(id, createTeamMemberStoreRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Revoke a pending invite OR an active team member. 
+        /// Add a team member to a store with its permissions. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateTeamRevokeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> CreateTeamRevokeWithHttpInfo()
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        public net.crossly.Client.ApiResponse<TeamMemberStoreResponse> CreateTeamMemberStoreWithHttpInfo(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest)
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->CreateTeamMemberStore");
+            }
+
+            // verify the required parameter 'createTeamMemberStoreRequest' is set
+            if (createTeamMemberStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamMemberStoreRequest' when calling TeamApi->CreateTeamMemberStore");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -805,6 +1500,165 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTeamMemberStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TeamMemberStoreResponse>("/v1/team/members/{id}/stores", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add a team member to a store with its permissions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        public async System.Threading.Tasks.Task<TeamMemberStoreResponse> CreateTeamMemberStoreAsync(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = await CreateTeamMemberStoreWithHttpInfoAsync(id, createTeamMemberStoreRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a team member to a store with its permissions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TeamMemberStoreResponse>> CreateTeamMemberStoreWithHttpInfoAsync(string id, CreateTeamMemberStoreRequest createTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->CreateTeamMemberStore");
+            }
+
+            // verify the required parameter 'createTeamMemberStoreRequest' is set
+            if (createTeamMemberStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamMemberStoreRequest' when calling TeamApi->CreateTeamMemberStore");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTeamMemberStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TeamMemberStoreResponse>("/v1/team/members/{id}/stores", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Revoke a pending invite OR an active team member. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
+        /// <returns>CreateTeamRevokeResponse</returns>
+        public CreateTeamRevokeResponse CreateTeamRevoke(CreateTeamRevokeRequest createTeamRevokeRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> localVarResponse = CreateTeamRevokeWithHttpInfo(createTeamRevokeRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Revoke a pending invite OR an active team member. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
+        /// <returns>ApiResponse of CreateTeamRevokeResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> CreateTeamRevokeWithHttpInfo(CreateTeamRevokeRequest createTeamRevokeRequest)
+        {
+            // verify the required parameter 'createTeamRevokeRequest' is set
+            if (createTeamRevokeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamRevokeRequest' when calling TeamApi->CreateTeamRevoke");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createTeamRevokeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -831,11 +1685,12 @@ namespace net.crossly.Api
         /// Revoke a pending invite OR an active team member. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamRevokeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamRevokeResponse> CreateTeamRevokeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTeamRevokeResponse> CreateTeamRevokeAsync(CreateTeamRevokeRequest createTeamRevokeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> localVarResponse = await CreateTeamRevokeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTeamRevokeResponse> localVarResponse = await CreateTeamRevokeWithHttpInfoAsync(createTeamRevokeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -843,9 +1698,310 @@ namespace net.crossly.Api
         /// Revoke a pending invite OR an active team member. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTeamRevokeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamRevokeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamRevokeResponse>> CreateTeamRevokeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTeamRevokeResponse>> CreateTeamRevokeWithHttpInfoAsync(CreateTeamRevokeRequest createTeamRevokeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createTeamRevokeRequest' is set
+            if (createTeamRevokeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTeamRevokeRequest' when calling TeamApi->CreateTeamRevoke");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createTeamRevokeRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamRevokeResponse>("/v1/team/revoke", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateTeamRevoke", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeleteTeamMemberStore(string id, string store)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeleteTeamMemberStoreWithHttpInfo(id, store);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeleteTeamMemberStoreWithHttpInfo(string id, string store)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->DeleteTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->DeleteTeamMemberStore");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteTeamMemberStoreAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeleteTeamMemberStoreWithHttpInfoAsync(id, store, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove a team member from one store (their other stores stay). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeleteTeamMemberStoreWithHttpInfoAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->DeleteTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->DeleteTeamMemberStore");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAssigneeResponse</returns>
+        public GetAssigneeResponse GetAssignee()
+        {
+            net.crossly.Client.ApiResponse<GetAssigneeResponse> localVarResponse = GetAssigneeWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAssigneeResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAssigneeResponse> GetAssigneeWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAssigneeResponse>("/v1/assignees", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAssignee", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssigneeResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssigneeResponse> GetAssigneeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAssigneeResponse> localVarResponse = await GetAssigneeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The teammates work can be assigned to (active seats; isMe marks yours). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssigneeResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAssigneeResponse>> GetAssigneeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -879,11 +2035,11 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamRevokeResponse>("/v1/team/revoke", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssigneeResponse>("/v1/assignees", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateTeamRevoke", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAssignee", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1022,24 +2178,344 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Update a team member&#39;s scopes (owner only). 
+        /// One team member: added, last active and the stores they staff. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberId"></param>
-        /// <returns>OkResponse</returns>
-        public OkResponse UpdateTeam(Guid memberId)
+        /// <param name="id"></param>
+        /// <returns>GetTeamMemberResponse</returns>
+        public GetTeamMemberResponse GetTeamMember(string id)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateTeamWithHttpInfo(memberId);
+            net.crossly.Client.ApiResponse<GetTeamMemberResponse> localVarResponse = GetTeamMemberWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update a team member&#39;s scopes (owner only). 
+        /// One team member: added, last active and the stores they staff. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="memberId"></param>
-        /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> UpdateTeamWithHttpInfo(Guid memberId)
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetTeamMemberResponse</returns>
+        public net.crossly.Client.ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->GetTeamMember");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetTeamMemberResponse>("/v1/team/members/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTeamMember", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One team member: added, last active and the stores they staff. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetTeamMemberResponse</returns>
+        public async System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetTeamMemberResponse> localVarResponse = await GetTeamMemberWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One team member: added, last active and the stores they staff. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetTeamMemberResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->GetTeamMember");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTeamMemberResponse>("/v1/team/members/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTeamMember", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        public TeamMemberStoreResponse GetTeamMemberStore(string id, string store)
+        {
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = GetTeamMemberStoreWithHttpInfo(id, store);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        public net.crossly.Client.ApiResponse<TeamMemberStoreResponse> GetTeamMemberStoreWithHttpInfo(string id, string store)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->GetTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->GetTeamMemberStore");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TeamMemberStoreResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        public async System.Threading.Tasks.Task<TeamMemberStoreResponse> GetTeamMemberStoreAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = await GetTeamMemberStoreWithHttpInfoAsync(id, store, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A member&#39;s permissions and limits in one store (&#x60;all&#x60; &#x3D; all current and future stores). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TeamMemberStoreResponse>> GetTeamMemberStoreWithHttpInfoAsync(string id, string store, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->GetTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->GetTeamMemberStore");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<TeamMemberStoreResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListTeamInvitesResponse</returns>
+        public ListTeamInvitesResponse ListTeamInvites(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?))
+        {
+            net.crossly.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = ListTeamInvitesWithHttpInfo(store, status, sort, q, page, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1063,7 +2539,571 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (store != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "store", store));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListTeamInvitesResponse>("/v1/team/invites", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamInvites", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamInvitesResponse</returns>
+        public async System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = await ListTeamInvitesWithHttpInfoAsync(store, status, sort, q, page, pageSize, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List team invitations with the stores each adds the person to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string store = default(string), string status = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (store != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "store", store));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamInvitesResponse>("/v1/team/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamInvites", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListTeamMembersResponse</returns>
+        public ListTeamMembersResponse ListTeamMembers(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?))
+        {
+            net.crossly.Client.ApiResponse<ListTeamMembersResponse> localVarResponse = ListTeamMembersWithHttpInfo(store, role, permission, status, lastActive, sort, q, page, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListTeamMembersResponse</returns>
+        public net.crossly.Client.ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (store != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "store", store));
+            }
+            if (role != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "role", role));
+            }
+            if (permission != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "permission", permission));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (lastActive != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "lastActive", lastActive));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListTeamMembersResponse>("/v1/team/members", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamMembers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamMembersResponse</returns>
+        public async System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListTeamMembersResponse> localVarResponse = await ListTeamMembersWithHttpInfoAsync(store, role, permission, status, lastActive, sort, q, page, pageSize, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List team members with the stores each staffs (search, store, preset, permission, status, last active). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="store">A store id, or &#39;all&#39; (members holding the all-stores entry). (optional)</param>
+        /// <param name="role">A preset id (viewer…admin), &#39;custom&#39;, or the account role &#39;account_admin&#39;. (optional)</param>
+        /// <param name="permission"> (optional)</param>
+        /// <param name="status">active &#x3D; reaches at least one store; no_stores &#x3D; a seat with no store yet. (optional)</param>
+        /// <param name="lastActive"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamMembersResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(string store = default(string), string role = default(string), string permission = default(string), string status = default(string), string lastActive = default(string), string sort = default(string), string q = default(string), decimal? page = default(decimal?), decimal? pageSize = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (store != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "store", store));
+            }
+            if (role != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "role", role));
+            }
+            if (permission != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "permission", permission));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (lastActive != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "lastActive", lastActive));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamMembersResponse>("/v1/team/members", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamMembers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListTeamStoresResponse</returns>
+        public ListTeamStoresResponse ListTeamStores()
+        {
+            net.crossly.Client.ApiResponse<ListTeamStoresResponse> localVarResponse = ListTeamStoresWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListTeamStoresResponse</returns>
+        public net.crossly.Client.ApiResponse<ListTeamStoresResponse> ListTeamStoresWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListTeamStoresResponse>("/v1/team/stores", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamStores", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListTeamStoresResponse</returns>
+        public async System.Threading.Tasks.Task<ListTeamStoresResponse> ListTeamStoresAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListTeamStoresResponse> localVarResponse = await ListTeamStoresWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The stores whose team you may see, invite to and manage. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListTeamStoresResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListTeamStoresResponse>> ListTeamStoresWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamStoresResponse>("/v1/team/stores", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListTeamStores", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a team member&#39;s scopes (owner only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse UpdateTeam(Guid memberId, UpdateTeamRequest updateTeamRequest)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateTeamWithHttpInfo(memberId, updateTeamRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a team member&#39;s scopes (owner only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> UpdateTeamWithHttpInfo(Guid memberId, UpdateTeamRequest updateTeamRequest)
+        {
+            // verify the required parameter 'updateTeamRequest' is set
+            if (updateTeamRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateTeamRequest' when calling TeamApi->UpdateTeam");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
             localVarRequestOptions.PathParameters.Add("memberId", net.crossly.Client.ClientUtils.ParameterToString(memberId)); // path parameter
+            localVarRequestOptions.Data = updateTeamRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1091,11 +3131,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> UpdateTeamAsync(Guid memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> UpdateTeamAsync(Guid memberId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateTeamWithHttpInfoAsync(memberId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateTeamWithHttpInfoAsync(memberId, updateTeamRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1104,14 +3145,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberId"></param>
+        /// <param name="updateTeamRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateTeamWithHttpInfoAsync(Guid memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateTeamWithHttpInfoAsync(Guid memberId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateTeamRequest' is set
+            if (updateTeamRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateTeamRequest' when calling TeamApi->UpdateTeam");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1132,6 +3181,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("memberId", net.crossly.Client.ClientUtils.ParameterToString(memberId)); // path parameter
+            localVarRequestOptions.Data = updateTeamRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1146,6 +3196,190 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateTeam", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <returns>TeamMemberStoreResponse</returns>
+        public TeamMemberStoreResponse UpdateTeamMemberStore(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest)
+        {
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = UpdateTeamMemberStoreWithHttpInfo(id, store, updateTeamMemberStoreRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <returns>ApiResponse of TeamMemberStoreResponse</returns>
+        public net.crossly.Client.ApiResponse<TeamMemberStoreResponse> UpdateTeamMemberStoreWithHttpInfo(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+            // verify the required parameter 'updateTeamMemberStoreRequest' is set
+            if (updateTeamMemberStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateTeamMemberStoreRequest' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+            localVarRequestOptions.Data = updateTeamMemberStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<TeamMemberStoreResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTeamMemberStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TeamMemberStoreResponse</returns>
+        public async System.Threading.Tasks.Task<TeamMemberStoreResponse> UpdateTeamMemberStoreAsync(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<TeamMemberStoreResponse> localVarResponse = await UpdateTeamMemberStoreWithHttpInfoAsync(id, store, updateTeamMemberStoreRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set a member&#39;s permissions and limits in one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="store"></param>
+        /// <param name="updateTeamMemberStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TeamMemberStoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TeamMemberStoreResponse>> UpdateTeamMemberStoreWithHttpInfoAsync(string id, string store, UpdateTeamMemberStoreRequest updateTeamMemberStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+            // verify the required parameter 'store' is set
+            if (store == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'store' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+            // verify the required parameter 'updateTeamMemberStoreRequest' is set
+            if (updateTeamMemberStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateTeamMemberStoreRequest' when calling TeamApi->UpdateTeamMemberStore");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("store", net.crossly.Client.ClientUtils.ParameterToString(store)); // path parameter
+            localVarRequestOptions.Data = updateTeamMemberStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<TeamMemberStoreResponse>("/v1/team/members/{id}/stores/{store}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateTeamMemberStore", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

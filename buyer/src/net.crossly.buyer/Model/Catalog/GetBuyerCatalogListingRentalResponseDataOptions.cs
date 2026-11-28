@@ -124,16 +124,16 @@ namespace net.crossly.buyer.Model
         public enum ApprovalEnum
         {
             /// <summary>
-            /// Enum Approval for value: approval
-            /// </summary>
-            [EnumMember(Value = "approval")]
-            Approval = 1,
-
-            /// <summary>
             /// Enum Instant for value: instant
             /// </summary>
             [EnumMember(Value = "instant")]
-            Instant = 2
+            Instant = 1,
+
+            /// <summary>
+            /// Enum Approval for value: approval
+            /// </summary>
+            [EnumMember(Value = "approval")]
+            Approval = 2
 
         }
 
@@ -187,13 +187,14 @@ namespace net.crossly.buyer.Model
         /// <param name="photosOut">photosOut (required).</param>
         /// <param name="photosArrival">photosArrival (required).</param>
         /// <param name="photosReturn">photosReturn (required).</param>
+        /// <param name="photosBack">photosBack (required).</param>
         /// <param name="checklist">A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;). (required).</param>
         /// <param name="extensions">extensions (required).</param>
         /// <param name="buyout">buyout (required).</param>
         /// <param name="cancellation">cancellation (required).</param>
         /// <param name="lateEscalation">lateEscalation (required).</param>
         /// <param name="returnPolicy">returnPolicy.</param>
-        public GetBuyerCatalogListingRentalResponseDataOptions(bool tierOnly = default(bool), decimal? ratingRequired = default(decimal?), ModeEnum mode = default(ModeEnum), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal? monthlyCents = default(decimal?), decimal? weekendCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), List<GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts> lengthDiscounts = default(List<GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts>), List<GetBuyerCatalogListingRentalResponseDataOptionsSeasonal> seasonal = default(List<GetBuyerCatalogListingRentalResponseDataOptionsSeasonal>), GetBuyerCatalogListingRentalResponseDataOptionsLastMinute lastMinute = default(GetBuyerCatalogListingRentalResponseDataOptionsLastMinute), EarlyReturnEnum earlyReturn = default(EarlyReturnEnum), GetBuyerCatalogListingRentalResponseDataOptionsDeposit deposit = default(GetBuyerCatalogListingRentalResponseDataOptionsDeposit), bool depositWaiveRepeatRenters = default(bool), GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver damageWaiver = default(GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver), decimal cleaningFeeCents = default(decimal), decimal lateFeePerDayCents = default(decimal), decimal lateGraceHours = default(decimal), decimal? lostItemCents = default(decimal?), decimal quantity = default(decimal), decimal bufferBeforeDays = default(decimal), decimal bufferAfterDays = default(decimal), List<GetBuyerCatalogListingRentalResponseDataBooked> blackouts = default(List<GetBuyerCatalogListingRentalResponseDataBooked>), decimal leadDays = default(decimal), decimal advanceDays = default(decimal), List<decimal> startDays = default(List<decimal>), bool shipping = default(bool), GetBuyerCatalogListingRentalResponseDataOptionsPickup pickup = default(GetBuyerCatalogListingRentalResponseDataOptionsPickup), ShippingPaidByEnum shippingPaidBy = default(ShippingPaidByEnum), bool insurance = default(bool), decimal newRenterMaxConcurrent = default(decimal), ApprovalEnum approval = default(ApprovalEnum), GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut photosOut = default(GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut), bool photosArrival = default(bool), bool photosReturn = default(bool), List<string> checklist = default(List<string>), GetBuyerCatalogListingRentalResponseDataOptionsExtensions extensions = default(GetBuyerCatalogListingRentalResponseDataOptionsExtensions), CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout = default(CreateBuyerCatalogListingRentalQuoteResponseDataBuyout), GetBuyerCatalogListingRentalResponseDataOptionsCancellation cancellation = default(GetBuyerCatalogListingRentalResponseDataOptionsCancellation), List<GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation> lateEscalation = default(List<GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation>), string returnPolicy = default(string))
+        public GetBuyerCatalogListingRentalResponseDataOptions(bool tierOnly = default(bool), decimal? ratingRequired = default(decimal?), ModeEnum mode = default(ModeEnum), decimal dailyCents = default(decimal), decimal? weeklyCents = default(decimal?), decimal? monthlyCents = default(decimal?), decimal? weekendCents = default(decimal?), decimal minDays = default(decimal), decimal maxDays = default(decimal), List<GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts> lengthDiscounts = default(List<GetBuyerCatalogListingRentalResponseDataOptionsLengthDiscounts>), List<GetBuyerCatalogListingRentalResponseDataOptionsSeasonal> seasonal = default(List<GetBuyerCatalogListingRentalResponseDataOptionsSeasonal>), GetBuyerCatalogListingRentalResponseDataOptionsLastMinute lastMinute = default(GetBuyerCatalogListingRentalResponseDataOptionsLastMinute), EarlyReturnEnum earlyReturn = default(EarlyReturnEnum), GetBuyerCatalogListingRentalResponseDataOptionsDeposit deposit = default(GetBuyerCatalogListingRentalResponseDataOptionsDeposit), bool depositWaiveRepeatRenters = default(bool), GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver damageWaiver = default(GetBuyerCatalogListingRentalResponseDataOptionsDamageWaiver), decimal cleaningFeeCents = default(decimal), decimal lateFeePerDayCents = default(decimal), decimal lateGraceHours = default(decimal), decimal? lostItemCents = default(decimal?), decimal quantity = default(decimal), decimal bufferBeforeDays = default(decimal), decimal bufferAfterDays = default(decimal), List<GetBuyerCatalogListingRentalResponseDataBooked> blackouts = default(List<GetBuyerCatalogListingRentalResponseDataBooked>), decimal leadDays = default(decimal), decimal advanceDays = default(decimal), List<decimal> startDays = default(List<decimal>), bool shipping = default(bool), GetBuyerCatalogListingRentalResponseDataOptionsPickup pickup = default(GetBuyerCatalogListingRentalResponseDataOptionsPickup), ShippingPaidByEnum shippingPaidBy = default(ShippingPaidByEnum), bool insurance = default(bool), decimal newRenterMaxConcurrent = default(decimal), ApprovalEnum approval = default(ApprovalEnum), GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut photosOut = default(GetBuyerCatalogListingRentalResponseDataOptionsPhotosOut), bool photosArrival = default(bool), bool photosReturn = default(bool), GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack photosBack = default(GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack), List<string> checklist = default(List<string>), GetBuyerCatalogListingRentalResponseDataOptionsExtensions extensions = default(GetBuyerCatalogListingRentalResponseDataOptionsExtensions), CreateBuyerCatalogListingRentalQuoteResponseDataBuyout buyout = default(CreateBuyerCatalogListingRentalQuoteResponseDataBuyout), GetBuyerCatalogListingRentalResponseDataOptionsCancellation cancellation = default(GetBuyerCatalogListingRentalResponseDataOptionsCancellation), List<GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation> lateEscalation = default(List<GetBuyerCatalogListingRentalResponseDataOptionsLateEscalation>), string returnPolicy = default(string))
         {
             this.TierOnly = tierOnly;
             this.Mode = mode;
@@ -257,6 +258,11 @@ namespace net.crossly.buyer.Model
             this.PhotosOut = photosOut;
             this.PhotosArrival = photosArrival;
             this.PhotosReturn = photosReturn;
+            // to ensure "photosBack" is required (not null)
+            if (photosBack == null) {
+                throw new ArgumentNullException("photosBack is a required property for GetBuyerCatalogListingRentalResponseDataOptions and cannot be null");
+            }
+            this.PhotosBack = photosBack;
             // to ensure "checklist" is required (not null)
             if (checklist == null) {
                 throw new ArgumentNullException("checklist is a required property for GetBuyerCatalogListingRentalResponseDataOptions and cannot be null");
@@ -495,6 +501,12 @@ namespace net.crossly.buyer.Model
         public bool PhotosReturn { get; set; }
 
         /// <summary>
+        /// Gets or Sets PhotosBack
+        /// </summary>
+        [DataMember(Name = "photosBack", IsRequired = true, EmitDefaultValue = false)]
+        public GetBuyerCatalogListingRentalResponseDataOptionsPhotosBack PhotosBack { get; set; }
+
+        /// <summary>
         /// A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;).
         /// </summary>
         /// <value>A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;).</value>
@@ -575,6 +587,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  PhotosOut: ").Append(PhotosOut).Append("\n");
             sb.Append("  PhotosArrival: ").Append(PhotosArrival).Append("\n");
             sb.Append("  PhotosReturn: ").Append(PhotosReturn).Append("\n");
+            sb.Append("  PhotosBack: ").Append(PhotosBack).Append("\n");
             sb.Append("  Checklist: ").Append(Checklist).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("  Buyout: ").Append(Buyout).Append("\n");
@@ -779,6 +792,11 @@ namespace net.crossly.buyer.Model
                     this.PhotosReturn.Equals(input.PhotosReturn)
                 ) && 
                 (
+                    this.PhotosBack == input.PhotosBack ||
+                    (this.PhotosBack != null &&
+                    this.PhotosBack.Equals(input.PhotosBack))
+                ) && 
+                (
                     this.Checklist == input.Checklist ||
                     this.Checklist != null &&
                     input.Checklist != null &&
@@ -899,6 +917,10 @@ namespace net.crossly.buyer.Model
                 }
                 hashCode = (hashCode * 59) + this.PhotosArrival.GetHashCode();
                 hashCode = (hashCode * 59) + this.PhotosReturn.GetHashCode();
+                if (this.PhotosBack != null)
+                {
+                    hashCode = (hashCode * 59) + this.PhotosBack.GetHashCode();
+                }
                 if (this.Checklist != null)
                 {
                     hashCode = (hashCode * 59) + this.Checklist.GetHashCode();

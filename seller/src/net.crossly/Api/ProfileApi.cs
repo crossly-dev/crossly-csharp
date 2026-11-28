@@ -27,11 +27,158 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <returns>CreateProfileMilestoneCelebrateResponse</returns>
+        CreateProfileMilestoneCelebrateResponse CreateProfileMilestoneCelebrate(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest);
+
+        /// <summary>
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <returns>ApiResponse of CreateProfileMilestoneCelebrateResponse</returns>
+        ApiResponse<CreateProfileMilestoneCelebrateResponse> CreateProfileMilestoneCelebrateWithHttpInfo(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest);
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <returns>CreateProfilePublishResponse</returns>
+        CreateProfilePublishResponse CreateProfilePublish(CreateProfilePublishRequest createProfilePublishRequest);
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <returns>ApiResponse of CreateProfilePublishResponse</returns>
+        ApiResponse<CreateProfilePublishResponse> CreateProfilePublishWithHttpInfo(CreateProfilePublishRequest createProfilePublishRequest);
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <returns>CreateProfileShareCardResponse</returns>
+        CreateProfileShareCardResponse CreateProfileShareCard(CreateProfileShareCardRequest createProfileShareCardRequest);
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <returns>ApiResponse of CreateProfileShareCardResponse</returns>
+        ApiResponse<CreateProfileShareCardResponse> CreateProfileShareCardWithHttpInfo(CreateProfileShareCardRequest createProfileShareCardRequest);
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetProfileResponse</returns>
+        GetProfileResponse GetProfile();
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetProfileResponse</returns>
+        ApiResponse<GetProfileResponse> GetProfileWithHttpInfo();
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <returns>GetSellerProfileResponse</returns>
+        GetSellerProfileResponse GetSellerProfile(string handle);
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <returns>ApiResponse of GetSellerProfileResponse</returns>
+        ApiResponse<GetSellerProfileResponse> GetSellerProfileWithHttpInfo(string handle);
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfileMilestonesResponse</returns>
+        ListProfileMilestonesResponse ListProfileMilestones();
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfileMilestonesResponse</returns>
+        ApiResponse<ListProfileMilestonesResponse> ListProfileMilestonesWithHttpInfo();
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfileSourcesResponse</returns>
+        ListProfileSourcesResponse ListProfileSources();
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfileSourcesResponse</returns>
+        ApiResponse<ListProfileSourcesResponse> ListProfileSourcesWithHttpInfo();
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <returns>ListProfileStatsResponse</returns>
+        ListProfileStatsResponse ListProfileStats(string keys, string timeframe = default(string), string display = default(string), string basis = default(string));
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <returns>ApiResponse of ListProfileStatsResponse</returns>
+        ApiResponse<ListProfileStatsResponse> ListProfileStatsWithHttpInfo(string keys, string timeframe = default(string), string display = default(string), string basis = default(string));
+        /// <summary>
         /// Update the authenticated user&#39;s profile (display name, etc).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse UpdateMe();
+        OkResponse UpdateMe(UpdateMeRequest updateMeRequest);
 
         /// <summary>
         /// Update the authenticated user&#39;s profile (display name, etc).
@@ -40,8 +187,27 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> UpdateMeWithHttpInfo();
+        ApiResponse<OkResponse> UpdateMeWithHttpInfo(UpdateMeRequest updateMeRequest);
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <returns>UpdateProfileDocumentResponse</returns>
+        UpdateProfileDocumentResponse UpdateProfileDocument(UpdateProfileDocumentRequest updateProfileDocumentRequest);
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <returns>ApiResponse of UpdateProfileDocumentResponse</returns>
+        ApiResponse<UpdateProfileDocumentResponse> UpdateProfileDocumentWithHttpInfo(UpdateProfileDocumentRequest updateProfileDocumentRequest);
         #endregion Synchronous Operations
     }
 
@@ -52,15 +218,202 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Update the authenticated user&#39;s profile (display name, etc).
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfileMilestoneCelebrateResponse</returns>
+        System.Threading.Tasks.Task<CreateProfileMilestoneCelebrateResponse> CreateProfileMilestoneCelebrateAsync(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfileMilestoneCelebrateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateProfileMilestoneCelebrateResponse>> CreateProfileMilestoneCelebrateWithHttpInfoAsync(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfilePublishResponse</returns>
+        System.Threading.Tasks.Task<CreateProfilePublishResponse> CreateProfilePublishAsync(CreateProfilePublishRequest createProfilePublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfilePublishResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateProfilePublishResponse>> CreateProfilePublishWithHttpInfoAsync(CreateProfilePublishRequest createProfilePublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfileShareCardResponse</returns>
+        System.Threading.Tasks.Task<CreateProfileShareCardResponse> CreateProfileShareCardAsync(CreateProfileShareCardRequest createProfileShareCardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfileShareCardResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateProfileShareCardResponse>> CreateProfileShareCardWithHttpInfoAsync(CreateProfileShareCardRequest createProfileShareCardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProfileResponse</returns>
+        System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProfileResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetSellerProfileResponse</returns>
+        System.Threading.Tasks.Task<GetSellerProfileResponse> GetSellerProfileAsync(string handle, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetSellerProfileResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetSellerProfileResponse>> GetSellerProfileWithHttpInfoAsync(string handle, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileMilestonesResponse</returns>
+        System.Threading.Tasks.Task<ListProfileMilestonesResponse> ListProfileMilestonesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileMilestonesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProfileMilestonesResponse>> ListProfileMilestonesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileSourcesResponse</returns>
+        System.Threading.Tasks.Task<ListProfileSourcesResponse> ListProfileSourcesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileSourcesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProfileSourcesResponse>> ListProfileSourcesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileStatsResponse</returns>
+        System.Threading.Tasks.Task<ListProfileStatsResponse> ListProfileStatsAsync(string keys, string timeframe = default(string), string display = default(string), string basis = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileStatsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProfileStatsResponse>> ListProfileStatsWithHttpInfoAsync(string keys, string timeframe = default(string), string display = default(string), string basis = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Update the authenticated user&#39;s profile (display name, etc).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> UpdateMeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> UpdateMeAsync(UpdateMeRequest updateMeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update the authenticated user&#39;s profile (display name, etc).
@@ -69,9 +422,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateMeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateMeWithHttpInfoAsync(UpdateMeRequest updateMeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProfileDocumentResponse</returns>
+        System.Threading.Tasks.Task<UpdateProfileDocumentResponse> UpdateProfileDocumentAsync(UpdateProfileDocumentRequest updateProfileDocumentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProfileDocumentResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateProfileDocumentResponse>> UpdateProfileDocumentWithHttpInfoAsync(UpdateProfileDocumentRequest updateProfileDocumentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -193,22 +570,484 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Update the authenticated user&#39;s profile (display name, etc). 
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>OkResponse</returns>
-        public OkResponse UpdateMe()
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <returns>CreateProfileMilestoneCelebrateResponse</returns>
+        public CreateProfileMilestoneCelebrateResponse CreateProfileMilestoneCelebrate(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateMeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateProfileMilestoneCelebrateResponse> localVarResponse = CreateProfileMilestoneCelebrateWithHttpInfo(key, createProfileMilestoneCelebrateRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Update the authenticated user&#39;s profile (display name, etc). 
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> UpdateMeWithHttpInfo()
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <returns>ApiResponse of CreateProfileMilestoneCelebrateResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateProfileMilestoneCelebrateResponse> CreateProfileMilestoneCelebrateWithHttpInfo(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest)
+        {
+            // verify the required parameter 'key' is set
+            if (key == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'key' when calling ProfileApi->CreateProfileMilestoneCelebrate");
+            }
+
+            // verify the required parameter 'createProfileMilestoneCelebrateRequest' is set
+            if (createProfileMilestoneCelebrateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfileMilestoneCelebrateRequest' when calling ProfileApi->CreateProfileMilestoneCelebrate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            localVarRequestOptions.Data = createProfileMilestoneCelebrateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateProfileMilestoneCelebrateResponse>("/v1/profile/milestones/{key}/celebrate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfileMilestoneCelebrate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfileMilestoneCelebrateResponse</returns>
+        public async System.Threading.Tasks.Task<CreateProfileMilestoneCelebrateResponse> CreateProfileMilestoneCelebrateAsync(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateProfileMilestoneCelebrateResponse> localVarResponse = await CreateProfileMilestoneCelebrateWithHttpInfoAsync(key, createProfileMilestoneCelebrateRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Celebrate an earned milestone with a storefront code: percentOff (default 10) off, ending hours (default 48) from now, with a storefront banner (bannerText, default like \&quot;We just hit 1,000 sales\&quot;). One code per milestone: a second call returns the same code (200, existing: true). A milestone you have not earned is a 404. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="key"></param>
+        /// <param name="createProfileMilestoneCelebrateRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfileMilestoneCelebrateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProfileMilestoneCelebrateResponse>> CreateProfileMilestoneCelebrateWithHttpInfoAsync(string key, CreateProfileMilestoneCelebrateRequest createProfileMilestoneCelebrateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'key' is set
+            if (key == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'key' when calling ProfileApi->CreateProfileMilestoneCelebrate");
+            }
+
+            // verify the required parameter 'createProfileMilestoneCelebrateRequest' is set
+            if (createProfileMilestoneCelebrateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfileMilestoneCelebrateRequest' when calling ProfileApi->CreateProfileMilestoneCelebrate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("key", net.crossly.Client.ClientUtils.ParameterToString(key)); // path parameter
+            localVarRequestOptions.Data = createProfileMilestoneCelebrateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateProfileMilestoneCelebrateResponse>("/v1/profile/milestones/{key}/celebrate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfileMilestoneCelebrate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <returns>CreateProfilePublishResponse</returns>
+        public CreateProfilePublishResponse CreateProfilePublish(CreateProfilePublishRequest createProfilePublishRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateProfilePublishResponse> localVarResponse = CreateProfilePublishWithHttpInfo(createProfilePublishRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <returns>ApiResponse of CreateProfilePublishResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateProfilePublishResponse> CreateProfilePublishWithHttpInfo(CreateProfilePublishRequest createProfilePublishRequest)
+        {
+            // verify the required parameter 'createProfilePublishRequest' is set
+            if (createProfilePublishRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfilePublishRequest' when calling ProfileApi->CreateProfilePublish");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProfilePublishRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateProfilePublishResponse>("/v1/profile/publish", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfilePublish", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfilePublishResponse</returns>
+        public async System.Threading.Tasks.Task<CreateProfilePublishResponse> CreateProfilePublishAsync(CreateProfilePublishRequest createProfilePublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateProfilePublishResponse> localVarResponse = await CreateProfilePublishWithHttpInfoAsync(createProfilePublishRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Publish the draft: crossly.net/seller/&lt;handle&gt;, its share cards and link previews switch to it, and a version is kept (label optional, up to 80 characters). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfilePublishRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfilePublishResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProfilePublishResponse>> CreateProfilePublishWithHttpInfoAsync(CreateProfilePublishRequest createProfilePublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createProfilePublishRequest' is set
+            if (createProfilePublishRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfilePublishRequest' when calling ProfileApi->CreateProfilePublish");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProfilePublishRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateProfilePublishResponse>("/v1/profile/publish", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfilePublish", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <returns>CreateProfileShareCardResponse</returns>
+        public CreateProfileShareCardResponse CreateProfileShareCard(CreateProfileShareCardRequest createProfileShareCardRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateProfileShareCardResponse> localVarResponse = CreateProfileShareCardWithHttpInfo(createProfileShareCardRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <returns>ApiResponse of CreateProfileShareCardResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateProfileShareCardResponse> CreateProfileShareCardWithHttpInfo(CreateProfileShareCardRequest createProfileShareCardRequest)
+        {
+            // verify the required parameter 'createProfileShareCardRequest' is set
+            if (createProfileShareCardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfileShareCardRequest' when calling ProfileApi->CreateProfileShareCard");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProfileShareCardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateProfileShareCardResponse>("/v1/profile/share-cards", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfileShareCard", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProfileShareCardResponse</returns>
+        public async System.Threading.Tasks.Task<CreateProfileShareCardResponse> CreateProfileShareCardAsync(CreateProfileShareCardRequest createProfileShareCardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateProfileShareCardResponse> localVarResponse = await CreateProfileShareCardWithHttpInfoAsync(createProfileShareCardRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a share card for your profile, one stat (ref.key + ref.timeframe) or one earned milestone (ref.key). Returns pageUrl (the link to post: Discord, X and iMessage unfurl it with the card), imageUrl (the 1200x630 PNG) and discordText (a ready line ending in the link). A stat you do not show, or a milestone you have not earned, is a 404. settings overrides the card design (template, background, accent…). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProfileShareCardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProfileShareCardResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProfileShareCardResponse>> CreateProfileShareCardWithHttpInfoAsync(CreateProfileShareCardRequest createProfileShareCardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createProfileShareCardRequest' is set
+            if (createProfileShareCardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProfileShareCardRequest' when calling ProfileApi->CreateProfileShareCard");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createProfileShareCardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateProfileShareCardResponse>("/v1/profile/share-cards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProfileShareCard", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetProfileResponse</returns>
+        public GetProfileResponse GetProfile()
+        {
+            net.crossly.Client.ApiResponse<GetProfileResponse> localVarResponse = GetProfileWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetProfileResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProfileResponse> GetProfileWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -232,6 +1071,728 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProfileResponse>("/v1/profile", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProfileResponse</returns>
+        public async System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProfileResponse> localVarResponse = await GetProfileWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your seller profile: the @handle, the PUBLISHED document (what crossly.net/seller/&lt;handle&gt; shows), the DRAFT the editor is working on, when it was last published and whether the draft has unpublished changes. A profile never edited reads as the default profile built from your account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProfileResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProfileResponse>("/v1/profile", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <returns>GetSellerProfileResponse</returns>
+        public GetSellerProfileResponse GetSellerProfile(string handle)
+        {
+            net.crossly.Client.ApiResponse<GetSellerProfileResponse> localVarResponse = GetSellerProfileWithHttpInfo(handle);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <returns>ApiResponse of GetSellerProfileResponse</returns>
+        public net.crossly.Client.ApiResponse<GetSellerProfileResponse> GetSellerProfileWithHttpInfo(string handle)
+        {
+            // verify the required parameter 'handle' is set
+            if (handle == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'handle' when calling ProfileApi->GetSellerProfile");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("handle", net.crossly.Client.ClientUtils.ParameterToString(handle)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetSellerProfileResponse>("/v1/sellers/{handle}/profile", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetSellerProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetSellerProfileResponse</returns>
+        public async System.Threading.Tasks.Task<GetSellerProfileResponse> GetSellerProfileAsync(string handle, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetSellerProfileResponse> localVarResponse = await GetSellerProfileWithHttpInfoAsync(handle, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Any seller&#39;s public profile: the person, the published document, resolved stats (a rounded or tier stat never carries its exact value), shown marketplaces, stores, milestones and the share card URLs. 404 when the handle does not exist or the profile is private. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="handle"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetSellerProfileResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSellerProfileResponse>> GetSellerProfileWithHttpInfoAsync(string handle, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'handle' is set
+            if (handle == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'handle' when calling ProfileApi->GetSellerProfile");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("handle", net.crossly.Client.ClientUtils.ParameterToString(handle)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetSellerProfileResponse>("/v1/sellers/{handle}/profile", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetSellerProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfileMilestonesResponse</returns>
+        public ListProfileMilestonesResponse ListProfileMilestones()
+        {
+            net.crossly.Client.ApiResponse<ListProfileMilestonesResponse> localVarResponse = ListProfileMilestonesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfileMilestonesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListProfileMilestonesResponse> ListProfileMilestonesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListProfileMilestonesResponse>("/v1/profile/milestones", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileMilestones", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileMilestonesResponse</returns>
+        public async System.Threading.Tasks.Task<ListProfileMilestonesResponse> ListProfileMilestonesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListProfileMilestonesResponse> localVarResponse = await ListProfileMilestonesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Milestones you earned (first sale, $100k verified sales, 1-year streak, 10 countries…) with when, and whether each is verified. Earned only from verified data; each has its own share page and card. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileMilestonesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProfileMilestonesResponse>> ListProfileMilestonesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListProfileMilestonesResponse>("/v1/profile/milestones", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileMilestones", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListProfileSourcesResponse</returns>
+        public ListProfileSourcesResponse ListProfileSources()
+        {
+            net.crossly.Client.ApiResponse<ListProfileSourcesResponse> localVarResponse = ListProfileSourcesWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListProfileSourcesResponse</returns>
+        public net.crossly.Client.ApiResponse<ListProfileSourcesResponse> ListProfileSourcesWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListProfileSourcesResponse>("/v1/profile/sources", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileSources", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileSourcesResponse</returns>
+        public async System.Threading.Tasks.Task<ListProfileSourcesResponse> ListProfileSourcesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListProfileSourcesResponse> localVarResponse = await ListProfileSourcesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The accounts, stores and marketplace connections your profile may show: your own account, plus every team you belong to whose owner granted you profile:showcase. Toggle them in document.sources. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileSourcesResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProfileSourcesResponse>> ListProfileSourcesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListProfileSourcesResponse>("/v1/profile/sources", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileSources", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <returns>ListProfileStatsResponse</returns>
+        public ListProfileStatsResponse ListProfileStats(string keys, string timeframe = default(string), string display = default(string), string basis = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListProfileStatsResponse> localVarResponse = ListProfileStatsWithHttpInfo(keys, timeframe, display, basis);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <returns>ApiResponse of ListProfileStatsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListProfileStatsResponse> ListProfileStatsWithHttpInfo(string keys, string timeframe = default(string), string display = default(string), string basis = default(string))
+        {
+            // verify the required parameter 'keys' is set
+            if (keys == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'keys' when calling ProfileApi->ListProfileStats");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "keys", keys));
+            if (timeframe != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "timeframe", timeframe));
+            }
+            if (display != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "display", display));
+            }
+            if (basis != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "basis", basis));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListProfileStatsResponse>("/v1/profile/stats", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileStats", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProfileStatsResponse</returns>
+        public async System.Threading.Tasks.Task<ListProfileStatsResponse> ListProfileStatsAsync(string keys, string timeframe = default(string), string display = default(string), string basis = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListProfileStatsResponse> localVarResponse = await ListProfileStatsWithHttpInfoAsync(keys, timeframe, display, basis, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Profile stats in the OWNER view: exact values and coverage, whatever display mode the public page uses. keys is a comma list (gmv, items_sold, orders, avg_sale_price, best_sale, sell_through_rate, median_days_to_sale, rating, vault_value, …); timeframe is a rolling token (7d 30d 90d 6mo 12mo ytd all) or a custom range cYYYYMMDD-YYYYMMDD in your time zone. Money is USD cents, rates bps, durations days. verified is true only for numbers backed by marketplace-reported or Crossly-checkout sales. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="keys">Comma-separated stat keys, at most 30.</param>
+        /// <param name="timeframe"> (optional, default to &quot;all&quot;)</param>
+        /// <param name="display"> (optional)</param>
+        /// <param name="basis"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProfileStatsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProfileStatsResponse>> ListProfileStatsWithHttpInfoAsync(string keys, string timeframe = default(string), string display = default(string), string basis = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'keys' is set
+            if (keys == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'keys' when calling ProfileApi->ListProfileStats");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "keys", keys));
+            if (timeframe != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "timeframe", timeframe));
+            }
+            if (display != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "display", display));
+            }
+            if (basis != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "basis", basis));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListProfileStatsResponse>("/v1/profile/stats", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListProfileStats", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update the authenticated user&#39;s profile (display name, etc). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse UpdateMe(UpdateMeRequest updateMeRequest)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateMeWithHttpInfo(updateMeRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update the authenticated user&#39;s profile (display name, etc). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> UpdateMeWithHttpInfo(UpdateMeRequest updateMeRequest)
+        {
+            // verify the required parameter 'updateMeRequest' is set
+            if (updateMeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateMeRequest' when calling ProfileApi->UpdateMe");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateMeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -258,11 +1819,12 @@ namespace net.crossly.Api
         /// Update the authenticated user&#39;s profile (display name, etc). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> UpdateMeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> UpdateMeAsync(UpdateMeRequest updateMeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateMeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateMeWithHttpInfoAsync(updateMeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -270,14 +1832,22 @@ namespace net.crossly.Api
         /// Update the authenticated user&#39;s profile (display name, etc). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateMeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateMeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateMeWithHttpInfoAsync(UpdateMeRequest updateMeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateMeRequest' is set
+            if (updateMeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateMeRequest' when calling ProfileApi->UpdateMe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -297,6 +1867,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateMeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -311,6 +1882,154 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateMe", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <returns>UpdateProfileDocumentResponse</returns>
+        public UpdateProfileDocumentResponse UpdateProfileDocument(UpdateProfileDocumentRequest updateProfileDocumentRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateProfileDocumentResponse> localVarResponse = UpdateProfileDocumentWithHttpInfo(updateProfileDocumentRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <returns>ApiResponse of UpdateProfileDocumentResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateProfileDocumentResponse> UpdateProfileDocumentWithHttpInfo(UpdateProfileDocumentRequest updateProfileDocumentRequest)
+        {
+            // verify the required parameter 'updateProfileDocumentRequest' is set
+            if (updateProfileDocumentRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProfileDocumentRequest' when calling ProfileApi->UpdateProfileDocument");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateProfileDocumentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateProfileDocumentResponse>("/v1/profile/document", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProfileDocument", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProfileDocumentResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateProfileDocumentResponse> UpdateProfileDocumentAsync(UpdateProfileDocumentRequest updateProfileDocumentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateProfileDocumentResponse> localVarResponse = await UpdateProfileDocumentWithHttpInfoAsync(updateProfileDocumentRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace your profile DRAFT with a whole ProfileDocument (theme, hero, ordered sections, socials, sources, share card, privacy). Nothing public changes until you publish. Read the current draft from GET /v1/profile, change it, and send it back. A 400 lists every invalid field. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateProfileDocumentRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProfileDocumentResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateProfileDocumentResponse>> UpdateProfileDocumentWithHttpInfoAsync(UpdateProfileDocumentRequest updateProfileDocumentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateProfileDocumentRequest' is set
+            if (updateProfileDocumentRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProfileDocumentRequest' when calling ProfileApi->UpdateProfileDocument");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateProfileDocumentRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateProfileDocumentResponse>("/v1/profile/document", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProfileDocument", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

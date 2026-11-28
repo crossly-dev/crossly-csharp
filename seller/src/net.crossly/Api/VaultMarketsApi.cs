@@ -264,8 +264,9 @@ namespace net.crossly.Api
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <returns>ListVaultMarketBlocksItem</returns>
-        ListVaultMarketBlocksItem CreateVaultMarketBlock();
+        ListVaultMarketBlocksItem CreateVaultMarketBlock(CreateVaultMarketBlockRequest createVaultMarketBlockRequest);
 
         /// <summary>
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
@@ -274,8 +275,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketBlocksItem</returns>
-        ApiResponse<ListVaultMarketBlocksItem> CreateVaultMarketBlockWithHttpInfo();
+        ApiResponse<ListVaultMarketBlocksItem> CreateVaultMarketBlockWithHttpInfo(CreateVaultMarketBlockRequest createVaultMarketBlockRequest);
         /// <summary>
         /// Allocate a done block now (the keeper does it too). Returns &#x60;{ outcome, block }&#x60;: allocated, waiting (a payment or transfer is not settled yet), nothing_filled or none.
         /// </summary>
@@ -398,8 +400,9 @@ namespace net.crossly.Api
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <returns>CreateVaultMarketDcmLinkResponse</returns>
-        CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink();
+        CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest);
 
         /// <summary>
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
@@ -408,14 +411,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketDcmLinkResponse</returns>
-        ApiResponse<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkWithHttpInfo();
+        ApiResponse<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkWithHttpInfo(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest);
         /// <summary>
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <returns>CreateVaultMarketDcmUnlinkResponse</returns>
-        CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink();
+        CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest));
 
         /// <summary>
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin.
@@ -424,8 +429,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketDcmUnlinkResponse</returns>
-        ApiResponse<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkWithHttpInfo();
+        ApiResponse<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkWithHttpInfo(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest));
         /// <summary>
         /// Apply to be a dealer (ID check first). Ops review; approved dealers get raised limits and their bids show as dealer bids.
         /// </summary>
@@ -544,8 +550,9 @@ namespace net.crossly.Api
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <returns>CreateVaultMarketEntityResponse</returns>
-        CreateVaultMarketEntityResponse CreateVaultMarketEntity();
+        CreateVaultMarketEntityResponse CreateVaultMarketEntity(CreateVaultMarketEntityRequest createVaultMarketEntityRequest);
 
         /// <summary>
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
@@ -554,8 +561,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketEntityResponse</returns>
-        ApiResponse<CreateVaultMarketEntityResponse> CreateVaultMarketEntityWithHttpInfo();
+        ApiResponse<CreateVaultMarketEntityResponse> CreateVaultMarketEntityWithHttpInfo(CreateVaultMarketEntityRequest createVaultMarketEntityRequest);
         /// <summary>
         /// Admin: record the entity&#39;s attestation that it is an eligible contract participant. Raising its caps is still an ops decision.
         /// </summary>
@@ -579,8 +587,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <returns>CreateVaultMarketEntityHaltResponse</returns>
-        CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt(string id);
+        CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest);
 
         /// <summary>
         /// Admin or risk: the firm kill switch. Halts the entity (no &#x60;subaccountId&#x60;) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
@@ -590,8 +599,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketEntityHaltResponse</returns>
-        ApiResponse<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltWithHttpInfo(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest);
         /// <summary>
         /// Admin or risk: lift a firm halt.
         /// </summary>
@@ -617,8 +627,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <returns>GetVaultMarketEntityResponse</returns>
-        GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation(string id);
+        GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest);
 
         /// <summary>
         /// Accept or decline an invitation (&#x60;accept&#x60;). Trading, admin and risk roles need a verified ID to accept.
@@ -628,8 +639,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityResponse</returns>
-        ApiResponse<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationWithHttpInfo(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest);
         /// <summary>
         /// Refresh the entity&#39;s KYB status from the custodian (and its onboarding link while KYB is open).
         /// </summary>
@@ -653,8 +665,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember(string id);
+        GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest);
 
         /// <summary>
         /// Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
@@ -664,15 +677,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberWithHttpInfo(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest);
         /// <summary>
         /// Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity&#39;s caps.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount(string id);
+        GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest);
 
         /// <summary>
         /// Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity&#39;s caps.
@@ -682,8 +697,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountWithHttpInfo(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest);
         /// <summary>
         /// Admin: close a sub-account that holds nothing and has no open orders.
         /// </summary>
@@ -794,8 +810,9 @@ namespace net.crossly.Api
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault();
+        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest));
 
         /// <summary>
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
@@ -804,15 +821,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultWithHttpInfo();
+        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultWithHttpInfo(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest));
         /// <summary>
         /// Book (or re-book) the grading slot of a flow still at \&quot;picked\&quot;. Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook(string id);
+        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest));
 
         /// <summary>
         /// Book (or re-book) the grading slot of a flow still at \&quot;picked\&quot;. Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
@@ -822,8 +841,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookWithHttpInfo(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest));
         /// <summary>
         /// Stop the flow before the card goes to the grader (still picked, or its slot only reserved: nothing was charged).
         /// </summary>
@@ -865,8 +885,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList(string id);
+        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest));
 
         /// <summary>
         /// Confirm the price for the grade the unit came back with (&#x60;confirm: true&#x60;, &#x60;gradeKey&#x60; must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
@@ -876,15 +897,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListWithHttpInfo(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest));
         /// <summary>
         /// You mailed the card to the grading hub (an inventory card, once its run locked).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped(string id);
+        ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest));
 
         /// <summary>
         /// You mailed the card to the grading hub (an inventory card, once its run locked).
@@ -894,8 +917,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedWithHttpInfo(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest));
         /// <summary>
         /// Send a raw vault unit on the grading hub&#39;s shelf to a Grading Run (&#x60;runId&#x60;). It is held until it comes back, graded, to the same vault item. The slot is free; your saved card is charged only if the run locks.
         /// </summary>
@@ -1600,8 +1624,9 @@ namespace net.crossly.Api
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <returns>CreateVaultMarketOptionComboResponse</returns>
-        CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo();
+        CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest);
 
         /// <summary>
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
@@ -1610,8 +1635,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionComboResponse</returns>
-        ApiResponse<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboWithHttpInfo();
+        ApiResponse<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboWithHttpInfo(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest);
         /// <summary>
         /// Cancel a working strategy.
         /// </summary>
@@ -1722,8 +1748,9 @@ namespace net.crossly.Api
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <returns>CreateVaultMarketOptionCoveredCallResponse</returns>
-        CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall();
+        CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest);
 
         /// <summary>
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
@@ -1732,8 +1759,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionCoveredCallResponse</returns>
-        ApiResponse<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallWithHttpInfo();
+        ApiResponse<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallWithHttpInfo(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest);
         /// <summary>
         /// Free a covered call&#39;s vault unit once the call it covers is closed (or covered by other units).
         /// </summary>
@@ -1804,8 +1832,9 @@ namespace net.crossly.Api
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <returns>CreateVaultMarketOptionOrderResponse</returns>
-        CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder();
+        CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest);
 
         /// <summary>
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade.
@@ -1814,8 +1843,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionOrderResponse</returns>
-        ApiResponse<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderWithHttpInfo();
+        ApiResponse<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderWithHttpInfo(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest);
         /// <summary>
         /// Cancel a working options order (on the partner venue it is cancelled there first). A liquidation order cannot be cancelled.
         /// </summary>
@@ -1904,8 +1934,9 @@ namespace net.crossly.Api
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <returns>CreateVaultMarketOptionQuoteResponse</returns>
-        CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote();
+        CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest);
 
         /// <summary>
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
@@ -1914,8 +1945,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionQuoteResponse</returns>
-        ApiResponse<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteWithHttpInfo();
+        ApiResponse<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteWithHttpInfo(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest);
         /// <summary>
         /// Ask for a quote on an option contract: &#x60;side&#x60;, &#x60;quantity&#x60; in contracts, an optional &#x60;limitCents&#x60; (never shown). Makers quoting the series, the underlying&#39;s DMM and LPs and approved dealers are told anonymously; answers are firm for 60 s.
         /// </summary>
@@ -2008,8 +2040,9 @@ namespace net.crossly.Api
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <returns>CreateVaultMarketOptionRollResponse</returns>
-        CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll();
+        CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest);
 
         /// <summary>
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position.
@@ -2018,8 +2051,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionRollResponse</returns>
-        ApiResponse<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollWithHttpInfo();
+        ApiResponse<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollWithHttpInfo(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest);
         /// <summary>
         /// Preview a strategy before placing it: by template (underlying, kind, direction, strikes, expiries) or by legs. Returns each leg at its bid / ask, the net per unit (+ debit, - credit), the payoff at the first expiry, max profit and max loss (null &#x3D; unbounded), breakevens, net Greeks, and the scenario margin of the whole strategy next to its legs margined one by one.
         /// </summary>
@@ -2077,8 +2111,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction(string id);
+        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest));
 
         /// <summary>
         /// Borrower: look for a cheaper lender. A refinancing auction runs for &#x60;hours&#x60; (1-72, default 24); the rate a new lender gets climbs from &#x60;startAprBps&#x60; (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
@@ -2088,8 +2123,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest));
         /// <summary>
         /// Borrower: stop looking for a cheaper lender before anyone has taken the loan over. The loan carries on unchanged.
         /// </summary>
@@ -2113,8 +2149,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance(string id);
+        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest));
 
         /// <summary>
         /// Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above &#x60;maxPayoffCents&#x60;), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -2124,15 +2161,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceWithHttpInfo(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest));
         /// <summary>
         /// Borrower: repay from your custodian account to the lender. Without &#x60;amountCents&#x60;, in full (principal plus interest to the second; the unit is free once the custodian has it). With &#x60;amountCents&#x60; below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay(string id);
+        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest));
 
         /// <summary>
         /// Borrower: repay from your custodian account to the lender. Without &#x60;amountCents&#x60;, in full (principal plus interest to the second; the unit is free once the custodian has it). With &#x60;amountCents&#x60; below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -2142,14 +2181,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayWithHttpInfo(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest));
         /// <summary>
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <returns>ListVaultMarketP2pOffersItem</returns>
-        ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer();
+        ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest);
 
         /// <summary>
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
@@ -2158,8 +2199,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketP2pOffersItem</returns>
-        ApiResponse<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferWithHttpInfo();
+        ApiResponse<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferWithHttpInfo(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest);
         /// <summary>
         /// Withdraw one of your open offers. Loans already taken from it carry on.
         /// </summary>
@@ -2183,8 +2225,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake(string id);
+        GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest);
 
         /// <summary>
         /// Borrow: take an offer against one of your stored vault units (&#x60;vaultItemId&#x60;). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -2194,8 +2237,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeWithHttpInfo(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest);
         /// <summary>
         /// Answer the \&quot;Read the mark\&quot; mission: the quality letter (A, B or C) you read on a market page, checked against the stored mark. One answer per market, 10 a day. Returns &#x60;{ bookKey, answer, correct, quality, mission, next }&#x60;.
         /// </summary>
@@ -2332,8 +2376,9 @@ namespace net.crossly.Api
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll();
+        CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest);
 
         /// <summary>
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
@@ -2342,14 +2387,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollWithHttpInfo();
+        ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollWithHttpInfo(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest);
         /// <summary>
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave();
+        CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest);
 
         /// <summary>
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
@@ -2358,8 +2405,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveWithHttpInfo();
+        ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveWithHttpInfo(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest);
         /// <summary>
         /// The portfolio margin requirement of a firm sub-account before and after a trade (&#x60;bookKey&#x60;, &#x60;side&#x60; buy or sell, &#x60;units&#x60;), at the Crossly mark with fees left out. Changes nothing.
         /// </summary>
@@ -3000,8 +3048,9 @@ namespace net.crossly.Api
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <returns>CreateVaultMarketProOrderResponse</returns>
-        CreateVaultMarketProOrderResponse CreateVaultMarketProOrder();
+        CreateVaultMarketProOrderResponse CreateVaultMarketProOrder(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest);
 
         /// <summary>
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
@@ -3010,8 +3059,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketProOrderResponse</returns>
-        ApiResponse<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderWithHttpInfo();
+        ApiResponse<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderWithHttpInfo(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest);
         /// <summary>
         /// Cancel an order; what filled stays filled.
         /// </summary>
@@ -3034,8 +3084,9 @@ namespace net.crossly.Api
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <returns>CreateVaultMarketProOrderCancelAllResponse</returns>
-        CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll();
+        CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest));
 
         /// <summary>
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;.
@@ -3044,8 +3095,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketProOrderCancelAllResponse</returns>
-        ApiResponse<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllWithHttpInfo();
+        ApiResponse<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllWithHttpInfo(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest));
         /// <summary>
         /// Amend an order&#39;s price, stop or quantity (cancel-replace: it re-queues at its new price).
         /// </summary>
@@ -3290,8 +3342,9 @@ namespace net.crossly.Api
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <returns>ListVaultMarketShareAutoInvestItem</returns>
-        ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest();
+        ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest);
 
         /// <summary>
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper.
@@ -3300,8 +3353,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareAutoInvestItem</returns>
-        ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestWithHttpInfo();
+        ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestWithHttpInfo(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest);
         /// <summary>
         /// Run a plan now (once a minute at most); the schedule does not move.
         /// </summary>
@@ -3325,8 +3379,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <returns>ListVaultMarketShareAutoInvestItem</returns>
-        ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate(string id);
+        ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest);
 
         /// <summary>
         /// Change a plan (amount, cadence, series or weights, cap, rebalance) or set its &#x60;status&#x60; active, paused or cancelled.
@@ -3336,15 +3391,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareAutoInvestItem</returns>
-        ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest);
         /// <summary>
         /// Buy a basket once: &#x60;amountCents&#x60; split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to &#x60;maxPremiumBps&#x60;). &#x60;practice&#x60; buys on paper.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <returns>CreateVaultMarketShareBasketBuyResponse</returns>
-        CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy(string id);
+        CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest);
 
         /// <summary>
         /// Buy a basket once: &#x60;amountCents&#x60; split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to &#x60;maxPremiumBps&#x60;). &#x60;practice&#x60; buys on paper.
@@ -3354,8 +3411,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBasketBuyResponse</returns>
-        ApiResponse<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyWithHttpInfo(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest);
         /// <summary>
         /// Your whole-unit bid reached the reserve: fund the price through your investor account within 72 hours to buy the item from its holders (no vote).
         /// </summary>
@@ -3379,8 +3437,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <returns>CreateVaultMarketShareBuyoutFundResponse</returns>
-        CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote(string id);
+        CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest);
 
         /// <summary>
         /// Vote &#x60;yes&#x60; or &#x60;no&#x60; on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
@@ -3390,8 +3449,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBuyoutFundResponse</returns>
-        ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteWithHttpInfo(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest);
         /// <summary>
         /// Withdraw your buyout bid before its vote opens; the escrow is refunded.
         /// </summary>
@@ -3484,8 +3544,9 @@ namespace net.crossly.Api
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <returns>GetVaultMarketShareInvestorResponse</returns>
-        GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor();
+        GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest);
 
         /// <summary>
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
@@ -3494,8 +3555,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketShareInvestorResponse</returns>
-        ApiResponse<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorWithHttpInfo();
+        ApiResponse<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorWithHttpInfo(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest);
         /// <summary>
         /// Cancel one of your open share-book orders.
         /// </summary>
@@ -3553,8 +3615,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder(string id);
+        CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest);
 
         /// <summary>
         /// Place a practice order (play money) with the same rules as the real share book.
@@ -3564,15 +3627,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderWithHttpInfo(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest);
         /// <summary>
         /// Subscribe with play money to a practice series’ offering.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <returns>GetVaultMarketSharePaperResponse</returns>
-        GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe(string id);
+        GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest);
 
         /// <summary>
         /// Subscribe with play money to a practice series’ offering.
@@ -3582,15 +3647,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketSharePaperResponse</returns>
-        ApiResponse<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest);
         /// <summary>
         /// Take down one of your own holder-room posts (&#x60;reason&#x60;).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateVaultMarketShareRoomHideResponse</returns>
-        CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide(string id);
+        CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide(string id, ReasonRequest reasonRequest);
 
         /// <summary>
         /// Take down one of your own holder-room posts (&#x60;reason&#x60;).
@@ -3600,14 +3667,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareRoomHideResponse</returns>
-        ApiResponse<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideWithHttpInfo(string id, ReasonRequest reasonRequest);
         /// <summary>
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <returns>ListVaultMarketShareSeriesItem</returns>
-        ListVaultMarketShareSeriesItem CreateVaultMarketShareSery();
+        ListVaultMarketShareSeriesItem CreateVaultMarketShareSery(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest);
 
         /// <summary>
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -3616,15 +3685,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareSeriesItem</returns>
-        ApiResponse<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryWithHttpInfo();
+        ApiResponse<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryWithHttpInfo(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest);
         /// <summary>
         /// Bid for the whole item (&#x60;offerCents&#x60;, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <returns>CreateVaultMarketShareBuyoutFundResponse</returns>
-        CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout(string id);
+        CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest);
 
         /// <summary>
         /// Bid for the whole item (&#x60;offerCents&#x60;, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
@@ -3634,15 +3705,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBuyoutFundResponse</returns>
-        ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutWithHttpInfo(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest);
         /// <summary>
         /// Give whole &#x60;shares&#x60; of a series to someone (&#x60;to&#x60;: their @handle, email or user id), with an optional &#x60;message&#x60;. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <returns>ListVaultMarketShareGiftsItem</returns>
-        ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift(string id);
+        ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest);
 
         /// <summary>
         /// Give whole &#x60;shares&#x60; of a series to someone (&#x60;to&#x60;: their @handle, email or user id), with an optional &#x60;message&#x60;. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
@@ -3652,15 +3725,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareGiftsItem</returns>
-        ApiResponse<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftWithHttpInfo(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest);
         /// <summary>
         /// Place an order on a series’ share book: &#x60;side&#x60;, &#x60;type&#x60; limit or market (immediate-or-cancel inside a 10% band), &#x60;tif&#x60; gtc / gtd (&#x60;expiresAt&#x60;) / ioc, whole &#x60;shares&#x60; or a buy’s &#x60;amountCents&#x60; (turned into whole shares at the most it could pay), integer &#x60;limitCents&#x60; a share, &#x60;postOnly&#x60;. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ListVaultMarketShareOrdersItem</returns>
-        ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder(string id);
+        ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest);
 
         /// <summary>
         /// Place an order on a series’ share book: &#x60;side&#x60;, &#x60;type&#x60; limit or market (immediate-or-cancel inside a 10% band), &#x60;tif&#x60; gtc / gtd (&#x60;expiresAt&#x60;) / ioc, whole &#x60;shares&#x60; or a buy’s &#x60;amountCents&#x60; (turned into whole shares at the most it could pay), integer &#x60;limitCents&#x60; a share, &#x60;postOnly&#x60;. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -3670,15 +3745,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareOrdersItem</returns>
-        ApiResponse<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderWithHttpInfo(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest);
         /// <summary>
         /// You hold every share: take the item back whole. With &#x60;withdraw&#x60;, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareSeryRecombineResponse</returns>
-        CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine(string id);
+        CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest));
 
         /// <summary>
         /// You hold every share: take the item back whole. With &#x60;withdraw&#x60;, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
@@ -3688,15 +3765,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryRecombineResponse</returns>
-        ApiResponse<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineWithHttpInfo(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest));
         /// <summary>
         /// Post in the holder room (shareholders only), up to 1,000 characters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>CreateVaultMarketShareSeryRoomResponse</returns>
-        CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom(string id);
+        CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom(string id, BodyRequest bodyRequest);
 
         /// <summary>
         /// Post in the holder room (shareholders only), up to 1,000 characters.
@@ -3706,15 +3785,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryRoomResponse</returns>
-        ApiResponse<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomWithHttpInfo(string id, BodyRequest bodyRequest);
         /// <summary>
         /// Subscribe for whole &#x60;shares&#x60; in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass &#x60;jointVaultId&#x60;. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <returns>ListVaultMarketShareSubscriptionsItem</returns>
-        ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe(string id);
+        ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest);
 
         /// <summary>
         /// Subscribe for whole &#x60;shares&#x60; in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass &#x60;jointVaultId&#x60;. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -3724,15 +3805,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareSubscriptionsItem</returns>
-        ApiResponse<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeWithHttpInfo(string id);
+        ApiResponse<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeWithHttpInfo(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest);
         /// <summary>
         /// Stop being told about a drop (&#x60;kind&#x60; notify) or leave its waitlist (&#x60;kind&#x60; waitlist).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareSeryWatchResponse</returns>
-        CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch(string id);
+        CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest));
 
         /// <summary>
         /// Stop being told about a drop (&#x60;kind&#x60; notify) or leave its waitlist (&#x60;kind&#x60; waitlist).
@@ -3742,15 +3825,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryWatchResponse</returns>
-        ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchWithHttpInfo(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest));
         /// <summary>
         /// Post an update on your own item’s series (you are its originator): &#x60;kind&#x60; story, provenance, condition, appraisal, exhibition or event, a &#x60;title&#x60;, a &#x60;body&#x60;, an optional https &#x60;mediaUrl&#x60;, &#x60;holdersOnly&#x60;. Holders are told.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <returns>IdResponse</returns>
-        IdResponse CreateVaultMarketShareSeryUpdate(string id);
+        IdResponse CreateVaultMarketShareSeryUpdate(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest);
 
         /// <summary>
         /// Post an update on your own item’s series (you are its originator): &#x60;kind&#x60; story, provenance, condition, appraisal, exhibition or event, a &#x60;title&#x60;, a &#x60;body&#x60;, an optional https &#x60;mediaUrl&#x60;, &#x60;holdersOnly&#x60;. Holders are told.
@@ -3760,15 +3845,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> CreateVaultMarketShareSeryUpdateWithHttpInfo(string id);
+        ApiResponse<IdResponse> CreateVaultMarketShareSeryUpdateWithHttpInfo(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest);
         /// <summary>
         /// Ask to be told about a drop (&#x60;kind&#x60; notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (&#x60;kind&#x60; waitlist, with the &#x60;shares&#x60; you want).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <returns>CreateVaultMarketShareSeryWatchResponse</returns>
-        CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch(string id);
+        CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest);
 
         /// <summary>
         /// Ask to be told about a drop (&#x60;kind&#x60; notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (&#x60;kind&#x60; waitlist, with the &#x60;shares&#x60; you want).
@@ -3778,8 +3865,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryWatchResponse</returns>
-        ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchWithHttpInfo(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest);
         /// <summary>
         /// Withdraw your own proposal before its offering opens.
         /// </summary>
@@ -3821,8 +3909,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareViewingBookResponse</returns>
-        CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook(string id);
+        CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest));
 
         /// <summary>
         /// Book a place on a viewing day (shareholders only), with up to the day’s &#x60;guests&#x60;. Bookings close a day before; booking again changes your guests.
@@ -3832,8 +3921,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareViewingBookResponse</returns>
-        ApiResponse<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookWithHttpInfo(string id);
+        ApiResponse<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookWithHttpInfo(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest));
         /// <summary>
         /// Cancel your viewing-day booking.
         /// </summary>
@@ -3873,8 +3963,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <returns>GetVaultMarketSupplyBatchResponse</returns>
-        GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel(string id);
+        GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest));
 
         /// <summary>
         /// Buy a box&#39;s prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
@@ -3884,8 +3975,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketSupplyBatchResponse</returns>
-        ApiResponse<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelWithHttpInfo(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest));
         /// <summary>
         /// Accept or decline a Market Open invite (&#x60;accept&#x60;).
         /// </summary>
@@ -3908,8 +4000,9 @@ namespace net.crossly.Api
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <returns>CreateVaultMarketSupplySendResponse</returns>
-        CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend();
+        CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest);
 
         /// <summary>
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
@@ -3918,14 +4011,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSupplySendResponse</returns>
-        ApiResponse<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendWithHttpInfo();
+        ApiResponse<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendWithHttpInfo(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest);
         /// <summary>
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <returns>CreateVaultMarketSupplySendInResponse</returns>
-        CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn();
+        CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest);
 
         /// <summary>
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it.
@@ -3934,8 +4029,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSupplySendInResponse</returns>
-        ApiResponse<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInWithHttpInfo();
+        ApiResponse<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInWithHttpInfo(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest);
         /// <summary>
         /// Accept the current lending terms (needed to lend or short). Returns &#x60;{ termsVersion }&#x60;.
         /// </summary>
@@ -4096,8 +4192,9 @@ namespace net.crossly.Api
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <returns>CreateVaultMarketValuationStatementResponse</returns>
-        CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement();
+        CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest);
 
         /// <summary>
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
@@ -4106,8 +4203,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketValuationStatementResponse</returns>
-        ApiResponse<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementWithHttpInfo();
+        ApiResponse<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementWithHttpInfo(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest);
         /// <summary>
         /// Watch a book key. Returns &#x60;{ bookKey, watching }&#x60;.
         /// </summary>
@@ -4128,8 +4226,9 @@ namespace net.crossly.Api
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <returns>CreateVaultMarketWidgetTokenResponse</returns>
-        CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken();
+        CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest));
 
         /// <summary>
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
@@ -4138,15 +4237,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketWidgetTokenResponse</returns>
-        ApiResponse<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenWithHttpInfo();
+        ApiResponse<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenWithHttpInfo(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest));
         /// <summary>
         /// After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the &#x60;signature&#x60; your wallet returned to record it (kept only if it landed).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>CreateVaultReceiptTokenConfirmResponse</returns>
-        CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm(string id);
+        CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest));
 
         /// <summary>
         /// After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the &#x60;signature&#x60; your wallet returned to record it (kept only if it landed).
@@ -4156,14 +4257,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenConfirmResponse</returns>
-        ApiResponse<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmWithHttpInfo(string id);
+        ApiResponse<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmWithHttpInfo(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest));
         /// <summary>
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <returns>CreateVaultReceiptTokenExportResponse</returns>
-        CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport();
+        CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest);
 
         /// <summary>
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
@@ -4172,15 +4275,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenExportResponse</returns>
-        ApiResponse<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportWithHttpInfo();
+        ApiResponse<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportWithHttpInfo(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest);
         /// <summary>
         /// Redeem a receipt token held in one of your verified Solana wallets (&#x60;wallet&#x60;): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>CreateVaultReceiptTokenRedeemResponse</returns>
-        CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem(string id);
+        CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest);
 
         /// <summary>
         /// Redeem a receipt token held in one of your verified Solana wallets (&#x60;wallet&#x60;): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
@@ -4190,15 +4295,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenRedeemResponse</returns>
-        ApiResponse<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemWithHttpInfo(string id);
+        ApiResponse<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemWithHttpInfo(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest);
         /// <summary>
         /// After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the &#x60;signature&#x60; to record it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm(string id);
+        CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest));
 
         /// <summary>
         /// After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the &#x60;signature&#x60; to record it.
@@ -4208,14 +4315,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(string id);
+        ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest));
         /// <summary>
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>CreateVaultReceiptTokenWalletAllowResponse</returns>
-        CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow();
+        CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest);
 
         /// <summary>
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
@@ -4224,8 +4333,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenWalletAllowResponse</returns>
-        ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowWithHttpInfo();
+        ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowWithHttpInfo(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest);
         /// <summary>
         /// Cancel a live price watch. Returns the watch.
         /// </summary>
@@ -5619,8 +5729,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <returns>GetVaultMarketIndexFeedFundingResponse</returns>
-        GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding(string slug);
+        GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding(string slug, decimal premiumBps, decimal? interestBps = default(decimal?));
 
         /// <summary>
         /// Reference funding for a perpetual-style future on the index: your premium &#x60;premiumBps&#x60; (TWAP of (impact mid - index)/index) through F &#x3D; P + clamp(I - P, ±0.05%) per 8 h, |F| capped at 0.5%/day, with the index level it is relative to. The partner DCM computes and settles funding; this is the reference math.
@@ -5630,15 +5742,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketIndexFeedFundingResponse</returns>
-        ApiResponse<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingWithHttpInfo(string slug);
+        ApiResponse<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingWithHttpInfo(string slug, decimal premiumBps, decimal? interestBps = default(decimal?));
         /// <summary>
         /// The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetVaultMarketIndexFeedSettlementResponse</returns>
-        GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement(string slug);
+        GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement(string slug, decimal? days = default(decimal?));
 
         /// <summary>
         /// The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
@@ -5648,8 +5763,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketIndexFeedSettlementResponse</returns>
-        ApiResponse<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementWithHttpInfo(string slug);
+        ApiResponse<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementWithHttpInfo(string slug, decimal? days = default(decimal?));
         /// <summary>
         /// An index&#39;s daily closes (up to 5 years), oldest first.
         /// </summary>
@@ -7020,8 +7136,9 @@ namespace net.crossly.Api
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <returns>string</returns>
-        string GetVaultMarketPredictionStream();
+        string GetVaultMarketPredictionStream(string markets);
 
         /// <summary>
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId.
@@ -7030,8 +7147,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GetVaultMarketPredictionStreamWithHttpInfo();
+        ApiResponse<string> GetVaultMarketPredictionStreamWithHttpInfo(string markets);
         /// <summary>
         /// Which prediction venue is live: self (Crossly as the DCM, money at the segregated settlement bank), partner (a partner DCM) or paper (practice only), who runs the book, where money sits, and the env each real mode still needs.
         /// </summary>
@@ -7168,8 +7286,9 @@ namespace net.crossly.Api
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <returns>string</returns>
-        string GetVaultMarketProStream();
+        string GetVaultMarketProStream(string bookKey);
 
         /// <summary>
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change.
@@ -7178,8 +7297,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GetVaultMarketProStreamWithHttpInfo();
+        ApiResponse<string> GetVaultMarketProStreamWithHttpInfo(string bookKey);
         /// <summary>
         /// Your public vault profile switch: on or off, whether followers see new buys, your profile URL and follower count.
         /// </summary>
@@ -8826,8 +8946,9 @@ namespace net.crossly.Api
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultResponse</returns>
-        ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault();
+        ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault(string live = default(string));
 
         /// <summary>
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going.
@@ -8836,8 +8957,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultResponse</returns>
-        ApiResponse<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultWithHttpInfo();
+        ApiResponse<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultWithHttpInfo(string live = default(string));
         /// <summary>
         /// Your vault units sent to grading: where each card is in its run, and the grade once it is back.
         /// </summary>
@@ -9688,8 +9810,10 @@ namespace net.crossly.Api
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <returns>ListVaultMarketPartnerFinderResponse</returns>
-        ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder();
+        ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder(string postalCode = default(string), string service = default(string));
 
         /// <summary>
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services.
@@ -9698,8 +9822,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketPartnerFinderResponse</returns>
-        ApiResponse<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderWithHttpInfo();
+        ApiResponse<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderWithHttpInfo(string postalCode = default(string), string service = default(string));
         /// <summary>
         /// Your stakes in the market pool and what each redeems for now.
         /// </summary>
@@ -10520,8 +10646,9 @@ namespace net.crossly.Api
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues();
+        ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues(string inventoryItemIds = default(string));
 
         /// <summary>
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated.
@@ -10530,14 +10657,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesWithHttpInfo();
+        ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesWithHttpInfo(string inventoryItemIds = default(string));
         /// <summary>
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ListVaultMarketSupplyDepositsResponse</returns>
-        ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits();
+        ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits(string inventoryItemIds = default(string));
 
         /// <summary>
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated).
@@ -10546,14 +10675,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyDepositsResponse</returns>
-        ApiResponse<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsWithHttpInfo();
+        ApiResponse<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsWithHttpInfo(string inventoryItemIds = default(string));
         /// <summary>
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <returns>ListVaultMarketSupplyEligibilityResponse</returns>
-        ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility();
+        ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility(string inventoryItemIds = default(string), string listingId = default(string));
 
         /// <summary>
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not.
@@ -10562,8 +10694,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyEligibilityResponse</returns>
-        ApiResponse<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityWithHttpInfo();
+        ApiResponse<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityWithHttpInfo(string inventoryItemIds = default(string), string listingId = default(string));
         /// <summary>
         /// Market Open invites to you as a dealer: keys Crossly is opening and asks you to quote.
         /// </summary>
@@ -10792,8 +10926,9 @@ namespace net.crossly.Api
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <returns>UpdateVaultMarketAutoBuyResponse</returns>
-        UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy();
+        UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest);
 
         /// <summary>
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included).
@@ -10802,15 +10937,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <returns>ApiResponse of UpdateVaultMarketAutoBuyResponse</returns>
-        ApiResponse<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyWithHttpInfo();
+        ApiResponse<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyWithHttpInfo(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest);
         /// <summary>
         /// Post-trade allocation: set or replace the plan for a buy you placed for one of the entity&#39;s sub-accounts (that sub-account leads). Refused once any share has moved.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <returns>ListVaultMarketBlocksItem</returns>
-        ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation(string orderId);
+        ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest);
 
         /// <summary>
         /// Post-trade allocation: set or replace the plan for a buy you placed for one of the entity&#39;s sub-accounts (that sub-account leads). Refused once any share has moved.
@@ -10820,8 +10957,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketBlocksItem</returns>
-        ApiResponse<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationWithHttpInfo(string orderId);
+        ApiResponse<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationWithHttpInfo(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest);
         /// <summary>
         /// Change the switches: &#x60;telegramAlerts&#x60;, &#x60;telegramDigest&#x60;, &#x60;pushCapPerDay&#x60; (0 to 20). Margin calls and recalls are never capped. Returns the new view.
         /// </summary>
@@ -10878,8 +11016,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember(string id, string memberId);
+        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest));
 
         /// <summary>
         /// Admin: change a member&#39;s role, limits or sub-accounts. The last admin cannot be demoted.
@@ -10890,16 +11029,18 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberWithHttpInfo(string id, string memberId);
+        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberWithHttpInfo(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest));
         /// <summary>
         /// Admin: set a sub-account&#39;s limits (per-order notional, units per key, gross, net, leverage), held to the entity&#39;s caps. &#x60;limits: null&#x60; clears them.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit(string id, string subId);
+        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest);
 
         /// <summary>
         /// Admin: set a sub-account&#39;s limits (per-order notional, units per key, gross, net, leverage), held to the entity&#39;s caps. &#x60;limits: null&#x60; clears them.
@@ -10910,15 +11051,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(string id, string subId);
+        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest);
         /// <summary>
         /// Admin: elect USD for the entity (&#x60;usdOnly&#x60;). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection(string id);
+        GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest);
 
         /// <summary>
         /// Admin: elect USD for the entity (&#x60;usdOnly&#x60;). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
@@ -10928,8 +11071,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionWithHttpInfo(string id);
+        ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionWithHttpInfo(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest);
         /// <summary>
         /// Copy-watch a collector who shares bids and asks: you get an alert when they rest a new one. It never places an order for you.
         /// </summary>
@@ -11003,8 +11147,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <returns>GetVaultMarketItemLocationResponse</returns>
-        GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom(string inventoryItemId);
+        GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest);
 
         /// <summary>
         /// Set which unit a sale of this item ships first: &#x60;vault_first&#x60;, &#x60;warehouse_first&#x60; or &#x60;cheapest&#x60; (to ship); null &#x3D; your default. Quantities stay the same on every channel: only who ships changes.
@@ -11014,8 +11159,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketItemLocationResponse</returns>
-        ApiResponse<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromWithHttpInfo(string inventoryItemId);
+        ApiResponse<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromWithHttpInfo(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest);
         /// <summary>
         /// Change your lender election (applies to loans opened after the change). Needs lending.
         /// </summary>
@@ -11116,8 +11262,9 @@ namespace net.crossly.Api
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <returns>UpdateVaultMarketPartnerMeResponse</returns>
-        UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe();
+        UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest));
 
         /// <summary>
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed.
@@ -11126,8 +11273,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateVaultMarketPartnerMeResponse</returns>
-        ApiResponse<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeWithHttpInfo();
+        ApiResponse<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeWithHttpInfo(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest));
         /// <summary>
         /// Set a position&#39;s take-profit / stop-loss: a long is closed, a short covered, when the last trade reaches one. Both null clears them.
         /// </summary>
@@ -11270,8 +11418,9 @@ namespace net.crossly.Api
         /// Change your vault defaults; send only the fields you change.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <returns>GetVaultMarketSettingResponse</returns>
-        GetVaultMarketSettingResponse UpdateVaultMarketSetting();
+        GetVaultMarketSettingResponse UpdateVaultMarketSetting(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest));
 
         /// <summary>
         /// Change your vault defaults; send only the fields you change.
@@ -11280,8 +11429,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketSettingResponse</returns>
-        ApiResponse<GetVaultMarketSettingResponse> UpdateVaultMarketSettingWithHttpInfo();
+        ApiResponse<GetVaultMarketSettingResponse> UpdateVaultMarketSettingWithHttpInfo(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest));
         /// <summary>
         /// Show or hide the dollar amounts on one of your share cards (&#x60;showAmounts&#x60;).
         /// </summary>
@@ -11305,8 +11455,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <returns>UpdateVaultMarketSupplyDepositResponse</returns>
-        UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit(string id);
+        UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest);
 
         /// <summary>
         /// Change a deposit&#39;s toggles: &#x60;autoListBps&#x60; (list at that share of the mark once stored; null &#x3D; do not) and &#x60;lendWhenIdle&#x60;.
@@ -11316,8 +11467,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <returns>ApiResponse of UpdateVaultMarketSupplyDepositResponse</returns>
-        ApiResponse<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositWithHttpInfo(string id);
+        ApiResponse<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositWithHttpInfo(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest);
         /// <summary>
         /// Set the round-up: &#x60;shareBps&#x60; (1%-50%) of each payout released to you adds to a budget; when it covers the cheapest vault unit on &#x60;bookKey&#x60;, one unit is bought with your saved card, never above the budget.
         /// </summary>
@@ -11722,9 +11874,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketBlocksItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketBlocksItem> CreateVaultMarketBlockAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketBlocksItem> CreateVaultMarketBlockAsync(CreateVaultMarketBlockRequest createVaultMarketBlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits.
@@ -11733,9 +11886,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketBlocksItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketBlocksItem>> CreateVaultMarketBlockWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketBlocksItem>> CreateVaultMarketBlockWithHttpInfoAsync(CreateVaultMarketBlockRequest createVaultMarketBlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Allocate a done block now (the keeper does it too). Returns &#x60;{ outcome, block }&#x60;: allocated, waiting (a payment or transfer is not settled yet), nothing_filled or none.
         /// </summary>
@@ -11896,9 +12050,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketDcmLinkResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkAsync(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it.
@@ -11907,9 +12062,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketDcmLinkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketDcmLinkResponse>> CreateVaultMarketDcmLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketDcmLinkResponse>> CreateVaultMarketDcmLinkWithHttpInfoAsync(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin.
         /// </summary>
@@ -11917,9 +12073,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketDcmUnlinkResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkAsync(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin.
@@ -11928,9 +12085,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketDcmUnlinkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketDcmUnlinkResponse>> CreateVaultMarketDcmUnlinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketDcmUnlinkResponse>> CreateVaultMarketDcmUnlinkWithHttpInfoAsync(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Apply to be a dealer (ID check first). Ops review; approved dealers get raised limits and their bids show as dealer bids.
         /// </summary>
@@ -12087,9 +12245,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketEntityResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketEntityResponse> CreateVaultMarketEntityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketEntityResponse> CreateVaultMarketEntityAsync(CreateVaultMarketEntityRequest createVaultMarketEntityRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing).
@@ -12098,9 +12257,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketEntityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketEntityResponse>> CreateVaultMarketEntityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketEntityResponse>> CreateVaultMarketEntityWithHttpInfoAsync(CreateVaultMarketEntityRequest createVaultMarketEntityRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: record the entity&#39;s attestation that it is an eligible contract participant. Raising its caps is still an ops decision.
         /// </summary>
@@ -12132,9 +12292,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketEntityHaltResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltAsync(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin or risk: the firm kill switch. Halts the entity (no &#x60;subaccountId&#x60;) or one sub-account: open orders on it are cancelled and no new ones are placed until cleared.
@@ -12144,9 +12305,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketEntityHaltResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketEntityHaltResponse>> CreateVaultMarketEntityHaltWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketEntityHaltResponse>> CreateVaultMarketEntityHaltWithHttpInfoAsync(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin or risk: lift a firm halt.
         /// </summary>
@@ -12180,9 +12342,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationAsync(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept or decline an invitation (&#x60;accept&#x60;). Trading, admin and risk roles need a verified ID to accept.
@@ -12192,9 +12355,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityResponse>> CreateVaultMarketEntityInvitationWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityResponse>> CreateVaultMarketEntityInvitationWithHttpInfoAsync(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Refresh the entity&#39;s KYB status from the custodian (and its onboarding link while KYB is open).
         /// </summary>
@@ -12226,9 +12390,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberAsync(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: invite a Crossly user by email as admin, trader, risk, ops or viewer (a viewer can never place an order), with optional limits and sub-accounts.
@@ -12238,9 +12403,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntityMemberWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntityMemberWithHttpInfoAsync(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity&#39;s caps.
         /// </summary>
@@ -12249,9 +12415,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountAsync(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: open a sub-account once the custodian approved the entity; its limits are held to the entity&#39;s caps.
@@ -12261,9 +12428,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntitySubaccountWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntitySubaccountWithHttpInfoAsync(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: close a sub-account that holds nothing and has no open orders.
         /// </summary>
@@ -12407,9 +12575,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultAsync(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade.
@@ -12418,9 +12587,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultWithHttpInfoAsync(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Book (or re-book) the grading slot of a flow still at \&quot;picked\&quot;. Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
         /// </summary>
@@ -12429,9 +12599,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookAsync(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Book (or re-book) the grading slot of a flow still at \&quot;picked\&quot;. Answers 503 naming GRADING_HUB_ADDRESS when runs are not open.
@@ -12441,9 +12612,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop the flow before the card goes to the grader (still picked, or its slot only reserved: nothing was charged).
         /// </summary>
@@ -12498,9 +12670,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListAsync(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Confirm the price for the grade the unit came back with (&#x60;confirm: true&#x60;, &#x60;gradeKey&#x60; must match the unit). Pre-trade risk, the price band and the ID line apply, then one shelf ask is placed on the Crossly order book.
@@ -12510,9 +12683,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultListWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultListWithHttpInfoAsync(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// You mailed the card to the grading hub (an inventory card, once its run locked).
         /// </summary>
@@ -12521,9 +12695,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// You mailed the card to the grading hub (an inventory card, once its run locked).
@@ -12533,9 +12708,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send a raw vault unit on the grading hub&#39;s shelf to a Grading Run (&#x60;runId&#x60;). It is held until it comes back, graded, to the same vault item. The slot is free; your saved card is charged only if the run locks.
         /// </summary>
@@ -13443,9 +13619,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionComboResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboAsync(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue).
@@ -13454,9 +13631,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionComboResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionComboResponse>> CreateVaultMarketOptionComboWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionComboResponse>> CreateVaultMarketOptionComboWithHttpInfoAsync(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a working strategy.
         /// </summary>
@@ -13600,9 +13778,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionCoveredCallResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallAsync(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover.
@@ -13611,9 +13790,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionCoveredCallResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Free a covered call&#39;s vault unit once the call it covers is closed (or covered by other units).
         /// </summary>
@@ -13707,9 +13887,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionOrderResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderAsync(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade.
@@ -13718,9 +13899,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionOrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionOrderResponse>> CreateVaultMarketOptionOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionOrderResponse>> CreateVaultMarketOptionOrderWithHttpInfoAsync(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a working options order (on the partner venue it is cancelled there first). A liquidation order cannot be cancelled.
         /// </summary>
@@ -13837,9 +14019,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteAsync(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown.
@@ -13848,9 +14031,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionQuoteResponse>> CreateVaultMarketOptionQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionQuoteResponse>> CreateVaultMarketOptionQuoteWithHttpInfoAsync(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ask for a quote on an option contract: &#x60;side&#x60;, &#x60;quantity&#x60; in contracts, an optional &#x60;limitCents&#x60; (never shown). Makers quoting the series, the underlying&#39;s DMM and LPs and approved dealers are told anonymously; answers are firm for 60 s.
         /// </summary>
@@ -13971,9 +14155,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionRollResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollAsync(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position.
@@ -13982,9 +14167,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionRollResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionRollResponse>> CreateVaultMarketOptionRollWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketOptionRollResponse>> CreateVaultMarketOptionRollWithHttpInfoAsync(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Preview a strategy before placing it: by template (underlying, kind, direction, strikes, expiries) or by legs. Returns each leg at its bid / ask, the net per unit (+ debit, - credit), the payoff at the first expiry, max profit and max loss (null &#x3D; unbounded), breakevens, net Greeks, and the scenario margin of the whole strategy next to its legs margined one by one.
         /// </summary>
@@ -14060,9 +14246,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionAsync(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Borrower: look for a cheaper lender. A refinancing auction runs for &#x60;hours&#x60; (1-72, default 24); the rate a new lender gets climbs from &#x60;startAprBps&#x60; (default half the loan rate) to just under the loan rate now. The first lender to take it pays your lender off and the loan carries on at that lower rate. Nobody by the end: nothing changes.
@@ -14072,9 +14259,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Borrower: stop looking for a cheaper lender before anyone has taken the loan over. The loan carries on unchanged.
         /// </summary>
@@ -14106,9 +14294,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceAsync(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Take over a loan in a refinancing auction (a lender call or a borrower search for a cheaper lender): you pay the old lender everything owed now (refused above &#x60;maxPayoffCents&#x60;), which becomes your loan to the same borrower at the auction rate now. Needs a verified ID, an active account and the current lending terms. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -14118,9 +14307,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Borrower: repay from your custodian account to the lender. Without &#x60;amountCents&#x60;, in full (principal plus interest to the second; the unit is free once the custodian has it). With &#x60;amountCents&#x60; below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
@@ -14129,9 +14319,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayAsync(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Borrower: repay from your custodian account to the lender. Without &#x60;amountCents&#x60;, in full (principal plus interest to the second; the unit is free once the custodian has it). With &#x60;amountCents&#x60; below what is owed, a part payment: interest first, then principal, at least the interest owed now and at least $1; the loan stays open on the principal left. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -14141,9 +14332,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
         /// </summary>
@@ -14151,9 +14343,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketP2pOffersItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferAsync(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms.
@@ -14162,9 +14355,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketP2pOffersItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketP2pOffersItem>> CreateVaultMarketP2pOfferWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketP2pOffersItem>> CreateVaultMarketP2pOfferWithHttpInfoAsync(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Withdraw one of your open offers. Loans already taken from it carry on.
         /// </summary>
@@ -14196,9 +14390,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeAsync(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Borrow: take an offer against one of your stored vault units (&#x60;vaultItemId&#x60;). The unit is pledged (no listing, lending or withdrawal) and the principal is paid into your custodian account. Interest accrues by the second; repay any time. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -14208,9 +14403,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Answer the \&quot;Read the mark\&quot; mission: the quality letter (A, B or C) you read on a market page, checked against the stored mark. One answer per market, 10 a day. Returns &#x60;{ bookKey, answer, correct, quality, mission, next }&#x60;.
         /// </summary>
@@ -14390,9 +14586,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited.
@@ -14401,9 +14598,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketPortfolioMarginEnrollResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
         /// </summary>
@@ -14411,9 +14609,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited.
@@ -14422,9 +14621,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketPortfolioMarginLeaveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The portfolio margin requirement of a firm sub-account before and after a trade (&#x60;bookKey&#x60;, &#x60;side&#x60; buy or sell, &#x60;units&#x60;), at the Crossly mark with fees left out. Changes nothing.
         /// </summary>
@@ -15258,9 +15458,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketProOrderResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderAsync(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it).
@@ -15269,9 +15470,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketProOrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketProOrderResponse>> CreateVaultMarketProOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketProOrderResponse>> CreateVaultMarketProOrderWithHttpInfoAsync(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel an order; what filled stays filled.
         /// </summary>
@@ -15302,9 +15504,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketProOrderCancelAllResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllAsync(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;.
@@ -15313,9 +15516,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketProOrderCancelAllResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Amend an order&#39;s price, stop or quantity (cancel-replace: it re-queues at its new price).
         /// </summary>
@@ -15633,9 +15837,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareAutoInvestItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestAsync(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper.
@@ -15644,9 +15849,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareAutoInvestItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestWithHttpInfoAsync(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Run a plan now (once a minute at most); the schedule does not move.
         /// </summary>
@@ -15678,9 +15884,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareAutoInvestItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateAsync(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change a plan (amount, cadence, series or weights, cap, rebalance) or set its &#x60;status&#x60; active, paused or cancelled.
@@ -15690,9 +15897,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareAutoInvestItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy a basket once: &#x60;amountCents&#x60; split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to &#x60;maxPremiumBps&#x60;). &#x60;practice&#x60; buys on paper.
         /// </summary>
@@ -15701,9 +15909,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBasketBuyResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyAsync(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy a basket once: &#x60;amountCents&#x60; split by its live weights into whole shares of each series, in your own name (offerings subscribed, trading books at the best ask up to &#x60;maxPremiumBps&#x60;). &#x60;practice&#x60; buys on paper.
@@ -15713,9 +15922,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBasketBuyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBasketBuyResponse>> CreateVaultMarketShareBasketBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBasketBuyResponse>> CreateVaultMarketShareBasketBuyWithHttpInfoAsync(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your whole-unit bid reached the reserve: fund the price through your investor account within 72 hours to buy the item from its holders (no vote).
         /// </summary>
@@ -15747,9 +15957,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBuyoutFundResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteAsync(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Vote &#x60;yes&#x60; or &#x60;no&#x60; on a buyout with the shares you held when the vote opened. You can change your vote while it is open.
@@ -15759,9 +15970,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBuyoutFundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Withdraw your buyout bid before its vote opens; the escrow is refunded.
         /// </summary>
@@ -15882,9 +16094,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketShareInvestorResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorAsync(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID.
@@ -15893,9 +16106,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketShareInvestorResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketShareInvestorResponse>> CreateVaultMarketShareInvestorWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketShareInvestorResponse>> CreateVaultMarketShareInvestorWithHttpInfoAsync(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel one of your open share-book orders.
         /// </summary>
@@ -15971,9 +16185,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place a practice order (play money) with the same rules as the real share book.
@@ -15983,9 +16198,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSharePaperSeryOrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Subscribe with play money to a practice series’ offering.
         /// </summary>
@@ -15994,9 +16210,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSharePaperResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeAsync(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Subscribe with play money to a practice series’ offering.
@@ -16006,9 +16223,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSharePaperResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSharePaperResponse>> CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSharePaperResponse>> CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Take down one of your own holder-room posts (&#x60;reason&#x60;).
         /// </summary>
@@ -16017,9 +16235,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareRoomHideResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideAsync(string id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Take down one of your own holder-room posts (&#x60;reason&#x60;).
@@ -16029,9 +16248,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareRoomHideResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareRoomHideResponse>> CreateVaultMarketShareRoomHideWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareRoomHideResponse>> CreateVaultMarketShareRoomHideWithHttpInfoAsync(string id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
@@ -16039,9 +16259,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareSeriesItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryAsync(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -16050,9 +16271,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareSeriesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareSeriesItem>> CreateVaultMarketShareSeryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareSeriesItem>> CreateVaultMarketShareSeryWithHttpInfoAsync(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bid for the whole item (&#x60;offerCents&#x60;, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
         /// </summary>
@@ -16061,9 +16283,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBuyoutFundResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutAsync(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bid for the whole item (&#x60;offerCents&#x60;, at least the mark x 1.10). The bid is escrowed at the venue, then holders vote by shares: two-thirds yes accepts, a majority against rejects, 14 days with no majority against accepts. Accepted, the item is yours and the price is paid out pro rata after storage and insurance.
@@ -16073,9 +16296,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBuyoutFundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Give whole &#x60;shares&#x60; of a series to someone (&#x60;to&#x60;: their @handle, email or user id), with an optional &#x60;message&#x60;. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
         /// </summary>
@@ -16084,9 +16308,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareGiftsItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftAsync(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Give whole &#x60;shares&#x60; of a series to someone (&#x60;to&#x60;: their @handle, email or user id), with an optional &#x60;message&#x60;. The shares are set aside until they accept (14 days). On acceptance the broker-dealer or transfer agent verifies them and moves the shares on the register: no money moves, and your cost basis and holding date carry over.
@@ -16096,9 +16321,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareGiftsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareGiftsItem>> CreateVaultMarketShareSeryGiftWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareGiftsItem>> CreateVaultMarketShareSeryGiftWithHttpInfoAsync(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Place an order on a series’ share book: &#x60;side&#x60;, &#x60;type&#x60; limit or market (immediate-or-cancel inside a 10% band), &#x60;tif&#x60; gtc / gtd (&#x60;expiresAt&#x60;) / ioc, whole &#x60;shares&#x60; or a buy’s &#x60;amountCents&#x60; (turned into whole shares at the most it could pay), integer &#x60;limitCents&#x60; a share, &#x60;postOnly&#x60;. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
@@ -16107,9 +16333,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareOrdersItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Place an order on a series’ share book: &#x60;side&#x60;, &#x60;type&#x60; limit or market (immediate-or-cancel inside a 10% band), &#x60;tif&#x60; gtc / gtd (&#x60;expiresAt&#x60;) / ioc, whole &#x60;shares&#x60; or a buy’s &#x60;amountCents&#x60; (turned into whole shares at the most it could pay), integer &#x60;limitCents&#x60; a share, &#x60;postOnly&#x60;. Fees: maker 0, taker 100 bps plus the broker-dealer pass-through. Self-trades are prevented. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -16119,9 +16346,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareOrdersItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareOrdersItem>> CreateVaultMarketShareSeryOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareOrdersItem>> CreateVaultMarketShareSeryOrderWithHttpInfoAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// You hold every share: take the item back whole. With &#x60;withdraw&#x60;, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
         /// </summary>
@@ -16130,9 +16358,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryRecombineResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineAsync(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// You hold every share: take the item back whole. With &#x60;withdraw&#x60;, it ships home at once (any receipt token is burned as it leaves). Storage and insurance the series owed stay with the unit.
@@ -16142,9 +16371,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryRecombineResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Post in the holder room (shareholders only), up to 1,000 characters.
         /// </summary>
@@ -16153,9 +16383,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryRoomResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomAsync(string id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Post in the holder room (shareholders only), up to 1,000 characters.
@@ -16165,9 +16396,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryRoomResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryRoomResponse>> CreateVaultMarketShareSeryRoomWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryRoomResponse>> CreateVaultMarketShareSeryRoomWithHttpInfoAsync(string id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Subscribe for whole &#x60;shares&#x60; in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass &#x60;jointVaultId&#x60;. Pass &#x60;requestId&#x60; to make a retry safe.
         /// </summary>
@@ -16176,9 +16408,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareSubscriptionsItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeAsync(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Subscribe for whole &#x60;shares&#x60; in an open offering at its fixed price. The money goes into the venue’s escrow in your own name and is refunded if the offering misses its minimum. Reg A+ limits apply. A joint vault member with trade rights may pass &#x60;jointVaultId&#x60;. Pass &#x60;requestId&#x60; to make a retry safe.
@@ -16188,9 +16421,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareSubscriptionsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareSubscriptionsItem>> CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketShareSubscriptionsItem>> CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop being told about a drop (&#x60;kind&#x60; notify) or leave its waitlist (&#x60;kind&#x60; waitlist).
         /// </summary>
@@ -16199,9 +16433,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryWatchResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchAsync(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stop being told about a drop (&#x60;kind&#x60; notify) or leave its waitlist (&#x60;kind&#x60; waitlist).
@@ -16211,9 +16446,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryWatchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Post an update on your own item’s series (you are its originator): &#x60;kind&#x60; story, provenance, condition, appraisal, exhibition or event, a &#x60;title&#x60;, a &#x60;body&#x60;, an optional https &#x60;mediaUrl&#x60;, &#x60;holdersOnly&#x60;. Holders are told.
         /// </summary>
@@ -16222,9 +16458,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> CreateVaultMarketShareSeryUpdateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdResponse> CreateVaultMarketShareSeryUpdateAsync(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Post an update on your own item’s series (you are its originator): &#x60;kind&#x60; story, provenance, condition, appraisal, exhibition or event, a &#x60;title&#x60;, a &#x60;body&#x60;, an optional https &#x60;mediaUrl&#x60;, &#x60;holdersOnly&#x60;. Holders are told.
@@ -16234,9 +16471,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ask to be told about a drop (&#x60;kind&#x60; notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (&#x60;kind&#x60; waitlist, with the &#x60;shares&#x60; you want).
         /// </summary>
@@ -16245,9 +16483,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryWatchResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchAsync(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ask to be told about a drop (&#x60;kind&#x60; notify: when your early access opens and when it opens to everyone) or join the waitlist of a sold-out first-come offering (&#x60;kind&#x60; waitlist, with the &#x60;shares&#x60; you want).
@@ -16257,9 +16496,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryWatchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryWatchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryWatchWithHttpInfoAsync(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Withdraw your own proposal before its offering opens.
         /// </summary>
@@ -16314,9 +16554,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareViewingBookResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookAsync(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Book a place on a viewing day (shareholders only), with up to the day’s &#x60;guests&#x60;. Bookings close a day before; booking again changes your guests.
@@ -16326,9 +16567,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareViewingBookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareViewingBookResponse>> CreateVaultMarketShareViewingBookWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketShareViewingBookResponse>> CreateVaultMarketShareViewingBookWithHttpInfoAsync(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel your viewing-day booking.
         /// </summary>
@@ -16381,9 +16623,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSupplyBatchResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelAsync(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy a box&#39;s prepaid label again after it failed (for example once a ship-from address is saved). A box that has a label keeps it.
@@ -16393,9 +16636,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSupplyBatchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSupplyBatchResponse>> CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSupplyBatchResponse>> CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accept or decline a Market Open invite (&#x60;accept&#x60;).
         /// </summary>
@@ -16426,9 +16670,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSupplySendResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendAsync(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live.
@@ -16437,9 +16682,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSupplySendResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSupplySendResponse>> CreateVaultMarketSupplySendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSupplySendResponse>> CreateVaultMarketSupplySendWithHttpInfoAsync(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it.
         /// </summary>
@@ -16447,9 +16693,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSupplySendInResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInAsync(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it.
@@ -16458,9 +16705,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSupplySendInResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSupplySendInResponse>> CreateVaultMarketSupplySendInWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketSupplySendInResponse>> CreateVaultMarketSupplySendInWithHttpInfoAsync(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accept the current lending terms (needed to lend or short). Returns &#x60;{ termsVersion }&#x60;.
         /// </summary>
@@ -16669,9 +16917,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketValuationStatementResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementAsync(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money.
@@ -16680,9 +16929,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketValuationStatementResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketValuationStatementResponse>> CreateVaultMarketValuationStatementWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketValuationStatementResponse>> CreateVaultMarketValuationStatementWithHttpInfoAsync(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Watch a book key. Returns &#x60;{ bookKey, watching }&#x60;.
         /// </summary>
@@ -16711,9 +16961,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketWidgetTokenResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenAsync(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones.
@@ -16722,9 +16973,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketWidgetTokenResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketWidgetTokenResponse>> CreateVaultMarketWidgetTokenWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultMarketWidgetTokenResponse>> CreateVaultMarketWidgetTokenWithHttpInfoAsync(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the &#x60;signature&#x60; your wallet returned to record it (kept only if it landed).
         /// </summary>
@@ -16733,9 +16985,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// After your wallet sent the export: read the chain and mark the token live once its one token exists. Pass the &#x60;signature&#x60; your wallet returned to record it (kept only if it landed).
@@ -16745,9 +16998,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenConfirmResponse>> CreateVaultReceiptTokenConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenConfirmResponse>> CreateVaultReceiptTokenConfirmWithHttpInfoAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
         /// </summary>
@@ -16755,9 +17009,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenExportResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportAsync(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale.
@@ -16766,9 +17021,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenExportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenExportResponse>> CreateVaultReceiptTokenExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenExportResponse>> CreateVaultReceiptTokenExportWithHttpInfoAsync(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Redeem a receipt token held in one of your verified Solana wallets (&#x60;wallet&#x60;): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
         /// </summary>
@@ -16777,9 +17033,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenRedeemResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemAsync(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Redeem a receipt token held in one of your verified Solana wallets (&#x60;wallet&#x60;): returns an unsigned base64 burn your wallet signs and sends (it also closes the token account and returns its rent to you). Once it lands, call redeem/confirm and the unit is yours in the vault. Refused while the token is frozen.
@@ -16789,9 +17046,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenRedeemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenRedeemResponse>> CreateVaultReceiptTokenRedeemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenRedeemResponse>> CreateVaultReceiptTokenRedeemWithHttpInfoAsync(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the &#x60;signature&#x60; to record it.
         /// </summary>
@@ -16800,9 +17058,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// After your wallet sent the redeem: read the chain; once the token is burned the unit moves into your vault (if it was not yours already). Pass the &#x60;signature&#x60; to record it.
@@ -16812,9 +17071,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenRedeemConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse>> CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse>> CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
         /// </summary>
@@ -16822,9 +17082,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenWalletAllowResponse</returns>
-        System.Threading.Tasks.Task<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowAsync(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen.
@@ -16833,9 +17094,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenWalletAllowResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a live price watch. Returns the watch.
         /// </summary>
@@ -18637,9 +18899,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketIndexFeedFundingResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingAsync(string slug, decimal premiumBps, decimal? interestBps = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reference funding for a perpetual-style future on the index: your premium &#x60;premiumBps&#x60; (TWAP of (impact mid - index)/index) through F &#x3D; P + clamp(I - P, ±0.05%) per 8 h, |F| capped at 0.5%/day, with the index level it is relative to. The partner DCM computes and settles funding; this is the reference math.
@@ -18649,9 +18913,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketIndexFeedFundingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketIndexFeedFundingResponse>> GetVaultMarketIndexFeedFundingWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketIndexFeedFundingResponse>> GetVaultMarketIndexFeedFundingWithHttpInfoAsync(string slug, decimal premiumBps, decimal? interestBps = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
         /// </summary>
@@ -18660,9 +18926,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketIndexFeedSettlementResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementAsync(string slug, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The frozen 7-day TWAP settlement series for a licensed index (written once a day, never restated), with the closes behind each value. Signed like the feed.
@@ -18672,9 +18939,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketIndexFeedSettlementResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketIndexFeedSettlementResponse>> GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketIndexFeedSettlementResponse>> GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(string slug, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// An index&#39;s daily closes (up to 5 years), oldest first.
         /// </summary>
@@ -20453,9 +20721,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> GetVaultMarketPredictionStreamAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> GetVaultMarketPredictionStreamAsync(string markets, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId.
@@ -20464,9 +20733,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> GetVaultMarketPredictionStreamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> GetVaultMarketPredictionStreamWithHttpInfoAsync(string markets, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Which prediction venue is live: self (Crossly as the DCM, money at the segregated settlement bank), partner (a partner DCM) or paper (practice only), who runs the book, where money sits, and the env each real mode still needs.
         /// </summary>
@@ -20646,9 +20916,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> GetVaultMarketProStreamAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> GetVaultMarketProStreamAsync(string bookKey, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change.
@@ -20657,9 +20928,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> GetVaultMarketProStreamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> GetVaultMarketProStreamWithHttpInfoAsync(string bookKey, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your public vault profile switch: on or off, whether followers see new buys, your profile URL and follower count.
         /// </summary>
@@ -22799,9 +23071,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultAsync(string live = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going.
@@ -22810,9 +23083,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultResponse>> ListVaultMarketGradeToVaultWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketGradeToVaultResponse>> ListVaultMarketGradeToVaultWithHttpInfoAsync(string live = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your vault units sent to grading: where each card is in its run, and the grade once it is back.
         /// </summary>
@@ -23926,9 +24200,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketPartnerFinderResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderAsync(string postalCode = default(string), string service = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services.
@@ -23937,9 +24213,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketPartnerFinderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketPartnerFinderResponse>> ListVaultMarketPartnerFinderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketPartnerFinderResponse>> ListVaultMarketPartnerFinderWithHttpInfoAsync(string postalCode = default(string), string service = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your stakes in the market pool and what each redeems for now.
         /// </summary>
@@ -25013,9 +25291,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated.
@@ -25024,9 +25303,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyDeclaredValuesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated).
         /// </summary>
@@ -25034,9 +25314,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyDepositsResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated).
@@ -25045,9 +25326,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyDepositsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyDepositsResponse>> ListVaultMarketSupplyDepositsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyDepositsResponse>> ListVaultMarketSupplyDepositsWithHttpInfoAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not.
         /// </summary>
@@ -25055,9 +25337,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyEligibilityResponse</returns>
-        System.Threading.Tasks.Task<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityAsync(string inventoryItemIds = default(string), string listingId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not.
@@ -25066,9 +25350,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyEligibilityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyEligibilityResponse>> ListVaultMarketSupplyEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketSupplyEligibilityResponse>> ListVaultMarketSupplyEligibilityWithHttpInfoAsync(string inventoryItemIds = default(string), string listingId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Market Open invites to you as a dealer: keys Crossly is opening and asks you to quote.
         /// </summary>
@@ -25370,9 +25656,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketAutoBuyResponse</returns>
-        System.Threading.Tasks.Task<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyAsync(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included).
@@ -25381,9 +25668,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketAutoBuyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketAutoBuyResponse>> UpdateVaultMarketAutoBuyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketAutoBuyResponse>> UpdateVaultMarketAutoBuyWithHttpInfoAsync(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Post-trade allocation: set or replace the plan for a buy you placed for one of the entity&#39;s sub-accounts (that sub-account leads). Refused once any share has moved.
         /// </summary>
@@ -25392,9 +25680,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketBlocksItem</returns>
-        System.Threading.Tasks.Task<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationAsync(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Post-trade allocation: set or replace the plan for a buy you placed for one of the entity&#39;s sub-accounts (that sub-account leads). Refused once any share has moved.
@@ -25404,9 +25693,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketBlocksItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketBlocksItem>> UpdateVaultMarketBlockAllocationWithHttpInfoAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListVaultMarketBlocksItem>> UpdateVaultMarketBlockAllocationWithHttpInfoAsync(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change the switches: &#x60;telegramAlerts&#x60;, &#x60;telegramDigest&#x60;, &#x60;pushCapPerDay&#x60; (0 to 20). Margin calls and recalls are never capped. Returns the new view.
         /// </summary>
@@ -25481,9 +25771,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberAsync(string id, string memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberAsync(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: change a member&#39;s role, limits or sub-accounts. The last admin cannot be demoted.
@@ -25494,9 +25785,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityMemberWithHttpInfoAsync(string id, string memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityMemberWithHttpInfoAsync(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: set a sub-account&#39;s limits (per-order notional, units per key, gross, net, leverage), held to the entity&#39;s caps. &#x60;limits: null&#x60; clears them.
         /// </summary>
@@ -25506,9 +25798,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitAsync(string id, string subId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitAsync(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: set a sub-account&#39;s limits (per-order notional, units per key, gross, net, leverage), held to the entity&#39;s caps. &#x60;limits: null&#x60; clears them.
@@ -25519,9 +25812,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(string id, string subId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Admin: elect USD for the entity (&#x60;usdOnly&#x60;). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
         /// </summary>
@@ -25530,9 +25824,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionAsync(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Admin: elect USD for the entity (&#x60;usdOnly&#x60;). Its sub-accounts then post collateral in USD only and pay every fee in USD, and any CBX reward paid to one of them is converted to USD by the custodian in that account. Audited; it can be turned off again.
@@ -25542,9 +25837,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Copy-watch a collector who shares bids and asks: you get an alert when they rest a new one. It never places an order for you.
         /// </summary>
@@ -25641,9 +25937,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketItemLocationResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromAsync(string inventoryItemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromAsync(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set which unit a sale of this item ships first: &#x60;vault_first&#x60;, &#x60;warehouse_first&#x60; or &#x60;cheapest&#x60; (to ship); null &#x3D; your default. Quantities stay the same on every channel: only who ships changes.
@@ -25653,9 +25950,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketItemLocationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketItemLocationResponse>> UpdateVaultMarketItemSellFromWithHttpInfoAsync(string inventoryItemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketItemLocationResponse>> UpdateVaultMarketItemSellFromWithHttpInfoAsync(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change your lender election (applies to loans opened after the change). Needs lending.
         /// </summary>
@@ -25789,9 +26087,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketPartnerMeResponse</returns>
-        System.Threading.Tasks.Task<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeAsync(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed.
@@ -25800,9 +26099,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketPartnerMeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketPartnerMeResponse>> UpdateVaultMarketPartnerMeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketPartnerMeResponse>> UpdateVaultMarketPartnerMeWithHttpInfoAsync(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set a position&#39;s take-profit / stop-loss: a long is closed, a short covered, when the last trade reaches one. Both null clears them.
         /// </summary>
@@ -25988,9 +26288,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSettingResponse</returns>
-        System.Threading.Tasks.Task<GetVaultMarketSettingResponse> UpdateVaultMarketSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetVaultMarketSettingResponse> UpdateVaultMarketSettingAsync(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change your vault defaults; send only the fields you change.
@@ -25999,9 +26300,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSettingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSettingResponse>> UpdateVaultMarketSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetVaultMarketSettingResponse>> UpdateVaultMarketSettingWithHttpInfoAsync(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Show or hide the dollar amounts on one of your share cards (&#x60;showAmounts&#x60;).
         /// </summary>
@@ -26033,9 +26335,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketSupplyDepositResponse</returns>
-        System.Threading.Tasks.Task<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositAsync(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change a deposit&#39;s toggles: &#x60;autoListBps&#x60; (list at that share of the mark once stored; null &#x3D; do not) and &#x60;lendWhenIdle&#x60;.
@@ -26045,9 +26348,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketSupplyDepositResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketSupplyDepositResponse>> UpdateVaultMarketSupplyDepositWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateVaultMarketSupplyDepositResponse>> UpdateVaultMarketSupplyDepositWithHttpInfoAsync(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the round-up: &#x60;shareBps&#x60; (1%-50%) of each payout released to you adds to a budget; when it covers the cheapest vault unit on &#x60;bookKey&#x60;, one unit is bought with your saved card, never above the budget.
         /// </summary>
@@ -28163,10 +28467,11 @@ namespace net.crossly.Api
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <returns>ListVaultMarketBlocksItem</returns>
-        public ListVaultMarketBlocksItem CreateVaultMarketBlock()
+        public ListVaultMarketBlocksItem CreateVaultMarketBlock(CreateVaultMarketBlockRequest createVaultMarketBlockRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = CreateVaultMarketBlockWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = CreateVaultMarketBlockWithHttpInfo(createVaultMarketBlockRequest);
             return localVarResponse.Data;
         }
 
@@ -28174,12 +28479,20 @@ namespace net.crossly.Api
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketBlocksItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> CreateVaultMarketBlockWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> CreateVaultMarketBlockWithHttpInfo(CreateVaultMarketBlockRequest createVaultMarketBlockRequest)
         {
+            // verify the required parameter 'createVaultMarketBlockRequest' is set
+            if (createVaultMarketBlockRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketBlockRequest' when calling VaultMarketsApi->CreateVaultMarketBlock");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -28199,6 +28512,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketBlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -28225,11 +28539,12 @@ namespace net.crossly.Api
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketBlocksItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketBlocksItem> CreateVaultMarketBlockAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketBlocksItem> CreateVaultMarketBlockAsync(CreateVaultMarketBlockRequest createVaultMarketBlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = await CreateVaultMarketBlockWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = await CreateVaultMarketBlockWithHttpInfoAsync(createVaultMarketBlockRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -28237,14 +28552,22 @@ namespace net.crossly.Api
         /// Place a block buy for an entity: one order booked to the first sub-account in &#x60;plan&#x60; (it pays from its custodian account), split across every sub-account in the plan at the average price, fees included, once it is done and the custodian confirmed each payment. Each share&#39;s cash moves between the entity&#39;s own custodian accounts; its units move only after that settles. Every sub-account must be one you may trade, and its share must fit its limits. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketBlockRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketBlocksItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem>> CreateVaultMarketBlockWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem>> CreateVaultMarketBlockWithHttpInfoAsync(CreateVaultMarketBlockRequest createVaultMarketBlockRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketBlockRequest' is set
+            if (createVaultMarketBlockRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketBlockRequest' when calling VaultMarketsApi->CreateVaultMarketBlock");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -28264,6 +28587,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketBlockRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -29241,10 +29565,11 @@ namespace net.crossly.Api
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <returns>CreateVaultMarketDcmLinkResponse</returns>
-        public CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink()
+        public CreateVaultMarketDcmLinkResponse CreateVaultMarketDcmLink(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> localVarResponse = CreateVaultMarketDcmLinkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> localVarResponse = CreateVaultMarketDcmLinkWithHttpInfo(createVaultMarketDcmLinkRequest);
             return localVarResponse.Data;
         }
 
@@ -29252,12 +29577,20 @@ namespace net.crossly.Api
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketDcmLinkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkWithHttpInfo(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest)
         {
+            // verify the required parameter 'createVaultMarketDcmLinkRequest' is set
+            if (createVaultMarketDcmLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketDcmLinkRequest' when calling VaultMarketsApi->CreateVaultMarketDcmLink");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -29277,6 +29610,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketDcmLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -29303,11 +29637,12 @@ namespace net.crossly.Api
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketDcmLinkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketDcmLinkResponse> CreateVaultMarketDcmLinkAsync(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> localVarResponse = await CreateVaultMarketDcmLinkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse> localVarResponse = await CreateVaultMarketDcmLinkWithHttpInfoAsync(createVaultMarketDcmLinkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -29315,14 +29650,22 @@ namespace net.crossly.Api
         /// Link a partner exchange account to your account (or to a firm sub-account you manage, &#x60;subaccountId&#x60;) so Crossly can show its positions: &#x60;accountRef&#x60; (the account id there) and &#x60;code&#x60; (the one-time link code it gave you). The partner must confirm the code; the code is never stored. Read-only: Crossly never trades on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketDcmLinkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse>> CreateVaultMarketDcmLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketDcmLinkResponse>> CreateVaultMarketDcmLinkWithHttpInfoAsync(CreateVaultMarketDcmLinkRequest createVaultMarketDcmLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketDcmLinkRequest' is set
+            if (createVaultMarketDcmLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketDcmLinkRequest' when calling VaultMarketsApi->CreateVaultMarketDcmLink");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -29342,6 +29685,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketDcmLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -29369,10 +29713,11 @@ namespace net.crossly.Api
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <returns>CreateVaultMarketDcmUnlinkResponse</returns>
-        public CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink()
+        public CreateVaultMarketDcmUnlinkResponse CreateVaultMarketDcmUnlink(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> localVarResponse = CreateVaultMarketDcmUnlinkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> localVarResponse = CreateVaultMarketDcmUnlinkWithHttpInfo(createVaultMarketDcmUnlinkRequest);
             return localVarResponse.Data;
         }
 
@@ -29380,12 +29725,14 @@ namespace net.crossly.Api
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketDcmUnlinkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkWithHttpInfo(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -29405,6 +29752,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketDcmUnlinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -29431,11 +29779,12 @@ namespace net.crossly.Api
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketDcmUnlinkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketDcmUnlinkResponse> CreateVaultMarketDcmUnlinkAsync(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> localVarResponse = await CreateVaultMarketDcmUnlinkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse> localVarResponse = await CreateVaultMarketDcmUnlinkWithHttpInfoAsync(createVaultMarketDcmUnlinkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -29443,14 +29792,16 @@ namespace net.crossly.Api
         /// Unlink the partner exchange account from your account (or the firm sub-account &#x60;subaccountId&#x60;): Crossly stops reading it and its hedges leave portfolio margin. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketDcmUnlinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketDcmUnlinkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse>> CreateVaultMarketDcmUnlinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketDcmUnlinkResponse>> CreateVaultMarketDcmUnlinkWithHttpInfoAsync(CreateVaultMarketDcmUnlinkRequest createVaultMarketDcmUnlinkRequest = default(CreateVaultMarketDcmUnlinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -29470,6 +29821,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketDcmUnlinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -30411,10 +30763,11 @@ namespace net.crossly.Api
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <returns>CreateVaultMarketEntityResponse</returns>
-        public CreateVaultMarketEntityResponse CreateVaultMarketEntity()
+        public CreateVaultMarketEntityResponse CreateVaultMarketEntity(CreateVaultMarketEntityRequest createVaultMarketEntityRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> localVarResponse = CreateVaultMarketEntityWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> localVarResponse = CreateVaultMarketEntityWithHttpInfo(createVaultMarketEntityRequest);
             return localVarResponse.Data;
         }
 
@@ -30422,12 +30775,20 @@ namespace net.crossly.Api
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketEntityResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> CreateVaultMarketEntityWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> CreateVaultMarketEntityWithHttpInfo(CreateVaultMarketEntityRequest createVaultMarketEntityRequest)
         {
+            // verify the required parameter 'createVaultMarketEntityRequest' is set
+            if (createVaultMarketEntityRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityRequest' when calling VaultMarketsApi->CreateVaultMarketEntity");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -30447,6 +30808,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketEntityRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -30473,11 +30835,12 @@ namespace net.crossly.Api
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketEntityResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketEntityResponse> CreateVaultMarketEntityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketEntityResponse> CreateVaultMarketEntityAsync(CreateVaultMarketEntityRequest createVaultMarketEntityRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> localVarResponse = await CreateVaultMarketEntityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse> localVarResponse = await CreateVaultMarketEntityWithHttpInfoAsync(createVaultMarketEntityRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -30485,14 +30848,22 @@ namespace net.crossly.Api
         /// Open an entity account: you become its admin and the custodian partner starts KYB (its own flow; Crossly keeps only its reference). Needs a verified ID and the custodian (503 names what is missing). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketEntityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketEntityResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse>> CreateVaultMarketEntityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketEntityResponse>> CreateVaultMarketEntityWithHttpInfoAsync(CreateVaultMarketEntityRequest createVaultMarketEntityRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketEntityRequest' is set
+            if (createVaultMarketEntityRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityRequest' when calling VaultMarketsApi->CreateVaultMarketEntity");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -30512,6 +30883,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketEntityRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -30686,10 +31058,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <returns>CreateVaultMarketEntityHaltResponse</returns>
-        public CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt(string id)
+        public CreateVaultMarketEntityHaltResponse CreateVaultMarketEntityHalt(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> localVarResponse = CreateVaultMarketEntityHaltWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> localVarResponse = CreateVaultMarketEntityHaltWithHttpInfo(id, createVaultMarketEntityHaltRequest);
             return localVarResponse.Data;
         }
 
@@ -30698,8 +31071,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketEntityHaltResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltWithHttpInfo(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -30707,9 +31081,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityHalt");
             }
 
+            // verify the required parameter 'createVaultMarketEntityHaltRequest' is set
+            if (createVaultMarketEntityHaltRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityHaltRequest' when calling VaultMarketsApi->CreateVaultMarketEntityHalt");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -30730,6 +31111,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntityHaltRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -30757,11 +31139,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketEntityHaltResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketEntityHaltResponse> CreateVaultMarketEntityHaltAsync(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> localVarResponse = await CreateVaultMarketEntityHaltWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse> localVarResponse = await CreateVaultMarketEntityHaltWithHttpInfoAsync(id, createVaultMarketEntityHaltRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -30770,9 +31153,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityHaltRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketEntityHaltResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse>> CreateVaultMarketEntityHaltWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketEntityHaltResponse>> CreateVaultMarketEntityHaltWithHttpInfoAsync(string id, CreateVaultMarketEntityHaltRequest createVaultMarketEntityHaltRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -30780,10 +31164,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityHalt");
             }
 
+            // verify the required parameter 'createVaultMarketEntityHaltRequest' is set
+            if (createVaultMarketEntityHaltRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityHaltRequest' when calling VaultMarketsApi->CreateVaultMarketEntityHalt");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -30804,6 +31195,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntityHaltRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -30996,10 +31388,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <returns>GetVaultMarketEntityResponse</returns>
-        public GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation(string id)
+        public GetVaultMarketEntityResponse CreateVaultMarketEntityInvitation(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> localVarResponse = CreateVaultMarketEntityInvitationWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> localVarResponse = CreateVaultMarketEntityInvitationWithHttpInfo(id, createWorldSpaceRequestByUserIdRequest);
             return localVarResponse.Data;
         }
 
@@ -31008,8 +31401,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationWithHttpInfo(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31017,9 +31411,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityInvitation");
             }
 
+            // verify the required parameter 'createWorldSpaceRequestByUserIdRequest' is set
+            if (createWorldSpaceRequestByUserIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorldSpaceRequestByUserIdRequest' when calling VaultMarketsApi->CreateVaultMarketEntityInvitation");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31040,6 +31441,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorldSpaceRequestByUserIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -31067,11 +31469,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityResponse> CreateVaultMarketEntityInvitationAsync(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> localVarResponse = await CreateVaultMarketEntityInvitationWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse> localVarResponse = await CreateVaultMarketEntityInvitationWithHttpInfoAsync(id, createWorldSpaceRequestByUserIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -31080,9 +31483,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createWorldSpaceRequestByUserIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse>> CreateVaultMarketEntityInvitationWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityResponse>> CreateVaultMarketEntityInvitationWithHttpInfoAsync(string id, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31090,10 +31494,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityInvitation");
             }
 
+            // verify the required parameter 'createWorldSpaceRequestByUserIdRequest' is set
+            if (createWorldSpaceRequestByUserIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createWorldSpaceRequestByUserIdRequest' when calling VaultMarketsApi->CreateVaultMarketEntityInvitation");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31114,6 +31525,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createWorldSpaceRequestByUserIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -31288,10 +31700,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        public GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember(string id)
+        public GetVaultMarketEntityByIdResponse CreateVaultMarketEntityMember(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = CreateVaultMarketEntityMemberWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = CreateVaultMarketEntityMemberWithHttpInfo(id, createVaultMarketEntityMemberRequest);
             return localVarResponse.Data;
         }
 
@@ -31300,8 +31713,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberWithHttpInfo(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31309,9 +31723,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityMember");
             }
 
+            // verify the required parameter 'createVaultMarketEntityMemberRequest' is set
+            if (createVaultMarketEntityMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityMemberRequest' when calling VaultMarketsApi->CreateVaultMarketEntityMember");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31332,6 +31753,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntityMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -31359,11 +31781,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntityMemberAsync(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await CreateVaultMarketEntityMemberWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await CreateVaultMarketEntityMemberWithHttpInfoAsync(id, createVaultMarketEntityMemberRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -31372,9 +31795,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntityMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntityMemberWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntityMemberWithHttpInfoAsync(string id, CreateVaultMarketEntityMemberRequest createVaultMarketEntityMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31382,10 +31806,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntityMember");
             }
 
+            // verify the required parameter 'createVaultMarketEntityMemberRequest' is set
+            if (createVaultMarketEntityMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntityMemberRequest' when calling VaultMarketsApi->CreateVaultMarketEntityMember");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31406,6 +31837,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntityMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -31434,10 +31866,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        public GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount(string id)
+        public GetVaultMarketEntityByIdResponse CreateVaultMarketEntitySubaccount(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = CreateVaultMarketEntitySubaccountWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = CreateVaultMarketEntitySubaccountWithHttpInfo(id, createVaultMarketEntitySubaccountRequest);
             return localVarResponse.Data;
         }
 
@@ -31446,8 +31879,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountWithHttpInfo(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31455,9 +31889,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntitySubaccount");
             }
 
+            // verify the required parameter 'createVaultMarketEntitySubaccountRequest' is set
+            if (createVaultMarketEntitySubaccountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntitySubaccountRequest' when calling VaultMarketsApi->CreateVaultMarketEntitySubaccount");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31478,6 +31919,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntitySubaccountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -31505,11 +31947,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> CreateVaultMarketEntitySubaccountAsync(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await CreateVaultMarketEntitySubaccountWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await CreateVaultMarketEntitySubaccountWithHttpInfoAsync(id, createVaultMarketEntitySubaccountRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -31518,9 +31961,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketEntitySubaccountRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntitySubaccountWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> CreateVaultMarketEntitySubaccountWithHttpInfoAsync(string id, CreateVaultMarketEntitySubaccountRequest createVaultMarketEntitySubaccountRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -31528,10 +31972,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketEntitySubaccount");
             }
 
+            // verify the required parameter 'createVaultMarketEntitySubaccountRequest' is set
+            if (createVaultMarketEntitySubaccountRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketEntitySubaccountRequest' when calling VaultMarketsApi->CreateVaultMarketEntitySubaccount");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -31552,6 +32003,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketEntitySubaccountRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -32437,10 +32889,11 @@ namespace net.crossly.Api
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault()
+        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVault(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultWithHttpInfo(createVaultMarketGradeToVaultRequest);
             return localVarResponse.Data;
         }
 
@@ -32448,12 +32901,14 @@ namespace net.crossly.Api
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultWithHttpInfo(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -32473,6 +32928,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -32499,11 +32955,12 @@ namespace net.crossly.Api
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultAsync(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultWithHttpInfoAsync(createVaultMarketGradeToVaultRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -32511,14 +32968,16 @@ namespace net.crossly.Api
         /// Start Grade to Vault on one item (&#x60;source&#x60; inventory or vault_unit). With &#x60;runId&#x60; the grading slot is booked at once (free; your saved card is charged only if the run locks). Nothing is listed until you confirm a price after the grade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketGradeToVaultRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultWithHttpInfoAsync(CreateVaultMarketGradeToVaultRequest createVaultMarketGradeToVaultRequest = default(CreateVaultMarketGradeToVaultRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -32538,6 +32997,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -32566,10 +33026,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook(string id)
+        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultBook(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultBookWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultBookWithHttpInfo(id, createVaultMarketGradeToVaultBookRequest);
             return localVarResponse.Data;
         }
 
@@ -32578,8 +33039,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookWithHttpInfo(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -32590,6 +33052,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -32610,6 +33073,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultBookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -32637,11 +33101,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultBookAsync(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(id, createVaultMarketGradeToVaultBookRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -32650,9 +33115,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultBookWithHttpInfoAsync(string id, CreateVaultMarketGradeToVaultBookRequest createVaultMarketGradeToVaultBookRequest = default(CreateVaultMarketGradeToVaultBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -32664,6 +33130,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -32684,6 +33151,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultBookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -33004,10 +33472,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList(string id)
+        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultList(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultListWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultListWithHttpInfo(id, createVaultMarketGradeToVaultListRequest);
             return localVarResponse.Data;
         }
 
@@ -33016,8 +33485,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListWithHttpInfo(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -33028,6 +33498,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -33048,6 +33519,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultListRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -33075,11 +33547,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultListAsync(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultListWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultListWithHttpInfoAsync(id, createVaultMarketGradeToVaultListRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -33088,9 +33561,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketGradeToVaultListRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultListWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultListWithHttpInfoAsync(string id, CreateVaultMarketGradeToVaultListRequest createVaultMarketGradeToVaultListRequest = default(CreateVaultMarketGradeToVaultListRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -33102,6 +33576,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -33122,6 +33597,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketGradeToVaultListRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -33150,10 +33626,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultItem</returns>
-        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped(string id)
+        public ListVaultMarketGradeToVaultItem CreateVaultMarketGradeToVaultShipped(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultShippedWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = CreateVaultMarketGradeToVaultShippedWithHttpInfo(id, createGradingSubmissionShippedRequest);
             return localVarResponse.Data;
         }
 
@@ -33162,8 +33639,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedWithHttpInfo(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -33174,6 +33652,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -33194,6 +33673,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingSubmissionShippedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -33221,11 +33701,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultItem> CreateVaultMarketGradeToVaultShippedAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem> localVarResponse = await CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(id, createGradingSubmissionShippedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -33234,9 +33715,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createGradingSubmissionShippedRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultItem>> CreateVaultMarketGradeToVaultShippedWithHttpInfoAsync(string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = default(CreateGradingSubmissionShippedRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -33248,6 +33730,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -33268,6 +33751,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createGradingSubmissionShippedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -38955,10 +39439,11 @@ namespace net.crossly.Api
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <returns>CreateVaultMarketOptionComboResponse</returns>
-        public CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo()
+        public CreateVaultMarketOptionComboResponse CreateVaultMarketOptionCombo(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> localVarResponse = CreateVaultMarketOptionComboWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> localVarResponse = CreateVaultMarketOptionComboWithHttpInfo(createVaultMarketOptionComboRequest);
             return localVarResponse.Data;
         }
 
@@ -38966,12 +39451,20 @@ namespace net.crossly.Api
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionComboResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboWithHttpInfo(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest)
         {
+            // verify the required parameter 'createVaultMarketOptionComboRequest' is set
+            if (createVaultMarketOptionComboRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionComboRequest' when calling VaultMarketsApi->CreateVaultMarketOptionCombo");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -38991,6 +39484,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionComboRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -39017,11 +39511,12 @@ namespace net.crossly.Api
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionComboResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketOptionComboResponse> CreateVaultMarketOptionComboAsync(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> localVarResponse = await CreateVaultMarketOptionComboWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse> localVarResponse = await CreateVaultMarketOptionComboWithHttpInfoAsync(createVaultMarketOptionComboRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -39029,14 +39524,22 @@ namespace net.crossly.Api
         /// Place a strategy: 2 to 4 legs on one underlying with ratios, a quantity (units, three decimals) and ONE signed net limit per unit (+ the most you pay, - the least credit you take). Margined on the combined scenario loss of all its legs; matched against the combo book, then the legs&#39; own books; every leg fills at once or none does. Crossly venue only (409 combos_self_venue_only on the partner venue). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionComboRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionComboResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse>> CreateVaultMarketOptionComboWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionComboResponse>> CreateVaultMarketOptionComboWithHttpInfoAsync(CreateVaultMarketOptionComboRequest createVaultMarketOptionComboRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketOptionComboRequest' is set
+            if (createVaultMarketOptionComboRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionComboRequest' when calling VaultMarketsApi->CreateVaultMarketOptionCombo");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -39056,6 +39559,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionComboRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -39941,10 +40445,11 @@ namespace net.crossly.Api
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <returns>CreateVaultMarketOptionCoveredCallResponse</returns>
-        public CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall()
+        public CreateVaultMarketOptionCoveredCallResponse CreateVaultMarketOptionCoveredCall(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> localVarResponse = CreateVaultMarketOptionCoveredCallWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> localVarResponse = CreateVaultMarketOptionCoveredCallWithHttpInfo(createVaultMarketOptionCoveredCallRequest);
             return localVarResponse.Data;
         }
 
@@ -39952,12 +40457,20 @@ namespace net.crossly.Api
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionCoveredCallResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallWithHttpInfo(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest)
         {
+            // verify the required parameter 'createVaultMarketOptionCoveredCallRequest' is set
+            if (createVaultMarketOptionCoveredCallRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionCoveredCallRequest' when calling VaultMarketsApi->CreateVaultMarketOptionCoveredCall");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -39977,6 +40490,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionCoveredCallRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -40003,11 +40517,12 @@ namespace net.crossly.Api
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionCoveredCallResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketOptionCoveredCallResponse> CreateVaultMarketOptionCoveredCallAsync(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> localVarResponse = await CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse> localVarResponse = await CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(createVaultMarketOptionCoveredCallRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -40015,14 +40530,22 @@ namespace net.crossly.Api
         /// Write a covered call: lock a stored vault unit (&#x60;vaultItemId&#x60;) as collateral and sell up to one call on its own key (&#x60;contractId&#x60;, &#x60;quantity&#x60; &lt;&#x3D; 1) at a price or an implied vol. The unit cannot be sold, moved, lent or withdrawn until the call is bought back or expires; if assigned you pay cash, or the unit sells at the vault auction to cover. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionCoveredCallRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionCoveredCallResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionCoveredCallResponse>> CreateVaultMarketOptionCoveredCallWithHttpInfoAsync(CreateVaultMarketOptionCoveredCallRequest createVaultMarketOptionCoveredCallRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketOptionCoveredCallRequest' is set
+            if (createVaultMarketOptionCoveredCallRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionCoveredCallRequest' when calling VaultMarketsApi->CreateVaultMarketOptionCoveredCall");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -40042,6 +40565,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionCoveredCallRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -40599,10 +41123,11 @@ namespace net.crossly.Api
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <returns>CreateVaultMarketOptionOrderResponse</returns>
-        public CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder()
+        public CreateVaultMarketOptionOrderResponse CreateVaultMarketOptionOrder(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> localVarResponse = CreateVaultMarketOptionOrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> localVarResponse = CreateVaultMarketOptionOrderWithHttpInfo(createVaultMarketOptionOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -40610,12 +41135,20 @@ namespace net.crossly.Api
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionOrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderWithHttpInfo(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest)
         {
+            // verify the required parameter 'createVaultMarketOptionOrderRequest' is set
+            if (createVaultMarketOptionOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionOrderRequest' when calling VaultMarketsApi->CreateVaultMarketOptionOrder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -40635,6 +41168,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -40661,11 +41195,12 @@ namespace net.crossly.Api
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionOrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketOptionOrderResponse> CreateVaultMarketOptionOrderAsync(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> localVarResponse = await CreateVaultMarketOptionOrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse> localVarResponse = await CreateVaultMarketOptionOrderWithHttpInfoAsync(createVaultMarketOptionOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -40673,14 +41208,22 @@ namespace net.crossly.Api
         /// Place an options order: &#x60;contractId&#x60;, &#x60;side&#x60;, &#x60;quantity&#x60; in contracts (three decimals), a &#x60;priceCents&#x60; or an &#x60;iv&#x60; (&#x60;quoteMode&#x60;), &#x60;tif&#x60; gtc / gtd (with &#x60;expiresAt&#x60;) / ioc, &#x60;postOnly&#x60;. Idempotent on &#x60;clientOrderId&#x60;. On the Crossly venue it matches price-time with self-trade prevention after a scenario-margin check; on the partner venue it routes to the partner (accept its &#x60;termsVersion&#x60;). &#x60;subaccountId&#x60; trades for a firm sub-account you may trade. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionOrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse>> CreateVaultMarketOptionOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionOrderResponse>> CreateVaultMarketOptionOrderWithHttpInfoAsync(CreateVaultMarketOptionOrderRequest createVaultMarketOptionOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketOptionOrderRequest' is set
+            if (createVaultMarketOptionOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionOrderRequest' when calling VaultMarketsApi->CreateVaultMarketOptionOrder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -40700,6 +41243,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -41403,10 +41947,11 @@ namespace net.crossly.Api
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <returns>CreateVaultMarketOptionQuoteResponse</returns>
-        public CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote()
+        public CreateVaultMarketOptionQuoteResponse CreateVaultMarketOptionQuote(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> localVarResponse = CreateVaultMarketOptionQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> localVarResponse = CreateVaultMarketOptionQuoteWithHttpInfo(createVaultMarketOptionQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -41414,12 +41959,20 @@ namespace net.crossly.Api
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteWithHttpInfo(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest)
         {
+            // verify the required parameter 'createVaultMarketOptionQuoteRequest' is set
+            if (createVaultMarketOptionQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionQuoteRequest' when calling VaultMarketsApi->CreateVaultMarketOptionQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -41439,6 +41992,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -41465,11 +42019,12 @@ namespace net.crossly.Api
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketOptionQuoteResponse> CreateVaultMarketOptionQuoteAsync(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> localVarResponse = await CreateVaultMarketOptionQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse> localVarResponse = await CreateVaultMarketOptionQuoteWithHttpInfoAsync(createVaultMarketOptionQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -41477,14 +42032,22 @@ namespace net.crossly.Api
         /// Price a ticket without placing it: give a price per contract or an implied vol (&#x60;quoteMode&#x60;), get the other back, the premium and fee, the Greeks for your size, the payoff at expiry and the margin it would need on your account (authoritative on the Crossly venue, an estimate when the partner clears). A bad entry is reported, not thrown. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse>> CreateVaultMarketOptionQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionQuoteResponse>> CreateVaultMarketOptionQuoteWithHttpInfoAsync(CreateVaultMarketOptionQuoteRequest createVaultMarketOptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketOptionQuoteRequest' is set
+            if (createVaultMarketOptionQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionQuoteRequest' when calling VaultMarketsApi->CreateVaultMarketOptionQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -41504,6 +42067,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -42243,10 +42807,11 @@ namespace net.crossly.Api
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <returns>CreateVaultMarketOptionRollResponse</returns>
-        public CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll()
+        public CreateVaultMarketOptionRollResponse CreateVaultMarketOptionRoll(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> localVarResponse = CreateVaultMarketOptionRollWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> localVarResponse = CreateVaultMarketOptionRollWithHttpInfo(createVaultMarketOptionRollRequest);
             return localVarResponse.Data;
         }
 
@@ -42254,12 +42819,20 @@ namespace net.crossly.Api
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketOptionRollResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollWithHttpInfo(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest)
         {
+            // verify the required parameter 'createVaultMarketOptionRollRequest' is set
+            if (createVaultMarketOptionRollRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionRollRequest' when calling VaultMarketsApi->CreateVaultMarketOptionRoll");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -42279,6 +42852,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionRollRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -42305,11 +42879,12 @@ namespace net.crossly.Api
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketOptionRollResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketOptionRollResponse> CreateVaultMarketOptionRollAsync(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> localVarResponse = await CreateVaultMarketOptionRollWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse> localVarResponse = await CreateVaultMarketOptionRollWithHttpInfoAsync(createVaultMarketOptionRollRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -42317,14 +42892,22 @@ namespace net.crossly.Api
         /// Roll a position to another contract as one strategy order at one net price (+ you pay, - you receive): the close and the open fill together or not at all. &#x60;practice&#x60; rolls a practice position. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketOptionRollRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketOptionRollResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse>> CreateVaultMarketOptionRollWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketOptionRollResponse>> CreateVaultMarketOptionRollWithHttpInfoAsync(CreateVaultMarketOptionRollRequest createVaultMarketOptionRollRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketOptionRollRequest' is set
+            if (createVaultMarketOptionRollRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketOptionRollRequest' when calling VaultMarketsApi->CreateVaultMarketOptionRoll");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -42344,6 +42927,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketOptionRollRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -42792,10 +43376,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction(string id)
+        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefiAuction(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(id, createVaultMarketP2pLoanRefiAuctionRequest);
             return localVarResponse.Data;
         }
 
@@ -42804,8 +43389,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfo(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -42816,6 +43402,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -42836,6 +43423,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRefiAuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -42863,11 +43451,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefiAuctionAsync(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(id, createVaultMarketP2pLoanRefiAuctionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -42876,9 +43465,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefiAuctionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefiAuctionWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRefiAuctionRequest createVaultMarketP2pLoanRefiAuctionRequest = default(CreateVaultMarketP2pLoanRefiAuctionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -42890,6 +43480,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -42910,6 +43501,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRefiAuctionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43084,10 +43676,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance(string id)
+        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRefinance(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRefinanceWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRefinanceWithHttpInfo(id, createVaultMarketP2pLoanRefinanceRequest);
             return localVarResponse.Data;
         }
 
@@ -43096,8 +43689,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceWithHttpInfo(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43108,6 +43702,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43128,6 +43723,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRefinanceRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43155,11 +43751,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRefinanceAsync(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(id, createVaultMarketP2pLoanRefinanceRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -43168,9 +43765,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRefinanceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRefinanceWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRefinanceRequest createVaultMarketP2pLoanRefinanceRequest = default(CreateVaultMarketP2pLoanRefinanceRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43182,6 +43780,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43202,6 +43801,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRefinanceRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43230,10 +43830,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay(string id)
+        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pLoanRepay(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRepayWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pLoanRepayWithHttpInfo(id, createVaultMarketP2pLoanRepayRequest);
             return localVarResponse.Data;
         }
 
@@ -43242,8 +43843,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayWithHttpInfo(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43254,6 +43856,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43274,6 +43877,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43301,11 +43905,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pLoanRepayAsync(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(id, createVaultMarketP2pLoanRepayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -43314,9 +43919,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pLoanRepayRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pLoanRepayWithHttpInfoAsync(string id, CreateVaultMarketP2pLoanRepayRequest createVaultMarketP2pLoanRepayRequest = default(CreateVaultMarketP2pLoanRepayRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43328,6 +43934,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43348,6 +43955,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pLoanRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43375,10 +43983,11 @@ namespace net.crossly.Api
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <returns>ListVaultMarketP2pOffersItem</returns>
-        public ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer()
+        public ListVaultMarketP2pOffersItem CreateVaultMarketP2pOffer(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> localVarResponse = CreateVaultMarketP2pOfferWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> localVarResponse = CreateVaultMarketP2pOfferWithHttpInfo(createVaultMarketP2pOfferRequest);
             return localVarResponse.Data;
         }
 
@@ -43386,12 +43995,20 @@ namespace net.crossly.Api
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketP2pOffersItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferWithHttpInfo(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest)
         {
+            // verify the required parameter 'createVaultMarketP2pOfferRequest' is set
+            if (createVaultMarketP2pOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketP2pOfferRequest' when calling VaultMarketsApi->CreateVaultMarketP2pOffer");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43411,6 +44028,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketP2pOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43437,11 +44055,12 @@ namespace net.crossly.Api
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketP2pOffersItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketP2pOffersItem> CreateVaultMarketP2pOfferAsync(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> localVarResponse = await CreateVaultMarketP2pOfferWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem> localVarResponse = await CreateVaultMarketP2pOfferWithHttpInfoAsync(createVaultMarketP2pOfferRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -43449,14 +44068,22 @@ namespace net.crossly.Api
         /// Offer to lend: &#x60;principalCents&#x60; per loan at &#x60;aprBps&#x60; a year against an item (&#x60;bookKey&#x60;) or one unit (&#x60;vaultItemId&#x60;), for up to &#x60;maxLoans&#x60; loans, lasting &#x60;expiresInDays&#x60; (default 90). Nothing is held: the custodian pays from your own account when a borrower takes it. Needs a verified ID, an active account and the current lending terms. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketP2pOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketP2pOffersItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem>> CreateVaultMarketP2pOfferWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketP2pOffersItem>> CreateVaultMarketP2pOfferWithHttpInfoAsync(CreateVaultMarketP2pOfferRequest createVaultMarketP2pOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketP2pOfferRequest' is set
+            if (createVaultMarketP2pOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketP2pOfferRequest' when calling VaultMarketsApi->CreateVaultMarketP2pOffer");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43476,6 +44103,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketP2pOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43650,10 +44278,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <returns>GetVaultMarketP2pLoanResponse</returns>
-        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake(string id)
+        public GetVaultMarketP2pLoanResponse CreateVaultMarketP2pOfferTake(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pOfferTakeWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = CreateVaultMarketP2pOfferTakeWithHttpInfo(id, createVaultMarketP2pOfferTakeRequest);
             return localVarResponse.Data;
         }
 
@@ -43662,8 +44291,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketP2pLoanResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeWithHttpInfo(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43671,9 +44301,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketP2pOfferTake");
             }
 
+            // verify the required parameter 'createVaultMarketP2pOfferTakeRequest' is set
+            if (createVaultMarketP2pOfferTakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketP2pOfferTakeRequest' when calling VaultMarketsApi->CreateVaultMarketP2pOfferTake");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43694,6 +44331,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pOfferTakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -43721,11 +44359,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketP2pLoanResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketP2pLoanResponse> CreateVaultMarketP2pOfferTakeAsync(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse> localVarResponse = await CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(id, createVaultMarketP2pOfferTakeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -43734,9 +44373,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketP2pOfferTakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketP2pLoanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketP2pLoanResponse>> CreateVaultMarketP2pOfferTakeWithHttpInfoAsync(string id, CreateVaultMarketP2pOfferTakeRequest createVaultMarketP2pOfferTakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -43744,10 +44384,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketP2pOfferTake");
             }
 
+            // verify the required parameter 'createVaultMarketP2pOfferTakeRequest' is set
+            if (createVaultMarketP2pOfferTakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketP2pOfferTakeRequest' when calling VaultMarketsApi->CreateVaultMarketP2pOfferTake");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -43768,6 +44415,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketP2pOfferTakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -44855,10 +45503,11 @@ namespace net.crossly.Api
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        public CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll()
+        public CreateVaultMarketPortfolioMarginEnrollResponse CreateVaultMarketPortfolioMarginEnroll(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> localVarResponse = CreateVaultMarketPortfolioMarginEnrollWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> localVarResponse = CreateVaultMarketPortfolioMarginEnrollWithHttpInfo(createVaultMarketPortfolioMarginLeaveRequest);
             return localVarResponse.Data;
         }
 
@@ -44866,12 +45515,20 @@ namespace net.crossly.Api
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollWithHttpInfo(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
         {
+            // verify the required parameter 'createVaultMarketPortfolioMarginLeaveRequest' is set
+            if (createVaultMarketPortfolioMarginLeaveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketPortfolioMarginLeaveRequest' when calling VaultMarketsApi->CreateVaultMarketPortfolioMarginEnroll");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -44891,6 +45548,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketPortfolioMarginLeaveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -44917,11 +45575,12 @@ namespace net.crossly.Api
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketPortfolioMarginEnrollResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginEnrollResponse> CreateVaultMarketPortfolioMarginEnrollAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> localVarResponse = await CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse> localVarResponse = await CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(createVaultMarketPortfolioMarginLeaveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -44929,14 +45588,22 @@ namespace net.crossly.Api
         /// Admin: put a firm sub-account under portfolio margin. Needs VAULT_LEVERAGE_VENUE, your ID, an ECP-attested entity that passed KYB, and the minimum equity. Its positions are then margined on the whole account, recalculated every 5 minutes; calls and auctions are unchanged. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketPortfolioMarginEnrollResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginEnrollResponse>> CreateVaultMarketPortfolioMarginEnrollWithHttpInfoAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketPortfolioMarginLeaveRequest' is set
+            if (createVaultMarketPortfolioMarginLeaveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketPortfolioMarginLeaveRequest' when calling VaultMarketsApi->CreateVaultMarketPortfolioMarginEnroll");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -44956,6 +45623,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketPortfolioMarginLeaveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -44983,10 +45651,11 @@ namespace net.crossly.Api
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        public CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave()
+        public CreateVaultMarketPortfolioMarginLeaveResponse CreateVaultMarketPortfolioMarginLeave(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> localVarResponse = CreateVaultMarketPortfolioMarginLeaveWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> localVarResponse = CreateVaultMarketPortfolioMarginLeaveWithHttpInfo(createVaultMarketPortfolioMarginLeaveRequest);
             return localVarResponse.Data;
         }
 
@@ -44994,12 +45663,20 @@ namespace net.crossly.Api
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveWithHttpInfo(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest)
         {
+            // verify the required parameter 'createVaultMarketPortfolioMarginLeaveRequest' is set
+            if (createVaultMarketPortfolioMarginLeaveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketPortfolioMarginLeaveRequest' when calling VaultMarketsApi->CreateVaultMarketPortfolioMarginLeave");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -45019,6 +45696,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketPortfolioMarginLeaveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -45045,11 +45723,12 @@ namespace net.crossly.Api
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketPortfolioMarginLeaveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketPortfolioMarginLeaveResponse> CreateVaultMarketPortfolioMarginLeaveAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> localVarResponse = await CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse> localVarResponse = await CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(createVaultMarketPortfolioMarginLeaveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -45057,14 +45736,22 @@ namespace net.crossly.Api
         /// Admin: take a firm sub-account off portfolio margin. Each position is then held to its own tier floors again and may be called at once. Audited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketPortfolioMarginLeaveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketPortfolioMarginLeaveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketPortfolioMarginLeaveResponse>> CreateVaultMarketPortfolioMarginLeaveWithHttpInfoAsync(CreateVaultMarketPortfolioMarginLeaveRequest createVaultMarketPortfolioMarginLeaveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketPortfolioMarginLeaveRequest' is set
+            if (createVaultMarketPortfolioMarginLeaveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketPortfolioMarginLeaveRequest' when calling VaultMarketsApi->CreateVaultMarketPortfolioMarginLeave");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -45084,6 +45771,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketPortfolioMarginLeaveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -50227,10 +50915,11 @@ namespace net.crossly.Api
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <returns>CreateVaultMarketProOrderResponse</returns>
-        public CreateVaultMarketProOrderResponse CreateVaultMarketProOrder()
+        public CreateVaultMarketProOrderResponse CreateVaultMarketProOrder(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> localVarResponse = CreateVaultMarketProOrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> localVarResponse = CreateVaultMarketProOrderWithHttpInfo(createVaultMarketProOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -50238,12 +50927,20 @@ namespace net.crossly.Api
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketProOrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderWithHttpInfo(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest)
         {
+            // verify the required parameter 'createVaultMarketProOrderRequest' is set
+            if (createVaultMarketProOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketProOrderRequest' when calling VaultMarketsApi->CreateVaultMarketProOrder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -50263,6 +50960,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketProOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -50289,11 +50987,12 @@ namespace net.crossly.Api
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketProOrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketProOrderResponse> CreateVaultMarketProOrderAsync(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> localVarResponse = await CreateVaultMarketProOrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse> localVarResponse = await CreateVaultMarketProOrderWithHttpInfoAsync(createVaultMarketProOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -50301,14 +51000,22 @@ namespace net.crossly.Api
         /// Place an order on a vault book: limit, market (protected, IOC), stop or stop-limit; GTC, GTD, IOC or FOK; post-only; an iceberg &#x60;displayQuantity&#x60;; a TWAP or VWAP algo over a window. Idempotent on &#x60;clientOrderId&#x60;. &#x60;subaccountId&#x60; trades for a firm sub-account you may trade (your role, its KYB, its limits, no firm halt; buys pay from its custodian account and land in it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketProOrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse>> CreateVaultMarketProOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketProOrderResponse>> CreateVaultMarketProOrderWithHttpInfoAsync(CreateVaultMarketProOrderRequest createVaultMarketProOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketProOrderRequest' is set
+            if (createVaultMarketProOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketProOrderRequest' when calling VaultMarketsApi->CreateVaultMarketProOrder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -50328,6 +51035,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketProOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -50501,10 +51209,11 @@ namespace net.crossly.Api
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <returns>CreateVaultMarketProOrderCancelAllResponse</returns>
-        public CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll()
+        public CreateVaultMarketProOrderCancelAllResponse CreateVaultMarketProOrderCancelAll(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> localVarResponse = CreateVaultMarketProOrderCancelAllWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> localVarResponse = CreateVaultMarketProOrderCancelAllWithHttpInfo(createVaultMarketProOrderCancelAllRequest);
             return localVarResponse.Data;
         }
 
@@ -50512,12 +51221,14 @@ namespace net.crossly.Api
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketProOrderCancelAllResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllWithHttpInfo(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -50537,6 +51248,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketProOrderCancelAllRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -50563,11 +51275,12 @@ namespace net.crossly.Api
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketProOrderCancelAllResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketProOrderCancelAllResponse> CreateVaultMarketProOrderCancelAllAsync(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> localVarResponse = await CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse> localVarResponse = await CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(createVaultMarketProOrderCancelAllRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -50575,14 +51288,16 @@ namespace net.crossly.Api
         /// Cancel every open order, or every one on a book key. Returns &#x60;{ cancelled }&#x60;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketProOrderCancelAllRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketProOrderCancelAllResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketProOrderCancelAllResponse>> CreateVaultMarketProOrderCancelAllWithHttpInfoAsync(CreateVaultMarketProOrderCancelAllRequest createVaultMarketProOrderCancelAllRequest = default(CreateVaultMarketProOrderCancelAllRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -50602,6 +51317,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketProOrderCancelAllRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -52565,10 +53281,11 @@ namespace net.crossly.Api
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <returns>ListVaultMarketShareAutoInvestItem</returns>
-        public ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest()
+        public ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvest(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = CreateVaultMarketShareAutoInvestWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = CreateVaultMarketShareAutoInvestWithHttpInfo(createVaultMarketShareAutoInvestRequest);
             return localVarResponse.Data;
         }
 
@@ -52576,12 +53293,20 @@ namespace net.crossly.Api
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareAutoInvestItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestWithHttpInfo(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest)
         {
+            // verify the required parameter 'createVaultMarketShareAutoInvestRequest' is set
+            if (createVaultMarketShareAutoInvestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareAutoInvestRequest' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvest");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -52601,6 +53326,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareAutoInvestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -52627,11 +53353,12 @@ namespace net.crossly.Api
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareAutoInvestItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestAsync(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = await CreateVaultMarketShareAutoInvestWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = await CreateVaultMarketShareAutoInvestWithHttpInfoAsync(createVaultMarketShareAutoInvestRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -52639,14 +53366,22 @@ namespace net.crossly.Api
         /// Start auto-invest: &#x60;amountCents&#x60; ($5-$10,000) &#x60;every&#x60; week or month into &#x60;seriesIds&#x60; (equal weights) or &#x60;targets&#x60; (seriesId + weightBps summing to 10,000) or a &#x60;basketId&#x60; (with &#x60;rebalance&#x60; to keep your own shares on its weights). Whole shares only; the rest rolls over. Offerings are subscribed at their price; trading books are bought at the best ask up to &#x60;maxPremiumBps&#x60; over the indicative value. &#x60;practice&#x60; runs it on paper. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareAutoInvestRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareAutoInvestItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestWithHttpInfoAsync(CreateVaultMarketShareAutoInvestRequest createVaultMarketShareAutoInvestRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketShareAutoInvestRequest' is set
+            if (createVaultMarketShareAutoInvestRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareAutoInvestRequest' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvest");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -52666,6 +53401,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareAutoInvestRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -52840,10 +53576,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <returns>ListVaultMarketShareAutoInvestItem</returns>
-        public ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate(string id)
+        public ListVaultMarketShareAutoInvestItem CreateVaultMarketShareAutoInvestUpdate(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(id, createVaultMarketShareAutoInvestUpdateRequest);
             return localVarResponse.Data;
         }
 
@@ -52852,8 +53589,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareAutoInvestItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateWithHttpInfo(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -52861,9 +53599,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvestUpdate");
             }
 
+            // verify the required parameter 'createVaultMarketShareAutoInvestUpdateRequest' is set
+            if (createVaultMarketShareAutoInvestUpdateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareAutoInvestUpdateRequest' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvestUpdate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -52884,6 +53629,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareAutoInvestUpdateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -52911,11 +53657,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareAutoInvestItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareAutoInvestItem> CreateVaultMarketShareAutoInvestUpdateAsync(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = await CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem> localVarResponse = await CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(id, createVaultMarketShareAutoInvestUpdateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -52924,9 +53671,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareAutoInvestUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareAutoInvestItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareAutoInvestItem>> CreateVaultMarketShareAutoInvestUpdateWithHttpInfoAsync(string id, CreateVaultMarketShareAutoInvestUpdateRequest createVaultMarketShareAutoInvestUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -52934,10 +53682,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvestUpdate");
             }
 
+            // verify the required parameter 'createVaultMarketShareAutoInvestUpdateRequest' is set
+            if (createVaultMarketShareAutoInvestUpdateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareAutoInvestUpdateRequest' when calling VaultMarketsApi->CreateVaultMarketShareAutoInvestUpdate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -52958,6 +53713,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareAutoInvestUpdateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -52986,10 +53742,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <returns>CreateVaultMarketShareBasketBuyResponse</returns>
-        public CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy(string id)
+        public CreateVaultMarketShareBasketBuyResponse CreateVaultMarketShareBasketBuy(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> localVarResponse = CreateVaultMarketShareBasketBuyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> localVarResponse = CreateVaultMarketShareBasketBuyWithHttpInfo(id, createVaultMarketShareBasketBuyRequest);
             return localVarResponse.Data;
         }
 
@@ -52998,8 +53755,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBasketBuyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyWithHttpInfo(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -53007,9 +53765,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareBasketBuy");
             }
 
+            // verify the required parameter 'createVaultMarketShareBasketBuyRequest' is set
+            if (createVaultMarketShareBasketBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareBasketBuyRequest' when calling VaultMarketsApi->CreateVaultMarketShareBasketBuy");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -53030,6 +53795,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareBasketBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -53057,11 +53823,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBasketBuyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareBasketBuyResponse> CreateVaultMarketShareBasketBuyAsync(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> localVarResponse = await CreateVaultMarketShareBasketBuyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse> localVarResponse = await CreateVaultMarketShareBasketBuyWithHttpInfoAsync(id, createVaultMarketShareBasketBuyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -53070,9 +53837,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBasketBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBasketBuyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse>> CreateVaultMarketShareBasketBuyWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBasketBuyResponse>> CreateVaultMarketShareBasketBuyWithHttpInfoAsync(string id, CreateVaultMarketShareBasketBuyRequest createVaultMarketShareBasketBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -53080,10 +53848,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareBasketBuy");
             }
 
+            // verify the required parameter 'createVaultMarketShareBasketBuyRequest' is set
+            if (createVaultMarketShareBasketBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareBasketBuyRequest' when calling VaultMarketsApi->CreateVaultMarketShareBasketBuy");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -53104,6 +53879,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareBasketBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -53278,10 +54054,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <returns>CreateVaultMarketShareBuyoutFundResponse</returns>
-        public CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote(string id)
+        public CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareBuyoutVote(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = CreateVaultMarketShareBuyoutVoteWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = CreateVaultMarketShareBuyoutVoteWithHttpInfo(id, createVaultMarketShareBuyoutVoteRequest);
             return localVarResponse.Data;
         }
 
@@ -53290,8 +54067,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBuyoutFundResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteWithHttpInfo(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -53299,9 +54077,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareBuyoutVote");
             }
 
+            // verify the required parameter 'createVaultMarketShareBuyoutVoteRequest' is set
+            if (createVaultMarketShareBuyoutVoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareBuyoutVoteRequest' when calling VaultMarketsApi->CreateVaultMarketShareBuyoutVote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -53322,6 +54107,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareBuyoutVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -53349,11 +54135,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBuyoutFundResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareBuyoutVoteAsync(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = await CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = await CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(id, createVaultMarketShareBuyoutVoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -53362,9 +54149,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareBuyoutVoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBuyoutFundResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareBuyoutVoteWithHttpInfoAsync(string id, CreateVaultMarketShareBuyoutVoteRequest createVaultMarketShareBuyoutVoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -53372,10 +54160,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareBuyoutVote");
             }
 
+            // verify the required parameter 'createVaultMarketShareBuyoutVoteRequest' is set
+            if (createVaultMarketShareBuyoutVoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareBuyoutVoteRequest' when calling VaultMarketsApi->CreateVaultMarketShareBuyoutVote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -53396,6 +54191,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareBuyoutVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54135,10 +54931,11 @@ namespace net.crossly.Api
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <returns>GetVaultMarketShareInvestorResponse</returns>
-        public GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor()
+        public GetVaultMarketShareInvestorResponse CreateVaultMarketShareInvestor(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> localVarResponse = CreateVaultMarketShareInvestorWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> localVarResponse = CreateVaultMarketShareInvestorWithHttpInfo(createVaultMarketShareInvestorRequest);
             return localVarResponse.Data;
         }
 
@@ -54146,12 +54943,20 @@ namespace net.crossly.Api
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketShareInvestorResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorWithHttpInfo(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest)
         {
+            // verify the required parameter 'createVaultMarketShareInvestorRequest' is set
+            if (createVaultMarketShareInvestorRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareInvestorRequest' when calling VaultMarketsApi->CreateVaultMarketShareInvestor");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54171,6 +54976,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareInvestorRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54197,11 +55003,12 @@ namespace net.crossly.Api
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketShareInvestorResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketShareInvestorResponse> CreateVaultMarketShareInvestorAsync(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> localVarResponse = await CreateVaultMarketShareInvestorWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse> localVarResponse = await CreateVaultMarketShareInvestorWithHttpInfoAsync(createVaultMarketShareInvestorRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54209,14 +55016,22 @@ namespace net.crossly.Api
         /// Open or update your investor account at the venue: accept the current investor terms (&#x60;acceptTerms&#x60;), and state accredited status or your annual income and net worth for the Reg A+ limit. Needs a verified ID. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareInvestorRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketShareInvestorResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse>> CreateVaultMarketShareInvestorWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketShareInvestorResponse>> CreateVaultMarketShareInvestorWithHttpInfoAsync(CreateVaultMarketShareInvestorRequest createVaultMarketShareInvestorRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketShareInvestorRequest' is set
+            if (createVaultMarketShareInvestorRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareInvestorRequest' when calling VaultMarketsApi->CreateVaultMarketShareInvestor");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54236,6 +55051,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareInvestorRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54684,10 +55500,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        public CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder(string id)
+        public CreateVaultMarketSharePaperSeryOrderResponse CreateVaultMarketSharePaperSeryOrder(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> localVarResponse = CreateVaultMarketSharePaperSeryOrderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> localVarResponse = CreateVaultMarketSharePaperSeryOrderWithHttpInfo(id, createVaultMarketShareSeryOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -54696,8 +55513,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderWithHttpInfo(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54705,9 +55523,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketSharePaperSeryOrder");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryOrderRequest' is set
+            if (createVaultMarketShareSeryOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryOrderRequest' when calling VaultMarketsApi->CreateVaultMarketSharePaperSeryOrder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54728,6 +55553,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54755,11 +55581,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSharePaperSeryOrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketSharePaperSeryOrderResponse> CreateVaultMarketSharePaperSeryOrderAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> localVarResponse = await CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse> localVarResponse = await CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(id, createVaultMarketShareSeryOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54768,9 +55595,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSharePaperSeryOrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSharePaperSeryOrderResponse>> CreateVaultMarketSharePaperSeryOrderWithHttpInfoAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54778,10 +55606,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketSharePaperSeryOrder");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryOrderRequest' is set
+            if (createVaultMarketShareSeryOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryOrderRequest' when calling VaultMarketsApi->CreateVaultMarketSharePaperSeryOrder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54802,6 +55637,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54830,10 +55666,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <returns>GetVaultMarketSharePaperResponse</returns>
-        public GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe(string id)
+        public GetVaultMarketSharePaperResponse CreateVaultMarketSharePaperSerySubscribe(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> localVarResponse = CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> localVarResponse = CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(id, createVaultMarketSharePaperSerySubscribeRequest);
             return localVarResponse.Data;
         }
 
@@ -54842,8 +55679,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketSharePaperResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeWithHttpInfo(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54851,9 +55689,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketSharePaperSerySubscribe");
             }
 
+            // verify the required parameter 'createVaultMarketSharePaperSerySubscribeRequest' is set
+            if (createVaultMarketSharePaperSerySubscribeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSharePaperSerySubscribeRequest' when calling VaultMarketsApi->CreateVaultMarketSharePaperSerySubscribe");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54874,6 +55719,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketSharePaperSerySubscribeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54901,11 +55747,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSharePaperResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketSharePaperResponse> CreateVaultMarketSharePaperSerySubscribeAsync(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> localVarResponse = await CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse> localVarResponse = await CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(id, createVaultMarketSharePaperSerySubscribeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -54914,9 +55761,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSharePaperSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSharePaperResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse>> CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSharePaperResponse>> CreateVaultMarketSharePaperSerySubscribeWithHttpInfoAsync(string id, CreateVaultMarketSharePaperSerySubscribeRequest createVaultMarketSharePaperSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54924,10 +55772,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketSharePaperSerySubscribe");
             }
 
+            // verify the required parameter 'createVaultMarketSharePaperSerySubscribeRequest' is set
+            if (createVaultMarketSharePaperSerySubscribeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSharePaperSerySubscribeRequest' when calling VaultMarketsApi->CreateVaultMarketSharePaperSerySubscribe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -54948,6 +55803,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketSharePaperSerySubscribeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -54976,10 +55832,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateVaultMarketShareRoomHideResponse</returns>
-        public CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide(string id)
+        public CreateVaultMarketShareRoomHideResponse CreateVaultMarketShareRoomHide(string id, ReasonRequest reasonRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> localVarResponse = CreateVaultMarketShareRoomHideWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> localVarResponse = CreateVaultMarketShareRoomHideWithHttpInfo(id, reasonRequest);
             return localVarResponse.Data;
         }
 
@@ -54988,8 +55845,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareRoomHideResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideWithHttpInfo(string id, ReasonRequest reasonRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -54997,9 +55855,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareRoomHide");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling VaultMarketsApi->CreateVaultMarketShareRoomHide");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55020,6 +55885,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55047,11 +55913,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareRoomHideResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareRoomHideResponse> CreateVaultMarketShareRoomHideAsync(string id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> localVarResponse = await CreateVaultMarketShareRoomHideWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse> localVarResponse = await CreateVaultMarketShareRoomHideWithHttpInfoAsync(id, reasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55060,9 +55927,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareRoomHideResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse>> CreateVaultMarketShareRoomHideWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareRoomHideResponse>> CreateVaultMarketShareRoomHideWithHttpInfoAsync(string id, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55070,10 +55938,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareRoomHide");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling VaultMarketsApi->CreateVaultMarketShareRoomHide");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55094,6 +55969,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55121,10 +55997,11 @@ namespace net.crossly.Api
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <returns>ListVaultMarketShareSeriesItem</returns>
-        public ListVaultMarketShareSeriesItem CreateVaultMarketShareSery()
+        public ListVaultMarketShareSeriesItem CreateVaultMarketShareSery(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> localVarResponse = CreateVaultMarketShareSeryWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> localVarResponse = CreateVaultMarketShareSeryWithHttpInfo(createVaultMarketShareSeryRequest);
             return localVarResponse.Data;
         }
 
@@ -55132,12 +56009,20 @@ namespace net.crossly.Api
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareSeriesItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryWithHttpInfo(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest)
         {
+            // verify the required parameter 'createVaultMarketShareSeryRequest' is set
+            if (createVaultMarketShareSeryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryRequest' when calling VaultMarketsApi->CreateVaultMarketShareSery");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55157,6 +56042,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareSeryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55183,11 +56069,12 @@ namespace net.crossly.Api
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareSeriesItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareSeriesItem> CreateVaultMarketShareSeryAsync(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> localVarResponse = await CreateVaultMarketShareSeryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem> localVarResponse = await CreateVaultMarketShareSeryWithHttpInfoAsync(createVaultMarketShareSeryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55195,14 +56082,22 @@ namespace net.crossly.Api
         /// Propose a Vault Shares series for one of your units (&#x60;vaultItemId&#x60;), keeping &#x60;retainedShares&#x60; (0-50%), with an optional minimum raise, offering length (7-60 days) and reserve. Ops then qualify it, attach the offering circular and open the offering. With no venue it is a practice series. Pass &#x60;requestId&#x60; to make a retry safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketShareSeryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareSeriesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem>> CreateVaultMarketShareSeryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareSeriesItem>> CreateVaultMarketShareSeryWithHttpInfoAsync(CreateVaultMarketShareSeryRequest createVaultMarketShareSeryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketShareSeryRequest' is set
+            if (createVaultMarketShareSeryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryRequest' when calling VaultMarketsApi->CreateVaultMarketShareSery");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55222,6 +56117,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketShareSeryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55250,10 +56146,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <returns>CreateVaultMarketShareBuyoutFundResponse</returns>
-        public CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout(string id)
+        public CreateVaultMarketShareBuyoutFundResponse CreateVaultMarketShareSeryBuyout(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = CreateVaultMarketShareSeryBuyoutWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = CreateVaultMarketShareSeryBuyoutWithHttpInfo(id, createVaultMarketShareSeryBuyoutRequest);
             return localVarResponse.Data;
         }
 
@@ -55262,8 +56159,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareBuyoutFundResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutWithHttpInfo(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55271,9 +56169,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryBuyout");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryBuyoutRequest' is set
+            if (createVaultMarketShareSeryBuyoutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryBuyoutRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryBuyout");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55294,6 +56199,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryBuyoutRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55321,11 +56227,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareBuyoutFundResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareBuyoutFundResponse> CreateVaultMarketShareSeryBuyoutAsync(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = await CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse> localVarResponse = await CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(id, createVaultMarketShareSeryBuyoutRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55334,9 +56241,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryBuyoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareBuyoutFundResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareBuyoutFundResponse>> CreateVaultMarketShareSeryBuyoutWithHttpInfoAsync(string id, CreateVaultMarketShareSeryBuyoutRequest createVaultMarketShareSeryBuyoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55344,10 +56252,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryBuyout");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryBuyoutRequest' is set
+            if (createVaultMarketShareSeryBuyoutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryBuyoutRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryBuyout");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55368,6 +56283,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryBuyoutRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55396,10 +56312,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <returns>ListVaultMarketShareGiftsItem</returns>
-        public ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift(string id)
+        public ListVaultMarketShareGiftsItem CreateVaultMarketShareSeryGift(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> localVarResponse = CreateVaultMarketShareSeryGiftWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> localVarResponse = CreateVaultMarketShareSeryGiftWithHttpInfo(id, createVaultMarketShareSeryGiftRequest);
             return localVarResponse.Data;
         }
 
@@ -55408,8 +56325,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareGiftsItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftWithHttpInfo(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55417,9 +56335,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryGift");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryGiftRequest' is set
+            if (createVaultMarketShareSeryGiftRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryGiftRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryGift");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55440,6 +56365,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryGiftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55467,11 +56393,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareGiftsItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareGiftsItem> CreateVaultMarketShareSeryGiftAsync(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> localVarResponse = await CreateVaultMarketShareSeryGiftWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem> localVarResponse = await CreateVaultMarketShareSeryGiftWithHttpInfoAsync(id, createVaultMarketShareSeryGiftRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55480,9 +56407,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryGiftRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareGiftsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem>> CreateVaultMarketShareSeryGiftWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareGiftsItem>> CreateVaultMarketShareSeryGiftWithHttpInfoAsync(string id, CreateVaultMarketShareSeryGiftRequest createVaultMarketShareSeryGiftRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55490,10 +56418,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryGift");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryGiftRequest' is set
+            if (createVaultMarketShareSeryGiftRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryGiftRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryGift");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55514,6 +56449,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryGiftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55542,10 +56478,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ListVaultMarketShareOrdersItem</returns>
-        public ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder(string id)
+        public ListVaultMarketShareOrdersItem CreateVaultMarketShareSeryOrder(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> localVarResponse = CreateVaultMarketShareSeryOrderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> localVarResponse = CreateVaultMarketShareSeryOrderWithHttpInfo(id, createVaultMarketShareSeryOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -55554,8 +56491,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareOrdersItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderWithHttpInfo(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55563,9 +56501,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryOrder");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryOrderRequest' is set
+            if (createVaultMarketShareSeryOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryOrderRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryOrder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55586,6 +56531,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55613,11 +56559,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareOrdersItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareOrdersItem> CreateVaultMarketShareSeryOrderAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> localVarResponse = await CreateVaultMarketShareSeryOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem> localVarResponse = await CreateVaultMarketShareSeryOrderWithHttpInfoAsync(id, createVaultMarketShareSeryOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55626,9 +56573,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareOrdersItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem>> CreateVaultMarketShareSeryOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareOrdersItem>> CreateVaultMarketShareSeryOrderWithHttpInfoAsync(string id, CreateVaultMarketShareSeryOrderRequest createVaultMarketShareSeryOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55636,10 +56584,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryOrder");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryOrderRequest' is set
+            if (createVaultMarketShareSeryOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryOrderRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryOrder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55660,6 +56615,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55688,10 +56644,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareSeryRecombineResponse</returns>
-        public CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine(string id)
+        public CreateVaultMarketShareSeryRecombineResponse CreateVaultMarketShareSeryRecombine(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> localVarResponse = CreateVaultMarketShareSeryRecombineWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> localVarResponse = CreateVaultMarketShareSeryRecombineWithHttpInfo(id, createVaultMarketShareSeryRecombineRequest);
             return localVarResponse.Data;
         }
 
@@ -55700,8 +56657,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryRecombineResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineWithHttpInfo(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55712,6 +56670,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55732,6 +56691,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryRecombineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55759,11 +56719,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryRecombineResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryRecombineResponse> CreateVaultMarketShareSeryRecombineAsync(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> localVarResponse = await CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse> localVarResponse = await CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(id, createVaultMarketShareSeryRecombineRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55772,9 +56733,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryRecombineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryRecombineResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRecombineResponse>> CreateVaultMarketShareSeryRecombineWithHttpInfoAsync(string id, CreateVaultMarketShareSeryRecombineRequest createVaultMarketShareSeryRecombineRequest = default(CreateVaultMarketShareSeryRecombineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55786,6 +56748,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55806,6 +56769,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryRecombineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55834,10 +56798,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>CreateVaultMarketShareSeryRoomResponse</returns>
-        public CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom(string id)
+        public CreateVaultMarketShareSeryRoomResponse CreateVaultMarketShareSeryRoom(string id, BodyRequest bodyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> localVarResponse = CreateVaultMarketShareSeryRoomWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> localVarResponse = CreateVaultMarketShareSeryRoomWithHttpInfo(id, bodyRequest);
             return localVarResponse.Data;
         }
 
@@ -55846,8 +56811,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryRoomResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomWithHttpInfo(string id, BodyRequest bodyRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55855,9 +56821,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryRoom");
             }
 
+            // verify the required parameter 'bodyRequest' is set
+            if (bodyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bodyRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryRoom");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55878,6 +56851,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = bodyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55905,11 +56879,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryRoomResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryRoomResponse> CreateVaultMarketShareSeryRoomAsync(string id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> localVarResponse = await CreateVaultMarketShareSeryRoomWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse> localVarResponse = await CreateVaultMarketShareSeryRoomWithHttpInfoAsync(id, bodyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -55918,9 +56893,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="bodyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryRoomResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse>> CreateVaultMarketShareSeryRoomWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryRoomResponse>> CreateVaultMarketShareSeryRoomWithHttpInfoAsync(string id, BodyRequest bodyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -55928,10 +56904,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryRoom");
             }
 
+            // verify the required parameter 'bodyRequest' is set
+            if (bodyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bodyRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryRoom");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -55952,6 +56935,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = bodyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -55980,10 +56964,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <returns>ListVaultMarketShareSubscriptionsItem</returns>
-        public ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe(string id)
+        public ListVaultMarketShareSubscriptionsItem CreateVaultMarketShareSerySubscribe(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> localVarResponse = CreateVaultMarketShareSerySubscribeWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> localVarResponse = CreateVaultMarketShareSerySubscribeWithHttpInfo(id, createVaultMarketShareSerySubscribeRequest);
             return localVarResponse.Data;
         }
 
@@ -55992,8 +56977,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketShareSubscriptionsItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeWithHttpInfo(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56001,9 +56987,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSerySubscribe");
             }
 
+            // verify the required parameter 'createVaultMarketShareSerySubscribeRequest' is set
+            if (createVaultMarketShareSerySubscribeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSerySubscribeRequest' when calling VaultMarketsApi->CreateVaultMarketShareSerySubscribe");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56024,6 +57017,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSerySubscribeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56051,11 +57045,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketShareSubscriptionsItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketShareSubscriptionsItem> CreateVaultMarketShareSerySubscribeAsync(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> localVarResponse = await CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem> localVarResponse = await CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(id, createVaultMarketShareSerySubscribeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56064,9 +57059,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSerySubscribeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketShareSubscriptionsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem>> CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketShareSubscriptionsItem>> CreateVaultMarketShareSerySubscribeWithHttpInfoAsync(string id, CreateVaultMarketShareSerySubscribeRequest createVaultMarketShareSerySubscribeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56074,10 +57070,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSerySubscribe");
             }
 
+            // verify the required parameter 'createVaultMarketShareSerySubscribeRequest' is set
+            if (createVaultMarketShareSerySubscribeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSerySubscribeRequest' when calling VaultMarketsApi->CreateVaultMarketShareSerySubscribe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56098,6 +57101,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSerySubscribeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56126,10 +57130,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareSeryWatchResponse</returns>
-        public CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch(string id)
+        public CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryUnwatch(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = CreateVaultMarketShareSeryUnwatchWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = CreateVaultMarketShareSeryUnwatchWithHttpInfo(id, createVaultMarketShareSeryUnwatchRequest);
             return localVarResponse.Data;
         }
 
@@ -56138,8 +57143,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryWatchResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchWithHttpInfo(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56150,6 +57156,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56170,6 +57177,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryUnwatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56197,11 +57205,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryWatchResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryUnwatchAsync(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = await CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = await CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(id, createVaultMarketShareSeryUnwatchRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56210,9 +57219,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUnwatchRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryWatchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryUnwatchWithHttpInfoAsync(string id, CreateVaultMarketShareSeryUnwatchRequest createVaultMarketShareSeryUnwatchRequest = default(CreateVaultMarketShareSeryUnwatchRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56224,6 +57234,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56244,6 +57255,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryUnwatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56272,10 +57284,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <returns>IdResponse</returns>
-        public IdResponse CreateVaultMarketShareSeryUpdate(string id)
+        public IdResponse CreateVaultMarketShareSeryUpdate(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest)
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateVaultMarketShareSeryUpdateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateVaultMarketShareSeryUpdateWithHttpInfo(id, createVaultMarketShareSeryUpdateRequest);
             return localVarResponse.Data;
         }
 
@@ -56284,8 +57297,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        public net.crossly.Client.ApiResponse<IdResponse> CreateVaultMarketShareSeryUpdateWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<IdResponse> CreateVaultMarketShareSeryUpdateWithHttpInfo(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56293,9 +57307,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryUpdate");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryUpdateRequest' is set
+            if (createVaultMarketShareSeryUpdateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryUpdateRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryUpdate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56316,6 +57337,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryUpdateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56343,11 +57365,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> CreateVaultMarketShareSeryUpdateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdResponse> CreateVaultMarketShareSeryUpdateAsync(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(id, createVaultMarketShareSeryUpdateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56356,9 +57379,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryUpdateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateVaultMarketShareSeryUpdateWithHttpInfoAsync(string id, CreateVaultMarketShareSeryUpdateRequest createVaultMarketShareSeryUpdateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56366,10 +57390,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryUpdate");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryUpdateRequest' is set
+            if (createVaultMarketShareSeryUpdateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryUpdateRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryUpdate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56390,6 +57421,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryUpdateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56418,10 +57450,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <returns>CreateVaultMarketShareSeryWatchResponse</returns>
-        public CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch(string id)
+        public CreateVaultMarketShareSeryWatchResponse CreateVaultMarketShareSeryWatch(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = CreateVaultMarketShareSeryWatchWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = CreateVaultMarketShareSeryWatchWithHttpInfo(id, createVaultMarketShareSeryWatchRequest);
             return localVarResponse.Data;
         }
 
@@ -56430,8 +57463,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketShareSeryWatchResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchWithHttpInfo(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56439,9 +57473,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryWatch");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryWatchRequest' is set
+            if (createVaultMarketShareSeryWatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryWatchRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryWatch");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56462,6 +57503,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryWatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56489,11 +57531,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareSeryWatchResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareSeryWatchResponse> CreateVaultMarketShareSeryWatchAsync(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = await CreateVaultMarketShareSeryWatchWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse> localVarResponse = await CreateVaultMarketShareSeryWatchWithHttpInfoAsync(id, createVaultMarketShareSeryWatchRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56502,9 +57545,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareSeryWatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareSeryWatchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryWatchWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareSeryWatchResponse>> CreateVaultMarketShareSeryWatchWithHttpInfoAsync(string id, CreateVaultMarketShareSeryWatchRequest createVaultMarketShareSeryWatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56512,10 +57556,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultMarketShareSeryWatch");
             }
 
+            // verify the required parameter 'createVaultMarketShareSeryWatchRequest' is set
+            if (createVaultMarketShareSeryWatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketShareSeryWatchRequest' when calling VaultMarketsApi->CreateVaultMarketShareSeryWatch");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56536,6 +57587,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareSeryWatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56856,10 +57908,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <returns>CreateVaultMarketShareViewingBookResponse</returns>
-        public CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook(string id)
+        public CreateVaultMarketShareViewingBookResponse CreateVaultMarketShareViewingBook(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> localVarResponse = CreateVaultMarketShareViewingBookWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> localVarResponse = CreateVaultMarketShareViewingBookWithHttpInfo(id, createVaultMarketShareViewingBookRequest);
             return localVarResponse.Data;
         }
 
@@ -56868,8 +57921,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketShareViewingBookResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookWithHttpInfo(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56880,6 +57934,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56900,6 +57955,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareViewingBookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -56927,11 +57983,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketShareViewingBookResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketShareViewingBookResponse> CreateVaultMarketShareViewingBookAsync(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> localVarResponse = await CreateVaultMarketShareViewingBookWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse> localVarResponse = await CreateVaultMarketShareViewingBookWithHttpInfoAsync(id, createVaultMarketShareViewingBookRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -56940,9 +57997,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketShareViewingBookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketShareViewingBookResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse>> CreateVaultMarketShareViewingBookWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketShareViewingBookResponse>> CreateVaultMarketShareViewingBookWithHttpInfoAsync(string id, CreateVaultMarketShareViewingBookRequest createVaultMarketShareViewingBookRequest = default(CreateVaultMarketShareViewingBookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -56954,6 +58012,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -56974,6 +58033,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketShareViewingBookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57276,10 +58336,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <returns>GetVaultMarketSupplyBatchResponse</returns>
-        public GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel(string id)
+        public GetVaultMarketSupplyBatchResponse CreateVaultMarketSupplyBatchLabel(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> localVarResponse = CreateVaultMarketSupplyBatchLabelWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> localVarResponse = CreateVaultMarketSupplyBatchLabelWithHttpInfo(id, createVaultMarketSupplyBatchLabelRequest);
             return localVarResponse.Data;
         }
 
@@ -57288,8 +58349,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketSupplyBatchResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelWithHttpInfo(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -57300,6 +58362,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57320,6 +58383,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketSupplyBatchLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57347,11 +58411,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSupplyBatchResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketSupplyBatchResponse> CreateVaultMarketSupplyBatchLabelAsync(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> localVarResponse = await CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse> localVarResponse = await CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(id, createVaultMarketSupplyBatchLabelRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -57360,9 +58425,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultMarketSupplyBatchLabelRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSupplyBatchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse>> CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSupplyBatchResponse>> CreateVaultMarketSupplyBatchLabelWithHttpInfoAsync(string id, CreateVaultMarketSupplyBatchLabelRequest createVaultMarketSupplyBatchLabelRequest = default(CreateVaultMarketSupplyBatchLabelRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -57374,6 +58440,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57394,6 +58461,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultMarketSupplyBatchLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57567,10 +58635,11 @@ namespace net.crossly.Api
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <returns>CreateVaultMarketSupplySendResponse</returns>
-        public CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend()
+        public CreateVaultMarketSupplySendResponse CreateVaultMarketSupplySend(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> localVarResponse = CreateVaultMarketSupplySendWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> localVarResponse = CreateVaultMarketSupplySendWithHttpInfo(createVaultMarketSupplySendRequest);
             return localVarResponse.Data;
         }
 
@@ -57578,12 +58647,20 @@ namespace net.crossly.Api
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSupplySendResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendWithHttpInfo(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest)
         {
+            // verify the required parameter 'createVaultMarketSupplySendRequest' is set
+            if (createVaultMarketSupplySendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSupplySendRequest' when calling VaultMarketsApi->CreateVaultMarketSupplySend");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57603,6 +58680,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketSupplySendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57629,11 +58707,12 @@ namespace net.crossly.Api
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSupplySendResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketSupplySendResponse> CreateVaultMarketSupplySendAsync(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> localVarResponse = await CreateVaultMarketSupplySendWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse> localVarResponse = await CreateVaultMarketSupplySendWithHttpInfoAsync(createVaultMarketSupplySendRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -57641,14 +58720,22 @@ namespace net.crossly.Api
         /// Send inventory items matched to a catalogue variant to the vault as one box: each becomes an inbound vault unit, and the box gets one prepaid inbound label (a PDF to print). Optional: auto-list each unit in the vault book at a share of the mark once stored, and lend when idle. Items that cannot go say why. Crosslisted listings stay live. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSupplySendResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse>> CreateVaultMarketSupplySendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendResponse>> CreateVaultMarketSupplySendWithHttpInfoAsync(CreateVaultMarketSupplySendRequest createVaultMarketSupplySendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketSupplySendRequest' is set
+            if (createVaultMarketSupplySendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSupplySendRequest' when calling VaultMarketsApi->CreateVaultMarketSupplySend");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57668,6 +58755,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketSupplySendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57695,10 +58783,11 @@ namespace net.crossly.Api
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <returns>CreateVaultMarketSupplySendInResponse</returns>
-        public CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn()
+        public CreateVaultMarketSupplySendInResponse CreateVaultMarketSupplySendIn(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> localVarResponse = CreateVaultMarketSupplySendInWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> localVarResponse = CreateVaultMarketSupplySendInWithHttpInfo(createVaultMarketSupplySendInRequest);
             return localVarResponse.Data;
         }
 
@@ -57706,12 +58795,20 @@ namespace net.crossly.Api
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketSupplySendInResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInWithHttpInfo(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest)
         {
+            // verify the required parameter 'createVaultMarketSupplySendInRequest' is set
+            if (createVaultMarketSupplySendInRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSupplySendInRequest' when calling VaultMarketsApi->CreateVaultMarketSupplySendIn");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57731,6 +58828,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketSupplySendInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -57757,11 +58855,12 @@ namespace net.crossly.Api
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketSupplySendInResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketSupplySendInResponse> CreateVaultMarketSupplySendInAsync(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> localVarResponse = await CreateVaultMarketSupplySendInWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse> localVarResponse = await CreateVaultMarketSupplySendInWithHttpInfoAsync(createVaultMarketSupplySendInRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -57769,14 +58868,22 @@ namespace net.crossly.Api
         /// Send inventory items to the vault: &#x60;method: label&#x60; (one box on a prepaid label) or &#x60;dropoff&#x60; at a partner (&#x60;partnerId&#x60;, from the finder; you get a counter code). Each item can carry its declared value; &#x60;insured&#x60; insures the box for it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketSupplySendInRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketSupplySendInResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse>> CreateVaultMarketSupplySendInWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketSupplySendInResponse>> CreateVaultMarketSupplySendInWithHttpInfoAsync(CreateVaultMarketSupplySendInRequest createVaultMarketSupplySendInRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketSupplySendInRequest' is set
+            if (createVaultMarketSupplySendInRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketSupplySendInRequest' when calling VaultMarketsApi->CreateVaultMarketSupplySendIn");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -57796,6 +58903,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketSupplySendInRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59083,10 +60191,11 @@ namespace net.crossly.Api
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <returns>CreateVaultMarketValuationStatementResponse</returns>
-        public CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement()
+        public CreateVaultMarketValuationStatementResponse CreateVaultMarketValuationStatement(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> localVarResponse = CreateVaultMarketValuationStatementWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> localVarResponse = CreateVaultMarketValuationStatementWithHttpInfo(createVaultMarketValuationStatementRequest);
             return localVarResponse.Data;
         }
 
@@ -59094,12 +60203,20 @@ namespace net.crossly.Api
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <returns>ApiResponse of CreateVaultMarketValuationStatementResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementWithHttpInfo(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest)
         {
+            // verify the required parameter 'createVaultMarketValuationStatementRequest' is set
+            if (createVaultMarketValuationStatementRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketValuationStatementRequest' when calling VaultMarketsApi->CreateVaultMarketValuationStatement");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59119,6 +60236,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketValuationStatementRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59145,11 +60263,12 @@ namespace net.crossly.Api
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketValuationStatementResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketValuationStatementResponse> CreateVaultMarketValuationStatementAsync(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> localVarResponse = await CreateVaultMarketValuationStatementWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse> localVarResponse = await CreateVaultMarketValuationStatementWithHttpInfoAsync(createVaultMarketValuationStatementRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59157,14 +60276,22 @@ namespace net.crossly.Api
         /// Issue an insurance or appraisal statement for a day: frozen with the sha256 of its record, sealed in the Crossly audit chain, with a public verify link. preparedFor and policyRef are printed on it and never shown on verify. Moves no money. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketValuationStatementRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketValuationStatementResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse>> CreateVaultMarketValuationStatementWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketValuationStatementResponse>> CreateVaultMarketValuationStatementWithHttpInfoAsync(CreateVaultMarketValuationStatementRequest createVaultMarketValuationStatementRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultMarketValuationStatementRequest' is set
+            if (createVaultMarketValuationStatementRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultMarketValuationStatementRequest' when calling VaultMarketsApi->CreateVaultMarketValuationStatement");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59184,6 +60311,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketValuationStatementRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59339,10 +60467,11 @@ namespace net.crossly.Api
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <returns>CreateVaultMarketWidgetTokenResponse</returns>
-        public CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken()
+        public CreateVaultMarketWidgetTokenResponse CreateVaultMarketWidgetToken(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> localVarResponse = CreateVaultMarketWidgetTokenWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> localVarResponse = CreateVaultMarketWidgetTokenWithHttpInfo(createVaultMarketWidgetTokenRequest);
             return localVarResponse.Data;
         }
 
@@ -59350,12 +60479,14 @@ namespace net.crossly.Api
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultMarketWidgetTokenResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenWithHttpInfo(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59375,6 +60506,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketWidgetTokenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59401,11 +60533,12 @@ namespace net.crossly.Api
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultMarketWidgetTokenResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultMarketWidgetTokenResponse> CreateVaultMarketWidgetTokenAsync(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> localVarResponse = await CreateVaultMarketWidgetTokenWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse> localVarResponse = await CreateVaultMarketWidgetTokenWithHttpInfoAsync(createVaultMarketWidgetTokenRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59413,14 +60546,16 @@ namespace net.crossly.Api
         /// Mint a widget token for one phone (&#x60;deviceName&#x60;, &#x60;installId&#x60;); minting again with the same pair replaces that phone token. The token reads the widget summary and nothing else, and is returned once. At most five phones. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultMarketWidgetTokenRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultMarketWidgetTokenResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse>> CreateVaultMarketWidgetTokenWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultMarketWidgetTokenResponse>> CreateVaultMarketWidgetTokenWithHttpInfoAsync(CreateVaultMarketWidgetTokenRequest createVaultMarketWidgetTokenRequest = default(CreateVaultMarketWidgetTokenRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59440,6 +60575,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultMarketWidgetTokenRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59468,10 +60604,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>CreateVaultReceiptTokenConfirmResponse</returns>
-        public CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm(string id)
+        public CreateVaultReceiptTokenConfirmResponse CreateVaultReceiptTokenConfirm(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> localVarResponse = CreateVaultReceiptTokenConfirmWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> localVarResponse = CreateVaultReceiptTokenConfirmWithHttpInfo(id, createVaultReceiptTokenConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -59480,8 +60617,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmWithHttpInfo(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59492,6 +60630,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59512,6 +60651,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59539,11 +60679,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenConfirmResponse> CreateVaultReceiptTokenConfirmAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> localVarResponse = await CreateVaultReceiptTokenConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse> localVarResponse = await CreateVaultReceiptTokenConfirmWithHttpInfoAsync(id, createVaultReceiptTokenConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59552,9 +60693,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse>> CreateVaultReceiptTokenConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenConfirmResponse>> CreateVaultReceiptTokenConfirmWithHttpInfoAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59566,6 +60708,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59586,6 +60729,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59613,10 +60757,11 @@ namespace net.crossly.Api
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <returns>CreateVaultReceiptTokenExportResponse</returns>
-        public CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport()
+        public CreateVaultReceiptTokenExportResponse CreateVaultReceiptTokenExport(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> localVarResponse = CreateVaultReceiptTokenExportWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> localVarResponse = CreateVaultReceiptTokenExportWithHttpInfo(createVaultReceiptTokenExportRequest);
             return localVarResponse.Data;
         }
 
@@ -59624,12 +60769,20 @@ namespace net.crossly.Api
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenExportResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportWithHttpInfo(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest)
         {
+            // verify the required parameter 'createVaultReceiptTokenExportRequest' is set
+            if (createVaultReceiptTokenExportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenExportRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenExport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59649,6 +60802,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultReceiptTokenExportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59675,11 +60829,12 @@ namespace net.crossly.Api
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenExportResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenExportResponse> CreateVaultReceiptTokenExportAsync(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> localVarResponse = await CreateVaultReceiptTokenExportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse> localVarResponse = await CreateVaultReceiptTokenExportWithHttpInfoAsync(createVaultReceiptTokenExportRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59687,14 +60842,22 @@ namespace net.crossly.Api
         /// Send one unit (&#x60;vaultItemId&#x60;) warehouse receipt to one of your verified Solana wallets (&#x60;wallet&#x60;) as a token, accepting the current terms (&#x60;acceptTerms&#x60;). Returns a base64 transaction already signed by the new mint and the receipts authority: your wallet pays the rent and must sign and send it within about two minutes, then call confirm. Nothing is minted until it does. Needs a verified ID; the unit must be stored, unpledged, not lent and not for sale. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenExportRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenExportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse>> CreateVaultReceiptTokenExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenExportResponse>> CreateVaultReceiptTokenExportWithHttpInfoAsync(CreateVaultReceiptTokenExportRequest createVaultReceiptTokenExportRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultReceiptTokenExportRequest' is set
+            if (createVaultReceiptTokenExportRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenExportRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenExport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59714,6 +60877,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultReceiptTokenExportRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59742,10 +60906,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>CreateVaultReceiptTokenRedeemResponse</returns>
-        public CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem(string id)
+        public CreateVaultReceiptTokenRedeemResponse CreateVaultReceiptTokenRedeem(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> localVarResponse = CreateVaultReceiptTokenRedeemWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> localVarResponse = CreateVaultReceiptTokenRedeemWithHttpInfo(id, createVaultReceiptTokenRedeemRequest);
             return localVarResponse.Data;
         }
 
@@ -59754,8 +60919,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenRedeemResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemWithHttpInfo(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59763,9 +60929,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultReceiptTokenRedeem");
             }
 
+            // verify the required parameter 'createVaultReceiptTokenRedeemRequest' is set
+            if (createVaultReceiptTokenRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenRedeemRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenRedeem");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59786,6 +60959,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59813,11 +60987,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenRedeemResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemResponse> CreateVaultReceiptTokenRedeemAsync(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> localVarResponse = await CreateVaultReceiptTokenRedeemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse> localVarResponse = await CreateVaultReceiptTokenRedeemWithHttpInfoAsync(id, createVaultReceiptTokenRedeemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59826,9 +61001,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenRedeemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse>> CreateVaultReceiptTokenRedeemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemResponse>> CreateVaultReceiptTokenRedeemWithHttpInfoAsync(string id, CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59836,10 +61012,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->CreateVaultReceiptTokenRedeem");
             }
 
+            // verify the required parameter 'createVaultReceiptTokenRedeemRequest' is set
+            if (createVaultReceiptTokenRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenRedeemRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenRedeem");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59860,6 +61043,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59888,10 +61072,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        public CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm(string id)
+        public CreateVaultReceiptTokenRedeemConfirmResponse CreateVaultReceiptTokenRedeemConfirm(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> localVarResponse = CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> localVarResponse = CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(id, createVaultReceiptTokenConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -59900,8 +61085,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmWithHttpInfo(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59912,6 +61098,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -59932,6 +61119,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -59959,11 +61147,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenRedeemConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenRedeemConfirmResponse> CreateVaultReceiptTokenRedeemConfirmAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> localVarResponse = await CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse> localVarResponse = await CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(id, createVaultReceiptTokenConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -59972,9 +61161,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createVaultReceiptTokenConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenRedeemConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse>> CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenRedeemConfirmResponse>> CreateVaultReceiptTokenRedeemConfirmWithHttpInfoAsync(string id, CreateVaultReceiptTokenConfirmRequest createVaultReceiptTokenConfirmRequest = default(CreateVaultReceiptTokenConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -59986,6 +61176,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -60006,6 +61197,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createVaultReceiptTokenConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -60033,10 +61225,11 @@ namespace net.crossly.Api
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>CreateVaultReceiptTokenWalletAllowResponse</returns>
-        public CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow()
+        public CreateVaultReceiptTokenWalletAllowResponse CreateVaultReceiptTokenWalletAllow(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> localVarResponse = CreateVaultReceiptTokenWalletAllowWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> localVarResponse = CreateVaultReceiptTokenWalletAllowWithHttpInfo(createVaultReceiptTokenRedeemRequest);
             return localVarResponse.Data;
         }
 
@@ -60044,12 +61237,20 @@ namespace net.crossly.Api
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <returns>ApiResponse of CreateVaultReceiptTokenWalletAllowResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowWithHttpInfo(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest)
         {
+            // verify the required parameter 'createVaultReceiptTokenRedeemRequest' is set
+            if (createVaultReceiptTokenRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenRedeemRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenWalletAllow");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -60069,6 +61270,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultReceiptTokenRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -60095,11 +61297,12 @@ namespace net.crossly.Api
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateVaultReceiptTokenWalletAllowResponse</returns>
-        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateVaultReceiptTokenWalletAllowResponse> CreateVaultReceiptTokenWalletAllowAsync(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> localVarResponse = await CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse> localVarResponse = await CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(createVaultReceiptTokenRedeemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -60107,14 +61310,22 @@ namespace net.crossly.Api
         /// Put one of your verified Solana wallets (&#x60;wallet&#x60;) on the receipt-token allow-list so it can hold and receive receipt tokens. Returns a base64 transaction already signed by the receipts authority: the wallet pays the small rent (about 0.001 SOL) and must sign and send it within about two minutes. Needs a verified ID and a wallet that passes the sanctions screen. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createVaultReceiptTokenRedeemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateVaultReceiptTokenWalletAllowResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateVaultReceiptTokenWalletAllowResponse>> CreateVaultReceiptTokenWalletAllowWithHttpInfoAsync(CreateVaultReceiptTokenRedeemRequest createVaultReceiptTokenRedeemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createVaultReceiptTokenRedeemRequest' is set
+            if (createVaultReceiptTokenRedeemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createVaultReceiptTokenRedeemRequest' when calling VaultMarketsApi->CreateVaultReceiptTokenWalletAllow");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -60134,6 +61345,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createVaultReceiptTokenRedeemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -71336,10 +72548,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <returns>GetVaultMarketIndexFeedFundingResponse</returns>
-        public GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding(string slug)
+        public GetVaultMarketIndexFeedFundingResponse GetVaultMarketIndexFeedFunding(string slug, decimal premiumBps, decimal? interestBps = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> localVarResponse = GetVaultMarketIndexFeedFundingWithHttpInfo(slug);
+            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> localVarResponse = GetVaultMarketIndexFeedFundingWithHttpInfo(slug, premiumBps, interestBps);
             return localVarResponse.Data;
         }
 
@@ -71348,8 +72562,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketIndexFeedFundingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingWithHttpInfo(string slug)
+        public net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingWithHttpInfo(string slug, decimal premiumBps, decimal? interestBps = default(decimal?))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -71380,6 +72596,11 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "premiumBps", premiumBps));
+            if (interestBps != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "interestBps", interestBps));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -71407,11 +72628,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketIndexFeedFundingResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketIndexFeedFundingResponse> GetVaultMarketIndexFeedFundingAsync(string slug, decimal premiumBps, decimal? interestBps = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> localVarResponse = await GetVaultMarketIndexFeedFundingWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse> localVarResponse = await GetVaultMarketIndexFeedFundingWithHttpInfoAsync(slug, premiumBps, interestBps, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -71420,9 +72643,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="premiumBps"></param>
+        /// <param name="interestBps"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketIndexFeedFundingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse>> GetVaultMarketIndexFeedFundingWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedFundingResponse>> GetVaultMarketIndexFeedFundingWithHttpInfoAsync(string slug, decimal premiumBps, decimal? interestBps = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -71454,6 +72679,11 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "premiumBps", premiumBps));
+            if (interestBps != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "interestBps", interestBps));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -71482,10 +72712,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>GetVaultMarketIndexFeedSettlementResponse</returns>
-        public GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement(string slug)
+        public GetVaultMarketIndexFeedSettlementResponse GetVaultMarketIndexFeedSettlement(string slug, decimal? days = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> localVarResponse = GetVaultMarketIndexFeedSettlementWithHttpInfo(slug);
+            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> localVarResponse = GetVaultMarketIndexFeedSettlementWithHttpInfo(slug, days);
             return localVarResponse.Data;
         }
 
@@ -71494,8 +72725,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketIndexFeedSettlementResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementWithHttpInfo(string slug)
+        public net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementWithHttpInfo(string slug, decimal? days = default(decimal?))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -71526,6 +72758,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -71553,11 +72789,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketIndexFeedSettlementResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketIndexFeedSettlementResponse> GetVaultMarketIndexFeedSettlementAsync(string slug, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> localVarResponse = await GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(slug, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse> localVarResponse = await GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(slug, days, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -71566,9 +72803,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="slug"></param>
+        /// <param name="days"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketIndexFeedSettlementResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse>> GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(string slug, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketIndexFeedSettlementResponse>> GetVaultMarketIndexFeedSettlementWithHttpInfoAsync(string slug, decimal? days = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'slug' is set
             if (slug == null)
@@ -71600,6 +72838,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("slug", net.crossly.Client.ClientUtils.ParameterToString(slug)); // path parameter
+            if (days != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "days", days));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -82633,10 +83875,11 @@ namespace net.crossly.Api
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <returns>string</returns>
-        public string GetVaultMarketPredictionStream()
+        public string GetVaultMarketPredictionStream(string markets)
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = GetVaultMarketPredictionStreamWithHttpInfo();
+            net.crossly.Client.ApiResponse<string> localVarResponse = GetVaultMarketPredictionStreamWithHttpInfo(markets);
             return localVarResponse.Data;
         }
 
@@ -82644,9 +83887,16 @@ namespace net.crossly.Api
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <returns>ApiResponse of string</returns>
-        public net.crossly.Client.ApiResponse<string> GetVaultMarketPredictionStreamWithHttpInfo()
+        public net.crossly.Client.ApiResponse<string> GetVaultMarketPredictionStreamWithHttpInfo(string markets)
         {
+            // verify the required parameter 'markets' is set
+            if (markets == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'markets' when calling VaultMarketsApi->GetVaultMarketPredictionStream");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -82670,6 +83920,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "markets", markets));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -82696,11 +83947,12 @@ namespace net.crossly.Api
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> GetVaultMarketPredictionStreamAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> GetVaultMarketPredictionStreamAsync(string markets, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = await GetVaultMarketPredictionStreamWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<string> localVarResponse = await GetVaultMarketPredictionStreamWithHttpInfoAsync(markets, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -82708,10 +83960,17 @@ namespace net.crossly.Api
         /// A server-sent event stream for up to 50 markets (&#x60;markets&#x60;&#x3D;id,id): &#x60;ready&#x60;, then &#x60;pm_depth&#x60;, &#x60;pm_trades&#x60;, &#x60;pm_probability&#x60;, &#x60;pm_status&#x60; and &#x60;pm_settlement&#x60;, each carrying its marketId. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="markets"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> GetVaultMarketPredictionStreamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> GetVaultMarketPredictionStreamWithHttpInfoAsync(string markets, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'markets' is set
+            if (markets == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'markets' when calling VaultMarketsApi->GetVaultMarketPredictionStream");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -82736,6 +83995,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "markets", markets));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -83823,10 +85083,11 @@ namespace net.crossly.Api
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <returns>string</returns>
-        public string GetVaultMarketProStream()
+        public string GetVaultMarketProStream(string bookKey)
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = GetVaultMarketProStreamWithHttpInfo();
+            net.crossly.Client.ApiResponse<string> localVarResponse = GetVaultMarketProStreamWithHttpInfo(bookKey);
             return localVarResponse.Data;
         }
 
@@ -83834,9 +85095,16 @@ namespace net.crossly.Api
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <returns>ApiResponse of string</returns>
-        public net.crossly.Client.ApiResponse<string> GetVaultMarketProStreamWithHttpInfo()
+        public net.crossly.Client.ApiResponse<string> GetVaultMarketProStreamWithHttpInfo(string bookKey)
         {
+            // verify the required parameter 'bookKey' is set
+            if (bookKey == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bookKey' when calling VaultMarketsApi->GetVaultMarketProStream");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -83860,6 +85128,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "bookKey", bookKey));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -83886,11 +85155,12 @@ namespace net.crossly.Api
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> GetVaultMarketProStreamAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> GetVaultMarketProStreamAsync(string bookKey, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = await GetVaultMarketProStreamWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<string> localVarResponse = await GetVaultMarketProStreamWithHttpInfoAsync(bookKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -83898,10 +85168,17 @@ namespace net.crossly.Api
         /// A long-lived text/event-stream for a book key: &#x60;snapshot&#x60; first, then &#x60;depth&#x60;, &#x60;trades&#x60;, &#x60;mark&#x60; and &#x60;halt&#x60; events as they change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="bookKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> GetVaultMarketProStreamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> GetVaultMarketProStreamWithHttpInfoAsync(string bookKey, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'bookKey' is set
+            if (bookKey == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'bookKey' when calling VaultMarketsApi->GetVaultMarketProStream");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -83926,6 +85203,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "bookKey", bookKey));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -97101,10 +98379,11 @@ namespace net.crossly.Api
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <returns>ListVaultMarketGradeToVaultResponse</returns>
-        public ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault()
+        public ListVaultMarketGradeToVaultResponse ListVaultMarketGradeToVault(string live = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> localVarResponse = ListVaultMarketGradeToVaultWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> localVarResponse = ListVaultMarketGradeToVaultWithHttpInfo(live);
             return localVarResponse.Data;
         }
 
@@ -97112,8 +98391,9 @@ namespace net.crossly.Api
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketGradeToVaultResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultWithHttpInfo(string live = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -97137,6 +98417,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (live != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "live", live));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -97163,11 +98447,12 @@ namespace net.crossly.Api
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketGradeToVaultResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketGradeToVaultResponse> ListVaultMarketGradeToVaultAsync(string live = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> localVarResponse = await ListVaultMarketGradeToVaultWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse> localVarResponse = await ListVaultMarketGradeToVaultWithHttpInfoAsync(live, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -97175,9 +98460,10 @@ namespace net.crossly.Api
         /// Your Grade to Vault flows, newest first, each brought up to date: its step, the grading submission, the unit, the grade, the market for it, and the ask once listed. &#x60;live&#x3D;1&#x60; for those still going. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="live"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketGradeToVaultResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse>> ListVaultMarketGradeToVaultWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketGradeToVaultResponse>> ListVaultMarketGradeToVaultWithHttpInfoAsync(string live = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -97202,6 +98488,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (live != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "live", live));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -104011,10 +105301,12 @@ namespace net.crossly.Api
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <returns>ListVaultMarketPartnerFinderResponse</returns>
-        public ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder()
+        public ListVaultMarketPartnerFinderResponse ListVaultMarketPartnerFinder(string postalCode = default(string), string service = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> localVarResponse = ListVaultMarketPartnerFinderWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> localVarResponse = ListVaultMarketPartnerFinderWithHttpInfo(postalCode, service);
             return localVarResponse.Data;
         }
 
@@ -104022,8 +105314,10 @@ namespace net.crossly.Api
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketPartnerFinderResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderWithHttpInfo(string postalCode = default(string), string service = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -104047,6 +105341,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (postalCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "postalCode", postalCode));
+            }
+            if (service != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "service", service));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -104073,11 +105375,13 @@ namespace net.crossly.Api
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketPartnerFinderResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketPartnerFinderResponse> ListVaultMarketPartnerFinderAsync(string postalCode = default(string), string service = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> localVarResponse = await ListVaultMarketPartnerFinderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse> localVarResponse = await ListVaultMarketPartnerFinderWithHttpInfoAsync(postalCode, service, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -104085,9 +105389,11 @@ namespace net.crossly.Api
         /// Vault drop-off partners near a &#x60;postalCode&#x60;, optionally offering a &#x60;service&#x60;: address, hours and services. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="postalCode"> (optional)</param>
+        /// <param name="service"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketPartnerFinderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse>> ListVaultMarketPartnerFinderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketPartnerFinderResponse>> ListVaultMarketPartnerFinderWithHttpInfoAsync(string postalCode = default(string), string service = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -104112,6 +105418,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (postalCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "postalCode", postalCode));
+            }
+            if (service != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "service", service));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110671,10 +111985,11 @@ namespace net.crossly.Api
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        public ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues()
+        public ListVaultMarketSupplyDeclaredValuesResponse ListVaultMarketSupplyDeclaredValues(string inventoryItemIds = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> localVarResponse = ListVaultMarketSupplyDeclaredValuesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> localVarResponse = ListVaultMarketSupplyDeclaredValuesWithHttpInfo(inventoryItemIds);
             return localVarResponse.Data;
         }
 
@@ -110682,8 +111997,9 @@ namespace net.crossly.Api
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesWithHttpInfo(string inventoryItemIds = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -110707,6 +112023,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110733,11 +112053,12 @@ namespace net.crossly.Api
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyDeclaredValuesResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketSupplyDeclaredValuesResponse> ListVaultMarketSupplyDeclaredValuesAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> localVarResponse = await ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse> localVarResponse = await ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(inventoryItemIds, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -110745,9 +112066,10 @@ namespace net.crossly.Api
         /// What each item&#39;s declared value starts at, by your insurance rule (market, cost or price). &#x60;inventoryItemIds&#x60; comma-separated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyDeclaredValuesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyDeclaredValuesResponse>> ListVaultMarketSupplyDeclaredValuesWithHttpInfoAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -110772,6 +112094,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110799,10 +112125,11 @@ namespace net.crossly.Api
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ListVaultMarketSupplyDepositsResponse</returns>
-        public ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits()
+        public ListVaultMarketSupplyDepositsResponse ListVaultMarketSupplyDeposits(string inventoryItemIds = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> localVarResponse = ListVaultMarketSupplyDepositsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> localVarResponse = ListVaultMarketSupplyDepositsWithHttpInfo(inventoryItemIds);
             return localVarResponse.Data;
         }
 
@@ -110810,8 +112137,9 @@ namespace net.crossly.Api
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyDepositsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsWithHttpInfo(string inventoryItemIds = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -110835,6 +112163,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110861,11 +112193,12 @@ namespace net.crossly.Api
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyDepositsResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketSupplyDepositsResponse> ListVaultMarketSupplyDepositsAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> localVarResponse = await ListVaultMarketSupplyDepositsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse> localVarResponse = await ListVaultMarketSupplyDepositsWithHttpInfoAsync(inventoryItemIds, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -110873,9 +112206,10 @@ namespace net.crossly.Api
         /// Your units sent to the vault, newest first, each with its state and its key&#39;s Instant Exit line (\&quot;Instant Exit now: $X (N% of mark)\&quot; or \&quot;No market yet\&quot;). Filter with &#x60;inventoryItemIds&#x60; (comma-separated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyDepositsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse>> ListVaultMarketSupplyDepositsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyDepositsResponse>> ListVaultMarketSupplyDepositsWithHttpInfoAsync(string inventoryItemIds = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -110900,6 +112234,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110927,10 +112265,12 @@ namespace net.crossly.Api
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <returns>ListVaultMarketSupplyEligibilityResponse</returns>
-        public ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility()
+        public ListVaultMarketSupplyEligibilityResponse ListVaultMarketSupplyEligibility(string inventoryItemIds = default(string), string listingId = default(string))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> localVarResponse = ListVaultMarketSupplyEligibilityWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> localVarResponse = ListVaultMarketSupplyEligibilityWithHttpInfo(inventoryItemIds, listingId);
             return localVarResponse.Data;
         }
 
@@ -110938,8 +112278,10 @@ namespace net.crossly.Api
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <returns>ApiResponse of ListVaultMarketSupplyEligibilityResponse</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityWithHttpInfo(string inventoryItemIds = default(string), string listingId = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -110963,6 +112305,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -110989,11 +112339,13 @@ namespace net.crossly.Api
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketSupplyEligibilityResponse</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketSupplyEligibilityResponse> ListVaultMarketSupplyEligibilityAsync(string inventoryItemIds = default(string), string listingId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> localVarResponse = await ListVaultMarketSupplyEligibilityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse> localVarResponse = await ListVaultMarketSupplyEligibilityWithHttpInfoAsync(inventoryItemIds, listingId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -111001,9 +112353,11 @@ namespace net.crossly.Api
         /// Can these inventory items (&#x60;inventoryItemIds&#x60;, comma-separated, or every item linked to &#x60;listingId&#x60;) be sent to the vault now? Each says why not. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="inventoryItemIds"> (optional)</param>
+        /// <param name="listingId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketSupplyEligibilityResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse>> ListVaultMarketSupplyEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketSupplyEligibilityResponse>> ListVaultMarketSupplyEligibilityWithHttpInfoAsync(string inventoryItemIds = default(string), string listingId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -111028,6 +112382,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (inventoryItemIds != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "inventoryItemIds", inventoryItemIds));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -112847,10 +114209,11 @@ namespace net.crossly.Api
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <returns>UpdateVaultMarketAutoBuyResponse</returns>
-        public UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy()
+        public UpdateVaultMarketAutoBuyResponse UpdateVaultMarketAutoBuy(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> localVarResponse = UpdateVaultMarketAutoBuyWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> localVarResponse = UpdateVaultMarketAutoBuyWithHttpInfo(updateVaultMarketAutoBuyRequest);
             return localVarResponse.Data;
         }
 
@@ -112858,12 +114221,20 @@ namespace net.crossly.Api
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <returns>ApiResponse of UpdateVaultMarketAutoBuyResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyWithHttpInfo(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest)
         {
+            // verify the required parameter 'updateVaultMarketAutoBuyRequest' is set
+            if (updateVaultMarketAutoBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketAutoBuyRequest' when calling VaultMarketsApi->UpdateVaultMarketAutoBuy");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -112883,6 +114254,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketAutoBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -112909,11 +114281,12 @@ namespace net.crossly.Api
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketAutoBuyResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateVaultMarketAutoBuyResponse> UpdateVaultMarketAutoBuyAsync(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> localVarResponse = await UpdateVaultMarketAutoBuyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse> localVarResponse = await UpdateVaultMarketAutoBuyWithHttpInfoAsync(updateVaultMarketAutoBuyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -112921,14 +114294,22 @@ namespace net.crossly.Api
         /// Set up or change Auto-buy with payouts: &#x60;shareBps&#x60; (1–50%) and the whole want list in order, each with an optional &#x60;maxPriceCents&#x60; (fee included). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketAutoBuyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketAutoBuyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse>> UpdateVaultMarketAutoBuyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketAutoBuyResponse>> UpdateVaultMarketAutoBuyWithHttpInfoAsync(UpdateVaultMarketAutoBuyRequest updateVaultMarketAutoBuyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateVaultMarketAutoBuyRequest' is set
+            if (updateVaultMarketAutoBuyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketAutoBuyRequest' when calling VaultMarketsApi->UpdateVaultMarketAutoBuy");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -112948,6 +114329,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketAutoBuyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -112976,10 +114358,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <returns>ListVaultMarketBlocksItem</returns>
-        public ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation(string orderId)
+        public ListVaultMarketBlocksItem UpdateVaultMarketBlockAllocation(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest)
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = UpdateVaultMarketBlockAllocationWithHttpInfo(orderId);
+            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = UpdateVaultMarketBlockAllocationWithHttpInfo(orderId, updateVaultMarketBlockAllocationRequest);
             return localVarResponse.Data;
         }
 
@@ -112988,8 +114371,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <returns>ApiResponse of ListVaultMarketBlocksItem</returns>
-        public net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationWithHttpInfo(string orderId)
+        public net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationWithHttpInfo(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest)
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -112997,9 +114381,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderId' when calling VaultMarketsApi->UpdateVaultMarketBlockAllocation");
             }
 
+            // verify the required parameter 'updateVaultMarketBlockAllocationRequest' is set
+            if (updateVaultMarketBlockAllocationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketBlockAllocationRequest' when calling VaultMarketsApi->UpdateVaultMarketBlockAllocation");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113020,6 +114411,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("orderId", net.crossly.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketBlockAllocationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113047,11 +114439,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListVaultMarketBlocksItem</returns>
-        public async System.Threading.Tasks.Task<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListVaultMarketBlocksItem> UpdateVaultMarketBlockAllocationAsync(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = await UpdateVaultMarketBlockAllocationWithHttpInfoAsync(orderId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem> localVarResponse = await UpdateVaultMarketBlockAllocationWithHttpInfoAsync(orderId, updateVaultMarketBlockAllocationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -113060,9 +114453,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="orderId"></param>
+        /// <param name="updateVaultMarketBlockAllocationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListVaultMarketBlocksItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem>> UpdateVaultMarketBlockAllocationWithHttpInfoAsync(string orderId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListVaultMarketBlocksItem>> UpdateVaultMarketBlockAllocationWithHttpInfoAsync(string orderId, UpdateVaultMarketBlockAllocationRequest updateVaultMarketBlockAllocationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'orderId' is set
             if (orderId == null)
@@ -113070,10 +114464,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderId' when calling VaultMarketsApi->UpdateVaultMarketBlockAllocation");
             }
 
+            // verify the required parameter 'updateVaultMarketBlockAllocationRequest' is set
+            if (updateVaultMarketBlockAllocationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketBlockAllocationRequest' when calling VaultMarketsApi->UpdateVaultMarketBlockAllocation");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113094,6 +114495,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("orderId", net.crossly.Client.ClientUtils.ParameterToString(orderId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketBlockAllocationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113525,10 +114927,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember(string id, string memberId)
+        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityMember(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntityMemberWithHttpInfo(id, memberId);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntityMemberWithHttpInfo(id, memberId, updateVaultMarketEntityMemberRequest);
             return localVarResponse.Data;
         }
 
@@ -113538,8 +114941,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberWithHttpInfo(string id, string memberId)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberWithHttpInfo(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113556,6 +114960,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113577,6 +114982,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("memberId", net.crossly.Client.ClientUtils.ParameterToString(memberId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntityMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113605,11 +115011,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberAsync(string id, string memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityMemberAsync(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntityMemberWithHttpInfoAsync(id, memberId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntityMemberWithHttpInfoAsync(id, memberId, updateVaultMarketEntityMemberRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -113619,9 +115026,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="memberId"></param>
+        /// <param name="updateVaultMarketEntityMemberRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityMemberWithHttpInfoAsync(string id, string memberId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityMemberWithHttpInfoAsync(string id, string memberId, UpdateVaultMarketEntityMemberRequest updateVaultMarketEntityMemberRequest = default(UpdateVaultMarketEntityMemberRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113639,6 +115047,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113660,6 +115069,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("memberId", net.crossly.Client.ClientUtils.ParameterToString(memberId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntityMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113689,10 +115099,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit(string id, string subId)
+        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntitySubaccountLimit(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(id, subId);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(id, subId, updateVaultMarketEntitySubaccountLimitRequest);
             return localVarResponse.Data;
         }
 
@@ -113702,8 +115113,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(string id, string subId)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitWithHttpInfo(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113717,9 +115129,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subId' when calling VaultMarketsApi->UpdateVaultMarketEntitySubaccountLimit");
             }
 
+            // verify the required parameter 'updateVaultMarketEntitySubaccountLimitRequest' is set
+            if (updateVaultMarketEntitySubaccountLimitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketEntitySubaccountLimitRequest' when calling VaultMarketsApi->UpdateVaultMarketEntitySubaccountLimit");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113741,6 +115160,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("subId", net.crossly.Client.ClientUtils.ParameterToString(subId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntitySubaccountLimitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113769,11 +115189,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitAsync(string id, string subId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntitySubaccountLimitAsync(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(id, subId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(id, subId, updateVaultMarketEntitySubaccountLimitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -113783,9 +115204,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="subId"></param>
+        /// <param name="updateVaultMarketEntitySubaccountLimitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(string id, string subId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntitySubaccountLimitWithHttpInfoAsync(string id, string subId, UpdateVaultMarketEntitySubaccountLimitRequest updateVaultMarketEntitySubaccountLimitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113799,10 +115221,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subId' when calling VaultMarketsApi->UpdateVaultMarketEntitySubaccountLimit");
             }
 
+            // verify the required parameter 'updateVaultMarketEntitySubaccountLimitRequest' is set
+            if (updateVaultMarketEntitySubaccountLimitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketEntitySubaccountLimitRequest' when calling VaultMarketsApi->UpdateVaultMarketEntitySubaccountLimit");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113824,6 +115253,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("subId", net.crossly.Client.ClientUtils.ParameterToString(subId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntitySubaccountLimitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113852,10 +115282,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <returns>GetVaultMarketEntityByIdResponse</returns>
-        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection(string id)
+        public GetVaultMarketEntityByIdResponse UpdateVaultMarketEntityUsdElection(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntityUsdElectionWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = UpdateVaultMarketEntityUsdElectionWithHttpInfo(id, updateVaultMarketEntityUsdElectionRequest);
             return localVarResponse.Data;
         }
 
@@ -113864,8 +115295,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketEntityByIdResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionWithHttpInfo(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113873,9 +115305,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->UpdateVaultMarketEntityUsdElection");
             }
 
+            // verify the required parameter 'updateVaultMarketEntityUsdElectionRequest' is set
+            if (updateVaultMarketEntityUsdElectionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketEntityUsdElectionRequest' when calling VaultMarketsApi->UpdateVaultMarketEntityUsdElection");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113896,6 +115335,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntityUsdElectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -113923,11 +115363,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketEntityByIdResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketEntityByIdResponse> UpdateVaultMarketEntityUsdElectionAsync(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse> localVarResponse = await UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(id, updateVaultMarketEntityUsdElectionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -113936,9 +115377,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketEntityUsdElectionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketEntityByIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketEntityByIdResponse>> UpdateVaultMarketEntityUsdElectionWithHttpInfoAsync(string id, UpdateVaultMarketEntityUsdElectionRequest updateVaultMarketEntityUsdElectionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -113946,10 +115388,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->UpdateVaultMarketEntityUsdElection");
             }
 
+            // verify the required parameter 'updateVaultMarketEntityUsdElectionRequest' is set
+            if (updateVaultMarketEntityUsdElectionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketEntityUsdElectionRequest' when calling VaultMarketsApi->UpdateVaultMarketEntityUsdElection");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -113970,6 +115419,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketEntityUsdElectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -114546,10 +115996,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <returns>GetVaultMarketItemLocationResponse</returns>
-        public GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom(string inventoryItemId)
+        public GetVaultMarketItemLocationResponse UpdateVaultMarketItemSellFrom(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest)
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> localVarResponse = UpdateVaultMarketItemSellFromWithHttpInfo(inventoryItemId);
+            net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> localVarResponse = UpdateVaultMarketItemSellFromWithHttpInfo(inventoryItemId, updateVaultMarketItemSellFromRequest);
             return localVarResponse.Data;
         }
 
@@ -114558,8 +116009,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <returns>ApiResponse of GetVaultMarketItemLocationResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromWithHttpInfo(string inventoryItemId)
+        public net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromWithHttpInfo(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest)
         {
             // verify the required parameter 'inventoryItemId' is set
             if (inventoryItemId == null)
@@ -114567,9 +116019,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'inventoryItemId' when calling VaultMarketsApi->UpdateVaultMarketItemSellFrom");
             }
 
+            // verify the required parameter 'updateVaultMarketItemSellFromRequest' is set
+            if (updateVaultMarketItemSellFromRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketItemSellFromRequest' when calling VaultMarketsApi->UpdateVaultMarketItemSellFrom");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -114590,6 +116049,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("inventoryItemId", net.crossly.Client.ClientUtils.ParameterToString(inventoryItemId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketItemSellFromRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -114617,11 +116077,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketItemLocationResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromAsync(string inventoryItemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketItemLocationResponse> UpdateVaultMarketItemSellFromAsync(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> localVarResponse = await UpdateVaultMarketItemSellFromWithHttpInfoAsync(inventoryItemId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse> localVarResponse = await UpdateVaultMarketItemSellFromWithHttpInfoAsync(inventoryItemId, updateVaultMarketItemSellFromRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -114630,9 +116091,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="inventoryItemId"></param>
+        /// <param name="updateVaultMarketItemSellFromRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketItemLocationResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse>> UpdateVaultMarketItemSellFromWithHttpInfoAsync(string inventoryItemId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketItemLocationResponse>> UpdateVaultMarketItemSellFromWithHttpInfoAsync(string inventoryItemId, UpdateVaultMarketItemSellFromRequest updateVaultMarketItemSellFromRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'inventoryItemId' is set
             if (inventoryItemId == null)
@@ -114640,10 +116102,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'inventoryItemId' when calling VaultMarketsApi->UpdateVaultMarketItemSellFrom");
             }
 
+            // verify the required parameter 'updateVaultMarketItemSellFromRequest' is set
+            if (updateVaultMarketItemSellFromRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketItemSellFromRequest' when calling VaultMarketsApi->UpdateVaultMarketItemSellFrom");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -114664,6 +116133,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("inventoryItemId", net.crossly.Client.ClientUtils.ParameterToString(inventoryItemId)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketItemSellFromRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -115459,10 +116929,11 @@ namespace net.crossly.Api
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <returns>UpdateVaultMarketPartnerMeResponse</returns>
-        public UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe()
+        public UpdateVaultMarketPartnerMeResponse UpdateVaultMarketPartnerMe(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> localVarResponse = UpdateVaultMarketPartnerMeWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> localVarResponse = UpdateVaultMarketPartnerMeWithHttpInfo(updateVaultMarketPartnerMeRequest);
             return localVarResponse.Data;
         }
 
@@ -115470,12 +116941,14 @@ namespace net.crossly.Api
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateVaultMarketPartnerMeResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeWithHttpInfo(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -115495,6 +116968,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketPartnerMeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -115521,11 +116995,12 @@ namespace net.crossly.Api
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketPartnerMeResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateVaultMarketPartnerMeResponse> UpdateVaultMarketPartnerMeAsync(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> localVarResponse = await UpdateVaultMarketPartnerMeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse> localVarResponse = await UpdateVaultMarketPartnerMeWithHttpInfoAsync(updateVaultMarketPartnerMeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -115533,14 +117008,16 @@ namespace net.crossly.Api
         /// Your drop-off partnership&#39;s finder profile: postal code, opening hours, services and whether you are listed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketPartnerMeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketPartnerMeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse>> UpdateVaultMarketPartnerMeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketPartnerMeResponse>> UpdateVaultMarketPartnerMeWithHttpInfoAsync(UpdateVaultMarketPartnerMeRequest updateVaultMarketPartnerMeRequest = default(UpdateVaultMarketPartnerMeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -115560,6 +117037,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketPartnerMeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -116701,10 +118179,11 @@ namespace net.crossly.Api
         /// Change your vault defaults; send only the fields you change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <returns>GetVaultMarketSettingResponse</returns>
-        public GetVaultMarketSettingResponse UpdateVaultMarketSetting()
+        public GetVaultMarketSettingResponse UpdateVaultMarketSetting(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> localVarResponse = UpdateVaultMarketSettingWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> localVarResponse = UpdateVaultMarketSettingWithHttpInfo(updateVaultMarketSettingRequest);
             return localVarResponse.Data;
         }
 
@@ -116712,12 +118191,14 @@ namespace net.crossly.Api
         /// Change your vault defaults; send only the fields you change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <returns>ApiResponse of GetVaultMarketSettingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> UpdateVaultMarketSettingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> UpdateVaultMarketSettingWithHttpInfo(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -116737,6 +118218,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -116763,11 +118245,12 @@ namespace net.crossly.Api
         /// Change your vault defaults; send only the fields you change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetVaultMarketSettingResponse</returns>
-        public async System.Threading.Tasks.Task<GetVaultMarketSettingResponse> UpdateVaultMarketSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetVaultMarketSettingResponse> UpdateVaultMarketSettingAsync(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> localVarResponse = await UpdateVaultMarketSettingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse> localVarResponse = await UpdateVaultMarketSettingWithHttpInfoAsync(updateVaultMarketSettingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -116775,14 +118258,16 @@ namespace net.crossly.Api
         /// Change your vault defaults; send only the fields you change. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateVaultMarketSettingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetVaultMarketSettingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse>> UpdateVaultMarketSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetVaultMarketSettingResponse>> UpdateVaultMarketSettingWithHttpInfoAsync(UpdateVaultMarketSettingRequest updateVaultMarketSettingRequest = default(UpdateVaultMarketSettingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -116802,6 +118287,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateVaultMarketSettingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -116964,10 +118450,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <returns>UpdateVaultMarketSupplyDepositResponse</returns>
-        public UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit(string id)
+        public UpdateVaultMarketSupplyDepositResponse UpdateVaultMarketSupplyDeposit(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> localVarResponse = UpdateVaultMarketSupplyDepositWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> localVarResponse = UpdateVaultMarketSupplyDepositWithHttpInfo(id, updateVaultMarketSupplyDepositRequest);
             return localVarResponse.Data;
         }
 
@@ -116976,8 +118463,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <returns>ApiResponse of UpdateVaultMarketSupplyDepositResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositWithHttpInfo(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -116985,9 +118473,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->UpdateVaultMarketSupplyDeposit");
             }
 
+            // verify the required parameter 'updateVaultMarketSupplyDepositRequest' is set
+            if (updateVaultMarketSupplyDepositRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketSupplyDepositRequest' when calling VaultMarketsApi->UpdateVaultMarketSupplyDeposit");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -117008,6 +118503,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketSupplyDepositRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -117035,11 +118531,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateVaultMarketSupplyDepositResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateVaultMarketSupplyDepositResponse> UpdateVaultMarketSupplyDepositAsync(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> localVarResponse = await UpdateVaultMarketSupplyDepositWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse> localVarResponse = await UpdateVaultMarketSupplyDepositWithHttpInfoAsync(id, updateVaultMarketSupplyDepositRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -117048,9 +118545,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateVaultMarketSupplyDepositRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateVaultMarketSupplyDepositResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse>> UpdateVaultMarketSupplyDepositWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateVaultMarketSupplyDepositResponse>> UpdateVaultMarketSupplyDepositWithHttpInfoAsync(string id, UpdateVaultMarketSupplyDepositRequest updateVaultMarketSupplyDepositRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -117058,10 +118556,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling VaultMarketsApi->UpdateVaultMarketSupplyDeposit");
             }
 
+            // verify the required parameter 'updateVaultMarketSupplyDepositRequest' is set
+            if (updateVaultMarketSupplyDepositRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateVaultMarketSupplyDepositRequest' when calling VaultMarketsApi->UpdateVaultMarketSupplyDeposit");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -117082,6 +118587,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateVaultMarketSupplyDepositRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

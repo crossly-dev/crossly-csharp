@@ -33,8 +33,9 @@ namespace net.crossly.Api
         /// Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <returns>CreateAdOffsiteCampaignResponse</returns>
-        CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign();
+        CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest);
 
         /// <summary>
         /// Launch an offsite campaign for an item.
@@ -43,8 +44,9 @@ namespace net.crossly.Api
         /// Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <returns>ApiResponse of CreateAdOffsiteCampaignResponse</returns>
-        ApiResponse<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignWithHttpInfo();
+        ApiResponse<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignWithHttpInfo(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest);
         /// <summary>
         /// Clear an auto-pause and resume offsite spend.
         /// </summary>
@@ -68,8 +70,9 @@ namespace net.crossly.Api
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <returns>CreateListingAdBulkAddResponse</returns>
-        CreateListingAdBulkAddResponse CreateListingAdBulkAdd();
+        CreateListingAdBulkAddResponse CreateListingAdBulkAdd(CreateListingAdBulkAddRequest createListingAdBulkAddRequest);
 
         /// <summary>
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result.
@@ -78,15 +81,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <returns>ApiResponse of CreateListingAdBulkAddResponse</returns>
-        ApiResponse<CreateListingAdBulkAddResponse> CreateListingAdBulkAddWithHttpInfo();
+        ApiResponse<CreateListingAdBulkAddResponse> CreateListingAdBulkAddWithHttpInfo(CreateListingAdBulkAddRequest createListingAdBulkAddRequest);
         /// <summary>
         /// Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <returns>CreateListingAdCampaignResponse</returns>
-        CreateListingAdCampaignResponse CreateListingAdCampaign(string platform);
+        CreateListingAdCampaignResponse CreateListingAdCampaign(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest);
 
         /// <summary>
         /// Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
@@ -96,16 +101,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignResponse</returns>
-        ApiResponse<CreateListingAdCampaignResponse> CreateListingAdCampaignWithHttpInfo(string platform);
+        ApiResponse<CreateListingAdCampaignResponse> CreateListingAdCampaignWithHttpInfo(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest);
         /// <summary>
         /// Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <returns>CreateListingAdCampaignListingResponse</returns>
-        CreateListingAdCampaignListingResponse CreateListingAdCampaignListing(string platform, string campaignId);
+        CreateListingAdCampaignListingResponse CreateListingAdCampaignListing(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest);
 
         /// <summary>
         /// Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
@@ -116,16 +123,18 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignListingResponse</returns>
-        ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingWithHttpInfo(string platform, string campaignId);
+        ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingWithHttpInfo(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest);
         /// <summary>
         /// Stop promoting listings in a marketplace campaign. One result per listing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>CreateListingAdCampaignListingResponse</returns>
-        CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove(string platform, string campaignId);
+        CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest);
 
         /// <summary>
         /// Stop promoting listings in a marketplace campaign. One result per listing.
@@ -136,14 +145,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignListingResponse</returns>
-        ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveWithHttpInfo(string platform, string campaignId);
+        ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveWithHttpInfo(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest);
         /// <summary>
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <returns>CreateSponsoredAdBillingTopupLinkResponse</returns>
-        CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink();
+        CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest);
 
         /// <summary>
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
@@ -152,14 +163,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <returns>ApiResponse of CreateSponsoredAdBillingTopupLinkResponse</returns>
-        ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkWithHttpInfo();
+        ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkWithHttpInfo(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest);
         /// <summary>
         /// Stop boosting listings in bulk.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>CreateSponsoredAdBoostRemoveResponse</returns>
-        CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove();
+        CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest);
 
         /// <summary>
         /// Stop boosting listings in bulk.
@@ -168,8 +181,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>ApiResponse of CreateSponsoredAdBoostRemoveResponse</returns>
-        ApiResponse<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveWithHttpInfo();
+        ApiResponse<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveWithHttpInfo(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest);
         /// <summary>
         /// Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \&quot;auto\&quot;), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \&quot;wholesale_catalog\&quot; + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
         /// </summary>
@@ -248,8 +262,10 @@ namespace net.crossly.Api
         /// Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <returns>GetAdOffsiteEligibilityResponse</returns>
-        GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility();
+        GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility(string network, string category);
 
         /// <summary>
         /// Whether an item can run offsite, and why not.
@@ -258,8 +274,10 @@ namespace net.crossly.Api
         /// Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <returns>ApiResponse of GetAdOffsiteEligibilityResponse</returns>
-        ApiResponse<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityWithHttpInfo();
+        ApiResponse<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityWithHttpInfo(string network, string category);
         /// <summary>
         /// What your offsite budget bought — including the misses.
         /// </summary>
@@ -301,8 +319,9 @@ namespace net.crossly.Api
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>GetSponsoredAdBillingResponse</returns>
-        GetSponsoredAdBillingResponse GetSponsoredAdBilling();
+        GetSponsoredAdBillingResponse GetSponsoredAdBilling(string refresh = default(string));
 
         /// <summary>
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance.
@@ -311,8 +330,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdBillingResponse</returns>
-        ApiResponse<GetSponsoredAdBillingResponse> GetSponsoredAdBillingWithHttpInfo();
+        ApiResponse<GetSponsoredAdBillingResponse> GetSponsoredAdBillingWithHttpInfo(string refresh = default(string));
         /// <summary>
         /// One month&#39;s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
         /// </summary>
@@ -372,8 +392,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>SponsoredAdCampaignResponse</returns>
-        SponsoredAdCampaignResponse GetSponsoredAdCampaign(string id);
+        SponsoredAdCampaignResponse GetSponsoredAdCampaign(string id, string from = default(string), string to = default(string));
 
         /// <summary>
         /// One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has &#x60;catalogs&#x60;: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
@@ -383,14 +405,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of SponsoredAdCampaignResponse</returns>
-        ApiResponse<SponsoredAdCampaignResponse> GetSponsoredAdCampaignWithHttpInfo(string id);
+        ApiResponse<SponsoredAdCampaignResponse> GetSponsoredAdCampaignWithHttpInfo(string id, string from = default(string), string to = default(string));
         /// <summary>
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>GetSponsoredAdFundResponse</returns>
-        GetSponsoredAdFundResponse GetSponsoredAdFund();
+        GetSponsoredAdFundResponse GetSponsoredAdFund(string refresh = default(string));
 
         /// <summary>
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
@@ -399,14 +424,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdFundResponse</returns>
-        ApiResponse<GetSponsoredAdFundResponse> GetSponsoredAdFundWithHttpInfo();
+        ApiResponse<GetSponsoredAdFundResponse> GetSponsoredAdFundWithHttpInfo(string refresh = default(string));
         /// <summary>
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>GetSponsoredAdReportResponse</returns>
-        GetSponsoredAdReportResponse GetSponsoredAdReport();
+        GetSponsoredAdReportResponse GetSponsoredAdReport(string from = default(string), string to = default(string));
 
         /// <summary>
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
@@ -415,8 +443,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdReportResponse</returns>
-        ApiResponse<GetSponsoredAdReportResponse> GetSponsoredAdReportWithHttpInfo();
+        ApiResponse<GetSponsoredAdReportResponse> GetSponsoredAdReportWithHttpInfo(string from = default(string), string to = default(string));
         /// <summary>
         /// Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
         /// </summary>
@@ -438,8 +468,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ListListingAdCampaignsResponse</returns>
-        ListListingAdCampaignsResponse ListListingAdCampaigns(string platform);
+        ListListingAdCampaignsResponse ListListingAdCampaigns(string platform, string refresh = default(string));
 
         /// <summary>
         /// Your ad campaigns on one marketplace (cached up to 15 minutes; refresh&#x3D;true asks the marketplace now).
@@ -449,8 +480,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of ListListingAdCampaignsResponse</returns>
-        ApiResponse<ListListingAdCampaignsResponse> ListListingAdCampaignsWithHttpInfo(string platform);
+        ApiResponse<ListListingAdCampaignsResponse> ListListingAdCampaignsWithHttpInfo(string platform, string refresh = default(string));
         /// <summary>
         /// The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
         /// </summary>
@@ -471,8 +503,11 @@ namespace net.crossly.Api
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListSponsoredAdBillingHistoryResponse</returns>
-        ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory();
+        ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory(string kind = default(string), string before = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
@@ -481,8 +516,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdBillingHistoryResponse</returns>
-        ApiResponse<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryWithHttpInfo();
+        ApiResponse<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryWithHttpInfo(string kind = default(string), string before = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Months (YYYY-MM) with any ad billing activity, newest first.
         /// </summary>
@@ -519,8 +557,10 @@ namespace net.crossly.Api
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ListSponsoredAdCampaignsResponse</returns>
-        ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns();
+        ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns(string from = default(string), string to = default(string));
 
         /// <summary>
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
@@ -529,14 +569,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdCampaignsResponse</returns>
-        ApiResponse<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsWithHttpInfo();
+        ApiResponse<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsWithHttpInfo(string from = default(string), string to = default(string));
         /// <summary>
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ListSponsoredAdListingsResponse</returns>
-        ListSponsoredAdListingsResponse ListSponsoredAdListings();
+        ListSponsoredAdListingsResponse ListSponsoredAdListings(string from = default(string), string to = default(string));
 
         /// <summary>
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
@@ -545,8 +589,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdListingsResponse</returns>
-        ApiResponse<ListSponsoredAdListingsResponse> ListSponsoredAdListingsWithHttpInfo();
+        ApiResponse<ListSponsoredAdListingsResponse> ListSponsoredAdListingsWithHttpInfo(string from = default(string), string to = default(string));
         /// <summary>
         /// Turn offsite ads on or off. Yours alone to set.
         /// </summary>
@@ -554,8 +600,9 @@ namespace net.crossly.Api
         /// The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <returns>UpdateAdOffsiteResponse</returns>
-        UpdateAdOffsiteResponse UpdateAdOffsite();
+        UpdateAdOffsiteResponse UpdateAdOffsite(UpdateAdOffsiteRequest updateAdOffsiteRequest);
 
         /// <summary>
         /// Turn offsite ads on or off. Yours alone to set.
@@ -564,16 +611,18 @@ namespace net.crossly.Api
         /// The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <returns>ApiResponse of UpdateAdOffsiteResponse</returns>
-        ApiResponse<UpdateAdOffsiteResponse> UpdateAdOffsiteWithHttpInfo();
+        ApiResponse<UpdateAdOffsiteResponse> UpdateAdOffsiteWithHttpInfo(UpdateAdOffsiteRequest updateAdOffsiteRequest);
         /// <summary>
         /// Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <returns>CreateListingAdCampaignResponse</returns>
-        CreateListingAdCampaignResponse UpdateListingAdCampaign(string platform, string campaignId);
+        CreateListingAdCampaignResponse UpdateListingAdCampaign(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest);
 
         /// <summary>
         /// Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
@@ -584,16 +633,18 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignResponse</returns>
-        ApiResponse<CreateListingAdCampaignResponse> UpdateListingAdCampaignWithHttpInfo(string platform, string campaignId);
+        ApiResponse<CreateListingAdCampaignResponse> UpdateListingAdCampaignWithHttpInfo(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest);
         /// <summary>
         /// Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <returns>UpdateListingAdListingRateResponse</returns>
-        UpdateListingAdListingRateResponse UpdateListingAdListingRate(string platform, string platformListingId);
+        UpdateListingAdListingRateResponse UpdateListingAdListingRate(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest);
 
         /// <summary>
         /// Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
@@ -604,14 +655,16 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <returns>ApiResponse of UpdateListingAdListingRateResponse</returns>
-        ApiResponse<UpdateListingAdListingRateResponse> UpdateListingAdListingRateWithHttpInfo(string platform, string platformListingId);
+        ApiResponse<UpdateListingAdListingRateResponse> UpdateListingAdListingRateWithHttpInfo(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest);
         /// <summary>
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <returns>SponsoredAdResponse</returns>
-        SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup();
+        SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest);
 
         /// <summary>
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
@@ -620,14 +673,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <returns>ApiResponse of SponsoredAdResponse</returns>
-        ApiResponse<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupWithHttpInfo();
+        ApiResponse<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupWithHttpInfo(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest);
         /// <summary>
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <returns>UpdateSponsoredAdBoostResponse</returns>
-        UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost();
+        UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest);
 
         /// <summary>
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
@@ -636,8 +691,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <returns>ApiResponse of UpdateSponsoredAdBoostResponse</returns>
-        ApiResponse<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostWithHttpInfo();
+        ApiResponse<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostWithHttpInfo(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest);
         /// <summary>
         /// Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
         /// </summary>
@@ -688,9 +744,10 @@ namespace net.crossly.Api
         /// Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAdOffsiteCampaignResponse</returns>
-        System.Threading.Tasks.Task<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignAsync(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Launch an offsite campaign for an item.
@@ -699,9 +756,10 @@ namespace net.crossly.Api
         /// Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAdOffsiteCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAdOffsiteCampaignResponse>> CreateAdOffsiteCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAdOffsiteCampaignResponse>> CreateAdOffsiteCampaignWithHttpInfoAsync(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Clear an auto-pause and resume offsite spend.
         /// </summary>
@@ -730,9 +788,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdBulkAddResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAdBulkAddResponse> CreateListingAdBulkAddAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAdBulkAddResponse> CreateListingAdBulkAddAsync(CreateListingAdBulkAddRequest createListingAdBulkAddRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result.
@@ -741,9 +800,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdBulkAddResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAdBulkAddResponse>> CreateListingAdBulkAddWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAdBulkAddResponse>> CreateListingAdBulkAddWithHttpInfoAsync(CreateListingAdBulkAddRequest createListingAdBulkAddRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
         /// </summary>
@@ -752,9 +812,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAdCampaignResponse> CreateListingAdCampaignAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAdCampaignResponse> CreateListingAdCampaignAsync(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a campaign on the marketplace: program (promoted_listing_rate &#x3D; eBay General, a % of the sale; cpc_campaign &#x3D; eBay Priority, a daily budget), name, ratePct or dailyBudgetCents, startsAt/endsAt, and the program fields. Idempotency-Key supported.
@@ -764,9 +825,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignResponse>> CreateListingAdCampaignWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignResponse>> CreateListingAdCampaignWithHttpInfoAsync(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
         /// </summary>
@@ -776,9 +838,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignListingResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingAsync(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Promote listings in a marketplace campaign. platformListingIds are Crossly platform-listing ids on that marketplace; ratePct sets the ad rate (eBay General). One result per listing.
@@ -789,9 +852,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingWithHttpInfoAsync(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop promoting listings in a marketplace campaign. One result per listing.
         /// </summary>
@@ -801,9 +865,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignListingResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveAsync(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stop promoting listings in a marketplace campaign. One result per listing.
@@ -814,9 +879,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingRemoveWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingRemoveWithHttpInfoAsync(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
         /// </summary>
@@ -824,9 +890,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSponsoredAdBillingTopupLinkResponse</returns>
-        System.Threading.Tasks.Task<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkAsync(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry.
@@ -835,9 +902,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSponsoredAdBillingTopupLinkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop boosting listings in bulk.
         /// </summary>
@@ -845,9 +913,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSponsoredAdBoostRemoveResponse</returns>
-        System.Threading.Tasks.Task<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveAsync(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stop boosting listings in bulk.
@@ -856,9 +925,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSponsoredAdBoostRemoveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSponsoredAdBoostRemoveResponse>> CreateSponsoredAdBoostRemoveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSponsoredAdBoostRemoveResponse>> CreateSponsoredAdBoostRemoveWithHttpInfoAsync(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a Sponsored Listings campaign: name, dailyBudgetCents (≥100), optional totalBudgetCents, defaultBidCents (5–10000; the max bid under bidStrategy \&quot;auto\&quot;), placements (search, browse, product_page, home_rail, storefront, worlds_surface), goal (sales | visits), optional targetCategories / targetRegions (ISO countries) / targetDevices (mobile, desktop, app), optional startsAt/endsAt, listings [{platformListingId, bidCents?, boostBps? (100–2000, pay-on-sale Boost; null clears)}], keywords [{keyword, matchType broad|phrase|exact, negative?, bidCents?}], worldTargets [{kind showroom|convention, id, bidCents?, status?}] (your showroom or a convention you host, promoted in the Crossly World directory; at least one listing or world target), status active|draft. A catalog boost: targetType \&quot;wholesale_catalog\&quot; + targetCatalogId (your catalog), no listings, keywords or world targets; it ranks Sponsored in the wholesale directory. bidStrategy defaults to your account default. Clicks are charged from your ad funds (ad balance and/or CBX, ad credit first); with none it waits as out_of_budget.
         /// </summary>
@@ -954,9 +1024,11 @@ namespace net.crossly.Api
         /// Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAdOffsiteEligibilityResponse</returns>
-        System.Threading.Tasks.Task<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityAsync(string network, string category, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Whether an item can run offsite, and why not.
@@ -965,9 +1037,11 @@ namespace net.crossly.Api
         /// Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAdOffsiteEligibilityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAdOffsiteEligibilityResponse>> GetAdOffsiteEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAdOffsiteEligibilityResponse>> GetAdOffsiteEligibilityWithHttpInfoAsync(string network, string category, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What your offsite budget bought — including the misses.
         /// </summary>
@@ -1019,9 +1093,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdBillingResponse</returns>
-        System.Threading.Tasks.Task<GetSponsoredAdBillingResponse> GetSponsoredAdBillingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetSponsoredAdBillingResponse> GetSponsoredAdBillingAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance.
@@ -1030,9 +1105,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdBillingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdBillingResponse>> GetSponsoredAdBillingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdBillingResponse>> GetSponsoredAdBillingWithHttpInfoAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One month&#39;s ads statement: opening and closing ad balance, top-ups, click spend by campaign, how clicks were paid, credits, refunds and Boost fees.
         /// </summary>
@@ -1110,9 +1186,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SponsoredAdCampaignResponse</returns>
-        System.Threading.Tasks.Task<SponsoredAdCampaignResponse> GetSponsoredAdCampaignAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SponsoredAdCampaignResponse> GetSponsoredAdCampaignAsync(string id, string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// One campaign: settings, its listings (bid, suggested bid, live, per-listing stats) and keywords. A catalog boost (targetType wholesale_catalog) has &#x60;catalogs&#x60;: per boosted catalog impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS.
@@ -1122,9 +1200,11 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SponsoredAdCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SponsoredAdCampaignResponse>> GetSponsoredAdCampaignWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SponsoredAdCampaignResponse>> GetSponsoredAdCampaignWithHttpInfoAsync(string id, string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
         /// </summary>
@@ -1132,9 +1212,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdFundResponse</returns>
-        System.Threading.Tasks.Task<GetSponsoredAdFundResponse> GetSponsoredAdFundAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetSponsoredAdFundResponse> GetSponsoredAdFundAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX.
@@ -1143,9 +1224,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdFundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdFundResponse>> GetSponsoredAdFundWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdFundResponse>> GetSponsoredAdFundWithHttpInfoAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
         /// </summary>
@@ -1153,9 +1235,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdReportResponse</returns>
-        System.Threading.Tasks.Task<GetSponsoredAdReportResponse> GetSponsoredAdReportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetSponsoredAdReportResponse> GetSponsoredAdReportAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day.
@@ -1164,9 +1248,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdReportResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdReportResponse>> GetSponsoredAdReportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetSponsoredAdReportResponse>> GetSponsoredAdReportWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ads quick settings: adsPaused, accountDailyCapCents and spentTodayCents, defaultBidStrategy, autoTopup.
         /// </summary>
@@ -1196,9 +1282,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingAdCampaignsResponse</returns>
-        System.Threading.Tasks.Task<ListListingAdCampaignsResponse> ListListingAdCampaignsAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListListingAdCampaignsResponse> ListListingAdCampaignsAsync(string platform, string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your ad campaigns on one marketplace (cached up to 15 minutes; refresh&#x3D;true asks the marketplace now).
@@ -1208,9 +1295,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingAdCampaignsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListListingAdCampaignsResponse>> ListListingAdCampaignsWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListListingAdCampaignsResponse>> ListListingAdCampaignsWithHttpInfoAsync(string platform, string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The ads registry: each marketplace that sells promotion, its programs (kind, scope, campaign and listing fields), which verbs are wired / need a capture / are unsupported, and whether you are connected there.
         /// </summary>
@@ -1239,9 +1327,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdBillingHistoryResponse</returns>
-        System.Threading.Tasks.Task<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryAsync(string kind = default(string), string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100.
@@ -1250,9 +1341,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdBillingHistoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdBillingHistoryResponse>> ListSponsoredAdBillingHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdBillingHistoryResponse>> ListSponsoredAdBillingHistoryWithHttpInfoAsync(string kind = default(string), string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Months (YYYY-MM) with any ad billing activity, newest first.
         /// </summary>
@@ -1302,9 +1396,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdCampaignsResponse</returns>
-        System.Threading.Tasks.Task<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days).
@@ -1313,9 +1409,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdCampaignsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdCampaignsResponse>> ListSponsoredAdCampaignsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdCampaignsResponse>> ListSponsoredAdCampaignsWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
         /// </summary>
@@ -1323,9 +1421,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdListingsResponse</returns>
-        System.Threading.Tasks.Task<ListSponsoredAdListingsResponse> ListSponsoredAdListingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSponsoredAdListingsResponse> ListSponsoredAdListingsAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid.
@@ -1334,9 +1434,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdListingsResponse>> ListSponsoredAdListingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSponsoredAdListingsResponse>> ListSponsoredAdListingsWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Turn offsite ads on or off. Yours alone to set.
         /// </summary>
@@ -1344,9 +1446,10 @@ namespace net.crossly.Api
         /// The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAdOffsiteResponse</returns>
-        System.Threading.Tasks.Task<UpdateAdOffsiteResponse> UpdateAdOffsiteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateAdOffsiteResponse> UpdateAdOffsiteAsync(UpdateAdOffsiteRequest updateAdOffsiteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Turn offsite ads on or off. Yours alone to set.
@@ -1355,9 +1458,10 @@ namespace net.crossly.Api
         /// The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAdOffsiteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateAdOffsiteResponse>> UpdateAdOffsiteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateAdOffsiteResponse>> UpdateAdOffsiteWithHttpInfoAsync(UpdateAdOffsiteRequest updateAdOffsiteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
         /// </summary>
@@ -1367,9 +1471,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAdCampaignResponse> UpdateListingAdCampaignAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAdCampaignResponse> UpdateListingAdCampaignAsync(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change a marketplace campaign: name, dailyBudgetCents, endsAt (null clears), status paused | running | ended.
@@ -1380,9 +1485,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignResponse>> UpdateListingAdCampaignWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAdCampaignResponse>> UpdateListingAdCampaignWithHttpInfoAsync(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
         /// </summary>
@@ -1392,9 +1498,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateListingAdListingRateResponse</returns>
-        System.Threading.Tasks.Task<UpdateListingAdListingRateResponse> UpdateListingAdListingRateAsync(string platform, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateListingAdListingRateResponse> UpdateListingAdListingRateAsync(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change one promoted listing&#39;s ad rate (percent of the sale) in the campaign it is in.
@@ -1405,9 +1512,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateListingAdListingRateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateListingAdListingRateResponse>> UpdateListingAdListingRateWithHttpInfoAsync(string platform, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateListingAdListingRateResponse>> UpdateListingAdListingRateWithHttpInfoAsync(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
         /// </summary>
@@ -1415,9 +1523,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SponsoredAdResponse</returns>
-        System.Threading.Tasks.Task<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupAsync(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it).
@@ -1426,9 +1535,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SponsoredAdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SponsoredAdResponse>> UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SponsoredAdResponse>> UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
         /// </summary>
@@ -1436,9 +1546,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateSponsoredAdBoostResponse</returns>
-        System.Threading.Tasks.Task<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostAsync(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only.
@@ -1447,9 +1558,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateSponsoredAdBoostResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateSponsoredAdBoostResponse>> UpdateSponsoredAdBoostWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateSponsoredAdBoostResponse>> UpdateSponsoredAdBoostWithHttpInfoAsync(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit a campaign. Any of the create fields; listings and keywords, when given, replace the current set. Raising the total budget resumes a campaign stopped by it.
         /// </summary>
@@ -1618,10 +1730,11 @@ namespace net.crossly.Api
         /// Launch an offsite campaign for an item. Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <returns>CreateAdOffsiteCampaignResponse</returns>
-        public CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign()
+        public CreateAdOffsiteCampaignResponse CreateAdOffsiteCampaign(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> localVarResponse = CreateAdOffsiteCampaignWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> localVarResponse = CreateAdOffsiteCampaignWithHttpInfo(createAdOffsiteCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -1629,12 +1742,20 @@ namespace net.crossly.Api
         /// Launch an offsite campaign for an item. Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <returns>ApiResponse of CreateAdOffsiteCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignWithHttpInfo(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest)
         {
+            // verify the required parameter 'createAdOffsiteCampaignRequest' is set
+            if (createAdOffsiteCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAdOffsiteCampaignRequest' when calling AdsApi->CreateAdOffsiteCampaign");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1654,6 +1775,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAdOffsiteCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1680,11 +1802,12 @@ namespace net.crossly.Api
         /// Launch an offsite campaign for an item. Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAdOffsiteCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAdOffsiteCampaignResponse> CreateAdOffsiteCampaignAsync(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> localVarResponse = await CreateAdOffsiteCampaignWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse> localVarResponse = await CreateAdOffsiteCampaignWithHttpInfoAsync(createAdOffsiteCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1692,14 +1815,22 @@ namespace net.crossly.Api
         /// Launch an offsite campaign for an item. Creative is built from the structured fields you pass — title, condition as you recorded it, price, image. We generate no prose and invent no claims about condition or authenticity: an ad saying \&quot;mint\&quot; or \&quot;authenticated\&quot; when your listing says neither is a misrepresentation we authored and YOU would take the dispute for. Refuses with 403 when no ad network is wired, rather than returning a campaign that does not exist — a campaign row marked live with nothing behind it would read as spending your money when it is not.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAdOffsiteCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAdOffsiteCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse>> CreateAdOffsiteCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAdOffsiteCampaignResponse>> CreateAdOffsiteCampaignWithHttpInfoAsync(CreateAdOffsiteCampaignRequest createAdOffsiteCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAdOffsiteCampaignRequest' is set
+            if (createAdOffsiteCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAdOffsiteCampaignRequest' when calling AdsApi->CreateAdOffsiteCampaign");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1719,6 +1850,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAdOffsiteCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1874,10 +2006,11 @@ namespace net.crossly.Api
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <returns>CreateListingAdBulkAddResponse</returns>
-        public CreateListingAdBulkAddResponse CreateListingAdBulkAdd()
+        public CreateListingAdBulkAddResponse CreateListingAdBulkAdd(CreateListingAdBulkAddRequest createListingAdBulkAddRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> localVarResponse = CreateListingAdBulkAddWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> localVarResponse = CreateListingAdBulkAddWithHttpInfo(createListingAdBulkAddRequest);
             return localVarResponse.Data;
         }
 
@@ -1885,12 +2018,20 @@ namespace net.crossly.Api
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <returns>ApiResponse of CreateListingAdBulkAddResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> CreateListingAdBulkAddWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> CreateListingAdBulkAddWithHttpInfo(CreateListingAdBulkAddRequest createListingAdBulkAddRequest)
         {
+            // verify the required parameter 'createListingAdBulkAddRequest' is set
+            if (createListingAdBulkAddRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdBulkAddRequest' when calling AdsApi->CreateListingAdBulkAdd");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1910,6 +2051,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAdBulkAddRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1936,11 +2078,12 @@ namespace net.crossly.Api
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdBulkAddResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAdBulkAddResponse> CreateListingAdBulkAddAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAdBulkAddResponse> CreateListingAdBulkAddAsync(CreateListingAdBulkAddRequest createListingAdBulkAddRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> localVarResponse = await CreateListingAdBulkAddWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse> localVarResponse = await CreateListingAdBulkAddWithHttpInfoAsync(createListingAdBulkAddRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1948,14 +2091,22 @@ namespace net.crossly.Api
         /// Add listings to a campaign by master listing id: each listing&#39;s live row on &#x60;platform&#x60; joins campaignId (a Crossly campaign uuid, or the marketplace&#39;s campaign id). A listing not live there is its own failed result. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAdBulkAddRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdBulkAddResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse>> CreateListingAdBulkAddWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdBulkAddResponse>> CreateListingAdBulkAddWithHttpInfoAsync(CreateListingAdBulkAddRequest createListingAdBulkAddRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingAdBulkAddRequest' is set
+            if (createListingAdBulkAddRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdBulkAddRequest' when calling AdsApi->CreateListingAdBulkAdd");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1975,6 +2126,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAdBulkAddRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2003,10 +2155,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <returns>CreateListingAdCampaignResponse</returns>
-        public CreateListingAdCampaignResponse CreateListingAdCampaign(string platform)
+        public CreateListingAdCampaignResponse CreateListingAdCampaign(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = CreateListingAdCampaignWithHttpInfo(platform);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = CreateListingAdCampaignWithHttpInfo(platform, createListingAdCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -2015,8 +2168,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> CreateListingAdCampaignWithHttpInfo(string platform)
+        public net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> CreateListingAdCampaignWithHttpInfo(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2024,9 +2178,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AdsApi->CreateListingAdCampaign");
             }
 
+            // verify the required parameter 'createListingAdCampaignRequest' is set
+            if (createListingAdCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdCampaignRequest' when calling AdsApi->CreateListingAdCampaign");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2047,6 +2208,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createListingAdCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2074,11 +2236,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAdCampaignResponse> CreateListingAdCampaignAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAdCampaignResponse> CreateListingAdCampaignAsync(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = await CreateListingAdCampaignWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = await CreateListingAdCampaignWithHttpInfoAsync(platform, createListingAdCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2087,9 +2250,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="createListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse>> CreateListingAdCampaignWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse>> CreateListingAdCampaignWithHttpInfoAsync(string platform, CreateListingAdCampaignRequest createListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2097,10 +2261,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling AdsApi->CreateListingAdCampaign");
             }
 
+            // verify the required parameter 'createListingAdCampaignRequest' is set
+            if (createListingAdCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdCampaignRequest' when calling AdsApi->CreateListingAdCampaign");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2121,6 +2292,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createListingAdCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2150,10 +2322,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <returns>CreateListingAdCampaignListingResponse</returns>
-        public CreateListingAdCampaignListingResponse CreateListingAdCampaignListing(string platform, string campaignId)
+        public CreateListingAdCampaignListingResponse CreateListingAdCampaignListing(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = CreateListingAdCampaignListingWithHttpInfo(platform, campaignId);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = CreateListingAdCampaignListingWithHttpInfo(platform, campaignId, createListingAdCampaignListingRequest);
             return localVarResponse.Data;
         }
 
@@ -2163,8 +2336,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingWithHttpInfo(string platform, string campaignId)
+        public net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingWithHttpInfo(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2178,9 +2352,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->CreateListingAdCampaignListing");
             }
 
+            // verify the required parameter 'createListingAdCampaignListingRequest' is set
+            if (createListingAdCampaignListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdCampaignListingRequest' when calling AdsApi->CreateListingAdCampaignListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2202,6 +2383,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = createListingAdCampaignListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2230,11 +2412,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingAsync(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = await CreateListingAdCampaignListingWithHttpInfoAsync(platform, campaignId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = await CreateListingAdCampaignListingWithHttpInfoAsync(platform, campaignId, createListingAdCampaignListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2244,9 +2427,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="createListingAdCampaignListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingWithHttpInfoAsync(string platform, string campaignId, CreateListingAdCampaignListingRequest createListingAdCampaignListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2260,10 +2444,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->CreateListingAdCampaignListing");
             }
 
+            // verify the required parameter 'createListingAdCampaignListingRequest' is set
+            if (createListingAdCampaignListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingAdCampaignListingRequest' when calling AdsApi->CreateListingAdCampaignListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2285,6 +2476,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = createListingAdCampaignListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2314,10 +2506,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>CreateListingAdCampaignListingResponse</returns>
-        public CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove(string platform, string campaignId)
+        public CreateListingAdCampaignListingResponse CreateListingAdCampaignListingRemove(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = CreateListingAdCampaignListingRemoveWithHttpInfo(platform, campaignId);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = CreateListingAdCampaignListingRemoveWithHttpInfo(platform, campaignId, updateLiveStreamLineupRequest);
             return localVarResponse.Data;
         }
 
@@ -2327,8 +2520,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveWithHttpInfo(string platform, string campaignId)
+        public net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveWithHttpInfo(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2342,9 +2536,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->CreateListingAdCampaignListingRemove");
             }
 
+            // verify the required parameter 'updateLiveStreamLineupRequest' is set
+            if (updateLiveStreamLineupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLiveStreamLineupRequest' when calling AdsApi->CreateListingAdCampaignListingRemove");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2366,6 +2567,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = updateLiveStreamLineupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2394,11 +2596,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAdCampaignListingResponse> CreateListingAdCampaignListingRemoveAsync(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = await CreateListingAdCampaignListingRemoveWithHttpInfoAsync(platform, campaignId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse> localVarResponse = await CreateListingAdCampaignListingRemoveWithHttpInfoAsync(platform, campaignId, updateLiveStreamLineupRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2408,9 +2611,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingRemoveWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignListingResponse>> CreateListingAdCampaignListingRemoveWithHttpInfoAsync(string platform, string campaignId, UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2424,10 +2628,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->CreateListingAdCampaignListingRemove");
             }
 
+            // verify the required parameter 'updateLiveStreamLineupRequest' is set
+            if (updateLiveStreamLineupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLiveStreamLineupRequest' when calling AdsApi->CreateListingAdCampaignListingRemove");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2449,6 +2660,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = updateLiveStreamLineupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2476,10 +2688,11 @@ namespace net.crossly.Api
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <returns>CreateSponsoredAdBillingTopupLinkResponse</returns>
-        public CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink()
+        public CreateSponsoredAdBillingTopupLinkResponse CreateSponsoredAdBillingTopupLink(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> localVarResponse = CreateSponsoredAdBillingTopupLinkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> localVarResponse = CreateSponsoredAdBillingTopupLinkWithHttpInfo(createSponsoredAdBillingTopupLinkRequest);
             return localVarResponse.Data;
         }
 
@@ -2487,12 +2700,20 @@ namespace net.crossly.Api
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <returns>ApiResponse of CreateSponsoredAdBillingTopupLinkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkWithHttpInfo(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest)
         {
+            // verify the required parameter 'createSponsoredAdBillingTopupLinkRequest' is set
+            if (createSponsoredAdBillingTopupLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSponsoredAdBillingTopupLinkRequest' when calling AdsApi->CreateSponsoredAdBillingTopupLink");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2512,6 +2733,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSponsoredAdBillingTopupLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2538,11 +2760,12 @@ namespace net.crossly.Api
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSponsoredAdBillingTopupLinkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSponsoredAdBillingTopupLinkResponse> CreateSponsoredAdBillingTopupLinkAsync(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> localVarResponse = await CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse> localVarResponse = await CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(createSponsoredAdBillingTopupLinkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2550,14 +2773,22 @@ namespace net.crossly.Api
         /// A Stripe Checkout link that adds amountCents ($5–$10,000) to the ad balance when the seller pays it. Nothing is charged until they do. Use an Idempotency-Key to get the same link back on a retry. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSponsoredAdBillingTopupLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSponsoredAdBillingTopupLinkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSponsoredAdBillingTopupLinkResponse>> CreateSponsoredAdBillingTopupLinkWithHttpInfoAsync(CreateSponsoredAdBillingTopupLinkRequest createSponsoredAdBillingTopupLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSponsoredAdBillingTopupLinkRequest' is set
+            if (createSponsoredAdBillingTopupLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSponsoredAdBillingTopupLinkRequest' when calling AdsApi->CreateSponsoredAdBillingTopupLink");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2577,6 +2808,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSponsoredAdBillingTopupLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2604,10 +2836,11 @@ namespace net.crossly.Api
         /// Stop boosting listings in bulk. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>CreateSponsoredAdBoostRemoveResponse</returns>
-        public CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove()
+        public CreateSponsoredAdBoostRemoveResponse CreateSponsoredAdBoostRemove(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> localVarResponse = CreateSponsoredAdBoostRemoveWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> localVarResponse = CreateSponsoredAdBoostRemoveWithHttpInfo(updateLiveStreamLineupRequest);
             return localVarResponse.Data;
         }
 
@@ -2615,12 +2848,20 @@ namespace net.crossly.Api
         /// Stop boosting listings in bulk. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <returns>ApiResponse of CreateSponsoredAdBoostRemoveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveWithHttpInfo(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest)
         {
+            // verify the required parameter 'updateLiveStreamLineupRequest' is set
+            if (updateLiveStreamLineupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLiveStreamLineupRequest' when calling AdsApi->CreateSponsoredAdBoostRemove");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2640,6 +2881,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateLiveStreamLineupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2666,11 +2908,12 @@ namespace net.crossly.Api
         /// Stop boosting listings in bulk. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSponsoredAdBoostRemoveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSponsoredAdBoostRemoveResponse> CreateSponsoredAdBoostRemoveAsync(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> localVarResponse = await CreateSponsoredAdBoostRemoveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse> localVarResponse = await CreateSponsoredAdBoostRemoveWithHttpInfoAsync(updateLiveStreamLineupRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2678,14 +2921,22 @@ namespace net.crossly.Api
         /// Stop boosting listings in bulk. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLiveStreamLineupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSponsoredAdBoostRemoveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse>> CreateSponsoredAdBoostRemoveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSponsoredAdBoostRemoveResponse>> CreateSponsoredAdBoostRemoveWithHttpInfoAsync(UpdateLiveStreamLineupRequest updateLiveStreamLineupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateLiveStreamLineupRequest' is set
+            if (updateLiveStreamLineupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLiveStreamLineupRequest' when calling AdsApi->CreateSponsoredAdBoostRemove");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2705,6 +2956,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateLiveStreamLineupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3280,10 +3532,12 @@ namespace net.crossly.Api
         /// Whether an item can run offsite, and why not. Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <returns>GetAdOffsiteEligibilityResponse</returns>
-        public GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility()
+        public GetAdOffsiteEligibilityResponse GetAdOffsiteEligibility(string network, string category)
         {
-            net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> localVarResponse = GetAdOffsiteEligibilityWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> localVarResponse = GetAdOffsiteEligibilityWithHttpInfo(network, category);
             return localVarResponse.Data;
         }
 
@@ -3291,9 +3545,23 @@ namespace net.crossly.Api
         /// Whether an item can run offsite, and why not. Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <returns>ApiResponse of GetAdOffsiteEligibilityResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityWithHttpInfo(string network, string category)
         {
+            // verify the required parameter 'network' is set
+            if (network == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'network' when calling AdsApi->GetAdOffsiteEligibility");
+            }
+
+            // verify the required parameter 'category' is set
+            if (category == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'category' when calling AdsApi->GetAdOffsiteEligibility");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -3316,6 +3584,8 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "network", network));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3342,11 +3612,13 @@ namespace net.crossly.Api
         /// Whether an item can run offsite, and why not. Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAdOffsiteEligibilityResponse</returns>
-        public async System.Threading.Tasks.Task<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAdOffsiteEligibilityResponse> GetAdOffsiteEligibilityAsync(string network, string category, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> localVarResponse = await GetAdOffsiteEligibilityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse> localVarResponse = await GetAdOffsiteEligibilityWithHttpInfoAsync(network, category, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3354,10 +3626,24 @@ namespace net.crossly.Api
         /// Whether an item can run offsite, and why not. Reasons: &#x60;not_opted_in&#x60;, &#x60;auto_paused&#x60;, &#x60;network_not_allowed&#x60;, &#x60;category_not_allowlisted&#x60;, &#x60;no_adapter&#x60;, &#x60;no_budget&#x60;. The category check is an ALLOWLIST, so an unclassified category is not eligible. That is not bureaucracy: ad networks suspend the ACCOUNT over a prohibited item, and the account is one shared resource across every merchant using this — so one listing could take offsite ads away from all of them. A blocklist would fail open on the first category nobody thought of.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="network"></param>
+        /// <param name="category"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAdOffsiteEligibilityResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse>> GetAdOffsiteEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAdOffsiteEligibilityResponse>> GetAdOffsiteEligibilityWithHttpInfoAsync(string network, string category, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'network' is set
+            if (network == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'network' when calling AdsApi->GetAdOffsiteEligibility");
+            }
+
+            // verify the required parameter 'category' is set
+            if (category == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'category' when calling AdsApi->GetAdOffsiteEligibility");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3381,6 +3667,8 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "network", network));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "category", category));
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3682,10 +3970,11 @@ namespace net.crossly.Api
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>GetSponsoredAdBillingResponse</returns>
-        public GetSponsoredAdBillingResponse GetSponsoredAdBilling()
+        public GetSponsoredAdBillingResponse GetSponsoredAdBilling(string refresh = default(string))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> localVarResponse = GetSponsoredAdBillingWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> localVarResponse = GetSponsoredAdBillingWithHttpInfo(refresh);
             return localVarResponse.Data;
         }
 
@@ -3693,8 +3982,9 @@ namespace net.crossly.Api
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdBillingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> GetSponsoredAdBillingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> GetSponsoredAdBillingWithHttpInfo(string refresh = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3718,6 +4008,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3744,11 +4038,12 @@ namespace net.crossly.Api
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdBillingResponse</returns>
-        public async System.Threading.Tasks.Task<GetSponsoredAdBillingResponse> GetSponsoredAdBillingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetSponsoredAdBillingResponse> GetSponsoredAdBillingAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> localVarResponse = await GetSponsoredAdBillingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse> localVarResponse = await GetSponsoredAdBillingWithHttpInfoAsync(refresh, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3756,9 +4051,10 @@ namespace net.crossly.Api
         /// What pays for your ads: headroom across the billing rails (ad balance and/or CBX), unbilled click spend, settlement charges, daily spend, Boost fees and CBX ad-credit grants; funds is the full funds summary (same as /v1/sponsored-ads/funds). refresh&#x3D;true re-reads the balance. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdBillingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse>> GetSponsoredAdBillingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdBillingResponse>> GetSponsoredAdBillingWithHttpInfoAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3783,6 +4079,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4253,10 +4553,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>SponsoredAdCampaignResponse</returns>
-        public SponsoredAdCampaignResponse GetSponsoredAdCampaign(string id)
+        public SponsoredAdCampaignResponse GetSponsoredAdCampaign(string id, string from = default(string), string to = default(string))
         {
-            net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> localVarResponse = GetSponsoredAdCampaignWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> localVarResponse = GetSponsoredAdCampaignWithHttpInfo(id, from, to);
             return localVarResponse.Data;
         }
 
@@ -4265,8 +4567,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of SponsoredAdCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> GetSponsoredAdCampaignWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> GetSponsoredAdCampaignWithHttpInfo(string id, string from = default(string), string to = default(string))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4297,6 +4601,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4324,11 +4636,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SponsoredAdCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<SponsoredAdCampaignResponse> GetSponsoredAdCampaignAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SponsoredAdCampaignResponse> GetSponsoredAdCampaignAsync(string id, string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> localVarResponse = await GetSponsoredAdCampaignWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse> localVarResponse = await GetSponsoredAdCampaignWithHttpInfoAsync(id, from, to, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4337,9 +4651,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SponsoredAdCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse>> GetSponsoredAdCampaignWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SponsoredAdCampaignResponse>> GetSponsoredAdCampaignWithHttpInfoAsync(string id, string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4371,6 +4687,14 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4398,10 +4722,11 @@ namespace net.crossly.Api
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>GetSponsoredAdFundResponse</returns>
-        public GetSponsoredAdFundResponse GetSponsoredAdFund()
+        public GetSponsoredAdFundResponse GetSponsoredAdFund(string refresh = default(string))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> localVarResponse = GetSponsoredAdFundWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> localVarResponse = GetSponsoredAdFundWithHttpInfo(refresh);
             return localVarResponse.Data;
         }
 
@@ -4409,8 +4734,9 @@ namespace net.crossly.Api
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdFundResponse</returns>
-        public net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> GetSponsoredAdFundWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> GetSponsoredAdFundWithHttpInfo(string refresh = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4434,6 +4760,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4460,11 +4790,12 @@ namespace net.crossly.Api
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdFundResponse</returns>
-        public async System.Threading.Tasks.Task<GetSponsoredAdFundResponse> GetSponsoredAdFundAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetSponsoredAdFundResponse> GetSponsoredAdFundAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> localVarResponse = await GetSponsoredAdFundWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse> localVarResponse = await GetSponsoredAdFundWithHttpInfoAsync(refresh, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4472,9 +4803,10 @@ namespace net.crossly.Api
         /// What can pay for clicks now: the billing rails in effect (ad balance and/or CBX), the ad balance and ad credit, CBX headroom, unbilled clicks, available cents, auto top-up, the saved payment method and the refundable balance. refresh&#x3D;true re-reads CBX. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdFundResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse>> GetSponsoredAdFundWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdFundResponse>> GetSponsoredAdFundWithHttpInfoAsync(string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4499,6 +4831,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4526,10 +4862,12 @@ namespace net.crossly.Api
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>GetSponsoredAdReportResponse</returns>
-        public GetSponsoredAdReportResponse GetSponsoredAdReport()
+        public GetSponsoredAdReportResponse GetSponsoredAdReport(string from = default(string), string to = default(string))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> localVarResponse = GetSponsoredAdReportWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> localVarResponse = GetSponsoredAdReportWithHttpInfo(from, to);
             return localVarResponse.Data;
         }
 
@@ -4537,8 +4875,10 @@ namespace net.crossly.Api
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of GetSponsoredAdReportResponse</returns>
-        public net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> GetSponsoredAdReportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> GetSponsoredAdReportWithHttpInfo(string from = default(string), string to = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4562,6 +4902,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4588,11 +4936,13 @@ namespace net.crossly.Api
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSponsoredAdReportResponse</returns>
-        public async System.Threading.Tasks.Task<GetSponsoredAdReportResponse> GetSponsoredAdReportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetSponsoredAdReportResponse> GetSponsoredAdReportAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> localVarResponse = await GetSponsoredAdReportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse> localVarResponse = await GetSponsoredAdReportWithHttpInfoAsync(from, to, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4600,9 +4950,11 @@ namespace net.crossly.Api
         /// Sponsored report for a range: totals (spend, impressions, clicks, CTR, average CPC, attributed orders and revenue, ROAS), a zero-filled daily series, per-campaign rows (targetType listings | wholesale_catalog) and &#x60;catalogs&#x60;, one row per boosted catalog. Listing orders are Crossly purchases of the advertised listing within 7 days of a click by the same buyer; catalog orders are trade orders with that seller within 7 days of a catalog click by the same buyer. Catalog impressions count once per viewer per day. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSponsoredAdReportResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse>> GetSponsoredAdReportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetSponsoredAdReportResponse>> GetSponsoredAdReportWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4627,6 +4979,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4783,10 +5143,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ListListingAdCampaignsResponse</returns>
-        public ListListingAdCampaignsResponse ListListingAdCampaigns(string platform)
+        public ListListingAdCampaignsResponse ListListingAdCampaigns(string platform, string refresh = default(string))
         {
-            net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> localVarResponse = ListListingAdCampaignsWithHttpInfo(platform);
+            net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> localVarResponse = ListListingAdCampaignsWithHttpInfo(platform, refresh);
             return localVarResponse.Data;
         }
 
@@ -4795,8 +5156,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <returns>ApiResponse of ListListingAdCampaignsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> ListListingAdCampaignsWithHttpInfo(string platform)
+        public net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> ListListingAdCampaignsWithHttpInfo(string platform, string refresh = default(string))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -4827,6 +5189,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4854,11 +5220,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingAdCampaignsResponse</returns>
-        public async System.Threading.Tasks.Task<ListListingAdCampaignsResponse> ListListingAdCampaignsAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListListingAdCampaignsResponse> ListListingAdCampaignsAsync(string platform, string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> localVarResponse = await ListListingAdCampaignsWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse> localVarResponse = await ListListingAdCampaignsWithHttpInfoAsync(platform, refresh, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4867,9 +5234,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="refresh"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingAdCampaignsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse>> ListListingAdCampaignsWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingAdCampaignsResponse>> ListListingAdCampaignsWithHttpInfoAsync(string platform, string refresh = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -4901,6 +5269,10 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            if (refresh != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "refresh", refresh));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5056,10 +5428,13 @@ namespace net.crossly.Api
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListSponsoredAdBillingHistoryResponse</returns>
-        public ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory()
+        public ListSponsoredAdBillingHistoryResponse ListSponsoredAdBillingHistory(string kind = default(string), string before = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> localVarResponse = ListSponsoredAdBillingHistoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> localVarResponse = ListSponsoredAdBillingHistoryWithHttpInfo(kind, before, limit);
             return localVarResponse.Data;
         }
 
@@ -5067,8 +5442,11 @@ namespace net.crossly.Api
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdBillingHistoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryWithHttpInfo(string kind = default(string), string before = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5092,6 +5470,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5118,11 +5508,14 @@ namespace net.crossly.Api
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdBillingHistoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSponsoredAdBillingHistoryResponse> ListSponsoredAdBillingHistoryAsync(string kind = default(string), string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> localVarResponse = await ListSponsoredAdBillingHistoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse> localVarResponse = await ListSponsoredAdBillingHistoryWithHttpInfoAsync(kind, before, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5130,9 +5523,12 @@ namespace net.crossly.Api
         /// Billing history newest first: top-ups (status, receipt number), click charges (how each was paid: ad balance, credit, CBX, written off), credits, refunds and Boost fees. kind filters; before (ISO time) pages; limit ≤ 100. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdBillingHistoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse>> ListSponsoredAdBillingHistoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdBillingHistoryResponse>> ListSponsoredAdBillingHistoryWithHttpInfoAsync(string kind = default(string), string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5157,6 +5553,18 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5440,10 +5848,12 @@ namespace net.crossly.Api
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ListSponsoredAdCampaignsResponse</returns>
-        public ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns()
+        public ListSponsoredAdCampaignsResponse ListSponsoredAdCampaigns(string from = default(string), string to = default(string))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> localVarResponse = ListSponsoredAdCampaignsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> localVarResponse = ListSponsoredAdCampaignsWithHttpInfo(from, to);
             return localVarResponse.Data;
         }
 
@@ -5451,8 +5861,10 @@ namespace net.crossly.Api
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdCampaignsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsWithHttpInfo(string from = default(string), string to = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5476,6 +5888,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5502,11 +5922,13 @@ namespace net.crossly.Api
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdCampaignsResponse</returns>
-        public async System.Threading.Tasks.Task<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSponsoredAdCampaignsResponse> ListSponsoredAdCampaignsAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> localVarResponse = await ListSponsoredAdCampaignsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse> localVarResponse = await ListSponsoredAdCampaignsWithHttpInfoAsync(from, to, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5514,9 +5936,11 @@ namespace net.crossly.Api
         /// Your Sponsored Listings campaigns with status, pacing (spent today, daily cap reached), budgets, bids, placements and stats for the range (from/to, YYYY-MM-DD; default last 30 days). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdCampaignsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse>> ListSponsoredAdCampaignsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdCampaignsResponse>> ListSponsoredAdCampaignsWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5541,6 +5965,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5568,10 +6000,12 @@ namespace net.crossly.Api
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ListSponsoredAdListingsResponse</returns>
-        public ListSponsoredAdListingsResponse ListSponsoredAdListings()
+        public ListSponsoredAdListingsResponse ListSponsoredAdListings(string from = default(string), string to = default(string))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> localVarResponse = ListSponsoredAdListingsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> localVarResponse = ListSponsoredAdListingsWithHttpInfo(from, to);
             return localVarResponse.Data;
         }
 
@@ -5579,8 +6013,10 @@ namespace net.crossly.Api
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <returns>ApiResponse of ListSponsoredAdListingsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> ListSponsoredAdListingsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> ListSponsoredAdListingsWithHttpInfo(string from = default(string), string to = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5604,6 +6040,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5630,11 +6074,13 @@ namespace net.crossly.Api
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSponsoredAdListingsResponse</returns>
-        public async System.Threading.Tasks.Task<ListSponsoredAdListingsResponse> ListSponsoredAdListingsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSponsoredAdListingsResponse> ListSponsoredAdListingsAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> localVarResponse = await ListSponsoredAdListingsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse> localVarResponse = await ListSponsoredAdListingsWithHttpInfoAsync(from, to, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5642,9 +6088,11 @@ namespace net.crossly.Api
         /// Per-listing ad performance across campaigns for a range, plus suggestions: live listings with views but few sales that are not sponsored yet, with a suggested bid. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="from"> (optional)</param>
+        /// <param name="to"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSponsoredAdListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse>> ListSponsoredAdListingsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSponsoredAdListingsResponse>> ListSponsoredAdListingsWithHttpInfoAsync(string from = default(string), string to = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5669,6 +6117,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (from != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "from", from));
+            }
+            if (to != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "to", to));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5696,10 +6152,11 @@ namespace net.crossly.Api
         /// Turn offsite ads on or off. Yours alone to set. The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <returns>UpdateAdOffsiteResponse</returns>
-        public UpdateAdOffsiteResponse UpdateAdOffsite()
+        public UpdateAdOffsiteResponse UpdateAdOffsite(UpdateAdOffsiteRequest updateAdOffsiteRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> localVarResponse = UpdateAdOffsiteWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> localVarResponse = UpdateAdOffsiteWithHttpInfo(updateAdOffsiteRequest);
             return localVarResponse.Data;
         }
 
@@ -5707,12 +6164,20 @@ namespace net.crossly.Api
         /// Turn offsite ads on or off. Yours alone to set. The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <returns>ApiResponse of UpdateAdOffsiteResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> UpdateAdOffsiteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> UpdateAdOffsiteWithHttpInfo(UpdateAdOffsiteRequest updateAdOffsiteRequest)
         {
+            // verify the required parameter 'updateAdOffsiteRequest' is set
+            if (updateAdOffsiteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAdOffsiteRequest' when calling AdsApi->UpdateAdOffsite");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5732,6 +6197,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAdOffsiteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5758,11 +6224,12 @@ namespace net.crossly.Api
         /// Turn offsite ads on or off. Yours alone to set. The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAdOffsiteResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateAdOffsiteResponse> UpdateAdOffsiteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateAdOffsiteResponse> UpdateAdOffsiteAsync(UpdateAdOffsiteRequest updateAdOffsiteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> localVarResponse = await UpdateAdOffsiteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse> localVarResponse = await UpdateAdOffsiteWithHttpInfoAsync(updateAdOffsiteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5770,14 +6237,22 @@ namespace net.crossly.Api
         /// Turn offsite ads on or off. Yours alone to set. The toggle. Nothing else in the system sets &#x60;enabled&#x60; — no onboarding default, no bulk enable, no admin override. &#x60;maxOffsiteShareBps&#x60; caps how much of your budget may leave the platform, so opting in does not mean discovering the whole thing went to Google. &#x60;minReturnBps&#x60; sets the floor below which offsite spend auto-pauses: 20000 means we must return $2 of attributed revenue per $1 spent over the window. Toggling either way clears any existing auto-pause, so turning it back on later does not inherit a pause from months ago. When one of your ads brings a buyer who purchases somebody ELSE&#39;s item, that is reported to you as spillover so you can judge whether offsite traffic is reaching buyers who want YOUR item, and switch it off if not. It is not credited back — you bought clicks, which is how every ad market works.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAdOffsiteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAdOffsiteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse>> UpdateAdOffsiteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAdOffsiteResponse>> UpdateAdOffsiteWithHttpInfoAsync(UpdateAdOffsiteRequest updateAdOffsiteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateAdOffsiteRequest' is set
+            if (updateAdOffsiteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAdOffsiteRequest' when calling AdsApi->UpdateAdOffsite");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5797,6 +6272,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAdOffsiteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5826,10 +6302,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <returns>CreateListingAdCampaignResponse</returns>
-        public CreateListingAdCampaignResponse UpdateListingAdCampaign(string platform, string campaignId)
+        public CreateListingAdCampaignResponse UpdateListingAdCampaign(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = UpdateListingAdCampaignWithHttpInfo(platform, campaignId);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = UpdateListingAdCampaignWithHttpInfo(platform, campaignId, updateListingAdCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -5839,8 +6316,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <returns>ApiResponse of CreateListingAdCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> UpdateListingAdCampaignWithHttpInfo(string platform, string campaignId)
+        public net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> UpdateListingAdCampaignWithHttpInfo(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -5854,9 +6332,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->UpdateListingAdCampaign");
             }
 
+            // verify the required parameter 'updateListingAdCampaignRequest' is set
+            if (updateListingAdCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateListingAdCampaignRequest' when calling AdsApi->UpdateListingAdCampaign");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5878,6 +6363,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = updateListingAdCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5906,11 +6392,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAdCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAdCampaignResponse> UpdateListingAdCampaignAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAdCampaignResponse> UpdateListingAdCampaignAsync(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = await UpdateListingAdCampaignWithHttpInfoAsync(platform, campaignId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse> localVarResponse = await UpdateListingAdCampaignWithHttpInfoAsync(platform, campaignId, updateListingAdCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5920,9 +6407,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="campaignId"></param>
+        /// <param name="updateListingAdCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAdCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse>> UpdateListingAdCampaignWithHttpInfoAsync(string platform, string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAdCampaignResponse>> UpdateListingAdCampaignWithHttpInfoAsync(string platform, string campaignId, UpdateListingAdCampaignRequest updateListingAdCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -5936,10 +6424,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling AdsApi->UpdateListingAdCampaign");
             }
 
+            // verify the required parameter 'updateListingAdCampaignRequest' is set
+            if (updateListingAdCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateListingAdCampaignRequest' when calling AdsApi->UpdateListingAdCampaign");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5961,6 +6456,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = updateListingAdCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5990,10 +6486,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <returns>UpdateListingAdListingRateResponse</returns>
-        public UpdateListingAdListingRateResponse UpdateListingAdListingRate(string platform, string platformListingId)
+        public UpdateListingAdListingRateResponse UpdateListingAdListingRate(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> localVarResponse = UpdateListingAdListingRateWithHttpInfo(platform, platformListingId);
+            net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> localVarResponse = UpdateListingAdListingRateWithHttpInfo(platform, platformListingId, updateListingAdListingRateRequest);
             return localVarResponse.Data;
         }
 
@@ -6003,8 +6500,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <returns>ApiResponse of UpdateListingAdListingRateResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> UpdateListingAdListingRateWithHttpInfo(string platform, string platformListingId)
+        public net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> UpdateListingAdListingRateWithHttpInfo(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -6018,9 +6516,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platformListingId' when calling AdsApi->UpdateListingAdListingRate");
             }
 
+            // verify the required parameter 'updateListingAdListingRateRequest' is set
+            if (updateListingAdListingRateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateListingAdListingRateRequest' when calling AdsApi->UpdateListingAdListingRate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6042,6 +6547,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("platformListingId", net.crossly.Client.ClientUtils.ParameterToString(platformListingId)); // path parameter
+            localVarRequestOptions.Data = updateListingAdListingRateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6070,11 +6576,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateListingAdListingRateResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateListingAdListingRateResponse> UpdateListingAdListingRateAsync(string platform, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateListingAdListingRateResponse> UpdateListingAdListingRateAsync(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> localVarResponse = await UpdateListingAdListingRateWithHttpInfoAsync(platform, platformListingId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse> localVarResponse = await UpdateListingAdListingRateWithHttpInfoAsync(platform, platformListingId, updateListingAdListingRateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6084,9 +6591,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="platformListingId"></param>
+        /// <param name="updateListingAdListingRateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateListingAdListingRateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse>> UpdateListingAdListingRateWithHttpInfoAsync(string platform, string platformListingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateListingAdListingRateResponse>> UpdateListingAdListingRateWithHttpInfoAsync(string platform, string platformListingId, UpdateListingAdListingRateRequest updateListingAdListingRateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -6100,10 +6608,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platformListingId' when calling AdsApi->UpdateListingAdListingRate");
             }
 
+            // verify the required parameter 'updateListingAdListingRateRequest' is set
+            if (updateListingAdListingRateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateListingAdListingRateRequest' when calling AdsApi->UpdateListingAdListingRate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6125,6 +6640,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("platformListingId", net.crossly.Client.ClientUtils.ParameterToString(platformListingId)); // path parameter
+            localVarRequestOptions.Data = updateListingAdListingRateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6152,10 +6668,11 @@ namespace net.crossly.Api
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <returns>SponsoredAdResponse</returns>
-        public SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup()
+        public SponsoredAdResponse UpdateSponsoredAdBillingAutoTopup(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest)
         {
-            net.crossly.Client.ApiResponse<SponsoredAdResponse> localVarResponse = UpdateSponsoredAdBillingAutoTopupWithHttpInfo();
+            net.crossly.Client.ApiResponse<SponsoredAdResponse> localVarResponse = UpdateSponsoredAdBillingAutoTopupWithHttpInfo(updateSponsoredAdBillingAutoTopupRequest);
             return localVarResponse.Data;
         }
 
@@ -6163,12 +6680,20 @@ namespace net.crossly.Api
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <returns>ApiResponse of SponsoredAdResponse</returns>
-        public net.crossly.Client.ApiResponse<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupWithHttpInfo()
+        public net.crossly.Client.ApiResponse<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupWithHttpInfo(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest)
         {
+            // verify the required parameter 'updateSponsoredAdBillingAutoTopupRequest' is set
+            if (updateSponsoredAdBillingAutoTopupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSponsoredAdBillingAutoTopupRequest' when calling AdsApi->UpdateSponsoredAdBillingAutoTopup");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6188,6 +6713,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateSponsoredAdBillingAutoTopupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6214,11 +6740,12 @@ namespace net.crossly.Api
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SponsoredAdResponse</returns>
-        public async System.Threading.Tasks.Task<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SponsoredAdResponse> UpdateSponsoredAdBillingAutoTopupAsync(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SponsoredAdResponse> localVarResponse = await UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<SponsoredAdResponse> localVarResponse = await UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(updateSponsoredAdBillingAutoTopupRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6226,14 +6753,22 @@ namespace net.crossly.Api
         /// Auto top-up: enabled, thresholdCents (top up when the ad balance drops below it), amountCents (how much). Needs a saved payment method (the first top-up saves it). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBillingAutoTopupRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SponsoredAdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SponsoredAdResponse>> UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SponsoredAdResponse>> UpdateSponsoredAdBillingAutoTopupWithHttpInfoAsync(UpdateSponsoredAdBillingAutoTopupRequest updateSponsoredAdBillingAutoTopupRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateSponsoredAdBillingAutoTopupRequest' is set
+            if (updateSponsoredAdBillingAutoTopupRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSponsoredAdBillingAutoTopupRequest' when calling AdsApi->UpdateSponsoredAdBillingAutoTopup");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6253,6 +6788,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateSponsoredAdBillingAutoTopupRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6280,10 +6816,11 @@ namespace net.crossly.Api
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <returns>UpdateSponsoredAdBoostResponse</returns>
-        public UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost()
+        public UpdateSponsoredAdBoostResponse UpdateSponsoredAdBoost(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> localVarResponse = UpdateSponsoredAdBoostWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> localVarResponse = UpdateSponsoredAdBoostWithHttpInfo(updateSponsoredAdBoostRequest);
             return localVarResponse.Data;
         }
 
@@ -6291,12 +6828,20 @@ namespace net.crossly.Api
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <returns>ApiResponse of UpdateSponsoredAdBoostResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostWithHttpInfo(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest)
         {
+            // verify the required parameter 'updateSponsoredAdBoostRequest' is set
+            if (updateSponsoredAdBoostRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSponsoredAdBoostRequest' when calling AdsApi->UpdateSponsoredAdBoost");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6316,6 +6861,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateSponsoredAdBoostRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6342,11 +6888,12 @@ namespace net.crossly.Api
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateSponsoredAdBoostResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateSponsoredAdBoostResponse> UpdateSponsoredAdBoostAsync(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> localVarResponse = await UpdateSponsoredAdBoostWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse> localVarResponse = await UpdateSponsoredAdBoostWithHttpInfoAsync(updateSponsoredAdBoostRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6354,14 +6901,22 @@ namespace net.crossly.Api
         /// Boost listings in bulk (platformListingIds, upliftBps 100–2000 &#x3D; 1–20%), or change their rate. Your own live Crossly listings only. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateSponsoredAdBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateSponsoredAdBoostResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse>> UpdateSponsoredAdBoostWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateSponsoredAdBoostResponse>> UpdateSponsoredAdBoostWithHttpInfoAsync(UpdateSponsoredAdBoostRequest updateSponsoredAdBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateSponsoredAdBoostRequest' is set
+            if (updateSponsoredAdBoostRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateSponsoredAdBoostRequest' when calling AdsApi->UpdateSponsoredAdBoost");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6381,6 +6936,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateSponsoredAdBoostRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

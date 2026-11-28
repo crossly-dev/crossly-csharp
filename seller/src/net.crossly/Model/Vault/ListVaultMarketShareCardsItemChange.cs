@@ -39,22 +39,22 @@ namespace net.crossly.Model
         public enum SinceEnum
         {
             /// <summary>
+            /// Enum Fill for value: fill
+            /// </summary>
+            [EnumMember(Value = "fill")]
+            Fill = 1,
+
+            /// <summary>
             /// Enum Entry for value: entry
             /// </summary>
             [EnumMember(Value = "entry")]
-            Entry = 1,
+            Entry = 2,
 
             /// <summary>
             /// Enum Cost for value: cost
             /// </summary>
             [EnumMember(Value = "cost")]
-            Cost = 2,
-
-            /// <summary>
-            /// Enum Fill for value: fill
-            /// </summary>
-            [EnumMember(Value = "fill")]
-            Fill = 3,
+            Cost = 3,
 
             /// <summary>
             /// Enum Inception for value: inception

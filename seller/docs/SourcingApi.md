@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createsourcingreceipt"></a>
 # **CreateSourcingReceipt**
-> CreateSourcingReceiptResponse CreateSourcingReceipt ()
+> CreateSourcingReceiptResponse CreateSourcingReceipt (CreateSourcingReceiptRequest createSourcingReceiptRequest)
 
 Append a parsed receipt to the sourcing ledger.
 
@@ -36,11 +36,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new SourcingApi(config);
+            var createSourcingReceiptRequest = new CreateSourcingReceiptRequest(); // CreateSourcingReceiptRequest | 
 
             try
             {
                 // Append a parsed receipt to the sourcing ledger.
-                CreateSourcingReceiptResponse result = apiInstance.CreateSourcingReceipt();
+                CreateSourcingReceiptResponse result = apiInstance.CreateSourcingReceipt(createSourcingReceiptRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSourcingReceiptRequest** | **CreateSourcingReceiptRequest**|  | 
 
 ### Return type
 
@@ -67,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

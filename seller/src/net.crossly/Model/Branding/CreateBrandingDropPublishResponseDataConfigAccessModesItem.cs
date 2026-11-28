@@ -38,34 +38,34 @@ namespace net.crossly.Model
         Public = 1,
 
         /// <summary>
-        /// Enum LoyaltyTier for value: loyalty_tier
-        /// </summary>
-        [EnumMember(Value = "loyalty_tier")]
-        LoyaltyTier = 2,
-
-        /// <summary>
         /// Enum Followers for value: followers
         /// </summary>
         [EnumMember(Value = "followers")]
-        Followers = 3,
+        Followers = 2,
 
         /// <summary>
-        /// Enum TokenHolders for value: token_holders
+        /// Enum LoyaltyTier for value: loyalty_tier
         /// </summary>
-        [EnumMember(Value = "token_holders")]
-        TokenHolders = 4,
-
-        /// <summary>
-        /// Enum Invite for value: invite
-        /// </summary>
-        [EnumMember(Value = "invite")]
-        Invite = 5,
+        [EnumMember(Value = "loyalty_tier")]
+        LoyaltyTier = 3,
 
         /// <summary>
         /// Enum WholesaleBuyers for value: wholesale_buyers
         /// </summary>
         [EnumMember(Value = "wholesale_buyers")]
-        WholesaleBuyers = 6,
+        WholesaleBuyers = 4,
+
+        /// <summary>
+        /// Enum TokenHolders for value: token_holders
+        /// </summary>
+        [EnumMember(Value = "token_holders")]
+        TokenHolders = 5,
+
+        /// <summary>
+        /// Enum Invite for value: invite
+        /// </summary>
+        [EnumMember(Value = "invite")]
+        Invite = 6,
 
         /// <summary>
         /// Enum VerifiedBuyers for value: verified_buyers

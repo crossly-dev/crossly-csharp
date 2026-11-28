@@ -124,46 +124,52 @@ namespace net.crossly.Model
             Places = 7,
 
             /// <summary>
+            /// Enum Localization for value: localization
+            /// </summary>
+            [EnumMember(Value = "localization")]
+            Localization = 8,
+
+            /// <summary>
             /// Enum Versions for value: versions
             /// </summary>
             [EnumMember(Value = "versions")]
-            Versions = 8,
+            Versions = 9,
 
             /// <summary>
             /// Enum Assets for value: assets
             /// </summary>
             [EnumMember(Value = "assets")]
-            Assets = 9,
+            Assets = 10,
 
             /// <summary>
             /// Enum Safety for value: safety
             /// </summary>
             [EnumMember(Value = "safety")]
-            Safety = 10,
+            Safety = 11,
 
             /// <summary>
             /// Enum Collaborators for value: collaborators
             /// </summary>
             [EnumMember(Value = "collaborators")]
-            Collaborators = 11,
+            Collaborators = 12,
 
             /// <summary>
             /// Enum Monetize for value: monetize
             /// </summary>
             [EnumMember(Value = "monetize")]
-            Monetize = 12,
+            Monetize = 13,
 
             /// <summary>
             /// Enum LiveOps for value: live-ops
             /// </summary>
             [EnumMember(Value = "live-ops")]
-            LiveOps = 13,
+            LiveOps = 14,
 
             /// <summary>
             /// Enum Servers for value: servers
             /// </summary>
             [EnumMember(Value = "servers")]
-            Servers = 14
+            Servers = 15
 
         }
 

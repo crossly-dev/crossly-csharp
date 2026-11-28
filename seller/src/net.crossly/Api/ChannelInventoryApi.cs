@@ -27,16 +27,35 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        ListChannelAccountsItem DeleteChannelAccountSetting(Guid accountId);
+
+        /// <summary>
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        ApiResponse<ListChannelAccountsItem> DeleteChannelAccountSettingWithHttpInfo(Guid accountId);
+        /// <summary>
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        ListChannelInventoryItem DeleteChannelInventory(string platform, int slot);
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        ListChannelAccountsItem DeleteChannelInventory(string platform, int slot);
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -44,19 +63,39 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        ApiResponse<ListChannelInventoryItem> DeleteChannelInventoryWithHttpInfo(string platform, int slot);
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        ApiResponse<ListChannelAccountsItem> DeleteChannelInventoryWithHttpInfo(string platform, int slot);
         /// <summary>
-        /// Get one channel&#39;s inventory controls.
+        /// Get one platform account&#39;s inventory and restock settings in the store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        ListChannelAccountsItem GetChannelAccountSetting(Guid accountId);
+
+        /// <summary>
+        /// Get one platform account&#39;s inventory and restock settings in the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        ApiResponse<ListChannelAccountsItem> GetChannelAccountSettingWithHttpInfo(Guid accountId);
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        ListChannelInventoryItem GetChannelInventory(string platform, int slot);
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        ListChannelAccountsItem GetChannelInventory(string platform, int slot);
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls.
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -64,35 +103,76 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        ApiResponse<ListChannelInventoryItem> GetChannelInventoryWithHttpInfo(string platform, int slot);
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        ApiResponse<ListChannelAccountsItem> GetChannelInventoryWithHttpInfo(string platform, int slot);
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+        /// List every platform account of the store with its inventory and restock settings.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ListChannelInventoryResponse</returns>
-        ListChannelInventoryResponse ListChannelInventory();
+        /// <returns>ListChannelAccountsResponse</returns>
+        ListChannelAccountsResponse ListChannelAccounts();
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+        /// List every platform account of the store with its inventory and restock settings.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of ListChannelInventoryResponse</returns>
-        ApiResponse<ListChannelInventoryResponse> ListChannelInventoryWithHttpInfo();
+        /// <returns>ApiResponse of ListChannelAccountsResponse</returns>
+        ApiResponse<ListChannelAccountsResponse> ListChannelAccountsWithHttpInfo();
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListChannelAccountsResponse</returns>
+        [Obsolete]
+        ListChannelAccountsResponse ListChannelInventory();
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListChannelAccountsResponse</returns>
+        [Obsolete]
+        ApiResponse<ListChannelAccountsResponse> ListChannelInventoryWithHttpInfo();
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        ListChannelAccountsItem UpdateChannelAccountSetting(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest);
+
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        ApiResponse<ListChannelAccountsItem> UpdateChannelAccountSettingWithHttpInfo(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest);
+        /// <summary>
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        ListChannelInventoryItem UpdateChannelInventory(string platform, int slot);
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        ListChannelAccountsItem UpdateChannelInventory(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest);
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -100,8 +180,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        ApiResponse<ListChannelInventoryItem> UpdateChannelInventoryWithHttpInfo(string platform, int slot);
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        ApiResponse<ListChannelAccountsItem> UpdateChannelInventoryWithHttpInfo(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest);
         #endregion Synchronous Operations
     }
 
@@ -112,32 +194,30 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <param name="slot"></param>
+        /// <param name="accountId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        System.Threading.Tasks.Task<ListChannelInventoryItem> DeleteChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        System.Threading.Tasks.Task<ListChannelAccountsItem> DeleteChannelAccountSettingAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out).
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <param name="slot"></param>
+        /// <param name="accountId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListChannelInventoryItem>> DeleteChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> DeleteChannelAccountSettingWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Get one channel&#39;s inventory controls.
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -146,11 +226,12 @@ namespace net.crossly.Api
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        System.Threading.Tasks.Task<ListChannelInventoryItem> GetChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ListChannelAccountsItem> DeleteChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls.
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -159,31 +240,34 @@ namespace net.crossly.Api
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListChannelInventoryItem>> GetChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> DeleteChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+        /// Get one platform account&#39;s inventory and restock settings in the store.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryResponse</returns>
-        System.Threading.Tasks.Task<ListChannelInventoryResponse> ListChannelInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        System.Threading.Tasks.Task<ListChannelAccountsItem> GetChannelAccountSettingAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions).
+        /// Get one platform account&#39;s inventory and restock settings in the store.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListChannelInventoryResponse>> ListChannelInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> GetChannelAccountSettingWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -192,11 +276,12 @@ namespace net.crossly.Api
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        System.Threading.Tasks.Task<ListChannelInventoryItem> UpdateChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ListChannelAccountsItem> GetChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write).
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -205,8 +290,107 @@ namespace net.crossly.Api
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListChannelInventoryItem>> UpdateChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> GetChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List every platform account of the store with its inventory and restock settings.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsResponse</returns>
+        System.Threading.Tasks.Task<ListChannelAccountsResponse> ListChannelAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// List every platform account of the store with its inventory and restock settings.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsResponse>> ListChannelAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsResponse</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ListChannelAccountsResponse> ListChannelInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsResponse)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsResponse>> ListChannelInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        System.Threading.Tasks.Task<ListChannelAccountsItem> UpdateChannelAccountSettingAsync(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> UpdateChannelAccountSettingWithHttpInfoAsync(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="slot"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ListChannelAccountsItem> UpdateChannelInventoryAsync(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="slot"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        System.Threading.Tasks.Task<ApiResponse<ListChannelAccountsItem>> UpdateChannelInventoryWithHttpInfoAsync(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -328,26 +512,162 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out). 
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        public ListChannelInventoryItem DeleteChannelInventory(string platform, int slot)
+        /// <param name="accountId"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        public ListChannelAccountsItem DeleteChannelAccountSetting(Guid accountId)
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = DeleteChannelInventoryWithHttpInfo(platform, slot);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = DeleteChannelAccountSettingWithHttpInfo(accountId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out). 
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> DeleteChannelAccountSettingWithHttpInfo(Guid accountId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> DeleteChannelAccountSettingAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await DeleteChannelAccountSettingWithHttpInfoAsync(accountId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Reset a platform account&#39;s settings in the store to the defaults (no cap, no buffer, sync on, end on sell-out, republish automatically). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> DeleteChannelAccountSettingWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        public net.crossly.Client.ApiResponse<ListChannelInventoryItem> DeleteChannelInventoryWithHttpInfo(string platform, int slot)
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        public ListChannelAccountsItem DeleteChannelInventory(string platform, int slot)
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = DeleteChannelInventoryWithHttpInfo(platform, slot);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="slot"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> DeleteChannelInventoryWithHttpInfo(string platform, int slot)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -388,7 +708,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("DeleteChannelInventory", localVarResponse);
@@ -402,28 +722,30 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out). 
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        public async System.Threading.Tasks.Task<ListChannelInventoryItem> DeleteChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> DeleteChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = await DeleteChannelInventoryWithHttpInfoAsync(platform, slot, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await DeleteChannelInventoryWithHttpInfoAsync(platform, slot, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Reset a channel&#39;s inventory controls to the default (no cap, no buffer, sync on, end on sell-out). 
+        /// Deprecated alias of DELETE /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelInventoryItem>> DeleteChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> DeleteChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -465,7 +787,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -480,26 +802,162 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls. 
+        /// Get one platform account&#39;s inventory and restock settings in the store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        public ListChannelInventoryItem GetChannelInventory(string platform, int slot)
+        /// <param name="accountId"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        public ListChannelAccountsItem GetChannelAccountSetting(Guid accountId)
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = GetChannelInventoryWithHttpInfo(platform, slot);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = GetChannelAccountSettingWithHttpInfo(accountId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls. 
+        /// Get one platform account&#39;s inventory and restock settings in the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> GetChannelAccountSettingWithHttpInfo(Guid accountId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s inventory and restock settings in the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> GetChannelAccountSettingAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await GetChannelAccountSettingWithHttpInfoAsync(accountId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get one platform account&#39;s inventory and restock settings in the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> GetChannelAccountSettingWithHttpInfoAsync(Guid accountId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        public net.crossly.Client.ApiResponse<ListChannelInventoryItem> GetChannelInventoryWithHttpInfo(string platform, int slot)
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        public ListChannelAccountsItem GetChannelInventory(string platform, int slot)
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = GetChannelInventoryWithHttpInfo(platform, slot);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="slot"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> GetChannelInventoryWithHttpInfo(string platform, int slot)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -540,7 +998,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetChannelInventory", localVarResponse);
@@ -554,28 +1012,30 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls. 
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        public async System.Threading.Tasks.Task<ListChannelInventoryItem> GetChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> GetChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = await GetChannelInventoryWithHttpInfoAsync(platform, slot, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await GetChannelInventoryWithHttpInfoAsync(platform, slot, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get one channel&#39;s inventory controls. 
+        /// Deprecated alias of GET /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelInventoryItem>> GetChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> GetChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -617,7 +1077,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -632,22 +1092,22 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions). 
+        /// List every platform account of the store with its inventory and restock settings. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ListChannelInventoryResponse</returns>
-        public ListChannelInventoryResponse ListChannelInventory()
+        /// <returns>ListChannelAccountsResponse</returns>
+        public ListChannelAccountsResponse ListChannelAccounts()
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryResponse> localVarResponse = ListChannelInventoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListChannelAccountsResponse> localVarResponse = ListChannelAccountsWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions). 
+        /// List every platform account of the store with its inventory and restock settings. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of ListChannelInventoryResponse</returns>
-        public net.crossly.Client.ApiResponse<ListChannelInventoryResponse> ListChannelInventoryWithHttpInfo()
+        /// <returns>ApiResponse of ListChannelAccountsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListChannelAccountsResponse> ListChannelAccountsWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -680,10 +1140,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListChannelInventoryResponse>("/v1/channel-inventory", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListChannelAccountsResponse>("/v1/channel-accounts", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("ListChannelInventory", localVarResponse);
+                Exception _exception = this.ExceptionFactory("ListChannelAccounts", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -694,24 +1154,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions). 
+        /// List every platform account of the store with its inventory and restock settings. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryResponse</returns>
-        public async System.Threading.Tasks.Task<ListChannelInventoryResponse> ListChannelInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListChannelAccountsResponse</returns>
+        public async System.Threading.Tasks.Task<ListChannelAccountsResponse> ListChannelAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryResponse> localVarResponse = await ListChannelInventoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListChannelAccountsResponse> localVarResponse = await ListChannelAccountsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List every sales channel with its inventory controls (cap, buffer, sync, out-of-stock action, exclusions). 
+        /// List every platform account of the store with its inventory and restock settings. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelInventoryResponse>> ListChannelInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ListChannelAccountsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsResponse>> ListChannelAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -745,7 +1205,139 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelInventoryResponse>("/v1/channel-inventory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelAccountsResponse>("/v1/channel-accounts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListChannelAccounts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListChannelAccountsResponse</returns>
+        [Obsolete]
+        public ListChannelAccountsResponse ListChannelInventory()
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsResponse> localVarResponse = ListChannelInventoryWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListChannelAccountsResponse</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<ListChannelAccountsResponse> ListChannelInventoryWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListChannelAccountsResponse>("/v1/channel-inventory", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListChannelInventory", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsResponse</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ListChannelAccountsResponse> ListChannelInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsResponse> localVarResponse = await ListChannelInventoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias of GET /api/v1/channel-accounts (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsResponse)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsResponse>> ListChannelInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListChannelAccountsResponse>("/v1/channel-inventory", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -760,26 +1352,184 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write). 
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="platform"></param>
-        /// <param name="slot"></param>
-        /// <returns>ListChannelInventoryItem</returns>
-        public ListChannelInventoryItem UpdateChannelInventory(string platform, int slot)
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        public ListChannelAccountsItem UpdateChannelAccountSetting(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest)
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = UpdateChannelInventoryWithHttpInfo(platform, slot);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = UpdateChannelAccountSettingWithHttpInfo(accountId, updateChannelInventoryRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write). 
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> UpdateChannelAccountSettingWithHttpInfo(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest)
+        {
+            // verify the required parameter 'updateChannelInventoryRequest' is set
+            if (updateChannelInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelInventoryRequest' when calling ChannelInventoryApi->UpdateChannelAccountSetting");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+            localVarRequestOptions.Data = updateChannelInventoryRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> UpdateChannelAccountSettingAsync(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await UpdateChannelAccountSettingWithHttpInfoAsync(accountId, updateChannelInventoryRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set a platform account&#39;s quantity cap, buffer, sync toggle, out-of-stock action, exclusions and restock auto-republish in the store (merge write). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accountId"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> UpdateChannelAccountSettingWithHttpInfoAsync(Guid accountId, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateChannelInventoryRequest' is set
+            if (updateChannelInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelInventoryRequest' when calling ChannelInventoryApi->UpdateChannelAccountSetting");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("accountId", net.crossly.Client.ClientUtils.ParameterToString(accountId)); // path parameter
+            localVarRequestOptions.Data = updateChannelInventoryRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListChannelAccountsItem>("/v1/channel-accounts/{accountId}/settings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateChannelAccountSetting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
-        /// <returns>ApiResponse of ListChannelInventoryItem</returns>
-        public net.crossly.Client.ApiResponse<ListChannelInventoryItem> UpdateChannelInventoryWithHttpInfo(string platform, int slot)
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ListChannelAccountsItem</returns>
+        [Obsolete]
+        public ListChannelAccountsItem UpdateChannelInventory(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest)
+        {
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = UpdateChannelInventoryWithHttpInfo(platform, slot, updateChannelInventoryRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="platform"></param>
+        /// <param name="slot"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
+        /// <returns>ApiResponse of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public net.crossly.Client.ApiResponse<ListChannelAccountsItem> UpdateChannelInventoryWithHttpInfo(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest)
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -787,9 +1537,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling ChannelInventoryApi->UpdateChannelInventory");
             }
 
+            // verify the required parameter 'updateChannelInventoryRequest' is set
+            if (updateChannelInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelInventoryRequest' when calling ChannelInventoryApi->UpdateChannelInventory");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -811,6 +1568,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("slot", net.crossly.Client.ClientUtils.ParameterToString(slot)); // path parameter
+            localVarRequestOptions.Data = updateChannelInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -820,7 +1578,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Put<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Put<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateChannelInventory", localVarResponse);
@@ -834,28 +1592,32 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write). 
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListChannelInventoryItem</returns>
-        public async System.Threading.Tasks.Task<ListChannelInventoryItem> UpdateChannelInventoryAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ListChannelAccountsItem</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<ListChannelAccountsItem> UpdateChannelInventoryAsync(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListChannelInventoryItem> localVarResponse = await UpdateChannelInventoryWithHttpInfoAsync(platform, slot, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListChannelAccountsItem> localVarResponse = await UpdateChannelInventoryWithHttpInfoAsync(platform, slot, updateChannelInventoryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set a channel&#39;s quantity cap, buffer, sync toggle, out-of-stock action and exclusion lists (merge write). 
+        /// Deprecated alias of PUT /api/v1/channel-accounts/:accountId/settings (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
         /// <param name="slot"></param>
+        /// <param name="updateChannelInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListChannelInventoryItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelInventoryItem>> UpdateChannelInventoryWithHttpInfoAsync(string platform, int slot, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ListChannelAccountsItem)</returns>
+        [Obsolete]
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListChannelAccountsItem>> UpdateChannelInventoryWithHttpInfoAsync(string platform, int slot, UpdateChannelInventoryRequest updateChannelInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -863,10 +1625,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'platform' when calling ChannelInventoryApi->UpdateChannelInventory");
             }
 
+            // verify the required parameter 'updateChannelInventoryRequest' is set
+            if (updateChannelInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateChannelInventoryRequest' when calling ChannelInventoryApi->UpdateChannelInventory");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -888,6 +1657,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
             localVarRequestOptions.PathParameters.Add("slot", net.crossly.Client.ClientUtils.ParameterToString(slot)); // path parameter
+            localVarRequestOptions.Data = updateChannelInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -897,7 +1667,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PutAsync<ListChannelInventoryItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListChannelAccountsItem>("/v1/channel-inventory/{platform}/{slot}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

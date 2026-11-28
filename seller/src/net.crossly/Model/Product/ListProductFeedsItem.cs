@@ -38,22 +38,58 @@ namespace net.crossly.Model
         public enum ChannelEnum
         {
             /// <summary>
+            /// Enum Json for value: json
+            /// </summary>
+            [EnumMember(Value = "json")]
+            Json = 1,
+
+            /// <summary>
             /// Enum Google for value: google
             /// </summary>
             [EnumMember(Value = "google")]
-            Google = 1,
-
-            /// <summary>
-            /// Enum Meta for value: meta
-            /// </summary>
-            [EnumMember(Value = "meta")]
-            Meta = 2,
+            Google = 2,
 
             /// <summary>
             /// Enum Tiktok for value: tiktok
             /// </summary>
             [EnumMember(Value = "tiktok")]
-            Tiktok = 3
+            Tiktok = 3,
+
+            /// <summary>
+            /// Enum Meta for value: meta
+            /// </summary>
+            [EnumMember(Value = "meta")]
+            Meta = 4,
+
+            /// <summary>
+            /// Enum Pinterest for value: pinterest
+            /// </summary>
+            [EnumMember(Value = "pinterest")]
+            Pinterest = 5,
+
+            /// <summary>
+            /// Enum Bing for value: bing
+            /// </summary>
+            [EnumMember(Value = "bing")]
+            Bing = 6,
+
+            /// <summary>
+            /// Enum Snapchat for value: snapchat
+            /// </summary>
+            [EnumMember(Value = "snapchat")]
+            Snapchat = 7,
+
+            /// <summary>
+            /// Enum Rss for value: rss
+            /// </summary>
+            [EnumMember(Value = "rss")]
+            Rss = 8,
+
+            /// <summary>
+            /// Enum Csv for value: csv
+            /// </summary>
+            [EnumMember(Value = "csv")]
+            Csv = 9
 
         }
 
@@ -64,28 +100,66 @@ namespace net.crossly.Model
         [DataMember(Name = "channel", IsRequired = true, EmitDefaultValue = false)]
         public ChannelEnum Channel { get; set; }
         /// <summary>
+        /// Defines Kind
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum KindEnum
+        {
+            /// <summary>
+            /// Enum Marketplace for value: marketplace
+            /// </summary>
+            [EnumMember(Value = "marketplace")]
+            Marketplace = 1,
+
+            /// <summary>
+            /// Enum Generic for value: generic
+            /// </summary>
+            [EnumMember(Value = "generic")]
+            Generic = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public KindEnum Kind { get; set; }
+        /// <summary>
         /// Defines Format
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum FormatEnum
         {
             /// <summary>
-            /// Enum Xml for value: xml
+            /// Enum Json for value: json
             /// </summary>
-            [EnumMember(Value = "xml")]
-            Xml = 1,
-
-            /// <summary>
-            /// Enum Tsv for value: tsv
-            /// </summary>
-            [EnumMember(Value = "tsv")]
-            Tsv = 2,
+            [EnumMember(Value = "json")]
+            Json = 1,
 
             /// <summary>
             /// Enum Csv for value: csv
             /// </summary>
             [EnumMember(Value = "csv")]
-            Csv = 3
+            Csv = 2,
+
+            /// <summary>
+            /// Enum Xml for value: xml
+            /// </summary>
+            [EnumMember(Value = "xml")]
+            Xml = 3,
+
+            /// <summary>
+            /// Enum Tsv for value: tsv
+            /// </summary>
+            [EnumMember(Value = "tsv")]
+            Tsv = 4,
+
+            /// <summary>
+            /// Enum Atom for value: atom
+            /// </summary>
+            [EnumMember(Value = "atom")]
+            Atom = 5
 
         }
 
@@ -104,18 +178,23 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListProductFeedsItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="channel">channel (required).</param>
         /// <param name="channelLabel">channelLabel (required).</param>
+        /// <param name="kind">kind (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="format">format (required).</param>
         /// <param name="formats">formats (required).</param>
+        /// <param name="formatLabels">formatLabels (required).</param>
         /// <param name="enabled">enabled (required).</param>
         /// <param name="url">url (required).</param>
         /// <param name="urls">urls (required).</param>
         /// <param name="destination">destination (required).</param>
+        /// <param name="recommendedSchedule">recommendedSchedule (required).</param>
         /// <param name="filters">filters (required).</param>
         /// <param name="settings">settings (required).</param>
         /// <param name="tokenRotatedAt">tokenRotatedAt.</param>
+        /// <param name="previousUrlExpiresAt">While the previous URL still answers (a rotation&#39;s grace window), its end..</param>
         /// <param name="lastFetchedAt">lastFetchedAt.</param>
         /// <param name="lastFetchedBy">lastFetchedBy.</param>
         /// <param name="fetchCount">fetchCount (required).</param>
@@ -123,7 +202,7 @@ namespace net.crossly.Model
         /// <param name="lastStats">lastStats.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public ListProductFeedsItem(string id = default(string), ChannelEnum channel = default(ChannelEnum), string channelLabel = default(string), string name = default(string), FormatEnum format = default(FormatEnum), List<ListProductFeedsItemFormatsItem> formats = default(List<ListProductFeedsItemFormatsItem>), bool enabled = default(bool), string url = default(string), ListProductFeedsItemUrls urls = default(ListProductFeedsItemUrls), string destination = default(string), ListProductFeedsItemFilters filters = default(ListProductFeedsItemFilters), ListProductFeedsItemSettings settings = default(ListProductFeedsItemSettings), string tokenRotatedAt = default(string), string lastFetchedAt = default(string), string lastFetchedBy = default(string), decimal fetchCount = default(decimal), decimal? lastItemCount = default(decimal?), ListProductFeedsItemLastStats lastStats = default(ListProductFeedsItemLastStats), string createdAt = default(string), string updatedAt = default(string))
+        public ListProductFeedsItem(string id = default(string), string storefrontId = default(string), ChannelEnum channel = default(ChannelEnum), string channelLabel = default(string), KindEnum kind = default(KindEnum), string name = default(string), FormatEnum format = default(FormatEnum), List<ListProductFeedsItemFormatsItem> formats = default(List<ListProductFeedsItemFormatsItem>), ListProductFeedsItemFormatLabels formatLabels = default(ListProductFeedsItemFormatLabels), bool enabled = default(bool), string url = default(string), ListProductFeedsItemFormatLabels urls = default(ListProductFeedsItemFormatLabels), string destination = default(string), string recommendedSchedule = default(string), ListProductFeedsItemFilters filters = default(ListProductFeedsItemFilters), ListProductFeedsItemSettings settings = default(ListProductFeedsItemSettings), string tokenRotatedAt = default(string), string previousUrlExpiresAt = default(string), string lastFetchedAt = default(string), string lastFetchedBy = default(string), decimal fetchCount = default(decimal), decimal? lastItemCount = default(decimal?), ListProductFeedsItemLastStats lastStats = default(ListProductFeedsItemLastStats), string createdAt = default(string), string updatedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -136,6 +215,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("channelLabel is a required property for ListProductFeedsItem and cannot be null");
             }
             this.ChannelLabel = channelLabel;
+            this.Kind = kind;
             // to ensure "name" is required (not null)
             if (name == null) {
                 throw new ArgumentNullException("name is a required property for ListProductFeedsItem and cannot be null");
@@ -147,6 +227,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("formats is a required property for ListProductFeedsItem and cannot be null");
             }
             this.Formats = formats;
+            // to ensure "formatLabels" is required (not null)
+            if (formatLabels == null) {
+                throw new ArgumentNullException("formatLabels is a required property for ListProductFeedsItem and cannot be null");
+            }
+            this.FormatLabels = formatLabels;
             this.Enabled = enabled;
             // to ensure "url" is required (not null)
             if (url == null) {
@@ -163,6 +248,11 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("destination is a required property for ListProductFeedsItem and cannot be null");
             }
             this.Destination = destination;
+            // to ensure "recommendedSchedule" is required (not null)
+            if (recommendedSchedule == null) {
+                throw new ArgumentNullException("recommendedSchedule is a required property for ListProductFeedsItem and cannot be null");
+            }
+            this.RecommendedSchedule = recommendedSchedule;
             // to ensure "filters" is required (not null)
             if (filters == null) {
                 throw new ArgumentNullException("filters is a required property for ListProductFeedsItem and cannot be null");
@@ -184,7 +274,9 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("updatedAt is a required property for ListProductFeedsItem and cannot be null");
             }
             this.UpdatedAt = updatedAt;
+            this.StorefrontId = storefrontId;
             this.TokenRotatedAt = tokenRotatedAt;
+            this.PreviousUrlExpiresAt = previousUrlExpiresAt;
             this.LastFetchedAt = lastFetchedAt;
             this.LastFetchedBy = lastFetchedBy;
             this.LastItemCount = lastItemCount;
@@ -196,6 +288,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
 
         /// <summary>
         /// Gets or Sets ChannelLabel
@@ -216,6 +314,12 @@ namespace net.crossly.Model
         public List<ListProductFeedsItemFormatsItem> Formats { get; set; }
 
         /// <summary>
+        /// Gets or Sets FormatLabels
+        /// </summary>
+        [DataMember(Name = "formatLabels", IsRequired = true, EmitDefaultValue = false)]
+        public ListProductFeedsItemFormatLabels FormatLabels { get; set; }
+
+        /// <summary>
         /// Gets or Sets Enabled
         /// </summary>
         [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
@@ -231,13 +335,19 @@ namespace net.crossly.Model
         /// Gets or Sets Urls
         /// </summary>
         [DataMember(Name = "urls", IsRequired = true, EmitDefaultValue = false)]
-        public ListProductFeedsItemUrls Urls { get; set; }
+        public ListProductFeedsItemFormatLabels Urls { get; set; }
 
         /// <summary>
         /// Gets or Sets Destination
         /// </summary>
         [DataMember(Name = "destination", IsRequired = true, EmitDefaultValue = false)]
         public string Destination { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RecommendedSchedule
+        /// </summary>
+        [DataMember(Name = "recommendedSchedule", IsRequired = true, EmitDefaultValue = false)]
+        public string RecommendedSchedule { get; set; }
 
         /// <summary>
         /// Gets or Sets Filters
@@ -256,6 +366,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "tokenRotatedAt", EmitDefaultValue = true)]
         public string TokenRotatedAt { get; set; }
+
+        /// <summary>
+        /// While the previous URL still answers (a rotation&#39;s grace window), its end.
+        /// </summary>
+        /// <value>While the previous URL still answers (a rotation&#39;s grace window), its end.</value>
+        [DataMember(Name = "previousUrlExpiresAt", EmitDefaultValue = true)]
+        public string PreviousUrlExpiresAt { get; set; }
 
         /// <summary>
         /// Gets or Sets LastFetchedAt
@@ -308,18 +425,23 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListProductFeedsItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Channel: ").Append(Channel).Append("\n");
             sb.Append("  ChannelLabel: ").Append(ChannelLabel).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Format: ").Append(Format).Append("\n");
             sb.Append("  Formats: ").Append(Formats).Append("\n");
+            sb.Append("  FormatLabels: ").Append(FormatLabels).Append("\n");
             sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Urls: ").Append(Urls).Append("\n");
             sb.Append("  Destination: ").Append(Destination).Append("\n");
+            sb.Append("  RecommendedSchedule: ").Append(RecommendedSchedule).Append("\n");
             sb.Append("  Filters: ").Append(Filters).Append("\n");
             sb.Append("  Settings: ").Append(Settings).Append("\n");
             sb.Append("  TokenRotatedAt: ").Append(TokenRotatedAt).Append("\n");
+            sb.Append("  PreviousUrlExpiresAt: ").Append(PreviousUrlExpiresAt).Append("\n");
             sb.Append("  LastFetchedAt: ").Append(LastFetchedAt).Append("\n");
             sb.Append("  LastFetchedBy: ").Append(LastFetchedBy).Append("\n");
             sb.Append("  FetchCount: ").Append(FetchCount).Append("\n");
@@ -368,6 +490,11 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Channel == input.Channel ||
                     this.Channel.Equals(input.Channel)
                 ) && 
@@ -375,6 +502,10 @@ namespace net.crossly.Model
                     this.ChannelLabel == input.ChannelLabel ||
                     (this.ChannelLabel != null &&
                     this.ChannelLabel.Equals(input.ChannelLabel))
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -390,6 +521,11 @@ namespace net.crossly.Model
                     this.Formats != null &&
                     input.Formats != null &&
                     this.Formats.SequenceEqual(input.Formats)
+                ) && 
+                (
+                    this.FormatLabels == input.FormatLabels ||
+                    (this.FormatLabels != null &&
+                    this.FormatLabels.Equals(input.FormatLabels))
                 ) && 
                 (
                     this.Enabled == input.Enabled ||
@@ -411,6 +547,11 @@ namespace net.crossly.Model
                     this.Destination.Equals(input.Destination))
                 ) && 
                 (
+                    this.RecommendedSchedule == input.RecommendedSchedule ||
+                    (this.RecommendedSchedule != null &&
+                    this.RecommendedSchedule.Equals(input.RecommendedSchedule))
+                ) && 
+                (
                     this.Filters == input.Filters ||
                     (this.Filters != null &&
                     this.Filters.Equals(input.Filters))
@@ -424,6 +565,11 @@ namespace net.crossly.Model
                     this.TokenRotatedAt == input.TokenRotatedAt ||
                     (this.TokenRotatedAt != null &&
                     this.TokenRotatedAt.Equals(input.TokenRotatedAt))
+                ) && 
+                (
+                    this.PreviousUrlExpiresAt == input.PreviousUrlExpiresAt ||
+                    (this.PreviousUrlExpiresAt != null &&
+                    this.PreviousUrlExpiresAt.Equals(input.PreviousUrlExpiresAt))
                 ) && 
                 (
                     this.LastFetchedAt == input.LastFetchedAt ||
@@ -474,11 +620,16 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Channel.GetHashCode();
                 if (this.ChannelLabel != null)
                 {
                     hashCode = (hashCode * 59) + this.ChannelLabel.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
@@ -487,6 +638,10 @@ namespace net.crossly.Model
                 if (this.Formats != null)
                 {
                     hashCode = (hashCode * 59) + this.Formats.GetHashCode();
+                }
+                if (this.FormatLabels != null)
+                {
+                    hashCode = (hashCode * 59) + this.FormatLabels.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
                 if (this.Url != null)
@@ -501,6 +656,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Destination.GetHashCode();
                 }
+                if (this.RecommendedSchedule != null)
+                {
+                    hashCode = (hashCode * 59) + this.RecommendedSchedule.GetHashCode();
+                }
                 if (this.Filters != null)
                 {
                     hashCode = (hashCode * 59) + this.Filters.GetHashCode();
@@ -512,6 +671,10 @@ namespace net.crossly.Model
                 if (this.TokenRotatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.TokenRotatedAt.GetHashCode();
+                }
+                if (this.PreviousUrlExpiresAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PreviousUrlExpiresAt.GetHashCode();
                 }
                 if (this.LastFetchedAt != null)
                 {

@@ -42,7 +42,11 @@ namespace net.crossly.Model
         /// <param name="missingGtin">missingGtin.</param>
         /// <param name="missingCategory">missingCategory.</param>
         /// <param name="invalidGtin">invalidGtin.</param>
-        public ListProductFeedsItemLastStatsIssues(decimal? missingImage = default(decimal?), decimal? missingTitle = default(decimal?), decimal? missingPrice = default(decimal?), decimal? missingDescription = default(decimal?), decimal? missingBrand = default(decimal?), decimal? missingGtin = default(decimal?), decimal? missingCategory = default(decimal?), decimal? invalidGtin = default(decimal?))
+        /// <param name="missingLink">missingLink.</param>
+        /// <param name="invalidLink">invalidLink.</param>
+        /// <param name="titleTooLong">titleTooLong.</param>
+        /// <param name="descriptionTooLong">descriptionTooLong.</param>
+        public ListProductFeedsItemLastStatsIssues(decimal? missingImage = default(decimal?), decimal? missingTitle = default(decimal?), decimal? missingPrice = default(decimal?), decimal? missingDescription = default(decimal?), decimal? missingBrand = default(decimal?), decimal? missingGtin = default(decimal?), decimal? missingCategory = default(decimal?), decimal? invalidGtin = default(decimal?), decimal? missingLink = default(decimal?), decimal? invalidLink = default(decimal?), decimal? titleTooLong = default(decimal?), decimal? descriptionTooLong = default(decimal?))
         {
             this.MissingImage = missingImage;
             this.MissingTitle = missingTitle;
@@ -52,6 +56,10 @@ namespace net.crossly.Model
             this.MissingGtin = missingGtin;
             this.MissingCategory = missingCategory;
             this.InvalidGtin = invalidGtin;
+            this.MissingLink = missingLink;
+            this.InvalidLink = invalidLink;
+            this.TitleTooLong = titleTooLong;
+            this.DescriptionTooLong = descriptionTooLong;
         }
 
         /// <summary>
@@ -103,6 +111,30 @@ namespace net.crossly.Model
         public decimal? InvalidGtin { get; set; }
 
         /// <summary>
+        /// Gets or Sets MissingLink
+        /// </summary>
+        [DataMember(Name = "missing_link", EmitDefaultValue = true)]
+        public decimal? MissingLink { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InvalidLink
+        /// </summary>
+        [DataMember(Name = "invalid_link", EmitDefaultValue = true)]
+        public decimal? InvalidLink { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TitleTooLong
+        /// </summary>
+        [DataMember(Name = "title_too_long", EmitDefaultValue = true)]
+        public decimal? TitleTooLong { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DescriptionTooLong
+        /// </summary>
+        [DataMember(Name = "description_too_long", EmitDefaultValue = true)]
+        public decimal? DescriptionTooLong { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -118,6 +150,10 @@ namespace net.crossly.Model
             sb.Append("  MissingGtin: ").Append(MissingGtin).Append("\n");
             sb.Append("  MissingCategory: ").Append(MissingCategory).Append("\n");
             sb.Append("  InvalidGtin: ").Append(InvalidGtin).Append("\n");
+            sb.Append("  MissingLink: ").Append(MissingLink).Append("\n");
+            sb.Append("  InvalidLink: ").Append(InvalidLink).Append("\n");
+            sb.Append("  TitleTooLong: ").Append(TitleTooLong).Append("\n");
+            sb.Append("  DescriptionTooLong: ").Append(DescriptionTooLong).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -192,6 +228,26 @@ namespace net.crossly.Model
                     this.InvalidGtin == input.InvalidGtin ||
                     (this.InvalidGtin != null &&
                     this.InvalidGtin.Equals(input.InvalidGtin))
+                ) && 
+                (
+                    this.MissingLink == input.MissingLink ||
+                    (this.MissingLink != null &&
+                    this.MissingLink.Equals(input.MissingLink))
+                ) && 
+                (
+                    this.InvalidLink == input.InvalidLink ||
+                    (this.InvalidLink != null &&
+                    this.InvalidLink.Equals(input.InvalidLink))
+                ) && 
+                (
+                    this.TitleTooLong == input.TitleTooLong ||
+                    (this.TitleTooLong != null &&
+                    this.TitleTooLong.Equals(input.TitleTooLong))
+                ) && 
+                (
+                    this.DescriptionTooLong == input.DescriptionTooLong ||
+                    (this.DescriptionTooLong != null &&
+                    this.DescriptionTooLong.Equals(input.DescriptionTooLong))
                 );
         }
 
@@ -235,6 +291,22 @@ namespace net.crossly.Model
                 if (this.InvalidGtin != null)
                 {
                     hashCode = (hashCode * 59) + this.InvalidGtin.GetHashCode();
+                }
+                if (this.MissingLink != null)
+                {
+                    hashCode = (hashCode * 59) + this.MissingLink.GetHashCode();
+                }
+                if (this.InvalidLink != null)
+                {
+                    hashCode = (hashCode * 59) + this.InvalidLink.GetHashCode();
+                }
+                if (this.TitleTooLong != null)
+                {
+                    hashCode = (hashCode * 59) + this.TitleTooLong.GetHashCode();
+                }
+                if (this.DescriptionTooLong != null)
+                {
+                    hashCode = (hashCode * 59) + this.DescriptionTooLong.GetHashCode();
                 }
                 return hashCode;
             }

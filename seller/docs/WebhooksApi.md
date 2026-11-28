@@ -4,20 +4,24 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateWebhook**](WebhooksApi.md#createwebhook) | **POST** /v1/webhooks | Register a webhook endpoint (returns the signing secret once).
+[**CreateWebhook**](WebhooksApi.md#createwebhook) | **POST** /v1/webhooks | Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false &#x3D; automation only (notify.* steps). Returns the signing secret once (json).
 [**CreateWebhookDeliveryRedeliver**](WebhooksApi.md#createwebhookdeliveryredeliver) | **POST** /v1/webhooks/{id}/deliveries/{deliveryId}/redeliver | Redeliver one past delivery: a new delivery (new Crossly-Delivery-Id) of the same event id and payload.
-[**CreateWebhookTest**](WebhooksApi.md#createwebhooktest) | **POST** /v1/webhooks/{id}/test | Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
+[**CreateWebhookRotateSecret**](WebhooksApi.md#createwebhookrotatesecret) | **POST** /v1/webhooks/{id}/rotate-secret | Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+[**CreateWebhookTest**](WebhooksApi.md#createwebhooktest) | **POST** /v1/webhooks/{id}/test | Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\&quot;event\&quot;:\&quot;order.created\&quot;}, payload marked test: true).
 [**DeleteWebhook**](WebhooksApi.md#deletewebhook) | **DELETE** /v1/webhooks/{id} | Delete a webhook endpoint.
 [**GetWebhookStream**](WebhooksApi.md#getwebhookstream) | **GET** /v1/webhooks/stream | Stream this account&#39;s webhook events as they happen (SSE).
 [**ListWebhookDeliveries**](WebhooksApi.md#listwebhookdeliveries) | **GET** /v1/webhooks/{id}/deliveries | List deliveries to one webhook (30 days, newest first): event, status, attempts, last HTTP status and error, payload.
-[**ListWebhooks**](WebhooksApi.md#listwebhooks) | **GET** /v1/webhooks | List your registered webhook endpoints.
+[**ListWebhookEvents**](WebhooksApi.md#listwebhookevents) | **GET** /v1/webhooks/events | List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+[**ListWebhookTypes**](WebhooksApi.md#listwebhooktypes) | **GET** /v1/webhooks/types | List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+[**ListWebhooks**](WebhooksApi.md#listwebhooks) | **GET** /v1/webhooks | List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing&#x3D;true, page, pageSize.
+[**UpdateWebhook**](WebhooksApi.md#updatewebhook) | **PATCH** /v1/webhooks/{id} | Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
 
 
 <a name="createwebhook"></a>
 # **CreateWebhook**
-> CreateWebhookResponse CreateWebhook ()
+> CreateWebhookResponse CreateWebhook (CreateWebhookRequest createWebhookRequest)
 
-Register a webhook endpoint (returns the signing secret once).
+Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false = automation only (notify.* steps). Returns the signing secret once (json).
 
 ### Example
 ```csharp
@@ -39,11 +43,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WebhooksApi(config);
+            var createWebhookRequest = new CreateWebhookRequest(); // CreateWebhookRequest | 
 
             try
             {
-                // Register a webhook endpoint (returns the signing secret once).
-                CreateWebhookResponse result = apiInstance.CreateWebhook();
+                // Register a webhook of any type (kind: json|slack|discord|teams|telegram|google_chat|mattermost|zapier; default json). eventDelivery false = automation only (notify.* steps). Returns the signing secret once (json).
+                CreateWebhookResponse result = apiInstance.CreateWebhook(createWebhookRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +63,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWebhookRequest** | **CreateWebhookRequest**|  | 
 
 ### Return type
 
@@ -70,7 +78,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -167,11 +175,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createwebhookrotatesecret"></a>
+# **CreateWebhookRotateSecret**
+> CreateWebhookRotateSecretResponse CreateWebhookRotateSecret (Guid id)
+
+Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+
+Returns the new `secret` once. Every delivery from this moment on, retries of earlier deliveries included, is signed with it: update the receiver as soon as you have it. Only signed (json) webhooks have a secret; other types answer 400.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateWebhookRotateSecretExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // Rotate the signing secret of a webhook, keeping its id, events and delivery history.
+                CreateWebhookRotateSecretResponse result = apiInstance.CreateWebhookRotateSecret(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.CreateWebhookRotateSecret: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**CreateWebhookRotateSecretResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createwebhooktest"></a>
 # **CreateWebhookTest**
-> CreateWebhookTestResponse CreateWebhookTest (Guid id)
+> CreateWebhookTestResponse CreateWebhookTest (Guid id, CreateWebhookTestRequest createWebhookTestRequest = null)
 
-Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
+Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
 
 ### Example
 ```csharp
@@ -194,11 +282,12 @@ namespace Example
 
             var apiInstance = new WebhooksApi(config);
             var id = "id_example";  // Guid | 
+            var createWebhookTestRequest = new CreateWebhookTestRequest(); // CreateWebhookTestRequest |  (optional) 
 
             try
             {
-                // Fire a test delivery to one webhook: test.ping, or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
-                CreateWebhookTestResponse result = apiInstance.CreateWebhookTest(id);
+                // Fire a test to one webhook: test.ping (json/zapier) or a test message (chat types), or a sample of any event (body {\"event\":\"order.created\"}, payload marked test: true).
+                CreateWebhookTestResponse result = apiInstance.CreateWebhookTest(id, createWebhookTestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -217,6 +306,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createWebhookTestRequest** | **CreateWebhookTestRequest**|  | [optional] 
 
 ### Return type
 
@@ -228,7 +318,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -481,11 +571,159 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listwebhookevents"></a>
+# **ListWebhookEvents**
+> ListWebhookEventsResponse ListWebhookEvents ()
+
+List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListWebhookEventsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+
+            try
+            {
+                // List every webhook event you can subscribe to: id, group (family), label, description, and whether a workflow can start on it.
+                ListWebhookEventsResponse result = apiInstance.ListWebhookEvents();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.ListWebhookEvents: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListWebhookEventsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listwebhooktypes"></a>
+# **ListWebhookTypes**
+> ListWebhookTypesResponse ListWebhookTypes ()
+
+List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListWebhookTypesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+
+            try
+            {
+                // List webhook types (json, slack, discord, teams, telegram, google_chat, mattermost, zapier) with their fields and hosts.
+                ListWebhookTypesResponse result = apiInstance.ListWebhookTypes();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.ListWebhookTypes: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListWebhookTypesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listwebhooks"></a>
 # **ListWebhooks**
 > ListWebhooksResponse ListWebhooks ()
 
-List your registered webhook endpoints.
+List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing=true, page, pageSize.
 
 ### Example
 ```csharp
@@ -510,7 +748,7 @@ namespace Example
 
             try
             {
-                // List your registered webhook endpoints.
+                // List your webhooks of every type. Optional: q (url, name, label or app), status (healthy|failing|disabled), event, kind, failing=true, page, pageSize.
                 ListWebhooksResponse result = apiInstance.ListWebhooks();
                 Debug.WriteLine(result);
             }
@@ -539,6 +777,86 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatewebhook"></a>
+# **UpdateWebhook**
+> UpdateWebhookResponse UpdateWebhook (Guid id, UpdateWebhookRequest updateWebhookRequest = null)
+
+Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateWebhookExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WebhooksApi(config);
+            var id = "id_example";  // Guid | 
+            var updateWebhookRequest = new UpdateWebhookRequest(); // UpdateWebhookRequest |  (optional) 
+
+            try
+            {
+                // Edit a webhook: name, description, events, enabled, eventDelivery, and its destination fields (url, botToken, chatId, channel, headers). The type never changes.
+                UpdateWebhookResponse result = apiInstance.UpdateWebhook(id, updateWebhookRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WebhooksApi.UpdateWebhook: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **updateWebhookRequest** | **UpdateWebhookRequest**|  | [optional] 
+
+### Return type
+
+**UpdateWebhookResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

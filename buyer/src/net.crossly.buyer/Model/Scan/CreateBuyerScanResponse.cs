@@ -116,7 +116,7 @@ namespace net.crossly.buyer.Model
         /// <param name="confidence">confidence (required).</param>
         /// <param name="identifier">identifier (required).</param>
         /// <param name="visualMatches">visualMatches (required).</param>
-        public CreateBuyerScanResponse(VerdictEnum verdict = default(VerdictEnum), RecommendedEnum? recommended = default(RecommendedEnum?), CreateBuyerLockonConfirmResponseCrossly crossly = default(CreateBuyerLockonConfirmResponseCrossly), CreateBuyerLockonConfirmResponseOffsite offsite = default(CreateBuyerLockonConfirmResponseOffsite), List<CreateBuyerLockonConfirmResponseAlternates> alternates = default(List<CreateBuyerLockonConfirmResponseAlternates>), decimal? savingCents = default(decimal?), bool shippingUnknown = default(bool), CreateBuyerLockonConfirmResponseCoupon coupon = default(CreateBuyerLockonConfirmResponseCoupon), string matchMethod = default(string), bool comparable = default(bool), decimal confidence = default(decimal), CreateBuyerScanResponseIdentifier identifier = default(CreateBuyerScanResponseIdentifier), List<Object> visualMatches = default(List<Object>))
+        public CreateBuyerScanResponse(VerdictEnum verdict = default(VerdictEnum), RecommendedEnum? recommended = default(RecommendedEnum?), CreateBuyerLockonConfirmResponseCrossly crossly = default(CreateBuyerLockonConfirmResponseCrossly), CreateBuyerLockonConfirmResponseOffsite offsite = default(CreateBuyerLockonConfirmResponseOffsite), List<CreateBuyerLockonConfirmResponseAlternates> alternates = default(List<CreateBuyerLockonConfirmResponseAlternates>), decimal? savingCents = default(decimal?), bool shippingUnknown = default(bool), CreateBuyerLockonConfirmResponseCoupon coupon = default(CreateBuyerLockonConfirmResponseCoupon), string matchMethod = default(string), bool comparable = default(bool), decimal confidence = default(decimal), NsValue identifier = default(NsValue), List<Object> visualMatches = default(List<Object>))
         {
             this.Verdict = verdict;
             // to ensure "alternates" is required (not null)
@@ -207,7 +207,7 @@ namespace net.crossly.buyer.Model
         /// Gets or Sets Identifier
         /// </summary>
         [DataMember(Name = "identifier", IsRequired = true, EmitDefaultValue = false)]
-        public CreateBuyerScanResponseIdentifier Identifier { get; set; }
+        public NsValue Identifier { get; set; }
 
         /// <summary>
         /// Gets or Sets VisualMatches

@@ -48,8 +48,9 @@ namespace net.crossly.Api
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <returns>CreateTradeBlockEvolutionRecipeResponse</returns>
-        CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe();
+        CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest);
 
         /// <summary>
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
@@ -58,15 +59,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockEvolutionRecipeResponse</returns>
-        ApiResponse<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeWithHttpInfo();
+        ApiResponse<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeWithHttpInfo(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest);
         /// <summary>
         /// Accept, decline, counter, or withdraw a Trade Block offer.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <returns>CreateTradeBlockOfferRespondResponse</returns>
-        CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond(string id);
+        CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest);
 
         /// <summary>
         /// Accept, decline, counter, or withdraw a Trade Block offer.
@@ -76,8 +79,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockOfferRespondResponse</returns>
-        ApiResponse<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondWithHttpInfo(string id);
+        ApiResponse<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondWithHttpInfo(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest);
         /// <summary>
         /// Close one of your posts so it stops taking offers.
         /// </summary>
@@ -101,8 +105,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <returns>IdResponse</returns>
-        IdResponse CreateTradeBlockPostOffer(string id);
+        IdResponse CreateTradeBlockPostOffer(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest);
 
         /// <summary>
         /// Respond to a post with a concrete swap: items on each side (0..N), optional cash.
@@ -112,14 +117,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> CreateTradeBlockPostOfferWithHttpInfo(string id);
+        ApiResponse<IdResponse> CreateTradeBlockPostOfferWithHttpInfo(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest);
         /// <summary>
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <returns>CreateTradeBlockSetRecipeResponse</returns>
-        CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe();
+        CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest);
 
         /// <summary>
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
@@ -128,8 +135,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockSetRecipeResponse</returns>
-        ApiResponse<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeWithHttpInfo();
+        ApiResponse<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeWithHttpInfo(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest);
         /// <summary>
         /// List your Trade Evolution unlocks — completed swaps that unlocked an evolved or set-master NFT you can mint by burning COSM.
         /// </summary>
@@ -249,9 +257,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockEvolutionRecipeResponse</returns>
-        System.Threading.Tasks.Task<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeAsync(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves.
@@ -260,9 +269,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockEvolutionRecipeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accept, decline, counter, or withdraw a Trade Block offer.
         /// </summary>
@@ -271,9 +281,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockOfferRespondResponse</returns>
-        System.Threading.Tasks.Task<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondAsync(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept, decline, counter, or withdraw a Trade Block offer.
@@ -283,9 +294,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockOfferRespondResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockOfferRespondResponse>> CreateTradeBlockOfferRespondWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockOfferRespondResponse>> CreateTradeBlockOfferRespondWithHttpInfoAsync(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Close one of your posts so it stops taking offers.
         /// </summary>
@@ -317,9 +329,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> CreateTradeBlockPostOfferAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<IdResponse> CreateTradeBlockPostOfferAsync(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Respond to a post with a concrete swap: items on each side (0..N), optional cash.
@@ -329,9 +342,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateTradeBlockPostOfferWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateTradeBlockPostOfferWithHttpInfoAsync(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
         /// </summary>
@@ -339,9 +353,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockSetRecipeResponse</returns>
-        System.Threading.Tasks.Task<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeAsync(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves.
@@ -350,9 +365,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockSetRecipeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockSetRecipeResponse>> CreateTradeBlockSetRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTradeBlockSetRecipeResponse>> CreateTradeBlockSetRecipeWithHttpInfoAsync(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List your Trade Evolution unlocks — completed swaps that unlocked an evolved or set-master NFT you can mint by burning COSM.
         /// </summary>
@@ -723,10 +739,11 @@ namespace net.crossly.Api
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <returns>CreateTradeBlockEvolutionRecipeResponse</returns>
-        public CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe()
+        public CreateTradeBlockEvolutionRecipeResponse CreateTradeBlockEvolutionRecipe(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> localVarResponse = CreateTradeBlockEvolutionRecipeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> localVarResponse = CreateTradeBlockEvolutionRecipeWithHttpInfo(createTradeBlockEvolutionRecipeRequest);
             return localVarResponse.Data;
         }
 
@@ -734,12 +751,20 @@ namespace net.crossly.Api
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockEvolutionRecipeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeWithHttpInfo(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest)
         {
+            // verify the required parameter 'createTradeBlockEvolutionRecipeRequest' is set
+            if (createTradeBlockEvolutionRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockEvolutionRecipeRequest' when calling TradeBlockApi->CreateTradeBlockEvolutionRecipe");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -759,6 +784,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTradeBlockEvolutionRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -785,11 +811,12 @@ namespace net.crossly.Api
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockEvolutionRecipeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTradeBlockEvolutionRecipeResponse> CreateTradeBlockEvolutionRecipeAsync(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> localVarResponse = await CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse> localVarResponse = await CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(createTradeBlockEvolutionRecipeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -797,14 +824,22 @@ namespace net.crossly.Api
         /// Author a Trade Evolution recipe (a graded item or pair that, when swapped, unlocks a cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockEvolutionRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockEvolutionRecipeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockEvolutionRecipeResponse>> CreateTradeBlockEvolutionRecipeWithHttpInfoAsync(CreateTradeBlockEvolutionRecipeRequest createTradeBlockEvolutionRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createTradeBlockEvolutionRecipeRequest' is set
+            if (createTradeBlockEvolutionRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockEvolutionRecipeRequest' when calling TradeBlockApi->CreateTradeBlockEvolutionRecipe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -824,6 +859,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTradeBlockEvolutionRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -852,10 +888,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <returns>CreateTradeBlockOfferRespondResponse</returns>
-        public CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond(string id)
+        public CreateTradeBlockOfferRespondResponse CreateTradeBlockOfferRespond(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest)
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> localVarResponse = CreateTradeBlockOfferRespondWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> localVarResponse = CreateTradeBlockOfferRespondWithHttpInfo(id, createTradeBlockOfferRespondRequest);
             return localVarResponse.Data;
         }
 
@@ -864,8 +901,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockOfferRespondResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondWithHttpInfo(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -873,9 +911,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TradeBlockApi->CreateTradeBlockOfferRespond");
             }
 
+            // verify the required parameter 'createTradeBlockOfferRespondRequest' is set
+            if (createTradeBlockOfferRespondRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockOfferRespondRequest' when calling TradeBlockApi->CreateTradeBlockOfferRespond");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -896,6 +941,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTradeBlockOfferRespondRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -923,11 +969,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockOfferRespondResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTradeBlockOfferRespondResponse> CreateTradeBlockOfferRespondAsync(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> localVarResponse = await CreateTradeBlockOfferRespondWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse> localVarResponse = await CreateTradeBlockOfferRespondWithHttpInfoAsync(id, createTradeBlockOfferRespondRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -936,9 +983,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockOfferRespondRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockOfferRespondResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse>> CreateTradeBlockOfferRespondWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockOfferRespondResponse>> CreateTradeBlockOfferRespondWithHttpInfoAsync(string id, CreateTradeBlockOfferRespondRequest createTradeBlockOfferRespondRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -946,10 +994,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TradeBlockApi->CreateTradeBlockOfferRespond");
             }
 
+            // verify the required parameter 'createTradeBlockOfferRespondRequest' is set
+            if (createTradeBlockOfferRespondRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockOfferRespondRequest' when calling TradeBlockApi->CreateTradeBlockOfferRespond");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -970,6 +1025,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTradeBlockOfferRespondRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1144,10 +1200,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <returns>IdResponse</returns>
-        public IdResponse CreateTradeBlockPostOffer(string id)
+        public IdResponse CreateTradeBlockPostOffer(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest)
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateTradeBlockPostOfferWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateTradeBlockPostOfferWithHttpInfo(id, createTradeBlockPostOfferRequest);
             return localVarResponse.Data;
         }
 
@@ -1156,8 +1213,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <returns>ApiResponse of IdResponse</returns>
-        public net.crossly.Client.ApiResponse<IdResponse> CreateTradeBlockPostOfferWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<IdResponse> CreateTradeBlockPostOfferWithHttpInfo(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1165,9 +1223,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TradeBlockApi->CreateTradeBlockPostOffer");
             }
 
+            // verify the required parameter 'createTradeBlockPostOfferRequest' is set
+            if (createTradeBlockPostOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockPostOfferRequest' when calling TradeBlockApi->CreateTradeBlockPostOffer");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1188,6 +1253,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTradeBlockPostOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1215,11 +1281,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> CreateTradeBlockPostOfferAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<IdResponse> CreateTradeBlockPostOfferAsync(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateTradeBlockPostOfferWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateTradeBlockPostOfferWithHttpInfoAsync(id, createTradeBlockPostOfferRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1228,9 +1295,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTradeBlockPostOfferRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateTradeBlockPostOfferWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateTradeBlockPostOfferWithHttpInfoAsync(string id, CreateTradeBlockPostOfferRequest createTradeBlockPostOfferRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1238,10 +1306,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling TradeBlockApi->CreateTradeBlockPostOffer");
             }
 
+            // verify the required parameter 'createTradeBlockPostOfferRequest' is set
+            if (createTradeBlockPostOfferRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockPostOfferRequest' when calling TradeBlockApi->CreateTradeBlockPostOffer");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1262,6 +1337,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTradeBlockPostOfferRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1289,10 +1365,11 @@ namespace net.crossly.Api
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <returns>CreateTradeBlockSetRecipeResponse</returns>
-        public CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe()
+        public CreateTradeBlockSetRecipeResponse CreateTradeBlockSetRecipe(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> localVarResponse = CreateTradeBlockSetRecipeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> localVarResponse = CreateTradeBlockSetRecipeWithHttpInfo(createTradeBlockSetRecipeRequest);
             return localVarResponse.Data;
         }
 
@@ -1300,12 +1377,20 @@ namespace net.crossly.Api
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <returns>ApiResponse of CreateTradeBlockSetRecipeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeWithHttpInfo(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest)
         {
+            // verify the required parameter 'createTradeBlockSetRecipeRequest' is set
+            if (createTradeBlockSetRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockSetRecipeRequest' when calling TradeBlockApi->CreateTradeBlockSetRecipe");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1325,6 +1410,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTradeBlockSetRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1351,11 +1437,12 @@ namespace net.crossly.Api
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTradeBlockSetRecipeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTradeBlockSetRecipeResponse> CreateTradeBlockSetRecipeAsync(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> localVarResponse = await CreateTradeBlockSetRecipeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse> localVarResponse = await CreateTradeBlockSetRecipeWithHttpInfoAsync(createTradeBlockSetRecipeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1363,14 +1450,22 @@ namespace net.crossly.Api
         /// Author a set-completion recipe (a set of items that, once assembled through trading, unlocks a set-master cosmetic you designed). Born unreviewed until ops approves. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createTradeBlockSetRecipeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTradeBlockSetRecipeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse>> CreateTradeBlockSetRecipeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTradeBlockSetRecipeResponse>> CreateTradeBlockSetRecipeWithHttpInfoAsync(CreateTradeBlockSetRecipeRequest createTradeBlockSetRecipeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createTradeBlockSetRecipeRequest' is set
+            if (createTradeBlockSetRecipeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createTradeBlockSetRecipeRequest' when calling TradeBlockApi->CreateTradeBlockSetRecipe");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1390,6 +1485,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createTradeBlockSetRecipeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

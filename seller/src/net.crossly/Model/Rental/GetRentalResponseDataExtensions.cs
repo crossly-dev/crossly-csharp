@@ -42,10 +42,11 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="days">days (required).</param>
         /// <param name="cents">cents (required).</param>
+        /// <param name="freeDays">freeDays (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="decidedAt">decidedAt.</param>
-        public GetRentalResponseDataExtensions(string id = default(string), decimal days = default(decimal), decimal cents = default(decimal), string status = default(string), string createdAt = default(string), string decidedAt = default(string))
+        public GetRentalResponseDataExtensions(string id = default(string), decimal days = default(decimal), decimal cents = default(decimal), decimal freeDays = default(decimal), string status = default(string), string createdAt = default(string), string decidedAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -54,6 +55,7 @@ namespace net.crossly.Model
             this.Id = id;
             this.Days = days;
             this.Cents = cents;
+            this.FreeDays = freeDays;
             // to ensure "status" is required (not null)
             if (status == null) {
                 throw new ArgumentNullException("status is a required property for GetRentalResponseDataExtensions and cannot be null");
@@ -86,6 +88,12 @@ namespace net.crossly.Model
         public decimal Cents { get; set; }
 
         /// <summary>
+        /// Gets or Sets FreeDays
+        /// </summary>
+        [DataMember(Name = "freeDays", IsRequired = true, EmitDefaultValue = false)]
+        public decimal FreeDays { get; set; }
+
+        /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
@@ -114,6 +122,7 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
+            sb.Append("  FreeDays: ").Append(FreeDays).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
@@ -166,6 +175,10 @@ namespace net.crossly.Model
                     this.Cents.Equals(input.Cents)
                 ) && 
                 (
+                    this.FreeDays == input.FreeDays ||
+                    this.FreeDays.Equals(input.FreeDays)
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -197,6 +210,7 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 hashCode = (hashCode * 59) + this.Cents.GetHashCode();
+                hashCode = (hashCode * 59) + this.FreeDays.GetHashCode();
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();

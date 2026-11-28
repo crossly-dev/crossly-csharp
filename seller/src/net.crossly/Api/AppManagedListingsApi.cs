@@ -49,8 +49,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <returns>ListListingCommandsItem</returns>
-        ListListingCommandsItem CreateListingCommandComplete(Guid id);
+        ListListingCommandsItem CreateListingCommandComplete(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest));
 
         /// <summary>
         /// Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
@@ -60,15 +61,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <returns>ApiResponse of ListListingCommandsItem</returns>
-        ApiResponse<ListListingCommandsItem> CreateListingCommandCompleteWithHttpInfo(Guid id);
+        ApiResponse<ListListingCommandsItem> CreateListingCommandCompleteWithHttpInfo(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest));
         /// <summary>
         /// Report a command failed, with a reason the seller will see.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <returns>ListListingCommandsItem</returns>
-        ListListingCommandsItem CreateListingCommandFail(Guid id);
+        ListListingCommandsItem CreateListingCommandFail(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest);
 
         /// <summary>
         /// Report a command failed, with a reason the seller will see.
@@ -78,8 +81,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <returns>ApiResponse of ListListingCommandsItem</returns>
-        ApiResponse<ListListingCommandsItem> CreateListingCommandFailWithHttpInfo(Guid id);
+        ApiResponse<ListListingCommandsItem> CreateListingCommandFailWithHttpInfo(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest);
         /// <summary>
         /// Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
         /// </summary>
@@ -88,8 +92,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <returns>CreateListingEventResponse</returns>
-        CreateListingEventResponse CreateListingEvent(Guid id);
+        CreateListingEventResponse CreateListingEvent(Guid id, CreateListingEventRequest createListingEventRequest);
 
         /// <summary>
         /// Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
@@ -99,14 +104,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <returns>ApiResponse of CreateListingEventResponse</returns>
-        ApiResponse<CreateListingEventResponse> CreateListingEventWithHttpInfo(Guid id);
+        ApiResponse<CreateListingEventResponse> CreateListingEventWithHttpInfo(Guid id, CreateListingEventRequest createListingEventRequest);
         /// <summary>
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <returns>CreateListingEvent2Response</returns>
-        CreateListingEvent2Response CreateListingEvent2();
+        CreateListingEvent2Response CreateListingEvent2(CreateListingEvent2Request createListingEvent2Request);
 
         /// <summary>
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
@@ -115,8 +122,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <returns>ApiResponse of CreateListingEvent2Response</returns>
-        ApiResponse<CreateListingEvent2Response> CreateListingEvent2WithHttpInfo();
+        ApiResponse<CreateListingEvent2Response> CreateListingEvent2WithHttpInfo(CreateListingEvent2Request createListingEvent2Request);
         /// <summary>
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
         /// </summary>
@@ -124,8 +132,9 @@ namespace net.crossly.Api
         /// Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <returns>CreateListingLinkResponse</returns>
-        CreateListingLinkResponse CreateListingLink();
+        CreateListingLinkResponse CreateListingLink(CreateListingLinkRequest createListingLinkRequest);
 
         /// <summary>
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
@@ -134,14 +143,16 @@ namespace net.crossly.Api
         /// Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <returns>ApiResponse of CreateListingLinkResponse</returns>
-        ApiResponse<CreateListingLinkResponse> CreateListingLinkWithHttpInfo();
+        ApiResponse<CreateListingLinkResponse> CreateListingLinkWithHttpInfo(CreateListingLinkRequest createListingLinkRequest);
         /// <summary>
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <returns>CreateListingLinkBulkResponse</returns>
-        CreateListingLinkBulkResponse CreateListingLinkBulk();
+        CreateListingLinkBulkResponse CreateListingLinkBulk(CreateListingLinkBulkRequest createListingLinkBulkRequest);
 
         /// <summary>
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
@@ -150,8 +161,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <returns>ApiResponse of CreateListingLinkBulkResponse</returns>
-        ApiResponse<CreateListingLinkBulkResponse> CreateListingLinkBulkWithHttpInfo();
+        ApiResponse<CreateListingLinkBulkResponse> CreateListingLinkBulkWithHttpInfo(CreateListingLinkBulkRequest createListingLinkBulkRequest);
         /// <summary>
         /// End this marketplace item and relist it under Crossly. Requires consent: true.
         /// </summary>
@@ -161,8 +173,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <returns>CreateListingPlatformRecloneResponse</returns>
-        CreateListingPlatformRecloneResponse CreateListingPlatformReclone(Guid id, string platform);
+        CreateListingPlatformRecloneResponse CreateListingPlatformReclone(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest));
 
         /// <summary>
         /// End this marketplace item and relist it under Crossly. Requires consent: true.
@@ -173,8 +186,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingPlatformRecloneResponse</returns>
-        ApiResponse<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneWithHttpInfo(Guid id, string platform);
+        ApiResponse<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneWithHttpInfo(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest));
         /// <summary>
         /// Cancel a relist still waiting for you to end the old item.
         /// </summary>
@@ -224,8 +238,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>CreateListingPlatformTakeOverResponse</returns>
-        CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver(Guid id, string platform);
+        CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest));
 
         /// <summary>
         /// Take over an app-managed item: Crossly acts on the marketplace itself (needs your own connection).
@@ -236,8 +251,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingPlatformTakeOverResponse</returns>
-        ApiResponse<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverWithHttpInfo(Guid id, string platform);
+        ApiResponse<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverWithHttpInfo(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest));
         /// <summary>
         /// Stop the app managing this listing. It stays live everywhere; the app&#39;s Crossly Shop fee ends for future sales.
         /// </summary>
@@ -260,8 +276,9 @@ namespace net.crossly.Api
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <returns>CreateOrderEventResponse</returns>
-        CreateOrderEventResponse CreateOrderEvent();
+        CreateOrderEventResponse CreateOrderEvent(CreateOrderEventRequest createOrderEventRequest);
 
         /// <summary>
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
@@ -270,15 +287,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <returns>ApiResponse of CreateOrderEventResponse</returns>
-        ApiResponse<CreateOrderEventResponse> CreateOrderEventWithHttpInfo();
+        ApiResponse<CreateOrderEventResponse> CreateOrderEventWithHttpInfo(CreateOrderEventRequest createOrderEventRequest);
         /// <summary>
         /// Take over the app-managed item behind an order; its actions then go through your own connection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>CreateOrderTakeOverResponse</returns>
-        CreateOrderTakeOverResponse CreateOrderTakeOver(Guid id);
+        CreateOrderTakeOverResponse CreateOrderTakeOver(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest));
 
         /// <summary>
         /// Take over the app-managed item behind an order; its actions then go through your own connection.
@@ -288,8 +307,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateOrderTakeOverResponse</returns>
-        ApiResponse<CreateOrderTakeOverResponse> CreateOrderTakeOverWithHttpInfo(Guid id);
+        ApiResponse<CreateOrderTakeOverResponse> CreateOrderTakeOverWithHttpInfo(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest));
         /// <summary>
         /// Which app manages this listing (null when none). Its fee is charged only on Crossly Shop sales, never on eBay or other marketplaces.
         /// </summary>
@@ -392,9 +412,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingCommandsItem</returns>
-        System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandCompleteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandCompleteAsync(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report a command done on the marketplace. relist: newExternalId when a new id was issued; refund_order: platformRefundId + amount (required); submit_tracking: trackingNumber/carrier as the marketplace holds them; message_buyer: platformMessageId.
@@ -404,9 +425,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingCommandsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListListingCommandsItem>> CreateListingCommandCompleteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListListingCommandsItem>> CreateListingCommandCompleteWithHttpInfoAsync(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Report a command failed, with a reason the seller will see.
         /// </summary>
@@ -415,9 +437,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingCommandsItem</returns>
-        System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandFailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandFailAsync(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report a command failed, with a reason the seller will see.
@@ -427,9 +450,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingCommandsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListListingCommandsItem>> CreateListingCommandFailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListListingCommandsItem>> CreateListingCommandFailWithHttpInfoAsync(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
         /// </summary>
@@ -438,9 +462,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingEventResponse</returns>
-        System.Threading.Tasks.Task<CreateListingEventResponse> CreateListingEventAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingEventResponse> CreateListingEventAsync(Guid id, CreateListingEventRequest createListingEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report a marketplace event (item.updated / ended / sold / relisted) for a listing your app manages.
@@ -450,9 +475,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingEventResponse>> CreateListingEventWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingEventResponse>> CreateListingEventWithHttpInfoAsync(Guid id, CreateListingEventRequest createListingEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
         /// </summary>
@@ -460,9 +486,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingEvent2Response</returns>
-        System.Threading.Tasks.Task<CreateListingEvent2Response> CreateListingEvent2Async(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingEvent2Response> CreateListingEvent2Async(CreateListingEvent2Request createListingEvent2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest.
@@ -471,9 +498,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingEvent2Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingEvent2Response>> CreateListingEvent2WithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingEvent2Response>> CreateListingEvent2WithHttpInfoAsync(CreateListingEvent2Request createListingEvent2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
         /// </summary>
@@ -481,9 +509,10 @@ namespace net.crossly.Api
         /// Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingLinkResponse</returns>
-        System.Threading.Tasks.Task<CreateListingLinkResponse> CreateListingLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingLinkResponse> CreateListingLinkAsync(CreateListingLinkRequest createListingLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent.
@@ -492,9 +521,10 @@ namespace net.crossly.Api
         /// Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingLinkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingLinkResponse>> CreateListingLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingLinkResponse>> CreateListingLinkWithHttpInfoAsync(CreateListingLinkRequest createListingLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
         /// </summary>
@@ -502,9 +532,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingLinkBulkResponse</returns>
-        System.Threading.Tasks.Task<CreateListingLinkBulkResponse> CreateListingLinkBulkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingLinkBulkResponse> CreateListingLinkBulkAsync(CreateListingLinkBulkRequest createListingLinkBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe.
@@ -513,9 +544,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingLinkBulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingLinkBulkResponse>> CreateListingLinkBulkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingLinkBulkResponse>> CreateListingLinkBulkWithHttpInfoAsync(CreateListingLinkBulkRequest createListingLinkBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// End this marketplace item and relist it under Crossly. Requires consent: true.
         /// </summary>
@@ -525,9 +557,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingPlatformRecloneResponse</returns>
-        System.Threading.Tasks.Task<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneAsync(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// End this marketplace item and relist it under Crossly. Requires consent: true.
@@ -538,9 +571,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingPlatformRecloneResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingPlatformRecloneResponse>> CreateListingPlatformRecloneWithHttpInfoAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingPlatformRecloneResponse>> CreateListingPlatformRecloneWithHttpInfoAsync(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a relist still waiting for you to end the old item.
         /// </summary>
@@ -600,9 +634,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingPlatformTakeOverResponse</returns>
-        System.Threading.Tasks.Task<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverAsync(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Take over an app-managed item: Crossly acts on the marketplace itself (needs your own connection).
@@ -613,9 +648,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingPlatformTakeOverResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingPlatformTakeOverResponse>> CreateListingPlatformTakeOverWithHttpInfoAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingPlatformTakeOverResponse>> CreateListingPlatformTakeOverWithHttpInfoAsync(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop the app managing this listing. It stays live everywhere; the app&#39;s Crossly Shop fee ends for future sales.
         /// </summary>
@@ -646,9 +682,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderEventResponse</returns>
-        System.Threading.Tasks.Task<CreateOrderEventResponse> CreateOrderEventAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateOrderEventResponse> CreateOrderEventAsync(CreateOrderEventRequest createOrderEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest.
@@ -657,9 +694,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderEventResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateOrderEventResponse>> CreateOrderEventWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderEventResponse>> CreateOrderEventWithHttpInfoAsync(CreateOrderEventRequest createOrderEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Take over the app-managed item behind an order; its actions then go through your own connection.
         /// </summary>
@@ -668,9 +706,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderTakeOverResponse</returns>
-        System.Threading.Tasks.Task<CreateOrderTakeOverResponse> CreateOrderTakeOverAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateOrderTakeOverResponse> CreateOrderTakeOverAsync(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Take over the app-managed item behind an order; its actions then go through your own connection.
@@ -680,9 +719,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderTakeOverResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateOrderTakeOverResponse>> CreateOrderTakeOverWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateOrderTakeOverResponse>> CreateOrderTakeOverWithHttpInfoAsync(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Which app manages this listing (null when none). Its fee is charged only on Crossly Shop sales, never on eBay or other marketplaces.
         /// </summary>
@@ -1019,10 +1059,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <returns>ListListingCommandsItem</returns>
-        public ListListingCommandsItem CreateListingCommandComplete(Guid id)
+        public ListListingCommandsItem CreateListingCommandComplete(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest))
         {
-            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = CreateListingCommandCompleteWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = CreateListingCommandCompleteWithHttpInfo(id, createListingCommandCompleteRequest);
             return localVarResponse.Data;
         }
 
@@ -1031,12 +1072,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <returns>ApiResponse of ListListingCommandsItem</returns>
-        public net.crossly.Client.ApiResponse<ListListingCommandsItem> CreateListingCommandCompleteWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListListingCommandsItem> CreateListingCommandCompleteWithHttpInfo(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1057,6 +1100,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingCommandCompleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1084,11 +1128,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingCommandsItem</returns>
-        public async System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandCompleteAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandCompleteAsync(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = await CreateListingCommandCompleteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = await CreateListingCommandCompleteWithHttpInfoAsync(id, createListingCommandCompleteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1097,14 +1142,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandCompleteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingCommandsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingCommandsItem>> CreateListingCommandCompleteWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingCommandsItem>> CreateListingCommandCompleteWithHttpInfoAsync(Guid id, CreateListingCommandCompleteRequest createListingCommandCompleteRequest = default(CreateListingCommandCompleteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1125,6 +1172,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingCommandCompleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1153,10 +1201,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <returns>ListListingCommandsItem</returns>
-        public ListListingCommandsItem CreateListingCommandFail(Guid id)
+        public ListListingCommandsItem CreateListingCommandFail(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest)
         {
-            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = CreateListingCommandFailWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = CreateListingCommandFailWithHttpInfo(id, createListingCommandFailRequest);
             return localVarResponse.Data;
         }
 
@@ -1165,12 +1214,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <returns>ApiResponse of ListListingCommandsItem</returns>
-        public net.crossly.Client.ApiResponse<ListListingCommandsItem> CreateListingCommandFailWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListListingCommandsItem> CreateListingCommandFailWithHttpInfo(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest)
         {
+            // verify the required parameter 'createListingCommandFailRequest' is set
+            if (createListingCommandFailRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingCommandFailRequest' when calling AppManagedListingsApi->CreateListingCommandFail");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1191,6 +1248,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingCommandFailRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1218,11 +1276,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListListingCommandsItem</returns>
-        public async System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandFailAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListListingCommandsItem> CreateListingCommandFailAsync(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = await CreateListingCommandFailWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListListingCommandsItem> localVarResponse = await CreateListingCommandFailWithHttpInfoAsync(id, createListingCommandFailRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1231,14 +1290,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingCommandFailRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListListingCommandsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingCommandsItem>> CreateListingCommandFailWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListListingCommandsItem>> CreateListingCommandFailWithHttpInfoAsync(Guid id, CreateListingCommandFailRequest createListingCommandFailRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingCommandFailRequest' is set
+            if (createListingCommandFailRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingCommandFailRequest' when calling AppManagedListingsApi->CreateListingCommandFail");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1259,6 +1326,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingCommandFailRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1287,10 +1355,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <returns>CreateListingEventResponse</returns>
-        public CreateListingEventResponse CreateListingEvent(Guid id)
+        public CreateListingEventResponse CreateListingEvent(Guid id, CreateListingEventRequest createListingEventRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingEventResponse> localVarResponse = CreateListingEventWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateListingEventResponse> localVarResponse = CreateListingEventWithHttpInfo(id, createListingEventRequest);
             return localVarResponse.Data;
         }
 
@@ -1299,12 +1368,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <returns>ApiResponse of CreateListingEventResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingEventResponse> CreateListingEventWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateListingEventResponse> CreateListingEventWithHttpInfo(Guid id, CreateListingEventRequest createListingEventRequest)
         {
+            // verify the required parameter 'createListingEventRequest' is set
+            if (createListingEventRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingEventRequest' when calling AppManagedListingsApi->CreateListingEvent");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1325,6 +1402,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1352,11 +1430,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingEventResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingEventResponse> CreateListingEventAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingEventResponse> CreateListingEventAsync(Guid id, CreateListingEventRequest createListingEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingEventResponse> localVarResponse = await CreateListingEventWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingEventResponse> localVarResponse = await CreateListingEventWithHttpInfoAsync(id, createListingEventRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1365,14 +1444,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingEventResponse>> CreateListingEventWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingEventResponse>> CreateListingEventWithHttpInfoAsync(Guid id, CreateListingEventRequest createListingEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingEventRequest' is set
+            if (createListingEventRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingEventRequest' when calling AppManagedListingsApi->CreateListingEvent");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1393,6 +1480,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1420,10 +1508,11 @@ namespace net.crossly.Api
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <returns>CreateListingEvent2Response</returns>
-        public CreateListingEvent2Response CreateListingEvent2()
+        public CreateListingEvent2Response CreateListingEvent2(CreateListingEvent2Request createListingEvent2Request)
         {
-            net.crossly.Client.ApiResponse<CreateListingEvent2Response> localVarResponse = CreateListingEvent2WithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingEvent2Response> localVarResponse = CreateListingEvent2WithHttpInfo(createListingEvent2Request);
             return localVarResponse.Data;
         }
 
@@ -1431,12 +1520,20 @@ namespace net.crossly.Api
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <returns>ApiResponse of CreateListingEvent2Response</returns>
-        public net.crossly.Client.ApiResponse<CreateListingEvent2Response> CreateListingEvent2WithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingEvent2Response> CreateListingEvent2WithHttpInfo(CreateListingEvent2Request createListingEvent2Request)
         {
+            // verify the required parameter 'createListingEvent2Request' is set
+            if (createListingEvent2Request == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingEvent2Request' when calling AppManagedListingsApi->CreateListingEvent2");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1456,6 +1553,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingEvent2Request;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1482,11 +1580,12 @@ namespace net.crossly.Api
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingEvent2Response</returns>
-        public async System.Threading.Tasks.Task<CreateListingEvent2Response> CreateListingEvent2Async(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingEvent2Response> CreateListingEvent2Async(CreateListingEvent2Request createListingEvent2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingEvent2Response> localVarResponse = await CreateListingEvent2WithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingEvent2Response> localVarResponse = await CreateListingEvent2WithHttpInfoAsync(createListingEvent2Request, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1494,14 +1593,22 @@ namespace net.crossly.Api
         /// Report up to 100 marketplace events keyed by platform + externalId. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingEvent2Request"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingEvent2Response)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingEvent2Response>> CreateListingEvent2WithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingEvent2Response>> CreateListingEvent2WithHttpInfoAsync(CreateListingEvent2Request createListingEvent2Request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingEvent2Request' is set
+            if (createListingEvent2Request == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingEvent2Request' when calling AppManagedListingsApi->CreateListingEvent2");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1521,6 +1628,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingEvent2Request;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1548,10 +1656,11 @@ namespace net.crossly.Api
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent. Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <returns>CreateListingLinkResponse</returns>
-        public CreateListingLinkResponse CreateListingLink()
+        public CreateListingLinkResponse CreateListingLink(CreateListingLinkRequest createListingLinkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingLinkResponse> localVarResponse = CreateListingLinkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingLinkResponse> localVarResponse = CreateListingLinkWithHttpInfo(createListingLinkRequest);
             return localVarResponse.Data;
         }
 
@@ -1559,12 +1668,20 @@ namespace net.crossly.Api
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent. Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <returns>ApiResponse of CreateListingLinkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingLinkResponse> CreateListingLinkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingLinkResponse> CreateListingLinkWithHttpInfo(CreateListingLinkRequest createListingLinkRequest)
         {
+            // verify the required parameter 'createListingLinkRequest' is set
+            if (createListingLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingLinkRequest' when calling AppManagedListingsApi->CreateListingLink");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1584,6 +1701,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1610,11 +1728,12 @@ namespace net.crossly.Api
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent. Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingLinkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingLinkResponse> CreateListingLinkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingLinkResponse> CreateListingLinkAsync(CreateListingLinkRequest createListingLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingLinkResponse> localVarResponse = await CreateListingLinkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingLinkResponse> localVarResponse = await CreateListingLinkWithHttpInfoAsync(createListingLinkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1622,14 +1741,22 @@ namespace net.crossly.Api
         /// Link a live marketplace listing your app already manages into Crossly (no re-listing). Idempotent. Direct when Crossly holds the seller&#39;s own connection (verified by item id: exists, active, theirs); relayed otherwise, on your attestation plus &#x60;snapshot&#x60;. The listing shows \&quot;Managed by &lt;your app&gt;\&quot;. Your revenue share is charged only on sales made on Crossly Shop; sales on eBay or any other marketplace never carry an app fee.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingLinkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingLinkResponse>> CreateListingLinkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingLinkResponse>> CreateListingLinkWithHttpInfoAsync(CreateListingLinkRequest createListingLinkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingLinkRequest' is set
+            if (createListingLinkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingLinkRequest' when calling AppManagedListingsApi->CreateListingLink");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1649,6 +1776,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1676,10 +1804,11 @@ namespace net.crossly.Api
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <returns>CreateListingLinkBulkResponse</returns>
-        public CreateListingLinkBulkResponse CreateListingLinkBulk()
+        public CreateListingLinkBulkResponse CreateListingLinkBulk(CreateListingLinkBulkRequest createListingLinkBulkRequest)
         {
-            net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> localVarResponse = CreateListingLinkBulkWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> localVarResponse = CreateListingLinkBulkWithHttpInfo(createListingLinkBulkRequest);
             return localVarResponse.Data;
         }
 
@@ -1687,12 +1816,20 @@ namespace net.crossly.Api
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <returns>ApiResponse of CreateListingLinkBulkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> CreateListingLinkBulkWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> CreateListingLinkBulkWithHttpInfo(CreateListingLinkBulkRequest createListingLinkBulkRequest)
         {
+            // verify the required parameter 'createListingLinkBulkRequest' is set
+            if (createListingLinkBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingLinkBulkRequest' when calling AppManagedListingsApi->CreateListingLinkBulk");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1712,6 +1849,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingLinkBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1738,11 +1876,12 @@ namespace net.crossly.Api
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingLinkBulkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingLinkBulkResponse> CreateListingLinkBulkAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingLinkBulkResponse> CreateListingLinkBulkAsync(CreateListingLinkBulkRequest createListingLinkBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> localVarResponse = await CreateListingLinkBulkWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse> localVarResponse = await CreateListingLinkBulkWithHttpInfoAsync(createListingLinkBulkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1750,14 +1889,22 @@ namespace net.crossly.Api
         /// Link up to 100 live marketplace listings. Each item succeeds or fails on its own; re-sending is safe. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingLinkBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingLinkBulkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse>> CreateListingLinkBulkWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingLinkBulkResponse>> CreateListingLinkBulkWithHttpInfoAsync(CreateListingLinkBulkRequest createListingLinkBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingLinkBulkRequest' is set
+            if (createListingLinkBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingLinkBulkRequest' when calling AppManagedListingsApi->CreateListingLinkBulk");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1777,6 +1924,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingLinkBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1806,10 +1954,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <returns>CreateListingPlatformRecloneResponse</returns>
-        public CreateListingPlatformRecloneResponse CreateListingPlatformReclone(Guid id, string platform)
+        public CreateListingPlatformRecloneResponse CreateListingPlatformReclone(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest))
         {
-            net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> localVarResponse = CreateListingPlatformRecloneWithHttpInfo(id, platform);
+            net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> localVarResponse = CreateListingPlatformRecloneWithHttpInfo(id, platform, createListingPlatformRecloneRequest);
             return localVarResponse.Data;
         }
 
@@ -1819,8 +1968,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingPlatformRecloneResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneWithHttpInfo(Guid id, string platform)
+        public net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneWithHttpInfo(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -1831,6 +1981,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1852,6 +2003,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createListingPlatformRecloneRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1880,11 +2032,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingPlatformRecloneResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingPlatformRecloneResponse> CreateListingPlatformRecloneAsync(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> localVarResponse = await CreateListingPlatformRecloneWithHttpInfoAsync(id, platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse> localVarResponse = await CreateListingPlatformRecloneWithHttpInfoAsync(id, platform, createListingPlatformRecloneRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1894,9 +2047,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createListingPlatformRecloneRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingPlatformRecloneResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse>> CreateListingPlatformRecloneWithHttpInfoAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingPlatformRecloneResponse>> CreateListingPlatformRecloneWithHttpInfoAsync(Guid id, string platform, CreateListingPlatformRecloneRequest createListingPlatformRecloneRequest = default(CreateListingPlatformRecloneRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -1908,6 +2062,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1929,6 +2084,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createListingPlatformRecloneRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2262,10 +2418,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>CreateListingPlatformTakeOverResponse</returns>
-        public CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver(Guid id, string platform)
+        public CreateListingPlatformTakeOverResponse CreateListingPlatformTakeOver(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest))
         {
-            net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> localVarResponse = CreateListingPlatformTakeOverWithHttpInfo(id, platform);
+            net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> localVarResponse = CreateListingPlatformTakeOverWithHttpInfo(id, platform, createOrderTakeOverRequest);
             return localVarResponse.Data;
         }
 
@@ -2275,8 +2432,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingPlatformTakeOverResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverWithHttpInfo(Guid id, string platform)
+        public net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverWithHttpInfo(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2287,6 +2445,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2308,6 +2467,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createOrderTakeOverRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2336,11 +2496,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingPlatformTakeOverResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingPlatformTakeOverResponse> CreateListingPlatformTakeOverAsync(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> localVarResponse = await CreateListingPlatformTakeOverWithHttpInfoAsync(id, platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse> localVarResponse = await CreateListingPlatformTakeOverWithHttpInfoAsync(id, platform, createOrderTakeOverRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2350,9 +2511,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="platform"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingPlatformTakeOverResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse>> CreateListingPlatformTakeOverWithHttpInfoAsync(Guid id, string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingPlatformTakeOverResponse>> CreateListingPlatformTakeOverWithHttpInfoAsync(Guid id, string platform, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -2364,6 +2526,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2385,6 +2548,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = createOrderTakeOverRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2546,10 +2710,11 @@ namespace net.crossly.Api
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <returns>CreateOrderEventResponse</returns>
-        public CreateOrderEventResponse CreateOrderEvent()
+        public CreateOrderEventResponse CreateOrderEvent(CreateOrderEventRequest createOrderEventRequest)
         {
-            net.crossly.Client.ApiResponse<CreateOrderEventResponse> localVarResponse = CreateOrderEventWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateOrderEventResponse> localVarResponse = CreateOrderEventWithHttpInfo(createOrderEventRequest);
             return localVarResponse.Data;
         }
 
@@ -2557,12 +2722,20 @@ namespace net.crossly.Api
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <returns>ApiResponse of CreateOrderEventResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateOrderEventResponse> CreateOrderEventWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateOrderEventResponse> CreateOrderEventWithHttpInfo(CreateOrderEventRequest createOrderEventRequest)
         {
+            // verify the required parameter 'createOrderEventRequest' is set
+            if (createOrderEventRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createOrderEventRequest' when calling AppManagedListingsApi->CreateOrderEvent");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2582,6 +2755,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createOrderEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2608,11 +2782,12 @@ namespace net.crossly.Api
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderEventResponse</returns>
-        public async System.Threading.Tasks.Task<CreateOrderEventResponse> CreateOrderEventAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateOrderEventResponse> CreateOrderEventAsync(CreateOrderEventRequest createOrderEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateOrderEventResponse> localVarResponse = await CreateOrderEventWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateOrderEventResponse> localVarResponse = await CreateOrderEventWithHttpInfoAsync(createOrderEventRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2620,14 +2795,22 @@ namespace net.crossly.Api
         /// Report up to 100 order events (shipped, cancelled, refunded, delivered) keyed by platform + platformOrderId. Each completes the matching open order command. One bad event never fails the rest. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createOrderEventRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderEventResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderEventResponse>> CreateOrderEventWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderEventResponse>> CreateOrderEventWithHttpInfoAsync(CreateOrderEventRequest createOrderEventRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createOrderEventRequest' is set
+            if (createOrderEventRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createOrderEventRequest' when calling AppManagedListingsApi->CreateOrderEvent");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2647,6 +2830,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createOrderEventRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2675,10 +2859,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>CreateOrderTakeOverResponse</returns>
-        public CreateOrderTakeOverResponse CreateOrderTakeOver(Guid id)
+        public CreateOrderTakeOverResponse CreateOrderTakeOver(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest))
         {
-            net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> localVarResponse = CreateOrderTakeOverWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> localVarResponse = CreateOrderTakeOverWithHttpInfo(id, createOrderTakeOverRequest);
             return localVarResponse.Data;
         }
 
@@ -2687,12 +2872,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateOrderTakeOverResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> CreateOrderTakeOverWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> CreateOrderTakeOverWithHttpInfo(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2713,6 +2900,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createOrderTakeOverRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2740,11 +2928,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateOrderTakeOverResponse</returns>
-        public async System.Threading.Tasks.Task<CreateOrderTakeOverResponse> CreateOrderTakeOverAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateOrderTakeOverResponse> CreateOrderTakeOverAsync(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> localVarResponse = await CreateOrderTakeOverWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse> localVarResponse = await CreateOrderTakeOverWithHttpInfoAsync(id, createOrderTakeOverRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2753,14 +2942,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createOrderTakeOverRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateOrderTakeOverResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse>> CreateOrderTakeOverWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateOrderTakeOverResponse>> CreateOrderTakeOverWithHttpInfoAsync(Guid id, CreateOrderTakeOverRequest createOrderTakeOverRequest = default(CreateOrderTakeOverRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2781,6 +2972,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createOrderTakeOverRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <returns>CreateProductionCandidateAcceptResponse</returns>
-        CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept(string id);
+        CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest);
 
         /// <summary>
         /// Accept a graduated design&#39;s production terms (edition size, cost, holder access).
@@ -42,8 +43,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <returns>ApiResponse of CreateProductionCandidateAcceptResponse</returns>
-        ApiResponse<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptWithHttpInfo(string id);
+        ApiResponse<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptWithHttpInfo(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest);
         /// <summary>
         /// Ops: open a purchase order for a candidate. Admin PAT only.
         /// </summary>
@@ -67,8 +69,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <returns>CreateProductionCandidateVoteResponse</returns>
-        CreateProductionCandidateVoteResponse CreateProductionCandidateVote(string id);
+        CreateProductionCandidateVoteResponse CreateProductionCandidateVote(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest));
 
         /// <summary>
         /// Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
@@ -78,15 +81,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateProductionCandidateVoteResponse</returns>
-        ApiResponse<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteWithHttpInfo(string id);
+        ApiResponse<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteWithHttpInfo(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest));
         /// <summary>
         /// Set a design&#39;s production brief (materials, finish, box, reference images).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        CreateProductionDesignSpecResponse CreateProductionDesignBrief(string cosmeticId);
+        CreateProductionDesignSpecResponse CreateProductionDesignBrief(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest);
 
         /// <summary>
         /// Set a design&#39;s production brief (materials, finish, box, reference images).
@@ -96,15 +101,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignBriefWithHttpInfo(string cosmeticId);
+        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignBriefWithHttpInfo(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest);
         /// <summary>
         /// Opt a design in or out of physical production.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        CreateProductionDesignSpecResponse CreateProductionDesignConsent(string cosmeticId);
+        CreateProductionDesignSpecResponse CreateProductionDesignConsent(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest);
 
         /// <summary>
         /// Opt a design in or out of physical production.
@@ -114,15 +121,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignConsentWithHttpInfo(string cosmeticId);
+        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignConsentWithHttpInfo(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest);
         /// <summary>
         /// Set a design&#39;s production spec (category, materials, complexity, packaging).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        CreateProductionDesignSpecResponse CreateProductionDesignSpec(string cosmeticId);
+        CreateProductionDesignSpecResponse CreateProductionDesignSpec(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest);
 
         /// <summary>
         /// Set a design&#39;s production spec (category, materials, complexity, packaging).
@@ -132,14 +141,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignSpecWithHttpInfo(string cosmeticId);
+        ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignSpecWithHttpInfo(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest);
         /// <summary>
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <returns>CreateProductionEstimateResponse</returns>
-        CreateProductionEstimateResponse CreateProductionEstimate();
+        CreateProductionEstimateResponse CreateProductionEstimate(CreateProductionEstimateRequest createProductionEstimateRequest);
 
         /// <summary>
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety).
@@ -148,15 +159,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <returns>ApiResponse of CreateProductionEstimateResponse</returns>
-        ApiResponse<CreateProductionEstimateResponse> CreateProductionEstimateWithHttpInfo();
+        ApiResponse<CreateProductionEstimateResponse> CreateProductionEstimateWithHttpInfo(CreateProductionEstimateRequest createProductionEstimateRequest);
         /// <summary>
         /// Buy a limited-edition unit of a physical run (holder pricing applies).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <returns>CreateProductionRunPurchaseResponse</returns>
-        CreateProductionRunPurchaseResponse CreateProductionRunPurchase(string id);
+        CreateProductionRunPurchaseResponse CreateProductionRunPurchase(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest));
 
         /// <summary>
         /// Buy a limited-edition unit of a physical run (holder pricing applies).
@@ -166,8 +179,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateProductionRunPurchaseResponse</returns>
-        ApiResponse<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseWithHttpInfo(string id);
+        ApiResponse<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseWithHttpInfo(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest));
         /// <summary>
         /// Sell it again: a draft listing of something you bought on Crossly, carrying its purchase receipt so the next buyer inherits its provenance.
         /// </summary>
@@ -359,8 +373,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <returns>UpdateProductionPoResponse</returns>
-        UpdateProductionPoResponse UpdateProductionPo(string poId);
+        UpdateProductionPoResponse UpdateProductionPo(string poId, UpdateProductionPoRequest updateProductionPoRequest);
 
         /// <summary>
         /// Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
@@ -370,8 +385,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <returns>ApiResponse of UpdateProductionPoResponse</returns>
-        ApiResponse<UpdateProductionPoResponse> UpdateProductionPoWithHttpInfo(string poId);
+        ApiResponse<UpdateProductionPoResponse> UpdateProductionPoWithHttpInfo(string poId, UpdateProductionPoRequest updateProductionPoRequest);
         #endregion Synchronous Operations
     }
 
@@ -389,9 +405,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionCandidateAcceptResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptAsync(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accept a graduated design&#39;s production terms (edition size, cost, holder access).
@@ -401,9 +418,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionCandidateAcceptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionCandidateAcceptResponse>> CreateProductionCandidateAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionCandidateAcceptResponse>> CreateProductionCandidateAcceptWithHttpInfoAsync(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ops: open a purchase order for a candidate. Admin PAT only.
         /// </summary>
@@ -435,9 +453,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionCandidateVoteResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteAsync(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
@@ -447,9 +466,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionCandidateVoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionCandidateVoteResponse>> CreateProductionCandidateVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionCandidateVoteResponse>> CreateProductionCandidateVoteWithHttpInfoAsync(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set a design&#39;s production brief (materials, finish, box, reference images).
         /// </summary>
@@ -458,9 +478,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignBriefAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignBriefAsync(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set a design&#39;s production brief (materials, finish, box, reference images).
@@ -470,9 +491,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignBriefWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignBriefWithHttpInfoAsync(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Opt a design in or out of physical production.
         /// </summary>
@@ -481,9 +503,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignConsentAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignConsentAsync(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Opt a design in or out of physical production.
@@ -493,9 +516,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignConsentWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignConsentWithHttpInfoAsync(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set a design&#39;s production spec (category, materials, complexity, packaging).
         /// </summary>
@@ -504,9 +528,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignSpecAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignSpecAsync(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set a design&#39;s production spec (category, materials, complexity, packaging).
@@ -516,9 +541,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignSpecWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignSpecWithHttpInfoAsync(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety).
         /// </summary>
@@ -526,9 +552,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionEstimateResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionEstimateResponse> CreateProductionEstimateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionEstimateResponse> CreateProductionEstimateAsync(CreateProductionEstimateRequest createProductionEstimateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety).
@@ -537,9 +564,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionEstimateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionEstimateResponse>> CreateProductionEstimateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionEstimateResponse>> CreateProductionEstimateWithHttpInfoAsync(CreateProductionEstimateRequest createProductionEstimateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Buy a limited-edition unit of a physical run (holder pricing applies).
         /// </summary>
@@ -548,9 +576,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionRunPurchaseResponse</returns>
-        System.Threading.Tasks.Task<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseAsync(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy a limited-edition unit of a physical run (holder pricing applies).
@@ -560,9 +589,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionRunPurchaseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProductionRunPurchaseResponse>> CreateProductionRunPurchaseWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProductionRunPurchaseResponse>> CreateProductionRunPurchaseWithHttpInfoAsync(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sell it again: a draft listing of something you bought on Crossly, carrying its purchase receipt so the next buyer inherits its provenance.
         /// </summary>
@@ -812,9 +842,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateProductionPoResponse</returns>
-        System.Threading.Tasks.Task<UpdateProductionPoResponse> UpdateProductionPoAsync(string poId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateProductionPoResponse> UpdateProductionPoAsync(string poId, UpdateProductionPoRequest updateProductionPoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
@@ -824,9 +855,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateProductionPoResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateProductionPoResponse>> UpdateProductionPoWithHttpInfoAsync(string poId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateProductionPoResponse>> UpdateProductionPoWithHttpInfoAsync(string poId, UpdateProductionPoRequest updateProductionPoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -952,10 +984,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <returns>CreateProductionCandidateAcceptResponse</returns>
-        public CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept(string id)
+        public CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> localVarResponse = CreateProductionCandidateAcceptWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> localVarResponse = CreateProductionCandidateAcceptWithHttpInfo(id, createProductionCandidateAcceptRequest);
             return localVarResponse.Data;
         }
 
@@ -964,8 +997,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <returns>ApiResponse of CreateProductionCandidateAcceptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptWithHttpInfo(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -973,9 +1007,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling ProductionApi->CreateProductionCandidateAccept");
             }
 
+            // verify the required parameter 'createProductionCandidateAcceptRequest' is set
+            if (createProductionCandidateAcceptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionCandidateAcceptRequest' when calling ProductionApi->CreateProductionCandidateAccept");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -996,6 +1037,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionCandidateAcceptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1023,11 +1065,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionCandidateAcceptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionCandidateAcceptResponse> CreateProductionCandidateAcceptAsync(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> localVarResponse = await CreateProductionCandidateAcceptWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse> localVarResponse = await CreateProductionCandidateAcceptWithHttpInfoAsync(id, createProductionCandidateAcceptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1036,9 +1079,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateAcceptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionCandidateAcceptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse>> CreateProductionCandidateAcceptWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionCandidateAcceptResponse>> CreateProductionCandidateAcceptWithHttpInfoAsync(string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1046,10 +1090,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling ProductionApi->CreateProductionCandidateAccept");
             }
 
+            // verify the required parameter 'createProductionCandidateAcceptRequest' is set
+            if (createProductionCandidateAcceptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionCandidateAcceptRequest' when calling ProductionApi->CreateProductionCandidateAccept");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1070,6 +1121,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionCandidateAcceptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1244,10 +1296,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <returns>CreateProductionCandidateVoteResponse</returns>
-        public CreateProductionCandidateVoteResponse CreateProductionCandidateVote(string id)
+        public CreateProductionCandidateVoteResponse CreateProductionCandidateVote(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest))
         {
-            net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> localVarResponse = CreateProductionCandidateVoteWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> localVarResponse = CreateProductionCandidateVoteWithHttpInfo(id, createProductionCandidateVoteRequest);
             return localVarResponse.Data;
         }
 
@@ -1256,8 +1309,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateProductionCandidateVoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteWithHttpInfo(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1268,6 +1322,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1288,6 +1343,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionCandidateVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1315,11 +1371,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionCandidateVoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionCandidateVoteResponse> CreateProductionCandidateVoteAsync(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> localVarResponse = await CreateProductionCandidateVoteWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse> localVarResponse = await CreateProductionCandidateVoteWithHttpInfoAsync(id, createProductionCandidateVoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1328,9 +1385,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionCandidateVoteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionCandidateVoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse>> CreateProductionCandidateVoteWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionCandidateVoteResponse>> CreateProductionCandidateVoteWithHttpInfoAsync(string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = default(CreateProductionCandidateVoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1342,6 +1400,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1362,6 +1421,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionCandidateVoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1390,10 +1450,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        public CreateProductionDesignSpecResponse CreateProductionDesignBrief(string cosmeticId)
+        public CreateProductionDesignSpecResponse CreateProductionDesignBrief(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignBriefWithHttpInfo(cosmeticId);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignBriefWithHttpInfo(cosmeticId, createProductionDesignBriefRequest);
             return localVarResponse.Data;
         }
 
@@ -1402,8 +1463,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignBriefWithHttpInfo(string cosmeticId)
+        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignBriefWithHttpInfo(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest)
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1411,9 +1473,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignBrief");
             }
 
+            // verify the required parameter 'createProductionDesignBriefRequest' is set
+            if (createProductionDesignBriefRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignBriefRequest' when calling ProductionApi->CreateProductionDesignBrief");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1434,6 +1503,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignBriefRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1461,11 +1531,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignBriefAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignBriefAsync(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignBriefWithHttpInfoAsync(cosmeticId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignBriefWithHttpInfoAsync(cosmeticId, createProductionDesignBriefRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1474,9 +1545,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignBriefRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignBriefWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignBriefWithHttpInfoAsync(string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1484,10 +1556,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignBrief");
             }
 
+            // verify the required parameter 'createProductionDesignBriefRequest' is set
+            if (createProductionDesignBriefRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignBriefRequest' when calling ProductionApi->CreateProductionDesignBrief");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1508,6 +1587,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignBriefRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1536,10 +1616,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        public CreateProductionDesignSpecResponse CreateProductionDesignConsent(string cosmeticId)
+        public CreateProductionDesignSpecResponse CreateProductionDesignConsent(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignConsentWithHttpInfo(cosmeticId);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignConsentWithHttpInfo(cosmeticId, createProductionDesignConsentRequest);
             return localVarResponse.Data;
         }
 
@@ -1548,8 +1629,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignConsentWithHttpInfo(string cosmeticId)
+        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignConsentWithHttpInfo(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest)
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1557,9 +1639,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignConsent");
             }
 
+            // verify the required parameter 'createProductionDesignConsentRequest' is set
+            if (createProductionDesignConsentRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignConsentRequest' when calling ProductionApi->CreateProductionDesignConsent");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1580,6 +1669,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignConsentRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1607,11 +1697,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignConsentAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignConsentAsync(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignConsentWithHttpInfoAsync(cosmeticId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignConsentWithHttpInfoAsync(cosmeticId, createProductionDesignConsentRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1620,9 +1711,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignConsentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignConsentWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignConsentWithHttpInfoAsync(string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1630,10 +1722,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignConsent");
             }
 
+            // verify the required parameter 'createProductionDesignConsentRequest' is set
+            if (createProductionDesignConsentRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignConsentRequest' when calling ProductionApi->CreateProductionDesignConsent");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1654,6 +1753,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignConsentRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1682,10 +1782,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <returns>CreateProductionDesignSpecResponse</returns>
-        public CreateProductionDesignSpecResponse CreateProductionDesignSpec(string cosmeticId)
+        public CreateProductionDesignSpecResponse CreateProductionDesignSpec(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignSpecWithHttpInfo(cosmeticId);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = CreateProductionDesignSpecWithHttpInfo(cosmeticId, createProductionDesignSpecRequest);
             return localVarResponse.Data;
         }
 
@@ -1694,8 +1795,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <returns>ApiResponse of CreateProductionDesignSpecResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignSpecWithHttpInfo(string cosmeticId)
+        public net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> CreateProductionDesignSpecWithHttpInfo(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest)
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1703,9 +1805,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignSpec");
             }
 
+            // verify the required parameter 'createProductionDesignSpecRequest' is set
+            if (createProductionDesignSpecRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignSpecRequest' when calling ProductionApi->CreateProductionDesignSpec");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1726,6 +1835,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignSpecRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1753,11 +1863,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionDesignSpecResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignSpecAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionDesignSpecResponse> CreateProductionDesignSpecAsync(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignSpecWithHttpInfoAsync(cosmeticId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse> localVarResponse = await CreateProductionDesignSpecWithHttpInfoAsync(cosmeticId, createProductionDesignSpecRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1766,9 +1877,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cosmeticId"></param>
+        /// <param name="createProductionDesignSpecRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionDesignSpecResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignSpecWithHttpInfoAsync(string cosmeticId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionDesignSpecResponse>> CreateProductionDesignSpecWithHttpInfoAsync(string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'cosmeticId' is set
             if (cosmeticId == null)
@@ -1776,10 +1888,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'cosmeticId' when calling ProductionApi->CreateProductionDesignSpec");
             }
 
+            // verify the required parameter 'createProductionDesignSpecRequest' is set
+            if (createProductionDesignSpecRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionDesignSpecRequest' when calling ProductionApi->CreateProductionDesignSpec");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1800,6 +1919,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("cosmeticId", net.crossly.Client.ClientUtils.ParameterToString(cosmeticId)); // path parameter
+            localVarRequestOptions.Data = createProductionDesignSpecRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1827,10 +1947,11 @@ namespace net.crossly.Api
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <returns>CreateProductionEstimateResponse</returns>
-        public CreateProductionEstimateResponse CreateProductionEstimate()
+        public CreateProductionEstimateResponse CreateProductionEstimate(CreateProductionEstimateRequest createProductionEstimateRequest)
         {
-            net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> localVarResponse = CreateProductionEstimateWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> localVarResponse = CreateProductionEstimateWithHttpInfo(createProductionEstimateRequest);
             return localVarResponse.Data;
         }
 
@@ -1838,12 +1959,20 @@ namespace net.crossly.Api
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <returns>ApiResponse of CreateProductionEstimateResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> CreateProductionEstimateWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> CreateProductionEstimateWithHttpInfo(CreateProductionEstimateRequest createProductionEstimateRequest)
         {
+            // verify the required parameter 'createProductionEstimateRequest' is set
+            if (createProductionEstimateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionEstimateRequest' when calling ProductionApi->CreateProductionEstimate");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1863,6 +1992,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductionEstimateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1889,11 +2019,12 @@ namespace net.crossly.Api
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionEstimateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionEstimateResponse> CreateProductionEstimateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionEstimateResponse> CreateProductionEstimateAsync(CreateProductionEstimateRequest createProductionEstimateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> localVarResponse = await CreateProductionEstimateWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionEstimateResponse> localVarResponse = await CreateProductionEstimateWithHttpInfoAsync(createProductionEstimateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1901,14 +2032,22 @@ namespace net.crossly.Api
         /// Estimate a run&#39;s landed cost from a spec + edition size (overshoots for safety). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductionEstimateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionEstimateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionEstimateResponse>> CreateProductionEstimateWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionEstimateResponse>> CreateProductionEstimateWithHttpInfoAsync(CreateProductionEstimateRequest createProductionEstimateRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createProductionEstimateRequest' is set
+            if (createProductionEstimateRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductionEstimateRequest' when calling ProductionApi->CreateProductionEstimate");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1928,6 +2067,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductionEstimateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1956,10 +2096,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <returns>CreateProductionRunPurchaseResponse</returns>
-        public CreateProductionRunPurchaseResponse CreateProductionRunPurchase(string id)
+        public CreateProductionRunPurchaseResponse CreateProductionRunPurchase(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest))
         {
-            net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> localVarResponse = CreateProductionRunPurchaseWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> localVarResponse = CreateProductionRunPurchaseWithHttpInfo(id, createProductionRunPurchaseRequest);
             return localVarResponse.Data;
         }
 
@@ -1968,8 +2109,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateProductionRunPurchaseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseWithHttpInfo(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1980,6 +2122,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2000,6 +2143,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionRunPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2027,11 +2171,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProductionRunPurchaseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProductionRunPurchaseResponse> CreateProductionRunPurchaseAsync(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> localVarResponse = await CreateProductionRunPurchaseWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse> localVarResponse = await CreateProductionRunPurchaseWithHttpInfoAsync(id, createProductionRunPurchaseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2040,9 +2185,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createProductionRunPurchaseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProductionRunPurchaseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse>> CreateProductionRunPurchaseWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductionRunPurchaseResponse>> CreateProductionRunPurchaseWithHttpInfoAsync(string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = default(CreateProductionRunPurchaseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2054,6 +2200,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2074,6 +2221,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductionRunPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3594,10 +3742,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <returns>UpdateProductionPoResponse</returns>
-        public UpdateProductionPoResponse UpdateProductionPo(string poId)
+        public UpdateProductionPoResponse UpdateProductionPo(string poId, UpdateProductionPoRequest updateProductionPoRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateProductionPoResponse> localVarResponse = UpdateProductionPoWithHttpInfo(poId);
+            net.crossly.Client.ApiResponse<UpdateProductionPoResponse> localVarResponse = UpdateProductionPoWithHttpInfo(poId, updateProductionPoRequest);
             return localVarResponse.Data;
         }
 
@@ -3606,8 +3755,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <returns>ApiResponse of UpdateProductionPoResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateProductionPoResponse> UpdateProductionPoWithHttpInfo(string poId)
+        public net.crossly.Client.ApiResponse<UpdateProductionPoResponse> UpdateProductionPoWithHttpInfo(string poId, UpdateProductionPoRequest updateProductionPoRequest)
         {
             // verify the required parameter 'poId' is set
             if (poId == null)
@@ -3615,9 +3765,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'poId' when calling ProductionApi->UpdateProductionPo");
             }
 
+            // verify the required parameter 'updateProductionPoRequest' is set
+            if (updateProductionPoRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductionPoRequest' when calling ProductionApi->UpdateProductionPo");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3638,6 +3795,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("poId", net.crossly.Client.ClientUtils.ParameterToString(poId)); // path parameter
+            localVarRequestOptions.Data = updateProductionPoRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3665,11 +3823,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateProductionPoResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateProductionPoResponse> UpdateProductionPoAsync(string poId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateProductionPoResponse> UpdateProductionPoAsync(string poId, UpdateProductionPoRequest updateProductionPoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateProductionPoResponse> localVarResponse = await UpdateProductionPoWithHttpInfoAsync(poId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateProductionPoResponse> localVarResponse = await UpdateProductionPoWithHttpInfoAsync(poId, updateProductionPoRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3678,9 +3837,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="poId"></param>
+        /// <param name="updateProductionPoRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateProductionPoResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateProductionPoResponse>> UpdateProductionPoWithHttpInfoAsync(string poId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateProductionPoResponse>> UpdateProductionPoWithHttpInfoAsync(string poId, UpdateProductionPoRequest updateProductionPoRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'poId' is set
             if (poId == null)
@@ -3688,10 +3848,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'poId' when calling ProductionApi->UpdateProductionPo");
             }
 
+            // verify the required parameter 'updateProductionPoRequest' is set
+            if (updateProductionPoRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductionPoRequest' when calling ProductionApi->UpdateProductionPo");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3712,6 +3879,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("poId", net.crossly.Client.ClientUtils.ParameterToString(poId)); // path parameter
+            localVarRequestOptions.Data = updateProductionPoRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

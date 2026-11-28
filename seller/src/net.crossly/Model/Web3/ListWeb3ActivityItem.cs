@@ -44,16 +44,16 @@ namespace net.crossly.Model
             Sale = 1,
 
             /// <summary>
-            /// Enum Offer for value: offer
-            /// </summary>
-            [EnumMember(Value = "offer")]
-            Offer = 2,
-
-            /// <summary>
             /// Enum Listing for value: listing
             /// </summary>
             [EnumMember(Value = "listing")]
-            Listing = 3,
+            Listing = 2,
+
+            /// <summary>
+            /// Enum Offer for value: offer
+            /// </summary>
+            [EnumMember(Value = "offer")]
+            Offer = 3,
 
             /// <summary>
             /// Enum Cancel for value: cancel

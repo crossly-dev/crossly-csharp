@@ -43,11 +43,12 @@ namespace net.crossly.Model
         /// <param name="rentalId">rentalId (required).</param>
         /// <param name="days">days (required).</param>
         /// <param name="cents">cents (required).</param>
+        /// <param name="freeDays">Days of it a loyalty perk gave free (rental_free_extension; &#x60;cents&#x60; is for the rest). Migration 1521..</param>
         /// <param name="status">&#39;requested&#39; (waiting on the seller) | &#39;approved&#39; (waiting on payment) | &#39;paid&#39; | &#39;declined&#39; | &#39;expired&#39;. (required).</param>
         /// <param name="stripePaymentIntentId">stripePaymentIntentId.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="decidedAt">decidedAt.</param>
-        public CreateRentalExtensionDecideResponseData(string id = default(string), string rentalId = default(string), decimal days = default(decimal), decimal cents = default(decimal), string status = default(string), string stripePaymentIntentId = default(string), DateTime createdAt = default(DateTime), DateTime? decidedAt = default(DateTime?))
+        public CreateRentalExtensionDecideResponseData(string id = default(string), string rentalId = default(string), decimal days = default(decimal), decimal cents = default(decimal), decimal? freeDays = default(decimal?), string status = default(string), string stripePaymentIntentId = default(string), DateTime createdAt = default(DateTime), DateTime? decidedAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -67,6 +68,7 @@ namespace net.crossly.Model
             }
             this.Status = status;
             this.CreatedAt = createdAt;
+            this.FreeDays = freeDays;
             this.StripePaymentIntentId = stripePaymentIntentId;
             this.DecidedAt = decidedAt;
         }
@@ -94,6 +96,13 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "cents", IsRequired = true, EmitDefaultValue = false)]
         public decimal Cents { get; set; }
+
+        /// <summary>
+        /// Days of it a loyalty perk gave free (rental_free_extension; &#x60;cents&#x60; is for the rest). Migration 1521.
+        /// </summary>
+        /// <value>Days of it a loyalty perk gave free (rental_free_extension; &#x60;cents&#x60; is for the rest). Migration 1521.</value>
+        [DataMember(Name = "freeDays", EmitDefaultValue = true)]
+        public decimal? FreeDays { get; set; }
 
         /// <summary>
         /// &#39;requested&#39; (waiting on the seller) | &#39;approved&#39; (waiting on payment) | &#39;paid&#39; | &#39;declined&#39; | &#39;expired&#39;.
@@ -132,6 +141,7 @@ namespace net.crossly.Model
             sb.Append("  RentalId: ").Append(RentalId).Append("\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("  Cents: ").Append(Cents).Append("\n");
+            sb.Append("  FreeDays: ").Append(FreeDays).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StripePaymentIntentId: ").Append(StripePaymentIntentId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
@@ -190,6 +200,11 @@ namespace net.crossly.Model
                     this.Cents.Equals(input.Cents)
                 ) && 
                 (
+                    this.FreeDays == input.FreeDays ||
+                    (this.FreeDays != null &&
+                    this.FreeDays.Equals(input.FreeDays))
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -230,6 +245,10 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 hashCode = (hashCode * 59) + this.Cents.GetHashCode();
+                if (this.FreeDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.FreeDays.GetHashCode();
+                }
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();

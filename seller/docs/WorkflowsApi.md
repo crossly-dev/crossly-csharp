@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 
 <a name="createworkflowchain"></a>
 # **CreateWorkflowChain**
-> IdResponse CreateWorkflowChain ()
+> IdResponse CreateWorkflowChain (CreateWorkflowChainRequest createWorkflowChainRequest)
 
 Create a multi-step workflow chain.
 
@@ -308,11 +308,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorkflowsApi(config);
+            var createWorkflowChainRequest = new CreateWorkflowChainRequest(); // CreateWorkflowChainRequest | 
 
             try
             {
                 // Create a multi-step workflow chain.
-                IdResponse result = apiInstance.CreateWorkflowChain();
+                IdResponse result = apiInstance.CreateWorkflowChain(createWorkflowChainRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -327,7 +328,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorkflowChainRequest** | **CreateWorkflowChainRequest**|  | 
 
 ### Return type
 
@@ -339,7 +343,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -754,7 +758,7 @@ Name | Type | Description  | Notes
 
 <a name="createworkflowimport"></a>
 # **CreateWorkflowImport**
-> CreateWorkflowImportResponse CreateWorkflowImport (Dictionary<string, Object> requestBody)
+> CreateWorkflowImportResponse CreateWorkflowImport (CreateWorkflowImportRequest createWorkflowImportRequest = null)
 
 Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
 
@@ -778,12 +782,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorkflowsApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createWorkflowImportRequest = new CreateWorkflowImportRequest(); // CreateWorkflowImportRequest |  (optional) 
 
             try
             {
                 // Import a crossly.workflow export document (or { document, name }) as a new, paused workflow. Integration and workflow references are cleared (they belong to the exporting account) and listed in stripped.
-                CreateWorkflowImportResponse result = apiInstance.CreateWorkflowImport(requestBody);
+                CreateWorkflowImportResponse result = apiInstance.CreateWorkflowImport(createWorkflowImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -801,7 +805,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createWorkflowImportRequest** | **CreateWorkflowImportRequest**|  | [optional] 
 
 ### Return type
 
@@ -1462,7 +1466,7 @@ Name | Type | Description  | Notes
 
 <a name="createworkflowversionrestore"></a>
 # **CreateWorkflowVersionRestore**
-> WorkflowResponse CreateWorkflowVersionRestore (Guid id, int v)
+> WorkflowResponse CreateWorkflowVersionRestore (Guid id, int v, CreateWorkflowVersionRestoreRequest createWorkflowVersionRestoreRequest = null)
 
 Restore an earlier version's graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
 
@@ -1488,11 +1492,12 @@ namespace Example
             var apiInstance = new WorkflowsApi(config);
             var id = "id_example";  // Guid | Workflow id.
             var v = 56;  // int | The version number to restore.
+            var createWorkflowVersionRestoreRequest = new CreateWorkflowVersionRestoreRequest(); // CreateWorkflowVersionRestoreRequest |  (optional) 
 
             try
             {
                 // Restore an earlier version's graph as a new version. Pass version (the current one you read) to refuse the restore when someone saved meanwhile (409). Body optional: { version?: integer }.
-                WorkflowResponse result = apiInstance.CreateWorkflowVersionRestore(id, v);
+                WorkflowResponse result = apiInstance.CreateWorkflowVersionRestore(id, v, createWorkflowVersionRestoreRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1512,6 +1517,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**| Workflow id. | 
  **v** | **int**| The version number to restore. | 
+ **createWorkflowVersionRestoreRequest** | **CreateWorkflowVersionRestoreRequest**|  | [optional] 
 
 ### Return type
 
@@ -1523,7 +1529,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2990,7 +2996,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworkflowchain"></a>
 # **UpdateWorkflowChain**
-> OkResponse UpdateWorkflowChain (Guid id)
+> OkResponse UpdateWorkflowChain (Guid id, CreateWorkflowChainRequest createWorkflowChainRequest)
 
 Replace a workflow chain wholesale.
 
@@ -3017,11 +3023,12 @@ namespace Example
 
             var apiInstance = new WorkflowsApi(config);
             var id = "id_example";  // Guid | 
+            var createWorkflowChainRequest = new CreateWorkflowChainRequest(); // CreateWorkflowChainRequest | 
 
             try
             {
                 // Replace a workflow chain wholesale.
-                OkResponse result = apiInstance.UpdateWorkflowChain(id);
+                OkResponse result = apiInstance.UpdateWorkflowChain(id, createWorkflowChainRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3040,6 +3047,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createWorkflowChainRequest** | **CreateWorkflowChainRequest**|  | 
 
 ### Return type
 
@@ -3051,7 +3059,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**CreateVaultMarketGradingOrderPay**](GradingApi.md#createvaultmarketgradingorderpay) | **POST** /v1/vault-markets/grading/orders/{id}/pay | Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
 [**CreateVaultMarketGradingOrderPayConfirm**](GradingApi.md#createvaultmarketgradingorderpayconfirm) | **POST** /v1/vault-markets/grading/orders/{id}/pay/confirm | After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
 [**GetGradingPriceBook**](GradingApi.md#getgradingpricebook) | **GET** /v1/grading/price-book | The grading price book: every grader, its services (per-card price, minimum cards, max declared value, turnaround) and add-ons, plus Crossly handling. The same data the dashboard prices from.
+[**GetGradingSetting**](GradingApi.md#getgradingsetting) | **GET** /v1/grading/settings | Your grading defaults: defaultGrader (null &#x3D; ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
 [**GetGradingWorth**](GradingApi.md#getgradingworth) | **GET** /v1/grading/worth/{inventoryItemId} | Worth grading? Raw value vs what each grade is worth at each grader, against the cost. Never predicts the grade.
 [**GetVaultMarketGradingOrder**](GradingApi.md#getvaultmarketgradingorder) | **GET** /v1/vault-markets/grading/orders/{id} | One grading submission: its timeline, every card with its grade, cert number and photos, the costs and the tracking.
 [**ListGradingRateCard**](GradingApi.md#listgradingratecard) | **GET** /v1/grading/rate-card | Every grader and tier Crossly can send to, with the per-card price in cents (null &#x3D; paused at the grader).
@@ -20,11 +21,12 @@ Method | HTTP request | Description
 [**ListGradingSubmissions**](GradingApi.md#listgradingsubmissions) | **GET** /v1/grading/submissions | Your cards out for grading (runs and Direct), newest first. active&#x3D;1 keeps only the ones still in flight.
 [**ListVaultMarketGradingCandidates**](GradingApi.md#listvaultmarketgradingcandidates) | **GET** /v1/vault-markets/grading/candidates | What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
 [**ListVaultMarketGradingOrders**](GradingApi.md#listvaultmarketgradingorders) | **GET** /v1/vault-markets/grading/orders | Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
+[**UpdateGradingSetting**](GradingApi.md#updategradingsetting) | **PUT** /v1/grading/settings | Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \&quot;return\&quot; is saved as vault). Logged to Activity. Returns the saved defaults.
 
 
 <a name="creategradingrunreserve"></a>
 # **CreateGradingRunReserve**
-> IdResponse CreateGradingRunReserve (string id)
+> IdResponse CreateGradingRunReserve (string id, CreateGradingRunReserveRequest createGradingRunReserveRequest = null)
 
 Hold a slot in a Grading Run. Free now; charged on your saved card only if the run locks. Full-access token and Idempotency-Key required.
 
@@ -49,11 +51,12 @@ namespace Example
 
             var apiInstance = new GradingApi(config);
             var id = "id_example";  // string | 
+            var createGradingRunReserveRequest = new CreateGradingRunReserveRequest(); // CreateGradingRunReserveRequest |  (optional) 
 
             try
             {
                 // Hold a slot in a Grading Run. Free now; charged on your saved card only if the run locks. Full-access token and Idempotency-Key required.
-                IdResponse result = apiInstance.CreateGradingRunReserve(id);
+                IdResponse result = apiInstance.CreateGradingRunReserve(id, createGradingRunReserveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -72,6 +75,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGradingRunReserveRequest** | **CreateGradingRunReserveRequest**|  | [optional] 
 
 ### Return type
 
@@ -83,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -180,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="creategradingsubmissionshipped"></a>
 # **CreateGradingSubmissionShipped**
-> OkResponse CreateGradingSubmissionShipped (string id)
+> OkResponse CreateGradingSubmissionShipped (string id, CreateGradingSubmissionShippedRequest createGradingSubmissionShippedRequest = null)
 
 Say you mailed a charged card to the hub, with optional tracking.
 
@@ -205,11 +209,12 @@ namespace Example
 
             var apiInstance = new GradingApi(config);
             var id = "id_example";  // string | 
+            var createGradingSubmissionShippedRequest = new CreateGradingSubmissionShippedRequest(); // CreateGradingSubmissionShippedRequest |  (optional) 
 
             try
             {
                 // Say you mailed a charged card to the hub, with optional tracking.
-                OkResponse result = apiInstance.CreateGradingSubmissionShipped(id);
+                OkResponse result = apiInstance.CreateGradingSubmissionShipped(id, createGradingSubmissionShippedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -228,6 +233,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGradingSubmissionShippedRequest** | **CreateGradingSubmissionShippedRequest**|  | [optional] 
 
 ### Return type
 
@@ -239,7 +245,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -258,7 +264,7 @@ Name | Type | Description  | Notes
 
 <a name="creategradingverifycert"></a>
 # **CreateGradingVerifyCert**
-> CreateGradingVerifyCertResponse CreateGradingVerifyCert ()
+> CreateGradingVerifyCertResponse CreateGradingVerifyCert (CreateGradingVerifyCertRequest createGradingVerifyCertRequest = null)
 
 Look a cert number up with its grader. found=false when the grader has no record.
 
@@ -282,11 +288,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new GradingApi(config);
+            var createGradingVerifyCertRequest = new CreateGradingVerifyCertRequest(); // CreateGradingVerifyCertRequest |  (optional) 
 
             try
             {
                 // Look a cert number up with its grader. found=false when the grader has no record.
-                CreateGradingVerifyCertResponse result = apiInstance.CreateGradingVerifyCert();
+                CreateGradingVerifyCertResponse result = apiInstance.CreateGradingVerifyCert(createGradingVerifyCertRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -301,7 +308,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createGradingVerifyCertRequest** | **CreateGradingVerifyCertRequest**|  | [optional] 
 
 ### Return type
 
@@ -313,7 +323,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -332,7 +342,7 @@ This endpoint does not need any parameter.
 
 <a name="createvaultmarketgradingorder"></a>
 # **CreateVaultMarketGradingOrder**
-> CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder ()
+> CreateVaultMarketGradingOrderResponse CreateVaultMarketGradingOrder (CreateVaultMarketGradingOrderRequest createVaultMarketGradingOrderRequest = null)
 
 Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
 
@@ -356,11 +366,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new GradingApi(config);
+            var createVaultMarketGradingOrderRequest = new CreateVaultMarketGradingOrderRequest(); // CreateVaultMarketGradingOrderRequest |  (optional) 
 
             try
             {
                 // Start a grading submission: cards (vault units or inventory items) to one grader at one service. Priced from the price book; vault units are held. Nothing is charged until you pay.
-                CreateVaultMarketGradingOrderResponse result = apiInstance.CreateVaultMarketGradingOrder();
+                CreateVaultMarketGradingOrderResponse result = apiInstance.CreateVaultMarketGradingOrder(createVaultMarketGradingOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -375,7 +386,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createVaultMarketGradingOrderRequest** | **CreateVaultMarketGradingOrderRequest**|  | [optional] 
 
 ### Return type
 
@@ -387,7 +401,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -484,7 +498,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketgradingorderpay"></a>
 # **CreateVaultMarketGradingOrderPay**
-> CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay (string id)
+> CreateVaultMarketGradingOrderPayResponse CreateVaultMarketGradingOrderPay (string id, CreateVaultMarketGradingOrderPayRequest createVaultMarketGradingOrderPayRequest = null)
 
 Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
 
@@ -509,11 +523,12 @@ namespace Example
 
             var apiInstance = new GradingApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketGradingOrderPayRequest = new CreateVaultMarketGradingOrderPayRequest(); // CreateVaultMarketGradingOrderPayRequest |  (optional) 
 
             try
             {
                 // Pay for a draft submission. savedCard: true charges your saved card (paid, or requires_action with a client secret for 3-D Secure). Full-access token and Idempotency-Key required.
-                CreateVaultMarketGradingOrderPayResponse result = apiInstance.CreateVaultMarketGradingOrderPay(id);
+                CreateVaultMarketGradingOrderPayResponse result = apiInstance.CreateVaultMarketGradingOrderPay(id, createVaultMarketGradingOrderPayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -532,6 +547,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketGradingOrderPayRequest** | **CreateVaultMarketGradingOrderPayRequest**|  | [optional] 
 
 ### Return type
 
@@ -543,7 +559,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -562,7 +578,7 @@ Name | Type | Description  | Notes
 
 <a name="createvaultmarketgradingorderpayconfirm"></a>
 # **CreateVaultMarketGradingOrderPayConfirm**
-> StatusResponse CreateVaultMarketGradingOrderPayConfirm (string id)
+> StatusResponse CreateVaultMarketGradingOrderPayConfirm (string id, CreateVaultMarketGradingOrderPayConfirmRequest createVaultMarketGradingOrderPayConfirmRequest = null)
 
 After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
 
@@ -587,11 +603,12 @@ namespace Example
 
             var apiInstance = new GradingApi(config);
             var id = "id_example";  // string | 
+            var createVaultMarketGradingOrderPayConfirmRequest = new CreateVaultMarketGradingOrderPayConfirmRequest(); // CreateVaultMarketGradingOrderPayConfirmRequest |  (optional) 
 
             try
             {
                 // After a 3-D Secure step or a card form: confirm the PaymentIntent with Stripe and mark the submission paid.
-                StatusResponse result = apiInstance.CreateVaultMarketGradingOrderPayConfirm(id);
+                StatusResponse result = apiInstance.CreateVaultMarketGradingOrderPayConfirm(id, createVaultMarketGradingOrderPayConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -610,6 +627,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVaultMarketGradingOrderPayConfirmRequest** | **CreateVaultMarketGradingOrderPayConfirmRequest**|  | [optional] 
 
 ### Return type
 
@@ -621,7 +639,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -688,6 +706,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetGradingPriceBookResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getgradingsetting"></a>
+# **GetGradingSetting**
+> GetGradingSettingResponse GetGradingSetting ()
+
+Your grading defaults: defaultGrader (null = ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetGradingSettingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new GradingApi(config);
+
+            try
+            {
+                // Your grading defaults: defaultGrader (null = ask each time), defaultMissMode (roll_over | release, if a run does not fill), defaultReturnMode (always vault: every graded card goes into your vault) and defaultPrescreen.
+                GetGradingSettingResponse result = apiInstance.GetGradingSetting();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling GradingApi.GetGradingSetting: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetGradingSettingResponse**
 
 ### Authorization
 
@@ -1096,7 +1188,7 @@ Name | Type | Description  | Notes
 
 <a name="listvaultmarketgradingcandidates"></a>
 # **ListVaultMarketGradingCandidates**
-> ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates ()
+> ListVaultMarketGradingCandidatesResponse ListVaultMarketGradingCandidates (string q = null)
 
 What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
 
@@ -1120,11 +1212,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new GradingApi(config);
+            var q = "q_example";  // string |  (optional) 
 
             try
             {
                 // What you can send to grading: raw units already in your vault and inventory items, each with a declared value to start from and the reason when one cannot go.
-                ListVaultMarketGradingCandidatesResponse result = apiInstance.ListVaultMarketGradingCandidates();
+                ListVaultMarketGradingCandidatesResponse result = apiInstance.ListVaultMarketGradingCandidates(q);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1139,7 +1232,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1170,7 +1266,7 @@ This endpoint does not need any parameter.
 
 <a name="listvaultmarketgradingorders"></a>
 # **ListVaultMarketGradingOrders**
-> ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders ()
+> ListVaultMarketGradingOrdersResponse ListVaultMarketGradingOrders (string status = null, string active = null, string grader = null, string tier = null, string q = null, string from = null, string to = null, decimal? limit = null, decimal? offset = null)
 
 Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
 
@@ -1194,11 +1290,20 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new GradingApi(config);
+            var status = "draft";  // string |  (optional) 
+            var active = "0";  // string |  (optional) 
+            var grader = "grader_example";  // string |  (optional) 
+            var tier = "tier_example";  // string |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your grading submissions, newest first. Filter by status, active, grader, tier and dates; q searches the number, card names and cert numbers.
-                ListVaultMarketGradingOrdersResponse result = apiInstance.ListVaultMarketGradingOrders();
+                ListVaultMarketGradingOrdersResponse result = apiInstance.ListVaultMarketGradingOrders(status, active, grader, tier, q, from, to, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1213,7 +1318,18 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**|  | [optional] 
+ **active** | **string**|  | [optional] 
+ **grader** | **string**|  | [optional] 
+ **tier** | **string**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1226,6 +1342,84 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updategradingsetting"></a>
+# **UpdateGradingSetting**
+> GetGradingSettingResponse UpdateGradingSetting (UpdateGradingSettingRequest updateGradingSettingRequest = null)
+
+Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \"return\" is saved as vault). Logged to Activity. Returns the saved defaults.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateGradingSettingExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new GradingApi(config);
+            var updateGradingSettingRequest = new UpdateGradingSettingRequest(); // UpdateGradingSettingRequest |  (optional) 
+
+            try
+            {
+                // Change your grading defaults (any of defaultGrader, defaultMissMode, defaultPrescreen; defaultReturnMode is always vault, and an old \"return\" is saved as vault). Logged to Activity. Returns the saved defaults.
+                GetGradingSettingResponse result = apiInstance.UpdateGradingSetting(updateGradingSettingRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling GradingApi.UpdateGradingSetting: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateGradingSettingRequest** | **UpdateGradingSettingRequest**|  | [optional] 
+
+### Return type
+
+**GetGradingSettingResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

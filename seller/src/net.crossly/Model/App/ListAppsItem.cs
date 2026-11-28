@@ -104,7 +104,7 @@ namespace net.crossly.Model
         /// <param name="installCount">Live connections (grants not revoked). (required).</param>
         /// <param name="listedAt">listedAt.</param>
         /// <param name="profilePath">The canonical profile path, e.g. &#x60;/seller-apps/labelbot&#x60;. (required).</param>
-        public ListAppsItem(string clientId = default(string), string slug = default(string), string name = default(string), string tagline = default(string), string description = default(string), string longDescription = default(string), string category = default(string), AudienceEnum audience = default(AudienceEnum), string logoUrl = default(string), string bannerUrl = default(string), List<string> screenshots = default(List<string>), string demoVideoUrl = default(string), bool verified = default(bool), bool featured = default(bool), string developerName = default(string), List<string> scopes = default(List<string>), List<ListAppsItemCapabilities> capabilities = default(List<ListAppsItemCapabilities>), string monetization = default(string), decimal? revShareBps = default(decimal?), decimal? revShareCapCents = default(decimal?), decimal? revShareMinOrderCents = default(decimal?), string revShareSummary = default(string), string pricingNote = default(string), string homepageUrl = default(string), string installUrl = default(string), string supportEmail = default(string), string supportUrl = default(string), string privacyUrl = default(string), string termsUrl = default(string), List<ListAppsItemDocsLinks> docsLinks = default(List<ListAppsItemDocsLinks>), decimal installCount = default(decimal), string listedAt = default(string), string profilePath = default(string))
+        public ListAppsItem(string clientId = default(string), string slug = default(string), string name = default(string), string tagline = default(string), string description = default(string), string longDescription = default(string), string category = default(string), AudienceEnum audience = default(AudienceEnum), string logoUrl = default(string), string bannerUrl = default(string), List<string> screenshots = default(List<string>), string demoVideoUrl = default(string), bool verified = default(bool), bool featured = default(bool), string developerName = default(string), List<string> scopes = default(List<string>), List<ListAppsItemCapabilities> capabilities = default(List<ListAppsItemCapabilities>), string monetization = default(string), decimal? revShareBps = default(decimal?), decimal? revShareCapCents = default(decimal?), decimal? revShareMinOrderCents = default(decimal?), string revShareSummary = default(string), string pricingNote = default(string), string homepageUrl = default(string), string installUrl = default(string), string supportEmail = default(string), string supportUrl = default(string), string privacyUrl = default(string), string termsUrl = default(string), List<LabelUrl> docsLinks = default(List<LabelUrl>), decimal installCount = default(decimal), string listedAt = default(string), string profilePath = default(string))
         {
             // to ensure "clientId" is required (not null)
             if (clientId == null) {
@@ -350,7 +350,7 @@ namespace net.crossly.Model
         /// Gets or Sets DocsLinks
         /// </summary>
         [DataMember(Name = "docsLinks", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListAppsItemDocsLinks> DocsLinks { get; set; }
+        public List<LabelUrl> DocsLinks { get; set; }
 
         /// <summary>
         /// Live connections (grants not revoked).

@@ -84,7 +84,7 @@ namespace net.crossly.Model
         /// <param name="delivery">delivery (required).</param>
         /// <param name="channels">channels (required).</param>
         /// <param name="display">display (required).</param>
-        public ListDiscountCodesItemRules(ListDiscountCodesItemRulesValue value = default(ListDiscountCodesItemRulesValue), ListDiscountCodesItemRulesBxgy bxgy = default(ListDiscountCodesItemRulesBxgy), List<ListDiscountCodesItemRulesSpendTiers> spendTiers = default(List<ListDiscountCodesItemRulesSpendTiers>), ListDiscountCodesItemRulesFixedPriceSet fixedPriceSet = default(ListDiscountCodesItemRulesFixedPriceSet), ListDiscountCodesItemRulesRequirements requirements = default(ListDiscountCodesItemRulesRequirements), ListAutomaticDiscountsItemAppliesTo appliesTo = default(ListAutomaticDiscountsItemAppliesTo), ListAutomaticDiscountsItemExclusions exclusions = default(ListAutomaticDiscountsItemExclusions), ListDiscountCodesItemRulesLimits limits = default(ListDiscountCodesItemRulesLimits), ListDiscountCodesItemRulesSchedule schedule = default(ListDiscountCodesItemRulesSchedule), ListAutomaticDiscountsItemStacking stacking = default(ListAutomaticDiscountsItemStacking), DeliveryEnum delivery = default(DeliveryEnum), List<ListDiscountCodesItemRulesChannelsItem> channels = default(List<ListDiscountCodesItemRulesChannelsItem>), ListDiscountCodesItemRulesDisplay display = default(ListDiscountCodesItemRulesDisplay))
+        public ListDiscountCodesItemRules(ListDiscountCodesItemRulesValue value = default(ListDiscountCodesItemRulesValue), ListDiscountCodesItemRulesBxgy bxgy = default(ListDiscountCodesItemRulesBxgy), List<CreateDiscountCodeRequestRulesSpendTiers> spendTiers = default(List<CreateDiscountCodeRequestRulesSpendTiers>), CreateDiscountCodeRequestRulesFixedPriceSet fixedPriceSet = default(CreateDiscountCodeRequestRulesFixedPriceSet), ListDiscountCodesItemRulesRequirements requirements = default(ListDiscountCodesItemRulesRequirements), ListAutomaticDiscountsItemAppliesTo appliesTo = default(ListAutomaticDiscountsItemAppliesTo), ListAutomaticDiscountsItemExclusions exclusions = default(ListAutomaticDiscountsItemExclusions), ListDiscountCodesItemRulesLimits limits = default(ListDiscountCodesItemRulesLimits), ListDiscountCodesItemRulesSchedule schedule = default(ListDiscountCodesItemRulesSchedule), ListAutomaticDiscountsItemStacking stacking = default(ListAutomaticDiscountsItemStacking), DeliveryEnum delivery = default(DeliveryEnum), List<ListDiscountCodesItemRulesChannelsItem> channels = default(List<ListDiscountCodesItemRulesChannelsItem>), ListDiscountCodesItemRulesDisplay display = default(ListDiscountCodesItemRulesDisplay))
         {
             // to ensure "value" is required (not null)
             if (value == null) {
@@ -157,13 +157,13 @@ namespace net.crossly.Model
         /// Gets or Sets SpendTiers
         /// </summary>
         [DataMember(Name = "spendTiers", IsRequired = true, EmitDefaultValue = false)]
-        public List<ListDiscountCodesItemRulesSpendTiers> SpendTiers { get; set; }
+        public List<CreateDiscountCodeRequestRulesSpendTiers> SpendTiers { get; set; }
 
         /// <summary>
         /// Gets or Sets FixedPriceSet
         /// </summary>
         [DataMember(Name = "fixedPriceSet", EmitDefaultValue = true)]
-        public ListDiscountCodesItemRulesFixedPriceSet FixedPriceSet { get; set; }
+        public CreateDiscountCodeRequestRulesFixedPriceSet FixedPriceSet { get; set; }
 
         /// <summary>
         /// Gets or Sets Requirements

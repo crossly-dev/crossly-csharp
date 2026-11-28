@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Bulk blocklist customer handles.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>CreateCustomerBulkDeleteResponse</returns>
-        CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete();
+        CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest);
 
         /// <summary>
         /// Bulk blocklist customer handles.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>ApiResponse of CreateCustomerBulkDeleteResponse</returns>
-        ApiResponse<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteWithHttpInfo();
+        ApiResponse<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteWithHttpInfo(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest);
         /// <summary>
         /// Bulk export aggregated customers as CSV.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>string</returns>
-        string CreateCustomerBulkExport();
+        string CreateCustomerBulkExport(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest);
 
         /// <summary>
         /// Bulk export aggregated customers as CSV.
@@ -56,8 +59,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CreateCustomerBulkExportWithHttpInfo();
+        ApiResponse<string> CreateCustomerBulkExportWithHttpInfo(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest);
         /// <summary>
         /// Queue a fresh read of a customer&#39;s buyer profiles on every platform they ordered on.
         /// </summary>
@@ -135,8 +139,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <returns>LoyaltyAirdropResponse</returns>
-        LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit(string id);
+        LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest);
 
         /// <summary>
         /// Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
@@ -146,14 +151,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <returns>ApiResponse of LoyaltyAirdropResponse</returns>
-        ApiResponse<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitWithHttpInfo(string id);
+        ApiResponse<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitWithHttpInfo(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest);
         /// <summary>
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <returns>CreateLoyaltyProgramInviteResponse</returns>
-        CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite();
+        CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest);
 
         /// <summary>
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
@@ -162,15 +169,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <returns>ApiResponse of CreateLoyaltyProgramInviteResponse</returns>
-        ApiResponse<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteWithHttpInfo();
+        ApiResponse<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteWithHttpInfo(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest);
         /// <summary>
         /// Pin a member to a tier (tierId null clears the pin), with a reason.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <returns>GetLoyaltyProgramMemberResponse</returns>
-        GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride(string id);
+        GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest);
 
         /// <summary>
         /// Pin a member to a tier (tierId null clears the pin), with a reason.
@@ -180,8 +189,29 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <returns>ApiResponse of GetLoyaltyProgramMemberResponse</returns>
-        ApiResponse<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideWithHttpInfo(string id);
+        ApiResponse<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideWithHttpInfo(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest);
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <returns>CreateLoyaltyProgramMemberPointResponse</returns>
+        CreateLoyaltyProgramMemberPointResponse CreateLoyaltyProgramMemberPoint(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest);
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <returns>ApiResponse of CreateLoyaltyProgramMemberPointResponse</returns>
+        ApiResponse<CreateLoyaltyProgramMemberPointResponse> CreateLoyaltyProgramMemberPointWithHttpInfo(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest);
         /// <summary>
         /// Add a tier: name, look, threshold and typed perks (% off, free shipping, early access, members-only listings, wholesale access, token gates, airdrops, Bucks, World items, event tickets, …).
         /// </summary>
@@ -198,6 +228,24 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of CreateLoyaltyTierResponse</returns>
         ApiResponse<CreateLoyaltyTierResponse> CreateLoyaltyTierWithHttpInfo();
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeleteLoyaltyReward(string rewardId);
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeleteLoyaltyRewardWithHttpInfo(string rewardId);
         /// <summary>
         /// Delete a tier; its members are re-evaluated.
         /// </summary>
@@ -340,8 +388,10 @@ namespace net.crossly.Api
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListLoyaltyAirdropsResponse</returns>
-        ListLoyaltyAirdropsResponse ListLoyaltyAirdrops();
+        ListLoyaltyAirdropsResponse ListLoyaltyAirdrops(string status = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
@@ -350,8 +400,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListLoyaltyAirdropsResponse</returns>
-        ApiResponse<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsWithHttpInfo();
+        ApiResponse<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Your loyalty club’s members, by spend with you.
         /// </summary>
@@ -385,6 +437,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListLoyaltyProgramInviteCandidatesResponse</returns>
         ApiResponse<ListLoyaltyProgramInviteCandidatesResponse> ListLoyaltyProgramInviteCandidatesWithHttpInfo();
         /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListLoyaltyProgramMemberPointsResponse</returns>
+        ListLoyaltyProgramMemberPointsResponse ListLoyaltyProgramMemberPoints(string id);
+
+        /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListLoyaltyProgramMemberPointsResponse</returns>
+        ApiResponse<ListLoyaltyProgramMemberPointsResponse> ListLoyaltyProgramMemberPointsWithHttpInfo(string id);
+        /// <summary>
         /// Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -400,6 +470,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListLoyaltyProgramMembersResponse</returns>
         ApiResponse<ListLoyaltyProgramMembersResponse> ListLoyaltyProgramMembersWithHttpInfo();
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListLoyaltyRewardsResponse</returns>
+        ListLoyaltyRewardsResponse ListLoyaltyRewards();
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListLoyaltyRewardsResponse</returns>
+        ApiResponse<ListLoyaltyRewardsResponse> ListLoyaltyRewardsWithHttpInfo();
         /// <summary>
         /// Save your private notes on a customer (an empty string clears them).
         /// </summary>
@@ -424,8 +510,9 @@ namespace net.crossly.Api
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <returns>GetLoyaltyClubResponse</returns>
-        GetLoyaltyClubResponse UpdateLoyaltyClub();
+        GetLoyaltyClubResponse UpdateLoyaltyClub(UpdateLoyaltyClubRequest updateLoyaltyClubRequest);
 
         /// <summary>
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
@@ -434,8 +521,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <returns>ApiResponse of GetLoyaltyClubResponse</returns>
-        ApiResponse<GetLoyaltyClubResponse> UpdateLoyaltyClubWithHttpInfo();
+        ApiResponse<GetLoyaltyClubResponse> UpdateLoyaltyClubWithHttpInfo(UpdateLoyaltyClubRequest updateLoyaltyClubRequest);
         /// <summary>
         /// Create or update your loyalty program settings.
         /// </summary>
@@ -452,6 +540,42 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of UpdateLoyaltyProgramResponse</returns>
         ApiResponse<UpdateLoyaltyProgramResponse> UpdateLoyaltyProgramWithHttpInfo();
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <returns>ListLoyaltyRewardsResponse</returns>
+        ListLoyaltyRewardsResponse UpdateLoyaltyReward(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest);
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <returns>ApiResponse of ListLoyaltyRewardsResponse</returns>
+        ApiResponse<ListLoyaltyRewardsResponse> UpdateLoyaltyRewardWithHttpInfo(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest);
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>UpdateLoyaltyRewardByRewardIdResponse</returns>
+        UpdateLoyaltyRewardByRewardIdResponse UpdateLoyaltyRewardByRewardId(string rewardId);
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of UpdateLoyaltyRewardByRewardIdResponse</returns>
+        ApiResponse<UpdateLoyaltyRewardByRewardIdResponse> UpdateLoyaltyRewardByRewardIdWithHttpInfo(string rewardId);
         /// <summary>
         /// Replace a tier. Members holding it get the edited perks.
         /// </summary>
@@ -486,9 +610,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCustomerBulkDeleteResponse</returns>
-        System.Threading.Tasks.Task<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk blocklist customer handles.
@@ -497,9 +622,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCustomerBulkDeleteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCustomerBulkDeleteResponse>> CreateCustomerBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCustomerBulkDeleteResponse>> CreateCustomerBulkDeleteWithHttpInfoAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Bulk export aggregated customers as CSV.
         /// </summary>
@@ -507,9 +633,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CreateCustomerBulkExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<string> CreateCustomerBulkExportAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk export aggregated customers as CSV.
@@ -518,9 +645,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CreateCustomerBulkExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<string>> CreateCustomerBulkExportWithHttpInfoAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Queue a fresh read of a customer&#39;s buyer profiles on every platform they ordered on.
         /// </summary>
@@ -621,9 +749,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoyaltyAirdropResponse</returns>
-        System.Threading.Tasks.Task<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitAsync(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
@@ -633,9 +762,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoyaltyAirdropResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LoyaltyAirdropResponse>> CreateLoyaltyAirdropSubmitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LoyaltyAirdropResponse>> CreateLoyaltyAirdropSubmitWithHttpInfoAsync(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
         /// </summary>
@@ -643,9 +773,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLoyaltyProgramInviteResponse</returns>
-        System.Threading.Tasks.Task<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteAsync(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
@@ -654,9 +785,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLoyaltyProgramInviteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateLoyaltyProgramInviteResponse>> CreateLoyaltyProgramInviteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateLoyaltyProgramInviteResponse>> CreateLoyaltyProgramInviteWithHttpInfoAsync(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pin a member to a tier (tierId null clears the pin), with a reason.
         /// </summary>
@@ -665,9 +797,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetLoyaltyProgramMemberResponse</returns>
-        System.Threading.Tasks.Task<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideAsync(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pin a member to a tier (tierId null clears the pin), with a reason.
@@ -677,9 +810,35 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetLoyaltyProgramMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetLoyaltyProgramMemberResponse>> CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetLoyaltyProgramMemberResponse>> CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateLoyaltyProgramMemberPointResponse</returns>
+        System.Threading.Tasks.Task<CreateLoyaltyProgramMemberPointResponse> CreateLoyaltyProgramMemberPointAsync(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateLoyaltyProgramMemberPointResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateLoyaltyProgramMemberPointResponse>> CreateLoyaltyProgramMemberPointWithHttpInfoAsync(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add a tier: name, look, threshold and typed perks (% off, free shipping, early access, members-only listings, wholesale access, token gates, airdrops, Bucks, World items, event tickets, …).
         /// </summary>
@@ -701,6 +860,29 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLoyaltyTierResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateLoyaltyTierResponse>> CreateLoyaltyTierWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteLoyaltyRewardAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeleteLoyaltyRewardWithHttpInfoAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a tier; its members are re-evaluated.
         /// </summary>
@@ -886,9 +1068,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLoyaltyAirdropsResponse</returns>
-        System.Threading.Tasks.Task<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
@@ -897,9 +1081,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLoyaltyAirdropsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListLoyaltyAirdropsResponse>> ListLoyaltyAirdropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListLoyaltyAirdropsResponse>> ListLoyaltyAirdropsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your loyalty club’s members, by spend with you.
         /// </summary>
@@ -943,6 +1129,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListLoyaltyProgramInviteCandidatesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListLoyaltyProgramInviteCandidatesResponse>> ListLoyaltyProgramInviteCandidatesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyProgramMemberPointsResponse</returns>
+        System.Threading.Tasks.Task<ListLoyaltyProgramMemberPointsResponse> ListLoyaltyProgramMemberPointsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyProgramMemberPointsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListLoyaltyProgramMemberPointsResponse>> ListLoyaltyProgramMemberPointsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
         /// </summary>
         /// <remarks>
@@ -963,6 +1172,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLoyaltyProgramMembersResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListLoyaltyProgramMembersResponse>> ListLoyaltyProgramMembersWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyRewardsResponse</returns>
+        System.Threading.Tasks.Task<ListLoyaltyRewardsResponse> ListLoyaltyRewardsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyRewardsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListLoyaltyRewardsResponse>> ListLoyaltyRewardsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Save your private notes on a customer (an empty string clears them).
         /// </summary>
@@ -995,9 +1225,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetLoyaltyClubResponse</returns>
-        System.Threading.Tasks.Task<GetLoyaltyClubResponse> UpdateLoyaltyClubAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetLoyaltyClubResponse> UpdateLoyaltyClubAsync(UpdateLoyaltyClubRequest updateLoyaltyClubRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
@@ -1006,9 +1237,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetLoyaltyClubResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetLoyaltyClubResponse>> UpdateLoyaltyClubWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetLoyaltyClubResponse>> UpdateLoyaltyClubWithHttpInfoAsync(UpdateLoyaltyClubRequest updateLoyaltyClubRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create or update your loyalty program settings.
         /// </summary>
@@ -1030,6 +1262,52 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateLoyaltyProgramResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateLoyaltyProgramResponse>> UpdateLoyaltyProgramWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyRewardsResponse</returns>
+        System.Threading.Tasks.Task<ListLoyaltyRewardsResponse> UpdateLoyaltyRewardAsync(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyRewardsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListLoyaltyRewardsResponse>> UpdateLoyaltyRewardWithHttpInfoAsync(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateLoyaltyRewardByRewardIdResponse</returns>
+        System.Threading.Tasks.Task<UpdateLoyaltyRewardByRewardIdResponse> UpdateLoyaltyRewardByRewardIdAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateLoyaltyRewardByRewardIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateLoyaltyRewardByRewardIdResponse>> UpdateLoyaltyRewardByRewardIdWithHttpInfoAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace a tier. Members holding it get the edited perks.
         /// </summary>
@@ -1177,10 +1455,11 @@ namespace net.crossly.Api
         /// Bulk blocklist customer handles. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>CreateCustomerBulkDeleteResponse</returns>
-        public CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete()
+        public CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> localVarResponse = CreateCustomerBulkDeleteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> localVarResponse = CreateCustomerBulkDeleteWithHttpInfo(createCustomerBulkDeleteRequest);
             return localVarResponse.Data;
         }
 
@@ -1188,12 +1467,20 @@ namespace net.crossly.Api
         /// Bulk blocklist customer handles. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>ApiResponse of CreateCustomerBulkDeleteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteWithHttpInfo(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
         {
+            // verify the required parameter 'createCustomerBulkDeleteRequest' is set
+            if (createCustomerBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCustomerBulkDeleteRequest' when calling CustomersApi->CreateCustomerBulkDelete");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1213,6 +1500,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCustomerBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1239,11 +1527,12 @@ namespace net.crossly.Api
         /// Bulk blocklist customer handles. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCustomerBulkDeleteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCustomerBulkDeleteResponse> CreateCustomerBulkDeleteAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> localVarResponse = await CreateCustomerBulkDeleteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse> localVarResponse = await CreateCustomerBulkDeleteWithHttpInfoAsync(createCustomerBulkDeleteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1251,14 +1540,22 @@ namespace net.crossly.Api
         /// Bulk blocklist customer handles. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCustomerBulkDeleteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse>> CreateCustomerBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCustomerBulkDeleteResponse>> CreateCustomerBulkDeleteWithHttpInfoAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCustomerBulkDeleteRequest' is set
+            if (createCustomerBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCustomerBulkDeleteRequest' when calling CustomersApi->CreateCustomerBulkDelete");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1278,6 +1575,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCustomerBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1305,10 +1603,11 @@ namespace net.crossly.Api
         /// Bulk export aggregated customers as CSV. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>string</returns>
-        public string CreateCustomerBulkExport()
+        public string CreateCustomerBulkExport(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = CreateCustomerBulkExportWithHttpInfo();
+            net.crossly.Client.ApiResponse<string> localVarResponse = CreateCustomerBulkExportWithHttpInfo(createCustomerBulkDeleteRequest);
             return localVarResponse.Data;
         }
 
@@ -1316,16 +1615,25 @@ namespace net.crossly.Api
         /// Bulk export aggregated customers as CSV. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <returns>ApiResponse of string</returns>
-        public net.crossly.Client.ApiResponse<string> CreateCustomerBulkExportWithHttpInfo()
+        public net.crossly.Client.ApiResponse<string> CreateCustomerBulkExportWithHttpInfo(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
         {
+            // verify the required parameter 'createCustomerBulkDeleteRequest' is set
+            if (createCustomerBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCustomerBulkDeleteRequest' when calling CustomersApi->CreateCustomerBulkExport");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/csv",
                 "application/json"
             };
 
@@ -1341,6 +1649,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCustomerBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1367,11 +1676,12 @@ namespace net.crossly.Api
         /// Bulk export aggregated customers as CSV. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CreateCustomerBulkExportAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<string> CreateCustomerBulkExportAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<string> localVarResponse = await CreateCustomerBulkExportWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<string> localVarResponse = await CreateCustomerBulkExportWithHttpInfoAsync(createCustomerBulkDeleteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1379,18 +1689,27 @@ namespace net.crossly.Api
         /// Bulk export aggregated customers as CSV. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCustomerBulkDeleteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> CreateCustomerBulkExportWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<string>> CreateCustomerBulkExportWithHttpInfoAsync(CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCustomerBulkDeleteRequest' is set
+            if (createCustomerBulkDeleteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCustomerBulkDeleteRequest' when calling CustomersApi->CreateCustomerBulkExport");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
+                "text/csv",
                 "application/json"
             };
 
@@ -1406,6 +1725,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCustomerBulkDeleteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2018,10 +2338,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <returns>LoyaltyAirdropResponse</returns>
-        public LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit(string id)
+        public LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest)
         {
-            net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> localVarResponse = CreateLoyaltyAirdropSubmitWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> localVarResponse = CreateLoyaltyAirdropSubmitWithHttpInfo(id, createLoyaltyAirdropSubmitRequest);
             return localVarResponse.Data;
         }
 
@@ -2030,8 +2351,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <returns>ApiResponse of LoyaltyAirdropResponse</returns>
-        public net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitWithHttpInfo(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2039,9 +2361,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyAirdropSubmit");
             }
 
+            // verify the required parameter 'createLoyaltyAirdropSubmitRequest' is set
+            if (createLoyaltyAirdropSubmitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyAirdropSubmitRequest' when calling CustomersApi->CreateLoyaltyAirdropSubmit");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2062,6 +2391,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyAirdropSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2089,11 +2419,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LoyaltyAirdropResponse</returns>
-        public async System.Threading.Tasks.Task<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LoyaltyAirdropResponse> CreateLoyaltyAirdropSubmitAsync(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> localVarResponse = await CreateLoyaltyAirdropSubmitWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<LoyaltyAirdropResponse> localVarResponse = await CreateLoyaltyAirdropSubmitWithHttpInfoAsync(id, createLoyaltyAirdropSubmitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2102,9 +2433,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyAirdropSubmitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LoyaltyAirdropResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<LoyaltyAirdropResponse>> CreateLoyaltyAirdropSubmitWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<LoyaltyAirdropResponse>> CreateLoyaltyAirdropSubmitWithHttpInfoAsync(string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2112,10 +2444,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyAirdropSubmit");
             }
 
+            // verify the required parameter 'createLoyaltyAirdropSubmitRequest' is set
+            if (createLoyaltyAirdropSubmitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyAirdropSubmitRequest' when calling CustomersApi->CreateLoyaltyAirdropSubmit");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2136,6 +2475,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyAirdropSubmitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2163,10 +2503,11 @@ namespace net.crossly.Api
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <returns>CreateLoyaltyProgramInviteResponse</returns>
-        public CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite()
+        public CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> localVarResponse = CreateLoyaltyProgramInviteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> localVarResponse = CreateLoyaltyProgramInviteWithHttpInfo(createLoyaltyProgramInviteRequest);
             return localVarResponse.Data;
         }
 
@@ -2174,12 +2515,20 @@ namespace net.crossly.Api
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <returns>ApiResponse of CreateLoyaltyProgramInviteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteWithHttpInfo(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest)
         {
+            // verify the required parameter 'createLoyaltyProgramInviteRequest' is set
+            if (createLoyaltyProgramInviteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramInviteRequest' when calling CustomersApi->CreateLoyaltyProgramInvite");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2199,6 +2548,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLoyaltyProgramInviteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2225,11 +2575,12 @@ namespace net.crossly.Api
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLoyaltyProgramInviteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateLoyaltyProgramInviteResponse> CreateLoyaltyProgramInviteAsync(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> localVarResponse = await CreateLoyaltyProgramInviteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse> localVarResponse = await CreateLoyaltyProgramInviteWithHttpInfoAsync(createLoyaltyProgramInviteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2237,14 +2588,22 @@ namespace net.crossly.Api
         /// Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLoyaltyProgramInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLoyaltyProgramInviteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse>> CreateLoyaltyProgramInviteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLoyaltyProgramInviteResponse>> CreateLoyaltyProgramInviteWithHttpInfoAsync(CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createLoyaltyProgramInviteRequest' is set
+            if (createLoyaltyProgramInviteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramInviteRequest' when calling CustomersApi->CreateLoyaltyProgramInvite");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2264,6 +2623,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLoyaltyProgramInviteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2292,10 +2652,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <returns>GetLoyaltyProgramMemberResponse</returns>
-        public GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride(string id)
+        public GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest)
         {
-            net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> localVarResponse = CreateLoyaltyProgramMemberOverrideWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> localVarResponse = CreateLoyaltyProgramMemberOverrideWithHttpInfo(id, createLoyaltyProgramMemberOverrideRequest);
             return localVarResponse.Data;
         }
 
@@ -2304,8 +2665,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <returns>ApiResponse of GetLoyaltyProgramMemberResponse</returns>
-        public net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideWithHttpInfo(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2313,9 +2675,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyProgramMemberOverride");
             }
 
+            // verify the required parameter 'createLoyaltyProgramMemberOverrideRequest' is set
+            if (createLoyaltyProgramMemberOverrideRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramMemberOverrideRequest' when calling CustomersApi->CreateLoyaltyProgramMemberOverride");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2336,6 +2705,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyProgramMemberOverrideRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2363,11 +2733,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetLoyaltyProgramMemberResponse</returns>
-        public async System.Threading.Tasks.Task<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetLoyaltyProgramMemberResponse> CreateLoyaltyProgramMemberOverrideAsync(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> localVarResponse = await CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse> localVarResponse = await CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(id, createLoyaltyProgramMemberOverrideRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2376,9 +2747,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberOverrideRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetLoyaltyProgramMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse>> CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetLoyaltyProgramMemberResponse>> CreateLoyaltyProgramMemberOverrideWithHttpInfoAsync(string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2386,10 +2758,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyProgramMemberOverride");
             }
 
+            // verify the required parameter 'createLoyaltyProgramMemberOverrideRequest' is set
+            if (createLoyaltyProgramMemberOverrideRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramMemberOverrideRequest' when calling CustomersApi->CreateLoyaltyProgramMemberOverride");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2410,6 +2789,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyProgramMemberOverrideRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2424,6 +2804,172 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateLoyaltyProgramMemberOverride", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <returns>CreateLoyaltyProgramMemberPointResponse</returns>
+        public CreateLoyaltyProgramMemberPointResponse CreateLoyaltyProgramMemberPoint(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateLoyaltyProgramMemberPointResponse> localVarResponse = CreateLoyaltyProgramMemberPointWithHttpInfo(id, createLoyaltyProgramMemberPointRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <returns>ApiResponse of CreateLoyaltyProgramMemberPointResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateLoyaltyProgramMemberPointResponse> CreateLoyaltyProgramMemberPointWithHttpInfo(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyProgramMemberPoint");
+            }
+
+            // verify the required parameter 'createLoyaltyProgramMemberPointRequest' is set
+            if (createLoyaltyProgramMemberPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramMemberPointRequest' when calling CustomersApi->CreateLoyaltyProgramMemberPoint");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyProgramMemberPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateLoyaltyProgramMemberPointResponse>("/v1/loyalty/program/members/{id}/points", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateLoyaltyProgramMemberPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateLoyaltyProgramMemberPointResponse</returns>
+        public async System.Threading.Tasks.Task<CreateLoyaltyProgramMemberPointResponse> CreateLoyaltyProgramMemberPointAsync(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateLoyaltyProgramMemberPointResponse> localVarResponse = await CreateLoyaltyProgramMemberPointWithHttpInfoAsync(id, createLoyaltyProgramMemberPointRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createLoyaltyProgramMemberPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateLoyaltyProgramMemberPointResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLoyaltyProgramMemberPointResponse>> CreateLoyaltyProgramMemberPointWithHttpInfoAsync(string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->CreateLoyaltyProgramMemberPoint");
+            }
+
+            // verify the required parameter 'createLoyaltyProgramMemberPointRequest' is set
+            if (createLoyaltyProgramMemberPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createLoyaltyProgramMemberPointRequest' when calling CustomersApi->CreateLoyaltyProgramMemberPoint");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLoyaltyProgramMemberPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateLoyaltyProgramMemberPointResponse>("/v1/loyalty/program/members/{id}/points", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateLoyaltyProgramMemberPoint", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2552,6 +3098,152 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateLoyaltyTier", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeleteLoyaltyReward(string rewardId)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeleteLoyaltyRewardWithHttpInfo(rewardId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeleteLoyaltyRewardWithHttpInfo(string rewardId)
+        {
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'rewardId' when calling CustomersApi->DeleteLoyaltyReward");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/loyalty/rewards/{rewardId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteLoyaltyReward", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteLoyaltyRewardAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeleteLoyaltyRewardWithHttpInfoAsync(rewardId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Take a reward off the shelf. Perks already redeemed stay with their buyers. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeleteLoyaltyRewardWithHttpInfoAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'rewardId' when calling CustomersApi->DeleteLoyaltyReward");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/loyalty/rewards/{rewardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteLoyaltyReward", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3679,10 +4371,12 @@ namespace net.crossly.Api
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListLoyaltyAirdropsResponse</returns>
-        public ListLoyaltyAirdropsResponse ListLoyaltyAirdrops()
+        public ListLoyaltyAirdropsResponse ListLoyaltyAirdrops(string status = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> localVarResponse = ListLoyaltyAirdropsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> localVarResponse = ListLoyaltyAirdropsWithHttpInfo(status, limit);
             return localVarResponse.Data;
         }
 
@@ -3690,8 +4384,10 @@ namespace net.crossly.Api
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListLoyaltyAirdropsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsWithHttpInfo(string status = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3715,6 +4411,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3741,11 +4445,13 @@ namespace net.crossly.Api
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLoyaltyAirdropsResponse</returns>
-        public async System.Threading.Tasks.Task<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListLoyaltyAirdropsResponse> ListLoyaltyAirdropsAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> localVarResponse = await ListLoyaltyAirdropsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse> localVarResponse = await ListLoyaltyAirdropsWithHttpInfoAsync(status, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3753,9 +4459,11 @@ namespace net.crossly.Api
         /// NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="status"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLoyaltyAirdropsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse>> ListLoyaltyAirdropsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLoyaltyAirdropsResponse>> ListLoyaltyAirdropsWithHttpInfoAsync(string status = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3780,6 +4488,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4060,6 +4776,152 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListLoyaltyProgramMemberPointsResponse</returns>
+        public ListLoyaltyProgramMemberPointsResponse ListLoyaltyProgramMemberPoints(string id)
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyProgramMemberPointsResponse> localVarResponse = ListLoyaltyProgramMemberPointsWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListLoyaltyProgramMemberPointsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListLoyaltyProgramMemberPointsResponse> ListLoyaltyProgramMemberPointsWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->ListLoyaltyProgramMemberPoints");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListLoyaltyProgramMemberPointsResponse>("/v1/loyalty/program/members/{id}/points", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListLoyaltyProgramMemberPoints", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyProgramMemberPointsResponse</returns>
+        public async System.Threading.Tasks.Task<ListLoyaltyProgramMemberPointsResponse> ListLoyaltyProgramMemberPointsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyProgramMemberPointsResponse> localVarResponse = await ListLoyaltyProgramMemberPointsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyProgramMemberPointsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLoyaltyProgramMemberPointsResponse>> ListLoyaltyProgramMemberPointsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling CustomersApi->ListLoyaltyProgramMemberPoints");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListLoyaltyProgramMemberPointsResponse>("/v1/loyalty/program/members/{id}/points", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListLoyaltyProgramMemberPoints", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -4178,6 +5040,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListLoyaltyProgramMembers", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListLoyaltyRewardsResponse</returns>
+        public ListLoyaltyRewardsResponse ListLoyaltyRewards()
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> localVarResponse = ListLoyaltyRewardsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListLoyaltyRewardsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> ListLoyaltyRewardsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListLoyaltyRewardsResponse>("/v1/loyalty/rewards", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListLoyaltyRewards", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyRewardsResponse</returns>
+        public async System.Threading.Tasks.Task<ListLoyaltyRewardsResponse> ListLoyaltyRewardsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> localVarResponse = await ListLoyaltyRewardsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyRewardsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse>> ListLoyaltyRewardsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListLoyaltyRewardsResponse>("/v1/loyalty/rewards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListLoyaltyRewards", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4357,10 +5347,11 @@ namespace net.crossly.Api
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <returns>GetLoyaltyClubResponse</returns>
-        public GetLoyaltyClubResponse UpdateLoyaltyClub()
+        public GetLoyaltyClubResponse UpdateLoyaltyClub(UpdateLoyaltyClubRequest updateLoyaltyClubRequest)
         {
-            net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> localVarResponse = UpdateLoyaltyClubWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> localVarResponse = UpdateLoyaltyClubWithHttpInfo(updateLoyaltyClubRequest);
             return localVarResponse.Data;
         }
 
@@ -4368,12 +5359,20 @@ namespace net.crossly.Api
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <returns>ApiResponse of GetLoyaltyClubResponse</returns>
-        public net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> UpdateLoyaltyClubWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> UpdateLoyaltyClubWithHttpInfo(UpdateLoyaltyClubRequest updateLoyaltyClubRequest)
         {
+            // verify the required parameter 'updateLoyaltyClubRequest' is set
+            if (updateLoyaltyClubRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLoyaltyClubRequest' when calling CustomersApi->UpdateLoyaltyClub");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4393,6 +5392,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateLoyaltyClubRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4419,11 +5419,12 @@ namespace net.crossly.Api
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetLoyaltyClubResponse</returns>
-        public async System.Threading.Tasks.Task<GetLoyaltyClubResponse> UpdateLoyaltyClubAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetLoyaltyClubResponse> UpdateLoyaltyClubAsync(UpdateLoyaltyClubRequest updateLoyaltyClubRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> localVarResponse = await UpdateLoyaltyClubWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetLoyaltyClubResponse> localVarResponse = await UpdateLoyaltyClubWithHttpInfoAsync(updateLoyaltyClubRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4431,14 +5432,22 @@ namespace net.crossly.Api
         /// Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyClubRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetLoyaltyClubResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetLoyaltyClubResponse>> UpdateLoyaltyClubWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetLoyaltyClubResponse>> UpdateLoyaltyClubWithHttpInfoAsync(UpdateLoyaltyClubRequest updateLoyaltyClubRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateLoyaltyClubRequest' is set
+            if (updateLoyaltyClubRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLoyaltyClubRequest' when calling CustomersApi->UpdateLoyaltyClub");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4458,6 +5467,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateLoyaltyClubRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4600,6 +5610,300 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateLoyaltyProgram", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <returns>ListLoyaltyRewardsResponse</returns>
+        public ListLoyaltyRewardsResponse UpdateLoyaltyReward(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest)
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> localVarResponse = UpdateLoyaltyRewardWithHttpInfo(updateLoyaltyRewardRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <returns>ApiResponse of ListLoyaltyRewardsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> UpdateLoyaltyRewardWithHttpInfo(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest)
+        {
+            // verify the required parameter 'updateLoyaltyRewardRequest' is set
+            if (updateLoyaltyRewardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLoyaltyRewardRequest' when calling CustomersApi->UpdateLoyaltyReward");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateLoyaltyRewardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<ListLoyaltyRewardsResponse>("/v1/loyalty/rewards", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateLoyaltyReward", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListLoyaltyRewardsResponse</returns>
+        public async System.Threading.Tasks.Task<ListLoyaltyRewardsResponse> UpdateLoyaltyRewardAsync(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse> localVarResponse = await UpdateLoyaltyRewardWithHttpInfoAsync(updateLoyaltyRewardRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateLoyaltyRewardRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListLoyaltyRewardsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLoyaltyRewardsResponse>> UpdateLoyaltyRewardWithHttpInfoAsync(UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateLoyaltyRewardRequest' is set
+            if (updateLoyaltyRewardRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateLoyaltyRewardRequest' when calling CustomersApi->UpdateLoyaltyReward");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateLoyaltyRewardRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<ListLoyaltyRewardsResponse>("/v1/loyalty/rewards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateLoyaltyReward", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>UpdateLoyaltyRewardByRewardIdResponse</returns>
+        public UpdateLoyaltyRewardByRewardIdResponse UpdateLoyaltyRewardByRewardId(string rewardId)
+        {
+            net.crossly.Client.ApiResponse<UpdateLoyaltyRewardByRewardIdResponse> localVarResponse = UpdateLoyaltyRewardByRewardIdWithHttpInfo(rewardId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <returns>ApiResponse of UpdateLoyaltyRewardByRewardIdResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateLoyaltyRewardByRewardIdResponse> UpdateLoyaltyRewardByRewardIdWithHttpInfo(string rewardId)
+        {
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'rewardId' when calling CustomersApi->UpdateLoyaltyRewardByRewardId");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateLoyaltyRewardByRewardIdResponse>("/v1/loyalty/rewards/{rewardId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateLoyaltyRewardByRewardId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateLoyaltyRewardByRewardIdResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateLoyaltyRewardByRewardIdResponse> UpdateLoyaltyRewardByRewardIdAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateLoyaltyRewardByRewardIdResponse> localVarResponse = await UpdateLoyaltyRewardByRewardIdWithHttpInfoAsync(rewardId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a reward to the shelf, or replace the one with this id. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="rewardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateLoyaltyRewardByRewardIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateLoyaltyRewardByRewardIdResponse>> UpdateLoyaltyRewardByRewardIdWithHttpInfoAsync(string rewardId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'rewardId' is set
+            if (rewardId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'rewardId' when calling CustomersApi->UpdateLoyaltyRewardByRewardId");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("rewardId", net.crossly.Client.ClientUtils.ParameterToString(rewardId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateLoyaltyRewardByRewardIdResponse>("/v1/loyalty/rewards/{rewardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateLoyaltyRewardByRewardId", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

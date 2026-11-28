@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <returns>CreateLookbookResponse</returns>
-        CreateLookbookResponse CreateLookbook();
+        CreateLookbookResponse CreateLookbook(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest));
 
         /// <summary>
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookResponse</returns>
-        ApiResponse<CreateLookbookResponse> CreateLookbookWithHttpInfo();
+        ApiResponse<CreateLookbookResponse> CreateLookbookWithHttpInfo(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest));
         /// <summary>
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>LookbookCampaignResponse</returns>
-        LookbookCampaignResponse CreateLookbookCampaign();
+        LookbookCampaignResponse CreateLookbookCampaign(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest));
 
         /// <summary>
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
@@ -56,8 +59,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>ApiResponse of LookbookCampaignResponse</returns>
-        ApiResponse<LookbookCampaignResponse> CreateLookbookCampaignWithHttpInfo();
+        ApiResponse<LookbookCampaignResponse> CreateLookbookCampaignWithHttpInfo(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest));
         /// <summary>
         /// Cancel a scheduled campaign or stop one that is sending (emails already sent stay sent).
         /// </summary>
@@ -80,8 +84,9 @@ namespace net.crossly.Api
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>CreateLookbookCampaignPreviewResponse</returns>
-        CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview();
+        CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest));
 
         /// <summary>
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
@@ -90,15 +95,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookCampaignPreviewResponse</returns>
-        ApiResponse<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewWithHttpInfo();
+        ApiResponse<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewWithHttpInfo(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest));
         /// <summary>
         /// Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <returns>CreateLookbookShareLinkResponse</returns>
-        CreateLookbookShareLinkResponse CreateLookbookShareLink(string id);
+        CreateLookbookShareLinkResponse CreateLookbookShareLink(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest));
 
         /// <summary>
         /// Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
@@ -108,14 +115,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookShareLinkResponse</returns>
-        ApiResponse<CreateLookbookShareLinkResponse> CreateLookbookShareLinkWithHttpInfo(string id);
+        ApiResponse<CreateLookbookShareLinkResponse> CreateLookbookShareLinkWithHttpInfo(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest));
         /// <summary>
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <returns>CreatePrintMailJobResponse</returns>
-        CreatePrintMailJobResponse CreatePrintMailJob();
+        CreatePrintMailJobResponse CreatePrintMailJob(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest));
 
         /// <summary>
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
@@ -124,15 +133,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePrintMailJobResponse</returns>
-        ApiResponse<CreatePrintMailJobResponse> CreatePrintMailJobWithHttpInfo();
+        ApiResponse<CreatePrintMailJobResponse> CreatePrintMailJobWithHttpInfo(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest));
         /// <summary>
         /// Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job&#39;s piece count. Your Lob or PostGrid account is billed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <returns>CreatePrintMailJobConfirmResponse</returns>
-        CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm(string id);
+        CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest));
 
         /// <summary>
         /// Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job&#39;s piece count. Your Lob or PostGrid account is billed.
@@ -142,8 +153,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePrintMailJobConfirmResponse</returns>
-        ApiResponse<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmWithHttpInfo(string id);
+        ApiResponse<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmWithHttpInfo(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest));
         /// <summary>
         /// One lookbook campaign and its counts.
         /// </summary>
@@ -201,8 +213,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListLookbookCampaignRecipientsResponse</returns>
-        ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients(string id);
+        ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Per-recipient results for a campaign: status (queued, sent, failed, skipped + reason), provider message id, opens, clicks, bounce, unsubscribe.
@@ -212,14 +227,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListLookbookCampaignRecipientsResponse</returns>
-        ApiResponse<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsWithHttpInfo(string id);
+        ApiResponse<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsWithHttpInfo(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?));
         /// <summary>
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <returns>ListLookbookCampaignsResponse</returns>
-        ListLookbookCampaignsResponse ListLookbookCampaigns();
+        ListLookbookCampaignsResponse ListLookbookCampaigns(string collectionId = default(string));
 
         /// <summary>
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
@@ -228,8 +247,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <returns>ApiResponse of ListLookbookCampaignsResponse</returns>
-        ApiResponse<ListLookbookCampaignsResponse> ListLookbookCampaignsWithHttpInfo();
+        ApiResponse<ListLookbookCampaignsResponse> ListLookbookCampaignsWithHttpInfo(string collectionId = default(string));
         /// <summary>
         /// Your lookbooks: id, slug, title, published, current design version and item count.
         /// </summary>
@@ -263,12 +283,33 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListPrintMailJobsResponse</returns>
         ApiResponse<ListPrintMailJobsResponse> ListPrintMailJobsWithHttpInfo();
         /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <returns>UpdateEmailProviderUsResponse</returns>
+        UpdateEmailProviderUsResponse UpdateEmailProviderUs(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest));
+
+        /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateEmailProviderUsResponse</returns>
+        ApiResponse<UpdateEmailProviderUsResponse> UpdateEmailProviderUsWithHttpInfo(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest));
+        /// <summary>
         /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <returns>UpdateLookbookDesignResponse</returns>
-        UpdateLookbookDesignResponse UpdateLookbookDesign(string id);
+        UpdateLookbookDesignResponse UpdateLookbookDesign(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest));
 
         /// <summary>
         /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
@@ -278,8 +319,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateLookbookDesignResponse</returns>
-        ApiResponse<UpdateLookbookDesignResponse> UpdateLookbookDesignWithHttpInfo(string id);
+        ApiResponse<UpdateLookbookDesignResponse> UpdateLookbookDesignWithHttpInfo(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest));
         #endregion Synchronous Operations
     }
 
@@ -296,9 +338,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookResponse</returns>
-        System.Threading.Tasks.Task<CreateLookbookResponse> CreateLookbookAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateLookbookResponse> CreateLookbookAsync(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
@@ -307,9 +350,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateLookbookResponse>> CreateLookbookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateLookbookResponse>> CreateLookbookWithHttpInfoAsync(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
         /// </summary>
@@ -317,9 +361,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LookbookCampaignResponse</returns>
-        System.Threading.Tasks.Task<LookbookCampaignResponse> CreateLookbookCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LookbookCampaignResponse> CreateLookbookCampaignAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
@@ -328,9 +373,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LookbookCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LookbookCampaignResponse>> CreateLookbookCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LookbookCampaignResponse>> CreateLookbookCampaignWithHttpInfoAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a scheduled campaign or stop one that is sending (emails already sent stay sent).
         /// </summary>
@@ -361,9 +407,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookCampaignPreviewResponse</returns>
-        System.Threading.Tasks.Task<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
@@ -372,9 +419,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookCampaignPreviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateLookbookCampaignPreviewResponse>> CreateLookbookCampaignPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateLookbookCampaignPreviewResponse>> CreateLookbookCampaignPreviewWithHttpInfoAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
         /// </summary>
@@ -383,9 +431,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookShareLinkResponse</returns>
-        System.Threading.Tasks.Task<CreateLookbookShareLinkResponse> CreateLookbookShareLinkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateLookbookShareLinkResponse> CreateLookbookShareLinkAsync(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
@@ -395,9 +444,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookShareLinkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateLookbookShareLinkResponse>> CreateLookbookShareLinkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateLookbookShareLinkResponse>> CreateLookbookShareLinkWithHttpInfoAsync(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
         /// </summary>
@@ -405,9 +455,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePrintMailJobResponse</returns>
-        System.Threading.Tasks.Task<CreatePrintMailJobResponse> CreatePrintMailJobAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePrintMailJobResponse> CreatePrintMailJobAsync(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
@@ -416,9 +467,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePrintMailJobResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailJobResponse>> CreatePrintMailJobWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailJobResponse>> CreatePrintMailJobWithHttpInfoAsync(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job&#39;s piece count. Your Lob or PostGrid account is billed.
         /// </summary>
@@ -427,9 +479,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePrintMailJobConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmAsync(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job&#39;s piece count. Your Lob or PostGrid account is billed.
@@ -439,9 +492,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePrintMailJobConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailJobConfirmResponse>> CreatePrintMailJobConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailJobConfirmResponse>> CreatePrintMailJobConfirmWithHttpInfoAsync(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One lookbook campaign and its counts.
         /// </summary>
@@ -517,9 +571,12 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLookbookCampaignRecipientsResponse</returns>
-        System.Threading.Tasks.Task<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsAsync(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Per-recipient results for a campaign: status (queued, sent, failed, skipped + reason), provider message id, opens, clicks, bounce, unsubscribe.
@@ -529,9 +586,12 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLookbookCampaignRecipientsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListLookbookCampaignRecipientsResponse>> ListLookbookCampaignRecipientsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListLookbookCampaignRecipientsResponse>> ListLookbookCampaignRecipientsWithHttpInfoAsync(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
         /// </summary>
@@ -539,9 +599,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLookbookCampaignsResponse</returns>
-        System.Threading.Tasks.Task<ListLookbookCampaignsResponse> ListLookbookCampaignsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListLookbookCampaignsResponse> ListLookbookCampaignsAsync(string collectionId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
@@ -550,9 +611,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLookbookCampaignsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListLookbookCampaignsResponse>> ListLookbookCampaignsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListLookbookCampaignsResponse>> ListLookbookCampaignsWithHttpInfoAsync(string collectionId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your lookbooks: id, slug, title, published, current design version and item count.
         /// </summary>
@@ -596,6 +658,31 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListPrintMailJobsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListPrintMailJobsResponse>> ListPrintMailJobsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateEmailProviderUsResponse</returns>
+        System.Threading.Tasks.Task<UpdateEmailProviderUsResponse> UpdateEmailProviderUsAsync(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateEmailProviderUsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateEmailProviderUsResponse>> UpdateEmailProviderUsWithHttpInfoAsync(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
         /// </summary>
         /// <remarks>
@@ -603,9 +690,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateLookbookDesignResponse</returns>
-        System.Threading.Tasks.Task<UpdateLookbookDesignResponse> UpdateLookbookDesignAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateLookbookDesignResponse> UpdateLookbookDesignAsync(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
@@ -615,9 +703,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateLookbookDesignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateLookbookDesignResponse>> UpdateLookbookDesignWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateLookbookDesignResponse>> UpdateLookbookDesignWithHttpInfoAsync(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -742,10 +831,11 @@ namespace net.crossly.Api
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <returns>CreateLookbookResponse</returns>
-        public CreateLookbookResponse CreateLookbook()
+        public CreateLookbookResponse CreateLookbook(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookResponse> localVarResponse = CreateLookbookWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateLookbookResponse> localVarResponse = CreateLookbookWithHttpInfo(createLookbookRequest);
             return localVarResponse.Data;
         }
 
@@ -753,12 +843,14 @@ namespace net.crossly.Api
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateLookbookResponse> CreateLookbookWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateLookbookResponse> CreateLookbookWithHttpInfo(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -778,6 +870,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -804,11 +897,12 @@ namespace net.crossly.Api
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookResponse</returns>
-        public async System.Threading.Tasks.Task<CreateLookbookResponse> CreateLookbookAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateLookbookResponse> CreateLookbookAsync(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookResponse> localVarResponse = await CreateLookbookWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateLookbookResponse> localVarResponse = await CreateLookbookWithHttpInfoAsync(createLookbookRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -816,14 +910,16 @@ namespace net.crossly.Api
         /// Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookResponse>> CreateLookbookWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookResponse>> CreateLookbookWithHttpInfoAsync(CreateLookbookRequest createLookbookRequest = default(CreateLookbookRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -843,6 +939,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -870,10 +967,11 @@ namespace net.crossly.Api
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>LookbookCampaignResponse</returns>
-        public LookbookCampaignResponse CreateLookbookCampaign()
+        public LookbookCampaignResponse CreateLookbookCampaign(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest))
         {
-            net.crossly.Client.ApiResponse<LookbookCampaignResponse> localVarResponse = CreateLookbookCampaignWithHttpInfo();
+            net.crossly.Client.ApiResponse<LookbookCampaignResponse> localVarResponse = CreateLookbookCampaignWithHttpInfo(createLookbookCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -881,12 +979,14 @@ namespace net.crossly.Api
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>ApiResponse of LookbookCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<LookbookCampaignResponse> CreateLookbookCampaignWithHttpInfo()
+        public net.crossly.Client.ApiResponse<LookbookCampaignResponse> CreateLookbookCampaignWithHttpInfo(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -906,6 +1006,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -932,11 +1033,12 @@ namespace net.crossly.Api
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LookbookCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<LookbookCampaignResponse> CreateLookbookCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LookbookCampaignResponse> CreateLookbookCampaignAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<LookbookCampaignResponse> localVarResponse = await CreateLookbookCampaignWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<LookbookCampaignResponse> localVarResponse = await CreateLookbookCampaignWithHttpInfoAsync(createLookbookCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -944,14 +1046,16 @@ namespace net.crossly.Api
         /// Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LookbookCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<LookbookCampaignResponse>> CreateLookbookCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<LookbookCampaignResponse>> CreateLookbookCampaignWithHttpInfoAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -971,6 +1075,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1144,10 +1249,11 @@ namespace net.crossly.Api
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>CreateLookbookCampaignPreviewResponse</returns>
-        public CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview()
+        public CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> localVarResponse = CreateLookbookCampaignPreviewWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> localVarResponse = CreateLookbookCampaignPreviewWithHttpInfo(createLookbookCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -1155,12 +1261,14 @@ namespace net.crossly.Api
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookCampaignPreviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewWithHttpInfo(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1180,6 +1288,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1206,11 +1315,12 @@ namespace net.crossly.Api
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookCampaignPreviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateLookbookCampaignPreviewResponse> CreateLookbookCampaignPreviewAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> localVarResponse = await CreateLookbookCampaignPreviewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse> localVarResponse = await CreateLookbookCampaignPreviewWithHttpInfoAsync(createLookbookCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1218,14 +1328,16 @@ namespace net.crossly.Api
         /// Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createLookbookCampaignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookCampaignPreviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse>> CreateLookbookCampaignPreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookCampaignPreviewResponse>> CreateLookbookCampaignPreviewWithHttpInfoAsync(CreateLookbookCampaignRequest createLookbookCampaignRequest = default(CreateLookbookCampaignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1245,6 +1357,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createLookbookCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1273,10 +1386,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <returns>CreateLookbookShareLinkResponse</returns>
-        public CreateLookbookShareLinkResponse CreateLookbookShareLink(string id)
+        public CreateLookbookShareLinkResponse CreateLookbookShareLink(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> localVarResponse = CreateLookbookShareLinkWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> localVarResponse = CreateLookbookShareLinkWithHttpInfo(id, createLookbookShareLinkRequest);
             return localVarResponse.Data;
         }
 
@@ -1285,8 +1399,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateLookbookShareLinkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> CreateLookbookShareLinkWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> CreateLookbookShareLinkWithHttpInfo(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1297,6 +1412,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1317,6 +1433,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLookbookShareLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1344,11 +1461,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateLookbookShareLinkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateLookbookShareLinkResponse> CreateLookbookShareLinkAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateLookbookShareLinkResponse> CreateLookbookShareLinkAsync(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> localVarResponse = await CreateLookbookShareLinkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse> localVarResponse = await CreateLookbookShareLinkWithHttpInfoAsync(id, createLookbookShareLinkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1357,9 +1475,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createLookbookShareLinkRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateLookbookShareLinkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse>> CreateLookbookShareLinkWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateLookbookShareLinkResponse>> CreateLookbookShareLinkWithHttpInfoAsync(string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = default(CreateLookbookShareLinkRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1371,6 +1490,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1391,6 +1511,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createLookbookShareLinkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1418,10 +1539,11 @@ namespace net.crossly.Api
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <returns>CreatePrintMailJobResponse</returns>
-        public CreatePrintMailJobResponse CreatePrintMailJob()
+        public CreatePrintMailJobResponse CreatePrintMailJob(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest))
         {
-            net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> localVarResponse = CreatePrintMailJobWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> localVarResponse = CreatePrintMailJobWithHttpInfo(createPrintMailJobRequest);
             return localVarResponse.Data;
         }
 
@@ -1429,12 +1551,14 @@ namespace net.crossly.Api
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePrintMailJobResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> CreatePrintMailJobWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> CreatePrintMailJobWithHttpInfo(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1454,6 +1578,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createPrintMailJobRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1480,11 +1605,12 @@ namespace net.crossly.Api
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePrintMailJobResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePrintMailJobResponse> CreatePrintMailJobAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePrintMailJobResponse> CreatePrintMailJobAsync(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> localVarResponse = await CreatePrintMailJobWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePrintMailJobResponse> localVarResponse = await CreatePrintMailJobWithHttpInfoAsync(createPrintMailJobRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1492,14 +1618,16 @@ namespace net.crossly.Api
         /// Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePrintMailJobResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailJobResponse>> CreatePrintMailJobWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailJobResponse>> CreatePrintMailJobWithHttpInfoAsync(CreatePrintMailJobRequest createPrintMailJobRequest = default(CreatePrintMailJobRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1519,6 +1647,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createPrintMailJobRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1547,10 +1676,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <returns>CreatePrintMailJobConfirmResponse</returns>
-        public CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm(string id)
+        public CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest))
         {
-            net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> localVarResponse = CreatePrintMailJobConfirmWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> localVarResponse = CreatePrintMailJobConfirmWithHttpInfo(id, createPrintMailJobConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -1559,8 +1689,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <returns>ApiResponse of CreatePrintMailJobConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmWithHttpInfo(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1571,6 +1702,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1591,6 +1723,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createPrintMailJobConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1618,11 +1751,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePrintMailJobConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePrintMailJobConfirmResponse> CreatePrintMailJobConfirmAsync(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> localVarResponse = await CreatePrintMailJobConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse> localVarResponse = await CreatePrintMailJobConfirmWithHttpInfoAsync(id, createPrintMailJobConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1631,9 +1765,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createPrintMailJobConfirmRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePrintMailJobConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse>> CreatePrintMailJobConfirmWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailJobConfirmResponse>> CreatePrintMailJobConfirmWithHttpInfoAsync(string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = default(CreatePrintMailJobConfirmRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1645,6 +1780,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1665,6 +1801,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createPrintMailJobConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2113,10 +2250,13 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListLookbookCampaignRecipientsResponse</returns>
-        public ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients(string id)
+        public ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> localVarResponse = ListLookbookCampaignRecipientsWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> localVarResponse = ListLookbookCampaignRecipientsWithHttpInfo(id, status, page, limit);
             return localVarResponse.Data;
         }
 
@@ -2125,8 +2265,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListLookbookCampaignRecipientsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsWithHttpInfo(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2157,6 +2300,18 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2184,11 +2339,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLookbookCampaignRecipientsResponse</returns>
-        public async System.Threading.Tasks.Task<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListLookbookCampaignRecipientsResponse> ListLookbookCampaignRecipientsAsync(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> localVarResponse = await ListLookbookCampaignRecipientsWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse> localVarResponse = await ListLookbookCampaignRecipientsWithHttpInfoAsync(id, status, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2197,9 +2355,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLookbookCampaignRecipientsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse>> ListLookbookCampaignRecipientsWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLookbookCampaignRecipientsResponse>> ListLookbookCampaignRecipientsWithHttpInfoAsync(string id, string status = default(string), decimal? page = default(decimal?), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2231,6 +2392,18 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2258,10 +2431,11 @@ namespace net.crossly.Api
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <returns>ListLookbookCampaignsResponse</returns>
-        public ListLookbookCampaignsResponse ListLookbookCampaigns()
+        public ListLookbookCampaignsResponse ListLookbookCampaigns(string collectionId = default(string))
         {
-            net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> localVarResponse = ListLookbookCampaignsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> localVarResponse = ListLookbookCampaignsWithHttpInfo(collectionId);
             return localVarResponse.Data;
         }
 
@@ -2269,8 +2443,9 @@ namespace net.crossly.Api
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <returns>ApiResponse of ListLookbookCampaignsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> ListLookbookCampaignsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> ListLookbookCampaignsWithHttpInfo(string collectionId = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2294,6 +2469,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (collectionId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "collectionId", collectionId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2320,11 +2499,12 @@ namespace net.crossly.Api
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListLookbookCampaignsResponse</returns>
-        public async System.Threading.Tasks.Task<ListLookbookCampaignsResponse> ListLookbookCampaignsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListLookbookCampaignsResponse> ListLookbookCampaignsAsync(string collectionId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> localVarResponse = await ListLookbookCampaignsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse> localVarResponse = await ListLookbookCampaignsWithHttpInfoAsync(collectionId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2332,9 +2512,10 @@ namespace net.crossly.Api
         /// Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="collectionId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListLookbookCampaignsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse>> ListLookbookCampaignsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListLookbookCampaignsResponse>> ListLookbookCampaignsWithHttpInfoAsync(string collectionId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2359,6 +2540,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (collectionId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "collectionId", collectionId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2639,34 +2824,31 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save. 
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>UpdateLookbookDesignResponse</returns>
-        public UpdateLookbookDesignResponse UpdateLookbookDesign(string id)
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <returns>UpdateEmailProviderUsResponse</returns>
+        public UpdateEmailProviderUsResponse UpdateEmailProviderUs(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> localVarResponse = UpdateLookbookDesignWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdateEmailProviderUsResponse> localVarResponse = UpdateEmailProviderUsWithHttpInfo(id, updateEmailProviderUsRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save. 
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of UpdateLookbookDesignResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> UpdateLookbookDesignWithHttpInfo(string id)
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateEmailProviderUsResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateEmailProviderUsResponse> UpdateEmailProviderUsWithHttpInfo(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest))
         {
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling LookbooksApi->UpdateLookbookDesign");
-            }
-
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2687,6 +2869,155 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateEmailProviderUsRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateEmailProviderUsResponse>("/v1/email-providers/{id}/uses", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateEmailProviderUs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateEmailProviderUsResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateEmailProviderUsResponse> UpdateEmailProviderUsAsync(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateEmailProviderUsResponse> localVarResponse = await UpdateEmailProviderUsWithHttpInfoAsync(id, updateEmailProviderUsRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderUsRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateEmailProviderUsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateEmailProviderUsResponse>> UpdateEmailProviderUsWithHttpInfoAsync(Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = default(UpdateEmailProviderUsRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateEmailProviderUsRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateEmailProviderUsResponse>("/v1/email-providers/{id}/uses", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateEmailProviderUs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
+        /// <returns>UpdateLookbookDesignResponse</returns>
+        public UpdateLookbookDesignResponse UpdateLookbookDesign(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest))
+        {
+            net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> localVarResponse = UpdateLookbookDesignWithHttpInfo(id, updateLookbookDesignRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateLookbookDesignResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> UpdateLookbookDesignWithHttpInfo(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling LookbooksApi->UpdateLookbookDesign");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateLookbookDesignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2714,11 +3045,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateLookbookDesignResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateLookbookDesignResponse> UpdateLookbookDesignAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateLookbookDesignResponse> UpdateLookbookDesignAsync(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> localVarResponse = await UpdateLookbookDesignWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse> localVarResponse = await UpdateLookbookDesignWithHttpInfoAsync(id, updateLookbookDesignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2727,9 +3059,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateLookbookDesignRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateLookbookDesignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse>> UpdateLookbookDesignWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateLookbookDesignResponse>> UpdateLookbookDesignWithHttpInfoAsync(string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = default(UpdateLookbookDesignRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2741,6 +3074,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2761,6 +3095,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateLookbookDesignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

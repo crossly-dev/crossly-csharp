@@ -27,31 +27,53 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL.
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <returns>ListProductFeedsItem</returns>
-        ListProductFeedsItem CreateProductFeed();
+        ListProductFeedsItem CreateProductFeed(CreateProductFeedRequest createProductFeedRequest);
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL.
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        ApiResponse<ListProductFeedsItem> CreateProductFeedWithHttpInfo();
+        ApiResponse<ListProductFeedsItem> CreateProductFeedWithHttpInfo(CreateProductFeedRequest createProductFeedRequest);
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <returns>CreateProductFeedCopyResponse</returns>
+        CreateProductFeedCopyResponse CreateProductFeedCopy(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest);
+
+        /// <summary>
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <returns>ApiResponse of CreateProductFeedCopyResponse</returns>
+        ApiResponse<CreateProductFeedCopyResponse> CreateProductFeedCopyWithHttpInfo(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest);
+        /// <summary>
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ListProductFeedsItem</returns>
-        ListProductFeedsItem CreateProductFeedRotate(Guid id);
+        ListProductFeedsItem CreateProductFeedRefresh(Guid id);
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
         /// </summary>
         /// <remarks>
         /// 
@@ -59,7 +81,45 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        ApiResponse<ListProductFeedsItem> CreateProductFeedRotateWithHttpInfo(Guid id);
+        ApiResponse<ListProductFeedsItem> CreateProductFeedRefreshWithHttpInfo(Guid id);
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListProductFeedsItem</returns>
+        ListProductFeedsItem CreateProductFeedRevokePrevious(Guid id);
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListProductFeedsItem</returns>
+        ApiResponse<ListProductFeedsItem> CreateProductFeedRevokePreviousWithHttpInfo(Guid id);
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <returns>ListProductFeedsItem</returns>
+        ListProductFeedsItem CreateProductFeedRotate(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest));
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <returns>ApiResponse of ListProductFeedsItem</returns>
+        ApiResponse<ListProductFeedsItem> CreateProductFeedRotateWithHttpInfo(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest));
         /// <summary>
         /// Delete a feed. Its URL stops answering immediately.
         /// </summary>
@@ -79,7 +139,135 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         ApiResponse<OkResponse> DeleteProductFeedWithHttpInfo(Guid id);
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+        /// Remove one listing’s override from this feed.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <returns>OkResponse</returns>
+        OkResponse DeleteProductFeedItem(Guid id, Guid listingId);
+
+        /// <summary>
+        /// Remove one listing’s override from this feed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        ApiResponse<OkResponse> DeleteProductFeedItemWithHttpInfo(Guid id, Guid listingId);
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetProductFeedResponse</returns>
+        GetProductFeedResponse GetProductFeed(Guid id);
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetProductFeedResponse</returns>
+        ApiResponse<GetProductFeedResponse> GetProductFeedWithHttpInfo(Guid id);
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedFetchResponse</returns>
+        GetProductFeedFetchResponse GetProductFeedFetch(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?));
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedFetchResponse</returns>
+        ApiResponse<GetProductFeedFetchResponse> GetProductFeedFetchWithHttpInfo(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?));
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedIssueResponse</returns>
+        GetProductFeedIssueResponse GetProductFeedIssue(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?));
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedIssueResponse</returns>
+        ApiResponse<GetProductFeedIssueResponse> GetProductFeedIssueWithHttpInfo(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?));
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetProductFeedItemResponse</returns>
+        GetProductFeedItemResponse GetProductFeedItem(Guid id);
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetProductFeedItemResponse</returns>
+        ApiResponse<GetProductFeedItemResponse> GetProductFeedItemWithHttpInfo(Guid id);
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedPreviewResponse</returns>
+        GetProductFeedPreviewResponse GetProductFeedPreview(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?));
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedPreviewResponse</returns>
+        ApiResponse<GetProductFeedPreviewResponse> GetProductFeedPreviewWithHttpInfo(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?));
+        /// <summary>
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -87,7 +275,7 @@ namespace net.crossly.Api
         GetProductFeedReportResponse GetProductFeedReport(Guid id);
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
         /// </summary>
         /// <remarks>
         /// 
@@ -97,14 +285,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetProductFeedReportResponse</returns>
         ApiResponse<GetProductFeedReportResponse> GetProductFeedReportWithHttpInfo(Guid id);
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListProductFeedsResponse</returns>
         ListProductFeedsResponse ListProductFeeds();
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
         /// </summary>
         /// <remarks>
         /// 
@@ -113,23 +301,47 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListProductFeedsResponse</returns>
         ApiResponse<ListProductFeedsResponse> ListProductFeedsWithHttpInfo();
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings.
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <returns>ListProductFeedsItem</returns>
-        ListProductFeedsItem UpdateProductFeed(Guid id);
+        ListProductFeedsItem UpdateProductFeed(Guid id, UpdateProductFeedRequest updateProductFeedRequest);
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings.
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        ApiResponse<ListProductFeedsItem> UpdateProductFeedWithHttpInfo(Guid id);
+        ApiResponse<ListProductFeedsItem> UpdateProductFeedWithHttpInfo(Guid id, UpdateProductFeedRequest updateProductFeedRequest);
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <returns>UpdateProductFeedItemResponse</returns>
+        UpdateProductFeedItemResponse UpdateProductFeedItem(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest);
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <returns>ApiResponse of UpdateProductFeedItemResponse</returns>
+        ApiResponse<UpdateProductFeedItemResponse> UpdateProductFeedItemWithHttpInfo(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest);
         #endregion Synchronous Operations
     }
 
@@ -140,28 +352,55 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL.
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedAsync(CreateProductFeedRequest createProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL.
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedWithHttpInfoAsync(CreateProductFeedRequest createProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProductFeedCopyResponse</returns>
+        System.Threading.Tasks.Task<CreateProductFeedCopyResponse> CreateProductFeedCopyAsync(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProductFeedCopyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateProductFeedCopyResponse>> CreateProductFeedCopyWithHttpInfoAsync(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
         /// </summary>
         /// <remarks>
         /// 
@@ -170,10 +409,10 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRotateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRefreshAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel.
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh.
         /// </summary>
         /// <remarks>
         /// 
@@ -182,7 +421,55 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedRotateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedRefreshWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProductFeedsItem</returns>
+        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRevokePreviousAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedRevokePreviousWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProductFeedsItem</returns>
+        System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRotateAsync(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> CreateProductFeedRotateWithHttpInfoAsync(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a feed. Its URL stops answering immediately.
         /// </summary>
@@ -207,7 +494,165 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteProductFeedWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+        /// Remove one listing’s override from this feed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        System.Threading.Tasks.Task<OkResponse> DeleteProductFeedItemAsync(Guid id, Guid listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove one listing’s override from this feed.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteProductFeedItemWithHttpInfoAsync(Guid id, Guid listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedResponse</returns>
+        System.Threading.Tasks.Task<GetProductFeedResponse> GetProductFeedAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProductFeedResponse>> GetProductFeedWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedFetchResponse</returns>
+        System.Threading.Tasks.Task<GetProductFeedFetchResponse> GetProductFeedFetchAsync(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedFetchResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProductFeedFetchResponse>> GetProductFeedFetchWithHttpInfoAsync(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedIssueResponse</returns>
+        System.Threading.Tasks.Task<GetProductFeedIssueResponse> GetProductFeedIssueAsync(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedIssueResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProductFeedIssueResponse>> GetProductFeedIssueWithHttpInfoAsync(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedItemResponse</returns>
+        System.Threading.Tasks.Task<GetProductFeedItemResponse> GetProductFeedItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedItemResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProductFeedItemResponse>> GetProductFeedItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedPreviewResponse</returns>
+        System.Threading.Tasks.Task<GetProductFeedPreviewResponse> GetProductFeedPreviewAsync(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedPreviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetProductFeedPreviewResponse>> GetProductFeedPreviewWithHttpInfoAsync(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
         /// </summary>
         /// <remarks>
         /// 
@@ -219,7 +664,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetProductFeedReportResponse> GetProductFeedReportAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items.
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency.
         /// </summary>
         /// <remarks>
         /// 
@@ -230,7 +675,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetProductFeedReportResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetProductFeedReportResponse>> GetProductFeedReportWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
         /// </summary>
         /// <remarks>
         /// 
@@ -241,7 +686,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListProductFeedsResponse> ListProductFeedsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats.
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats.
         /// </summary>
         /// <remarks>
         /// 
@@ -251,28 +696,57 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListProductFeedsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListProductFeedsResponse>> ListProductFeedsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings.
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        System.Threading.Tasks.Task<ListProductFeedsItem> UpdateProductFeedAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListProductFeedsItem> UpdateProductFeedAsync(Guid id, UpdateProductFeedRequest updateProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings.
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> UpdateProductFeedWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListProductFeedsItem>> UpdateProductFeedWithHttpInfoAsync(Guid id, UpdateProductFeedRequest updateProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProductFeedItemResponse</returns>
+        System.Threading.Tasks.Task<UpdateProductFeedItemResponse> UpdateProductFeedItemAsync(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProductFeedItemResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateProductFeedItemResponse>> UpdateProductFeedItemWithHttpInfoAsync(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -394,26 +868,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL. 
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <returns>ListProductFeedsItem</returns>
-        public ListProductFeedsItem CreateProductFeed()
+        public ListProductFeedsItem CreateProductFeed(CreateProductFeedRequest createProductFeedRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedWithHttpInfo(createProductFeedRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL. 
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedWithHttpInfo(CreateProductFeedRequest createProductFeedRequest)
         {
+            // verify the required parameter 'createProductFeedRequest' is set
+            if (createProductFeedRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductFeedRequest' when calling ProductFeedsApi->CreateProductFeed");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -433,6 +916,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductFeedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -456,29 +940,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL. 
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedAsync(CreateProductFeedRequest createProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedWithHttpInfoAsync(createProductFeedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a hosted product feed for a channel. Returns its secret URL. 
+        /// Create a hosted product feed in the store for a channel. Returns its secret URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedWithHttpInfoAsync(CreateProductFeedRequest createProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createProductFeedRequest' is set
+            if (createProductFeedRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductFeedRequest' when calling ProductFeedsApi->CreateProductFeed");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -498,6 +991,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createProductFeedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -522,24 +1016,178 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel. 
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ListProductFeedsItem</returns>
-        public ListProductFeedsItem CreateProductFeedRotate(Guid id)
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <returns>CreateProductFeedCopyResponse</returns>
+        public CreateProductFeedCopyResponse CreateProductFeedCopy(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedRotateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateProductFeedCopyResponse> localVarResponse = CreateProductFeedCopyWithHttpInfo(id, createProductFeedCopyRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel. 
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <returns>ApiResponse of CreateProductFeedCopyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateProductFeedCopyResponse> CreateProductFeedCopyWithHttpInfo(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest)
+        {
+            // verify the required parameter 'createProductFeedCopyRequest' is set
+            if (createProductFeedCopyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductFeedCopyRequest' when calling ProductFeedsApi->CreateProductFeedCopy");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductFeedCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateProductFeedCopyResponse>("/v1/product-feeds/{id}/copy", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateProductFeedCopyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateProductFeedCopyResponse> CreateProductFeedCopyAsync(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateProductFeedCopyResponse> localVarResponse = await CreateProductFeedCopyWithHttpInfoAsync(id, createProductFeedCopyRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy the feed’s settings to other stores as new feeds, each with its own URL. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateProductFeedCopyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateProductFeedCopyResponse>> CreateProductFeedCopyWithHttpInfoAsync(Guid id, CreateProductFeedCopyRequest createProductFeedCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createProductFeedCopyRequest' is set
+            if (createProductFeedCopyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createProductFeedCopyRequest' when calling ProductFeedsApi->CreateProductFeedCopy");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductFeedCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateProductFeedCopyResponse>("/v1/product-feeds/{id}/copy", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListProductFeedsItem</returns>
+        public ListProductFeedsItem CreateProductFeedRefresh(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedRefreshWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedRotateWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedRefreshWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -573,10 +1221,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ListProductFeedsItem>("/v1/product-feeds/{id}/rotate", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<ListProductFeedsItem>("/v1/product-feeds/{id}/refresh", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateProductFeedRotate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateProductFeedRefresh", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -587,26 +1235,26 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel. 
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRotateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRefreshAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedRotateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedRefreshWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Rotate the feed token. The old URL stops answering immediately; paste the new one into the channel. 
+        /// Drop a scheduled feed’s stored copy so the next fetch builds it fresh. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedRotateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedRefreshWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -632,6 +1280,282 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ListProductFeedsItem>("/v1/product-feeds/{id}/refresh", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedRefresh", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListProductFeedsItem</returns>
+        public ListProductFeedsItem CreateProductFeedRevokePrevious(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedRevokePreviousWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListProductFeedsItem</returns>
+        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedRevokePreviousWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ListProductFeedsItem>("/v1/product-feeds/{id}/revoke-previous", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedRevokePrevious", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProductFeedsItem</returns>
+        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRevokePreviousAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedRevokePreviousWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// End a rotation’s grace window now: the previous URL stops answering. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedRevokePreviousWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ListProductFeedsItem>("/v1/product-feeds/{id}/revoke-previous", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedRevokePrevious", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <returns>ListProductFeedsItem</returns>
+        public ListProductFeedsItem CreateProductFeedRotate(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest))
+        {
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = CreateProductFeedRotateWithHttpInfo(id, createProductFeedRotateRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <returns>ApiResponse of ListProductFeedsItem</returns>
+        public net.crossly.Client.ApiResponse<ListProductFeedsItem> CreateProductFeedRotateWithHttpInfo(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductFeedRotateRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ListProductFeedsItem>("/v1/product-feeds/{id}/rotate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateProductFeedRotate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListProductFeedsItem</returns>
+        public async System.Threading.Tasks.Task<ListProductFeedsItem> CreateProductFeedRotateAsync(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await CreateProductFeedRotateWithHttpInfoAsync(id, createProductFeedRotateRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Give the feed a new secret URL. The old URL keeps answering for graceHours (default: the feed’s setting; 0 &#x3D; stops at once). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createProductFeedRotateRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> CreateProductFeedRotateWithHttpInfoAsync(Guid id, CreateProductFeedRotateRequest createProductFeedRotateRequest = default(CreateProductFeedRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createProductFeedRotateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -790,7 +1714,925 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items. 
+        /// Remove one listing’s override from this feed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse DeleteProductFeedItem(Guid id, Guid listingId)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = DeleteProductFeedItemWithHttpInfo(id, listingId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove one listing’s override from this feed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> DeleteProductFeedItemWithHttpInfo(Guid id, Guid listingId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<OkResponse>("/v1/product-feeds/{id}/items/{listingId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteProductFeedItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove one listing’s override from this feed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        public async System.Threading.Tasks.Task<OkResponse> DeleteProductFeedItemAsync(Guid id, Guid listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await DeleteProductFeedItemWithHttpInfoAsync(id, listingId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove one listing’s override from this feed. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (OkResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> DeleteProductFeedItemWithHttpInfoAsync(Guid id, Guid listingId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<OkResponse>("/v1/product-feeds/{id}/items/{listingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteProductFeedItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetProductFeedResponse</returns>
+        public GetProductFeedResponse GetProductFeed(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedResponse> localVarResponse = GetProductFeedWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetProductFeedResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProductFeedResponse> GetProductFeedWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProductFeedResponse>("/v1/product-feeds/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeed", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedResponse</returns>
+        public async System.Threading.Tasks.Task<GetProductFeedResponse> GetProductFeedAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedResponse> localVarResponse = await GetProductFeedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One feed: its settings, URLs, store and domain, and when it was last fetched and by whom. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProductFeedResponse>> GetProductFeedWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProductFeedResponse>("/v1/product-feeds/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeed", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedFetchResponse</returns>
+        public GetProductFeedFetchResponse GetProductFeedFetch(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedFetchResponse> localVarResponse = GetProductFeedFetchWithHttpInfo(id, before, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedFetchResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProductFeedFetchResponse> GetProductFeedFetchWithHttpInfo(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProductFeedFetchResponse>("/v1/product-feeds/{id}/fetches", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedFetch", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedFetchResponse</returns>
+        public async System.Threading.Tasks.Task<GetProductFeedFetchResponse> GetProductFeedFetchAsync(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedFetchResponse> localVarResponse = await GetProductFeedFetchWithHttpInfoAsync(id, before, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Who fetched the feed and when (90 days): the channel, status, served from copy or live, item count, size. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedFetchResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProductFeedFetchResponse>> GetProductFeedFetchWithHttpInfoAsync(Guid id, DateTime? before = default(DateTime?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProductFeedFetchResponse>("/v1/product-feeds/{id}/fetches", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedFetch", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedIssueResponse</returns>
+        public GetProductFeedIssueResponse GetProductFeedIssue(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedIssueResponse> localVarResponse = GetProductFeedIssueWithHttpInfo(id, code, severity, after, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedIssueResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProductFeedIssueResponse> GetProductFeedIssueWithHttpInfo(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (code != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "code", code));
+            }
+            if (severity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "severity", severity));
+            }
+            if (after != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "after", after));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProductFeedIssueResponse>("/v1/product-feeds/{id}/issues", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedIssue", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedIssueResponse</returns>
+        public async System.Threading.Tasks.Task<GetProductFeedIssueResponse> GetProductFeedIssueAsync(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedIssueResponse> localVarResponse = await GetProductFeedIssueWithHttpInfoAsync(id, code, severity, after, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The feed’s flagged items one page at a time, by issue code and severity. Pass nextCursor back as after. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="code"> (optional)</param>
+        /// <param name="severity"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedIssueResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProductFeedIssueResponse>> GetProductFeedIssueWithHttpInfoAsync(Guid id, string code = default(string), string severity = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (code != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "code", code));
+            }
+            if (severity != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "severity", severity));
+            }
+            if (after != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "after", after));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProductFeedIssueResponse>("/v1/product-feeds/{id}/issues", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedIssue", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetProductFeedItemResponse</returns>
+        public GetProductFeedItemResponse GetProductFeedItem(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedItemResponse> localVarResponse = GetProductFeedItemWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetProductFeedItemResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProductFeedItemResponse> GetProductFeedItemWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProductFeedItemResponse>("/v1/product-feeds/{id}/items", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedItemResponse</returns>
+        public async System.Threading.Tasks.Task<GetProductFeedItemResponse> GetProductFeedItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedItemResponse> localVarResponse = await GetProductFeedItemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The feed’s per-item overrides (title, GTIN, category, custom labels… for this feed only). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedItemResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProductFeedItemResponse>> GetProductFeedItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProductFeedItemResponse>("/v1/product-feeds/{id}/items", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>GetProductFeedPreviewResponse</returns>
+        public GetProductFeedPreviewResponse GetProductFeedPreview(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedPreviewResponse> localVarResponse = GetProductFeedPreviewWithHttpInfo(id, format, after, limit);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <returns>ApiResponse of GetProductFeedPreviewResponse</returns>
+        public net.crossly.Client.ApiResponse<GetProductFeedPreviewResponse> GetProductFeedPreviewWithHttpInfo(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (after != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "after", after));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetProductFeedPreviewResponse>("/v1/product-feeds/{id}/preview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetProductFeedPreviewResponse</returns>
+        public async System.Threading.Tasks.Task<GetProductFeedPreviewResponse> GetProductFeedPreviewAsync(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetProductFeedPreviewResponse> localVarResponse = await GetProductFeedPreviewWithHttpInfoAsync(id, format, after, limit, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A page of the feed exactly as the channel reads it: every column per item, and the raw document text. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="after"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetProductFeedPreviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetProductFeedPreviewResponse>> GetProductFeedPreviewWithHttpInfoAsync(Guid id, string format = default(string), Guid? after = default(Guid?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+            if (after != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "after", after));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetProductFeedPreviewResponse>("/v1/product-feeds/{id}/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetProductFeedPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -802,7 +2644,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items. 
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -855,7 +2697,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items. 
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -868,7 +2710,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Validate a feed: per-item errors (held back) and warnings (sent, limited reach), plus sample rendered items. 
+        /// Validate a feed: counts per issue, items with errors (held back) and warnings (sent, limited reach), sample items, store domain and currency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -924,7 +2766,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats. 
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListProductFeedsResponse</returns>
@@ -935,7 +2777,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats. 
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListProductFeedsResponse</returns>
@@ -986,7 +2828,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats. 
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -998,7 +2840,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List your hosted product feeds (Google Merchant Center, Meta catalogue, TikTok catalog) with their URLs and last-fetch stats. 
+        /// List the store’s hosted product feeds (Google, Meta, TikTok, Pinterest, Bing, Snapchat, RSS/Atom, JSON, CSV) with their URLs and last-fetch stats. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1052,28 +2894,37 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings. 
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <returns>ListProductFeedsItem</returns>
-        public ListProductFeedsItem UpdateProductFeed(Guid id)
+        public ListProductFeedsItem UpdateProductFeed(Guid id, UpdateProductFeedRequest updateProductFeedRequest)
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = UpdateProductFeedWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = UpdateProductFeedWithHttpInfo(id, updateProductFeedRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings. 
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <returns>ApiResponse of ListProductFeedsItem</returns>
-        public net.crossly.Client.ApiResponse<ListProductFeedsItem> UpdateProductFeedWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListProductFeedsItem> UpdateProductFeedWithHttpInfo(Guid id, UpdateProductFeedRequest updateProductFeedRequest)
         {
+            // verify the required parameter 'updateProductFeedRequest' is set
+            if (updateProductFeedRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductFeedRequest' when calling ProductFeedsApi->UpdateProductFeed");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1094,6 +2945,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateProductFeedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1117,31 +2969,40 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings. 
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListProductFeedsItem</returns>
-        public async System.Threading.Tasks.Task<ListProductFeedsItem> UpdateProductFeedAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListProductFeedsItem> UpdateProductFeedAsync(Guid id, UpdateProductFeedRequest updateProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await UpdateProductFeedWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListProductFeedsItem> localVarResponse = await UpdateProductFeedWithHttpInfoAsync(id, updateProductFeedRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit a feed: name, default format, enabled, listing filters, output settings. 
+        /// Edit a feed: name, format, on/paused, which listings (filters), field mapping, currency and region, images, UTM, refresh schedule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateProductFeedRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListProductFeedsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> UpdateProductFeedWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListProductFeedsItem>> UpdateProductFeedWithHttpInfoAsync(Guid id, UpdateProductFeedRequest updateProductFeedRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateProductFeedRequest' is set
+            if (updateProductFeedRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductFeedRequest' when calling ProductFeedsApi->UpdateProductFeed");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1162,6 +3023,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateProductFeedRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1176,6 +3038,166 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateProductFeed", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <returns>UpdateProductFeedItemResponse</returns>
+        public UpdateProductFeedItemResponse UpdateProductFeedItem(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateProductFeedItemResponse> localVarResponse = UpdateProductFeedItemWithHttpInfo(id, listingId, updateProductFeedItemRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <returns>ApiResponse of UpdateProductFeedItemResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateProductFeedItemResponse> UpdateProductFeedItemWithHttpInfo(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest)
+        {
+            // verify the required parameter 'updateProductFeedItemRequest' is set
+            if (updateProductFeedItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductFeedItemRequest' when calling ProductFeedsApi->UpdateProductFeedItem");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            localVarRequestOptions.Data = updateProductFeedItemRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateProductFeedItemResponse>("/v1/product-feeds/{id}/items/{listingId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProductFeedItem", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProductFeedItemResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateProductFeedItemResponse> UpdateProductFeedItemAsync(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateProductFeedItemResponse> localVarResponse = await UpdateProductFeedItemWithHttpInfoAsync(id, listingId, updateProductFeedItemRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one listing’s override in this feed (the listing itself is unchanged). All fields empty removes it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="listingId"></param>
+        /// <param name="updateProductFeedItemRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProductFeedItemResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateProductFeedItemResponse>> UpdateProductFeedItemWithHttpInfoAsync(Guid id, Guid listingId, UpdateProductFeedItemRequest updateProductFeedItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateProductFeedItemRequest' is set
+            if (updateProductFeedItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateProductFeedItemRequest' when calling ProductFeedsApi->UpdateProductFeedItem");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.PathParameters.Add("listingId", net.crossly.Client.ClientUtils.ParameterToString(listingId)); // path parameter
+            localVarRequestOptions.Data = updateProductFeedItemRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateProductFeedItemResponse>("/v1/product-feeds/{id}/items/{listingId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProductFeedItem", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

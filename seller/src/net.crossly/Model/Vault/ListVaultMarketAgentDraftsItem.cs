@@ -96,16 +96,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Cancelled for value: cancelled
-            /// </summary>
-            [EnumMember(Value = "cancelled")]
-            Cancelled = 1,
-
-            /// <summary>
             /// Enum Expired for value: expired
             /// </summary>
             [EnumMember(Value = "expired")]
-            Expired = 2,
+            Expired = 1,
+
+            /// <summary>
+            /// Enum Cancelled for value: cancelled
+            /// </summary>
+            [EnumMember(Value = "cancelled")]
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Drafted for value: drafted

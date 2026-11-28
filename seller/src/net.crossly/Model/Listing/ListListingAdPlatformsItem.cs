@@ -39,16 +39,16 @@ namespace net.crossly.Model
         public enum TrackEnum
         {
             /// <summary>
-            /// Enum Cookie for value: cookie
-            /// </summary>
-            [EnumMember(Value = "cookie")]
-            Cookie = 1,
-
-            /// <summary>
             /// Enum Api for value: api
             /// </summary>
             [EnumMember(Value = "api")]
-            Api = 2,
+            Api = 1,
+
+            /// <summary>
+            /// Enum Cookie for value: cookie
+            /// </summary>
+            [EnumMember(Value = "cookie")]
+            Cookie = 2,
 
             /// <summary>
             /// Enum Native for value: native

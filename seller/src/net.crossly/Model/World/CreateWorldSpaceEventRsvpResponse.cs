@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateWorldSpaceEventRsvpResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public CreateWorldSpaceEventRsvpResponse(CreateWorldSpaceEventRsvpResponseData data = default(CreateWorldSpaceEventRsvpResponseData))
+        public CreateWorldSpaceEventRsvpResponse(CreateWorldSpaceEventRsvpRequest data = default(CreateWorldSpaceEventRsvpRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public CreateWorldSpaceEventRsvpResponseData Data { get; set; }
+        public CreateWorldSpaceEventRsvpRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

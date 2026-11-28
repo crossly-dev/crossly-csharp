@@ -20,6 +20,9 @@ Method | HTTP request | Description
 [**CreateSpatialSceneUnpin**](WorldApi.md#createspatialsceneunpin) | **POST** /v1/spatial/scenes/{id}/unpin | Clear every pin in one of your rooms, so it arranges itself again.
 [**CreateSpatialSceneVisibility**](WorldApi.md#createspatialscenevisibility) | **POST** /v1/spatial/scenes/{id}/visibility | Make one of your rooms private, unlisted (anyone with the link) or public (in the lobby and searchable).
 [**CreateSpatialSceneWarehouseStock**](WorldApi.md#createspatialscenewarehousestock) | **POST** /v1/spatial/scenes/{id}/warehouse/stock | Put an inventory item (or unit) on a rack in one of your warehouse rooms.
+[**CreateSpatialStreetAdmissionAccept**](WorldApi.md#createspatialstreetadmissionaccept) | **POST** /v1/spatial/streets/admissions/{id}/accept | Accept a street admission: an application to a street your store owns, or an invitation to your store shop. Seats the shop.
+[**CreateSpatialStreetAdmissionDecline**](WorldApi.md#createspatialstreetadmissiondecline) | **POST** /v1/spatial/streets/admissions/{id}/decline | Decline a street admission: an application to a street your store owns, or an invitation to your store shop.
+[**CreateSpatialStreetAdmissionWithdraw**](WorldApi.md#createspatialstreetadmissionwithdraw) | **POST** /v1/spatial/streets/admissions/{id}/withdraw | Take back a street admission your store sent: its shop application, or an invitation from its street.
 [**CreateSpatialStreetApply**](WorldApi.md#createspatialstreetapply) | **POST** /v1/spatial/streets/{slug}/apply | Ask to open your shop on a street whose owner reviews applications.
 [**CreateSpatialStreetInvite**](WorldApi.md#createspatialstreetinvite) | **POST** /v1/spatial/streets/{slug}/invite | Invite a shop (by its slug) to open on a street you own.
 [**CreateWorldAttendantTestChat**](WorldApi.md#createworldattendanttestchat) | **POST** /v1/world/attendant/test-chat | One test answer from your AI attendant, on your own AI key (409 ai_key_required without one).
@@ -107,7 +110,7 @@ Method | HTTP request | Description
 [**CreateWorldStaffAssignmentRateWorker**](WorldApi.md#createworldstaffassignmentrateworker) | **POST** /v1/world/staff/assignments/{id}/rate-worker | Rate the worker of one of your seats.
 [**CreateWorldStaffPosting**](WorldApi.md#createworldstaffposting) | **POST** /v1/world/staff/postings | Post a job: a showroom, stall or convention, pay, recurrence and rules.
 [**CreateWorldStaffPostingStatus**](WorldApi.md#createworldstaffpostingstatus) | **POST** /v1/world/staff/postings/{id}/status | Open, pause or close a posting.
-[**CreateWorldStreetOwnedUpkeepPay**](WorldApi.md#createworldstreetownedupkeeppay) | **POST** /v1/world/streets/owned/{id}/upkeep/pay | Pay your street&#39;s upkeep forward.
+[**CreateWorldStreetOwnedUpkeepPay**](WorldApi.md#createworldstreetownedupkeeppay) | **POST** /v1/world/streets/owned/{id}/upkeep/pay | Pay your store&#39;s street upkeep forward.
 [**CreateWorldVenueBookingCancel**](WorldApi.md#createworldvenuebookingcancel) | **POST** /v1/world/venue-bookings/{id}/cancel | Cancel a hall rental: the whole rent back until 7 days before the first day, nothing after.
 [**CreateWorldWorkAssignmentRateEmployer**](WorldApi.md#createworldworkassignmentrateemployer) | **POST** /v1/world/work/assignments/{id}/rate-employer | Rate the employer of a public-job shift you worked: paid on time, job as described, conduct.
 [**CreateWorldWorkPostingApply**](WorldApi.md#createworldworkpostingapply) | **POST** /v1/world/work/postings/{id}/apply | Apply for a job.
@@ -213,8 +216,10 @@ Method | HTTP request | Description
 [**GetWorldSpaceCanHost**](WorldApi.md#getworldspacecanhost) | **GET** /v1/world/spaces/can-host | Whether you may open a Space: sellers only, at most two active.
 [**GetWorldStaffPosting**](WorldApi.md#getworldstaffposting) | **GET** /v1/world/staff/postings/{id} | One of your postings, with its shifts.
 [**GetWorldStaffReputation**](WorldApi.md#getworldstaffreputation) | **GET** /v1/world/staff/reputation | Your employer reputation, rated by the people who worked your public jobs.
+[**GetWorldStand**](WorldApi.md#getworldstand) | **GET** /v1/world/stands/{kind}/{id} | The stands of one of your places: kind plot (the showroom standing on it; none &#x3D; no stands) or showroom. Same fields as /api/v1/world/stands/shop.
+[**GetWorldStandShop**](WorldApi.md#getworldstandshop) | **GET** /v1/world/stands/shop | The stands of your shop (its primary showroom&#39;s visible fixtures, in order): index (what a drop&#39;s world.boothSpotIndex stores), name, display, units and capacity, whether another of your drops already stands there (takenBy) and priceCents (null: your own place costs nothing extra).
 [**GetWorldStreetFund**](WorldApi.md#getworldstreetfund) | **GET** /v1/world/streets/{slug}/fund | A street&#39;s fund: the CBX property payments on its plots over the last four weeks, and the street events it unlocked.
-[**GetWorldStreetOwned**](WorldApi.md#getworldstreetowned) | **GET** /v1/world/streets/owned/{id} | A street you own: tenants, applications, upkeep, look, fund.
+[**GetWorldStreetOwned**](WorldApi.md#getworldstreetowned) | **GET** /v1/world/streets/owned/{id} | A street your store owns: tenants, applications, upkeep, look, fund, and the owning &#x60;store&#x60;.
 [**GetWorldStreetTrespassBarrier**](WorldApi.md#getworldstreettrespassbarrier) | **GET** /v1/world/streets/{slug}/trespass-barriers | Plot numbers on the street you are trespassed from.
 [**GetWorldTrialLeaderboard**](WorldApi.md#getworldtrialleaderboard) | **GET** /v1/world/trials/{course}/leaderboard | A Time Trials course&#39;s boards, as the board beside it in the Commons shows them: data.course, week, weekly (this week&#39;s ten fastest: rank, name, short, named, ms, at) and allTime (the ten fastest ever, each person once). A name shows only for somebody who chose to be seen by name in the world; everyone else is \&quot;A player\&quot;. 404 for an unknown course; course 1 is commons-loop.
 [**GetWorldTrialMine**](WorldApi.md#getworldtrialmine) | **GET** /v1/world/trials/mine | Your Hoverboard Time Trials bests: data.week (its Monday, YYYY-MM-DD, UTC) and courses, each with course (id, name, parMs, rings, lengthM), week (your best lap this week in ms, your place on the weekly board, laps finished, and the split at each ring) or null, and allTime (your best ever in ms, your place on the all-time board, when) or null. Laps are timed by Crossly from where it saw you ride in the world; nothing here writes one.
@@ -338,7 +343,7 @@ Method | HTTP request | Description
 [**UpdateWorldSpaceHolderGate**](WorldApi.md#updateworldspaceholdergate) | **PUT** /v1/world/spaces/{slug}/holder-gate | Make your Space holders-only: only holders of an NFT collection join it (others can look in). Send null to open it again. Returns &#x60;{ gate }&#x60;.
 [**UpdateWorldStaffPosting**](WorldApi.md#updateworldstaffposting) | **PUT** /v1/world/staff/postings/{id} | Replace a posting; its future unstaffed shifts are re-made.
 [**UpdateWorldStallBookingBooth**](WorldApi.md#updateworldstallbookingbooth) | **PUT** /v1/world/stalls/bookings/{id}/booth | Dress the booth of a stall you booked (decor you hold).
-[**UpdateWorldStreetOwnedTheme**](WorldApi.md#updateworldstreetownedtheme) | **PUT** /v1/world/streets/owned/{id}/theme | Set your street&#39;s theme.
+[**UpdateWorldStreetOwnedTheme**](WorldApi.md#updateworldstreetownedtheme) | **PUT** /v1/world/streets/owned/{id}/theme | Set your store&#39;s street theme.
 
 
 <a name="creategamepackbreak"></a>
@@ -417,7 +422,7 @@ This endpoint does not need any parameter.
 
 <a name="creategamepackbreakpick"></a>
 # **CreateGamePackBreakPick**
-> CreateGamePackBreakPickResponse CreateGamePackBreakPick (string id)
+> CreateGamePackBreakPickResponse CreateGamePackBreakPick (string id, CreateGamePackBreakPickRequest createGamePackBreakPickRequest = null)
 
 Pick the pull you think is worth the most: every lowest open ask is revealed, and a win earns a fee-back coupon.
 
@@ -442,11 +447,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createGamePackBreakPickRequest = new CreateGamePackBreakPickRequest(); // CreateGamePackBreakPickRequest |  (optional) 
 
             try
             {
                 // Pick the pull you think is worth the most: every lowest open ask is revealed, and a win earns a fee-back coupon.
-                CreateGamePackBreakPickResponse result = apiInstance.CreateGamePackBreakPick(id);
+                CreateGamePackBreakPickResponse result = apiInstance.CreateGamePackBreakPick(id, createGamePackBreakPickRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -465,6 +471,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGamePackBreakPickRequest** | **CreateGamePackBreakPickRequest**|  | [optional] 
 
 ### Return type
 
@@ -476,7 +483,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -495,7 +502,7 @@ Name | Type | Description  | Notes
 
 <a name="createshowroom"></a>
 # **CreateShowroom**
-> CreateShowroomResponse CreateShowroom (Guid? storefrontId = null)
+> CreateShowroomResponse CreateShowroom (CreateShowroomRequest createShowroomRequest, Guid? storefrontId = null)
 
 Add a showroom. The first is included; an extra one has a monthly fee and is added in the dashboard (402 world_payment_failed here).
 
@@ -519,12 +526,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createShowroomRequest = new CreateShowroomRequest(); // CreateShowroomRequest | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Add a showroom. The first is included; an extra one has a monthly fee and is added in the dashboard (402 world_payment_failed here).
-                CreateShowroomResponse result = apiInstance.CreateShowroom(storefrontId);
+                CreateShowroomResponse result = apiInstance.CreateShowroom(createShowroomRequest, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -542,6 +550,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **createShowroomRequest** | **CreateShowroomRequest**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -554,7 +563,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -573,7 +582,7 @@ Name | Type | Description  | Notes
 
 <a name="createshowroomplacement"></a>
 # **CreateShowroomPlacement**
-> CreateShowroomPlacementResponse CreateShowroomPlacement (string id, Guid? storefrontId = null)
+> CreateShowroomPlacementResponse CreateShowroomPlacement (string id, CreateShowroomPlacementRequest createShowroomPlacementRequest, Guid? storefrontId = null)
 
 Stand a showroom on a plot your store owns or rents (403 when it does not; 409 when another showroom stands there).
 
@@ -598,12 +607,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createShowroomPlacementRequest = new CreateShowroomPlacementRequest(); // CreateShowroomPlacementRequest | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Stand a showroom on a plot your store owns or rents (403 when it does not; 409 when another showroom stands there).
-                CreateShowroomPlacementResponse result = apiInstance.CreateShowroomPlacement(id, storefrontId);
+                CreateShowroomPlacementResponse result = apiInstance.CreateShowroomPlacement(id, createShowroomPlacementRequest, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -622,6 +632,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createShowroomPlacementRequest** | **CreateShowroomPlacementRequest**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -634,7 +645,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -653,7 +664,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialinviteaccept"></a>
 # **CreateSpatialInviteAccept**
-> CreateSpatialInviteAcceptResponse CreateSpatialInviteAccept ()
+> CreateSpatialInviteAcceptResponse CreateSpatialInviteAccept (CreateOrderPackScanRequest createOrderPackScanRequest)
 
 Redeem an invite code (dashes optional); returns the room it opens.
 
@@ -677,11 +688,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createOrderPackScanRequest = new CreateOrderPackScanRequest(); // CreateOrderPackScanRequest | 
 
             try
             {
                 // Redeem an invite code (dashes optional); returns the room it opens.
-                CreateSpatialInviteAcceptResponse result = apiInstance.CreateSpatialInviteAccept();
+                CreateSpatialInviteAcceptResponse result = apiInstance.CreateSpatialInviteAccept(createOrderPackScanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -696,7 +708,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderPackScanRequest** | **CreateOrderPackScanRequest**|  | 
 
 ### Return type
 
@@ -708,7 +723,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -883,7 +898,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialscenegrant"></a>
 # **CreateSpatialSceneGrant**
-> CreateSpatialSceneGrantResponse CreateSpatialSceneGrant (string id)
+> CreateSpatialSceneGrantResponse CreateSpatialSceneGrant (string id, CreateSpatialSceneGrantRequest createSpatialSceneGrantRequest)
 
 Let a specific user into one of your rooms (visitor or staff), no code needed.
 
@@ -908,11 +923,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createSpatialSceneGrantRequest = new CreateSpatialSceneGrantRequest(); // CreateSpatialSceneGrantRequest | 
 
             try
             {
                 // Let a specific user into one of your rooms (visitor or staff), no code needed.
-                CreateSpatialSceneGrantResponse result = apiInstance.CreateSpatialSceneGrant(id);
+                CreateSpatialSceneGrantResponse result = apiInstance.CreateSpatialSceneGrant(id, createSpatialSceneGrantRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -931,6 +947,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createSpatialSceneGrantRequest** | **CreateSpatialSceneGrantRequest**|  | 
 
 ### Return type
 
@@ -942,7 +959,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -961,7 +978,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialsceneinvite"></a>
 # **CreateSpatialSceneInvite**
-> CreateSpatialSceneInviteResponse CreateSpatialSceneInvite (string id)
+> CreateSpatialSceneInviteResponse CreateSpatialSceneInvite (string id, CreateSpatialSceneInviteRequest createSpatialSceneInviteRequest = null)
 
 Mint an invite code to one of your rooms (visitor or staff, optional expiry in hours). The code is in this response only: just its hash is stored.
 
@@ -986,11 +1003,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createSpatialSceneInviteRequest = new CreateSpatialSceneInviteRequest(); // CreateSpatialSceneInviteRequest |  (optional) 
 
             try
             {
                 // Mint an invite code to one of your rooms (visitor or staff, optional expiry in hours). The code is in this response only: just its hash is stored.
-                CreateSpatialSceneInviteResponse result = apiInstance.CreateSpatialSceneInvite(id);
+                CreateSpatialSceneInviteResponse result = apiInstance.CreateSpatialSceneInvite(id, createSpatialSceneInviteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1009,6 +1027,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createSpatialSceneInviteRequest** | **CreateSpatialSceneInviteRequest**|  | [optional] 
 
 ### Return type
 
@@ -1020,7 +1039,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1039,7 +1058,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialscenenode"></a>
 # **CreateSpatialSceneNode**
-> CreateSpatialSceneNodeResponse CreateSpatialSceneNode (string id)
+> CreateSpatialSceneNodeResponse CreateSpatialSceneNode (string id, CreateSpatialSceneNodeRequest createSpatialSceneNodeRequest)
 
 Add a unit (rack, shelf, bin) to one of your warehouse rooms.
 
@@ -1064,11 +1083,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createSpatialSceneNodeRequest = new CreateSpatialSceneNodeRequest(); // CreateSpatialSceneNodeRequest | 
 
             try
             {
                 // Add a unit (rack, shelf, bin) to one of your warehouse rooms.
-                CreateSpatialSceneNodeResponse result = apiInstance.CreateSpatialSceneNode(id);
+                CreateSpatialSceneNodeResponse result = apiInstance.CreateSpatialSceneNode(id, createSpatialSceneNodeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1087,6 +1107,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createSpatialSceneNodeRequest** | **CreateSpatialSceneNodeRequest**|  | 
 
 ### Return type
 
@@ -1098,7 +1119,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1275,7 +1296,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialsceneshopplace"></a>
 # **CreateSpatialSceneShopPlace**
-> CreateSpatialSceneShopPlaceResponse CreateSpatialSceneShopPlace (string id)
+> CreateSpatialSceneShopPlaceResponse CreateSpatialSceneShopPlace (string id, CreateSpatialSceneShopPlaceRequest createSpatialSceneShopPlaceRequest)
 
 Place an inventory item in a section and display of your shop room.
 
@@ -1300,11 +1321,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createSpatialSceneShopPlaceRequest = new CreateSpatialSceneShopPlaceRequest(); // CreateSpatialSceneShopPlaceRequest | 
 
             try
             {
                 // Place an inventory item in a section and display of your shop room.
-                CreateSpatialSceneShopPlaceResponse result = apiInstance.CreateSpatialSceneShopPlace(id);
+                CreateSpatialSceneShopPlaceResponse result = apiInstance.CreateSpatialSceneShopPlace(id, createSpatialSceneShopPlaceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1323,6 +1345,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createSpatialSceneShopPlaceRequest** | **CreateSpatialSceneShopPlaceRequest**|  | 
 
 ### Return type
 
@@ -1334,7 +1357,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1511,7 +1534,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialscenewarehousestock"></a>
 # **CreateSpatialSceneWarehouseStock**
-> CreateSpatialScenePlaceResponse CreateSpatialSceneWarehouseStock (string id)
+> CreateSpatialScenePlaceResponse CreateSpatialSceneWarehouseStock (string id, CreateSpatialSceneWarehouseStockRequest createSpatialSceneWarehouseStockRequest)
 
 Put an inventory item (or unit) on a rack in one of your warehouse rooms.
 
@@ -1536,11 +1559,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createSpatialSceneWarehouseStockRequest = new CreateSpatialSceneWarehouseStockRequest(); // CreateSpatialSceneWarehouseStockRequest | 
 
             try
             {
                 // Put an inventory item (or unit) on a rack in one of your warehouse rooms.
-                CreateSpatialScenePlaceResponse result = apiInstance.CreateSpatialSceneWarehouseStock(id);
+                CreateSpatialScenePlaceResponse result = apiInstance.CreateSpatialSceneWarehouseStock(id, createSpatialSceneWarehouseStockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1559,10 +1583,245 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createSpatialSceneWarehouseStockRequest** | **CreateSpatialSceneWarehouseStockRequest**|  | 
 
 ### Return type
 
 **CreateSpatialScenePlaceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createspatialstreetadmissionaccept"></a>
+# **CreateSpatialStreetAdmissionAccept**
+> SpatialStreetAdmissionResponse CreateSpatialStreetAdmissionAccept (string id)
+
+Accept a street admission: an application to a street your store owns, or an invitation to your store shop. Seats the shop.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateSpatialStreetAdmissionAcceptExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Accept a street admission: an application to a street your store owns, or an invitation to your store shop. Seats the shop.
+                SpatialStreetAdmissionResponse result = apiInstance.CreateSpatialStreetAdmissionAccept(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldApi.CreateSpatialStreetAdmissionAccept: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**SpatialStreetAdmissionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createspatialstreetadmissiondecline"></a>
+# **CreateSpatialStreetAdmissionDecline**
+> SpatialStreetAdmissionResponse CreateSpatialStreetAdmissionDecline (string id)
+
+Decline a street admission: an application to a street your store owns, or an invitation to your store shop.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateSpatialStreetAdmissionDeclineExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Decline a street admission: an application to a street your store owns, or an invitation to your store shop.
+                SpatialStreetAdmissionResponse result = apiInstance.CreateSpatialStreetAdmissionDecline(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldApi.CreateSpatialStreetAdmissionDecline: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**SpatialStreetAdmissionResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createspatialstreetadmissionwithdraw"></a>
+# **CreateSpatialStreetAdmissionWithdraw**
+> SpatialStreetAdmissionResponse CreateSpatialStreetAdmissionWithdraw (string id)
+
+Take back a street admission your store sent: its shop application, or an invitation from its street.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateSpatialStreetAdmissionWithdrawExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Take back a street admission your store sent: its shop application, or an invitation from its street.
+                SpatialStreetAdmissionResponse result = apiInstance.CreateSpatialStreetAdmissionWithdraw(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldApi.CreateSpatialStreetAdmissionWithdraw: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**SpatialStreetAdmissionResponse**
 
 ### Authorization
 
@@ -1667,7 +1926,7 @@ Name | Type | Description  | Notes
 
 <a name="createspatialstreetinvite"></a>
 # **CreateSpatialStreetInvite**
-> CreateSpatialStreetApplyResponse CreateSpatialStreetInvite (string slug)
+> CreateSpatialStreetApplyResponse CreateSpatialStreetInvite (string slug, CreateSpatialStreetInviteRequest createSpatialStreetInviteRequest)
 
 Invite a shop (by its slug) to open on a street you own.
 
@@ -1692,11 +1951,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var createSpatialStreetInviteRequest = new CreateSpatialStreetInviteRequest(); // CreateSpatialStreetInviteRequest | 
 
             try
             {
                 // Invite a shop (by its slug) to open on a street you own.
-                CreateSpatialStreetApplyResponse result = apiInstance.CreateSpatialStreetInvite(slug);
+                CreateSpatialStreetApplyResponse result = apiInstance.CreateSpatialStreetInvite(slug, createSpatialStreetInviteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1715,6 +1975,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createSpatialStreetInviteRequest** | **CreateSpatialStreetInviteRequest**|  | 
 
 ### Return type
 
@@ -1726,7 +1987,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1745,7 +2006,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldattendanttestchat"></a>
 # **CreateWorldAttendantTestChat**
-> CreateWorldAttendantTestChatResponse CreateWorldAttendantTestChat ()
+> CreateWorldAttendantTestChatResponse CreateWorldAttendantTestChat (CreateWorldAttendantTestChatRequest createWorldAttendantTestChatRequest)
 
 One test answer from your AI attendant, on your own AI key (409 ai_key_required without one).
 
@@ -1769,11 +2030,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldAttendantTestChatRequest = new CreateWorldAttendantTestChatRequest(); // CreateWorldAttendantTestChatRequest | 
 
             try
             {
                 // One test answer from your AI attendant, on your own AI key (409 ai_key_required without one).
-                CreateWorldAttendantTestChatResponse result = apiInstance.CreateWorldAttendantTestChat();
+                CreateWorldAttendantTestChatResponse result = apiInstance.CreateWorldAttendantTestChat(createWorldAttendantTestChatRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1788,7 +2050,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldAttendantTestChatRequest** | **CreateWorldAttendantTestChatRequest**|  | 
 
 ### Return type
 
@@ -1800,7 +2065,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1975,7 +2240,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldavatarwearable"></a>
 # **CreateWorldAvatarWearable**
-> CreateWorldAvatarWearableResponse CreateWorldAvatarWearable ()
+> CreateWorldAvatarWearableResponse CreateWorldAvatarWearable (CreateWorldAvatarWearableRequest createWorldAvatarWearableRequest = null)
 
 Author a wearable for a body slot (a mesh profile and params, an asking price in COSM base units as a string). A submission: inactive until an operator approves it.
 
@@ -1999,11 +2264,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldAvatarWearableRequest = new CreateWorldAvatarWearableRequest(); // CreateWorldAvatarWearableRequest |  (optional) 
 
             try
             {
                 // Author a wearable for a body slot (a mesh profile and params, an asking price in COSM base units as a string). A submission: inactive until an operator approves it.
-                CreateWorldAvatarWearableResponse result = apiInstance.CreateWorldAvatarWearable();
+                CreateWorldAvatarWearableResponse result = apiInstance.CreateWorldAvatarWearable(createWorldAvatarWearableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2018,7 +2284,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldAvatarWearableRequest** | **CreateWorldAvatarWearableRequest**|  | [optional] 
 
 ### Return type
 
@@ -2030,7 +2299,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2279,7 +2548,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconvention"></a>
 # **CreateWorldConvention**
-> CreateWorldConventionResponse CreateWorldConvention ()
+> CreateWorldConventionResponse CreateWorldConvention (CreateWorldConventionRequest createWorldConventionRequest = null)
 
 Host a convention in one of your rooms: title, dates, tables and how sellers get one (invite, free, a fee in cents, or a revenue share in basis points).
 
@@ -2303,11 +2572,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldConventionRequest = new CreateWorldConventionRequest(); // CreateWorldConventionRequest |  (optional) 
 
             try
             {
                 // Host a convention in one of your rooms: title, dates, tables and how sellers get one (invite, free, a fee in cents, or a revenue share in basis points).
-                CreateWorldConventionResponse result = apiInstance.CreateWorldConvention();
+                CreateWorldConventionResponse result = apiInstance.CreateWorldConvention(createWorldConventionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2322,7 +2592,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldConventionRequest** | **CreateWorldConventionRequest**|  | [optional] 
 
 ### Return type
 
@@ -2334,7 +2607,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2353,7 +2626,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldconventionaccept"></a>
 # **CreateWorldConventionAccept**
-> CreateWorldConventionAcceptResponse CreateWorldConventionAccept (string id)
+> CreateWorldConventionAcceptResponse CreateWorldConventionAccept (string id, CreateWorldConventionAcceptRequest createWorldConventionAcceptRequest = null)
 
 Accept: your own invitation (no body), or, as host, an application (username).
 
@@ -2378,11 +2651,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionAcceptRequest = new CreateWorldConventionAcceptRequest(); // CreateWorldConventionAcceptRequest |  (optional) 
 
             try
             {
                 // Accept: your own invitation (no body), or, as host, an application (username).
-                CreateWorldConventionAcceptResponse result = apiInstance.CreateWorldConventionAccept(id);
+                CreateWorldConventionAcceptResponse result = apiInstance.CreateWorldConventionAccept(id, createWorldConventionAcceptRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2401,6 +2675,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionAcceptRequest** | **CreateWorldConventionAcceptRequest**|  | [optional] 
 
 ### Return type
 
@@ -2412,7 +2687,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2509,7 +2784,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionboothapply"></a>
 # **CreateWorldConventionBoothApply**
-> CreateWorldConventionBoothApplyResponse CreateWorldConventionBoothApply (string id)
+> CreateWorldConventionBoothApplyResponse CreateWorldConventionBoothApply (string id, CreateWorldConventionBoothApplyRequest createWorldConventionBoothApplyRequest = null)
 
 Apply for a booth tier (or book it at once in open mode): { tierId, note?, categories? }.
 
@@ -2534,11 +2809,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionBoothApplyRequest = new CreateWorldConventionBoothApplyRequest(); // CreateWorldConventionBoothApplyRequest |  (optional) 
 
             try
             {
                 // Apply for a booth tier (or book it at once in open mode): { tierId, note?, categories? }.
-                CreateWorldConventionBoothApplyResponse result = apiInstance.CreateWorldConventionBoothApply(id);
+                CreateWorldConventionBoothApplyResponse result = apiInstance.CreateWorldConventionBoothApply(id, createWorldConventionBoothApplyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2557,6 +2833,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionBoothApplyRequest** | **CreateWorldConventionBoothApplyRequest**|  | [optional] 
 
 ### Return type
 
@@ -2568,7 +2845,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2587,7 +2864,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionboothfee"></a>
 # **CreateWorldConventionBoothFee**
-> CreateWorldConventionBoothFeeResponse CreateWorldConventionBoothFee (string id)
+> CreateWorldConventionBoothFeeResponse CreateWorldConventionBoothFee (string id, CreateWorldConventionBoothFeeRequest createWorldConventionBoothFeeRequest = null)
 
 Pay your booth fee to the organiser on a Worlds rail: { rail: \"cash\" | \"cbx\" }. Once per booth. Full-access token and Idempotency-Key required.
 
@@ -2612,11 +2889,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionBoothFeeRequest = new CreateWorldConventionBoothFeeRequest(); // CreateWorldConventionBoothFeeRequest |  (optional) 
 
             try
             {
                 // Pay your booth fee to the organiser on a Worlds rail: { rail: \"cash\" | \"cbx\" }. Once per booth. Full-access token and Idempotency-Key required.
-                CreateWorldConventionBoothFeeResponse result = apiInstance.CreateWorldConventionBoothFee(id);
+                CreateWorldConventionBoothFeeResponse result = apiInstance.CreateWorldConventionBoothFee(id, createWorldConventionBoothFeeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2635,6 +2913,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionBoothFeeRequest** | **CreateWorldConventionBoothFeeRequest**|  | [optional] 
 
 ### Return type
 
@@ -2646,7 +2925,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2665,7 +2944,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventioncheckin"></a>
 # **CreateWorldConventionCheckIn**
-> CreateWorldConventionCheckInResponse CreateWorldConventionCheckIn (string id)
+> CreateWorldConventionCheckInResponse CreateWorldConventionCheckIn (string id, CreateWorldConventionCheckInRequest createWorldConventionCheckInRequest = null)
 
 Check in: the organiser names { exhibitorId }; an exhibitor checks themselves in with {}.
 
@@ -2690,11 +2969,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionCheckInRequest = new CreateWorldConventionCheckInRequest(); // CreateWorldConventionCheckInRequest |  (optional) 
 
             try
             {
                 // Check in: the organiser names { exhibitorId }; an exhibitor checks themselves in with {}.
-                CreateWorldConventionCheckInResponse result = apiInstance.CreateWorldConventionCheckIn(id);
+                CreateWorldConventionCheckInResponse result = apiInstance.CreateWorldConventionCheckIn(id, createWorldConventionCheckInRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2713,6 +2993,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionCheckInRequest** | **CreateWorldConventionCheckInRequest**|  | [optional] 
 
 ### Return type
 
@@ -2724,7 +3005,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2743,7 +3024,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionfull"></a>
 # **CreateWorldConventionFull**
-> GetWorldConventionManageResponse CreateWorldConventionFull ()
+> GetWorldConventionManageResponse CreateWorldConventionFull (CreateWorldConventionFullRequest createWorldConventionFullRequest = null)
 
 Create a convention in full: venue + days (rented and paid now on the rail), hours, theme, booth tiers and prices, application or open booking, seller limits, promotion. Full-access token and Idempotency-Key required.
 
@@ -2767,11 +3048,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldConventionFullRequest = new CreateWorldConventionFullRequest(); // CreateWorldConventionFullRequest |  (optional) 
 
             try
             {
                 // Create a convention in full: venue + days (rented and paid now on the rail), hours, theme, booth tiers and prices, application or open booking, seller limits, promotion. Full-access token and Idempotency-Key required.
-                GetWorldConventionManageResponse result = apiInstance.CreateWorldConventionFull();
+                GetWorldConventionManageResponse result = apiInstance.CreateWorldConventionFull(createWorldConventionFullRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2786,7 +3068,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldConventionFullRequest** | **CreateWorldConventionFullRequest**|  | [optional] 
 
 ### Return type
 
@@ -2798,7 +3083,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2817,7 +3102,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldconventioninvite"></a>
 # **CreateWorldConventionInvite**
-> CreateWorldSpaceInviteResponse CreateWorldConventionInvite (string id)
+> CreateWorldSpaceInviteResponse CreateWorldConventionInvite (string id, CreateWorldConventionPaidRequest createWorldConventionPaidRequest = null)
 
 Invite a seller (by shop handle) to a convention you host.
 
@@ -2842,11 +3127,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionPaidRequest = new CreateWorldConventionPaidRequest(); // CreateWorldConventionPaidRequest |  (optional) 
 
             try
             {
                 // Invite a seller (by shop handle) to a convention you host.
-                CreateWorldSpaceInviteResponse result = apiInstance.CreateWorldConventionInvite(id);
+                CreateWorldSpaceInviteResponse result = apiInstance.CreateWorldConventionInvite(id, createWorldConventionPaidRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2865,6 +3151,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionPaidRequest** | **CreateWorldConventionPaidRequest**|  | [optional] 
 
 ### Return type
 
@@ -2876,7 +3163,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2895,7 +3182,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionmessage"></a>
 # **CreateWorldConventionMessage**
-> CreateWorldConventionMessageResponse CreateWorldConventionMessage (string id)
+> CreateWorldConventionMessageResponse CreateWorldConventionMessage (string id, CreateWorldConventionMessageRequest createWorldConventionMessageRequest = null)
 
 Send a convention message: { body, toUserId? }. The organiser writes to one seller or every seller; an exhibitor writes to the organiser.
 
@@ -2920,11 +3207,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionMessageRequest = new CreateWorldConventionMessageRequest(); // CreateWorldConventionMessageRequest |  (optional) 
 
             try
             {
                 // Send a convention message: { body, toUserId? }. The organiser writes to one seller or every seller; an exhibitor writes to the organiser.
-                CreateWorldConventionMessageResponse result = apiInstance.CreateWorldConventionMessage(id);
+                CreateWorldConventionMessageResponse result = apiInstance.CreateWorldConventionMessage(id, createWorldConventionMessageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2943,6 +3231,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionMessageRequest** | **CreateWorldConventionMessageRequest**|  | [optional] 
 
 ### Return type
 
@@ -2954,7 +3243,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2973,7 +3262,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionpaid"></a>
 # **CreateWorldConventionPaid**
-> UpdateGroupBuyResponse CreateWorldConventionPaid (string id)
+> UpdateGroupBuyResponse CreateWorldConventionPaid (string id, CreateWorldConventionPaidRequest createWorldConventionPaidRequest = null)
 
 As host, record that a seller (username) paid their table fee off-platform. Moves no money.
 
@@ -2998,11 +3287,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionPaidRequest = new CreateWorldConventionPaidRequest(); // CreateWorldConventionPaidRequest |  (optional) 
 
             try
             {
                 // As host, record that a seller (username) paid their table fee off-platform. Moves no money.
-                UpdateGroupBuyResponse result = apiInstance.CreateWorldConventionPaid(id);
+                UpdateGroupBuyResponse result = apiInstance.CreateWorldConventionPaid(id, createWorldConventionPaidRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3021,6 +3311,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionPaidRequest** | **CreateWorldConventionPaidRequest**|  | [optional] 
 
 ### Return type
 
@@ -3032,7 +3323,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3051,7 +3342,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionsellerassign"></a>
 # **CreateWorldConventionSellerAssign**
-> CreateWorldConventionSellerAssignResponse CreateWorldConventionSellerAssign (string id)
+> CreateWorldConventionSellerAssignResponse CreateWorldConventionSellerAssign (string id, CreateWorldConventionSellerAssignRequest createWorldConventionSellerAssignRequest = null)
 
 Move an accepted seller to another booth of their tier (swaps with whoever is there): { exhibitorId, boothKey }.
 
@@ -3076,11 +3367,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionSellerAssignRequest = new CreateWorldConventionSellerAssignRequest(); // CreateWorldConventionSellerAssignRequest |  (optional) 
 
             try
             {
                 // Move an accepted seller to another booth of their tier (swaps with whoever is there): { exhibitorId, boothKey }.
-                CreateWorldConventionSellerAssignResponse result = apiInstance.CreateWorldConventionSellerAssign(id);
+                CreateWorldConventionSellerAssignResponse result = apiInstance.CreateWorldConventionSellerAssign(id, createWorldConventionSellerAssignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3099,6 +3391,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionSellerAssignRequest** | **CreateWorldConventionSellerAssignRequest**|  | [optional] 
 
 ### Return type
 
@@ -3110,7 +3403,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3129,7 +3422,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionsellerdecide"></a>
 # **CreateWorldConventionSellerDecide**
-> CreateWorldConventionBoothApplyResponse CreateWorldConventionSellerDecide (string id)
+> CreateWorldConventionBoothApplyResponse CreateWorldConventionSellerDecide (string id, CreateWorldConventionSellerDecideRequest createWorldConventionSellerDecideRequest = null)
 
 Approve (terms frozen, a booth assigned) or decline an application: { exhibitorId, decision }.
 
@@ -3154,11 +3447,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionSellerDecideRequest = new CreateWorldConventionSellerDecideRequest(); // CreateWorldConventionSellerDecideRequest |  (optional) 
 
             try
             {
                 // Approve (terms frozen, a booth assigned) or decline an application: { exhibitorId, decision }.
-                CreateWorldConventionBoothApplyResponse result = apiInstance.CreateWorldConventionSellerDecide(id);
+                CreateWorldConventionBoothApplyResponse result = apiInstance.CreateWorldConventionSellerDecide(id, createWorldConventionSellerDecideRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3177,6 +3471,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionSellerDecideRequest** | **CreateWorldConventionSellerDecideRequest**|  | [optional] 
 
 ### Return type
 
@@ -3188,7 +3483,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3207,7 +3502,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldconventionwithdraw"></a>
 # **CreateWorldConventionWithdraw**
-> UpdateGroupBuyResponse CreateWorldConventionWithdraw (string id)
+> UpdateGroupBuyResponse CreateWorldConventionWithdraw (string id, CreateWorldConventionWithdrawRequest createWorldConventionWithdrawRequest = null)
 
 Withdraw your table or decline your invitation; as host, decline someone (username).
 
@@ -3232,11 +3527,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldConventionWithdrawRequest = new CreateWorldConventionWithdrawRequest(); // CreateWorldConventionWithdrawRequest |  (optional) 
 
             try
             {
                 // Withdraw your table or decline your invitation; as host, decline someone (username).
-                UpdateGroupBuyResponse result = apiInstance.CreateWorldConventionWithdraw(id);
+                UpdateGroupBuyResponse result = apiInstance.CreateWorldConventionWithdraw(id, createWorldConventionWithdrawRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3255,6 +3551,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldConventionWithdrawRequest** | **CreateWorldConventionWithdrawRequest**|  | [optional] 
 
 ### Return type
 
@@ -3266,7 +3563,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3593,7 +3890,7 @@ This endpoint does not need any parameter.
 
 <a name="createworlddecordesign"></a>
 # **CreateWorldDecorDesign**
-> CreateWorldDecorDesignResponse CreateWorldDecorDesign ()
+> CreateWorldDecorDesignResponse CreateWorldDecorDesign (CreateWorldDecorDesignRequest createWorldDecorDesignRequest = null)
 
 Author a decor design (what it unlocks, a mesh profile and params, an asking price in COSM base units as a string). Inactive until an operator approves it.
 
@@ -3617,11 +3914,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldDecorDesignRequest = new CreateWorldDecorDesignRequest(); // CreateWorldDecorDesignRequest |  (optional) 
 
             try
             {
                 // Author a decor design (what it unlocks, a mesh profile and params, an asking price in COSM base units as a string). Inactive until an operator approves it.
-                CreateWorldDecorDesignResponse result = apiInstance.CreateWorldDecorDesign();
+                CreateWorldDecorDesignResponse result = apiInstance.CreateWorldDecorDesign(createWorldDecorDesignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3636,7 +3934,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldDecorDesignRequest** | **CreateWorldDecorDesignRequest**|  | [optional] 
 
 ### Return type
 
@@ -3648,7 +3949,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3745,7 +4046,7 @@ Name | Type | Description  | Notes
 
 <a name="createworlddecorretract"></a>
 # **CreateWorldDecorRetract**
-> CreateWorldDecorRetractResponse CreateWorldDecorRetract ()
+> CreateWorldDecorRetractResponse CreateWorldDecorRetract (CreateWorldDecorRetractRequest createWorldDecorRetractRequest = null)
 
 Take a placed decor piece back into your inventory; answers the inventory after.
 
@@ -3769,11 +4070,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldDecorRetractRequest = new CreateWorldDecorRetractRequest(); // CreateWorldDecorRetractRequest |  (optional) 
 
             try
             {
                 // Take a placed decor piece back into your inventory; answers the inventory after.
-                CreateWorldDecorRetractResponse result = apiInstance.CreateWorldDecorRetract();
+                CreateWorldDecorRetractResponse result = apiInstance.CreateWorldDecorRetract(createWorldDecorRetractRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3788,7 +4090,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldDecorRetractRequest** | **CreateWorldDecorRetractRequest**|  | [optional] 
 
 ### Return type
 
@@ -3800,7 +4105,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4057,7 +4362,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldgamepackage"></a>
 # **CreateWorldGamePackage**
-> CreateWorldGamePackageResponse CreateWorldGamePackage ()
+> CreateWorldGamePackageResponse CreateWorldGamePackage (CreateWorldGamePackageRequest createWorldGamePackageRequest = null)
 
 Submit a game package version for review: files as { path, base64 } (game.json, thumb.png, logic/, scene/, audio/, images/). Checked like the CLI, assets quarantined, the entry document dry-run, then reviewed by a person.
 
@@ -4081,11 +4386,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldGamePackageRequest = new CreateWorldGamePackageRequest(); // CreateWorldGamePackageRequest |  (optional) 
 
             try
             {
                 // Submit a game package version for review: files as { path, base64 } (game.json, thumb.png, logic/, scene/, audio/, images/). Checked like the CLI, assets quarantined, the entry document dry-run, then reviewed by a person.
-                CreateWorldGamePackageResponse result = apiInstance.CreateWorldGamePackage();
+                CreateWorldGamePackageResponse result = apiInstance.CreateWorldGamePackage(createWorldGamePackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4100,7 +4406,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldGamePackageRequest** | **CreateWorldGamePackageRequest**|  | [optional] 
 
 ### Return type
 
@@ -4112,7 +4421,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4131,7 +4440,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldgamepackagecheck"></a>
 # **CreateWorldGamePackageCheck**
-> CreateWorldGamePackageCheckResponse CreateWorldGamePackageCheck ()
+> CreateWorldGamePackageCheckResponse CreateWorldGamePackageCheck (CreateTcgCreatorGameRequest createTcgCreatorGameRequest = null)
 
 Validate a game package exactly as a submission is checked (the shared intake report, your version still free) without storing, uploading or queuing anything: world-kit validate for an agent. Same files body as submit.
 
@@ -4155,11 +4464,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createTcgCreatorGameRequest = new CreateTcgCreatorGameRequest(); // CreateTcgCreatorGameRequest |  (optional) 
 
             try
             {
                 // Validate a game package exactly as a submission is checked (the shared intake report, your version still free) without storing, uploading or queuing anything: world-kit validate for an agent. Same files body as submit.
-                CreateWorldGamePackageCheckResponse result = apiInstance.CreateWorldGamePackageCheck();
+                CreateWorldGamePackageCheckResponse result = apiInstance.CreateWorldGamePackageCheck(createTcgCreatorGameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4174,7 +4484,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTcgCreatorGameRequest** | **CreateTcgCreatorGameRequest**|  | [optional] 
 
 ### Return type
 
@@ -4186,7 +4499,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4205,7 +4518,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldgamepackagepublish"></a>
 # **CreateWorldGamePackagePublish**
-> CreateWorldGamePackagePublishResponse CreateWorldGamePackagePublish (string id)
+> CreateWorldGamePackagePublishResponse CreateWorldGamePackagePublish (string id, CreateWorldGamePackagePublishRequest createWorldGamePackagePublishRequest = null)
 
 Make an approved version the one every placed copy runs (rollback or roll-forward; running copies restart on it) and list the game again if it was unpublished. Body { version }. Starter seller plan or higher.
 
@@ -4230,11 +4543,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldGamePackagePublishRequest = new CreateWorldGamePackagePublishRequest(); // CreateWorldGamePackagePublishRequest |  (optional) 
 
             try
             {
                 // Make an approved version the one every placed copy runs (rollback or roll-forward; running copies restart on it) and list the game again if it was unpublished. Body { version }. Starter seller plan or higher.
-                CreateWorldGamePackagePublishResponse result = apiInstance.CreateWorldGamePackagePublish(id);
+                CreateWorldGamePackagePublishResponse result = apiInstance.CreateWorldGamePackagePublish(id, createWorldGamePackagePublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4253,6 +4567,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldGamePackagePublishRequest** | **CreateWorldGamePackagePublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -4264,7 +4579,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4519,7 +4834,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldgamerating"></a>
 # **CreateWorldGameRating**
-> CreateWorldGameRatingResponse CreateWorldGameRating (string id)
+> CreateWorldGameRatingResponse CreateWorldGameRating (string id, CreateWorldGameRatingRequest createWorldGameRatingRequest = null)
 
 Rate a game you played, 1 to 5 stars (rating again replaces it). Only players the runner recorded in that game can rate it.
 
@@ -4544,11 +4859,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldGameRatingRequest = new CreateWorldGameRatingRequest(); // CreateWorldGameRatingRequest |  (optional) 
 
             try
             {
                 // Rate a game you played, 1 to 5 stars (rating again replaces it). Only players the runner recorded in that game can rate it.
-                CreateWorldGameRatingResponse result = apiInstance.CreateWorldGameRating(id);
+                CreateWorldGameRatingResponse result = apiInstance.CreateWorldGameRating(id, createWorldGameRatingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4567,6 +4883,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldGameRatingRequest** | **CreateWorldGameRatingRequest**|  | [optional] 
 
 ### Return type
 
@@ -4578,7 +4895,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4597,7 +4914,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldgamereport"></a>
 # **CreateWorldGameReport**
-> CreateWorldGameReportResponse CreateWorldGameReport (string id)
+> CreateWorldGameReportResponse CreateWorldGameReport (string id, CreateWorldGameReportRequest createWorldGameReportRequest = null)
 
 Report a game: reason broken | unfair | offensive | scam | other, optional detail. Staff review it; the creator is told the reason, never who.
 
@@ -4622,11 +4939,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldGameReportRequest = new CreateWorldGameReportRequest(); // CreateWorldGameReportRequest |  (optional) 
 
             try
             {
                 // Report a game: reason broken | unfair | offensive | scam | other, optional detail. Staff review it; the creator is told the reason, never who.
-                CreateWorldGameReportResponse result = apiInstance.CreateWorldGameReport(id);
+                CreateWorldGameReportResponse result = apiInstance.CreateWorldGameReport(id, createWorldGameReportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4645,6 +4963,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldGameReportRequest** | **CreateWorldGameReportRequest**|  | [optional] 
 
 ### Return type
 
@@ -4656,7 +4975,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4755,7 +5074,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldgrailmatch"></a>
 # **CreateWorldGrailMatch**
-> CreateWorldGrailMatchResponse CreateWorldGrailMatch ()
+> CreateWorldGrailMatchResponse CreateWorldGrailMatch (CreateWorldGrailMatchRequest createWorldGrailMatchRequest = null)
 
 Grail glints: send the ids on show somewhere (listingIds - - listings.id, inventoryIds, skuIds - - catalogue market SKUs; up to 400 each) and get back data.listingIds / data.inventoryIds / data.skuIds: the ones that are things you already want - - an open bid, a watched or wishlisted listing (or one selling the same SKU), a market watch, or a card your deck is missing. Read-only.
 
@@ -4779,11 +5098,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldGrailMatchRequest = new CreateWorldGrailMatchRequest(); // CreateWorldGrailMatchRequest |  (optional) 
 
             try
             {
                 // Grail glints: send the ids on show somewhere (listingIds - - listings.id, inventoryIds, skuIds - - catalogue market SKUs; up to 400 each) and get back data.listingIds / data.inventoryIds / data.skuIds: the ones that are things you already want - - an open bid, a watched or wishlisted listing (or one selling the same SKU), a market watch, or a card your deck is missing. Read-only.
-                CreateWorldGrailMatchResponse result = apiInstance.CreateWorldGrailMatch();
+                CreateWorldGrailMatchResponse result = apiInstance.CreateWorldGrailMatch(createWorldGrailMatchRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4798,7 +5118,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldGrailMatchRequest** | **CreateWorldGrailMatchRequest**|  | [optional] 
 
 ### Return type
 
@@ -4810,7 +5133,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4829,7 +5152,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldhallloan"></a>
 # **CreateWorldHallLoan**
-> CreateWorldHallLoanResponse CreateWorldHallLoan ()
+> CreateWorldHallLoanResponse CreateWorldHallLoan (CreateWorldHallLoanRequest createWorldHallLoanRequest = null)
 
 Lend a piece from your vault to this week's Hall of Grails exhibition: { vaultItemId, credit: 'name' | 'anonymous' }. It shows under your plaque until the exhibition ends; it stays in your vault (still listable and withdrawable), and stops showing if it leaves.
 
@@ -4853,11 +5176,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldHallLoanRequest = new CreateWorldHallLoanRequest(); // CreateWorldHallLoanRequest |  (optional) 
 
             try
             {
                 // Lend a piece from your vault to this week's Hall of Grails exhibition: { vaultItemId, credit: 'name' | 'anonymous' }. It shows under your plaque until the exhibition ends; it stays in your vault (still listable and withdrawable), and stops showing if it leaves.
-                CreateWorldHallLoanResponse result = apiInstance.CreateWorldHallLoan();
+                CreateWorldHallLoanResponse result = apiInstance.CreateWorldHallLoan(createWorldHallLoanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4872,7 +5196,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldHallLoanRequest** | **CreateWorldHallLoanRequest**|  | [optional] 
 
 ### Return type
 
@@ -4884,7 +5211,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4903,7 +5230,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldhomeask"></a>
 # **CreateWorldHomeAsk**
-> CreateWorldHomeAskResponse CreateWorldHomeAsk (string slug)
+> CreateWorldHomeAskResponse CreateWorldHomeAsk (string slug, CreateWorldHomeAskRequest createWorldHomeAskRequest = null)
 
 Ask a home owner whether they would sell a piece you saw there (an item or a decor piece).
 
@@ -4928,11 +5255,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var createWorldHomeAskRequest = new CreateWorldHomeAskRequest(); // CreateWorldHomeAskRequest |  (optional) 
 
             try
             {
                 // Ask a home owner whether they would sell a piece you saw there (an item or a decor piece).
-                CreateWorldHomeAskResponse result = apiInstance.CreateWorldHomeAsk(slug);
+                CreateWorldHomeAskResponse result = apiInstance.CreateWorldHomeAsk(slug, createWorldHomeAskRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4951,6 +5279,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createWorldHomeAskRequest** | **CreateWorldHomeAskRequest**|  | [optional] 
 
 ### Return type
 
@@ -4962,7 +5291,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -4981,7 +5310,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldhomeguestbook"></a>
 # **CreateWorldHomeGuestbook**
-> CreateWorldHomeGuestbookResponse CreateWorldHomeGuestbook (string slug)
+> CreateWorldHomeGuestbookResponse CreateWorldHomeGuestbook (string slug, BodyRequest bodyRequest = null)
 
 Sign a home guestbook (one short line).
 
@@ -5006,11 +5335,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var bodyRequest = new BodyRequest(); // BodyRequest |  (optional) 
 
             try
             {
                 // Sign a home guestbook (one short line).
-                CreateWorldHomeGuestbookResponse result = apiInstance.CreateWorldHomeGuestbook(slug);
+                CreateWorldHomeGuestbookResponse result = apiInstance.CreateWorldHomeGuestbook(slug, bodyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5029,6 +5359,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **bodyRequest** | **BodyRequest**|  | [optional] 
 
 ### Return type
 
@@ -5040,7 +5371,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5059,7 +5390,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldhomeguestbookreport"></a>
 # **CreateWorldHomeGuestbookReport**
-> CreateWorldGameReportResponse CreateWorldHomeGuestbookReport (string slug, string id)
+> CreateWorldGameReportResponse CreateWorldHomeGuestbookReport (string slug, string id, CreateWorldHomeGuestbookReportRequest createWorldHomeGuestbookReportRequest = null)
 
 Report a guestbook entry to moderation.
 
@@ -5085,11 +5416,12 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
             var id = "id_example";  // string | 
+            var createWorldHomeGuestbookReportRequest = new CreateWorldHomeGuestbookReportRequest(); // CreateWorldHomeGuestbookReportRequest |  (optional) 
 
             try
             {
                 // Report a guestbook entry to moderation.
-                CreateWorldGameReportResponse result = apiInstance.CreateWorldHomeGuestbookReport(slug, id);
+                CreateWorldGameReportResponse result = apiInstance.CreateWorldHomeGuestbookReport(slug, id, createWorldHomeGuestbookReportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5109,6 +5441,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
  **id** | **string**|  | 
+ **createWorldHomeGuestbookReportRequest** | **CreateWorldHomeGuestbookReportRequest**|  | [optional] 
 
 ### Return type
 
@@ -5120,7 +5453,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5213,7 +5546,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldinteractiveasset"></a>
 # **CreateWorldInteractiveAsset**
-> CreateWorldInteractiveAssetResponse CreateWorldInteractiveAsset ()
+> CreateWorldInteractiveAssetResponse CreateWorldInteractiveAsset (CreateWorldInteractiveAssetRequest createWorldInteractiveAssetRequest = null)
 
 Upload one asset: kind glb (4 MB), wav (4 MB) or png (1 MB), the file as base64; purpose product (your designs, the default) or game (Carnival Studio files such as badge icons). Answers its sha256 and the path to reference from MML.
 
@@ -5237,11 +5570,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldInteractiveAssetRequest = new CreateWorldInteractiveAssetRequest(); // CreateWorldInteractiveAssetRequest |  (optional) 
 
             try
             {
                 // Upload one asset: kind glb (4 MB), wav (4 MB) or png (1 MB), the file as base64; purpose product (your designs, the default) or game (Carnival Studio files such as badge icons). Answers its sha256 and the path to reference from MML.
-                CreateWorldInteractiveAssetResponse result = apiInstance.CreateWorldInteractiveAsset();
+                CreateWorldInteractiveAssetResponse result = apiInstance.CreateWorldInteractiveAsset(createWorldInteractiveAssetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5256,7 +5590,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldInteractiveAssetRequest** | **CreateWorldInteractiveAssetRequest**|  | [optional] 
 
 ### Return type
 
@@ -5268,7 +5605,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5287,7 +5624,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldinteractivedesign"></a>
 # **CreateWorldInteractiveDesign**
-> GetWorldInteractiveDesignResponse CreateWorldInteractiveDesign ()
+> GetWorldInteractiveDesignResponse CreateWorldInteractiveDesign (CreateWorldInteractiveDesignRequest createWorldInteractiveDesignRequest = null)
 
 Create an interactive design: name, footprint (s, m, l or f), optional tint and description, an asking price in COSM base units (a string, six decimals) and optional max supply. Inactive until ops approve a submitted version.
 
@@ -5311,11 +5648,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldInteractiveDesignRequest = new CreateWorldInteractiveDesignRequest(); // CreateWorldInteractiveDesignRequest |  (optional) 
 
             try
             {
                 // Create an interactive design: name, footprint (s, m, l or f), optional tint and description, an asking price in COSM base units (a string, six decimals) and optional max supply. Inactive until ops approve a submitted version.
-                GetWorldInteractiveDesignResponse result = apiInstance.CreateWorldInteractiveDesign();
+                GetWorldInteractiveDesignResponse result = apiInstance.CreateWorldInteractiveDesign(createWorldInteractiveDesignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5330,7 +5668,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldInteractiveDesignRequest** | **CreateWorldInteractiveDesignRequest**|  | [optional] 
 
 ### Return type
 
@@ -5342,7 +5683,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5595,7 +5936,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldinteractivereset"></a>
 # **CreateWorldInteractiveReset**
-> CreateWorldInteractiveResetResponse CreateWorldInteractiveReset ()
+> CreateWorldInteractiveResetResponse CreateWorldInteractiveReset (CreateWorldInteractiveResetRequest createWorldInteractiveResetRequest = null)
 
 Wipe the stored state of an interactive piece standing in a place you own (a home or your boutique).
 
@@ -5619,11 +5960,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldInteractiveResetRequest = new CreateWorldInteractiveResetRequest(); // CreateWorldInteractiveResetRequest |  (optional) 
 
             try
             {
                 // Wipe the stored state of an interactive piece standing in a place you own (a home or your boutique).
-                CreateWorldInteractiveResetResponse result = apiInstance.CreateWorldInteractiveReset();
+                CreateWorldInteractiveResetResponse result = apiInstance.CreateWorldInteractiveReset(createWorldInteractiveResetRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5638,7 +5980,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldInteractiveResetRequest** | **CreateWorldInteractiveResetRequest**|  | [optional] 
 
 ### Return type
 
@@ -5650,7 +5995,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5669,7 +6014,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldjobappraisalanswer"></a>
 # **CreateWorldJobAppraisalAnswer**
-> CreateWorldJobAppraisalAnswerResponse CreateWorldJobAppraisalAnswer (string id)
+> CreateWorldJobAppraisalAnswerResponse CreateWorldJobAppraisalAnswer (string id, CreateWorldJobAppraisalAnswerRequest createWorldJobAppraisalAnswerRequest)
 
 Answer a price check: your estimate of the item value in CENTS and an optional note. Moves no money; the asker may accept it.
 
@@ -5694,11 +6039,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldJobAppraisalAnswerRequest = new CreateWorldJobAppraisalAnswerRequest(); // CreateWorldJobAppraisalAnswerRequest | 
 
             try
             {
                 // Answer a price check: your estimate of the item value in CENTS and an optional note. Moves no money; the asker may accept it.
-                CreateWorldJobAppraisalAnswerResponse result = apiInstance.CreateWorldJobAppraisalAnswer(id);
+                CreateWorldJobAppraisalAnswerResponse result = apiInstance.CreateWorldJobAppraisalAnswer(id, createWorldJobAppraisalAnswerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5717,6 +6063,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldJobAppraisalAnswerRequest** | **CreateWorldJobAppraisalAnswerRequest**|  | 
 
 ### Return type
 
@@ -5728,7 +6075,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5903,7 +6250,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldmarketbuy"></a>
 # **CreateWorldMarketBuy**
-> CreateWorldMarketBuyResponse CreateWorldMarketBuy (string kind, string id)
+> CreateWorldMarketBuyResponse CreateWorldMarketBuy (string kind, string id, CreateWorldMarketBuyRequest createWorldMarketBuyRequest = null)
 
 Buy a plot or a street.
 
@@ -5929,11 +6276,12 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var kind = "kind_example";  // string | 
             var id = "id_example";  // string | 
+            var createWorldMarketBuyRequest = new CreateWorldMarketBuyRequest(); // CreateWorldMarketBuyRequest |  (optional) 
 
             try
             {
                 // Buy a plot or a street.
-                CreateWorldMarketBuyResponse result = apiInstance.CreateWorldMarketBuy(kind, id);
+                CreateWorldMarketBuyResponse result = apiInstance.CreateWorldMarketBuy(kind, id, createWorldMarketBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5953,6 +6301,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **kind** | **string**|  | 
  **id** | **string**|  | 
+ **createWorldMarketBuyRequest** | **CreateWorldMarketBuyRequest**|  | [optional] 
 
 ### Return type
 
@@ -5964,7 +6313,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -5983,7 +6332,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldmarketlisting"></a>
 # **CreateWorldMarketListing**
-> CreateWorldMarketListingResponse CreateWorldMarketListing ()
+> CreateWorldMarketListingResponse CreateWorldMarketListing (CreateWorldMarketListingRequest createWorldMarketListingRequest)
 
 List a plot for sale or rent, or a street for sale.
 
@@ -6007,11 +6356,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldMarketListingRequest = new CreateWorldMarketListingRequest(); // CreateWorldMarketListingRequest | 
 
             try
             {
                 // List a plot for sale or rent, or a street for sale.
-                CreateWorldMarketListingResponse result = apiInstance.CreateWorldMarketListing();
+                CreateWorldMarketListingResponse result = apiInstance.CreateWorldMarketListing(createWorldMarketListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6026,7 +6376,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldMarketListingRequest** | **CreateWorldMarketListingRequest**|  | 
 
 ### Return type
 
@@ -6038,7 +6391,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6057,7 +6410,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldmarketplotrent"></a>
 # **CreateWorldMarketPlotRent**
-> CreateWorldMarketPlotRentResponse CreateWorldMarketPlotRent (string id)
+> CreateWorldMarketPlotRentResponse CreateWorldMarketPlotRent (string id, CreateWorldMarketBuyRequest createWorldMarketBuyRequest = null)
 
 Rent a plot offered for lease.
 
@@ -6082,11 +6435,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldMarketBuyRequest = new CreateWorldMarketBuyRequest(); // CreateWorldMarketBuyRequest |  (optional) 
 
             try
             {
                 // Rent a plot offered for lease.
-                CreateWorldMarketPlotRentResponse result = apiInstance.CreateWorldMarketPlotRent(id);
+                CreateWorldMarketPlotRentResponse result = apiInstance.CreateWorldMarketPlotRent(id, createWorldMarketBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6105,6 +6459,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldMarketBuyRequest** | **CreateWorldMarketBuyRequest**|  | [optional] 
 
 ### Return type
 
@@ -6116,7 +6471,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6365,7 +6720,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldpartychat"></a>
 # **CreateWorldPartyChat**
-> WorldResponse CreateWorldPartyChat (string id)
+> WorldResponse CreateWorldPartyChat (string id, CreateWorldPartyChatRequest createWorldPartyChatRequest = null)
 
 Say something in your party chat (up to 2000 characters).
 
@@ -6390,11 +6745,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldPartyChatRequest = new CreateWorldPartyChatRequest(); // CreateWorldPartyChatRequest |  (optional) 
 
             try
             {
                 // Say something in your party chat (up to 2000 characters).
-                WorldResponse result = apiInstance.CreateWorldPartyChat(id);
+                WorldResponse result = apiInstance.CreateWorldPartyChat(id, createWorldPartyChatRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6413,6 +6769,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldPartyChatRequest** | **CreateWorldPartyChatRequest**|  | [optional] 
 
 ### Return type
 
@@ -6424,7 +6781,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6443,7 +6800,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpartyinvite"></a>
 # **CreateWorldPartyInvite**
-> CreateWorldPartyInviteResponse CreateWorldPartyInvite (string id)
+> CreateWorldPartyInviteResponse CreateWorldPartyInvite (string id, UserIdRequest userIdRequest = null)
 
 Invite a friend (userId) to your party.
 
@@ -6468,11 +6825,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var userIdRequest = new UserIdRequest(); // UserIdRequest |  (optional) 
 
             try
             {
                 // Invite a friend (userId) to your party.
-                CreateWorldPartyInviteResponse result = apiInstance.CreateWorldPartyInvite(id);
+                CreateWorldPartyInviteResponse result = apiInstance.CreateWorldPartyInvite(id, userIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6491,6 +6849,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **userIdRequest** | **UserIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -6502,7 +6861,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6677,7 +7036,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpartykick"></a>
 # **CreateWorldPartyKick**
-> CreateWorldPartyKickResponse CreateWorldPartyKick (string id)
+> CreateWorldPartyKickResponse CreateWorldPartyKick (string id, UserIdRequest userIdRequest = null)
 
 As leader, remove a member (userId).
 
@@ -6702,11 +7061,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var userIdRequest = new UserIdRequest(); // UserIdRequest |  (optional) 
 
             try
             {
                 // As leader, remove a member (userId).
-                CreateWorldPartyKickResponse result = apiInstance.CreateWorldPartyKick(id);
+                CreateWorldPartyKickResponse result = apiInstance.CreateWorldPartyKick(id, userIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6725,6 +7085,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **userIdRequest** | **UserIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -6736,7 +7097,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6755,7 +7116,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpartyleader"></a>
 # **CreateWorldPartyLeader**
-> CreateWorldPartyLeaderResponse CreateWorldPartyLeader (string id)
+> CreateWorldPartyLeaderResponse CreateWorldPartyLeader (string id, UserIdRequest userIdRequest = null)
 
 As leader, pass the lead to a member (userId).
 
@@ -6780,11 +7141,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var userIdRequest = new UserIdRequest(); // UserIdRequest |  (optional) 
 
             try
             {
                 // As leader, pass the lead to a member (userId).
-                CreateWorldPartyLeaderResponse result = apiInstance.CreateWorldPartyLeader(id);
+                CreateWorldPartyLeaderResponse result = apiInstance.CreateWorldPartyLeader(id, userIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6803,6 +7165,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **userIdRequest** | **UserIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -6814,7 +7177,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -6911,7 +7274,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpartywishlist"></a>
 # **CreateWorldPartyWishlist**
-> CreateWorldPartyWishlistResponse CreateWorldPartyWishlist (string id)
+> CreateWorldPartyWishlistResponse CreateWorldPartyWishlist (string id, CreateWorldPartyWishlistRequest createWorldPartyWishlistRequest = null)
 
 Add a listing (listingId, or its shop slug) to the party wishlist; answers the wishlist.
 
@@ -6936,11 +7299,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldPartyWishlistRequest = new CreateWorldPartyWishlistRequest(); // CreateWorldPartyWishlistRequest |  (optional) 
 
             try
             {
                 // Add a listing (listingId, or its shop slug) to the party wishlist; answers the wishlist.
-                CreateWorldPartyWishlistResponse result = apiInstance.CreateWorldPartyWishlist(id);
+                CreateWorldPartyWishlistResponse result = apiInstance.CreateWorldPartyWishlist(id, createWorldPartyWishlistRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6959,6 +7323,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldPartyWishlistRequest** | **CreateWorldPartyWishlistRequest**|  | [optional] 
 
 ### Return type
 
@@ -6970,7 +7335,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7149,7 +7514,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpropertyplotphotouploadurl"></a>
 # **CreateWorldPropertyPlotPhotoUploadUrl**
-> CreateWorldPropertyPlotPhotoUploadUrlResponse CreateWorldPropertyPlotPhotoUploadUrl (string plotId)
+> CreateWorldPropertyPlotPhotoUploadUrlResponse CreateWorldPropertyPlotPhotoUploadUrl (string plotId, CreateWorldPropertyPlotPhotoUploadUrlRequest createWorldPropertyPlotPhotoUploadUrlRequest)
 
 A presigned upload for a plot's photo (WebP/PNG/JPEG, up to 4 MB): PUT the image to uploadUrl with the same Content-Type and exact Content-Length, then store publicUrl with PUT .../photo.
 
@@ -7174,11 +7539,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var plotId = "plotId_example";  // string | 
+            var createWorldPropertyPlotPhotoUploadUrlRequest = new CreateWorldPropertyPlotPhotoUploadUrlRequest(); // CreateWorldPropertyPlotPhotoUploadUrlRequest | 
 
             try
             {
                 // A presigned upload for a plot's photo (WebP/PNG/JPEG, up to 4 MB): PUT the image to uploadUrl with the same Content-Type and exact Content-Length, then store publicUrl with PUT .../photo.
-                CreateWorldPropertyPlotPhotoUploadUrlResponse result = apiInstance.CreateWorldPropertyPlotPhotoUploadUrl(plotId);
+                CreateWorldPropertyPlotPhotoUploadUrlResponse result = apiInstance.CreateWorldPropertyPlotPhotoUploadUrl(plotId, createWorldPropertyPlotPhotoUploadUrlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7197,6 +7563,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plotId** | **string**|  | 
+ **createWorldPropertyPlotPhotoUploadUrlRequest** | **CreateWorldPropertyPlotPhotoUploadUrlRequest**|  | 
 
 ### Return type
 
@@ -7208,7 +7575,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7227,7 +7594,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpropertyplotshowroom"></a>
 # **CreateWorldPropertyPlotShowroom**
-> CreateWorldPropertyPlotShowroomResponse CreateWorldPropertyPlotShowroom (string plotId)
+> CreateWorldPropertyPlotShowroomResponse CreateWorldPropertyPlotShowroom (string plotId, CreateWorldPropertyPlotShowroomRequest createWorldPropertyPlotShowroomRequest)
 
 Stand one of your showrooms on a plot you own or rent.
 
@@ -7252,11 +7619,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var plotId = "plotId_example";  // string | 
+            var createWorldPropertyPlotShowroomRequest = new CreateWorldPropertyPlotShowroomRequest(); // CreateWorldPropertyPlotShowroomRequest | 
 
             try
             {
                 // Stand one of your showrooms on a plot you own or rent.
-                CreateWorldPropertyPlotShowroomResponse result = apiInstance.CreateWorldPropertyPlotShowroom(plotId);
+                CreateWorldPropertyPlotShowroomResponse result = apiInstance.CreateWorldPropertyPlotShowroom(plotId, createWorldPropertyPlotShowroomRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7275,6 +7643,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plotId** | **string**|  | 
+ **createWorldPropertyPlotShowroomRequest** | **CreateWorldPropertyPlotShowroomRequest**|  | 
 
 ### Return type
 
@@ -7286,7 +7655,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7305,7 +7674,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpropertytrespassed"></a>
 # **CreateWorldPropertyTrespassed**
-> ListWorldPropertyTrespassedResponse CreateWorldPropertyTrespassed ()
+> ListWorldPropertyTrespassedResponse CreateWorldPropertyTrespassed (CreateWorldPropertyTrespassedRequest createWorldPropertyTrespassedRequest)
 
 Ban someone owner-wide or from one showroom.
 
@@ -7329,11 +7698,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldPropertyTrespassedRequest = new CreateWorldPropertyTrespassedRequest(); // CreateWorldPropertyTrespassedRequest | 
 
             try
             {
                 // Ban someone owner-wide or from one showroom.
-                ListWorldPropertyTrespassedResponse result = apiInstance.CreateWorldPropertyTrespassed();
+                ListWorldPropertyTrespassedResponse result = apiInstance.CreateWorldPropertyTrespassed(createWorldPropertyTrespassedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7348,7 +7718,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldPropertyTrespassedRequest** | **CreateWorldPropertyTrespassedRequest**|  | 
 
 ### Return type
 
@@ -7360,7 +7733,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7379,7 +7752,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldspace"></a>
 # **CreateWorldSpace**
-> CreateWorldSpaceResponse CreateWorldSpace ()
+> CreateWorldSpaceResponse CreateWorldSpace (CreateWorldSpaceRequest createWorldSpaceRequest)
 
 Open a Space (sellers only, at most two): slug, name, venue, optional membership and about.
 
@@ -7403,11 +7776,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldSpaceRequest = new CreateWorldSpaceRequest(); // CreateWorldSpaceRequest | 
 
             try
             {
                 // Open a Space (sellers only, at most two): slug, name, venue, optional membership and about.
-                CreateWorldSpaceResponse result = apiInstance.CreateWorldSpace();
+                CreateWorldSpaceResponse result = apiInstance.CreateWorldSpace(createWorldSpaceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7422,7 +7796,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldSpaceRequest** | **CreateWorldSpaceRequest**|  | 
 
 ### Return type
 
@@ -7434,7 +7811,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7453,7 +7830,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldspaceevent"></a>
 # **CreateWorldSpaceEvent**
-> CreateWorldSpaceEventResponse CreateWorldSpaceEvent (string slug)
+> CreateWorldSpaceEventResponse CreateWorldSpaceEvent (string slug, CreateWorldSpaceEventRequest createWorldSpaceEventRequest)
 
 As host or co-host, put an event on: title, kind, optional about, ISO start and end with offset.
 
@@ -7478,11 +7855,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var createWorldSpaceEventRequest = new CreateWorldSpaceEventRequest(); // CreateWorldSpaceEventRequest | 
 
             try
             {
                 // As host or co-host, put an event on: title, kind, optional about, ISO start and end with offset.
-                CreateWorldSpaceEventResponse result = apiInstance.CreateWorldSpaceEvent(slug);
+                CreateWorldSpaceEventResponse result = apiInstance.CreateWorldSpaceEvent(slug, createWorldSpaceEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7501,6 +7879,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createWorldSpaceEventRequest** | **CreateWorldSpaceEventRequest**|  | 
 
 ### Return type
 
@@ -7512,7 +7891,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7531,7 +7910,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldspaceeventrsvp"></a>
 # **CreateWorldSpaceEventRsvp**
-> CreateWorldSpaceEventRsvpResponse CreateWorldSpaceEventRsvp (string slug, string id)
+> CreateWorldSpaceEventRsvpResponse CreateWorldSpaceEventRsvp (string slug, string id, CreateWorldSpaceEventRsvpRequest createWorldSpaceEventRsvpRequest)
 
 Say whether you are going to an event.
 
@@ -7557,11 +7936,12 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
             var id = "id_example";  // string | 
+            var createWorldSpaceEventRsvpRequest = new CreateWorldSpaceEventRsvpRequest(); // CreateWorldSpaceEventRsvpRequest | 
 
             try
             {
                 // Say whether you are going to an event.
-                CreateWorldSpaceEventRsvpResponse result = apiInstance.CreateWorldSpaceEventRsvp(slug, id);
+                CreateWorldSpaceEventRsvpResponse result = apiInstance.CreateWorldSpaceEventRsvp(slug, id, createWorldSpaceEventRsvpRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7581,6 +7961,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
  **id** | **string**|  | 
+ **createWorldSpaceEventRsvpRequest** | **CreateWorldSpaceEventRsvpRequest**|  | 
 
 ### Return type
 
@@ -7592,7 +7973,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7611,7 +7992,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldspaceinvite"></a>
 # **CreateWorldSpaceInvite**
-> CreateWorldSpaceInviteResponse CreateWorldSpaceInvite (string slug)
+> CreateWorldSpaceInviteResponse CreateWorldSpaceInvite (string slug, UserIdRequest userIdRequest)
 
 Invite somebody (userId) to a Space.
 
@@ -7636,11 +8017,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var userIdRequest = new UserIdRequest(); // UserIdRequest | 
 
             try
             {
                 // Invite somebody (userId) to a Space.
-                CreateWorldSpaceInviteResponse result = apiInstance.CreateWorldSpaceInvite(slug);
+                CreateWorldSpaceInviteResponse result = apiInstance.CreateWorldSpaceInvite(slug, userIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7659,6 +8041,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **userIdRequest** | **UserIdRequest**|  | 
 
 ### Return type
 
@@ -7670,7 +8053,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7845,7 +8228,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldspacerequestbyuserid"></a>
 # **CreateWorldSpaceRequestByUserId**
-> CreateWorldSpaceRequestByUserIdResponse CreateWorldSpaceRequestByUserId (string slug, string userId)
+> CreateWorldSpaceRequestByUserIdResponse CreateWorldSpaceRequestByUserId (string slug, string userId, CreateWorldSpaceRequestByUserIdRequest createWorldSpaceRequestByUserIdRequest)
 
 As host or co-host, accept or turn down a request to join.
 
@@ -7871,11 +8254,12 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
             var userId = "userId_example";  // string | 
+            var createWorldSpaceRequestByUserIdRequest = new CreateWorldSpaceRequestByUserIdRequest(); // CreateWorldSpaceRequestByUserIdRequest | 
 
             try
             {
                 // As host or co-host, accept or turn down a request to join.
-                CreateWorldSpaceRequestByUserIdResponse result = apiInstance.CreateWorldSpaceRequestByUserId(slug, userId);
+                CreateWorldSpaceRequestByUserIdResponse result = apiInstance.CreateWorldSpaceRequestByUserId(slug, userId, createWorldSpaceRequestByUserIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7895,6 +8279,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
  **userId** | **string**|  | 
+ **createWorldSpaceRequestByUserIdRequest** | **CreateWorldSpaceRequestByUserIdRequest**|  | 
 
 ### Return type
 
@@ -7906,7 +8291,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -7925,7 +8310,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldspacerole"></a>
 # **CreateWorldSpaceRole**
-> CreateWorldSpaceRoleResponse CreateWorldSpaceRole (string slug)
+> CreateWorldSpaceRoleResponse CreateWorldSpaceRole (string slug, CreateWorldSpaceRoleRequest createWorldSpaceRoleRequest)
 
 As host, make a member a co-host or back to a member.
 
@@ -7950,11 +8335,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var createWorldSpaceRoleRequest = new CreateWorldSpaceRoleRequest(); // CreateWorldSpaceRoleRequest | 
 
             try
             {
                 // As host, make a member a co-host or back to a member.
-                CreateWorldSpaceRoleResponse result = apiInstance.CreateWorldSpaceRole(slug);
+                CreateWorldSpaceRoleResponse result = apiInstance.CreateWorldSpaceRole(slug, createWorldSpaceRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7973,6 +8359,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **createWorldSpaceRoleRequest** | **CreateWorldSpaceRoleRequest**|  | 
 
 ### Return type
 
@@ -7984,7 +8371,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8003,7 +8390,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldstaffapplicationdecide"></a>
 # **CreateWorldStaffApplicationDecide**
-> CreateWorldStaffApplicationDecideResponse CreateWorldStaffApplicationDecide (string id)
+> CreateWorldStaffApplicationDecideResponse CreateWorldStaffApplicationDecide (string id, CreateWorldStaffApplicationDecideRequest createWorldStaffApplicationDecideRequest)
 
 Accept or decline an application.
 
@@ -8028,11 +8415,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldStaffApplicationDecideRequest = new CreateWorldStaffApplicationDecideRequest(); // CreateWorldStaffApplicationDecideRequest | 
 
             try
             {
                 // Accept or decline an application.
-                CreateWorldStaffApplicationDecideResponse result = apiInstance.CreateWorldStaffApplicationDecide(id);
+                CreateWorldStaffApplicationDecideResponse result = apiInstance.CreateWorldStaffApplicationDecide(id, createWorldStaffApplicationDecideRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8051,6 +8439,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldStaffApplicationDecideRequest** | **CreateWorldStaffApplicationDecideRequest**|  | 
 
 ### Return type
 
@@ -8062,7 +8451,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8081,7 +8470,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldstaffassignmentrateworker"></a>
 # **CreateWorldStaffAssignmentRateWorker**
-> CreateWorldStaffAssignmentRateWorkerResponse CreateWorldStaffAssignmentRateWorker (string id)
+> CreateWorldStaffAssignmentRateWorkerResponse CreateWorldStaffAssignmentRateWorker (string id, CreateWorldStaffAssignmentRateWorkerRequest createWorldStaffAssignmentRateWorkerRequest)
 
 Rate the worker of one of your seats.
 
@@ -8106,11 +8495,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldStaffAssignmentRateWorkerRequest = new CreateWorldStaffAssignmentRateWorkerRequest(); // CreateWorldStaffAssignmentRateWorkerRequest | 
 
             try
             {
                 // Rate the worker of one of your seats.
-                CreateWorldStaffAssignmentRateWorkerResponse result = apiInstance.CreateWorldStaffAssignmentRateWorker(id);
+                CreateWorldStaffAssignmentRateWorkerResponse result = apiInstance.CreateWorldStaffAssignmentRateWorker(id, createWorldStaffAssignmentRateWorkerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8129,6 +8519,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldStaffAssignmentRateWorkerRequest** | **CreateWorldStaffAssignmentRateWorkerRequest**|  | 
 
 ### Return type
 
@@ -8140,7 +8531,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8159,7 +8550,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldstaffposting"></a>
 # **CreateWorldStaffPosting**
-> WorldStaffPostingResponse CreateWorldStaffPosting ()
+> WorldStaffPostingResponse CreateWorldStaffPosting (CreateWorldStaffPostingRequest createWorldStaffPostingRequest)
 
 Post a job: a showroom, stall or convention, pay, recurrence and rules.
 
@@ -8183,11 +8574,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var createWorldStaffPostingRequest = new CreateWorldStaffPostingRequest(); // CreateWorldStaffPostingRequest | 
 
             try
             {
                 // Post a job: a showroom, stall or convention, pay, recurrence and rules.
-                WorldStaffPostingResponse result = apiInstance.CreateWorldStaffPosting();
+                WorldStaffPostingResponse result = apiInstance.CreateWorldStaffPosting(createWorldStaffPostingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8202,7 +8594,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldStaffPostingRequest** | **CreateWorldStaffPostingRequest**|  | 
 
 ### Return type
 
@@ -8214,7 +8609,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8233,7 +8628,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldstaffpostingstatus"></a>
 # **CreateWorldStaffPostingStatus**
-> WorldStaffPostingResponse CreateWorldStaffPostingStatus (string id)
+> WorldStaffPostingResponse CreateWorldStaffPostingStatus (string id, CreateWorldStaffPostingStatusRequest createWorldStaffPostingStatusRequest)
 
 Open, pause or close a posting.
 
@@ -8258,11 +8653,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldStaffPostingStatusRequest = new CreateWorldStaffPostingStatusRequest(); // CreateWorldStaffPostingStatusRequest | 
 
             try
             {
                 // Open, pause or close a posting.
-                WorldStaffPostingResponse result = apiInstance.CreateWorldStaffPostingStatus(id);
+                WorldStaffPostingResponse result = apiInstance.CreateWorldStaffPostingStatus(id, createWorldStaffPostingStatusRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8281,6 +8677,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldStaffPostingStatusRequest** | **CreateWorldStaffPostingStatusRequest**|  | 
 
 ### Return type
 
@@ -8292,7 +8689,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8311,9 +8708,9 @@ Name | Type | Description  | Notes
 
 <a name="createworldstreetownedupkeeppay"></a>
 # **CreateWorldStreetOwnedUpkeepPay**
-> CreateWorldStreetOwnedUpkeepPayResponse CreateWorldStreetOwnedUpkeepPay (string id)
+> CreateWorldStreetOwnedUpkeepPayResponse CreateWorldStreetOwnedUpkeepPay (string id, CreateWorldStreetOwnedUpkeepPayRequest createWorldStreetOwnedUpkeepPayRequest)
 
-Pay your street's upkeep forward.
+Pay your store's street upkeep forward.
 
 ### Example
 ```csharp
@@ -8336,11 +8733,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldStreetOwnedUpkeepPayRequest = new CreateWorldStreetOwnedUpkeepPayRequest(); // CreateWorldStreetOwnedUpkeepPayRequest | 
 
             try
             {
-                // Pay your street's upkeep forward.
-                CreateWorldStreetOwnedUpkeepPayResponse result = apiInstance.CreateWorldStreetOwnedUpkeepPay(id);
+                // Pay your store's street upkeep forward.
+                CreateWorldStreetOwnedUpkeepPayResponse result = apiInstance.CreateWorldStreetOwnedUpkeepPay(id, createWorldStreetOwnedUpkeepPayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8359,6 +8757,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldStreetOwnedUpkeepPayRequest** | **CreateWorldStreetOwnedUpkeepPayRequest**|  | 
 
 ### Return type
 
@@ -8370,7 +8769,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8467,7 +8866,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldworkassignmentrateemployer"></a>
 # **CreateWorldWorkAssignmentRateEmployer**
-> CreateWorldStaffAssignmentRateWorkerResponse CreateWorldWorkAssignmentRateEmployer (string id)
+> CreateWorldStaffAssignmentRateWorkerResponse CreateWorldWorkAssignmentRateEmployer (string id, CreateWorldWorkAssignmentRateEmployerRequest createWorldWorkAssignmentRateEmployerRequest)
 
 Rate the employer of a public-job shift you worked: paid on time, job as described, conduct.
 
@@ -8492,11 +8891,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldWorkAssignmentRateEmployerRequest = new CreateWorldWorkAssignmentRateEmployerRequest(); // CreateWorldWorkAssignmentRateEmployerRequest | 
 
             try
             {
                 // Rate the employer of a public-job shift you worked: paid on time, job as described, conduct.
-                CreateWorldStaffAssignmentRateWorkerResponse result = apiInstance.CreateWorldWorkAssignmentRateEmployer(id);
+                CreateWorldStaffAssignmentRateWorkerResponse result = apiInstance.CreateWorldWorkAssignmentRateEmployer(id, createWorldWorkAssignmentRateEmployerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8515,6 +8915,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldWorkAssignmentRateEmployerRequest** | **CreateWorldWorkAssignmentRateEmployerRequest**|  | 
 
 ### Return type
 
@@ -8526,7 +8927,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8545,7 +8946,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldworkpostingapply"></a>
 # **CreateWorldWorkPostingApply**
-> CreateWorldWorkPostingApplyResponse CreateWorldWorkPostingApply (string id)
+> CreateWorldWorkPostingApplyResponse CreateWorldWorkPostingApply (string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = null)
 
 Apply for a job.
 
@@ -8570,11 +8971,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createVideoRequestDeclineRequest = new CreateVideoRequestDeclineRequest(); // CreateVideoRequestDeclineRequest |  (optional) 
 
             try
             {
                 // Apply for a job.
-                CreateWorldWorkPostingApplyResponse result = apiInstance.CreateWorldWorkPostingApply(id);
+                CreateWorldWorkPostingApplyResponse result = apiInstance.CreateWorldWorkPostingApply(id, createVideoRequestDeclineRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8593,6 +8995,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVideoRequestDeclineRequest** | **CreateVideoRequestDeclineRequest**|  | [optional] 
 
 ### Return type
 
@@ -8604,7 +9007,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8865,7 +9268,7 @@ Name | Type | Description  | Notes
 
 <a name="deletespatialscenenode"></a>
 # **DeleteSpatialSceneNode**
-> DeleteSpatialSceneNodeResponse DeleteSpatialSceneNode (string id)
+> DeleteSpatialSceneNodeResponse DeleteSpatialSceneNode (string id, DeleteSpatialSceneNodeRequest deleteSpatialSceneNodeRequest)
 
 Remove units (by id, up to 500) from one of your warehouse rooms.
 
@@ -8890,11 +9293,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var deleteSpatialSceneNodeRequest = new DeleteSpatialSceneNodeRequest(); // DeleteSpatialSceneNodeRequest | 
 
             try
             {
                 // Remove units (by id, up to 500) from one of your warehouse rooms.
-                DeleteSpatialSceneNodeResponse result = apiInstance.DeleteSpatialSceneNode(id);
+                DeleteSpatialSceneNodeResponse result = apiInstance.DeleteSpatialSceneNode(id, deleteSpatialSceneNodeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8913,6 +9317,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **deleteSpatialSceneNodeRequest** | **DeleteSpatialSceneNodeRequest**|  | 
 
 ### Return type
 
@@ -8924,7 +9329,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8943,7 +9348,7 @@ Name | Type | Description  | Notes
 
 <a name="deletespatialscenewarehousestock"></a>
 # **DeleteSpatialSceneWarehouseStock**
-> DeleteSpatialSceneGrantResponse DeleteSpatialSceneWarehouseStock (string id)
+> DeleteSpatialSceneGrantResponse DeleteSpatialSceneWarehouseStock (string id, DeleteSpatialSceneWarehouseStockRequest deleteSpatialSceneWarehouseStockRequest)
 
 Take an inventory item (or unit) off its rack.
 
@@ -8968,11 +9373,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var deleteSpatialSceneWarehouseStockRequest = new DeleteSpatialSceneWarehouseStockRequest(); // DeleteSpatialSceneWarehouseStockRequest | 
 
             try
             {
                 // Take an inventory item (or unit) off its rack.
-                DeleteSpatialSceneGrantResponse result = apiInstance.DeleteSpatialSceneWarehouseStock(id);
+                DeleteSpatialSceneGrantResponse result = apiInstance.DeleteSpatialSceneWarehouseStock(id, deleteSpatialSceneWarehouseStockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8991,6 +9397,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **deleteSpatialSceneWarehouseStockRequest** | **DeleteSpatialSceneWarehouseStockRequest**|  | 
 
 ### Return type
 
@@ -9002,7 +9409,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9334,7 +9741,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteworldgamepackage"></a>
 # **DeleteWorldGamePackage**
-> DeleteWorldGamePackageResponse DeleteWorldGamePackage (string id)
+> DeleteWorldGamePackageResponse DeleteWorldGamePackage (string id, DeleteWorldExperienceRequest deleteWorldExperienceRequest = null)
 
 Delete a Classic game: unpublished, then a tombstone restorable for 30 days.
 
@@ -9359,11 +9766,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var deleteWorldExperienceRequest = new DeleteWorldExperienceRequest(); // DeleteWorldExperienceRequest |  (optional) 
 
             try
             {
                 // Delete a Classic game: unpublished, then a tombstone restorable for 30 days.
-                DeleteWorldGamePackageResponse result = apiInstance.DeleteWorldGamePackage(id);
+                DeleteWorldGamePackageResponse result = apiInstance.DeleteWorldGamePackage(id, deleteWorldExperienceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9382,6 +9790,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **deleteWorldExperienceRequest** | **DeleteWorldExperienceRequest**|  | [optional] 
 
 ### Return type
 
@@ -9393,7 +9802,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -10124,7 +10533,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteworldpropertytrespassed"></a>
 # **DeleteWorldPropertyTrespassed**
-> DeleteSpatialSceneGrantResponse DeleteWorldPropertyTrespassed (string userId)
+> DeleteSpatialSceneGrantResponse DeleteWorldPropertyTrespassed (string userId, string place)
 
 Lift a ban.
 
@@ -10149,11 +10558,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var userId = "userId_example";  // string | 
+            var place = "place_example";  // string | 
 
             try
             {
                 // Lift a ban.
-                DeleteSpatialSceneGrantResponse result = apiInstance.DeleteWorldPropertyTrespassed(userId);
+                DeleteSpatialSceneGrantResponse result = apiInstance.DeleteWorldPropertyTrespassed(userId, place);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -10172,6 +10582,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **string**|  | 
+ **place** | **string**|  | 
 
 ### Return type
 
@@ -13848,7 +14259,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldgamepackagestat"></a>
 # **GetWorldGamePackageStat**
-> GetWorldGamePackageStatResponse GetWorldGamePackageStat (string id)
+> GetWorldGamePackageStatResponse GetWorldGamePackageStat (string id, decimal? days = null)
 
 Play stats for one of your Classic games: 30-day totals, the daily series the launcher ranks on (uniques, sessions, playtime, first-play bounces, D1/D7/D28), its ranking score, test impressions and players right now. ?days=1-90.
 
@@ -13873,11 +14284,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Play stats for one of your Classic games: 30-day totals, the daily series the launcher ranks on (uniques, sessions, playtime, first-play bounces, D1/D7/D28), its ranking score, test impressions and players right now. ?days=1-90.
-                GetWorldGamePackageStatResponse result = apiInstance.GetWorldGamePackageStat(id);
+                GetWorldGamePackageStatResponse result = apiInstance.GetWorldGamePackageStat(id, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -13896,6 +14308,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -14004,7 +14417,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldgametemplate"></a>
 # **GetWorldGameTemplate**
-> GetWorldGameTemplateResponse GetWorldGameTemplate (string kind)
+> GetWorldGameTemplateResponse GetWorldGameTemplate (string kind, string id = null, string name = null)
 
 A fresh game package from a template (table, arena, object; collection is an NFT capability declaration), as { path, base64 } files: the world-kit init, for an agent with no local kit. ?id=my-game&name=My Game.
 
@@ -14029,11 +14442,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var kind = "kind_example";  // string | 
+            var id = "id_example";  // string |  (optional) 
+            var name = "name_example";  // string |  (optional) 
 
             try
             {
                 // A fresh game package from a template (table, arena, object; collection is an NFT capability declaration), as { path, base64 } files: the world-kit init, for an agent with no local kit. ?id=my-game&name=My Game.
-                GetWorldGameTemplateResponse result = apiInstance.GetWorldGameTemplate(kind);
+                GetWorldGameTemplateResponse result = apiInstance.GetWorldGameTemplate(kind, id, name);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -14052,6 +14467,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **kind** | **string**|  | 
+ **id** | **string**|  | [optional] 
+ **name** | **string**|  | [optional] 
 
 ### Return type
 
@@ -16448,6 +16865,166 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getworldstand"></a>
+# **GetWorldStand**
+> GetWorldStandResponse GetWorldStand (string kind, string id, Guid? storefrontId = null)
+
+The stands of one of your places: kind plot (the showroom standing on it; none = no stands) or showroom. Same fields as /api/v1/world/stands/shop.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetWorldStandExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldApi(config);
+            var kind = "kind_example";  // string | 
+            var id = "id_example";  // string | 
+            var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
+
+            try
+            {
+                // The stands of one of your places: kind plot (the showroom standing on it; none = no stands) or showroom. Same fields as /api/v1/world/stands/shop.
+                GetWorldStandResponse result = apiInstance.GetWorldStand(kind, id, storefrontId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldApi.GetWorldStand: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | 
+ **id** | **string**|  | 
+ **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
+
+### Return type
+
+**GetWorldStandResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getworldstandshop"></a>
+# **GetWorldStandShop**
+> GetWorldStandResponse GetWorldStandShop (Guid? storefrontId = null)
+
+The stands of your shop (its primary showroom's visible fixtures, in order): index (what a drop's world.boothSpotIndex stores), name, display, units and capacity, whether another of your drops already stands there (takenBy) and priceCents (null: your own place costs nothing extra).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetWorldStandShopExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldApi(config);
+            var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
+
+            try
+            {
+                // The stands of your shop (its primary showroom's visible fixtures, in order): index (what a drop's world.boothSpotIndex stores), name, display, units and capacity, whether another of your drops already stands there (takenBy) and priceCents (null: your own place costs nothing extra).
+                GetWorldStandResponse result = apiInstance.GetWorldStandShop(storefrontId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldApi.GetWorldStandShop: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
+
+### Return type
+
+**GetWorldStandResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getworldstreetfund"></a>
 # **GetWorldStreetFund**
 > GetWorldStreetFundResponse GetWorldStreetFund (string slug)
@@ -16530,7 +17107,7 @@ Name | Type | Description  | Notes
 # **GetWorldStreetOwned**
 > GetWorldStreetOwnedResponse GetWorldStreetOwned (string id)
 
-A street you own: tenants, applications, upkeep, look, fund.
+A street your store owns: tenants, applications, upkeep, look, fund, and the owning `store`.
 
 ### Example
 ```csharp
@@ -16556,7 +17133,7 @@ namespace Example
 
             try
             {
-                // A street you own: tenants, applications, upkeep, look, fund.
+                // A street your store owns: tenants, applications, upkeep, look, fund, and the owning `store`.
                 GetWorldStreetOwnedResponse result = apiInstance.GetWorldStreetOwned(id);
                 Debug.WriteLine(result);
             }
@@ -16836,7 +17413,7 @@ This endpoint does not need any parameter.
 
 <a name="getworldvenuequote"></a>
 # **GetWorldVenueQuote**
-> GetWorldVenueQuoteResponse GetWorldVenueQuote (string id)
+> GetWorldVenueQuoteResponse GetWorldVenueQuote (string id, string startsOn, string endsOn)
 
 What a hall costs for those days (startsOn, endsOn), the full-refund date, and whether it is free.
 
@@ -16861,11 +17438,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var startsOn = "startsOn_example";  // string | 
+            var endsOn = "endsOn_example";  // string | 
 
             try
             {
                 // What a hall costs for those days (startsOn, endsOn), the full-refund date, and whether it is free.
-                GetWorldVenueQuoteResponse result = apiInstance.GetWorldVenueQuote(id);
+                GetWorldVenueQuoteResponse result = apiInstance.GetWorldVenueQuote(id, startsOn, endsOn);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -16884,6 +17463,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **startsOn** | **string**|  | 
+ **endsOn** | **string**|  | 
 
 ### Return type
 
@@ -17284,7 +17865,7 @@ This endpoint does not need any parameter.
 
 <a name="listshowroomitemsearch"></a>
 # **ListShowroomItemSearch**
-> ListShowroomItemSearchResponse ListShowroomItemSearch (string id, Guid? storefrontId = null)
+> ListShowroomItemSearchResponse ListShowroomItemSearch (string id, Guid? storefrontId = null, string q = null, string brand = null, string category = null, string condition = null, string listed = null)
 
 Search this store's in-stock items (title, brand, SKU) to put on a fixture or in a window slot; each with listed / passport / multi_unit badges.
 
@@ -17310,11 +17891,16 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var brand = "brand_example";  // string |  (optional) 
+            var category = "category_example";  // string |  (optional) 
+            var condition = "condition_example";  // string |  (optional) 
+            var listed = "any";  // string |  (optional) 
 
             try
             {
                 // Search this store's in-stock items (title, brand, SKU) to put on a fixture or in a window slot; each with listed / passport / multi_unit badges.
-                ListShowroomItemSearchResponse result = apiInstance.ListShowroomItemSearch(id, storefrontId);
+                ListShowroomItemSearchResponse result = apiInstance.ListShowroomItemSearch(id, storefrontId, q, brand, category, condition, listed);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17334,6 +17920,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
+ **q** | **string**|  | [optional] 
+ **brand** | **string**|  | [optional] 
+ **category** | **string**|  | [optional] 
+ **condition** | **string**|  | [optional] 
+ **listed** | **string**|  | [optional] 
 
 ### Return type
 
@@ -17594,7 +18185,7 @@ Name | Type | Description  | Notes
 
 <a name="listspatialscenewarehouseunplaced"></a>
 # **ListSpatialSceneWarehouseUnplaced**
-> ListSpatialSceneWarehouseUnplacedResponse ListSpatialSceneWarehouseUnplaced (string id)
+> ListSpatialSceneWarehouseUnplacedResponse ListSpatialSceneWarehouseUnplaced (string id, string q = null, decimal? limit = null)
 
 Stock not yet on a shelf in a warehouse room you can arrange (q filters by title).
 
@@ -17619,11 +18210,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var q = "q_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Stock not yet on a shelf in a warehouse room you can arrange (q filters by title).
-                ListSpatialSceneWarehouseUnplacedResponse result = apiInstance.ListSpatialSceneWarehouseUnplaced(id);
+                ListSpatialSceneWarehouseUnplacedResponse result = apiInstance.ListSpatialSceneWarehouseUnplaced(id, q, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -17642,6 +18235,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **q** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -18504,7 +19099,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldconventionmessages"></a>
 # **ListWorldConventionMessages**
-> ListWorldConventionMessagesResponse ListWorldConventionMessages (string id)
+> ListWorldConventionMessagesResponse ListWorldConventionMessages (string id, string with = null)
 
 Convention messages you may read: the organiser all of them (?with=<userId> for one seller), an exhibitor theirs and the broadcasts.
 
@@ -18529,11 +19124,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var with = "with_example";  // string |  (optional) 
 
             try
             {
                 // Convention messages you may read: the organiser all of them (?with=<userId> for one seller), an exhibitor theirs and the broadcasts.
-                ListWorldConventionMessagesResponse result = apiInstance.ListWorldConventionMessages(id);
+                ListWorldConventionMessagesResponse result = apiInstance.ListWorldConventionMessages(id, with);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -18552,6 +19148,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **with** | **string**|  | [optional] 
 
 ### Return type
 
@@ -19184,7 +19781,7 @@ This endpoint does not need any parameter.
 
 <a name="listworlddecormarket"></a>
 # **ListWorldDecorMarket**
-> ListWorldDecorMarketResponse ListWorldDecorMarket ()
+> ListWorldDecorMarketResponse ListWorldDecorMarket (string pair = null)
 
 Decor copies other people are reselling (asks in COSM); optional pair filter. Read only: listing and buying stay on crossly.net.
 
@@ -19208,11 +19805,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var pair = "pair_example";  // string |  (optional) 
 
             try
             {
                 // Decor copies other people are reselling (asks in COSM); optional pair filter. Read only: listing and buying stay on crossly.net.
-                ListWorldDecorMarketResponse result = apiInstance.ListWorldDecorMarket();
+                ListWorldDecorMarketResponse result = apiInstance.ListWorldDecorMarket(pair);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -19227,7 +19825,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pair** | **string**|  | [optional] 
 
 ### Return type
 
@@ -20376,7 +20977,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldjobboard"></a>
 # **ListWorldJobBoard**
-> ListWorldJobBoardResponse ListWorldJobBoard ()
+> ListWorldJobBoardResponse ListWorldJobBoard (string role = null, string rail = null, string basis = null, string place = null, decimal? minPayCents = null, decimal? minEmployerRep = null, string after = null, string before = null, string q = null, string sort = null, decimal? limit = null)
 
 The public Job Board, filterable.
 
@@ -20400,11 +21001,22 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var role = "host";  // string |  (optional) 
+            var rail = "cash";  // string |  (optional) 
+            var basis = "shift";  // string |  (optional) 
+            var place = "showroom";  // string |  (optional) 
+            var minPayCents = 8.14D;  // decimal? |  (optional) 
+            var minEmployerRep = 8.14D;  // decimal? |  (optional) 
+            var after = "after_example";  // string |  (optional) 
+            var before = "before_example";  // string |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var sort = "pay";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The public Job Board, filterable.
-                ListWorldJobBoardResponse result = apiInstance.ListWorldJobBoard();
+                ListWorldJobBoardResponse result = apiInstance.ListWorldJobBoard(role, rail, basis, place, minPayCents, minEmployerRep, after, before, q, sort, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -20419,7 +21031,20 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **role** | **string**|  | [optional] 
+ **rail** | **string**|  | [optional] 
+ **basis** | **string**|  | [optional] 
+ **place** | **string**|  | [optional] 
+ **minPayCents** | **decimal?**|  | [optional] 
+ **minEmployerRep** | **decimal?**|  | [optional] 
+ **after** | **string**|  | [optional] 
+ **before** | **string**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -20524,7 +21149,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldmarket"></a>
 # **ListWorldMarket**
-> ListWorldMarketResponse ListWorldMarket ()
+> ListWorldMarketResponse ListWorldMarket (string kind = null, string mode = null, string street = null, string theme = null, decimal? minPrice = null, decimal? maxPrice = null, string size = null, string traffic = null, string sort = null, decimal? offset = null, decimal? limit = null)
 
 Plots and streets for sale or rent in the Worlds Market.
 
@@ -20548,11 +21173,22 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var kind = "plot";  // string |  (optional) 
+            var mode = "sale";  // string |  (optional) 
+            var street = "street_example";  // string |  (optional) 
+            var theme = "theme_example";  // string |  (optional) 
+            var minPrice = 8.14D;  // decimal? |  (optional) 
+            var maxPrice = 8.14D;  // decimal? |  (optional) 
+            var size = "small";  // string |  (optional) 
+            var traffic = "quiet";  // string |  (optional) 
+            var sort = "newest";  // string |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Plots and streets for sale or rent in the Worlds Market.
-                ListWorldMarketResponse result = apiInstance.ListWorldMarket();
+                ListWorldMarketResponse result = apiInstance.ListWorldMarket(kind, mode, street, theme, minPrice, maxPrice, size, traffic, sort, offset, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -20567,7 +21203,20 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | [optional] 
+ **mode** | **string**|  | [optional] 
+ **street** | **string**|  | [optional] 
+ **theme** | **string**|  | [optional] 
+ **minPrice** | **decimal?**|  | [optional] 
+ **maxPrice** | **decimal?**|  | [optional] 
+ **size** | **string**|  | [optional] 
+ **traffic** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -21296,7 +21945,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldpromoted"></a>
 # **ListWorldPromoted**
-> ListWorldPromotedResponse ListWorldPromoted ()
+> ListWorldPromotedResponse ListWorldPromoted (string kind = null, decimal? limit = null)
 
 Promoted places in Crossly World: boosted showrooms and conventions (Sponsored, labelled \"Promoted\"), with the token to send when one is opened.
 
@@ -21320,11 +21969,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var kind = "showroom";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Promoted places in Crossly World: boosted showrooms and conventions (Sponsored, labelled \"Promoted\"), with the token to send when one is opened.
-                ListWorldPromotedResponse result = apiInstance.ListWorldPromoted();
+                ListWorldPromotedResponse result = apiInstance.ListWorldPromoted(kind, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -21339,7 +21990,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -21666,7 +22321,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldprovenance"></a>
 # **ListWorldProvenance**
-> ListWorldProvenanceResponse ListWorldProvenance ()
+> ListWorldProvenanceResponse ListWorldProvenance (string listingIds = null)
 
 Provenance trails: where in Crossly World your purchases were found, newest first (optionally ?listingIds=a,b - - platform listing ids). data: [{ platformListingId, slug (the listing public slug), kind (room | window | stall | space | drop | auction | worn | agent), place (its name, or null when gone), at, line - - e.g. \"Found at The Sneaker Vault, Oct 2026\" }]. Yours only.
 
@@ -21690,11 +22345,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var listingIds = "listingIds_example";  // string |  (optional) 
 
             try
             {
                 // Provenance trails: where in Crossly World your purchases were found, newest first (optionally ?listingIds=a,b - - platform listing ids). data: [{ platformListingId, slug (the listing public slug), kind (room | window | stall | space | drop | auction | worn | agent), place (its name, or null when gone), at, line - - e.g. \"Found at The Sneaker Vault, Oct 2026\" }]. Yours only.
-                ListWorldProvenanceResponse result = apiInstance.ListWorldProvenance();
+                ListWorldProvenanceResponse result = apiInstance.ListWorldProvenance(listingIds);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -21709,7 +22365,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listingIds** | **string**|  | [optional] 
 
 ### Return type
 
@@ -22040,7 +22699,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldspaces"></a>
 # **ListWorldSpaces**
-> ListWorldSpacesResponse ListWorldSpaces ()
+> ListWorldSpacesResponse ListWorldSpaces (string venue = null)
 
 The Spaces directory: seller-hosted clubs with a venue, members and events (optional venue filter).
 
@@ -22064,11 +22723,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var venue = "stage";  // string |  (optional) 
 
             try
             {
                 // The Spaces directory: seller-hosted clubs with a venue, members and events (optional venue filter).
-                ListWorldSpacesResponse result = apiInstance.ListWorldSpaces();
+                ListWorldSpacesResponse result = apiInstance.ListWorldSpaces(venue);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22083,7 +22743,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **venue** | **string**|  | [optional] 
 
 ### Return type
 
@@ -22114,7 +22777,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldstaffapplicants"></a>
 # **ListWorldStaffApplicants**
-> ListWorldStaffApplicantsResponse ListWorldStaffApplicants ()
+> ListWorldStaffApplicantsResponse ListWorldStaffApplicants (string postingId = null)
 
 Who applied to your postings, with their worker reputation.
 
@@ -22138,11 +22801,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var postingId = "postingId_example";  // string |  (optional) 
 
             try
             {
                 // Who applied to your postings, with their worker reputation.
-                ListWorldStaffApplicantsResponse result = apiInstance.ListWorldStaffApplicants();
+                ListWorldStaffApplicantsResponse result = apiInstance.ListWorldStaffApplicants(postingId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22157,7 +22821,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postingId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -22780,7 +23447,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldvenues"></a>
 # **ListWorldVenues**
-> ListWorldVenuesResponse ListWorldVenues ()
+> ListWorldVenuesResponse ListWorldVenues (string from = null, string to = null)
 
 The Convention Center halls for rent: size, floor, booths, price per day, and the days already taken (from, to).
 
@@ -22804,11 +23471,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
 
             try
             {
                 // The Convention Center halls for rent: size, floor, booths, price per day, and the days already taken (from, to).
-                ListWorldVenuesResponse result = apiInstance.ListWorldVenues();
+                ListWorldVenuesResponse result = apiInstance.ListWorldVenues(from, to);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22823,7 +23492,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
 
 ### Return type
 
@@ -22854,7 +23527,7 @@ This endpoint does not need any parameter.
 
 <a name="updateshowroom"></a>
 # **UpdateShowroom**
-> UpdateShowroomResponse UpdateShowroom (Guid? storefrontId = null)
+> UpdateShowroomResponse UpdateShowroom (UpdateShowroomRequest updateShowroomRequest, Guid? storefrontId = null)
 
 Replace the whole showroom layout (room, fixtures, placements, settings). Validated as a whole: every item must be this store's, every pin must fit its fixture, no two pins share a slot. Send If-Match (or expectedVersion) to refuse with 409 version_conflict if it changed meanwhile.
 
@@ -22878,12 +23551,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateShowroomRequest = new UpdateShowroomRequest(); // UpdateShowroomRequest | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Replace the whole showroom layout (room, fixtures, placements, settings). Validated as a whole: every item must be this store's, every pin must fit its fixture, no two pins share a slot. Send If-Match (or expectedVersion) to refuse with 409 version_conflict if it changed meanwhile.
-                UpdateShowroomResponse result = apiInstance.UpdateShowroom(storefrontId);
+                UpdateShowroomResponse result = apiInstance.UpdateShowroom(updateShowroomRequest, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22901,6 +23575,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **updateShowroomRequest** | **UpdateShowroomRequest**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -22913,7 +23588,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -22932,7 +23607,7 @@ Name | Type | Description  | Notes
 
 <a name="updateshowroom2"></a>
 # **UpdateShowroom2**
-> UpdateShowroom2Response UpdateShowroom2 (Guid? storefrontId = null)
+> UpdateShowroom2Response UpdateShowroom2 (UpdateShowroom2Request updateShowroom2Request, Guid? storefrontId = null)
 
 Apply showroom ops in order, all or nothing: place, move, remove, fill (from a category / tag / brand / collection / search, in price, age, value or title order), sort, clear, add_fixture, update_fixture, remove_fixture, set_room, set_settings. Idempotent; refusals name the op (details.opIndex) with codes slot_occupied, item_not_in_store, fixture_capacity, unknown_fixture, unknown_display, version_conflict.
 
@@ -22956,12 +23631,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateShowroom2Request = new UpdateShowroom2Request(); // UpdateShowroom2Request | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Apply showroom ops in order, all or nothing: place, move, remove, fill (from a category / tag / brand / collection / search, in price, age, value or title order), sort, clear, add_fixture, update_fixture, remove_fixture, set_room, set_settings. Idempotent; refusals name the op (details.opIndex) with codes slot_occupied, item_not_in_store, fixture_capacity, unknown_fixture, unknown_display, version_conflict.
-                UpdateShowroom2Response result = apiInstance.UpdateShowroom2(storefrontId);
+                UpdateShowroom2Response result = apiInstance.UpdateShowroom2(updateShowroom2Request, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -22979,6 +23655,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **updateShowroom2Request** | **UpdateShowroom2Request**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -22991,7 +23668,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23010,7 +23687,7 @@ Name | Type | Description  | Notes
 
 <a name="updateshowroom3"></a>
 # **UpdateShowroom3**
-> UpdateShowroom2Response UpdateShowroom3 (string id, Guid? storefrontId = null)
+> UpdateShowroom2Response UpdateShowroom3 (string id, UpdateShowroom2Request updateShowroom2Request, Guid? storefrontId = null)
 
 Apply ops to one showroom in order, all or nothing (the same ops as PATCH /api/v1/showroom).
 
@@ -23035,12 +23712,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateShowroom2Request = new UpdateShowroom2Request(); // UpdateShowroom2Request | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Apply ops to one showroom in order, all or nothing (the same ops as PATCH /api/v1/showroom).
-                UpdateShowroom2Response result = apiInstance.UpdateShowroom3(id, storefrontId);
+                UpdateShowroom2Response result = apiInstance.UpdateShowroom3(id, updateShowroom2Request, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23059,6 +23737,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateShowroom2Request** | **UpdateShowroom2Request**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -23071,7 +23750,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23090,7 +23769,7 @@ Name | Type | Description  | Notes
 
 <a name="updateshowroombyid"></a>
 # **UpdateShowroomById**
-> UpdateShowroomResponse UpdateShowroomById (string id, Guid? storefrontId = null)
+> UpdateShowroomResponse UpdateShowroomById (string id, UpdateShowroomRequest updateShowroomRequest, Guid? storefrontId = null)
 
 Replace one showroom's whole layout. If-Match (or expectedVersion) refuses with 409 version_conflict on a concurrent edit.
 
@@ -23115,12 +23794,13 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateShowroomRequest = new UpdateShowroomRequest(); // UpdateShowroomRequest | 
             var storefrontId = "storefrontId_example";  // Guid? | Which store (else X-Storefront-Id, else your default store). (optional) 
 
             try
             {
                 // Replace one showroom's whole layout. If-Match (or expectedVersion) refuses with 409 version_conflict on a concurrent edit.
-                UpdateShowroomResponse result = apiInstance.UpdateShowroomById(id, storefrontId);
+                UpdateShowroomResponse result = apiInstance.UpdateShowroomById(id, updateShowroomRequest, storefrontId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23139,6 +23819,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateShowroomRequest** | **UpdateShowroomRequest**|  | 
  **storefrontId** | **Guid?**| Which store (else X-Storefront-Id, else your default store). | [optional] 
 
 ### Return type
@@ -23151,7 +23832,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23248,7 +23929,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialscenenode"></a>
 # **UpdateSpatialSceneNode**
-> UpdateSpatialSceneNodeResponse UpdateSpatialSceneNode (string id, string nodeId)
+> UpdateSpatialSceneNodeResponse UpdateSpatialSceneNode (string id, string nodeId, UpdateSpatialSceneNodeRequest updateSpatialSceneNodeRequest)
 
 Move a rack in one of your warehouse rooms (position in metres).
 
@@ -23274,11 +23955,12 @@ namespace Example
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
             var nodeId = "nodeId_example";  // string | 
+            var updateSpatialSceneNodeRequest = new UpdateSpatialSceneNodeRequest(); // UpdateSpatialSceneNodeRequest | 
 
             try
             {
                 // Move a rack in one of your warehouse rooms (position in metres).
-                UpdateSpatialSceneNodeResponse result = apiInstance.UpdateSpatialSceneNode(id, nodeId);
+                UpdateSpatialSceneNodeResponse result = apiInstance.UpdateSpatialSceneNode(id, nodeId, updateSpatialSceneNodeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23298,6 +23980,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **nodeId** | **string**|  | 
+ **updateSpatialSceneNodeRequest** | **UpdateSpatialSceneNodeRequest**|  | 
 
 ### Return type
 
@@ -23309,7 +23992,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23328,7 +24011,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialscenesetting"></a>
 # **UpdateSpatialSceneSetting**
-> SpatialSceneResponse UpdateSpatialSceneSetting (string id)
+> SpatialSceneResponse UpdateSpatialSceneSetting (string id, UpdateSpatialSceneSettingRequest updateSpatialSceneSettingRequest = null)
 
 How one of your rooms is laid out and lit: grouping and sort keys, theme, overlay and the arrival camera. Cosmetics and the shop layout have their own writers.
 
@@ -23353,11 +24036,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateSpatialSceneSettingRequest = new UpdateSpatialSceneSettingRequest(); // UpdateSpatialSceneSettingRequest |  (optional) 
 
             try
             {
                 // How one of your rooms is laid out and lit: grouping and sort keys, theme, overlay and the arrival camera. Cosmetics and the shop layout have their own writers.
-                SpatialSceneResponse result = apiInstance.UpdateSpatialSceneSetting(id);
+                SpatialSceneResponse result = apiInstance.UpdateSpatialSceneSetting(id, updateSpatialSceneSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23376,6 +24060,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateSpatialSceneSettingRequest** | **UpdateSpatialSceneSettingRequest**|  | [optional] 
 
 ### Return type
 
@@ -23387,7 +24072,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23406,7 +24091,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialsceneshoplayout"></a>
 # **UpdateSpatialSceneShopLayout**
-> UpdateSpatialSceneShopLayoutResponse UpdateSpatialSceneShopLayout (string id)
+> UpdateSpatialSceneShopLayoutResponse UpdateSpatialSceneShopLayout (string id, UpdateSpatialSceneShopLayoutRequest updateSpatialSceneShopLayoutRequest)
 
 Save your shop room's sections and displays (validated server-side; the response is the stored layout).
 
@@ -23431,11 +24116,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateSpatialSceneShopLayoutRequest = new UpdateSpatialSceneShopLayoutRequest(); // UpdateSpatialSceneShopLayoutRequest | 
 
             try
             {
                 // Save your shop room's sections and displays (validated server-side; the response is the stored layout).
-                UpdateSpatialSceneShopLayoutResponse result = apiInstance.UpdateSpatialSceneShopLayout(id);
+                UpdateSpatialSceneShopLayoutResponse result = apiInstance.UpdateSpatialSceneShopLayout(id, updateSpatialSceneShopLayoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23454,6 +24140,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateSpatialSceneShopLayoutRequest** | **UpdateSpatialSceneShopLayoutRequest**|  | 
 
 ### Return type
 
@@ -23465,7 +24152,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23484,7 +24171,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialscenewindow"></a>
 # **UpdateSpatialSceneWindow**
-> UpdateSpatialSceneWindowResponse UpdateSpatialSceneWindow (string id)
+> UpdateSpatialSceneWindowResponse UpdateSpatialSceneWindow (string id, UpdateBrandDropListingRequest updateBrandDropListingRequest)
 
 Choose up to three of your live Crossly listings for the street window of your shop, in slot order. Picks that sell drop out and the newest fill in; an empty list goes back to newest first.
 
@@ -23509,11 +24196,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateBrandDropListingRequest = new UpdateBrandDropListingRequest(); // UpdateBrandDropListingRequest | 
 
             try
             {
                 // Choose up to three of your live Crossly listings for the street window of your shop, in slot order. Picks that sell drop out and the newest fill in; an empty list goes back to newest first.
-                UpdateSpatialSceneWindowResponse result = apiInstance.UpdateSpatialSceneWindow(id);
+                UpdateSpatialSceneWindowResponse result = apiInstance.UpdateSpatialSceneWindow(id, updateBrandDropListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23532,6 +24220,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateBrandDropListingRequest** | **UpdateBrandDropListingRequest**|  | 
 
 ### Return type
 
@@ -23543,7 +24232,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23640,7 +24329,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialstreetowned"></a>
 # **UpdateSpatialStreetOwned**
-> SpatialStreetResponse UpdateSpatialStreetOwned (string id)
+> SpatialStreetResponse UpdateSpatialStreetOwned (string id, UpdateSpatialStreetOwnedRequest updateSpatialStreetOwnedRequest)
 
 Who may open a shop on a street you own (open, apply or invite).
 
@@ -23665,11 +24354,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateSpatialStreetOwnedRequest = new UpdateSpatialStreetOwnedRequest(); // UpdateSpatialStreetOwnedRequest | 
 
             try
             {
                 // Who may open a shop on a street you own (open, apply or invite).
-                SpatialStreetResponse result = apiInstance.UpdateSpatialStreetOwned(id);
+                SpatialStreetResponse result = apiInstance.UpdateSpatialStreetOwned(id, updateSpatialStreetOwnedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23688,6 +24378,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateSpatialStreetOwnedRequest** | **UpdateSpatialStreetOwnedRequest**|  | 
 
 ### Return type
 
@@ -23699,7 +24390,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23718,7 +24409,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldattendant"></a>
 # **UpdateWorldAttendant**
-> UpdateWorldAttendantResponse UpdateWorldAttendant ()
+> UpdateWorldAttendantResponse UpdateWorldAttendant (UpdateWorldAttendantRequest updateWorldAttendantRequest)
 
 Create or replace your AI attendant (BYOK: switching it on needs your AI key).
 
@@ -23742,11 +24433,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldAttendantRequest = new UpdateWorldAttendantRequest(); // UpdateWorldAttendantRequest | 
 
             try
             {
                 // Create or replace your AI attendant (BYOK: switching it on needs your AI key).
-                UpdateWorldAttendantResponse result = apiInstance.UpdateWorldAttendant();
+                UpdateWorldAttendantResponse result = apiInstance.UpdateWorldAttendant(updateWorldAttendantRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23761,7 +24453,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldAttendantRequest** | **UpdateWorldAttendantRequest**|  | 
 
 ### Return type
 
@@ -23773,7 +24468,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23792,7 +24487,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldavataridentity"></a>
 # **UpdateWorldAvatarIdentity**
-> UpdateWorldAvatarIdentityResponse UpdateWorldAvatarIdentity ()
+> UpdateWorldAvatarIdentityResponse UpdateWorldAvatarIdentity (UpdateWorldAvatarIdentityRequest updateWorldAvatarIdentityRequest = null)
 
 Choose named or anonymous. Rooms you are already in keep the old answer until you rejoin.
 
@@ -23816,11 +24511,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldAvatarIdentityRequest = new UpdateWorldAvatarIdentityRequest(); // UpdateWorldAvatarIdentityRequest |  (optional) 
 
             try
             {
                 // Choose named or anonymous. Rooms you are already in keep the old answer until you rejoin.
-                UpdateWorldAvatarIdentityResponse result = apiInstance.UpdateWorldAvatarIdentity();
+                UpdateWorldAvatarIdentityResponse result = apiInstance.UpdateWorldAvatarIdentity(updateWorldAvatarIdentityRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23835,7 +24531,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldAvatarIdentityRequest** | **UpdateWorldAvatarIdentityRequest**|  | [optional] 
 
 ### Return type
 
@@ -23847,7 +24546,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -23866,7 +24565,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldavatarlook"></a>
 # **UpdateWorldAvatarLook**
-> UpdateWorldAvatarLookResponse UpdateWorldAvatarLook ()
+> UpdateWorldAvatarLookResponse UpdateWorldAvatarLook (UpdateWorldAvatarLookRequest updateWorldAvatarLookRequest = null)
 
 Save your world look to the account, so every device starts from it. look: null stays anonymous. appearance.outfit = { top, outer, bottom, shoes, hat } picks the basic outfit (GET /v1/world/avatar/basics).
 
@@ -23890,11 +24589,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldAvatarLookRequest = new UpdateWorldAvatarLookRequest(); // UpdateWorldAvatarLookRequest |  (optional) 
 
             try
             {
                 // Save your world look to the account, so every device starts from it. look: null stays anonymous. appearance.outfit = { top, outer, bottom, shoes, hat } picks the basic outfit (GET /v1/world/avatar/basics).
-                UpdateWorldAvatarLookResponse result = apiInstance.UpdateWorldAvatarLook();
+                UpdateWorldAvatarLookResponse result = apiInstance.UpdateWorldAvatarLook(updateWorldAvatarLookRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -23909,7 +24609,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldAvatarLookRequest** | **UpdateWorldAvatarLookRequest**|  | [optional] 
 
 ### Return type
 
@@ -23921,7 +24624,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24014,7 +24717,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldcapabilitywear"></a>
 # **UpdateWorldCapabilityWear**
-> GetWorldCapabilityWearResponse UpdateWorldCapabilityWear ()
+> GetWorldCapabilityWearResponse UpdateWorldCapabilityWear (UpdateWorldCapabilityWearRequest updateWorldCapabilityWearRequest = null)
 
 Wear a held token on an avatar slot (refId from GET /v1/world/capabilities), or pass refId null to take it off. Its collection must declare a wear capability for that slot.
 
@@ -24038,11 +24741,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldCapabilityWearRequest = new UpdateWorldCapabilityWearRequest(); // UpdateWorldCapabilityWearRequest |  (optional) 
 
             try
             {
                 // Wear a held token on an avatar slot (refId from GET /v1/world/capabilities), or pass refId null to take it off. Its collection must declare a wear capability for that slot.
-                GetWorldCapabilityWearResponse result = apiInstance.UpdateWorldCapabilityWear();
+                GetWorldCapabilityWearResponse result = apiInstance.UpdateWorldCapabilityWear(updateWorldCapabilityWearRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24057,7 +24761,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldCapabilityWearRequest** | **UpdateWorldCapabilityWearRequest**|  | [optional] 
 
 ### Return type
 
@@ -24069,7 +24776,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24168,7 +24875,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldcontrol"></a>
 # **UpdateWorldControl**
-> GetWorldControlResponse UpdateWorldControl ()
+> GetWorldControlResponse UpdateWorldControl (UpdateWorldControlRequest updateWorldControlRequest = null)
 
 Save your world controls settings to the account (any subset of prefs; out-of-range values take the default) and/or mark the controls tutorial seen.
 
@@ -24192,11 +24899,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldControlRequest = new UpdateWorldControlRequest(); // UpdateWorldControlRequest |  (optional) 
 
             try
             {
                 // Save your world controls settings to the account (any subset of prefs; out-of-range values take the default) and/or mark the controls tutorial seen.
-                GetWorldControlResponse result = apiInstance.UpdateWorldControl();
+                GetWorldControlResponse result = apiInstance.UpdateWorldControl(updateWorldControlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24211,7 +24919,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldControlRequest** | **UpdateWorldControlRequest**|  | [optional] 
 
 ### Return type
 
@@ -24223,7 +24934,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24242,7 +24953,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldconventionhall"></a>
 # **UpdateWorldConventionHall**
-> UpdateWorldConventionHallResponse UpdateWorldConventionHall (string id)
+> UpdateWorldConventionHallResponse UpdateWorldConventionHall (string id, UpdateWorldConventionHallRequest updateWorldConventionHallRequest = null)
 
 Save the hall design: { doc, expectedVersion }. Refused on overlaps, narrow aisles, too many booths or a booth with a seller removed.
 
@@ -24267,11 +24978,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateWorldConventionHallRequest = new UpdateWorldConventionHallRequest(); // UpdateWorldConventionHallRequest |  (optional) 
 
             try
             {
                 // Save the hall design: { doc, expectedVersion }. Refused on overlaps, narrow aisles, too many booths or a booth with a seller removed.
-                UpdateWorldConventionHallResponse result = apiInstance.UpdateWorldConventionHall(id);
+                UpdateWorldConventionHallResponse result = apiInstance.UpdateWorldConventionHall(id, updateWorldConventionHallRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24290,6 +25002,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateWorldConventionHallRequest** | **UpdateWorldConventionHallRequest**|  | [optional] 
 
 ### Return type
 
@@ -24301,7 +25014,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24320,7 +25033,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldconventionmybooth"></a>
 # **UpdateWorldConventionMyBooth**
-> UpdateWorldConventionMyBoothResponse UpdateWorldConventionMyBooth (string id)
+> UpdateWorldConventionMyBoothResponse UpdateWorldConventionMyBooth (string id, UpdateBrandDropListingRequest updateBrandDropListingRequest = null)
 
 Pick what your booth shows: { listingIds } — any of your live listings, up to the tier’s capacity.
 
@@ -24345,11 +25058,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateBrandDropListingRequest = new UpdateBrandDropListingRequest(); // UpdateBrandDropListingRequest |  (optional) 
 
             try
             {
                 // Pick what your booth shows: { listingIds } — any of your live listings, up to the tier’s capacity.
-                UpdateWorldConventionMyBoothResponse result = apiInstance.UpdateWorldConventionMyBooth(id);
+                UpdateWorldConventionMyBoothResponse result = apiInstance.UpdateWorldConventionMyBooth(id, updateBrandDropListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24368,6 +25082,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateBrandDropListingRequest** | **UpdateBrandDropListingRequest**|  | [optional] 
 
 ### Return type
 
@@ -24379,7 +25094,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24398,7 +25113,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldconventionstatus"></a>
 # **UpdateWorldConventionStatus**
-> UpdateWorldConventionStatusResponse UpdateWorldConventionStatus (string id)
+> UpdateWorldConventionStatusResponse UpdateWorldConventionStatus (string id, UpdateWorldConventionStatusRequest updateWorldConventionStatusRequest = null)
 
 Open, start, end or cancel a convention you host.
 
@@ -24423,11 +25138,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateWorldConventionStatusRequest = new UpdateWorldConventionStatusRequest(); // UpdateWorldConventionStatusRequest |  (optional) 
 
             try
             {
                 // Open, start, end or cancel a convention you host.
-                UpdateWorldConventionStatusResponse result = apiInstance.UpdateWorldConventionStatus(id);
+                UpdateWorldConventionStatusResponse result = apiInstance.UpdateWorldConventionStatus(id, updateWorldConventionStatusRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24446,6 +25162,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateWorldConventionStatusRequest** | **UpdateWorldConventionStatusRequest**|  | [optional] 
 
 ### Return type
 
@@ -24457,7 +25174,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24476,7 +25193,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldcosmdesignchainautounlock"></a>
 # **UpdateWorldCosmDesignChainAutoUnlock**
-> CreateCosmDesignerChainAutoUnlockResponse UpdateWorldCosmDesignChainAutoUnlock (string id)
+> CreateCosmDesignerChainAutoUnlockResponse UpdateWorldCosmDesignChainAutoUnlock (string id, EnabledRequest enabledRequest = null)
 
 Opt one of your COSM designs in or out of the free chain unlock it earns when popular (on by default). Answers its popularity.
 
@@ -24501,11 +25218,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var enabledRequest = new EnabledRequest(); // EnabledRequest |  (optional) 
 
             try
             {
                 // Opt one of your COSM designs in or out of the free chain unlock it earns when popular (on by default). Answers its popularity.
-                CreateCosmDesignerChainAutoUnlockResponse result = apiInstance.UpdateWorldCosmDesignChainAutoUnlock(id);
+                CreateCosmDesignerChainAutoUnlockResponse result = apiInstance.UpdateWorldCosmDesignChainAutoUnlock(id, enabledRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24524,6 +25242,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **enabledRequest** | **EnabledRequest**|  | [optional] 
 
 ### Return type
 
@@ -24535,7 +25254,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24632,7 +25351,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldfitvalueshare"></a>
 # **UpdateWorldFitValueShare**
-> UpdateWorldFitValueShareResponse UpdateWorldFitValueShare ()
+> UpdateWorldFitValueShareResponse UpdateWorldFitValueShare (UpdateWorldFitValueShareRequest updateWorldFitValueShareRequest = null)
 
 Whether people in a room can see what your outfit is worth.
 
@@ -24656,11 +25375,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldFitValueShareRequest = new UpdateWorldFitValueShareRequest(); // UpdateWorldFitValueShareRequest |  (optional) 
 
             try
             {
                 // Whether people in a room can see what your outfit is worth.
-                UpdateWorldFitValueShareResponse result = apiInstance.UpdateWorldFitValueShare();
+                UpdateWorldFitValueShareResponse result = apiInstance.UpdateWorldFitValueShare(updateWorldFitValueShareRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24675,7 +25395,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldFitValueShareRequest** | **UpdateWorldFitValueShareRequest**|  | [optional] 
 
 ### Return type
 
@@ -24687,7 +25410,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24706,7 +25429,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldhome"></a>
 # **UpdateWorldHome**
-> WorldHomeResponse UpdateWorldHome ()
+> WorldHomeResponse UpdateWorldHome (UpdateWorldHomeRequest updateWorldHomeRequest = null)
 
 Your home: privacy (open, friends, private), theme, and wall, floor and mood decor you hold.
 
@@ -24730,11 +25453,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldHomeRequest = new UpdateWorldHomeRequest(); // UpdateWorldHomeRequest |  (optional) 
 
             try
             {
                 // Your home: privacy (open, friends, private), theme, and wall, floor and mood decor you hold.
-                WorldHomeResponse result = apiInstance.UpdateWorldHome();
+                WorldHomeResponse result = apiInstance.UpdateWorldHome(updateWorldHomeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24749,7 +25473,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldHomeRequest** | **UpdateWorldHomeRequest**|  | [optional] 
 
 ### Return type
 
@@ -24761,7 +25488,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24858,7 +25585,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldhomelayout"></a>
 # **UpdateWorldHomeLayout**
-> WorldHomeResponse UpdateWorldHomeLayout ()
+> WorldHomeResponse UpdateWorldHomeLayout (UpdateWorldHomeLayoutRequest updateWorldHomeLayoutRequest = null)
 
 Arrange your home: the full layout (up to 200 pieces you own), validated server-side.
 
@@ -24882,11 +25609,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldApi(config);
+            var updateWorldHomeLayoutRequest = new UpdateWorldHomeLayoutRequest(); // UpdateWorldHomeLayoutRequest |  (optional) 
 
             try
             {
                 // Arrange your home: the full layout (up to 200 pieces you own), validated server-side.
-                WorldHomeResponse result = apiInstance.UpdateWorldHomeLayout();
+                WorldHomeResponse result = apiInstance.UpdateWorldHomeLayout(updateWorldHomeLayoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24901,7 +25629,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldHomeLayoutRequest** | **UpdateWorldHomeLayoutRequest**|  | [optional] 
 
 ### Return type
 
@@ -24913,7 +25644,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -24932,7 +25663,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldhomelayoutbyslug"></a>
 # **UpdateWorldHomeLayoutBySlug**
-> WorldHomeResponse UpdateWorldHomeLayoutBySlug (string slug)
+> WorldHomeResponse UpdateWorldHomeLayoutBySlug (string slug, UpdateWorldHomeLayoutRequest updateWorldHomeLayoutRequest = null)
 
 Rearrange a home you co-build (never adding the owner bought pieces).
 
@@ -24957,11 +25688,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var updateWorldHomeLayoutRequest = new UpdateWorldHomeLayoutRequest(); // UpdateWorldHomeLayoutRequest |  (optional) 
 
             try
             {
                 // Rearrange a home you co-build (never adding the owner bought pieces).
-                WorldHomeResponse result = apiInstance.UpdateWorldHomeLayoutBySlug(slug);
+                WorldHomeResponse result = apiInstance.UpdateWorldHomeLayoutBySlug(slug, updateWorldHomeLayoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -24980,6 +25712,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **updateWorldHomeLayoutRequest** | **UpdateWorldHomeLayoutRequest**|  | [optional] 
 
 ### Return type
 
@@ -24991,7 +25724,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25010,7 +25743,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldinteractivedesigndraft"></a>
 # **UpdateWorldInteractiveDesignDraft**
-> UpdateWorldInteractiveDesignDraftResponse UpdateWorldInteractiveDesignDraft (string id)
+> UpdateWorldInteractiveDesignDraftResponse UpdateWorldInteractiveDesignDraft (string id, UpdateWorldInteractiveDesignDraftRequest updateWorldInteractiveDesignDraftRequest = null)
 
 Save the draft MML source (up to 64 KB); the response carries its static check.
 
@@ -25035,11 +25768,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateWorldInteractiveDesignDraftRequest = new UpdateWorldInteractiveDesignDraftRequest(); // UpdateWorldInteractiveDesignDraftRequest |  (optional) 
 
             try
             {
                 // Save the draft MML source (up to 64 KB); the response carries its static check.
-                UpdateWorldInteractiveDesignDraftResponse result = apiInstance.UpdateWorldInteractiveDesignDraft(id);
+                UpdateWorldInteractiveDesignDraftResponse result = apiInstance.UpdateWorldInteractiveDesignDraft(id, updateWorldInteractiveDesignDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25058,6 +25792,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateWorldInteractiveDesignDraftRequest** | **UpdateWorldInteractiveDesignDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -25069,7 +25804,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25088,7 +25823,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldlistingholdersonly"></a>
 # **UpdateWorldListingHoldersOnly**
-> UpdateWorldListingHoldersOnlyResponse UpdateWorldListingHoldersOnly (string id)
+> UpdateWorldListingHoldersOnlyResponse UpdateWorldListingHoldersOnly (string id, EnabledRequest enabledRequest = null)
 
 Reserve one of your listings for holders of a collection you declared a holders_only perk for (or release it). Checkout refuses anybody else.
 
@@ -25113,11 +25848,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var enabledRequest = new EnabledRequest(); // EnabledRequest |  (optional) 
 
             try
             {
                 // Reserve one of your listings for holders of a collection you declared a holders_only perk for (or release it). Checkout refuses anybody else.
-                UpdateWorldListingHoldersOnlyResponse result = apiInstance.UpdateWorldListingHoldersOnly(id);
+                UpdateWorldListingHoldersOnlyResponse result = apiInstance.UpdateWorldListingHoldersOnly(id, enabledRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25136,6 +25872,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **enabledRequest** | **EnabledRequest**|  | [optional] 
 
 ### Return type
 
@@ -25147,7 +25884,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25324,7 +26061,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldpropertyplotphoto"></a>
 # **UpdateWorldPropertyPlotPhoto**
-> UpdateWorldPropertyPlotPhotoResponse UpdateWorldPropertyPlotPhoto (string plotId)
+> UpdateWorldPropertyPlotPhotoResponse UpdateWorldPropertyPlotPhoto (string plotId, UpdateWorldPropertyPlotPhotoRequest updateWorldPropertyPlotPhotoRequest)
 
 Store a plot's photo: an image of its frontage you uploaded through POST .../photo/upload-url, a render (buildKey must be the plot's current one) or an in-world capture.
 
@@ -25349,11 +26086,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var plotId = "plotId_example";  // string | 
+            var updateWorldPropertyPlotPhotoRequest = new UpdateWorldPropertyPlotPhotoRequest(); // UpdateWorldPropertyPlotPhotoRequest | 
 
             try
             {
                 // Store a plot's photo: an image of its frontage you uploaded through POST .../photo/upload-url, a render (buildKey must be the plot's current one) or an in-world capture.
-                UpdateWorldPropertyPlotPhotoResponse result = apiInstance.UpdateWorldPropertyPlotPhoto(plotId);
+                UpdateWorldPropertyPlotPhotoResponse result = apiInstance.UpdateWorldPropertyPlotPhoto(plotId, updateWorldPropertyPlotPhotoRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25372,6 +26110,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **plotId** | **string**|  | 
+ **updateWorldPropertyPlotPhotoRequest** | **UpdateWorldPropertyPlotPhotoRequest**|  | 
 
 ### Return type
 
@@ -25383,7 +26122,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25402,7 +26141,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldpropertyrenting"></a>
 # **UpdateWorldPropertyRenting**
-> UpdateWorldPropertyRentingResponse UpdateWorldPropertyRenting (string leaseId)
+> UpdateWorldPropertyRentingResponse UpdateWorldPropertyRenting (string leaseId, UpdateWorldPropertyRentingRequest updateWorldPropertyRentingRequest)
 
 Turn weekly autopay on or off (card leases).
 
@@ -25427,11 +26166,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var leaseId = "leaseId_example";  // string | 
+            var updateWorldPropertyRentingRequest = new UpdateWorldPropertyRentingRequest(); // UpdateWorldPropertyRentingRequest | 
 
             try
             {
                 // Turn weekly autopay on or off (card leases).
-                UpdateWorldPropertyRentingResponse result = apiInstance.UpdateWorldPropertyRenting(leaseId);
+                UpdateWorldPropertyRentingResponse result = apiInstance.UpdateWorldPropertyRenting(leaseId, updateWorldPropertyRentingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25450,6 +26190,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **leaseId** | **string**|  | 
+ **updateWorldPropertyRentingRequest** | **UpdateWorldPropertyRentingRequest**|  | 
 
 ### Return type
 
@@ -25461,7 +26202,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25636,7 +26377,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldspace"></a>
 # **UpdateWorldSpace**
-> UpdateWorldSpaceResponse UpdateWorldSpace (string slug)
+> UpdateWorldSpaceResponse UpdateWorldSpace (string slug, UpdateWorldSpaceRequest updateWorldSpaceRequest)
 
 As host, change a Space name, about or membership.
 
@@ -25661,11 +26402,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var slug = "slug_example";  // string | 
+            var updateWorldSpaceRequest = new UpdateWorldSpaceRequest(); // UpdateWorldSpaceRequest | 
 
             try
             {
                 // As host, change a Space name, about or membership.
-                UpdateWorldSpaceResponse result = apiInstance.UpdateWorldSpace(slug);
+                UpdateWorldSpaceResponse result = apiInstance.UpdateWorldSpace(slug, updateWorldSpaceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25684,6 +26426,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**|  | 
+ **updateWorldSpaceRequest** | **UpdateWorldSpaceRequest**|  | 
 
 ### Return type
 
@@ -25695,7 +26438,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25792,7 +26535,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldstaffposting"></a>
 # **UpdateWorldStaffPosting**
-> WorldStaffPostingResponse UpdateWorldStaffPosting (string id)
+> WorldStaffPostingResponse UpdateWorldStaffPosting (string id, CreateWorldStaffPostingRequest createWorldStaffPostingRequest)
 
 Replace a posting; its future unstaffed shifts are re-made.
 
@@ -25817,11 +26560,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var createWorldStaffPostingRequest = new CreateWorldStaffPostingRequest(); // CreateWorldStaffPostingRequest | 
 
             try
             {
                 // Replace a posting; its future unstaffed shifts are re-made.
-                WorldStaffPostingResponse result = apiInstance.UpdateWorldStaffPosting(id);
+                WorldStaffPostingResponse result = apiInstance.UpdateWorldStaffPosting(id, createWorldStaffPostingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25840,6 +26584,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createWorldStaffPostingRequest** | **CreateWorldStaffPostingRequest**|  | 
 
 ### Return type
 
@@ -25851,7 +26596,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -25948,9 +26693,9 @@ Name | Type | Description  | Notes
 
 <a name="updateworldstreetownedtheme"></a>
 # **UpdateWorldStreetOwnedTheme**
-> UpdateWorldStreetOwnedThemeResponse UpdateWorldStreetOwnedTheme (string id)
+> UpdateWorldStreetOwnedThemeResponse UpdateWorldStreetOwnedTheme (string id, UpdateWorldStreetOwnedThemeRequest updateWorldStreetOwnedThemeRequest)
 
-Set your street's theme.
+Set your store's street theme.
 
 ### Example
 ```csharp
@@ -25973,11 +26718,12 @@ namespace Example
 
             var apiInstance = new WorldApi(config);
             var id = "id_example";  // string | 
+            var updateWorldStreetOwnedThemeRequest = new UpdateWorldStreetOwnedThemeRequest(); // UpdateWorldStreetOwnedThemeRequest | 
 
             try
             {
-                // Set your street's theme.
-                UpdateWorldStreetOwnedThemeResponse result = apiInstance.UpdateWorldStreetOwnedTheme(id);
+                // Set your store's street theme.
+                UpdateWorldStreetOwnedThemeResponse result = apiInstance.UpdateWorldStreetOwnedTheme(id, updateWorldStreetOwnedThemeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -25996,6 +26742,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateWorldStreetOwnedThemeRequest** | **UpdateWorldStreetOwnedThemeRequest**|  | 
 
 ### Return type
 
@@ -26007,7 +26754,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

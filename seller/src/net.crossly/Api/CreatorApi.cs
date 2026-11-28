@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <returns>CreateCreatorExperienceKeyResponse</returns>
-        CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey();
+        CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest));
 
         /// <summary>
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
@@ -40,15 +41,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorExperienceKeyResponse</returns>
-        ApiResponse<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyWithHttpInfo();
+        ApiResponse<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyWithHttpInfo(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest));
         /// <summary>
         /// Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 &#x3D; revoke now, max 168).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <returns>CreateCreatorExperienceKeyRotateResponse</returns>
-        CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate(string id);
+        CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest));
 
         /// <summary>
         /// Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 &#x3D; revoke now, max 168).
@@ -58,8 +61,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorExperienceKeyRotateResponse</returns>
-        ApiResponse<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateWithHttpInfo(string id);
+        ApiResponse<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateWithHttpInfo(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest));
         /// <summary>
         /// Revoke an experience key now. Never needs a plan: a credential must always be revocable.
         /// </summary>
@@ -98,8 +102,10 @@ namespace net.crossly.Api
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <returns>ListCreatorExperienceKeysResponse</returns>
-        ListCreatorExperienceKeysResponse ListCreatorExperienceKeys();
+        ListCreatorExperienceKeysResponse ListCreatorExperienceKeys(string includeRevoked = default(string), string experienceId = default(string));
 
         /// <summary>
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;.
@@ -108,8 +114,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorExperienceKeysResponse</returns>
-        ApiResponse<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysWithHttpInfo();
+        ApiResponse<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysWithHttpInfo(string includeRevoked = default(string), string experienceId = default(string));
         #endregion Synchronous Operations
     }
 
@@ -126,9 +134,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorExperienceKeyResponse</returns>
-        System.Threading.Tasks.Task<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyAsync(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
@@ -137,9 +146,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorExperienceKeyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCreatorExperienceKeyResponse>> CreateCreatorExperienceKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorExperienceKeyResponse>> CreateCreatorExperienceKeyWithHttpInfoAsync(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 &#x3D; revoke now, max 168).
         /// </summary>
@@ -148,9 +158,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorExperienceKeyRotateResponse</returns>
-        System.Threading.Tasks.Task<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateAsync(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 &#x3D; revoke now, max 168).
@@ -160,9 +171,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorExperienceKeyRotateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCreatorExperienceKeyRotateResponse>> CreateCreatorExperienceKeyRotateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCreatorExperienceKeyRotateResponse>> CreateCreatorExperienceKeyRotateWithHttpInfoAsync(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Revoke an experience key now. Never needs a plan: a credential must always be revocable.
         /// </summary>
@@ -214,9 +226,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorExperienceKeysResponse</returns>
-        System.Threading.Tasks.Task<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysAsync(string includeRevoked = default(string), string experienceId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;.
@@ -225,9 +239,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorExperienceKeysResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCreatorExperienceKeysResponse>> ListCreatorExperienceKeysWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCreatorExperienceKeysResponse>> ListCreatorExperienceKeysWithHttpInfoAsync(string includeRevoked = default(string), string experienceId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -352,10 +368,11 @@ namespace net.crossly.Api
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <returns>CreateCreatorExperienceKeyResponse</returns>
-        public CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey()
+        public CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> localVarResponse = CreateCreatorExperienceKeyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> localVarResponse = CreateCreatorExperienceKeyWithHttpInfo(createCreatorExperienceKeyRequest);
             return localVarResponse.Data;
         }
 
@@ -363,12 +380,14 @@ namespace net.crossly.Api
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorExperienceKeyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyWithHttpInfo(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -388,6 +407,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorExperienceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -414,11 +434,12 @@ namespace net.crossly.Api
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorExperienceKeyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCreatorExperienceKeyResponse> CreateCreatorExperienceKeyAsync(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> localVarResponse = await CreateCreatorExperienceKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse> localVarResponse = await CreateCreatorExperienceKeyWithHttpInfoAsync(createCreatorExperienceKeyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -426,14 +447,16 @@ namespace net.crossly.Api
         /// Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCreatorExperienceKeyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorExperienceKeyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse>> CreateCreatorExperienceKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyResponse>> CreateCreatorExperienceKeyWithHttpInfoAsync(CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = default(CreateCreatorExperienceKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -453,6 +476,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCreatorExperienceKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -481,10 +505,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <returns>CreateCreatorExperienceKeyRotateResponse</returns>
-        public CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate(string id)
+        public CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> localVarResponse = CreateCreatorExperienceKeyRotateWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> localVarResponse = CreateCreatorExperienceKeyRotateWithHttpInfo(id, createCreatorExperienceKeyRotateRequest);
             return localVarResponse.Data;
         }
 
@@ -493,8 +518,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCreatorExperienceKeyRotateResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateWithHttpInfo(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -505,6 +531,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -525,6 +552,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorExperienceKeyRotateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -552,11 +580,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCreatorExperienceKeyRotateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCreatorExperienceKeyRotateResponse> CreateCreatorExperienceKeyRotateAsync(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> localVarResponse = await CreateCreatorExperienceKeyRotateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse> localVarResponse = await CreateCreatorExperienceKeyRotateWithHttpInfoAsync(id, createCreatorExperienceKeyRotateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -565,9 +594,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createCreatorExperienceKeyRotateRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCreatorExperienceKeyRotateResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse>> CreateCreatorExperienceKeyRotateWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCreatorExperienceKeyRotateResponse>> CreateCreatorExperienceKeyRotateWithHttpInfoAsync(string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = default(CreateCreatorExperienceKeyRotateRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -579,6 +609,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -599,6 +630,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createCreatorExperienceKeyRotateRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -900,10 +932,12 @@ namespace net.crossly.Api
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <returns>ListCreatorExperienceKeysResponse</returns>
-        public ListCreatorExperienceKeysResponse ListCreatorExperienceKeys()
+        public ListCreatorExperienceKeysResponse ListCreatorExperienceKeys(string includeRevoked = default(string), string experienceId = default(string))
         {
-            net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> localVarResponse = ListCreatorExperienceKeysWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> localVarResponse = ListCreatorExperienceKeysWithHttpInfo(includeRevoked, experienceId);
             return localVarResponse.Data;
         }
 
@@ -911,8 +945,10 @@ namespace net.crossly.Api
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <returns>ApiResponse of ListCreatorExperienceKeysResponse</returns>
-        public net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysWithHttpInfo(string includeRevoked = default(string), string experienceId = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -936,6 +972,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (includeRevoked != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "includeRevoked", includeRevoked));
+            }
+            if (experienceId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "experienceId", experienceId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -962,11 +1006,13 @@ namespace net.crossly.Api
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCreatorExperienceKeysResponse</returns>
-        public async System.Threading.Tasks.Task<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCreatorExperienceKeysResponse> ListCreatorExperienceKeysAsync(string includeRevoked = default(string), string experienceId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> localVarResponse = await ListCreatorExperienceKeysWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse> localVarResponse = await ListCreatorExperienceKeysWithHttpInfoAsync(includeRevoked, experienceId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -974,9 +1020,11 @@ namespace net.crossly.Api
         /// Your experience API keys, newest first (never the secret). ?includeRevoked&#x3D;true for the history; ?experienceId&#x3D; for the keys that reach one game (a game&#39;s own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor&#x3D;. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="includeRevoked"> (optional)</param>
+        /// <param name="experienceId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCreatorExperienceKeysResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse>> ListCreatorExperienceKeysWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCreatorExperienceKeysResponse>> ListCreatorExperienceKeysWithHttpInfoAsync(string includeRevoked = default(string), string experienceId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1001,6 +1049,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (includeRevoked != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "includeRevoked", includeRevoked));
+            }
+            if (experienceId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "experienceId", experienceId));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

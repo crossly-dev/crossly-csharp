@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 <a name="createcosmattestationanchor"></a>
 # **CreateCosmAttestationAnchor**
-> CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor (string id)
+> CreateCosmAttestationAnchorResponse CreateCosmAttestationAnchor (string id, CreateCosmAttestationAnchorRequest createCosmAttestationAnchorRequest)
 
 Record a signature for a commitment anchored BY HAND.
 
@@ -65,11 +65,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var createCosmAttestationAnchorRequest = new CreateCosmAttestationAnchorRequest(); // CreateCosmAttestationAnchorRequest | 
 
             try
             {
                 // Record a signature for a commitment anchored BY HAND.
-                CreateCosmAttestationAnchorResponse result = apiInstance.CreateCosmAttestationAnchor(id);
+                CreateCosmAttestationAnchorResponse result = apiInstance.CreateCosmAttestationAnchor(id, createCosmAttestationAnchorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -88,6 +89,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createCosmAttestationAnchorRequest** | **CreateCosmAttestationAnchorRequest**|  | 
 
 ### Return type
 
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmauction"></a>
 # **CreateCosmAuction**
-> CreateCosmAuctionResponse CreateCosmAuction ()
+> CreateCosmAuctionResponse CreateCosmAuction (CreateCosmAuctionRequest createCosmAuctionRequest)
 
 List an owned cosmetic for COSM.
 
@@ -144,11 +146,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var createCosmAuctionRequest = new CreateCosmAuctionRequest(); // CreateCosmAuctionRequest | 
 
             try
             {
                 // List an owned cosmetic for COSM.
-                CreateCosmAuctionResponse result = apiInstance.CreateCosmAuction();
+                CreateCosmAuctionResponse result = apiInstance.CreateCosmAuction(createCosmAuctionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -163,7 +166,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCosmAuctionRequest** | **CreateCosmAuctionRequest**|  | 
 
 ### Return type
 
@@ -175,7 +181,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -194,7 +200,7 @@ This endpoint does not need any parameter.
 
 <a name="createcosmauctionbuy"></a>
 # **CreateCosmAuctionBuy**
-> CreateCosmFusionResponse CreateCosmAuctionBuy (string id)
+> CreateCosmFusionResponse CreateCosmAuctionBuy (string id, SubjectIdRequest subjectIdRequest)
 
 Buy an open listing.
 
@@ -221,11 +227,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var subjectIdRequest = new SubjectIdRequest(); // SubjectIdRequest | 
 
             try
             {
                 // Buy an open listing.
-                CreateCosmFusionResponse result = apiInstance.CreateCosmAuctionBuy(id);
+                CreateCosmFusionResponse result = apiInstance.CreateCosmAuctionBuy(id, subjectIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -244,6 +251,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **subjectIdRequest** | **SubjectIdRequest**|  | 
 
 ### Return type
 
@@ -255,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -274,7 +282,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmcosmeticbuy"></a>
 # **CreateCosmCosmeticBuy**
-> CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy (string id)
+> CreateCosmCosmeticBuyResponse CreateCosmCosmeticBuy (string id, SubjectIdRequest subjectIdRequest)
 
 Buy an earned-tier cosmetic. The COSM is DESTROYED.
 
@@ -301,11 +309,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var subjectIdRequest = new SubjectIdRequest(); // SubjectIdRequest | 
 
             try
             {
                 // Buy an earned-tier cosmetic. The COSM is DESTROYED.
-                CreateCosmCosmeticBuyResponse result = apiInstance.CreateCosmCosmeticBuy(id);
+                CreateCosmCosmeticBuyResponse result = apiInstance.CreateCosmCosmeticBuy(id, subjectIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -324,6 +333,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **subjectIdRequest** | **SubjectIdRequest**|  | 
 
 ### Return type
 
@@ -335,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -354,7 +364,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmcosmeticbuycbx"></a>
 # **CreateCosmCosmeticBuyCbx**
-> CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx (string id)
+> CreateCosmCosmeticBuyCbxResponse CreateCosmCosmeticBuyCbx (string id, CreateCosmCosmeticBuyCbxRequest createCosmCosmeticBuyCbxRequest)
 
 Buy a dollar-priced cosmetic, paying in CBX.
 
@@ -381,11 +391,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var createCosmCosmeticBuyCbxRequest = new CreateCosmCosmeticBuyCbxRequest(); // CreateCosmCosmeticBuyCbxRequest | 
 
             try
             {
                 // Buy a dollar-priced cosmetic, paying in CBX.
-                CreateCosmCosmeticBuyCbxResponse result = apiInstance.CreateCosmCosmeticBuyCbx(id);
+                CreateCosmCosmeticBuyCbxResponse result = apiInstance.CreateCosmCosmeticBuyCbx(id, createCosmCosmeticBuyCbxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -404,6 +415,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createCosmCosmeticBuyCbxRequest** | **CreateCosmCosmeticBuyCbxRequest**|  | 
 
 ### Return type
 
@@ -415,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -434,7 +446,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmcosmeticclaim"></a>
 # **CreateCosmCosmeticClaim**
-> CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim (string id)
+> CreateCosmCosmeticClaimResponse CreateCosmCosmeticClaim (string id, SubjectIdRequest subjectIdRequest)
 
 Claim a stake-exclusive cosmetic once tenure qualifies.
 
@@ -461,11 +473,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var subjectIdRequest = new SubjectIdRequest(); // SubjectIdRequest | 
 
             try
             {
                 // Claim a stake-exclusive cosmetic once tenure qualifies.
-                CreateCosmCosmeticClaimResponse result = apiInstance.CreateCosmCosmeticClaim(id);
+                CreateCosmCosmeticClaimResponse result = apiInstance.CreateCosmCosmeticClaim(id, subjectIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -484,6 +497,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **subjectIdRequest** | **SubjectIdRequest**|  | 
 
 ### Return type
 
@@ -495,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -514,7 +528,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmfusion"></a>
 # **CreateCosmFusion**
-> CreateCosmFusionResponse CreateCosmFusion (string recipeId)
+> CreateCosmFusionResponse CreateCosmFusion (string recipeId, SubjectIdRequest subjectIdRequest)
 
 Fuse two cosmetics plus COSM into a rarer one.
 
@@ -541,11 +555,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var recipeId = "recipeId_example";  // string | 
+            var subjectIdRequest = new SubjectIdRequest(); // SubjectIdRequest | 
 
             try
             {
                 // Fuse two cosmetics plus COSM into a rarer one.
-                CreateCosmFusionResponse result = apiInstance.CreateCosmFusion(recipeId);
+                CreateCosmFusionResponse result = apiInstance.CreateCosmFusion(recipeId, subjectIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -564,6 +579,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **recipeId** | **string**|  | 
+ **subjectIdRequest** | **SubjectIdRequest**|  | 
 
 ### Return type
 
@@ -575,7 +591,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -594,7 +610,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmhandle"></a>
 # **CreateCosmHandle**
-> CreateCosmHandleResponse CreateCosmHandle ()
+> CreateCosmHandleResponse CreateCosmHandle (CreateCosmHandleRequest createCosmHandleRequest)
 
 Claim a vanity handle, burning COSM.
 
@@ -620,11 +636,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var createCosmHandleRequest = new CreateCosmHandleRequest(); // CreateCosmHandleRequest | 
 
             try
             {
                 // Claim a vanity handle, burning COSM.
-                CreateCosmHandleResponse result = apiInstance.CreateCosmHandle();
+                CreateCosmHandleResponse result = apiInstance.CreateCosmHandle(createCosmHandleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -639,7 +656,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCosmHandleRequest** | **CreateCosmHandleRequest**|  | 
 
 ### Return type
 
@@ -651,7 +671,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -670,7 +690,7 @@ This endpoint does not need any parameter.
 
 <a name="createcosmwithdrawal"></a>
 # **CreateCosmWithdrawal**
-> CreateCosmWithdrawalResponse CreateCosmWithdrawal ()
+> CreateCosmWithdrawalResponse CreateCosmWithdrawal (CreateCosmWithdrawalRequest createCosmWithdrawalRequest)
 
 Request a withdrawal to your own proven wallet. REFUSES today.
 
@@ -696,11 +716,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var createCosmWithdrawalRequest = new CreateCosmWithdrawalRequest(); // CreateCosmWithdrawalRequest | 
 
             try
             {
                 // Request a withdrawal to your own proven wallet. REFUSES today.
-                CreateCosmWithdrawalResponse result = apiInstance.CreateCosmWithdrawal();
+                CreateCosmWithdrawalResponse result = apiInstance.CreateCosmWithdrawal(createCosmWithdrawalRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -715,7 +736,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCosmWithdrawalRequest** | **CreateCosmWithdrawalRequest**|  | 
 
 ### Return type
 
@@ -727,7 +751,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -746,7 +770,7 @@ This endpoint does not need any parameter.
 
 <a name="deletecosmhandle"></a>
 # **DeleteCosmHandle**
-> DeleteCosmHandleResponse DeleteCosmHandle ()
+> DeleteCosmHandleResponse DeleteCosmHandle (DeleteCosmHandleRequest deleteCosmHandleRequest = null)
 
 Release a handle. NOTHING IS REFUNDED.
 
@@ -772,11 +796,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var deleteCosmHandleRequest = new DeleteCosmHandleRequest(); // DeleteCosmHandleRequest |  (optional) 
 
             try
             {
                 // Release a handle. NOTHING IS REFUNDED.
-                DeleteCosmHandleResponse result = apiInstance.DeleteCosmHandle();
+                DeleteCosmHandleResponse result = apiInstance.DeleteCosmHandle(deleteCosmHandleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -791,7 +816,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deleteCosmHandleRequest** | **DeleteCosmHandleRequest**|  | [optional] 
 
 ### Return type
 
@@ -803,7 +831,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -822,7 +850,7 @@ This endpoint does not need any parameter.
 
 <a name="deletecosmpeg"></a>
 # **DeleteCosmPeg**
-> DeleteCosmPegResponse DeleteCosmPeg (string listingId)
+> DeleteCosmPegResponse DeleteCosmPeg (string listingId, DeleteCosmPegRequest deleteCosmPegRequest = null)
 
 Stop repricing. The current ask stays where it is.
 
@@ -849,11 +877,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var listingId = "listingId_example";  // string | 
+            var deleteCosmPegRequest = new DeleteCosmPegRequest(); // DeleteCosmPegRequest |  (optional) 
 
             try
             {
                 // Stop repricing. The current ask stays where it is.
-                DeleteCosmPegResponse result = apiInstance.DeleteCosmPeg(listingId);
+                DeleteCosmPegResponse result = apiInstance.DeleteCosmPeg(listingId, deleteCosmPegRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -872,6 +901,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listingId** | **string**|  | 
+ **deleteCosmPegRequest** | **DeleteCosmPegRequest**|  | [optional] 
 
 ### Return type
 
@@ -883,7 +913,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -902,7 +932,7 @@ Name | Type | Description  | Notes
 
 <a name="getcosmattestationproof"></a>
 # **GetCosmAttestationProof**
-> GetCosmAttestationProofResponse GetCosmAttestationProof (string id)
+> GetCosmAttestationProofResponse GetCosmAttestationProof (string id, string subjectId)
 
 A Merkle inclusion proof for one subject, against a published root.
 
@@ -929,11 +959,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // A Merkle inclusion proof for one subject, against a published root.
-                GetCosmAttestationProofResponse result = apiInstance.GetCosmAttestationProof(id);
+                GetCosmAttestationProofResponse result = apiInstance.GetCosmAttestationProof(id, subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -952,6 +983,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -1058,7 +1090,7 @@ This endpoint does not need any parameter.
 
 <a name="getcosmbalance"></a>
 # **GetCosmBalance**
-> GetCosmBalanceResponse GetCosmBalance ()
+> GetCosmBalanceResponse GetCosmBalance (string subjectId)
 
 A subject's COSM balance and the earn rate in force.
 
@@ -1084,11 +1116,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // A subject's COSM balance and the earn rate in force.
-                GetCosmBalanceResponse result = apiInstance.GetCosmBalance();
+                GetCosmBalanceResponse result = apiInstance.GetCosmBalance(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1103,7 +1136,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -1134,7 +1170,7 @@ This endpoint does not need any parameter.
 
 <a name="getcosmemployeefeequote"></a>
 # **GetCosmEmployeeFeeQuote**
-> GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote ()
+> GetCosmEmployeeFeeQuoteResponse GetCosmEmployeeFeeQuote (decimal totalCents)
 
 What one shop-employee conversation will cost, in COSM.
 
@@ -1160,11 +1196,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var totalCents = 8.14D;  // decimal | 
 
             try
             {
                 // What one shop-employee conversation will cost, in COSM.
-                GetCosmEmployeeFeeQuoteResponse result = apiInstance.GetCosmEmployeeFeeQuote();
+                GetCosmEmployeeFeeQuoteResponse result = apiInstance.GetCosmEmployeeFeeQuote(totalCents);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1179,7 +1216,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **totalCents** | **decimal**|  | 
 
 ### Return type
 
@@ -1290,7 +1330,7 @@ Name | Type | Description  | Notes
 
 <a name="getcosmstaketenure"></a>
 # **GetCosmStakeTenure**
-> GetCosmStakeTenureResponse GetCosmStakeTenure ()
+> GetCosmStakeTenureResponse GetCosmStakeTenure (string subjectId)
 
 How long a subject has held a stake continuously, in days.
 
@@ -1316,11 +1356,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // How long a subject has held a stake continuously, in days.
-                GetCosmStakeTenureResponse result = apiInstance.GetCosmStakeTenure();
+                GetCosmStakeTenureResponse result = apiInstance.GetCosmStakeTenure(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1335,7 +1376,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -1442,7 +1486,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmattestations"></a>
 # **ListCosmAttestations**
-> ListCosmAttestationsResponse ListCosmAttestations ()
+> ListCosmAttestationsResponse ListCosmAttestations (string kind = null, decimal? limit = null)
 
 Published Merkle commitments. What you can check instead of trusting us.
 
@@ -1468,11 +1512,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var kind = "cosm_emission";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Published Merkle commitments. What you can check instead of trusting us.
-                ListCosmAttestationsResponse result = apiInstance.ListCosmAttestations();
+                ListCosmAttestationsResponse result = apiInstance.ListCosmAttestations(kind, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1487,7 +1533,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **kind** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1518,7 +1568,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmauction"></a>
 # **ListCosmAuction**
-> ListCosmAuctionResponse ListCosmAuction ()
+> ListCosmAuctionResponse ListCosmAuction (string cosmeticId = null)
 
 Open auction listings, priced in COSM.
 
@@ -1544,11 +1594,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var cosmeticId = "cosmeticId_example";  // string |  (optional) 
 
             try
             {
                 // Open auction listings, priced in COSM.
-                ListCosmAuctionResponse result = apiInstance.ListCosmAuction();
+                ListCosmAuctionResponse result = apiInstance.ListCosmAuction(cosmeticId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1563,7 +1614,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cosmeticId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1594,7 +1648,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmcosmetics"></a>
 # **ListCosmCosmetics**
-> ListCosmCosmeticsResponse ListCosmCosmetics ()
+> ListCosmCosmeticsResponse ListCosmCosmetics (string tier = null, string slot = null)
 
 The cosmetics catalogue.
 
@@ -1620,11 +1674,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var tier = "premium";  // string |  (optional) 
+            var slot = "slot_example";  // string |  (optional) 
 
             try
             {
                 // The cosmetics catalogue.
-                ListCosmCosmeticsResponse result = apiInstance.ListCosmCosmetics();
+                ListCosmCosmeticsResponse result = apiInstance.ListCosmCosmetics(tier, slot);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1639,7 +1695,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tier** | **string**|  | [optional] 
+ **slot** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1746,7 +1806,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosminventory"></a>
 # **ListCosmInventory**
-> ListCosmInventoryResponse ListCosmInventory ()
+> ListCosmInventoryResponse ListCosmInventory (string subjectId)
 
 Cosmetics a subject holds.
 
@@ -1772,11 +1832,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // Cosmetics a subject holds.
-                ListCosmInventoryResponse result = apiInstance.ListCosmInventory();
+                ListCosmInventoryResponse result = apiInstance.ListCosmInventory(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1791,7 +1852,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -1822,7 +1886,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmpegs"></a>
 # **ListCosmPegs**
-> ListCosmPegsResponse ListCosmPegs ()
+> ListCosmPegsResponse ListCosmPegs (string sellerUserId)
 
 CBX-pegged listings and why each last moved.
 
@@ -1848,11 +1912,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var sellerUserId = "sellerUserId_example";  // string | 
 
             try
             {
                 // CBX-pegged listings and why each last moved.
-                ListCosmPegsResponse result = apiInstance.ListCosmPegs();
+                ListCosmPegsResponse result = apiInstance.ListCosmPegs(sellerUserId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1867,7 +1932,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sellerUserId** | **string**|  | 
 
 ### Return type
 
@@ -2050,7 +2118,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmunlocks"></a>
 # **ListCosmUnlocks**
-> ListCosmUnlocksResponse ListCosmUnlocks ()
+> ListCosmUnlocksResponse ListCosmUnlocks (string subjectId)
 
 Which spatial cosmetic values this subject may apply.
 
@@ -2076,11 +2144,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // Which spatial cosmetic values this subject may apply.
-                ListCosmUnlocksResponse result = apiInstance.ListCosmUnlocks();
+                ListCosmUnlocksResponse result = apiInstance.ListCosmUnlocks(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2095,7 +2164,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -2126,7 +2198,7 @@ This endpoint does not need any parameter.
 
 <a name="listcosmwithdrawals"></a>
 # **ListCosmWithdrawals**
-> ListCosmWithdrawalsResponse ListCosmWithdrawals ()
+> ListCosmWithdrawalsResponse ListCosmWithdrawals (string subjectId)
 
 Withdrawal history, and whether withdrawals are open at all.
 
@@ -2152,11 +2224,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var subjectId = "subjectId_example";  // string | 
 
             try
             {
                 // Withdrawal history, and whether withdrawals are open at all.
-                ListCosmWithdrawalsResponse result = apiInstance.ListCosmWithdrawals();
+                ListCosmWithdrawalsResponse result = apiInstance.ListCosmWithdrawals(subjectId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2171,7 +2244,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subjectId** | **string**|  | 
 
 ### Return type
 
@@ -2202,7 +2278,7 @@ This endpoint does not need any parameter.
 
 <a name="updatecosmcosmeticunlock"></a>
 # **UpdateCosmCosmeticUnlock**
-> UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock (string id)
+> UpdateCosmCosmeticUnlockResponse UpdateCosmCosmeticUnlock (string id, UpdateCosmCosmeticUnlockRequest updateCosmCosmeticUnlockRequest)
 
 Set (or clear) what a cosmetic unlocks spatially.
 
@@ -2229,11 +2305,12 @@ namespace Example
 
             var apiInstance = new COSMApi(config);
             var id = "id_example";  // string | 
+            var updateCosmCosmeticUnlockRequest = new UpdateCosmCosmeticUnlockRequest(); // UpdateCosmCosmeticUnlockRequest | 
 
             try
             {
                 // Set (or clear) what a cosmetic unlocks spatially.
-                UpdateCosmCosmeticUnlockResponse result = apiInstance.UpdateCosmCosmeticUnlock(id);
+                UpdateCosmCosmeticUnlockResponse result = apiInstance.UpdateCosmCosmeticUnlock(id, updateCosmCosmeticUnlockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2252,6 +2329,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateCosmCosmeticUnlockRequest** | **UpdateCosmCosmeticUnlockRequest**|  | 
 
 ### Return type
 
@@ -2263,7 +2341,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2282,7 +2360,7 @@ Name | Type | Description  | Notes
 
 <a name="updatecosmpeg"></a>
 # **UpdateCosmPeg**
-> UpdateCosmPegResponse UpdateCosmPeg ()
+> UpdateCosmPegResponse UpdateCosmPeg (UpdateCosmPegRequest updateCosmPegRequest)
 
 Set or update a CBX price peg. OFF unless you turn it on.
 
@@ -2308,11 +2386,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new COSMApi(config);
+            var updateCosmPegRequest = new UpdateCosmPegRequest(); // UpdateCosmPegRequest | 
 
             try
             {
                 // Set or update a CBX price peg. OFF unless you turn it on.
-                UpdateCosmPegResponse result = apiInstance.UpdateCosmPeg();
+                UpdateCosmPegResponse result = apiInstance.UpdateCosmPeg(updateCosmPegRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2327,7 +2406,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateCosmPegRequest** | **UpdateCosmPegRequest**|  | 
 
 ### Return type
 
@@ -2339,7 +2421,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

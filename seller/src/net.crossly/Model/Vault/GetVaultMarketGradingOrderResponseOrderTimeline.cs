@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum KeyEnum
         {
             /// <summary>
-            /// Enum Grading for value: grading
-            /// </summary>
-            [EnumMember(Value = "grading")]
-            Grading = 1,
-
-            /// <summary>
             /// Enum Draft for value: draft
             /// </summary>
             [EnumMember(Value = "draft")]
-            Draft = 2,
+            Draft = 1,
+
+            /// <summary>
+            /// Enum Grading for value: grading
+            /// </summary>
+            [EnumMember(Value = "grading")]
+            Grading = 2,
 
             /// <summary>
             /// Enum Cancelled for value: cancelled

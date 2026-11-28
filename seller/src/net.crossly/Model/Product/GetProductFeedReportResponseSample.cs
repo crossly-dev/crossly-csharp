@@ -135,7 +135,7 @@ namespace net.crossly.Model
         /// <param name="link">link (required).</param>
         /// <param name="imageLink">imageLink.</param>
         /// <param name="additionalImageLinks">additionalImageLinks (required).</param>
-        /// <param name="price">\&quot;12.50 USD\&quot;..</param>
+        /// <param name="price">\&quot;12.50 USD\&quot; (or the feed&#39;s currency)..</param>
         /// <param name="salePrice">salePrice.</param>
         /// <param name="salePriceEffectiveDate">ISO 8601 interval \&quot;start/end\&quot; when a sale runs..</param>
         /// <param name="availability">availability (required).</param>
@@ -147,14 +147,21 @@ namespace net.crossly.Model
         /// <param name="googleProductCategory">Google&#39;s taxonomy id when our category maps to one..</param>
         /// <param name="productType">Our own category path, \&quot;Main &gt; Sub &gt; Leaf\&quot;..</param>
         /// <param name="itemGroupId">itemGroupId.</param>
+        /// <param name="sku">sku.</param>
         /// <param name="color">color.</param>
         /// <param name="size">size.</param>
         /// <param name="material">material.</param>
         /// <param name="gender">gender.</param>
         /// <param name="shippingWeight">\&quot;1.5 lb\&quot;..</param>
         /// <param name="identifierExists">identifierExists (required).</param>
+        /// <param name="customLabels">custom_label_0..4 (mapping or per-item override). (required).</param>
+        /// <param name="shipping">Per-item shipping rates, already in the feed&#39;s currency (\&quot;4.95 USD\&quot;). (required).</param>
+        /// <param name="tags">The listing&#39;s tags and dates, for generic feeds. (required).</param>
+        /// <param name="publishedAt">publishedAt.</param>
+        /// <param name="updatedAt">updatedAt.</param>
+        /// <param name="extra">Values a field mapping produced for columns that have no typed field (generic feeds). (required).</param>
         /// <param name="issues">issues (required).</param>
-        public GetProductFeedReportResponseSample(string id = default(string), string title = default(string), string description = default(string), string link = default(string), string imageLink = default(string), List<string> additionalImageLinks = default(List<string>), string price = default(string), string salePrice = default(string), string salePriceEffectiveDate = default(string), AvailabilityEnum availability = default(AvailabilityEnum), decimal quantity = default(decimal), ConditionEnum condition = default(ConditionEnum), string brand = default(string), string gtin = default(string), string mpn = default(string), string googleProductCategory = default(string), string productType = default(string), string itemGroupId = default(string), string color = default(string), string size = default(string), string material = default(string), GenderEnum? gender = default(GenderEnum?), string shippingWeight = default(string), bool identifierExists = default(bool), List<Dictionary<string, Object>> issues = default(List<Dictionary<string, Object>>))
+        public GetProductFeedReportResponseSample(string id = default(string), string title = default(string), string description = default(string), string link = default(string), string imageLink = default(string), List<string> additionalImageLinks = default(List<string>), string price = default(string), string salePrice = default(string), string salePriceEffectiveDate = default(string), AvailabilityEnum availability = default(AvailabilityEnum), decimal quantity = default(decimal), ConditionEnum condition = default(ConditionEnum), string brand = default(string), string gtin = default(string), string mpn = default(string), string googleProductCategory = default(string), string productType = default(string), string itemGroupId = default(string), string sku = default(string), string color = default(string), string size = default(string), string material = default(string), GenderEnum? gender = default(GenderEnum?), string shippingWeight = default(string), bool identifierExists = default(bool), List<string> customLabels = default(List<string>), List<Dictionary<string, Object>> shipping = default(List<Dictionary<string, Object>>), List<string> tags = default(List<string>), string publishedAt = default(string), string updatedAt = default(string), Dictionary<string, Object> extra = default(Dictionary<string, Object>), List<Dictionary<string, Object>> issues = default(List<Dictionary<string, Object>>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -185,6 +192,26 @@ namespace net.crossly.Model
             this.Quantity = quantity;
             this.Condition = condition;
             this.IdentifierExists = identifierExists;
+            // to ensure "customLabels" is required (not null)
+            if (customLabels == null) {
+                throw new ArgumentNullException("customLabels is a required property for GetProductFeedReportResponseSample and cannot be null");
+            }
+            this.CustomLabels = customLabels;
+            // to ensure "shipping" is required (not null)
+            if (shipping == null) {
+                throw new ArgumentNullException("shipping is a required property for GetProductFeedReportResponseSample and cannot be null");
+            }
+            this.Shipping = shipping;
+            // to ensure "tags" is required (not null)
+            if (tags == null) {
+                throw new ArgumentNullException("tags is a required property for GetProductFeedReportResponseSample and cannot be null");
+            }
+            this.Tags = tags;
+            // to ensure "extra" is required (not null)
+            if (extra == null) {
+                throw new ArgumentNullException("extra is a required property for GetProductFeedReportResponseSample and cannot be null");
+            }
+            this.Extra = extra;
             // to ensure "issues" is required (not null)
             if (issues == null) {
                 throw new ArgumentNullException("issues is a required property for GetProductFeedReportResponseSample and cannot be null");
@@ -200,11 +227,14 @@ namespace net.crossly.Model
             this.GoogleProductCategory = googleProductCategory;
             this.ProductType = productType;
             this.ItemGroupId = itemGroupId;
+            this.Sku = sku;
             this.Color = color;
             this.Size = size;
             this.Material = material;
             this.Gender = gender;
             this.ShippingWeight = shippingWeight;
+            this.PublishedAt = publishedAt;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>
@@ -244,9 +274,9 @@ namespace net.crossly.Model
         public List<string> AdditionalImageLinks { get; set; }
 
         /// <summary>
-        /// \&quot;12.50 USD\&quot;.
+        /// \&quot;12.50 USD\&quot; (or the feed&#39;s currency).
         /// </summary>
-        /// <value>\&quot;12.50 USD\&quot;.</value>
+        /// <value>\&quot;12.50 USD\&quot; (or the feed&#39;s currency).</value>
         [DataMember(Name = "price", EmitDefaultValue = true)]
         public string Price { get; set; }
 
@@ -308,6 +338,12 @@ namespace net.crossly.Model
         public string ItemGroupId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Sku
+        /// </summary>
+        [DataMember(Name = "sku", EmitDefaultValue = true)]
+        public string Sku { get; set; }
+
+        /// <summary>
         /// Gets or Sets Color
         /// </summary>
         [DataMember(Name = "color", EmitDefaultValue = true)]
@@ -337,6 +373,46 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "identifierExists", IsRequired = true, EmitDefaultValue = true)]
         public bool IdentifierExists { get; set; }
+
+        /// <summary>
+        /// custom_label_0..4 (mapping or per-item override).
+        /// </summary>
+        /// <value>custom_label_0..4 (mapping or per-item override).</value>
+        [DataMember(Name = "customLabels", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> CustomLabels { get; set; }
+
+        /// <summary>
+        /// Per-item shipping rates, already in the feed&#39;s currency (\&quot;4.95 USD\&quot;).
+        /// </summary>
+        /// <value>Per-item shipping rates, already in the feed&#39;s currency (\&quot;4.95 USD\&quot;).</value>
+        [DataMember(Name = "shipping", IsRequired = true, EmitDefaultValue = false)]
+        public List<Dictionary<string, Object>> Shipping { get; set; }
+
+        /// <summary>
+        /// The listing&#39;s tags and dates, for generic feeds.
+        /// </summary>
+        /// <value>The listing&#39;s tags and dates, for generic feeds.</value>
+        [DataMember(Name = "tags", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PublishedAt
+        /// </summary>
+        [DataMember(Name = "publishedAt", EmitDefaultValue = true)]
+        public string PublishedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", EmitDefaultValue = true)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Values a field mapping produced for columns that have no typed field (generic feeds).
+        /// </summary>
+        /// <value>Values a field mapping produced for columns that have no typed field (generic feeds).</value>
+        [DataMember(Name = "extra", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Extra { get; set; }
 
         /// <summary>
         /// Gets or Sets Issues
@@ -370,12 +446,19 @@ namespace net.crossly.Model
             sb.Append("  GoogleProductCategory: ").Append(GoogleProductCategory).Append("\n");
             sb.Append("  ProductType: ").Append(ProductType).Append("\n");
             sb.Append("  ItemGroupId: ").Append(ItemGroupId).Append("\n");
+            sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
             sb.Append("  Size: ").Append(Size).Append("\n");
             sb.Append("  Material: ").Append(Material).Append("\n");
             sb.Append("  Gender: ").Append(Gender).Append("\n");
             sb.Append("  ShippingWeight: ").Append(ShippingWeight).Append("\n");
             sb.Append("  IdentifierExists: ").Append(IdentifierExists).Append("\n");
+            sb.Append("  CustomLabels: ").Append(CustomLabels).Append("\n");
+            sb.Append("  Shipping: ").Append(Shipping).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  PublishedAt: ").Append(PublishedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  Extra: ").Append(Extra).Append("\n");
             sb.Append("  Issues: ").Append(Issues).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -501,6 +584,11 @@ namespace net.crossly.Model
                     this.ItemGroupId.Equals(input.ItemGroupId))
                 ) && 
                 (
+                    this.Sku == input.Sku ||
+                    (this.Sku != null &&
+                    this.Sku.Equals(input.Sku))
+                ) && 
+                (
                     this.Color == input.Color ||
                     (this.Color != null &&
                     this.Color.Equals(input.Color))
@@ -527,6 +615,40 @@ namespace net.crossly.Model
                 (
                     this.IdentifierExists == input.IdentifierExists ||
                     this.IdentifierExists.Equals(input.IdentifierExists)
+                ) && 
+                (
+                    this.CustomLabels == input.CustomLabels ||
+                    this.CustomLabels != null &&
+                    input.CustomLabels != null &&
+                    this.CustomLabels.SequenceEqual(input.CustomLabels)
+                ) && 
+                (
+                    this.Shipping == input.Shipping ||
+                    this.Shipping != null &&
+                    input.Shipping != null &&
+                    this.Shipping.SequenceEqual(input.Shipping)
+                ) && 
+                (
+                    this.Tags == input.Tags ||
+                    this.Tags != null &&
+                    input.Tags != null &&
+                    this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
+                    this.PublishedAt == input.PublishedAt ||
+                    (this.PublishedAt != null &&
+                    this.PublishedAt.Equals(input.PublishedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.Extra == input.Extra ||
+                    this.Extra != null &&
+                    input.Extra != null &&
+                    this.Extra.SequenceEqual(input.Extra)
                 ) && 
                 (
                     this.Issues == input.Issues ||
@@ -608,6 +730,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ItemGroupId.GetHashCode();
                 }
+                if (this.Sku != null)
+                {
+                    hashCode = (hashCode * 59) + this.Sku.GetHashCode();
+                }
                 if (this.Color != null)
                 {
                     hashCode = (hashCode * 59) + this.Color.GetHashCode();
@@ -626,6 +752,30 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.ShippingWeight.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.IdentifierExists.GetHashCode();
+                if (this.CustomLabels != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomLabels.GetHashCode();
+                }
+                if (this.Shipping != null)
+                {
+                    hashCode = (hashCode * 59) + this.Shipping.GetHashCode();
+                }
+                if (this.Tags != null)
+                {
+                    hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                if (this.PublishedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.PublishedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                }
+                if (this.Extra != null)
+                {
+                    hashCode = (hashCode * 59) + this.Extra.GetHashCode();
+                }
                 if (this.Issues != null)
                 {
                     hashCode = (hashCode * 59) + this.Issues.GetHashCode();

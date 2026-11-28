@@ -40,13 +40,15 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreatePlatformAccountHistoryImportRequest" /> class.
         /// </summary>
         /// <param name="days">null &#x3D; All time (no limit); 0 &#x3D; None; a positive integer &#x3D; days. (required).</param>
-        public CreatePlatformAccountHistoryImportRequest(int? days = default(int?))
+        /// <param name="accountId">The platform account to save it on (GET /api/v1/connections). Omitted &#x3D; every pending account..</param>
+        public CreatePlatformAccountHistoryImportRequest(int? days = default(int?), Guid accountId = default(Guid))
         {
             // to ensure "days" is required (not null)
             if (days == null) {
                 throw new ArgumentNullException("days is a required property for CreatePlatformAccountHistoryImportRequest and cannot be null");
             }
             this.Days = days;
+            this.AccountId = accountId;
         }
 
         /// <summary>
@@ -57,6 +59,13 @@ namespace net.crossly.Model
         public int? Days { get; set; }
 
         /// <summary>
+        /// The platform account to save it on (GET /api/v1/connections). Omitted &#x3D; every pending account.
+        /// </summary>
+        /// <value>The platform account to save it on (GET /api/v1/connections). Omitted &#x3D; every pending account.</value>
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
+        public Guid AccountId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -65,6 +74,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreatePlatformAccountHistoryImportRequest {\n");
             sb.Append("  Days: ").Append(Days).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -104,6 +114,11 @@ namespace net.crossly.Model
                     this.Days == input.Days ||
                     (this.Days != null &&
                     this.Days.Equals(input.Days))
+                ) && 
+                (
+                    this.AccountId == input.AccountId ||
+                    (this.AccountId != null &&
+                    this.AccountId.Equals(input.AccountId))
                 );
         }
 
@@ -119,6 +134,10 @@ namespace net.crossly.Model
                 if (this.Days != null)
                 {
                     hashCode = (hashCode * 59) + this.Days.GetHashCode();
+                }
+                if (this.AccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
                 }
                 return hashCode;
             }

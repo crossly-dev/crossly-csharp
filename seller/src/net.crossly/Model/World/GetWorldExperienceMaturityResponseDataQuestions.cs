@@ -38,40 +38,40 @@ namespace net.crossly.Model
         public enum KeyEnum
         {
             /// <summary>
+            /// Enum Language for value: language
+            /// </summary>
+            [EnumMember(Value = "language")]
+            Language = 1,
+
+            /// <summary>
             /// Enum Purchases for value: purchases
             /// </summary>
             [EnumMember(Value = "purchases")]
-            Purchases = 1,
+            Purchases = 2,
 
             /// <summary>
             /// Enum Violence for value: violence
             /// </summary>
             [EnumMember(Value = "violence")]
-            Violence = 2,
+            Violence = 3,
 
             /// <summary>
             /// Enum Blood for value: blood
             /// </summary>
             [EnumMember(Value = "blood")]
-            Blood = 3,
+            Blood = 4,
 
             /// <summary>
             /// Enum Fear for value: fear
             /// </summary>
             [EnumMember(Value = "fear")]
-            Fear = 4,
+            Fear = 5,
 
             /// <summary>
             /// Enum CrudeHumour for value: crudeHumour
             /// </summary>
             [EnumMember(Value = "crudeHumour")]
-            CrudeHumour = 5,
-
-            /// <summary>
-            /// Enum Language for value: language
-            /// </summary>
-            [EnumMember(Value = "language")]
-            Language = 6,
+            CrudeHumour = 6,
 
             /// <summary>
             /// Enum Romance for value: romance

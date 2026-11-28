@@ -7,15 +7,20 @@ Method | HTTP request | Description
 [**CreateActionLogExport**](ActivityApi.md#createactionlogexport) | **POST** /v1/action-log/exports | Queue an export of the Activity Log: every event (csv, ndjson, pdf) or a summary report (pdf, ndjson). Poll GET /api/v1/action-log/exports/{exportId}, then download it. Exports never contain IP addresses.
 [**CreateActionLogSearchTranslate**](ActivityApi.md#createactionlogsearchtranslate) | **POST** /v1/action-log/search/translate | Turn a question in words (\&quot;failed delists on Mercari last week\&quot;) into an Activity Log search: pass the returned &#x60;q&#x60; to GET /api/v1/action-log (or the histogram and csv/ndjson exports). Nothing is run. A 404 with details.code &#x60;not_enabled&#x60; means natural-language search is off for this account.
 [**CreateDetectedEventEventConfirm**](ActivityApi.md#createdetectedeventeventconfirm) | **POST** /v1/detected-events/events/{id}/confirm | Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
+[**CreateDetectedEventEventDismiss**](ActivityApi.md#createdetectedeventeventdismiss) | **POST** /v1/detected-events/events/{id}/dismiss | Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+[**CreateDetectedEventEventReject**](ActivityApi.md#createdetectedeventeventreject) | **POST** /v1/detected-events/events/{id}/reject | \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
 [**CreateDetectedEventEventUndo**](ActivityApi.md#createdetectedeventeventundo) | **POST** /v1/detected-events/events/{id}/undo | Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
 [**CreateDetectedEventRule**](ActivityApi.md#createdetectedeventrule) | **POST** /v1/detected-events/rules | Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id.
+[**CreateDetectedEventRuleCopy**](ActivityApi.md#createdetectedeventrulecopy) | **POST** /v1/detected-events/rules/{ref}/copy | Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
 [**CreateDetectedEventRulePlace**](ActivityApi.md#createdetectedeventruleplace) | **POST** /v1/detected-events/rules/place | Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list.
 [**CreateDetectedEventRuleReorder**](ActivityApi.md#createdetectedeventrulereorder) | **POST** /v1/detected-events/rules/reorder | Set the evaluation order: ids top-down, defaults included (ids from the rules list). Rules are re-numbered 10, 20, 30…; a default moved above one of your rules is stored as your edit. Returns the list.
 [**CreateDetectedEventRuleResetDefault**](ActivityApi.md#createdetectedeventruleresetdefault) | **POST** /v1/detected-events/rules/reset-defaults | Drop your edits of the shipped default rules (keys, or all when omitted). Returns the list.
 [**CreateDetectedEventSimulate**](ActivityApi.md#createdetectedeventsimulate) | **POST** /v1/detected-events/simulate | Run one event through the rules without acting: the winning rule, rules it shadowed, the trace, the guards that held actions back and the plan per target with how it would run (direct / relay / ask / skip). event needs only kind; every axis left out takes its default. rules &#x3D; an unsaved draft list.
 [**CreateDetectedEventSimulateImpact**](ActivityApi.md#createdetectedeventsimulateimpact) | **POST** /v1/detected-events/simulate/impact | What a rule edit would change: your detected events of the last days (default 30, at most 500) re-resolved against the draft rules and against the stored ones. Per event: winning rule and actions before and after, and whether it changed. Nothing runs.
+[**CreateDetectedEventStartingPointPreview**](ActivityApi.md#createdetectedeventstartingpointpreview) | **POST** /v1/detected-events/starting-point/preview | What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
 [**CreateEmailEventConfirm**](ActivityApi.md#createemaileventconfirm) | **POST** /v1/email-events/{id}/confirm | Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
 [**CreateEmailEventDismiss**](ActivityApi.md#createemaileventdismiss) | **POST** /v1/email-events/{id}/dismiss | Dismiss an email-detected event (\&quot;not a sale\&quot;): closes the card without acting.
+[**CreateEmailEventReprocess**](ActivityApi.md#createemaileventreprocess) | **POST** /v1/email-events/{id}/reprocess | Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
 [**CreateEventPolicyDecisionConfirm**](ActivityApi.md#createeventpolicydecisionconfirm) | **POST** /v1/event-policies/decisions/{id}/confirm | Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card).
 [**DeleteDetectedEventRule**](ActivityApi.md#deletedetectedeventrule) | **DELETE** /v1/detected-events/rules/{id} | Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too.
 [**DeleteEventPolicyRule**](ActivityApi.md#deleteeventpolicyrule) | **DELETE** /v1/event-policies/rules/{id} | Delete a rule: its cell falls back to the next scope (platform → global → the built-in default).
@@ -24,15 +29,22 @@ Method | HTTP request | Description
 [**GetActionLogExportDownload**](ActivityApi.md#getactionlogexportdownload) | **GET** /v1/action-log/exports/{exportId}/download | Download a finished Activity Log export (for 24 hours after it completes).
 [**GetActionLogFacet**](ActivityApi.md#getactionlogfacet) | **GET** /v1/action-log/facets | Filter options of the caller&#39;s Activity Log (last 90 days): areas with their actions and counts, the team members who acted, platforms and outcomes.
 [**GetDetectedEventEvent**](ActivityApi.md#getdetectedeventevent) | **GET** /v1/detected-events/events/{id} | One detected event with every report of it (first + corroborations, with correlation and contradiction), the guards that held actions back, the plan and each executed action&#39;s outcome and reversibility.
+[**GetDetectedEventOverview**](ActivityApi.md#getdetectedeventoverview) | **GET** /v1/detected-events/overview | What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+[**GetDetectedEventRule**](ActivityApi.md#getdetectedeventrule) | **GET** /v1/detected-events/rules/{ref} | One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+[**GetDetectedEventStartingPoint**](ActivityApi.md#getdetectedeventstartingpoint) | **GET** /v1/detected-events/starting-point | The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+[**GetEmailEvent**](ActivityApi.md#getemailevent) | **GET** /v1/email-events/{id} | One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+[**GetEmailEventPreview**](ActivityApi.md#getemaileventpreview) | **GET** /v1/email-events/{id}/preview | A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
 [**GetEventPolicy**](ActivityApi.md#geteventpolicy) | **GET** /v1/event-policies | What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps.
 [**ListActionLog**](ActivityApi.md#listactionlog) | **GET** /v1/action-log | List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches.
 [**ListActionLogCalls**](ActivityApi.md#listactionlogcalls) | **GET** /v1/action-log/{id}/calls | The outbound platform HTTP calls under an event (oldest first) — platform, operation, method, host, status, latency, error class/message, proxy + recipe id. Answers \&quot;what was sent / what went wrong\&quot;. The URL path, request/response bodies and persisted-query hash are never returned.
 [**ListActionLogHistogram**](ActivityApi.md#listactionloghistogram) | **GET** /v1/action-log/histogram | Events per UTC day for the list filters (default: the last 30 days; at most 366).
-[**ListDetectedEventEvents**](ActivityApi.md#listdetectedeventevents) | **GET** /v1/detected-events/events | Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+[**ListDetectedEventEvents**](ActivityApi.md#listdetectedeventevents) | **GET** /v1/detected-events/events | Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
 [**ListDetectedEventRules**](ActivityApi.md#listdetectedeventrules) | **GET** /v1/detected-events/rules | The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings.
+[**ListDetectedEventSituations**](ActivityApi.md#listdetectedeventsituations) | **GET** /v1/detected-events/situations | Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today.
 [**ListEmailEvents**](ActivityApi.md#listemailevents) | **GET** /v1/email-events | List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically.
 [**ListEventPolicyDecisions**](ActivityApi.md#listeventpolicydecisions) | **GET** /v1/event-policies/decisions | The decision log, newest first: for each detected event, what the rule or default asked for, what was done (after capability fallback and the email confidence ceiling), the rule that decided it, and the outcome (done / skipped / failed / review). Cursor-paged; filter by event, ownership, platform or outcome (outcome&#x3D;review: still waiting for the seller). Kept 90 days.
 [**UpdateDetectedEventRule**](ActivityApi.md#updatedetectedeventrule) | **PUT** /v1/detected-events/rules/{id} | Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one).
+[**UpdateDetectedEventStartingPoint**](ActivityApi.md#updatedetectedeventstartingpoint) | **PUT** /v1/detected-events/starting-point | Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
 [**UpdateEventPolicyRule**](ActivityApi.md#updateeventpolicyrule) | **PUT** /v1/event-policies/rules | Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items.
 
 
@@ -194,7 +206,7 @@ Name | Type | Description  | Notes
 
 <a name="createdetectedeventeventconfirm"></a>
 # **CreateDetectedEventEventConfirm**
-> CreateDetectedEventEventUndoResponse CreateDetectedEventEventConfirm (Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
+> DetectedEventEventResponse CreateDetectedEventEventConfirm (Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
 
 Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask's preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
 
@@ -224,7 +236,7 @@ namespace Example
             try
             {
                 // Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask's preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
-                CreateDetectedEventEventUndoResponse result = apiInstance.CreateDetectedEventEventConfirm(id, createDetectedEventEventConfirmRequest);
+                DetectedEventEventResponse result = apiInstance.CreateDetectedEventEventConfirm(id, createDetectedEventEventConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -247,7 +259,167 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateDetectedEventEventUndoResponse**
+**DetectedEventEventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createdetectedeventeventdismiss"></a>
+# **CreateDetectedEventEventDismiss**
+> DetectedEventEventResponse CreateDetectedEventEventDismiss (Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest)
+
+Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDetectedEventEventDismissExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var id = "id_example";  // Guid | 
+            var createDetectedEventEventDismissRequest = new CreateDetectedEventEventDismissRequest(); // CreateDetectedEventEventDismissRequest | 
+
+            try
+            {
+                // Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+                DetectedEventEventResponse result = apiInstance.CreateDetectedEventEventDismiss(id, createDetectedEventEventDismissRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.CreateDetectedEventEventDismiss: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **createDetectedEventEventDismissRequest** | **CreateDetectedEventEventDismissRequest**|  | 
+
+### Return type
+
+**DetectedEventEventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createdetectedeventeventreject"></a>
+# **CreateDetectedEventEventReject**
+> DetectedEventEventResponse CreateDetectedEventEventReject (Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest)
+
+\"Not this item\": drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDetectedEventEventRejectExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var id = "id_example";  // Guid | 
+            var createDetectedEventEventRejectRequest = new CreateDetectedEventEventRejectRequest(); // CreateDetectedEventEventRejectRequest | 
+
+            try
+            {
+                // \"Not this item\": drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+                DetectedEventEventResponse result = apiInstance.CreateDetectedEventEventReject(id, createDetectedEventEventRejectRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.CreateDetectedEventEventReject: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **createDetectedEventEventRejectRequest** | **CreateDetectedEventEventRejectRequest**|  | 
+
+### Return type
+
+**DetectedEventEventResponse**
 
 ### Authorization
 
@@ -274,7 +446,7 @@ Name | Type | Description  | Notes
 
 <a name="createdetectedeventeventundo"></a>
 # **CreateDetectedEventEventUndo**
-> CreateDetectedEventEventUndoResponse CreateDetectedEventEventUndo (Guid id)
+> DetectedEventEventResponse CreateDetectedEventEventUndo (Guid id)
 
 Undo what Crossly did for an event (canUndo true): every executed action's stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
 
@@ -303,7 +475,7 @@ namespace Example
             try
             {
                 // Undo what Crossly did for an event (canUndo true): every executed action's stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
-                CreateDetectedEventEventUndoResponse result = apiInstance.CreateDetectedEventEventUndo(id);
+                DetectedEventEventResponse result = apiInstance.CreateDetectedEventEventUndo(id);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -325,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**CreateDetectedEventEventUndoResponse**
+**DetectedEventEventResponse**
 
 ### Authorization
 
@@ -404,6 +576,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateDetectedEventRuleResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createdetectedeventrulecopy"></a>
+# **CreateDetectedEventRuleCopy**
+> CreateDetectedEventRuleCopyResponse CreateDetectedEventRuleCopy (string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest)
+
+Copy one rule (a stored id, or default.<key> for the store's effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDetectedEventRuleCopyExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var _ref = "_ref_example";  // string | A rule id, or default.<key> (default:<key> works).
+            var createDetectedEventRuleCopyRequest = new CreateDetectedEventRuleCopyRequest(); // CreateDetectedEventRuleCopyRequest | 
+
+            try
+            {
+                // Copy one rule (a stored id, or default.<key> for the store's effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+                CreateDetectedEventRuleCopyResponse result = apiInstance.CreateDetectedEventRuleCopy(_ref, createDetectedEventRuleCopyRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.CreateDetectedEventRuleCopy: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_ref** | **string**| A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works). | 
+ **createDetectedEventRuleCopyRequest** | **CreateDetectedEventRuleCopyRequest**|  | 
+
+### Return type
+
+**CreateDetectedEventRuleCopyResponse**
 
 ### Authorization
 
@@ -818,6 +1070,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createdetectedeventstartingpointpreview"></a>
+# **CreateDetectedEventStartingPointPreview**
+> CreateDetectedEventStartingPointPreviewResponse CreateDetectedEventStartingPointPreview (UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+
+What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDetectedEventStartingPointPreviewExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var updateDetectedEventStartingPointRequest = new UpdateDetectedEventStartingPointRequest(); // UpdateDetectedEventStartingPointRequest | 
+
+            try
+            {
+                // What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+                CreateDetectedEventStartingPointPreviewResponse result = apiInstance.CreateDetectedEventStartingPointPreview(updateDetectedEventStartingPointRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.CreateDetectedEventStartingPointPreview: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateDetectedEventStartingPointRequest** | **UpdateDetectedEventStartingPointRequest**|  | 
+
+### Return type
+
+**CreateDetectedEventStartingPointPreviewResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createemaileventconfirm"></a>
 # **CreateEmailEventConfirm**
 > CreateEmailEventConfirmResponse CreateEmailEventConfirm (Guid id, CreateEmailEventConfirmRequest createEmailEventConfirmRequest)
@@ -952,6 +1282,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **IdStatusResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createemaileventreprocess"></a>
+# **CreateEmailEventReprocess**
+> GetEmailEventResponse CreateEmailEventReprocess (Guid id)
+
+Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateEmailEventReprocessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+                GetEmailEventResponse result = apiInstance.CreateEmailEventReprocess(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.CreateEmailEventReprocess: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**GetEmailEventResponse**
 
 ### Authorization
 
@@ -1596,6 +2004,388 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getdetectedeventoverview"></a>
+# **GetDetectedEventOverview**
+> GetDetectedEventOverviewResponse GetDetectedEventOverview ()
+
+What Crossly does today in each situation for the store, computed from the store's real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDetectedEventOverviewExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+
+            try
+            {
+                // What Crossly does today in each situation for the store, computed from the store's real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+                GetDetectedEventOverviewResponse result = apiInstance.GetDetectedEventOverview();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.GetDetectedEventOverview: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetDetectedEventOverviewResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getdetectedeventrule"></a>
+# **GetDetectedEventRule**
+> GetDetectedEventRuleResponse GetDetectedEventRule (string _ref)
+
+One detection rule by its ref: a stored rule's id, or default.<key> for a situation (the store's effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDetectedEventRuleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var _ref = "_ref_example";  // string | A stored rule id (uuid), or default.<key> for a situation default (default:<key> also works).
+
+            try
+            {
+                // One detection rule by its ref: a stored rule's id, or default.<key> for a situation (the store's effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+                GetDetectedEventRuleResponse result = apiInstance.GetDetectedEventRule(_ref);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.GetDetectedEventRule: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_ref** | **string**| A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works). | 
+
+### Return type
+
+**GetDetectedEventRuleResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getdetectedeventstartingpoint"></a>
+# **GetDetectedEventStartingPoint**
+> GetDetectedEventStartingPointResponse GetDetectedEventStartingPoint ()
+
+The store's starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDetectedEventStartingPointExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+
+            try
+            {
+                // The store's starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+                GetDetectedEventStartingPointResponse result = apiInstance.GetDetectedEventStartingPoint();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.GetDetectedEventStartingPoint: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetDetectedEventStartingPointResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getemailevent"></a>
+# **GetEmailEvent**
+> GetEmailEventResponse GetEmailEvent (Guid id)
+
+One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetEmailEventExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+                GetEmailEventResponse result = apiInstance.GetEmailEvent(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.GetEmailEvent: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**GetEmailEventResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getemaileventpreview"></a>
+# **GetEmailEventPreview**
+> GetEmailEventPreviewResponse GetEmailEventPreview (Guid id)
+
+A marketplace email's sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetEmailEventPreviewExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // A marketplace email's sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+                GetEmailEventPreviewResponse result = apiInstance.GetEmailEventPreview(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.GetEmailEventPreview: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**GetEmailEventPreviewResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="geteventpolicy"></a>
 # **GetEventPolicy**
 > GetEventPolicyResponse GetEventPolicy (string platform = null, Guid? appId = null)
@@ -1964,9 +2754,9 @@ Name | Type | Description  | Notes
 
 <a name="listdetectedeventevents"></a>
 # **ListDetectedEventEvents**
-> ListDetectedEventEventsResponse ListDetectedEventEvents (string kinds = null, string platforms = null, string accounts = null, string statuses = null, DateTime? since = null, string cursor = null, int? limit = null)
+> ListDetectedEventEventsResponse ListDetectedEventEvents (string kinds = null, string platforms = null, string accounts = null, string statuses = null, string channels = null, Guid? itemId = null, Guid? listingId = null, Guid? orderId = null, string ruleId = null, string ownership = null, DateTime? since = null, string cursor = null, int? limit = null)
 
-Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses=asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
 
 ### Example
 ```csharp
@@ -1991,15 +2781,21 @@ namespace Example
             var kinds = "kinds_example";  // string |  (optional) 
             var platforms = "platforms_example";  // string |  (optional) 
             var accounts = "accounts_example";  // string | Comma-separated platform account ids (scope.account). (optional) 
-            var statuses = "statuses_example";  // string | Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional) 
+            var statuses = "statuses_example";  // string | Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional) 
+            var channels = "channels_example";  // string | Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional) 
+            var itemId = "itemId_example";  // Guid? | Only events about this inventory item. (optional) 
+            var listingId = "listingId_example";  // Guid? | Only events about this platform listing. (optional) 
+            var orderId = "orderId_example";  // Guid? | Only events about this order. (optional) 
+            var ruleId = "ruleId_example";  // string | Only events this rule decided (a rule id, or default:<key>). (optional) 
+            var ownership = "ownership_example";  // string | Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional) 
             var since = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? |  (optional) 
             var cursor = "cursor_example";  // string |  (optional) 
             var limit = 56;  // int? |  (optional) 
 
             try
             {
-                // Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
-                ListDetectedEventEventsResponse result = apiInstance.ListDetectedEventEvents(kinds, platforms, accounts, statuses, since, cursor, limit);
+                // Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses=asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
+                ListDetectedEventEventsResponse result = apiInstance.ListDetectedEventEvents(kinds, platforms, accounts, statuses, channels, itemId, listingId, orderId, ruleId, ownership, since, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2020,7 +2816,13 @@ Name | Type | Description  | Notes
  **kinds** | **string**|  | [optional] 
  **platforms** | **string**|  | [optional] 
  **accounts** | **string**| Comma-separated platform account ids (scope.account). | [optional] 
- **statuses** | **string**| Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected | [optional] 
+ **statuses** | **string**| Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed | [optional] 
+ **channels** | **string**| Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual | [optional] 
+ **itemId** | **Guid?**| Only events about this inventory item. | [optional] 
+ **listingId** | **Guid?**| Only events about this platform listing. | [optional] 
+ **orderId** | **Guid?**| Only events about this order. | [optional] 
+ **ruleId** | **string**| Only events this rule decided (a rule id, or default:&lt;key&gt;). | [optional] 
+ **ownership** | **string**| Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). | [optional] 
  **since** | **DateTime?**|  | [optional] 
  **cursor** | **string**|  | [optional] 
  **limit** | **int?**|  | [optional] 
@@ -2102,6 +2904,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListDetectedEventRulesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listdetectedeventsituations"></a>
+# **ListDetectedEventSituations**
+> ListDetectedEventSituationsResponse ListDetectedEventSituations ()
+
+Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.<key>) and the choice cards offered for it. To pick a card, PUT its body to the rule default:<key>. The same catalog for every seller; GET overview says what each does today.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListDetectedEventSituationsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+
+            try
+            {
+                // Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.<key>) and the choice cards offered for it. To pick a card, PUT its body to the rule default:<key>. The same catalog for every seller; GET overview says what each does today.
+                ListDetectedEventSituationsResponse result = apiInstance.ListDetectedEventSituations();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.ListDetectedEventSituations: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListDetectedEventSituationsResponse**
 
 ### Authorization
 
@@ -2348,6 +3224,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **CreateDetectedEventRuleResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatedetectedeventstartingpoint"></a>
+# **UpdateDetectedEventStartingPoint**
+> GetDetectedEventStartingPointResponse UpdateDetectedEventStartingPoint (UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+
+Apply a starting point to the store: rewrites the store's untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateDetectedEventStartingPointExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ActivityApi(config);
+            var updateDetectedEventStartingPointRequest = new UpdateDetectedEventStartingPointRequest(); // UpdateDetectedEventStartingPointRequest | 
+
+            try
+            {
+                // Apply a starting point to the store: rewrites the store's untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+                GetDetectedEventStartingPointResponse result = apiInstance.UpdateDetectedEventStartingPoint(updateDetectedEventStartingPointRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ActivityApi.UpdateDetectedEventStartingPoint: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateDetectedEventStartingPointRequest** | **UpdateDetectedEventStartingPointRequest**|  | 
+
+### Return type
+
+**GetDetectedEventStartingPointResponse**
 
 ### Authorization
 

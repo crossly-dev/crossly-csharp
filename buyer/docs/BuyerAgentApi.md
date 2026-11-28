@@ -89,7 +89,7 @@ This endpoint does not need any parameter.
 
 <a name="createbuyeragentsessionact"></a>
 # **CreateBuyerAgentSessionAct**
-> CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct (string id)
+> CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct (string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest)
 
 Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
 
@@ -114,11 +114,12 @@ namespace Example
 
             var apiInstance = new BuyerAgentApi(config);
             var id = "id_example";  // string | 
+            var createBuyerAgentSessionActRequest = new CreateBuyerAgentSessionActRequest(); // CreateBuyerAgentSessionActRequest | 
 
             try
             {
                 // Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
-                CreateBuyerAgentSessionActResponse result = apiInstance.CreateBuyerAgentSessionAct(id);
+                CreateBuyerAgentSessionActResponse result = apiInstance.CreateBuyerAgentSessionAct(id, createBuyerAgentSessionActRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -137,6 +138,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerAgentSessionActRequest** | **CreateBuyerAgentSessionActRequest**|  | 
 
 ### Return type
 
@@ -148,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -167,7 +169,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyeragentsessionreact"></a>
 # **CreateBuyerAgentSessionReact**
-> DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact (string id)
+> DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact (string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest)
 
 Like or dislike an option; the next search leans toward likes and drops dislikes.
 
@@ -192,11 +194,12 @@ namespace Example
 
             var apiInstance = new BuyerAgentApi(config);
             var id = "id_example";  // string | 
+            var createBuyerAgentSessionReactRequest = new CreateBuyerAgentSessionReactRequest(); // CreateBuyerAgentSessionReactRequest | 
 
             try
             {
                 // Like or dislike an option; the next search leans toward likes and drops dislikes.
-                DeleteBuyerAgentSessionResponse result = apiInstance.CreateBuyerAgentSessionReact(id);
+                DeleteBuyerAgentSessionResponse result = apiInstance.CreateBuyerAgentSessionReact(id, createBuyerAgentSessionReactRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -215,6 +218,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerAgentSessionReactRequest** | **CreateBuyerAgentSessionReactRequest**|  | 
 
 ### Return type
 
@@ -226,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -245,7 +249,7 @@ Name | Type | Description  | Notes
 
 <a name="createbuyeragentsessionturn"></a>
 # **CreateBuyerAgentSessionTurn**
-> CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn (string id)
+> CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn (string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest)
 
 Say something to the agent: what you want, a critique of the options (\"cheaper\", \"more like #2\"), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
 
@@ -270,11 +274,12 @@ namespace Example
 
             var apiInstance = new BuyerAgentApi(config);
             var id = "id_example";  // string | 
+            var createBuyerAgentSessionTurnRequest = new CreateBuyerAgentSessionTurnRequest(); // CreateBuyerAgentSessionTurnRequest | 
 
             try
             {
                 // Say something to the agent: what you want, a critique of the options (\"cheaper\", \"more like #2\"), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
-                CreateBuyerAgentSessionTurnResponse result = apiInstance.CreateBuyerAgentSessionTurn(id);
+                CreateBuyerAgentSessionTurnResponse result = apiInstance.CreateBuyerAgentSessionTurn(id, createBuyerAgentSessionTurnRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -293,6 +298,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createBuyerAgentSessionTurnRequest** | **CreateBuyerAgentSessionTurnRequest**|  | 
 
 ### Return type
 
@@ -304,7 +310,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

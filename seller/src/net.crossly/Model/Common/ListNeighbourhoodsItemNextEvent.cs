@@ -66,30 +66,30 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListNeighbourhoodsItemNextEvent" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="title">title (required).</param>
         /// <param name="live">live (required).</param>
-        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="kind">kind (required).</param>
+        /// <param name="title">title (required).</param>
+        /// <param name="endsAt">endsAt (required).</param>
         /// <param name="startsAt">startsAt (required).</param>
-        public ListNeighbourhoodsItemNextEvent(string id = default(string), string title = default(string), bool live = default(bool), string endsAt = default(string), KindEnum kind = default(KindEnum), string startsAt = default(string))
+        public ListNeighbourhoodsItemNextEvent(string id = default(string), bool live = default(bool), KindEnum kind = default(KindEnum), string title = default(string), string endsAt = default(string), string startsAt = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListNeighbourhoodsItemNextEvent and cannot be null");
             }
             this.Id = id;
+            this.Live = live;
+            this.Kind = kind;
             // to ensure "title" is required (not null)
             if (title == null) {
                 throw new ArgumentNullException("title is a required property for ListNeighbourhoodsItemNextEvent and cannot be null");
             }
             this.Title = title;
-            this.Live = live;
             // to ensure "endsAt" is required (not null)
             if (endsAt == null) {
                 throw new ArgumentNullException("endsAt is a required property for ListNeighbourhoodsItemNextEvent and cannot be null");
             }
             this.EndsAt = endsAt;
-            this.Kind = kind;
             // to ensure "startsAt" is required (not null)
             if (startsAt == null) {
                 throw new ArgumentNullException("startsAt is a required property for ListNeighbourhoodsItemNextEvent and cannot be null");
@@ -104,16 +104,16 @@ namespace net.crossly.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
-        public string Title { get; set; }
-
-        /// <summary>
         /// Gets or Sets Live
         /// </summary>
         [DataMember(Name = "live", IsRequired = true, EmitDefaultValue = true)]
         public bool Live { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Title
+        /// </summary>
+        [DataMember(Name = "title", IsRequired = true, EmitDefaultValue = false)]
+        public string Title { get; set; }
 
         /// <summary>
         /// Gets or Sets EndsAt
@@ -136,10 +136,10 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListNeighbourhoodsItemNextEvent {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  Live: ").Append(Live).Append("\n");
-            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -182,22 +182,22 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Live == input.Live ||
+                    this.Live.Equals(input.Live)
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
+                ) && 
+                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
                 ) && 
                 (
-                    this.Live == input.Live ||
-                    this.Live.Equals(input.Live)
-                ) && 
-                (
                     this.EndsAt == input.EndsAt ||
                     (this.EndsAt != null &&
                     this.EndsAt.Equals(input.EndsAt))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    this.Kind.Equals(input.Kind)
                 ) && 
                 (
                     this.StartsAt == input.StartsAt ||
@@ -219,16 +219,16 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Live.GetHashCode();
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Live.GetHashCode();
                 if (this.EndsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.EndsAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 if (this.StartsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartsAt.GetHashCode();

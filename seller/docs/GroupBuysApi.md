@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 <a name="creategroupbuy"></a>
 # **CreateGroupBuy**
-> CreateBreakResponse CreateGroupBuy ()
+> CreateBreakResponse CreateGroupBuy (CreateGroupBuyRequest createGroupBuyRequest)
 
 Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
 
@@ -41,11 +41,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new GroupBuysApi(config);
+            var createGroupBuyRequest = new CreateGroupBuyRequest(); // CreateGroupBuyRequest | 
 
             try
             {
                 // Run a group buy on a listing with stock: price tiers by committed quantity, a goal and minimum to proceed, a per-buyer max, a deadline, authorize-now or pay-now-refund-the-difference, a goal-miss policy (cancel, proceed, extend once), visibility, placement and share copy. The original body (tiers by buyer count, minBuyers, days) is still accepted.
-                CreateBreakResponse result = apiInstance.CreateGroupBuy();
+                CreateBreakResponse result = apiInstance.CreateGroupBuy(createGroupBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -60,7 +61,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createGroupBuyRequest** | **CreateGroupBuyRequest**|  | 
 
 ### Return type
 
@@ -72,7 +76,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -247,7 +251,7 @@ Name | Type | Description  | Notes
 
 <a name="creategroupbuyextend"></a>
 # **CreateGroupBuyExtend**
-> CreateGroupBuyExtendResponse CreateGroupBuyExtend (string id)
+> CreateGroupBuyExtendResponse CreateGroupBuyExtend (string id, CreateGroupBuyExtendRequest createGroupBuyExtendRequest = null)
 
 Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
 
@@ -272,11 +276,12 @@ namespace Example
 
             var apiInstance = new GroupBuysApi(config);
             var id = "id_example";  // string | 
+            var createGroupBuyExtendRequest = new CreateGroupBuyExtendRequest(); // CreateGroupBuyExtendRequest |  (optional) 
 
             try
             {
                 // Move the deadline later by N days (authorize-now pools run at most 6 days, pay-now pools 30).
-                CreateGroupBuyExtendResponse result = apiInstance.CreateGroupBuyExtend(id);
+                CreateGroupBuyExtendResponse result = apiInstance.CreateGroupBuyExtend(id, createGroupBuyExtendRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -295,6 +300,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGroupBuyExtendRequest** | **CreateGroupBuyExtendRequest**|  | [optional] 
 
 ### Return type
 
@@ -306,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -325,7 +331,7 @@ Name | Type | Description  | Notes
 
 <a name="creategroupbuymessage"></a>
 # **CreateGroupBuyMessage**
-> CreateGroupBuyMessageResponse CreateGroupBuyMessage (string id)
+> CreateGroupBuyMessageResponse CreateGroupBuyMessage (string id, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = null)
 
 Send a notification to every buyer committed to the group buy.
 
@@ -350,11 +356,12 @@ namespace Example
 
             var apiInstance = new GroupBuysApi(config);
             var id = "id_example";  // string | 
+            var createGroupBuyMessageRequest = new CreateGroupBuyMessageRequest(); // CreateGroupBuyMessageRequest |  (optional) 
 
             try
             {
                 // Send a notification to every buyer committed to the group buy.
-                CreateGroupBuyMessageResponse result = apiInstance.CreateGroupBuyMessage(id);
+                CreateGroupBuyMessageResponse result = apiInstance.CreateGroupBuyMessage(id, createGroupBuyMessageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -373,6 +380,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createGroupBuyMessageRequest** | **CreateGroupBuyMessageRequest**|  | [optional] 
 
 ### Return type
 
@@ -384,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -633,7 +641,7 @@ This endpoint does not need any parameter.
 
 <a name="updategroupbuy"></a>
 # **UpdateGroupBuy**
-> UpdateGroupBuyResponse UpdateGroupBuy (string id)
+> UpdateGroupBuyResponse UpdateGroupBuy (string id, UpdateGroupBuyRequest updateGroupBuyRequest = null)
 
 Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
 
@@ -658,11 +666,12 @@ namespace Example
 
             var apiInstance = new GroupBuysApi(config);
             var id = "id_example";  // string | 
+            var updateGroupBuyRequest = new UpdateGroupBuyRequest(); // UpdateGroupBuyRequest |  (optional) 
 
             try
             {
                 // Edit a group buy. Copy, visibility, placement and the per-buyer max change any time; tiers, goal, minimum, payment mode and goal-miss policy only before anyone commits.
-                UpdateGroupBuyResponse result = apiInstance.UpdateGroupBuy(id);
+                UpdateGroupBuyResponse result = apiInstance.UpdateGroupBuy(id, updateGroupBuyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -681,6 +690,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateGroupBuyRequest** | **UpdateGroupBuyRequest**|  | [optional] 
 
 ### Return type
 
@@ -692,7 +702,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

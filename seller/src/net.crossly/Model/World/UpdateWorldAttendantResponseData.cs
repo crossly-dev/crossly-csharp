@@ -85,7 +85,7 @@ namespace net.crossly.Model
         /// <param name="hours">hours.</param>
         /// <param name="allowedActions">allowedActions (required).</param>
         /// <param name="showroomIds">The showrooms (spatial_scenes ids) it stands in. (required).</param>
-        public UpdateWorldAttendantResponseData(string id = default(string), string storefrontId = default(string), string createdAt = default(string), string updatedAt = default(string), string name = default(string), BrainEnum brain = default(BrainEnum), bool enabled = default(bool), GetWorldAttendantResponseDataAttendantAppearance appearance = default(GetWorldAttendantResponseDataAttendantAppearance), GetWorldAttendantResponseDataAttendantPersonality personality = default(GetWorldAttendantResponseDataAttendantPersonality), UpdateWorldAttendantResponseDataKnowledge knowledge = default(UpdateWorldAttendantResponseDataKnowledge), List<UpdateWorldAttendantResponseDataLanguagesItem> languages = default(List<UpdateWorldAttendantResponseDataLanguagesItem>), UpdateWorldAttendantResponseDataHours hours = default(UpdateWorldAttendantResponseDataHours), GetWorldAttendantResponseDataAttendantAllowedActions allowedActions = default(GetWorldAttendantResponseDataAttendantAllowedActions), List<string> showroomIds = default(List<string>))
+        public UpdateWorldAttendantResponseData(string id = default(string), string storefrontId = default(string), string createdAt = default(string), string updatedAt = default(string), string name = default(string), BrainEnum brain = default(BrainEnum), bool enabled = default(bool), GetWorldAttendantResponseDataAttendantAppearance appearance = default(GetWorldAttendantResponseDataAttendantAppearance), GetWorldAttendantResponseDataAttendantPersonality personality = default(GetWorldAttendantResponseDataAttendantPersonality), UpdateWorldAttendantRequestKnowledge knowledge = default(UpdateWorldAttendantRequestKnowledge), List<UpdateWorldAttendantResponseDataLanguagesItem> languages = default(List<UpdateWorldAttendantResponseDataLanguagesItem>), UpdateWorldAttendantResponseDataHours hours = default(UpdateWorldAttendantResponseDataHours), GetWorldAttendantResponseDataAttendantAllowedActions allowedActions = default(GetWorldAttendantResponseDataAttendantAllowedActions), List<string> showroomIds = default(List<string>))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -195,7 +195,7 @@ namespace net.crossly.Model
         /// Gets or Sets Knowledge
         /// </summary>
         [DataMember(Name = "knowledge", IsRequired = true, EmitDefaultValue = false)]
-        public UpdateWorldAttendantResponseDataKnowledge Knowledge { get; set; }
+        public UpdateWorldAttendantRequestKnowledge Knowledge { get; set; }
 
         /// <summary>
         /// Gets or Sets Languages

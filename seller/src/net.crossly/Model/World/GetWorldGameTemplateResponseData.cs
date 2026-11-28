@@ -41,7 +41,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="kind">kind (required).</param>
         /// <param name="files">files (required).</param>
-        public GetWorldGameTemplateResponseData(string kind = default(string), List<GetWorldGameTemplateResponseDataFiles> files = default(List<GetWorldGameTemplateResponseDataFiles>))
+        public GetWorldGameTemplateResponseData(string kind = default(string), List<PathBase64> files = default(List<PathBase64>))
         {
             // to ensure "kind" is required (not null)
             if (kind == null) {
@@ -65,7 +65,7 @@ namespace net.crossly.Model
         /// Gets or Sets Files
         /// </summary>
         [DataMember(Name = "files", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetWorldGameTemplateResponseDataFiles> Files { get; set; }
+        public List<PathBase64> Files { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

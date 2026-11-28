@@ -9,16 +9,20 @@ Method | HTTP request | Description
 [**CreateAccountLogoutAll**](AccountApi.md#createaccountlogoutall) | **POST** /v1/account/logout-all | Revoke every browser auth session for this user.
 [**CreateAccountReconfirmDeletion**](AccountApi.md#createaccountreconfirmdeletion) | **POST** /v1/account/reconfirm-deletion | Confirm again a deletion paused because the account was in use.
 [**CreateAccountRequestDeletion**](AccountApi.md#createaccountrequestdeletion) | **POST** /v1/account/request-deletion | Schedule account deletion after a grace period. Requires confirmEmail.
+[**CreateAuthSessionSignOut**](AccountApi.md#createauthsessionsignout) | **POST** /v1/auth/sessions/sign-out | Sign out several sessions at once.
 [**DeleteAuthSession**](AccountApi.md#deleteauthsession) | **DELETE** /v1/auth/sessions | Revoke all active browser sessions.
 [**DeleteAuthSessionBySessionId**](AccountApi.md#deleteauthsessionbysessionid) | **DELETE** /v1/auth/sessions/{sessionId} | Revoke a single browser session by id.
 [**DeleteConnectedApp**](AccountApi.md#deleteconnectedapp) | **DELETE** /v1/connected-apps/{grantId} | Disconnect a third-party app. Its tokens stop working immediately.
 [**GetAccountClosureChecklist**](AccountApi.md#getaccountclosurechecklist) | **GET** /v1/account/closure-checklist | What closing the account will and will not do, before you request it.
 [**GetAccountDeletionStatus**](AccountApi.md#getaccountdeletionstatus) | **GET** /v1/account/deletion-status | Get the currently-pending deletion request, if any.
 [**GetAccountIdentityVerification**](AccountApi.md#getaccountidentityverification) | **GET** /v1/account/identity-verification | Your identity verification: one status for the whole account, read by every feature that needs ID.
+[**GetAccountNotificationPreference**](AccountApi.md#getaccountnotificationpreference) | **GET** /v1/account/notification-preferences | Which notifications reach you, per event and channel (email, push, in-app).
+[**GetAccountSignInIdentity**](AccountApi.md#getaccountsigninidentity) | **GET** /v1/account/sign-in-identity | How you sign in (Atlas): linked providers, password, passkeys, two-step.
 [**GetMe**](AccountApi.md#getme) | **GET** /v1/me | Identity check — authenticated user + PAT scopes + account state.
 [**GetMembership**](AccountApi.md#getmembership) | **GET** /v1/membership | The caller&#39;s Crossly One membership status and benefits.
-[**ListAuthSessions**](AccountApi.md#listauthsessions) | **GET** /v1/auth/sessions | List active browser auth sessions.
-[**ListConnectedApps**](AccountApi.md#listconnectedapps) | **GET** /v1/connected-apps | List third-party OAuth apps with access to this account.
+[**ListAuthSessions**](AccountApi.md#listauthsessions) | **GET** /v1/auth/sessions | List, search and filter your sign-in sessions.
+[**ListConnectedApps**](AccountApi.md#listconnectedapps) | **GET** /v1/connected-apps | List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
+[**UpdateAccountNotificationPreference**](AccountApi.md#updateaccountnotificationpreference) | **PUT** /v1/account/notification-preferences | Turn notifications on or off per event and channel (email, push, in-app).
 
 
 <a name="createaccountcanceldeletion"></a>
@@ -251,7 +255,7 @@ This endpoint does not need any parameter.
 
 <a name="createaccountreconfirmdeletion"></a>
 # **CreateAccountReconfirmDeletion**
-> CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion ()
+> CreateAccountReconfirmDeletionResponse CreateAccountReconfirmDeletion (CreateAccountReconfirmDeletionRequest createAccountReconfirmDeletionRequest = null)
 
 Confirm again a deletion paused because the account was in use.
 
@@ -275,11 +279,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AccountApi(config);
+            var createAccountReconfirmDeletionRequest = new CreateAccountReconfirmDeletionRequest(); // CreateAccountReconfirmDeletionRequest |  (optional) 
 
             try
             {
                 // Confirm again a deletion paused because the account was in use.
-                CreateAccountReconfirmDeletionResponse result = apiInstance.CreateAccountReconfirmDeletion();
+                CreateAccountReconfirmDeletionResponse result = apiInstance.CreateAccountReconfirmDeletion(createAccountReconfirmDeletionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -294,7 +299,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAccountReconfirmDeletionRequest** | **CreateAccountReconfirmDeletionRequest**|  | [optional] 
 
 ### Return type
 
@@ -306,7 +314,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -325,7 +333,7 @@ This endpoint does not need any parameter.
 
 <a name="createaccountrequestdeletion"></a>
 # **CreateAccountRequestDeletion**
-> CreateAccountRequestDeletionResponse CreateAccountRequestDeletion ()
+> CreateAccountRequestDeletionResponse CreateAccountRequestDeletion (CreateAccountRequestDeletionRequest createAccountRequestDeletionRequest = null)
 
 Schedule account deletion after a grace period. Requires confirmEmail.
 
@@ -349,11 +357,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AccountApi(config);
+            var createAccountRequestDeletionRequest = new CreateAccountRequestDeletionRequest(); // CreateAccountRequestDeletionRequest |  (optional) 
 
             try
             {
                 // Schedule account deletion after a grace period. Requires confirmEmail.
-                CreateAccountRequestDeletionResponse result = apiInstance.CreateAccountRequestDeletion();
+                CreateAccountRequestDeletionResponse result = apiInstance.CreateAccountRequestDeletion(createAccountRequestDeletionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -368,7 +377,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAccountRequestDeletionRequest** | **CreateAccountRequestDeletionRequest**|  | [optional] 
 
 ### Return type
 
@@ -380,7 +392,85 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createauthsessionsignout"></a>
+# **CreateAuthSessionSignOut**
+> CreateAuthSessionSignOutResponse CreateAuthSessionSignOut (CreateAuthSessionSignOutRequest createAuthSessionSignOutRequest)
+
+Sign out several sessions at once.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateAuthSessionSignOutExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+            var createAuthSessionSignOutRequest = new CreateAuthSessionSignOutRequest(); // CreateAuthSessionSignOutRequest | 
+
+            try
+            {
+                // Sign out several sessions at once.
+                CreateAuthSessionSignOutResponse result = apiInstance.CreateAuthSessionSignOut(createAuthSessionSignOutRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.CreateAuthSessionSignOut: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAuthSessionSignOutRequest** | **CreateAuthSessionSignOutRequest**|  | 
+
+### Return type
+
+**CreateAuthSessionSignOutResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -851,6 +941,154 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getaccountnotificationpreference"></a>
+# **GetAccountNotificationPreference**
+> GetAccountNotificationPreferenceResponse GetAccountNotificationPreference ()
+
+Which notifications reach you, per event and channel (email, push, in-app).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetAccountNotificationPreferenceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                // Which notifications reach you, per event and channel (email, push, in-app).
+                GetAccountNotificationPreferenceResponse result = apiInstance.GetAccountNotificationPreference();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.GetAccountNotificationPreference: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountNotificationPreferenceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getaccountsigninidentity"></a>
+# **GetAccountSignInIdentity**
+> GetAccountSignInIdentityResponse GetAccountSignInIdentity ()
+
+How you sign in (Atlas): linked providers, password, passkeys, two-step.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetAccountSignInIdentityExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+
+            try
+            {
+                // How you sign in (Atlas): linked providers, password, passkeys, two-step.
+                GetAccountSignInIdentityResponse result = apiInstance.GetAccountSignInIdentity();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.GetAccountSignInIdentity: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**GetAccountSignInIdentityResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getme"></a>
 # **GetMe**
 > GetMeResponse GetMe ()
@@ -1003,9 +1241,9 @@ This endpoint does not need any parameter.
 
 <a name="listauthsessions"></a>
 # **ListAuthSessions**
-> ListAuthSessionsResponse ListAuthSessions ()
+> ListAuthSessionsResponse ListAuthSessions (string q = null, string status = null, string deviceType = null, string from = null, string to = null, int? page = null, int? limit = null)
 
-List active browser auth sessions.
+List, search and filter your sign-in sessions.
 
 ### Example
 ```csharp
@@ -1027,11 +1265,18 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AccountApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var status = "active";  // string |  (optional) 
+            var deviceType = "all";  // string |  (optional) 
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
+            var page = 56;  // int? |  (optional) 
+            var limit = 56;  // int? |  (optional) 
 
             try
             {
-                // List active browser auth sessions.
-                ListAuthSessionsResponse result = apiInstance.ListAuthSessions();
+                // List, search and filter your sign-in sessions.
+                ListAuthSessionsResponse result = apiInstance.ListAuthSessions(q, status, deviceType, from, to, page, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1046,7 +1291,16 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **deviceType** | **string**|  | [optional] 
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
+ **page** | **int?**|  | [optional] 
+ **limit** | **int?**|  | [optional] 
 
 ### Return type
 
@@ -1079,7 +1333,7 @@ This endpoint does not need any parameter.
 # **ListConnectedApps**
 > ListConnectedAppsResponse ListConnectedApps ()
 
-List third-party OAuth apps with access to this account.
+List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
 
 ### Example
 ```csharp
@@ -1104,7 +1358,7 @@ namespace Example
 
             try
             {
-                // List third-party OAuth apps with access to this account.
+                // List third-party OAuth apps with access to this account, each with its publisher (the store that owns it). Optional: q, scope, lastUsed (7d|30d|90d|never|stale), page, pageSize.
                 ListConnectedAppsResponse result = apiInstance.ListConnectedApps();
                 Debug.WriteLine(result);
             }
@@ -1133,6 +1387,84 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateaccountnotificationpreference"></a>
+# **UpdateAccountNotificationPreference**
+> GetAccountNotificationPreferenceResponse UpdateAccountNotificationPreference (UpdateAccountNotificationPreferenceRequest updateAccountNotificationPreferenceRequest)
+
+Turn notifications on or off per event and channel (email, push, in-app).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateAccountNotificationPreferenceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new AccountApi(config);
+            var updateAccountNotificationPreferenceRequest = new UpdateAccountNotificationPreferenceRequest(); // UpdateAccountNotificationPreferenceRequest | 
+
+            try
+            {
+                // Turn notifications on or off per event and channel (email, push, in-app).
+                GetAccountNotificationPreferenceResponse result = apiInstance.UpdateAccountNotificationPreference(updateAccountNotificationPreferenceRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling AccountApi.UpdateAccountNotificationPreference: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateAccountNotificationPreferenceRequest** | **UpdateAccountNotificationPreferenceRequest**|  | 
+
+### Return type
+
+**GetAccountNotificationPreferenceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

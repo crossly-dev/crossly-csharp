@@ -44,40 +44,40 @@ namespace net.crossly.Model
             Date = 1,
 
             /// <summary>
+            /// Enum Text for value: text
+            /// </summary>
+            [EnumMember(Value = "text")]
+            Text = 2,
+
+            /// <summary>
             /// Enum Days for value: days
             /// </summary>
             [EnumMember(Value = "days")]
-            Days = 2,
+            Days = 3,
 
             /// <summary>
             /// Enum Count for value: count
             /// </summary>
             [EnumMember(Value = "count")]
-            Count = 3,
+            Count = 4,
 
             /// <summary>
             /// Enum Rate for value: rate
             /// </summary>
             [EnumMember(Value = "rate")]
-            Rate = 4,
+            Rate = 5,
 
             /// <summary>
             /// Enum Cents for value: cents
             /// </summary>
             [EnumMember(Value = "cents")]
-            Cents = 5,
+            Cents = 6,
 
             /// <summary>
             /// Enum Ratio for value: ratio
             /// </summary>
             [EnumMember(Value = "ratio")]
-            Ratio = 6,
-
-            /// <summary>
-            /// Enum Text for value: text
-            /// </summary>
-            [EnumMember(Value = "text")]
-            Text = 7
+            Ratio = 7
 
         }
 

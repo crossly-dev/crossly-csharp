@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceBadgeResponse</returns>
-        CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge(string experienceId);
+        CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest));
 
         /// <summary>
         /// Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 &#x3D; the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
@@ -42,8 +43,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceBadgeResponse</returns>
-        ApiResponse<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeWithHttpInfo(string experienceId);
+        ApiResponse<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeWithHttpInfo(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest));
         /// <summary>
         /// Every game badge you hold, newest first, and whether your person page shows them.
         /// </summary>
@@ -118,8 +120,9 @@ namespace net.crossly.Api
         /// Show (or hide) the game badges you hold on your person page. Off by default.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <returns>UpdateWorldBadgeProfileResponse</returns>
-        UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile();
+        UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest));
 
         /// <summary>
         /// Show (or hide) the game badges you hold on your person page. Off by default.
@@ -128,16 +131,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldBadgeProfileResponse</returns>
-        ApiResponse<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileWithHttpInfo();
+        ApiResponse<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileWithHttpInfo(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest));
         /// <summary>
         /// Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceBadgeResponse</returns>
-        CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge(string experienceId, string badgeId);
+        CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest));
 
         /// <summary>
         /// Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
@@ -148,8 +153,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceBadgeResponse</returns>
-        ApiResponse<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeWithHttpInfo(string experienceId, string badgeId);
+        ApiResponse<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeWithHttpInfo(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest));
         #endregion Synchronous Operations
     }
 
@@ -167,9 +173,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceBadgeResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeAsync(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 &#x3D; the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
@@ -179,9 +186,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceBadgeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceBadgeResponse>> CreateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceBadgeResponse>> CreateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Every game badge you hold, newest first, and whether your person page shows them.
         /// </summary>
@@ -279,9 +287,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldBadgeProfileResponse</returns>
-        System.Threading.Tasks.Task<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileAsync(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Show (or hide) the game badges you hold on your person page. Off by default.
@@ -290,9 +299,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldBadgeProfileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateWorldBadgeProfileResponse>> UpdateWorldBadgeProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWorldBadgeProfileResponse>> UpdateWorldBadgeProfileWithHttpInfoAsync(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
         /// </summary>
@@ -302,9 +312,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceBadgeResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeAsync(string experienceId, string badgeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeAsync(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
@@ -315,9 +326,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceBadgeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceBadgeResponse>> UpdateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, string badgeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceBadgeResponse>> UpdateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -443,10 +455,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceBadgeResponse</returns>
-        public CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge(string experienceId)
+        public CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = CreateWorldExperienceBadgeWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = CreateWorldExperienceBadgeWithHttpInfo(experienceId, createWorldExperienceBadgeRequest);
             return localVarResponse.Data;
         }
 
@@ -455,8 +468,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceBadgeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeWithHttpInfo(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -467,6 +481,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -487,6 +502,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceBadgeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -514,11 +530,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceBadgeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> CreateWorldExperienceBadgeAsync(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = await CreateWorldExperienceBadgeWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = await CreateWorldExperienceBadgeWithHttpInfoAsync(experienceId, createWorldExperienceBadgeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -527,9 +544,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceBadgeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse>> CreateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse>> CreateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = default(CreateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -541,6 +559,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -561,6 +580,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceBadgeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1154,10 +1174,11 @@ namespace net.crossly.Api
         /// Show (or hide) the game badges you hold on your person page. Off by default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <returns>UpdateWorldBadgeProfileResponse</returns>
-        public UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile()
+        public UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> localVarResponse = UpdateWorldBadgeProfileWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> localVarResponse = UpdateWorldBadgeProfileWithHttpInfo(updateWorldBadgeProfileRequest);
             return localVarResponse.Data;
         }
 
@@ -1165,12 +1186,14 @@ namespace net.crossly.Api
         /// Show (or hide) the game badges you hold on your person page. Off by default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldBadgeProfileResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileWithHttpInfo(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1190,6 +1213,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWorldBadgeProfileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1216,11 +1240,12 @@ namespace net.crossly.Api
         /// Show (or hide) the game badges you hold on your person page. Off by default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldBadgeProfileResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWorldBadgeProfileResponse> UpdateWorldBadgeProfileAsync(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> localVarResponse = await UpdateWorldBadgeProfileWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse> localVarResponse = await UpdateWorldBadgeProfileWithHttpInfoAsync(updateWorldBadgeProfileRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1228,14 +1253,16 @@ namespace net.crossly.Api
         /// Show (or hide) the game badges you hold on your person page. Off by default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateWorldBadgeProfileRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldBadgeProfileResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse>> UpdateWorldBadgeProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldBadgeProfileResponse>> UpdateWorldBadgeProfileWithHttpInfoAsync(UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = default(UpdateWorldBadgeProfileRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1255,6 +1282,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateWorldBadgeProfileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1284,10 +1312,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceBadgeResponse</returns>
-        public CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge(string experienceId, string badgeId)
+        public CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = UpdateWorldExperienceBadgeWithHttpInfo(experienceId, badgeId);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = UpdateWorldExperienceBadgeWithHttpInfo(experienceId, badgeId, updateWorldExperienceBadgeRequest);
             return localVarResponse.Data;
         }
 
@@ -1297,8 +1326,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceBadgeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeWithHttpInfo(string experienceId, string badgeId)
+        public net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeWithHttpInfo(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1315,6 +1345,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1336,6 +1367,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("badgeId", net.crossly.Client.ClientUtils.ParameterToString(badgeId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceBadgeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1364,11 +1396,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceBadgeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeAsync(string experienceId, string badgeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldExperienceBadgeResponse> UpdateWorldExperienceBadgeAsync(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = await UpdateWorldExperienceBadgeWithHttpInfoAsync(experienceId, badgeId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse> localVarResponse = await UpdateWorldExperienceBadgeWithHttpInfoAsync(experienceId, badgeId, updateWorldExperienceBadgeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1378,9 +1411,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="badgeId"></param>
+        /// <param name="updateWorldExperienceBadgeRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceBadgeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse>> UpdateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, string badgeId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceBadgeResponse>> UpdateWorldExperienceBadgeWithHttpInfoAsync(string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = default(UpdateWorldExperienceBadgeRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1398,6 +1432,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1419,6 +1454,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("badgeId", net.crossly.Client.ClientUtils.ParameterToString(badgeId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceBadgeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

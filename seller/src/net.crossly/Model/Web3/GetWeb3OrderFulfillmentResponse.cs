@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum Listing for value: listing
+            /// </summary>
+            [EnumMember(Value = "listing")]
+            Listing = 1,
+
+            /// <summary>
             /// Enum Bundle for value: bundle
             /// </summary>
             [EnumMember(Value = "bundle")]
-            Bundle = 1,
+            Bundle = 2,
 
             /// <summary>
             /// Enum Offer for value: offer
             /// </summary>
             [EnumMember(Value = "offer")]
-            Offer = 2,
-
-            /// <summary>
-            /// Enum Listing for value: listing
-            /// </summary>
-            [EnumMember(Value = "listing")]
-            Listing = 3,
+            Offer = 3,
 
             /// <summary>
             /// Enum PrivateListing for value: private_listing

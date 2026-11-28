@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Verified = 1,
 
             /// <summary>
+            /// Enum Processing for value: processing
+            /// </summary>
+            [EnumMember(Value = "processing")]
+            Processing = 2,
+
+            /// <summary>
             /// Enum Unverified for value: unverified
             /// </summary>
             [EnumMember(Value = "unverified")]
-            Unverified = 2,
+            Unverified = 3,
 
             /// <summary>
             /// Enum RequiresInput for value: requires_input
             /// </summary>
             [EnumMember(Value = "requires_input")]
-            RequiresInput = 3,
-
-            /// <summary>
-            /// Enum Processing for value: processing
-            /// </summary>
-            [EnumMember(Value = "processing")]
-            Processing = 4,
+            RequiresInput = 4,
 
             /// <summary>
             /// Enum Canceled for value: canceled

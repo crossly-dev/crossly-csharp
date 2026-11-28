@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <returns>CreateFundingApplyResponse</returns>
-        CreateFundingApplyResponse CreateFundingApply();
+        CreateFundingApplyResponse CreateFundingApply(CreateFundingApplyRequest createFundingApplyRequest);
 
         /// <summary>
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <returns>ApiResponse of CreateFundingApplyResponse</returns>
-        ApiResponse<CreateFundingApplyResponse> CreateFundingApplyWithHttpInfo();
+        ApiResponse<CreateFundingApplyResponse> CreateFundingApplyWithHttpInfo(CreateFundingApplyRequest createFundingApplyRequest);
         /// <summary>
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <returns>CreateFundingDrawResponse</returns>
-        CreateFundingDrawResponse CreateFundingDraw();
+        CreateFundingDrawResponse CreateFundingDraw(CreateFundingDrawRequest createFundingDrawRequest);
 
         /// <summary>
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
@@ -56,15 +59,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawResponse</returns>
-        ApiResponse<CreateFundingDrawResponse> CreateFundingDrawWithHttpInfo();
+        ApiResponse<CreateFundingDrawResponse> CreateFundingDrawWithHttpInfo(CreateFundingDrawRequest createFundingDrawRequest);
         /// <summary>
         /// Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>CreateFundingDrawRejectResponse</returns>
-        CreateFundingDrawRejectResponse CreateFundingDrawApprove(string id);
+        CreateFundingDrawRejectResponse CreateFundingDrawApprove(string id, NoteRequest noteRequest = default(NoteRequest));
 
         /// <summary>
         /// Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
@@ -74,14 +79,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateFundingDrawRejectResponse</returns>
-        ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawApproveWithHttpInfo(string id);
+        ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawApproveWithHttpInfo(string id, NoteRequest noteRequest = default(NoteRequest));
         /// <summary>
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <returns>CreateFundingDrawQuoteResponse</returns>
-        CreateFundingDrawQuoteResponse CreateFundingDrawQuote();
+        CreateFundingDrawQuoteResponse CreateFundingDrawQuote(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest);
 
         /// <summary>
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
@@ -90,15 +97,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawQuoteResponse</returns>
-        ApiResponse<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteWithHttpInfo();
+        ApiResponse<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteWithHttpInfo(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest);
         /// <summary>
         /// Reject a held draw. Nothing was drawn, so nothing is owed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>CreateFundingDrawRejectResponse</returns>
-        CreateFundingDrawRejectResponse CreateFundingDrawReject(string id);
+        CreateFundingDrawRejectResponse CreateFundingDrawReject(string id, NoteRequest noteRequest = default(NoteRequest));
 
         /// <summary>
         /// Reject a held draw. Nothing was drawn, so nothing is owed.
@@ -108,14 +117,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateFundingDrawRejectResponse</returns>
-        ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawRejectWithHttpInfo(string id);
+        ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawRejectWithHttpInfo(string id, NoteRequest noteRequest = default(NoteRequest));
         /// <summary>
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <returns>CreateFundingDrawUseResponse</returns>
-        CreateFundingDrawUseResponse CreateFundingDrawUse();
+        CreateFundingDrawUseResponse CreateFundingDrawUse(CreateFundingDrawUseRequest createFundingDrawUseRequest);
 
         /// <summary>
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
@@ -124,14 +135,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawUseResponse</returns>
-        ApiResponse<CreateFundingDrawUseResponse> CreateFundingDrawUseWithHttpInfo();
+        ApiResponse<CreateFundingDrawUseResponse> CreateFundingDrawUseWithHttpInfo(CreateFundingDrawUseRequest createFundingDrawUseRequest);
         /// <summary>
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>CreateFundingInvoiceFileResponse</returns>
-        CreateFundingInvoiceFileResponse CreateFundingInvoiceFile();
+        CreateFundingInvoiceFileResponse CreateFundingInvoiceFile(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest);
 
         /// <summary>
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file.
@@ -140,14 +153,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>ApiResponse of CreateFundingInvoiceFileResponse</returns>
-        ApiResponse<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileWithHttpInfo();
+        ApiResponse<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileWithHttpInfo(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest);
         /// <summary>
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <returns>CreateFundingPayCrosslyFeeResponse</returns>
-        CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee();
+        CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest);
 
         /// <summary>
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
@@ -156,14 +171,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayCrosslyFeeResponse</returns>
-        ApiResponse<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeWithHttpInfo();
+        ApiResponse<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeWithHttpInfo(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest);
         /// <summary>
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <returns>CreateFundingPayShippingLabelResponse</returns>
-        CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel();
+        CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest);
 
         /// <summary>
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
@@ -172,14 +189,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayShippingLabelResponse</returns>
-        ApiResponse<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelWithHttpInfo();
+        ApiResponse<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelWithHttpInfo(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest);
         /// <summary>
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <returns>CreateFundingPayVaultFeeResponse</returns>
-        CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee();
+        CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest);
 
         /// <summary>
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
@@ -188,14 +207,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayVaultFeeResponse</returns>
-        ApiResponse<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeWithHttpInfo();
+        ApiResponse<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeWithHttpInfo(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest);
         /// <summary>
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <returns>CreateFundingPoolStakeResponse</returns>
-        CreateFundingPoolStakeResponse CreateFundingPoolStake();
+        CreateFundingPoolStakeResponse CreateFundingPoolStake(CreateFundingPoolStakeRequest createFundingPoolStakeRequest);
 
         /// <summary>
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
@@ -204,14 +225,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPoolStakeResponse</returns>
-        ApiResponse<CreateFundingPoolStakeResponse> CreateFundingPoolStakeWithHttpInfo();
+        ApiResponse<CreateFundingPoolStakeResponse> CreateFundingPoolStakeWithHttpInfo(CreateFundingPoolStakeRequest createFundingPoolStakeRequest);
         /// <summary>
         /// Queue an unstake. Paid first-in first-out once your lockup has passed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <returns>FundingPoolResponse</returns>
-        FundingPoolResponse CreateFundingPoolUnstake();
+        FundingPoolResponse CreateFundingPoolUnstake(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest);
 
         /// <summary>
         /// Queue an unstake. Paid first-in first-out once your lockup has passed.
@@ -220,8 +243,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <returns>ApiResponse of FundingPoolResponse</returns>
-        ApiResponse<FundingPoolResponse> CreateFundingPoolUnstakeWithHttpInfo();
+        ApiResponse<FundingPoolResponse> CreateFundingPoolUnstakeWithHttpInfo(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest);
         /// <summary>
         /// Cancel a queued unstake that has not been paid yet.
         /// </summary>
@@ -260,8 +284,9 @@ namespace net.crossly.Api
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <returns>CreateFundingRepayResponse</returns>
-        CreateFundingRepayResponse CreateFundingRepay();
+        CreateFundingRepayResponse CreateFundingRepay(CreateFundingRepayRequest createFundingRepayRequest);
 
         /// <summary>
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
@@ -270,8 +295,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <returns>ApiResponse of CreateFundingRepayResponse</returns>
-        ApiResponse<CreateFundingRepayResponse> CreateFundingRepayWithHttpInfo();
+        ApiResponse<CreateFundingRepayResponse> CreateFundingRepayWithHttpInfo(CreateFundingRepayRequest createFundingRepayRequest);
         /// <summary>
         /// Remove a team member’s funding limit: they can no longer draw.
         /// </summary>
@@ -342,6 +368,22 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <returns>ApiResponse of GetFundingDrawInvoiceResponse</returns>
         ApiResponse<GetFundingDrawInvoiceResponse> GetFundingDrawInvoiceWithHttpInfo(string id);
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        GetFundingInvoiceAdvanceEligibilityResponse GetFundingInvoiceAdvanceEligibility();
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse> GetFundingInvoiceAdvanceEligibilityWithHttpInfo();
         /// <summary>
         /// Your line: limit, available, outstanding (principal + interest), APR, interest accrued since the last posting, the payoff figure, next due date, anything overdue, the per-draw schedule and your auto-repay share.
         /// </summary>
@@ -474,8 +516,9 @@ namespace net.crossly.Api
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListFundingReceiptsResponse</returns>
-        ListFundingReceiptsResponse ListFundingReceipts();
+        ListFundingReceiptsResponse ListFundingReceipts(decimal? limit = default(decimal?));
 
         /// <summary>
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
@@ -484,8 +527,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListFundingReceiptsResponse</returns>
-        ApiResponse<ListFundingReceiptsResponse> ListFundingReceiptsWithHttpInfo();
+        ApiResponse<ListFundingReceiptsResponse> ListFundingReceiptsWithHttpInfo(decimal? limit = default(decimal?));
         /// <summary>
         /// Manual repayments (card / bank, or from your payout balance), newest first.
         /// </summary>
@@ -506,8 +550,9 @@ namespace net.crossly.Api
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <returns>UpdateFundingAutorepayResponse</returns>
-        UpdateFundingAutorepayResponse UpdateFundingAutorepay();
+        UpdateFundingAutorepayResponse UpdateFundingAutorepay(UpdateFundingAutorepayRequest updateFundingAutorepayRequest);
 
         /// <summary>
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
@@ -516,14 +561,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <returns>ApiResponse of UpdateFundingAutorepayResponse</returns>
-        ApiResponse<UpdateFundingAutorepayResponse> UpdateFundingAutorepayWithHttpInfo();
+        ApiResponse<UpdateFundingAutorepayResponse> UpdateFundingAutorepayWithHttpInfo(UpdateFundingAutorepayRequest updateFundingAutorepayRequest);
         /// <summary>
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <returns>UpdateFundingControlResponse</returns>
-        UpdateFundingControlResponse UpdateFundingControl();
+        UpdateFundingControlResponse UpdateFundingControl(UpdateFundingControlRequest updateFundingControlRequest);
 
         /// <summary>
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
@@ -532,15 +579,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <returns>ApiResponse of UpdateFundingControlResponse</returns>
-        ApiResponse<UpdateFundingControlResponse> UpdateFundingControlWithHttpInfo();
+        ApiResponse<UpdateFundingControlResponse> UpdateFundingControlWithHttpInfo(UpdateFundingControlRequest updateFundingControlRequest);
         /// <summary>
         /// Set a team member’s funding limit (per draw or per month).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <returns>UpdateFundingMemberResponse</returns>
-        UpdateFundingMemberResponse UpdateFundingMember(string memberUserId);
+        UpdateFundingMemberResponse UpdateFundingMember(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest);
 
         /// <summary>
         /// Set a team member’s funding limit (per draw or per month).
@@ -550,8 +599,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <returns>ApiResponse of UpdateFundingMemberResponse</returns>
-        ApiResponse<UpdateFundingMemberResponse> UpdateFundingMemberWithHttpInfo(string memberUserId);
+        ApiResponse<UpdateFundingMemberResponse> UpdateFundingMemberWithHttpInfo(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest);
         #endregion Synchronous Operations
     }
 
@@ -568,9 +618,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingApplyResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingApplyResponse> CreateFundingApplyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingApplyResponse> CreateFundingApplyAsync(CreateFundingApplyRequest createFundingApplyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person.
@@ -579,9 +630,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingApplyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingApplyResponse>> CreateFundingApplyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingApplyResponse>> CreateFundingApplyWithHttpInfoAsync(CreateFundingApplyRequest createFundingApplyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
         /// </summary>
@@ -589,9 +641,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingDrawResponse> CreateFundingDrawAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingDrawResponse> CreateFundingDrawAsync(CreateFundingDrawRequest createFundingDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey.
@@ -600,9 +653,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawResponse>> CreateFundingDrawWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawResponse>> CreateFundingDrawWithHttpInfoAsync(CreateFundingDrawRequest createFundingDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
         /// </summary>
@@ -611,9 +665,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawRejectResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawApproveAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawApproveAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Approve a held draw. The two-person rule needs two distinct approvers; the requester never approves their own.
@@ -623,9 +678,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawRejectResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawApproveWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawApproveWithHttpInfoAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
         /// </summary>
@@ -633,9 +689,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteAsync(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn.
@@ -644,9 +701,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawQuoteResponse>> CreateFundingDrawQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawQuoteResponse>> CreateFundingDrawQuoteWithHttpInfoAsync(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Reject a held draw. Nothing was drawn, so nothing is owed.
         /// </summary>
@@ -655,9 +713,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawRejectResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawRejectAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawRejectAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reject a held draw. Nothing was drawn, so nothing is owed.
@@ -667,9 +726,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawRejectResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawRejectWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawRejectWithHttpInfoAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
         /// </summary>
@@ -677,9 +737,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawUseResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingDrawUseResponse> CreateFundingDrawUseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingDrawUseResponse> CreateFundingDrawUseAsync(CreateFundingDrawUseRequest createFundingDrawUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first.
@@ -688,9 +749,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawUseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawUseResponse>> CreateFundingDrawUseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingDrawUseResponse>> CreateFundingDrawUseWithHttpInfoAsync(CreateFundingDrawUseRequest createFundingDrawUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file.
         /// </summary>
@@ -698,9 +760,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingInvoiceFileResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file.
@@ -709,9 +772,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingInvoiceFileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingInvoiceFileResponse>> CreateFundingInvoiceFileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingInvoiceFileResponse>> CreateFundingInvoiceFileWithHttpInfoAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
         /// </summary>
@@ -719,9 +783,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayCrosslyFeeResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeAsync(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice.
@@ -730,9 +795,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayCrosslyFeeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayCrosslyFeeResponse>> CreateFundingPayCrosslyFeeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayCrosslyFeeResponse>> CreateFundingPayCrosslyFeeWithHttpInfoAsync(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
         /// </summary>
@@ -740,9 +806,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayShippingLabelResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelAsync(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw.
@@ -751,9 +818,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayShippingLabelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayShippingLabelResponse>> CreateFundingPayShippingLabelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayShippingLabelResponse>> CreateFundingPayShippingLabelWithHttpInfoAsync(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
         /// </summary>
@@ -761,9 +829,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayVaultFeeResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeAsync(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card.
@@ -772,9 +841,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayVaultFeeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayVaultFeeResponse>> CreateFundingPayVaultFeeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingPayVaultFeeResponse>> CreateFundingPayVaultFeeWithHttpInfoAsync(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
         /// </summary>
@@ -782,9 +852,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPoolStakeResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingPoolStakeResponse> CreateFundingPoolStakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingPoolStakeResponse> CreateFundingPoolStakeAsync(CreateFundingPoolStakeRequest createFundingPoolStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open.
@@ -793,9 +864,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPoolStakeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingPoolStakeResponse>> CreateFundingPoolStakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingPoolStakeResponse>> CreateFundingPoolStakeWithHttpInfoAsync(CreateFundingPoolStakeRequest createFundingPoolStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Queue an unstake. Paid first-in first-out once your lockup has passed.
         /// </summary>
@@ -803,9 +875,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FundingPoolResponse</returns>
-        System.Threading.Tasks.Task<FundingPoolResponse> CreateFundingPoolUnstakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<FundingPoolResponse> CreateFundingPoolUnstakeAsync(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Queue an unstake. Paid first-in first-out once your lockup has passed.
@@ -814,9 +887,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FundingPoolResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<FundingPoolResponse>> CreateFundingPoolUnstakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<FundingPoolResponse>> CreateFundingPoolUnstakeWithHttpInfoAsync(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a queued unstake that has not been paid yet.
         /// </summary>
@@ -868,9 +942,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingRepayResponse</returns>
-        System.Threading.Tasks.Task<CreateFundingRepayResponse> CreateFundingRepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFundingRepayResponse> CreateFundingRepayAsync(CreateFundingRepayRequest createFundingRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey.
@@ -879,9 +954,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingRepayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFundingRepayResponse>> CreateFundingRepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFundingRepayResponse>> CreateFundingRepayWithHttpInfoAsync(CreateFundingRepayRequest createFundingRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Remove a team member’s funding limit: they can no longer draw.
         /// </summary>
@@ -972,6 +1048,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetFundingDrawInvoiceResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetFundingDrawInvoiceResponse>> GetFundingDrawInvoiceWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        System.Threading.Tasks.Task<GetFundingInvoiceAdvanceEligibilityResponse> GetFundingInvoiceAdvanceEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetFundingInvoiceAdvanceEligibilityResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse>> GetFundingInvoiceAdvanceEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your line: limit, available, outstanding (principal + interest), APR, interest accrued since the last posting, the payoff figure, next due date, anything overdue, the per-draw schedule and your auto-repay share.
         /// </summary>
@@ -1147,9 +1244,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFundingReceiptsResponse</returns>
-        System.Threading.Tasks.Task<ListFundingReceiptsResponse> ListFundingReceiptsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListFundingReceiptsResponse> ListFundingReceiptsAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against.
@@ -1158,9 +1256,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFundingReceiptsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListFundingReceiptsResponse>> ListFundingReceiptsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListFundingReceiptsResponse>> ListFundingReceiptsWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Manual repayments (card / bank, or from your payout balance), newest first.
         /// </summary>
@@ -1189,9 +1288,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingAutorepayResponse</returns>
-        System.Threading.Tasks.Task<UpdateFundingAutorepayResponse> UpdateFundingAutorepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateFundingAutorepayResponse> UpdateFundingAutorepayAsync(UpdateFundingAutorepayRequest updateFundingAutorepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken.
@@ -1200,9 +1300,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingAutorepayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateFundingAutorepayResponse>> UpdateFundingAutorepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateFundingAutorepayResponse>> UpdateFundingAutorepayWithHttpInfoAsync(UpdateFundingAutorepayRequest updateFundingAutorepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
         /// </summary>
@@ -1210,9 +1311,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingControlResponse</returns>
-        System.Threading.Tasks.Task<UpdateFundingControlResponse> UpdateFundingControlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateFundingControlResponse> UpdateFundingControlAsync(UpdateFundingControlRequest updateFundingControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees.
@@ -1221,9 +1323,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingControlResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateFundingControlResponse>> UpdateFundingControlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateFundingControlResponse>> UpdateFundingControlWithHttpInfoAsync(UpdateFundingControlRequest updateFundingControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set a team member’s funding limit (per draw or per month).
         /// </summary>
@@ -1232,9 +1335,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingMemberResponse</returns>
-        System.Threading.Tasks.Task<UpdateFundingMemberResponse> UpdateFundingMemberAsync(string memberUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateFundingMemberResponse> UpdateFundingMemberAsync(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set a team member’s funding limit (per draw or per month).
@@ -1244,9 +1348,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateFundingMemberResponse>> UpdateFundingMemberWithHttpInfoAsync(string memberUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateFundingMemberResponse>> UpdateFundingMemberWithHttpInfoAsync(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1371,10 +1476,11 @@ namespace net.crossly.Api
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <returns>CreateFundingApplyResponse</returns>
-        public CreateFundingApplyResponse CreateFundingApply()
+        public CreateFundingApplyResponse CreateFundingApply(CreateFundingApplyRequest createFundingApplyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingApplyResponse> localVarResponse = CreateFundingApplyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingApplyResponse> localVarResponse = CreateFundingApplyWithHttpInfo(createFundingApplyRequest);
             return localVarResponse.Data;
         }
 
@@ -1382,12 +1488,20 @@ namespace net.crossly.Api
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <returns>ApiResponse of CreateFundingApplyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingApplyResponse> CreateFundingApplyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingApplyResponse> CreateFundingApplyWithHttpInfo(CreateFundingApplyRequest createFundingApplyRequest)
         {
+            // verify the required parameter 'createFundingApplyRequest' is set
+            if (createFundingApplyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingApplyRequest' when calling FundingApi->CreateFundingApply");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1407,6 +1521,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingApplyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1433,11 +1548,12 @@ namespace net.crossly.Api
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingApplyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingApplyResponse> CreateFundingApplyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingApplyResponse> CreateFundingApplyAsync(CreateFundingApplyRequest createFundingApplyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingApplyResponse> localVarResponse = await CreateFundingApplyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingApplyResponse> localVarResponse = await CreateFundingApplyWithHttpInfoAsync(createFundingApplyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1445,14 +1561,22 @@ namespace net.crossly.Api
         /// Apply for Crossly Funding. Decided at once on the checklist rules: approved opens your line (limit &#x3D; 25% of 90 days of settled Crossly payouts), declined lists why, needs_review goes to a person. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingApplyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingApplyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingApplyResponse>> CreateFundingApplyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingApplyResponse>> CreateFundingApplyWithHttpInfoAsync(CreateFundingApplyRequest createFundingApplyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingApplyRequest' is set
+            if (createFundingApplyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingApplyRequest' when calling FundingApi->CreateFundingApply");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1472,6 +1596,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingApplyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1499,10 +1624,11 @@ namespace net.crossly.Api
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <returns>CreateFundingDrawResponse</returns>
-        public CreateFundingDrawResponse CreateFundingDraw()
+        public CreateFundingDrawResponse CreateFundingDraw(CreateFundingDrawRequest createFundingDrawRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawResponse> localVarResponse = CreateFundingDrawWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingDrawResponse> localVarResponse = CreateFundingDrawWithHttpInfo(createFundingDrawRequest);
             return localVarResponse.Data;
         }
 
@@ -1510,12 +1636,20 @@ namespace net.crossly.Api
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingDrawResponse> CreateFundingDrawWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingDrawResponse> CreateFundingDrawWithHttpInfo(CreateFundingDrawRequest createFundingDrawRequest)
         {
+            // verify the required parameter 'createFundingDrawRequest' is set
+            if (createFundingDrawRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawRequest' when calling FundingApi->CreateFundingDraw");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1535,6 +1669,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1561,11 +1696,12 @@ namespace net.crossly.Api
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingDrawResponse> CreateFundingDrawAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingDrawResponse> CreateFundingDrawAsync(CreateFundingDrawRequest createFundingDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawResponse> localVarResponse = await CreateFundingDrawWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingDrawResponse> localVarResponse = await CreateFundingDrawWithHttpInfoAsync(createFundingDrawRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1573,14 +1709,22 @@ namespace net.crossly.Api
         /// Draw on your line for a supplier order. Send the supplier, the invoice (an uploaded invoiceFileId from POST /v1/funding/invoice-files, a reference, or a URL) and the APR from the quote you accepted (acceptedAprBps); refused if your rate changed. The advance is held as in-platform Crossly balance, never cash. Idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawResponse>> CreateFundingDrawWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawResponse>> CreateFundingDrawWithHttpInfoAsync(CreateFundingDrawRequest createFundingDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingDrawRequest' is set
+            if (createFundingDrawRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawRequest' when calling FundingApi->CreateFundingDraw");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1600,6 +1744,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1628,10 +1773,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>CreateFundingDrawRejectResponse</returns>
-        public CreateFundingDrawRejectResponse CreateFundingDrawApprove(string id)
+        public CreateFundingDrawRejectResponse CreateFundingDrawApprove(string id, NoteRequest noteRequest = default(NoteRequest))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = CreateFundingDrawApproveWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = CreateFundingDrawApproveWithHttpInfo(id, noteRequest);
             return localVarResponse.Data;
         }
 
@@ -1640,8 +1786,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateFundingDrawRejectResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawApproveWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawApproveWithHttpInfo(string id, NoteRequest noteRequest = default(NoteRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1652,6 +1799,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1672,6 +1820,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = noteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1699,11 +1848,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawRejectResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawApproveAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawApproveAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = await CreateFundingDrawApproveWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = await CreateFundingDrawApproveWithHttpInfoAsync(id, noteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1712,9 +1862,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawRejectResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawApproveWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawApproveWithHttpInfoAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1726,6 +1877,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1746,6 +1898,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = noteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1773,10 +1926,11 @@ namespace net.crossly.Api
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <returns>CreateFundingDrawQuoteResponse</returns>
-        public CreateFundingDrawQuoteResponse CreateFundingDrawQuote()
+        public CreateFundingDrawQuoteResponse CreateFundingDrawQuote(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> localVarResponse = CreateFundingDrawQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> localVarResponse = CreateFundingDrawQuoteWithHttpInfo(createFundingDrawQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -1784,12 +1938,20 @@ namespace net.crossly.Api
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteWithHttpInfo(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest)
         {
+            // verify the required parameter 'createFundingDrawQuoteRequest' is set
+            if (createFundingDrawQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawQuoteRequest' when calling FundingApi->CreateFundingDrawQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1809,6 +1971,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1835,11 +1998,12 @@ namespace net.crossly.Api
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingDrawQuoteResponse> CreateFundingDrawQuoteAsync(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> localVarResponse = await CreateFundingDrawQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse> localVarResponse = await CreateFundingDrawQuoteWithHttpInfoAsync(createFundingDrawQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1847,14 +2011,22 @@ namespace net.crossly.Api
         /// The disclosure for a draw of amountCents: APR, the simple-interest fee for the full term, the total and the due date, plus your available headroom. Nothing is drawn. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse>> CreateFundingDrawQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawQuoteResponse>> CreateFundingDrawQuoteWithHttpInfoAsync(CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingDrawQuoteRequest' is set
+            if (createFundingDrawQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawQuoteRequest' when calling FundingApi->CreateFundingDrawQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1874,6 +2046,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1902,10 +2075,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>CreateFundingDrawRejectResponse</returns>
-        public CreateFundingDrawRejectResponse CreateFundingDrawReject(string id)
+        public CreateFundingDrawRejectResponse CreateFundingDrawReject(string id, NoteRequest noteRequest = default(NoteRequest))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = CreateFundingDrawRejectWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = CreateFundingDrawRejectWithHttpInfo(id, noteRequest);
             return localVarResponse.Data;
         }
 
@@ -1914,8 +2088,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateFundingDrawRejectResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawRejectWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> CreateFundingDrawRejectWithHttpInfo(string id, NoteRequest noteRequest = default(NoteRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1926,6 +2101,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1946,6 +2122,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = noteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1973,11 +2150,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawRejectResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawRejectAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingDrawRejectResponse> CreateFundingDrawRejectAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = await CreateFundingDrawRejectWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse> localVarResponse = await CreateFundingDrawRejectWithHttpInfoAsync(id, noteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1986,9 +2164,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="noteRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawRejectResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawRejectWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawRejectResponse>> CreateFundingDrawRejectWithHttpInfoAsync(string id, NoteRequest noteRequest = default(NoteRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2000,6 +2179,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2020,6 +2200,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = noteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2047,10 +2228,11 @@ namespace net.crossly.Api
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <returns>CreateFundingDrawUseResponse</returns>
-        public CreateFundingDrawUseResponse CreateFundingDrawUse()
+        public CreateFundingDrawUseResponse CreateFundingDrawUse(CreateFundingDrawUseRequest createFundingDrawUseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> localVarResponse = CreateFundingDrawUseWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> localVarResponse = CreateFundingDrawUseWithHttpInfo(createFundingDrawUseRequest);
             return localVarResponse.Data;
         }
 
@@ -2058,12 +2240,20 @@ namespace net.crossly.Api
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <returns>ApiResponse of CreateFundingDrawUseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> CreateFundingDrawUseWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> CreateFundingDrawUseWithHttpInfo(CreateFundingDrawUseRequest createFundingDrawUseRequest)
         {
+            // verify the required parameter 'createFundingDrawUseRequest' is set
+            if (createFundingDrawUseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawUseRequest' when calling FundingApi->CreateFundingDrawUse");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2083,6 +2273,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawUseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2109,11 +2300,12 @@ namespace net.crossly.Api
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingDrawUseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingDrawUseResponse> CreateFundingDrawUseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingDrawUseResponse> CreateFundingDrawUseAsync(CreateFundingDrawUseRequest createFundingDrawUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> localVarResponse = await CreateFundingDrawUseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse> localVarResponse = await CreateFundingDrawUseWithHttpInfoAsync(createFundingDrawUseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2121,14 +2313,22 @@ namespace net.crossly.Api
         /// Request a draw for an approved use. Refused by the spend controls, held for approval (stage requested — no debt until disbursed), or disbursed at once as restricted funding CBX. A DEBT with interest: show the disclosure first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingDrawUseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingDrawUseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse>> CreateFundingDrawUseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingDrawUseResponse>> CreateFundingDrawUseWithHttpInfoAsync(CreateFundingDrawUseRequest createFundingDrawUseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingDrawUseRequest' is set
+            if (createFundingDrawUseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingDrawUseRequest' when calling FundingApi->CreateFundingDrawUse");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2148,6 +2348,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingDrawUseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2175,10 +2376,11 @@ namespace net.crossly.Api
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>CreateFundingInvoiceFileResponse</returns>
-        public CreateFundingInvoiceFileResponse CreateFundingInvoiceFile()
+        public CreateFundingInvoiceFileResponse CreateFundingInvoiceFile(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> localVarResponse = CreateFundingInvoiceFileWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> localVarResponse = CreateFundingInvoiceFileWithHttpInfo(createFundingInvoiceFileRequest);
             return localVarResponse.Data;
         }
 
@@ -2186,12 +2388,20 @@ namespace net.crossly.Api
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <returns>ApiResponse of CreateFundingInvoiceFileResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileWithHttpInfo(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
         {
+            // verify the required parameter 'createFundingInvoiceFileRequest' is set
+            if (createFundingInvoiceFileRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingInvoiceFileRequest' when calling FundingApi->CreateFundingInvoiceFile");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2211,6 +2421,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingInvoiceFileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2237,11 +2448,12 @@ namespace net.crossly.Api
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingInvoiceFileResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingInvoiceFileResponse> CreateFundingInvoiceFileAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> localVarResponse = await CreateFundingInvoiceFileWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse> localVarResponse = await CreateFundingInvoiceFileWithHttpInfoAsync(createFundingInvoiceFileRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2249,14 +2461,22 @@ namespace net.crossly.Api
         /// Sign an upload for a supplier invoice: a PDF or image (application/pdf, image/jpeg, image/png, image/webp, image/heic) of at most 15 MB. PUT the bytes to uploadUrl with the same Content-Type and exactly contentLength bytes, then draw with invoiceFileId &#x3D; file.id. Stored privately; one draw per file. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingInvoiceFileRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingInvoiceFileResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse>> CreateFundingInvoiceFileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingInvoiceFileResponse>> CreateFundingInvoiceFileWithHttpInfoAsync(CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingInvoiceFileRequest' is set
+            if (createFundingInvoiceFileRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingInvoiceFileRequest' when calling FundingApi->CreateFundingInvoiceFile");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2276,6 +2496,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingInvoiceFileRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2303,10 +2524,11 @@ namespace net.crossly.Api
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <returns>CreateFundingPayCrosslyFeeResponse</returns>
-        public CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee()
+        public CreateFundingPayCrosslyFeeResponse CreateFundingPayCrosslyFee(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> localVarResponse = CreateFundingPayCrosslyFeeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> localVarResponse = CreateFundingPayCrosslyFeeWithHttpInfo(createFundingPayCrosslyFeeRequest);
             return localVarResponse.Data;
         }
 
@@ -2314,12 +2536,20 @@ namespace net.crossly.Api
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayCrosslyFeeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeWithHttpInfo(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest)
         {
+            // verify the required parameter 'createFundingPayCrosslyFeeRequest' is set
+            if (createFundingPayCrosslyFeeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayCrosslyFeeRequest' when calling FundingApi->CreateFundingPayCrosslyFee");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2339,6 +2569,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayCrosslyFeeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2365,11 +2596,12 @@ namespace net.crossly.Api
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayCrosslyFeeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingPayCrosslyFeeResponse> CreateFundingPayCrosslyFeeAsync(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> localVarResponse = await CreateFundingPayCrosslyFeeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse> localVarResponse = await CreateFundingPayCrosslyFeeWithHttpInfoAsync(createFundingPayCrosslyFeeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2377,14 +2609,22 @@ namespace net.crossly.Api
         /// Pay an open invoice of your Crossly plan with restricted funding CBX (no card is charged; the invoice is marked paid). Idempotent per invoice. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayCrosslyFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayCrosslyFeeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse>> CreateFundingPayCrosslyFeeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayCrosslyFeeResponse>> CreateFundingPayCrosslyFeeWithHttpInfoAsync(CreateFundingPayCrosslyFeeRequest createFundingPayCrosslyFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingPayCrosslyFeeRequest' is set
+            if (createFundingPayCrosslyFeeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayCrosslyFeeRequest' when calling FundingApi->CreateFundingPayCrosslyFee");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2404,6 +2644,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayCrosslyFeeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2431,10 +2672,11 @@ namespace net.crossly.Api
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <returns>CreateFundingPayShippingLabelResponse</returns>
-        public CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel()
+        public CreateFundingPayShippingLabelResponse CreateFundingPayShippingLabel(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> localVarResponse = CreateFundingPayShippingLabelWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> localVarResponse = CreateFundingPayShippingLabelWithHttpInfo(createFundingPayShippingLabelRequest);
             return localVarResponse.Data;
         }
 
@@ -2442,12 +2684,20 @@ namespace net.crossly.Api
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayShippingLabelResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelWithHttpInfo(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest)
         {
+            // verify the required parameter 'createFundingPayShippingLabelRequest' is set
+            if (createFundingPayShippingLabelRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayShippingLabelRequest' when calling FundingApi->CreateFundingPayShippingLabel");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2467,6 +2717,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayShippingLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2493,11 +2744,12 @@ namespace net.crossly.Api
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayShippingLabelResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingPayShippingLabelResponse> CreateFundingPayShippingLabelAsync(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> localVarResponse = await CreateFundingPayShippingLabelWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse> localVarResponse = await CreateFundingPayShippingLabelWithHttpInfoAsync(createFundingPayShippingLabelRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2505,14 +2757,22 @@ namespace net.crossly.Api
         /// Top up your shipping wallet with restricted funding CBX; labels you buy are then debited from it. Idempotent on idempotencyKey. Refused when the spend controls forbid shipping labels or it is over your approval threshold with no approved draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayShippingLabelRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayShippingLabelResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse>> CreateFundingPayShippingLabelWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayShippingLabelResponse>> CreateFundingPayShippingLabelWithHttpInfoAsync(CreateFundingPayShippingLabelRequest createFundingPayShippingLabelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingPayShippingLabelRequest' is set
+            if (createFundingPayShippingLabelRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayShippingLabelRequest' when calling FundingApi->CreateFundingPayShippingLabel");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2532,6 +2792,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayShippingLabelRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2559,10 +2820,11 @@ namespace net.crossly.Api
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <returns>CreateFundingPayVaultFeeResponse</returns>
-        public CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee()
+        public CreateFundingPayVaultFeeResponse CreateFundingPayVaultFee(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> localVarResponse = CreateFundingPayVaultFeeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> localVarResponse = CreateFundingPayVaultFeeWithHttpInfo(createFundingPayVaultFeeRequest);
             return localVarResponse.Data;
         }
 
@@ -2570,12 +2832,20 @@ namespace net.crossly.Api
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPayVaultFeeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeWithHttpInfo(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest)
         {
+            // verify the required parameter 'createFundingPayVaultFeeRequest' is set
+            if (createFundingPayVaultFeeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayVaultFeeRequest' when calling FundingApi->CreateFundingPayVaultFee");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2595,6 +2865,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayVaultFeeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2621,11 +2892,12 @@ namespace net.crossly.Api
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPayVaultFeeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingPayVaultFeeResponse> CreateFundingPayVaultFeeAsync(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> localVarResponse = await CreateFundingPayVaultFeeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse> localVarResponse = await CreateFundingPayVaultFeeWithHttpInfoAsync(createFundingPayVaultFeeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2633,14 +2905,22 @@ namespace net.crossly.Api
         /// Ship a stored Vault unit home and pay its fee (shipping, storage owed, early withdrawal) with restricted funding CBX instead of your card. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPayVaultFeeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPayVaultFeeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse>> CreateFundingPayVaultFeeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPayVaultFeeResponse>> CreateFundingPayVaultFeeWithHttpInfoAsync(CreateFundingPayVaultFeeRequest createFundingPayVaultFeeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingPayVaultFeeRequest' is set
+            if (createFundingPayVaultFeeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPayVaultFeeRequest' when calling FundingApi->CreateFundingPayVaultFee");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2660,6 +2940,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPayVaultFeeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2687,10 +2968,11 @@ namespace net.crossly.Api
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <returns>CreateFundingPoolStakeResponse</returns>
-        public CreateFundingPoolStakeResponse CreateFundingPoolStake()
+        public CreateFundingPoolStakeResponse CreateFundingPoolStake(CreateFundingPoolStakeRequest createFundingPoolStakeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> localVarResponse = CreateFundingPoolStakeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> localVarResponse = CreateFundingPoolStakeWithHttpInfo(createFundingPoolStakeRequest);
             return localVarResponse.Data;
         }
 
@@ -2698,12 +2980,20 @@ namespace net.crossly.Api
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <returns>ApiResponse of CreateFundingPoolStakeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> CreateFundingPoolStakeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> CreateFundingPoolStakeWithHttpInfo(CreateFundingPoolStakeRequest createFundingPoolStakeRequest)
         {
+            // verify the required parameter 'createFundingPoolStakeRequest' is set
+            if (createFundingPoolStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPoolStakeRequest' when calling FundingApi->CreateFundingPoolStake");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2723,6 +3013,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPoolStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2749,11 +3040,12 @@ namespace net.crossly.Api
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingPoolStakeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingPoolStakeResponse> CreateFundingPoolStakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingPoolStakeResponse> CreateFundingPoolStakeAsync(CreateFundingPoolStakeRequest createFundingPoolStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> localVarResponse = await CreateFundingPoolStakeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse> localVarResponse = await CreateFundingPoolStakeWithHttpInfoAsync(createFundingPoolStakeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2761,14 +3053,22 @@ namespace net.crossly.Api
         /// Stake earned CBX into the funding pool. Refused, with the reason, until the pool is live and staking is open. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingPoolStakeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse>> CreateFundingPoolStakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingPoolStakeResponse>> CreateFundingPoolStakeWithHttpInfoAsync(CreateFundingPoolStakeRequest createFundingPoolStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingPoolStakeRequest' is set
+            if (createFundingPoolStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPoolStakeRequest' when calling FundingApi->CreateFundingPoolStake");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2788,6 +3088,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPoolStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2815,10 +3116,11 @@ namespace net.crossly.Api
         /// Queue an unstake. Paid first-in first-out once your lockup has passed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <returns>FundingPoolResponse</returns>
-        public FundingPoolResponse CreateFundingPoolUnstake()
+        public FundingPoolResponse CreateFundingPoolUnstake(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest)
         {
-            net.crossly.Client.ApiResponse<FundingPoolResponse> localVarResponse = CreateFundingPoolUnstakeWithHttpInfo();
+            net.crossly.Client.ApiResponse<FundingPoolResponse> localVarResponse = CreateFundingPoolUnstakeWithHttpInfo(createFundingPoolUnstakeRequest);
             return localVarResponse.Data;
         }
 
@@ -2826,12 +3128,20 @@ namespace net.crossly.Api
         /// Queue an unstake. Paid first-in first-out once your lockup has passed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <returns>ApiResponse of FundingPoolResponse</returns>
-        public net.crossly.Client.ApiResponse<FundingPoolResponse> CreateFundingPoolUnstakeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<FundingPoolResponse> CreateFundingPoolUnstakeWithHttpInfo(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest)
         {
+            // verify the required parameter 'createFundingPoolUnstakeRequest' is set
+            if (createFundingPoolUnstakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPoolUnstakeRequest' when calling FundingApi->CreateFundingPoolUnstake");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2851,6 +3161,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPoolUnstakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2877,11 +3188,12 @@ namespace net.crossly.Api
         /// Queue an unstake. Paid first-in first-out once your lockup has passed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of FundingPoolResponse</returns>
-        public async System.Threading.Tasks.Task<FundingPoolResponse> CreateFundingPoolUnstakeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<FundingPoolResponse> CreateFundingPoolUnstakeAsync(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<FundingPoolResponse> localVarResponse = await CreateFundingPoolUnstakeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<FundingPoolResponse> localVarResponse = await CreateFundingPoolUnstakeWithHttpInfoAsync(createFundingPoolUnstakeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2889,14 +3201,22 @@ namespace net.crossly.Api
         /// Queue an unstake. Paid first-in first-out once your lockup has passed. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingPoolUnstakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (FundingPoolResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<FundingPoolResponse>> CreateFundingPoolUnstakeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<FundingPoolResponse>> CreateFundingPoolUnstakeWithHttpInfoAsync(CreateFundingPoolUnstakeRequest createFundingPoolUnstakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingPoolUnstakeRequest' is set
+            if (createFundingPoolUnstakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingPoolUnstakeRequest' when calling FundingApi->CreateFundingPoolUnstake");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2916,6 +3236,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingPoolUnstakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3217,10 +3538,11 @@ namespace net.crossly.Api
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <returns>CreateFundingRepayResponse</returns>
-        public CreateFundingRepayResponse CreateFundingRepay()
+        public CreateFundingRepayResponse CreateFundingRepay(CreateFundingRepayRequest createFundingRepayRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFundingRepayResponse> localVarResponse = CreateFundingRepayWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFundingRepayResponse> localVarResponse = CreateFundingRepayWithHttpInfo(createFundingRepayRequest);
             return localVarResponse.Data;
         }
 
@@ -3228,12 +3550,20 @@ namespace net.crossly.Api
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <returns>ApiResponse of CreateFundingRepayResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFundingRepayResponse> CreateFundingRepayWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFundingRepayResponse> CreateFundingRepayWithHttpInfo(CreateFundingRepayRequest createFundingRepayRequest)
         {
+            // verify the required parameter 'createFundingRepayRequest' is set
+            if (createFundingRepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingRepayRequest' when calling FundingApi->CreateFundingRepay");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3253,6 +3583,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3279,11 +3610,12 @@ namespace net.crossly.Api
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFundingRepayResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFundingRepayResponse> CreateFundingRepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFundingRepayResponse> CreateFundingRepayAsync(CreateFundingRepayRequest createFundingRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFundingRepayResponse> localVarResponse = await CreateFundingRepayWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFundingRepayResponse> localVarResponse = await CreateFundingRepayWithHttpInfoAsync(createFundingRepayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3291,14 +3623,22 @@ namespace net.crossly.Api
         /// Repay. source \&quot;balance\&quot; (default) takes it from your available Stripe payout balance and applies it at once. source \&quot;card\&quot; returns a PaymentIntent client secret to confirm with Stripe; source \&quot;checkout\&quot; returns checkoutUrl, a hosted Stripe Checkout page the seller pays on (no Stripe SDK needed). source \&quot;cbx\&quot; pays early from your EARNED CBX at the obligation rate (granted and funding CBX never repay a line) and applies at once. Card and checkout apply when the payment succeeds. Never more than you owe; idempotent on idempotencyKey. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFundingRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFundingRepayResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingRepayResponse>> CreateFundingRepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFundingRepayResponse>> CreateFundingRepayWithHttpInfoAsync(CreateFundingRepayRequest createFundingRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFundingRepayRequest' is set
+            if (createFundingRepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFundingRepayRequest' when calling FundingApi->CreateFundingRepay");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3318,6 +3658,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFundingRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3898,6 +4239,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetFundingDrawInvoice", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        public GetFundingInvoiceAdvanceEligibilityResponse GetFundingInvoiceAdvanceEligibility()
+        {
+            net.crossly.Client.ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse> localVarResponse = GetFundingInvoiceAdvanceEligibilityWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        public net.crossly.Client.ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse> GetFundingInvoiceAdvanceEligibilityWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetFundingInvoiceAdvanceEligibilityResponse>("/v1/funding/invoice-advance-eligibility", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetFundingInvoiceAdvanceEligibility", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetFundingInvoiceAdvanceEligibilityResponse</returns>
+        public async System.Threading.Tasks.Task<GetFundingInvoiceAdvanceEligibilityResponse> GetFundingInvoiceAdvanceEligibilityAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse> localVarResponse = await GetFundingInvoiceAdvanceEligibilityWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What your Crossly Funding line could advance against your open wholesale invoices: per invoice its balance due, the advance at the rate (80%), what the line can cover now within its headroom (earliest due first), and why not (overdue, no line, line unavailable, over headroom). Eligibility only: an advance cannot be drawn against an invoice yet. X-Storefront-Id narrows to one store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetFundingInvoiceAdvanceEligibilityResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetFundingInvoiceAdvanceEligibilityResponse>> GetFundingInvoiceAdvanceEligibilityWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetFundingInvoiceAdvanceEligibilityResponse>("/v1/funding/invoice-advance-eligibility", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetFundingInvoiceAdvanceEligibility", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -4935,10 +5404,11 @@ namespace net.crossly.Api
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListFundingReceiptsResponse</returns>
-        public ListFundingReceiptsResponse ListFundingReceipts()
+        public ListFundingReceiptsResponse ListFundingReceipts(decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> localVarResponse = ListFundingReceiptsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> localVarResponse = ListFundingReceiptsWithHttpInfo(limit);
             return localVarResponse.Data;
         }
 
@@ -4946,8 +5416,9 @@ namespace net.crossly.Api
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListFundingReceiptsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> ListFundingReceiptsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> ListFundingReceiptsWithHttpInfo(decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -4971,6 +5442,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4997,11 +5472,12 @@ namespace net.crossly.Api
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFundingReceiptsResponse</returns>
-        public async System.Threading.Tasks.Task<ListFundingReceiptsResponse> ListFundingReceiptsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListFundingReceiptsResponse> ListFundingReceiptsAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> localVarResponse = await ListFundingReceiptsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListFundingReceiptsResponse> localVarResponse = await ListFundingReceiptsWithHttpInfoAsync(limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5009,9 +5485,10 @@ namespace net.crossly.Api
         /// Your funding payments to Crossly, newest first: the use, what it paid for, cents, status (pending, paid, failed) and the draw it was stamped against. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFundingReceiptsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFundingReceiptsResponse>> ListFundingReceiptsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFundingReceiptsResponse>> ListFundingReceiptsWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5036,6 +5513,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5191,10 +5672,11 @@ namespace net.crossly.Api
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <returns>UpdateFundingAutorepayResponse</returns>
-        public UpdateFundingAutorepayResponse UpdateFundingAutorepay()
+        public UpdateFundingAutorepayResponse UpdateFundingAutorepay(UpdateFundingAutorepayRequest updateFundingAutorepayRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> localVarResponse = UpdateFundingAutorepayWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> localVarResponse = UpdateFundingAutorepayWithHttpInfo(updateFundingAutorepayRequest);
             return localVarResponse.Data;
         }
 
@@ -5202,12 +5684,20 @@ namespace net.crossly.Api
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <returns>ApiResponse of UpdateFundingAutorepayResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> UpdateFundingAutorepayWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> UpdateFundingAutorepayWithHttpInfo(UpdateFundingAutorepayRequest updateFundingAutorepayRequest)
         {
+            // verify the required parameter 'updateFundingAutorepayRequest' is set
+            if (updateFundingAutorepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingAutorepayRequest' when calling FundingApi->UpdateFundingAutorepay");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5227,6 +5717,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateFundingAutorepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5253,11 +5744,12 @@ namespace net.crossly.Api
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingAutorepayResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateFundingAutorepayResponse> UpdateFundingAutorepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateFundingAutorepayResponse> UpdateFundingAutorepayAsync(UpdateFundingAutorepayRequest updateFundingAutorepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> localVarResponse = await UpdateFundingAutorepayWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse> localVarResponse = await UpdateFundingAutorepayWithHttpInfoAsync(updateFundingAutorepayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5265,14 +5757,22 @@ namespace net.crossly.Api
         /// Set the share of each Crossly payout applied to what you owe: a whole percent from 10 to 100 (default 20). Never more than you owe is taken. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingAutorepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingAutorepayResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse>> UpdateFundingAutorepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingAutorepayResponse>> UpdateFundingAutorepayWithHttpInfoAsync(UpdateFundingAutorepayRequest updateFundingAutorepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateFundingAutorepayRequest' is set
+            if (updateFundingAutorepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingAutorepayRequest' when calling FundingApi->UpdateFundingAutorepay");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5292,6 +5792,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateFundingAutorepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5319,10 +5820,11 @@ namespace net.crossly.Api
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <returns>UpdateFundingControlResponse</returns>
-        public UpdateFundingControlResponse UpdateFundingControl()
+        public UpdateFundingControlResponse UpdateFundingControl(UpdateFundingControlRequest updateFundingControlRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateFundingControlResponse> localVarResponse = UpdateFundingControlWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateFundingControlResponse> localVarResponse = UpdateFundingControlWithHttpInfo(updateFundingControlRequest);
             return localVarResponse.Data;
         }
 
@@ -5330,12 +5832,20 @@ namespace net.crossly.Api
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <returns>ApiResponse of UpdateFundingControlResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateFundingControlResponse> UpdateFundingControlWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateFundingControlResponse> UpdateFundingControlWithHttpInfo(UpdateFundingControlRequest updateFundingControlRequest)
         {
+            // verify the required parameter 'updateFundingControlRequest' is set
+            if (updateFundingControlRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingControlRequest' when calling FundingApi->UpdateFundingControl");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5355,6 +5865,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateFundingControlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5381,11 +5892,12 @@ namespace net.crossly.Api
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingControlResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateFundingControlResponse> UpdateFundingControlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateFundingControlResponse> UpdateFundingControlAsync(UpdateFundingControlRequest updateFundingControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateFundingControlResponse> localVarResponse = await UpdateFundingControlWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateFundingControlResponse> localVarResponse = await UpdateFundingControlWithHttpInfoAsync(updateFundingControlRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5393,14 +5905,22 @@ namespace net.crossly.Api
         /// Change your funding spend controls. Enforced at every spend: wholesale checkout, labels, ads, Crossly and Vault fees. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateFundingControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingControlResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingControlResponse>> UpdateFundingControlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingControlResponse>> UpdateFundingControlWithHttpInfoAsync(UpdateFundingControlRequest updateFundingControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateFundingControlRequest' is set
+            if (updateFundingControlRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingControlRequest' when calling FundingApi->UpdateFundingControl");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5420,6 +5940,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateFundingControlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5448,10 +5969,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <returns>UpdateFundingMemberResponse</returns>
-        public UpdateFundingMemberResponse UpdateFundingMember(string memberUserId)
+        public UpdateFundingMemberResponse UpdateFundingMember(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> localVarResponse = UpdateFundingMemberWithHttpInfo(memberUserId);
+            net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> localVarResponse = UpdateFundingMemberWithHttpInfo(memberUserId, updateFundingMemberRequest);
             return localVarResponse.Data;
         }
 
@@ -5460,8 +5982,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <returns>ApiResponse of UpdateFundingMemberResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> UpdateFundingMemberWithHttpInfo(string memberUserId)
+        public net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> UpdateFundingMemberWithHttpInfo(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest)
         {
             // verify the required parameter 'memberUserId' is set
             if (memberUserId == null)
@@ -5469,9 +5992,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'memberUserId' when calling FundingApi->UpdateFundingMember");
             }
 
+            // verify the required parameter 'updateFundingMemberRequest' is set
+            if (updateFundingMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingMemberRequest' when calling FundingApi->UpdateFundingMember");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5492,6 +6022,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("memberUserId", net.crossly.Client.ClientUtils.ParameterToString(memberUserId)); // path parameter
+            localVarRequestOptions.Data = updateFundingMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5519,11 +6050,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateFundingMemberResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateFundingMemberResponse> UpdateFundingMemberAsync(string memberUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateFundingMemberResponse> UpdateFundingMemberAsync(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> localVarResponse = await UpdateFundingMemberWithHttpInfoAsync(memberUserId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateFundingMemberResponse> localVarResponse = await UpdateFundingMemberWithHttpInfoAsync(memberUserId, updateFundingMemberRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5532,9 +6064,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="memberUserId"></param>
+        /// <param name="updateFundingMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateFundingMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingMemberResponse>> UpdateFundingMemberWithHttpInfoAsync(string memberUserId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateFundingMemberResponse>> UpdateFundingMemberWithHttpInfoAsync(string memberUserId, UpdateFundingMemberRequest updateFundingMemberRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'memberUserId' is set
             if (memberUserId == null)
@@ -5542,10 +6075,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'memberUserId' when calling FundingApi->UpdateFundingMember");
             }
 
+            // verify the required parameter 'updateFundingMemberRequest' is set
+            if (updateFundingMemberRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFundingMemberRequest' when calling FundingApi->UpdateFundingMember");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5566,6 +6106,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("memberUserId", net.crossly.Client.ClientUtils.ParameterToString(memberUserId)); // path parameter
+            localVarRequestOptions.Data = updateFundingMemberRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

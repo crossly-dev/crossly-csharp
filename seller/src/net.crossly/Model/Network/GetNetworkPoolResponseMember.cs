@@ -41,8 +41,8 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="userId">userId (required).</param>
-        /// <param name="platforms">platforms (required).</param>
         /// <param name="joinedAt">joinedAt (required).</param>
+        /// <param name="platforms">platforms (required).</param>
         /// <param name="shareEnabled">shareEnabled (required).</param>
         /// <param name="followEnabled">followEnabled (required).</param>
         /// <param name="likeEnabled">likeEnabled (required).</param>
@@ -50,7 +50,7 @@ namespace net.crossly.Model
         /// <param name="engagementsPerformed">engagementsPerformed (required).</param>
         /// <param name="engagementsReceived">engagementsReceived (required).</param>
         /// <param name="flaggedUntil">flaggedUntil.</param>
-        public GetNetworkPoolResponseMember(string id = default(string), string userId = default(string), string platforms = default(string), DateTime joinedAt = default(DateTime), bool shareEnabled = default(bool), bool followEnabled = default(bool), bool likeEnabled = default(bool), DateTime? lastEngagementAt = default(DateTime?), decimal engagementsPerformed = default(decimal), decimal engagementsReceived = default(decimal), DateTime? flaggedUntil = default(DateTime?))
+        public GetNetworkPoolResponseMember(string id = default(string), string userId = default(string), DateTime joinedAt = default(DateTime), string platforms = default(string), bool shareEnabled = default(bool), bool followEnabled = default(bool), bool likeEnabled = default(bool), DateTime? lastEngagementAt = default(DateTime?), decimal engagementsPerformed = default(decimal), decimal engagementsReceived = default(decimal), DateTime? flaggedUntil = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -62,12 +62,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for GetNetworkPoolResponseMember and cannot be null");
             }
             this.UserId = userId;
+            this.JoinedAt = joinedAt;
             // to ensure "platforms" is required (not null)
             if (platforms == null) {
                 throw new ArgumentNullException("platforms is a required property for GetNetworkPoolResponseMember and cannot be null");
             }
             this.Platforms = platforms;
-            this.JoinedAt = joinedAt;
             this.ShareEnabled = shareEnabled;
             this.FollowEnabled = followEnabled;
             this.LikeEnabled = likeEnabled;
@@ -90,16 +90,16 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Platforms
-        /// </summary>
-        [DataMember(Name = "platforms", IsRequired = true, EmitDefaultValue = false)]
-        public string Platforms { get; set; }
-
-        /// <summary>
         /// Gets or Sets JoinedAt
         /// </summary>
         [DataMember(Name = "joinedAt", IsRequired = true, EmitDefaultValue = false)]
         public DateTime JoinedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Platforms
+        /// </summary>
+        [DataMember(Name = "platforms", IsRequired = true, EmitDefaultValue = false)]
+        public string Platforms { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareEnabled
@@ -153,8 +153,8 @@ namespace net.crossly.Model
             sb.Append("class GetNetworkPoolResponseMember {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
-            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
             sb.Append("  JoinedAt: ").Append(JoinedAt).Append("\n");
+            sb.Append("  Platforms: ").Append(Platforms).Append("\n");
             sb.Append("  ShareEnabled: ").Append(ShareEnabled).Append("\n");
             sb.Append("  FollowEnabled: ").Append(FollowEnabled).Append("\n");
             sb.Append("  LikeEnabled: ").Append(LikeEnabled).Append("\n");
@@ -208,14 +208,14 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
-                    this.Platforms == input.Platforms ||
-                    (this.Platforms != null &&
-                    this.Platforms.Equals(input.Platforms))
-                ) && 
-                (
                     this.JoinedAt == input.JoinedAt ||
                     (this.JoinedAt != null &&
                     this.JoinedAt.Equals(input.JoinedAt))
+                ) && 
+                (
+                    this.Platforms == input.Platforms ||
+                    (this.Platforms != null &&
+                    this.Platforms.Equals(input.Platforms))
                 ) && 
                 (
                     this.ShareEnabled == input.ShareEnabled ||
@@ -266,13 +266,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
-                if (this.Platforms != null)
-                {
-                    hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
-                }
                 if (this.JoinedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.JoinedAt.GetHashCode();
+                }
+                if (this.Platforms != null)
+                {
+                    hashCode = (hashCode * 59) + this.Platforms.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ShareEnabled.GetHashCode();
                 hashCode = (hashCode * 59) + this.FollowEnabled.GetHashCode();

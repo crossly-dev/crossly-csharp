@@ -124,16 +124,16 @@ namespace net.crossly.Model
         public enum ApprovalEnum
         {
             /// <summary>
-            /// Enum Approval for value: approval
-            /// </summary>
-            [EnumMember(Value = "approval")]
-            Approval = 1,
-
-            /// <summary>
             /// Enum Instant for value: instant
             /// </summary>
             [EnumMember(Value = "instant")]
-            Instant = 2
+            Instant = 1,
+
+            /// <summary>
+            /// Enum Approval for value: approval
+            /// </summary>
+            [EnumMember(Value = "approval")]
+            Approval = 2
 
         }
 
@@ -183,13 +183,14 @@ namespace net.crossly.Model
         /// <param name="photosOut">photosOut.</param>
         /// <param name="photosArrival">photosArrival.</param>
         /// <param name="photosReturn">photosReturn.</param>
+        /// <param name="photosBack">photosBack.</param>
         /// <param name="checklist">A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;)..</param>
         /// <param name="extensions">extensions.</param>
         /// <param name="buyout">buyout.</param>
         /// <param name="cancellation">cancellation.</param>
         /// <param name="lateEscalation">lateEscalation.</param>
         /// <param name="returnPolicy">returnPolicy.</param>
-        public GetRentalSettingResponseDataDefaults(ModeEnum? mode = default(ModeEnum?), decimal? dailyCents = default(decimal?), decimal? weeklyCents = default(decimal?), decimal? monthlyCents = default(decimal?), decimal? weekendCents = default(decimal?), decimal? minDays = default(decimal?), decimal? maxDays = default(decimal?), List<GetRentalSettingResponseDataDefaultsLengthDiscounts> lengthDiscounts = default(List<GetRentalSettingResponseDataDefaultsLengthDiscounts>), List<GetRentalSettingResponseDataDefaultsSeasonal> seasonal = default(List<GetRentalSettingResponseDataDefaultsSeasonal>), GetRentalSettingResponseDataDefaultsLastMinute lastMinute = default(GetRentalSettingResponseDataDefaultsLastMinute), EarlyReturnEnum? earlyReturn = default(EarlyReturnEnum?), GetRentalSettingResponseDataDefaultsDeposit deposit = default(GetRentalSettingResponseDataDefaultsDeposit), string depositWaiveLoyaltyTierId = default(string), bool? depositWaiveRepeatRenters = default(bool?), GetRentalSettingResponseDataDefaultsDamageWaiver damageWaiver = default(GetRentalSettingResponseDataDefaultsDamageWaiver), decimal? cleaningFeeCents = default(decimal?), decimal? lateFeePerDayCents = default(decimal?), decimal? lateGraceHours = default(decimal?), decimal? lostItemCents = default(decimal?), decimal? quantity = default(decimal?), decimal? bufferBeforeDays = default(decimal?), decimal? bufferAfterDays = default(decimal?), List<StartEnd> blackouts = default(List<StartEnd>), decimal? leadDays = default(decimal?), decimal? advanceDays = default(decimal?), List<decimal> startDays = default(List<decimal>), bool? shipping = default(bool?), GetRentalSettingResponseDataDefaultsPickup pickup = default(GetRentalSettingResponseDataDefaultsPickup), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), bool? insurance = default(bool?), decimal? minRenterRating = default(decimal?), decimal? newRenterMaxConcurrent = default(decimal?), ApprovalEnum? approval = default(ApprovalEnum?), string loyaltyTierOnlyId = default(string), GetRentalSettingResponseDataDefaultsPhotosOut photosOut = default(GetRentalSettingResponseDataDefaultsPhotosOut), bool? photosArrival = default(bool?), bool? photosReturn = default(bool?), List<string> checklist = default(List<string>), GetRentalSettingResponseDataDefaultsExtensions extensions = default(GetRentalSettingResponseDataDefaultsExtensions), GetRentalSettingResponseDataDefaultsBuyout buyout = default(GetRentalSettingResponseDataDefaultsBuyout), GetRentalSettingResponseDataDefaultsCancellation cancellation = default(GetRentalSettingResponseDataDefaultsCancellation), List<GetRentalSettingResponseDataDefaultsLateEscalation> lateEscalation = default(List<GetRentalSettingResponseDataDefaultsLateEscalation>), string returnPolicy = default(string))
+        public GetRentalSettingResponseDataDefaults(ModeEnum? mode = default(ModeEnum?), decimal? dailyCents = default(decimal?), decimal? weeklyCents = default(decimal?), decimal? monthlyCents = default(decimal?), decimal? weekendCents = default(decimal?), decimal? minDays = default(decimal?), decimal? maxDays = default(decimal?), List<GetRentalSettingResponseDataDefaultsLengthDiscounts> lengthDiscounts = default(List<GetRentalSettingResponseDataDefaultsLengthDiscounts>), List<GetRentalSettingResponseDataDefaultsSeasonal> seasonal = default(List<GetRentalSettingResponseDataDefaultsSeasonal>), GetRentalSettingResponseDataDefaultsLastMinute lastMinute = default(GetRentalSettingResponseDataDefaultsLastMinute), EarlyReturnEnum? earlyReturn = default(EarlyReturnEnum?), GetRentalSettingResponseDataDefaultsDeposit deposit = default(GetRentalSettingResponseDataDefaultsDeposit), string depositWaiveLoyaltyTierId = default(string), bool? depositWaiveRepeatRenters = default(bool?), GetRentalSettingResponseDataDefaultsDamageWaiver damageWaiver = default(GetRentalSettingResponseDataDefaultsDamageWaiver), decimal? cleaningFeeCents = default(decimal?), decimal? lateFeePerDayCents = default(decimal?), decimal? lateGraceHours = default(decimal?), decimal? lostItemCents = default(decimal?), decimal? quantity = default(decimal?), decimal? bufferBeforeDays = default(decimal?), decimal? bufferAfterDays = default(decimal?), List<StartEnd> blackouts = default(List<StartEnd>), decimal? leadDays = default(decimal?), decimal? advanceDays = default(decimal?), List<decimal> startDays = default(List<decimal>), bool? shipping = default(bool?), GetRentalSettingResponseDataDefaultsPickup pickup = default(GetRentalSettingResponseDataDefaultsPickup), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), bool? insurance = default(bool?), decimal? minRenterRating = default(decimal?), decimal? newRenterMaxConcurrent = default(decimal?), ApprovalEnum? approval = default(ApprovalEnum?), string loyaltyTierOnlyId = default(string), GetRentalSettingResponseDataDefaultsPhotosOut photosOut = default(GetRentalSettingResponseDataDefaultsPhotosOut), bool? photosArrival = default(bool?), bool? photosReturn = default(bool?), GetRentalSettingResponseDataDefaultsPhotosBack photosBack = default(GetRentalSettingResponseDataDefaultsPhotosBack), List<string> checklist = default(List<string>), GetRentalSettingResponseDataDefaultsExtensions extensions = default(GetRentalSettingResponseDataDefaultsExtensions), GetRentalSettingResponseDataDefaultsBuyout buyout = default(GetRentalSettingResponseDataDefaultsBuyout), GetRentalSettingResponseDataDefaultsCancellation cancellation = default(GetRentalSettingResponseDataDefaultsCancellation), List<GetRentalSettingResponseDataDefaultsLateEscalation> lateEscalation = default(List<GetRentalSettingResponseDataDefaultsLateEscalation>), string returnPolicy = default(string))
         {
             this.Mode = mode;
             this.DailyCents = dailyCents;
@@ -228,6 +229,7 @@ namespace net.crossly.Model
             this.PhotosOut = photosOut;
             this.PhotosArrival = photosArrival;
             this.PhotosReturn = photosReturn;
+            this.PhotosBack = photosBack;
             this.Checklist = checklist;
             this.Extensions = extensions;
             this.Buyout = buyout;
@@ -448,6 +450,12 @@ namespace net.crossly.Model
         public bool? PhotosReturn { get; set; }
 
         /// <summary>
+        /// Gets or Sets PhotosBack
+        /// </summary>
+        [DataMember(Name = "photosBack", EmitDefaultValue = true)]
+        public GetRentalSettingResponseDataDefaultsPhotosBack PhotosBack { get; set; }
+
+        /// <summary>
         /// A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;).
         /// </summary>
         /// <value>A checklist the seller ticks at inspection (e.g. \&quot;lens cap\&quot;, \&quot;strap\&quot;).</value>
@@ -529,6 +537,7 @@ namespace net.crossly.Model
             sb.Append("  PhotosOut: ").Append(PhotosOut).Append("\n");
             sb.Append("  PhotosArrival: ").Append(PhotosArrival).Append("\n");
             sb.Append("  PhotosReturn: ").Append(PhotosReturn).Append("\n");
+            sb.Append("  PhotosBack: ").Append(PhotosBack).Append("\n");
             sb.Append("  Checklist: ").Append(Checklist).Append("\n");
             sb.Append("  Extensions: ").Append(Extensions).Append("\n");
             sb.Append("  Buyout: ").Append(Buyout).Append("\n");
@@ -756,6 +765,11 @@ namespace net.crossly.Model
                     this.PhotosReturn.Equals(input.PhotosReturn))
                 ) && 
                 (
+                    this.PhotosBack == input.PhotosBack ||
+                    (this.PhotosBack != null &&
+                    this.PhotosBack.Equals(input.PhotosBack))
+                ) && 
+                (
                     this.Checklist == input.Checklist ||
                     this.Checklist != null &&
                     input.Checklist != null &&
@@ -933,6 +947,10 @@ namespace net.crossly.Model
                 if (this.PhotosReturn != null)
                 {
                     hashCode = (hashCode * 59) + this.PhotosReturn.GetHashCode();
+                }
+                if (this.PhotosBack != null)
+                {
+                    hashCode = (hashCode * 59) + this.PhotosBack.GetHashCode();
                 }
                 if (this.Checklist != null)
                 {

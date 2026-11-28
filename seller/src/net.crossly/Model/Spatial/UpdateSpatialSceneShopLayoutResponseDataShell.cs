@@ -44,22 +44,22 @@ namespace net.crossly.Model
             Auto = 1,
 
             /// <summary>
+            /// Enum Compact for value: compact
+            /// </summary>
+            [EnumMember(Value = "compact")]
+            Compact = 2,
+
+            /// <summary>
             /// Enum Standard for value: standard
             /// </summary>
             [EnumMember(Value = "standard")]
-            Standard = 2,
+            Standard = 3,
 
             /// <summary>
             /// Enum Large for value: large
             /// </summary>
             [EnumMember(Value = "large")]
-            Large = 3,
-
-            /// <summary>
-            /// Enum Compact for value: compact
-            /// </summary>
-            [EnumMember(Value = "compact")]
-            Compact = 4,
+            Large = 4,
 
             /// <summary>
             /// Enum Flagship for value: flagship

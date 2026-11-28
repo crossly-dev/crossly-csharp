@@ -96,6 +96,32 @@ namespace net.crossly.Model
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
         public StatusEnum Status { get; set; }
         /// <summary>
+        /// Defines Kind
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum KindEnum
+        {
+            /// <summary>
+            /// Enum Split for value: split
+            /// </summary>
+            [EnumMember(Value = "split")]
+            Split = 1,
+
+            /// <summary>
+            /// Enum Sequential for value: sequential
+            /// </summary>
+            [EnumMember(Value = "sequential")]
+            Sequential = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public KindEnum Kind { get; set; }
+        /// <summary>
         /// Defines Field
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -157,32 +183,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "field", IsRequired = true, EmitDefaultValue = false)]
         public FieldEnum Field { get; set; }
-        /// <summary>
-        /// Defines Kind
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum KindEnum
-        {
-            /// <summary>
-            /// Enum Split for value: split
-            /// </summary>
-            [EnumMember(Value = "split")]
-            Split = 1,
-
-            /// <summary>
-            /// Enum Sequential for value: sequential
-            /// </summary>
-            [EnumMember(Value = "sequential")]
-            Sequential = 2
-
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Kind
-        /// </summary>
-        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
-        public KindEnum Kind { get; set; }
         /// <summary>
         /// Defines Verdict
         /// </summary>
@@ -306,14 +306,14 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="kind">kind (required).</param>
         /// <param name="field">field (required).</param>
         /// <param name="startedAt">startedAt.</param>
-        /// <param name="kind">kind (required).</param>
         /// <param name="verdict">verdict (required).</param>
         /// <param name="primaryMetric">primaryMetric (required).</param>
         /// <param name="daysRunning">daysRunning (required).</param>
         /// <param name="winnerLabel">winnerLabel.</param>
-        public AnalyticExperimentResponseData(string hypothesis = default(string), string notes = default(string), string plannedEndAt = default(string), string stoppedAt = default(string), string conclusion = default(string), string winnerArmId = default(string), CaveatEnum? caveat = default(CaveatEnum?), List<AnalyticExperimentResponseDataArms> arms = default(List<AnalyticExperimentResponseDataArms>), List<AnalyticExperimentResponseDataPrimary> primary = default(List<AnalyticExperimentResponseDataPrimary>), List<AnalyticExperimentResponseDataPrimary> guardrails = default(List<AnalyticExperimentResponseDataPrimary>), List<AnalyticExperimentResponseDataDaily> daily = default(List<AnalyticExperimentResponseDataDaily>), AnalyticExperimentResponseDataRecommendation recommendation = default(AnalyticExperimentResponseDataRecommendation), string id = default(string), string name = default(string), StatusEnum status = default(StatusEnum), FieldEnum field = default(FieldEnum), string startedAt = default(string), KindEnum kind = default(KindEnum), VerdictEnum verdict = default(VerdictEnum), PrimaryMetricEnum primaryMetric = default(PrimaryMetricEnum), decimal daysRunning = default(decimal), string winnerLabel = default(string))
+        public AnalyticExperimentResponseData(string hypothesis = default(string), string notes = default(string), string plannedEndAt = default(string), string stoppedAt = default(string), string conclusion = default(string), string winnerArmId = default(string), CaveatEnum? caveat = default(CaveatEnum?), List<AnalyticExperimentResponseDataArms> arms = default(List<AnalyticExperimentResponseDataArms>), List<AnalyticExperimentResponseDataPrimary> primary = default(List<AnalyticExperimentResponseDataPrimary>), List<AnalyticExperimentResponseDataPrimary> guardrails = default(List<AnalyticExperimentResponseDataPrimary>), List<AnalyticExperimentResponseDataDaily> daily = default(List<AnalyticExperimentResponseDataDaily>), AnalyticExperimentResponseDataRecommendation recommendation = default(AnalyticExperimentResponseDataRecommendation), string id = default(string), string name = default(string), StatusEnum status = default(StatusEnum), KindEnum kind = default(KindEnum), FieldEnum field = default(FieldEnum), string startedAt = default(string), VerdictEnum verdict = default(VerdictEnum), PrimaryMetricEnum primaryMetric = default(PrimaryMetricEnum), decimal daysRunning = default(decimal), string winnerLabel = default(string))
         {
             // to ensure "arms" is required (not null)
             if (arms == null) {
@@ -351,8 +351,8 @@ namespace net.crossly.Model
             }
             this.Name = name;
             this.Status = status;
-            this.Field = field;
             this.Kind = kind;
+            this.Field = field;
             this.Verdict = verdict;
             this.PrimaryMetric = primaryMetric;
             this.DaysRunning = daysRunning;
@@ -486,9 +486,9 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  StartedAt: ").Append(StartedAt).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Verdict: ").Append(Verdict).Append("\n");
             sb.Append("  PrimaryMetric: ").Append(PrimaryMetric).Append("\n");
             sb.Append("  DaysRunning: ").Append(DaysRunning).Append("\n");
@@ -606,6 +606,10 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
+                ) && 
+                (
                     this.Field == input.Field ||
                     this.Field.Equals(input.Field)
                 ) && 
@@ -613,10 +617,6 @@ namespace net.crossly.Model
                     this.StartedAt == input.StartedAt ||
                     (this.StartedAt != null &&
                     this.StartedAt.Equals(input.StartedAt))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    this.Kind.Equals(input.Kind)
                 ) && 
                 (
                     this.Verdict == input.Verdict ||
@@ -700,12 +700,12 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 hashCode = (hashCode * 59) + this.Field.GetHashCode();
                 if (this.StartedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.StartedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 hashCode = (hashCode * 59) + this.Verdict.GetHashCode();
                 hashCode = (hashCode * 59) + this.PrimaryMetric.GetHashCode();
                 hashCode = (hashCode * 59) + this.DaysRunning.GetHashCode();

@@ -18,12 +18,13 @@ Method | HTTP request | Description
 [**ListLookbookCampaigns**](LookbooksApi.md#listlookbookcampaigns) | **GET** /v1/lookbook-campaigns | Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
 [**ListLookbooks**](LookbooksApi.md#listlookbooks) | **GET** /v1/lookbooks | Your lookbooks: id, slug, title, published, current design version and item count.
 [**ListPrintMailJobs**](LookbooksApi.md#listprintmailjobs) | **GET** /v1/print-mail/jobs | Print-and-mail jobs (beta): provider, format, pieces, estimate, status and per-piece results.
+[**UpdateEmailProviderUs**](LookbooksApi.md#updateemailproviderus) | **PUT** /v1/email-providers/{id}/uses | Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices &#x3D; wholesale invoices and quotes, receipts &#x3D; other buyer notices, sent from this address instead of from Crossly.
 [**UpdateLookbookDesign**](LookbooksApi.md#updatelookbookdesign) | **PUT** /v1/lookbooks/{id}/design | Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
 
 
 <a name="createlookbook"></a>
 # **CreateLookbook**
-> CreateLookbookResponse CreateLookbook ()
+> CreateLookbookResponse CreateLookbook (CreateLookbookRequest createLookbookRequest = null)
 
 Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
 
@@ -47,11 +48,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LookbooksApi(config);
+            var createLookbookRequest = new CreateLookbookRequest(); // CreateLookbookRequest |  (optional) 
 
             try
             {
                 // Create a lookbook. Pass templateId (classic, editorial, hero, magazine, drop, sale, postcard) to start it from a template styled with your storefront brand kit.
-                CreateLookbookResponse result = apiInstance.CreateLookbook();
+                CreateLookbookResponse result = apiInstance.CreateLookbook(createLookbookRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -66,7 +68,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createLookbookRequest** | **CreateLookbookRequest**|  | [optional] 
 
 ### Return type
 
@@ -78,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -97,7 +102,7 @@ This endpoint does not need any parameter.
 
 <a name="createlookbookcampaign"></a>
 # **CreateLookbookCampaign**
-> LookbookCampaignResponse CreateLookbookCampaign ()
+> LookbookCampaignResponse CreateLookbookCampaign (CreateLookbookCampaignRequest createLookbookCampaignRequest = null)
 
 Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
 
@@ -121,11 +126,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LookbooksApi(config);
+            var createLookbookCampaignRequest = new CreateLookbookCampaignRequest(); // CreateLookbookCampaignRequest |  (optional) 
 
             try
             {
                 // Email a lookbook to customers now or at scheduledAt. Audience kind subscribers | all | repeat | segment {filters} | handles {handles}; only people with marketing consent who have not unsubscribed receive it.
-                LookbookCampaignResponse result = apiInstance.CreateLookbookCampaign();
+                LookbookCampaignResponse result = apiInstance.CreateLookbookCampaign(createLookbookCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -140,7 +146,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createLookbookCampaignRequest** | **CreateLookbookCampaignRequest**|  | [optional] 
 
 ### Return type
 
@@ -152,7 +161,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -249,7 +258,7 @@ Name | Type | Description  | Notes
 
 <a name="createlookbookcampaignpreview"></a>
 # **CreateLookbookCampaignPreview**
-> CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview ()
+> CreateLookbookCampaignPreviewResponse CreateLookbookCampaignPreview (CreateLookbookCampaignRequest createLookbookCampaignRequest = null)
 
 Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
 
@@ -273,11 +282,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LookbooksApi(config);
+            var createLookbookCampaignRequest = new CreateLookbookCampaignRequest(); // CreateLookbookCampaignRequest |  (optional) 
 
             try
             {
                 // Preview a lookbook email campaign without sending: how many of the audience can receive it (opted in, not suppressed) and the rendered HTML/text.
-                CreateLookbookCampaignPreviewResponse result = apiInstance.CreateLookbookCampaignPreview();
+                CreateLookbookCampaignPreviewResponse result = apiInstance.CreateLookbookCampaignPreview(createLookbookCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -292,7 +302,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createLookbookCampaignRequest** | **CreateLookbookCampaignRequest**|  | [optional] 
 
 ### Return type
 
@@ -304,7 +317,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -323,7 +336,7 @@ This endpoint does not need any parameter.
 
 <a name="createlookbooksharelink"></a>
 # **CreateLookbookShareLink**
-> CreateLookbookShareLinkResponse CreateLookbookShareLink (string id)
+> CreateLookbookShareLinkResponse CreateLookbookShareLink (string id, CreateLookbookShareLinkRequest createLookbookShareLinkRequest = null)
 
 Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
 
@@ -348,11 +361,12 @@ namespace Example
 
             var apiInstance = new LookbooksApi(config);
             var id = "id_example";  // string | 
+            var createLookbookShareLinkRequest = new CreateLookbookShareLinkRequest(); // CreateLookbookShareLinkRequest |  (optional) 
 
             try
             {
                 // Make a share link for someone without a Crossly login: role view, comment or edit; expires after ttlHours (1 to 2160, default 168). The url is shown once.
-                CreateLookbookShareLinkResponse result = apiInstance.CreateLookbookShareLink(id);
+                CreateLookbookShareLinkResponse result = apiInstance.CreateLookbookShareLink(id, createLookbookShareLinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -371,6 +385,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createLookbookShareLinkRequest** | **CreateLookbookShareLinkRequest**|  | [optional] 
 
 ### Return type
 
@@ -382,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -401,7 +416,7 @@ Name | Type | Description  | Notes
 
 <a name="createprintmailjob"></a>
 # **CreatePrintMailJob**
-> CreatePrintMailJobResponse CreatePrintMailJob ()
+> CreatePrintMailJobResponse CreatePrintMailJob (CreatePrintMailJobRequest createPrintMailJobRequest = null)
 
 Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
 
@@ -425,11 +440,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LookbooksApi(config);
+            var createPrintMailJobRequest = new CreatePrintMailJobRequest(); // CreatePrintMailJobRequest |  (optional) 
 
             try
             {
                 // Draft a printed lookbook mailing (beta): renders the print-ready PDF with bleed and estimates the cost from your per-piece price. Mails nothing until confirmed.
-                CreatePrintMailJobResponse result = apiInstance.CreatePrintMailJob();
+                CreatePrintMailJobResponse result = apiInstance.CreatePrintMailJob(createPrintMailJobRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -444,7 +460,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPrintMailJobRequest** | **CreatePrintMailJobRequest**|  | [optional] 
 
 ### Return type
 
@@ -456,7 +475,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -475,7 +494,7 @@ This endpoint does not need any parameter.
 
 <a name="createprintmailjobconfirm"></a>
 # **CreatePrintMailJobConfirm**
-> CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm (string id)
+> CreatePrintMailJobConfirmResponse CreatePrintMailJobConfirm (string id, CreatePrintMailJobConfirmRequest createPrintMailJobConfirmRequest = null)
 
 Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job's piece count. Your Lob or PostGrid account is billed.
 
@@ -500,11 +519,12 @@ namespace Example
 
             var apiInstance = new LookbooksApi(config);
             var id = "id_example";  // string | 
+            var createPrintMailJobConfirmRequest = new CreatePrintMailJobConfirmRequest(); // CreatePrintMailJobConfirmRequest |  (optional) 
 
             try
             {
                 // Confirm a drafted print job: acknowledgeCharges must be true and pieces must equal the job's piece count. Your Lob or PostGrid account is billed.
-                CreatePrintMailJobConfirmResponse result = apiInstance.CreatePrintMailJobConfirm(id);
+                CreatePrintMailJobConfirmResponse result = apiInstance.CreatePrintMailJobConfirm(id, createPrintMailJobConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -523,6 +543,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createPrintMailJobConfirmRequest** | **CreatePrintMailJobConfirmRequest**|  | [optional] 
 
 ### Return type
 
@@ -534,7 +555,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -783,7 +804,7 @@ This endpoint does not need any parameter.
 
 <a name="listlookbookcampaignrecipients"></a>
 # **ListLookbookCampaignRecipients**
-> ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients (string id)
+> ListLookbookCampaignRecipientsResponse ListLookbookCampaignRecipients (string id, string status = null, decimal? page = null, decimal? limit = null)
 
 Per-recipient results for a campaign: status (queued, sent, failed, skipped + reason), provider message id, opens, clicks, bounce, unsubscribe.
 
@@ -808,11 +829,14 @@ namespace Example
 
             var apiInstance = new LookbooksApi(config);
             var id = "id_example";  // string | 
+            var status = "skipped";  // string |  (optional) 
+            var page = 8.14D;  // decimal? |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Per-recipient results for a campaign: status (queued, sent, failed, skipped + reason), provider message id, opens, clicks, bounce, unsubscribe.
-                ListLookbookCampaignRecipientsResponse result = apiInstance.ListLookbookCampaignRecipients(id);
+                ListLookbookCampaignRecipientsResponse result = apiInstance.ListLookbookCampaignRecipients(id, status, page, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -831,6 +855,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **status** | **string**|  | [optional] 
+ **page** | **decimal?**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -861,7 +888,7 @@ Name | Type | Description  | Notes
 
 <a name="listlookbookcampaigns"></a>
 # **ListLookbookCampaigns**
-> ListLookbookCampaignsResponse ListLookbookCampaigns ()
+> ListLookbookCampaignsResponse ListLookbookCampaigns (string collectionId = null)
 
 Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
 
@@ -885,11 +912,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new LookbooksApi(config);
+            var collectionId = "collectionId_example";  // string |  (optional) 
 
             try
             {
                 // Your lookbook campaigns, newest first, with sent / failed / skipped / opened / clicked / bounced / unsubscribed counts.
-                ListLookbookCampaignsResponse result = apiInstance.ListLookbookCampaigns();
+                ListLookbookCampaignsResponse result = apiInstance.ListLookbookCampaigns(collectionId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -904,7 +932,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1081,9 +1112,89 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="updateemailproviderus"></a>
+# **UpdateEmailProviderUs**
+> UpdateEmailProviderUsResponse UpdateEmailProviderUs (Guid id, UpdateEmailProviderUsRequest updateEmailProviderUsRequest = null)
+
+Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices = wholesale invoices and quotes, receipts = other buyer notices, sent from this address instead of from Crossly.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateEmailProviderUsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new LookbooksApi(config);
+            var id = "id_example";  // Guid | 
+            var updateEmailProviderUsRequest = new UpdateEmailProviderUsRequest(); // UpdateEmailProviderUsRequest |  (optional) 
+
+            try
+            {
+                // Set what an email provider sends: uses ⊆ [lookbooks, invoices, receipts]. lookbooks is always on; invoices = wholesale invoices and quotes, receipts = other buyer notices, sent from this address instead of from Crossly.
+                UpdateEmailProviderUsResponse result = apiInstance.UpdateEmailProviderUs(id, updateEmailProviderUsRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling LookbooksApi.UpdateEmailProviderUs: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **updateEmailProviderUsRequest** | **UpdateEmailProviderUsRequest**|  | [optional] 
+
+### Return type
+
+**UpdateEmailProviderUsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatelookbookdesign"></a>
 # **UpdateLookbookDesign**
-> UpdateLookbookDesignResponse UpdateLookbookDesign (string id)
+> UpdateLookbookDesignResponse UpdateLookbookDesign (string id, UpdateLookbookDesignRequest updateLookbookDesignRequest = null)
 
 Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
 
@@ -1108,11 +1219,12 @@ namespace Example
 
             var apiInstance = new LookbooksApi(config);
             var id = "id_example";  // string | 
+            var updateLookbookDesignRequest = new UpdateLookbookDesignRequest(); // UpdateLookbookDesignRequest |  (optional) 
 
             try
             {
                 // Save a new design version. Images must already be on the Crossly CDN; listings must be your own Crossly listings. Pass baseVersion to get a 409 instead of overwriting a newer save.
-                UpdateLookbookDesignResponse result = apiInstance.UpdateLookbookDesign(id);
+                UpdateLookbookDesignResponse result = apiInstance.UpdateLookbookDesign(id, updateLookbookDesignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1131,6 +1243,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateLookbookDesignRequest** | **UpdateLookbookDesignRequest**|  | [optional] 
 
 ### Return type
 
@@ -1142,7 +1255,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

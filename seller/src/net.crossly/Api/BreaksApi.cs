@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <returns>CreateBreakResponse</returns>
-        CreateBreakResponse CreateBreak();
+        CreateBreakResponse CreateBreak(CreateBreakRequest createBreakRequest);
 
         /// <summary>
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <returns>ApiResponse of CreateBreakResponse</returns>
-        ApiResponse<CreateBreakResponse> CreateBreakWithHttpInfo();
+        ApiResponse<CreateBreakResponse> CreateBreakWithHttpInfo(CreateBreakRequest createBreakRequest);
         /// <summary>
         /// Cancel a break before any spot is paid for; after that, refund those orders instead (409).
         /// </summary>
@@ -102,8 +104,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <returns>UpdateGroupBuyResponse</returns>
-        UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId);
+        UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest);
 
         /// <summary>
         /// Record what a spot pulled.
@@ -114,8 +117,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
-        ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId);
+        ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest);
         /// <summary>
         /// A break’s board with every spot, its buyer and its hits.
         /// </summary>
@@ -166,9 +170,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBreakResponse</returns>
-        System.Threading.Tasks.Task<CreateBreakResponse> CreateBreakAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBreakResponse> CreateBreakAsync(CreateBreakRequest createBreakRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw.
@@ -177,9 +182,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBreakResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBreakResponse>> CreateBreakWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBreakResponse>> CreateBreakWithHttpInfoAsync(CreateBreakRequest createBreakRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel a break before any spot is paid for; after that, refund those orders instead (409).
         /// </summary>
@@ -258,9 +264,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGroupBuyResponse</returns>
-        System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record what a spot pulled.
@@ -271,9 +278,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A break’s board with every spot, its buyer and its hits.
         /// </summary>
@@ -442,10 +450,11 @@ namespace net.crossly.Api
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <returns>CreateBreakResponse</returns>
-        public CreateBreakResponse CreateBreak()
+        public CreateBreakResponse CreateBreak(CreateBreakRequest createBreakRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = CreateBreakWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = CreateBreakWithHttpInfo(createBreakRequest);
             return localVarResponse.Data;
         }
 
@@ -453,12 +462,20 @@ namespace net.crossly.Api
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <returns>ApiResponse of CreateBreakResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBreakResponse> CreateBreakWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateBreakResponse> CreateBreakWithHttpInfo(CreateBreakRequest createBreakRequest)
         {
+            // verify the required parameter 'createBreakRequest' is set
+            if (createBreakRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBreakRequest' when calling BreaksApi->CreateBreak");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -478,6 +495,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBreakRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -504,11 +522,12 @@ namespace net.crossly.Api
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBreakResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBreakResponse> CreateBreakAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBreakResponse> CreateBreakAsync(CreateBreakRequest createBreakRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = await CreateBreakWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBreakResponse> localVarResponse = await CreateBreakWithHttpInfoAsync(createBreakRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -516,14 +535,22 @@ namespace net.crossly.Api
         /// Start a break on one of your listings: pick (buyers choose a spot) or random (drawn). The seed is committed now and revealed at the draw. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBreakRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBreakResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakResponse>> CreateBreakWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBreakResponse>> CreateBreakWithHttpInfoAsync(CreateBreakRequest createBreakRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBreakRequest' is set
+            if (createBreakRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBreakRequest' when calling BreaksApi->CreateBreak");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -543,6 +570,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBreakRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1010,10 +1038,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <returns>UpdateGroupBuyResponse</returns>
-        public UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId)
+        public UpdateGroupBuyResponse CreateBreakSpotHit(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest)
         {
-            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = CreateBreakSpotHitWithHttpInfo(id, spotId);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = CreateBreakSpotHitWithHttpInfo(id, spotId, createBreakSpotHitRequest);
             return localVarResponse.Data;
         }
 
@@ -1023,8 +1052,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId)
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> CreateBreakSpotHitWithHttpInfo(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1038,9 +1068,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'spotId' when calling BreaksApi->CreateBreakSpotHit");
             }
 
+            // verify the required parameter 'createBreakSpotHitRequest' is set
+            if (createBreakSpotHitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBreakSpotHitRequest' when calling BreaksApi->CreateBreakSpotHit");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1062,6 +1099,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("spotId", net.crossly.Client.ClientUtils.ParameterToString(spotId)); // path parameter
+            localVarRequestOptions.Data = createBreakSpotHitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1090,11 +1128,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGroupBuyResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> CreateBreakSpotHitAsync(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await CreateBreakSpotHitWithHttpInfoAsync(id, spotId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await CreateBreakSpotHitWithHttpInfoAsync(id, spotId, createBreakSpotHitRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1104,9 +1143,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="spotId"></param>
+        /// <param name="createBreakSpotHitRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> CreateBreakSpotHitWithHttpInfoAsync(string id, string spotId, CreateBreakSpotHitRequest createBreakSpotHitRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1120,10 +1160,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'spotId' when calling BreaksApi->CreateBreakSpotHit");
             }
 
+            // verify the required parameter 'createBreakSpotHitRequest' is set
+            if (createBreakSpotHitRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBreakSpotHitRequest' when calling BreaksApi->CreateBreakSpotHit");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1145,6 +1192,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("spotId", net.crossly.Client.ClientUtils.ParameterToString(spotId)); // path parameter
+            localVarRequestOptions.Data = createBreakSpotHitRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

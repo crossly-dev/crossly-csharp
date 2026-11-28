@@ -83,7 +83,7 @@ namespace net.crossly.Model
         /// <param name="interval">interval (required).</param>
         /// <param name="groupBy">groupBy.</param>
         /// <param name="series">series (required).</param>
-        public CreateWorldExperienceAnalyticQueryResponseData(FromTo2 range = default(FromTo2), string name = default(string), AggEnum agg = default(AggEnum), string interval = default(string), string groupBy = default(string), List<CreateWorldExperienceAnalyticQueryResponseDataSeries> series = default(List<CreateWorldExperienceAnalyticQueryResponseDataSeries>))
+        public CreateWorldExperienceAnalyticQueryResponseData(CreateListingTagRenameRequest range = default(CreateListingTagRenameRequest), string name = default(string), AggEnum agg = default(AggEnum), string interval = default(string), string groupBy = default(string), List<CreateWorldExperienceAnalyticQueryResponseDataSeries> series = default(List<CreateWorldExperienceAnalyticQueryResponseDataSeries>))
         {
             // to ensure "range" is required (not null)
             if (range == null) {
@@ -113,7 +113,7 @@ namespace net.crossly.Model
         /// Gets or Sets Range
         /// </summary>
         [DataMember(Name = "range", IsRequired = true, EmitDefaultValue = false)]
-        public FromTo2 Range { get; set; }
+        public CreateListingTagRenameRequest Range { get; set; }
 
         /// <summary>
         /// Gets or Sets Name

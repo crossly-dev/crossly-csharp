@@ -44,28 +44,28 @@ namespace net.crossly.Model
             System = 1,
 
             /// <summary>
+            /// Enum Rounded for value: rounded
+            /// </summary>
+            [EnumMember(Value = "rounded")]
+            Rounded = 2,
+
+            /// <summary>
             /// Enum Display for value: display
             /// </summary>
             [EnumMember(Value = "display")]
-            Display = 2,
+            Display = 3,
 
             /// <summary>
             /// Enum Mono for value: mono
             /// </summary>
             [EnumMember(Value = "mono")]
-            Mono = 3,
+            Mono = 4,
 
             /// <summary>
             /// Enum Serif for value: serif
             /// </summary>
             [EnumMember(Value = "serif")]
-            Serif = 4,
-
-            /// <summary>
-            /// Enum Rounded for value: rounded
-            /// </summary>
-            [EnumMember(Value = "rounded")]
-            Rounded = 5
+            Serif = 5
 
         }
 
@@ -120,16 +120,16 @@ namespace net.crossly.Model
             Square = 1,
 
             /// <summary>
-            /// Enum Rounded for value: rounded
-            /// </summary>
-            [EnumMember(Value = "rounded")]
-            Rounded = 2,
-
-            /// <summary>
             /// Enum Pill for value: pill
             /// </summary>
             [EnumMember(Value = "pill")]
-            Pill = 3
+            Pill = 2,
+
+            /// <summary>
+            /// Enum Rounded for value: rounded
+            /// </summary>
+            [EnumMember(Value = "rounded")]
+            Rounded = 3
 
         }
 

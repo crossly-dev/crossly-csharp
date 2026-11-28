@@ -13,7 +13,9 @@ Method | HTTP request | Description
 [**CreateLoyaltyAirdropSubmit**](CustomersApi.md#createloyaltyairdropsubmit) | **POST** /v1/loyalty/airdrops/{id}/submit | Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
 [**CreateLoyaltyProgramInvite**](CustomersApi.md#createloyaltyprograminvite) | **POST** /v1/loyalty/program/invite | Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
 [**CreateLoyaltyProgramMemberOverride**](CustomersApi.md#createloyaltyprogrammemberoverride) | **POST** /v1/loyalty/program/members/{id}/override | Pin a member to a tier (tierId null clears the pin), with a reason.
+[**CreateLoyaltyProgramMemberPoint**](CustomersApi.md#createloyaltyprogrammemberpoint) | **POST** /v1/loyalty/program/members/{id}/points | Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
 [**CreateLoyaltyTier**](CustomersApi.md#createloyaltytier) | **POST** /v1/loyalty/tiers | Add a tier: name, look, threshold and typed perks (% off, free shipping, early access, members-only listings, wholesale access, token gates, airdrops, Bucks, World items, event tickets, …).
+[**DeleteLoyaltyReward**](CustomersApi.md#deleteloyaltyreward) | **DELETE** /v1/loyalty/rewards/{rewardId} | Take a reward off the shelf. Perks already redeemed stay with their buyers.
 [**DeleteLoyaltyTier**](CustomersApi.md#deleteloyaltytier) | **DELETE** /v1/loyalty/tiers/{id} | Delete a tier; its members are re-evaluated.
 [**GetCustomer**](CustomersApi.md#getcustomer) | **GET** /v1/customers/{handle} | Get one customer: recent 50 orders, buyer profiles per platform, and stats over all of their orders.
 [**GetCustomerNote**](CustomersApi.md#getcustomernote) | **GET** /v1/customers/{handle}/notes | Your private notes on a customer (empty when none). Works before their first order.
@@ -25,16 +27,20 @@ Method | HTTP request | Description
 [**ListLoyaltyAirdrops**](CustomersApi.md#listloyaltyairdrops) | **GET** /v1/loyalty/airdrops | NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
 [**ListLoyaltyMembers**](CustomersApi.md#listloyaltymembers) | **GET** /v1/loyalty/members | Your loyalty club’s members, by spend with you.
 [**ListLoyaltyProgramInviteCandidates**](CustomersApi.md#listloyaltyprograminvitecandidates) | **GET** /v1/loyalty/program/invite-candidates | Crossly buyers who bought from you and are not loyalty members yet (q searches by name): who you can invite.
+[**ListLoyaltyProgramMemberPoints**](CustomersApi.md#listloyaltyprogrammemberpoints) | **GET** /v1/loyalty/program/members/{id}/points | A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
 [**ListLoyaltyProgramMembers**](CustomersApi.md#listloyaltyprogrammembers) | **GET** /v1/loyalty/program/members | Your loyalty members with tier, standing, grace and overrides; search, tier, status and sort filters.
+[**ListLoyaltyRewards**](CustomersApi.md#listloyaltyrewards) | **GET** /v1/loyalty/rewards | Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
 [**UpdateCustomerNote**](CustomersApi.md#updatecustomernote) | **PUT** /v1/customers/{handle}/notes | Save your private notes on a customer (an empty string clears them).
 [**UpdateLoyaltyClub**](CustomersApi.md#updateloyaltyclub) | **PUT** /v1/loyalty/club | Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
 [**UpdateLoyaltyProgram**](CustomersApi.md#updateloyaltyprogram) | **PUT** /v1/loyalty/program | Create or update your loyalty program settings.
+[**UpdateLoyaltyReward**](CustomersApi.md#updateloyaltyreward) | **PUT** /v1/loyalty/rewards | Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+[**UpdateLoyaltyRewardByRewardId**](CustomersApi.md#updateloyaltyrewardbyrewardid) | **PUT** /v1/loyalty/rewards/{rewardId} | Add a reward to the shelf, or replace the one with this id.
 [**UpdateLoyaltyTier**](CustomersApi.md#updateloyaltytier) | **PUT** /v1/loyalty/tiers/{id} | Replace a tier. Members holding it get the edited perks.
 
 
 <a name="createcustomerbulkdelete"></a>
 # **CreateCustomerBulkDelete**
-> CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete ()
+> CreateCustomerBulkDeleteResponse CreateCustomerBulkDelete (CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
 
 Bulk blocklist customer handles.
 
@@ -58,11 +64,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CustomersApi(config);
+            var createCustomerBulkDeleteRequest = new CreateCustomerBulkDeleteRequest(); // CreateCustomerBulkDeleteRequest | 
 
             try
             {
                 // Bulk blocklist customer handles.
-                CreateCustomerBulkDeleteResponse result = apiInstance.CreateCustomerBulkDelete();
+                CreateCustomerBulkDeleteResponse result = apiInstance.CreateCustomerBulkDelete(createCustomerBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -77,7 +84,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomerBulkDeleteRequest** | **CreateCustomerBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -89,7 +99,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -108,7 +118,7 @@ This endpoint does not need any parameter.
 
 <a name="createcustomerbulkexport"></a>
 # **CreateCustomerBulkExport**
-> string CreateCustomerBulkExport ()
+> string CreateCustomerBulkExport (CreateCustomerBulkDeleteRequest createCustomerBulkDeleteRequest)
 
 Bulk export aggregated customers as CSV.
 
@@ -132,11 +142,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CustomersApi(config);
+            var createCustomerBulkDeleteRequest = new CreateCustomerBulkDeleteRequest(); // CreateCustomerBulkDeleteRequest | 
 
             try
             {
                 // Bulk export aggregated customers as CSV.
-                string result = apiInstance.CreateCustomerBulkExport();
+                string result = apiInstance.CreateCustomerBulkExport(createCustomerBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -151,7 +162,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCustomerBulkDeleteRequest** | **CreateCustomerBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -163,14 +177,14 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: text/csv, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | OK |  -  |
+| **200** | A CSV file. |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -494,7 +508,7 @@ Name | Type | Description  | Notes
 
 <a name="createloyaltyairdropsubmit"></a>
 # **CreateLoyaltyAirdropSubmit**
-> LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit (string id)
+> LoyaltyAirdropResponse CreateLoyaltyAirdropSubmit (string id, CreateLoyaltyAirdropSubmitRequest createLoyaltyAirdropSubmitRequest)
 
 Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
 
@@ -519,11 +533,12 @@ namespace Example
 
             var apiInstance = new CustomersApi(config);
             var id = "id_example";  // string | 
+            var createLoyaltyAirdropSubmitRequest = new CreateLoyaltyAirdropSubmitRequest(); // CreateLoyaltyAirdropSubmitRequest | 
 
             try
             {
                 // Record the hash your wallet broadcast; Crossly reads the receipt (now, then on a schedule) and marks it sent or failed.
-                LoyaltyAirdropResponse result = apiInstance.CreateLoyaltyAirdropSubmit(id);
+                LoyaltyAirdropResponse result = apiInstance.CreateLoyaltyAirdropSubmit(id, createLoyaltyAirdropSubmitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -542,6 +557,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createLoyaltyAirdropSubmitRequest** | **CreateLoyaltyAirdropSubmitRequest**|  | 
 
 ### Return type
 
@@ -553,7 +569,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -572,7 +588,7 @@ Name | Type | Description  | Notes
 
 <a name="createloyaltyprograminvite"></a>
 # **CreateLoyaltyProgramInvite**
-> CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite ()
+> CreateLoyaltyProgramInviteResponse CreateLoyaltyProgramInvite (CreateLoyaltyProgramInviteRequest createLoyaltyProgramInviteRequest)
 
 Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
 
@@ -596,11 +612,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CustomersApi(config);
+            var createLoyaltyProgramInviteRequest = new CreateLoyaltyProgramInviteRequest(); // CreateLoyaltyProgramInviteRequest | 
 
             try
             {
                 // Invite Crossly buyers to your loyalty program by user id (up to 500); returns how many were newly invited.
-                CreateLoyaltyProgramInviteResponse result = apiInstance.CreateLoyaltyProgramInvite();
+                CreateLoyaltyProgramInviteResponse result = apiInstance.CreateLoyaltyProgramInvite(createLoyaltyProgramInviteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -615,7 +632,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createLoyaltyProgramInviteRequest** | **CreateLoyaltyProgramInviteRequest**|  | 
 
 ### Return type
 
@@ -627,7 +647,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -646,7 +666,7 @@ This endpoint does not need any parameter.
 
 <a name="createloyaltyprogrammemberoverride"></a>
 # **CreateLoyaltyProgramMemberOverride**
-> GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride (string id)
+> GetLoyaltyProgramMemberResponse CreateLoyaltyProgramMemberOverride (string id, CreateLoyaltyProgramMemberOverrideRequest createLoyaltyProgramMemberOverrideRequest)
 
 Pin a member to a tier (tierId null clears the pin), with a reason.
 
@@ -671,11 +691,12 @@ namespace Example
 
             var apiInstance = new CustomersApi(config);
             var id = "id_example";  // string | 
+            var createLoyaltyProgramMemberOverrideRequest = new CreateLoyaltyProgramMemberOverrideRequest(); // CreateLoyaltyProgramMemberOverrideRequest | 
 
             try
             {
                 // Pin a member to a tier (tierId null clears the pin), with a reason.
-                GetLoyaltyProgramMemberResponse result = apiInstance.CreateLoyaltyProgramMemberOverride(id);
+                GetLoyaltyProgramMemberResponse result = apiInstance.CreateLoyaltyProgramMemberOverride(id, createLoyaltyProgramMemberOverrideRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -694,6 +715,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createLoyaltyProgramMemberOverrideRequest** | **CreateLoyaltyProgramMemberOverrideRequest**|  | 
 
 ### Return type
 
@@ -705,7 +727,87 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createloyaltyprogrammemberpoint"></a>
+# **CreateLoyaltyProgramMemberPoint**
+> CreateLoyaltyProgramMemberPointResponse CreateLoyaltyProgramMemberPoint (string id, CreateLoyaltyProgramMemberPointRequest createLoyaltyProgramMemberPointRequest)
+
+Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateLoyaltyProgramMemberPointExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+            var id = "id_example";  // string | 
+            var createLoyaltyProgramMemberPointRequest = new CreateLoyaltyProgramMemberPointRequest(); // CreateLoyaltyProgramMemberPointRequest | 
+
+            try
+            {
+                // Give a member points by hand (Idempotency-Key required: the same key awards once). Fires loyalty.points_awarded.
+                CreateLoyaltyProgramMemberPointResponse result = apiInstance.CreateLoyaltyProgramMemberPoint(id, createLoyaltyProgramMemberPointRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.CreateLoyaltyProgramMemberPoint: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **createLoyaltyProgramMemberPointRequest** | **CreateLoyaltyProgramMemberPointRequest**|  | 
+
+### Return type
+
+**CreateLoyaltyProgramMemberPointResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -772,6 +874,84 @@ This endpoint does not need any parameter.
 ### Return type
 
 **CreateLoyaltyTierResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deleteloyaltyreward"></a>
+# **DeleteLoyaltyReward**
+> UpdateGroupBuyResponse DeleteLoyaltyReward (string rewardId)
+
+Take a reward off the shelf. Perks already redeemed stay with their buyers.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class DeleteLoyaltyRewardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+            var rewardId = "rewardId_example";  // string | 
+
+            try
+            {
+                // Take a reward off the shelf. Perks already redeemed stay with their buyers.
+                UpdateGroupBuyResponse result = apiInstance.DeleteLoyaltyReward(rewardId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.DeleteLoyaltyReward: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rewardId** | **string**|  | 
+
+### Return type
+
+**UpdateGroupBuyResponse**
 
 ### Authorization
 
@@ -1410,7 +1590,7 @@ This endpoint does not need any parameter.
 
 <a name="listloyaltyairdrops"></a>
 # **ListLoyaltyAirdrops**
-> ListLoyaltyAirdropsResponse ListLoyaltyAirdrops ()
+> ListLoyaltyAirdropsResponse ListLoyaltyAirdrops (string status = null, decimal? limit = null)
 
 NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
 
@@ -1434,11 +1614,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CustomersApi(config);
+            var status = "cancelled";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // NFT airdrops your loyalty tiers earned members: queued to send, submitted (waiting on the receipt), sent, failed (with why) or cancelled.
-                ListLoyaltyAirdropsResponse result = apiInstance.ListLoyaltyAirdrops();
+                ListLoyaltyAirdropsResponse result = apiInstance.ListLoyaltyAirdrops(status, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1453,7 +1635,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1630,6 +1816,84 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listloyaltyprogrammemberpoints"></a>
+# **ListLoyaltyProgramMemberPoints**
+> ListLoyaltyProgramMemberPointsResponse ListLoyaltyProgramMemberPoints (string id)
+
+A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListLoyaltyProgramMemberPointsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // A member’s points history: purchases, hunts, event check-ins, photo reviews, group buys, manual grants and redeemed rewards.
+                ListLoyaltyProgramMemberPointsResponse result = apiInstance.ListLoyaltyProgramMemberPoints(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.ListLoyaltyProgramMemberPoints: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**ListLoyaltyProgramMemberPointsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="listloyaltyprogrammembers"></a>
 # **ListLoyaltyProgramMembers**
 > ListLoyaltyProgramMembersResponse ListLoyaltyProgramMembers ()
@@ -1680,6 +1944,80 @@ This endpoint does not need any parameter.
 ### Return type
 
 **ListLoyaltyProgramMembersResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listloyaltyrewards"></a>
+# **ListLoyaltyRewards**
+> ListLoyaltyRewardsResponse ListLoyaltyRewards ()
+
+Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListLoyaltyRewardsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+
+            try
+            {
+                // Your loyalty rewards shelf: typed perks members buy with points, each with its cost, stock left, per-member limit and how many were redeemed.
+                ListLoyaltyRewardsResponse result = apiInstance.ListLoyaltyRewards();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.ListLoyaltyRewards: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListLoyaltyRewardsResponse**
 
 ### Authorization
 
@@ -1786,7 +2124,7 @@ Name | Type | Description  | Notes
 
 <a name="updateloyaltyclub"></a>
 # **UpdateLoyaltyClub**
-> GetLoyaltyClubResponse UpdateLoyaltyClub ()
+> GetLoyaltyClubResponse UpdateLoyaltyClub (UpdateLoyaltyClubRequest updateLoyaltyClubRequest)
 
 Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
 
@@ -1810,11 +2148,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CustomersApi(config);
+            var updateLoyaltyClubRequest = new UpdateLoyaltyClubRequest(); // UpdateLoyaltyClubRequest | 
 
             try
             {
                 // Create or update your loyalty club: name, on/off, and up to 6 spend tiers each with a discount (≤ 30%) and perks.
-                GetLoyaltyClubResponse result = apiInstance.UpdateLoyaltyClub();
+                GetLoyaltyClubResponse result = apiInstance.UpdateLoyaltyClub(updateLoyaltyClubRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1829,7 +2168,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateLoyaltyClubRequest** | **UpdateLoyaltyClubRequest**|  | 
 
 ### Return type
 
@@ -1841,7 +2183,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1908,6 +2250,162 @@ This endpoint does not need any parameter.
 ### Return type
 
 **UpdateLoyaltyProgramResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateloyaltyreward"></a>
+# **UpdateLoyaltyReward**
+> ListLoyaltyRewardsResponse UpdateLoyaltyReward (UpdateLoyaltyRewardRequest updateLoyaltyRewardRequest)
+
+Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateLoyaltyRewardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+            var updateLoyaltyRewardRequest = new UpdateLoyaltyRewardRequest(); // UpdateLoyaltyRewardRequest | 
+
+            try
+            {
+                // Replace the rewards shelf (up to 50 rewards). A price perk (% off, $ off, free shipping) is redeemed as a single-use code.
+                ListLoyaltyRewardsResponse result = apiInstance.UpdateLoyaltyReward(updateLoyaltyRewardRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.UpdateLoyaltyReward: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateLoyaltyRewardRequest** | **UpdateLoyaltyRewardRequest**|  | 
+
+### Return type
+
+**ListLoyaltyRewardsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateloyaltyrewardbyrewardid"></a>
+# **UpdateLoyaltyRewardByRewardId**
+> UpdateLoyaltyRewardByRewardIdResponse UpdateLoyaltyRewardByRewardId (string rewardId)
+
+Add a reward to the shelf, or replace the one with this id.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateLoyaltyRewardByRewardIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new CustomersApi(config);
+            var rewardId = "rewardId_example";  // string | 
+
+            try
+            {
+                // Add a reward to the shelf, or replace the one with this id.
+                UpdateLoyaltyRewardByRewardIdResponse result = apiInstance.UpdateLoyaltyRewardByRewardId(rewardId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling CustomersApi.UpdateLoyaltyRewardByRewardId: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rewardId** | **string**|  | 
+
+### Return type
+
+**UpdateLoyaltyRewardByRewardIdResponse**
 
 ### Authorization
 

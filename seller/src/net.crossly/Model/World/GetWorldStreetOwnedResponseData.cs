@@ -81,6 +81,7 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="slug">slug (required).</param>
         /// <param name="name">name (required).</param>
+        /// <param name="store">store.</param>
         /// <param name="admission">admission (required).</param>
         /// <param name="theme">theme.</param>
         /// <param name="themes">themes (required).</param>
@@ -90,7 +91,7 @@ namespace net.crossly.Model
         /// <param name="look">look (required).</param>
         /// <param name="fund">fund (required).</param>
         /// <param name="listing">listing.</param>
-        public GetWorldStreetOwnedResponseData(ListSpatialStreetMineItem street = default(ListSpatialStreetMineItem), string id = default(string), string slug = default(string), string name = default(string), string admission = default(string), ThemeEnum? theme = default(ThemeEnum?), List<GetWorldStreetOwnedResponseDataThemes> themes = default(List<GetWorldStreetOwnedResponseDataThemes>), List<GetWorldStreetOwnedResponseDataTenantsItem> tenants = default(List<GetWorldStreetOwnedResponseDataTenantsItem>), List<GetSpatialStreetAdmissionResponseDataToDecide> applications = default(List<GetSpatialStreetAdmissionResponseDataToDecide>), GetWorldStreetOwnedResponseDataUpkeep upkeep = default(GetWorldStreetOwnedResponseDataUpkeep), ListWorldDecorStreetsItem look = default(ListWorldDecorStreetsItem), GetWorldStreetOwnedResponseDataFund fund = default(GetWorldStreetOwnedResponseDataFund), ListingIdPriceCents listing = default(ListingIdPriceCents))
+        public GetWorldStreetOwnedResponseData(ListSpatialStreetMineItem street = default(ListSpatialStreetMineItem), string id = default(string), string slug = default(string), string name = default(string), IdName2 store = default(IdName2), string admission = default(string), ThemeEnum? theme = default(ThemeEnum?), List<GetWorldStreetOwnedResponseDataThemes> themes = default(List<GetWorldStreetOwnedResponseDataThemes>), List<GetWorldStreetOwnedResponseDataTenantsItem> tenants = default(List<GetWorldStreetOwnedResponseDataTenantsItem>), List<GetSpatialStreetAdmissionResponseDataToDecide> applications = default(List<GetSpatialStreetAdmissionResponseDataToDecide>), GetWorldStreetOwnedResponseDataUpkeep upkeep = default(GetWorldStreetOwnedResponseDataUpkeep), ListWorldDecorStreetsItem look = default(ListWorldDecorStreetsItem), GetWorldStreetOwnedResponseDataFund fund = default(GetWorldStreetOwnedResponseDataFund), ListingIdPriceCents listing = default(ListingIdPriceCents))
         {
             // to ensure "street" is required (not null)
             if (street == null) {
@@ -147,6 +148,7 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("fund is a required property for GetWorldStreetOwnedResponseData and cannot be null");
             }
             this.Fund = fund;
+            this.Store = store;
             this.Theme = theme;
             this.Listing = listing;
         }
@@ -174,6 +176,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Store
+        /// </summary>
+        [DataMember(Name = "store", EmitDefaultValue = true)]
+        public IdName2 Store { get; set; }
 
         /// <summary>
         /// Gets or Sets Admission
@@ -235,6 +243,7 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Store: ").Append(Store).Append("\n");
             sb.Append("  Admission: ").Append(Admission).Append("\n");
             sb.Append("  Theme: ").Append(Theme).Append("\n");
             sb.Append("  Themes: ").Append(Themes).Append("\n");
@@ -298,6 +307,11 @@ namespace net.crossly.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Store == input.Store ||
+                    (this.Store != null &&
+                    this.Store.Equals(input.Store))
                 ) && 
                 (
                     this.Admission == input.Admission ||
@@ -372,6 +386,10 @@ namespace net.crossly.Model
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
+                if (this.Store != null)
+                {
+                    hashCode = (hashCode * 59) + this.Store.GetHashCode();
                 }
                 if (this.Admission != null)
                 {

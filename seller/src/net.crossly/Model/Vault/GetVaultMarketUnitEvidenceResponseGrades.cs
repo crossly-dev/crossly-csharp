@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum SourceEnum
         {
             /// <summary>
-            /// Enum Deposit for value: deposit
-            /// </summary>
-            [EnumMember(Value = "deposit")]
-            Deposit = 1,
-
-            /// <summary>
             /// Enum Owner for value: owner
             /// </summary>
             [EnumMember(Value = "owner")]
-            Owner = 2,
+            Owner = 1,
+
+            /// <summary>
+            /// Enum Deposit for value: deposit
+            /// </summary>
+            [EnumMember(Value = "deposit")]
+            Deposit = 2,
 
             /// <summary>
             /// Enum Ops for value: ops

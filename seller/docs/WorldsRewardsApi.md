@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencerewarddefinition"></a>
 # **CreateWorldExperienceRewardDefinition**
-> CreateWorldExperienceRewardDefinitionResponse CreateWorldExperienceRewardDefinition (string experienceId)
+> CreateWorldExperienceRewardDefinitionResponse CreateWorldExperienceRewardDefinition (string experienceId, CreateWorldExperienceRewardDefinitionRequest createWorldExperienceRewardDefinitionRequest = null)
 
 Add a reward scripts can grant: pin, emote, decor, item (your own COSM design), cosm or cbx (with an amount).
 
@@ -123,11 +123,12 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceRewardDefinitionRequest = new CreateWorldExperienceRewardDefinitionRequest(); // CreateWorldExperienceRewardDefinitionRequest |  (optional) 
 
             try
             {
                 // Add a reward scripts can grant: pin, emote, decor, item (your own COSM design), cosm or cbx (with an amount).
-                CreateWorldExperienceRewardDefinitionResponse result = apiInstance.CreateWorldExperienceRewardDefinition(experienceId);
+                CreateWorldExperienceRewardDefinitionResponse result = apiInstance.CreateWorldExperienceRewardDefinition(experienceId, createWorldExperienceRewardDefinitionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -146,6 +147,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceRewardDefinitionRequest** | **CreateWorldExperienceRewardDefinitionRequest**|  | [optional] 
 
 ### Return type
 
@@ -157,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -176,7 +178,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencerewarddeposit"></a>
 # **CreateWorldExperienceRewardDeposit**
-> CreateWorldExperienceRewardDepositResponse CreateWorldExperienceRewardDeposit (string experienceId)
+> CreateWorldExperienceRewardDepositResponse CreateWorldExperienceRewardDeposit (string experienceId, CreateWorldExperienceRewardDepositRequest createWorldExperienceRewardDepositRequest = null)
 
 Move available Crossly Carnival earnings into the pool ($1-$10,000). Owner only; idempotent on idempotencyKey.
 
@@ -201,11 +203,12 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceRewardDepositRequest = new CreateWorldExperienceRewardDepositRequest(); // CreateWorldExperienceRewardDepositRequest |  (optional) 
 
             try
             {
                 // Move available Crossly Carnival earnings into the pool ($1-$10,000). Owner only; idempotent on idempotencyKey.
-                CreateWorldExperienceRewardDepositResponse result = apiInstance.CreateWorldExperienceRewardDeposit(experienceId);
+                CreateWorldExperienceRewardDepositResponse result = apiInstance.CreateWorldExperienceRewardDeposit(experienceId, createWorldExperienceRewardDepositRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -224,6 +227,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceRewardDepositRequest** | **CreateWorldExperienceRewardDepositRequest**|  | [optional] 
 
 ### Return type
 
@@ -235,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -254,7 +258,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencerewardtopup"></a>
 # **CreateWorldExperienceRewardTopup**
-> CreateWorldExperienceRewardTopupResponse CreateWorldExperienceRewardTopup (string experienceId)
+> CreateWorldExperienceRewardTopupResponse CreateWorldExperienceRewardTopup (string experienceId, CreateFundingDrawQuoteRequest createFundingDrawQuoteRequest = null)
 
 Open a card top-up ($5-$10,000 into the pool; the 2.9% + 30¢ card fee is added on top). Returns checkoutUrl, where the owner pays with Crossly checkout; the pool is credited once when the payment lands. Owner only.
 
@@ -279,11 +283,12 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createFundingDrawQuoteRequest = new CreateFundingDrawQuoteRequest(); // CreateFundingDrawQuoteRequest |  (optional) 
 
             try
             {
                 // Open a card top-up ($5-$10,000 into the pool; the 2.9% + 30¢ card fee is added on top). Returns checkoutUrl, where the owner pays with Crossly checkout; the pool is credited once when the payment lands. Owner only.
-                CreateWorldExperienceRewardTopupResponse result = apiInstance.CreateWorldExperienceRewardTopup(experienceId);
+                CreateWorldExperienceRewardTopupResponse result = apiInstance.CreateWorldExperienceRewardTopup(experienceId, createFundingDrawQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -302,6 +307,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createFundingDrawQuoteRequest** | **CreateFundingDrawQuoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -313,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -566,7 +572,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiencerewardgrants"></a>
 # **ListWorldExperienceRewardGrants**
-> ListWorldExperienceRewardGrantsResponse ListWorldExperienceRewardGrants (string experienceId)
+> ListWorldExperienceRewardGrantsResponse ListWorldExperienceRewardGrants (string experienceId, string cursor = null, decimal? limit = null, string sub = null)
 
 Every grant, newest first: reward, player sub, amount, cost, status. Cursor-paged; ?sub= for one player.
 
@@ -591,11 +597,14 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var sub = "sub_example";  // string |  (optional) 
 
             try
             {
                 // Every grant, newest first: reward, player sub, amount, cost, status. Cursor-paged; ?sub= for one player.
-                ListWorldExperienceRewardGrantsResponse result = apiInstance.ListWorldExperienceRewardGrants(experienceId);
+                ListWorldExperienceRewardGrantsResponse result = apiInstance.ListWorldExperienceRewardGrants(experienceId, cursor, limit, sub);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -614,6 +623,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **sub** | **string**|  | [optional] 
 
 ### Return type
 
@@ -644,7 +656,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiencerewardledger"></a>
 # **ListWorldExperienceRewardLedger**
-> ListWorldExperienceRewardLedgerResponse ListWorldExperienceRewardLedger (string experienceId)
+> ListWorldExperienceRewardLedgerResponse ListWorldExperienceRewardLedger (string experienceId, string cursor = null, decimal? limit = null)
 
 The pool's own ledger: deposits, grant draw-downs, refunds. Cursor-paged.
 
@@ -669,11 +681,13 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // The pool's own ledger: deposits, grant draw-downs, refunds. Cursor-paged.
-                ListWorldExperienceRewardLedgerResponse result = apiInstance.ListWorldExperienceRewardLedger(experienceId);
+                ListWorldExperienceRewardLedgerResponse result = apiInstance.ListWorldExperienceRewardLedger(experienceId, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -692,6 +706,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -800,7 +816,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencerewarddefinition"></a>
 # **UpdateWorldExperienceRewardDefinition**
-> CreateWorldExperienceRewardDefinitionResponse UpdateWorldExperienceRewardDefinition (string experienceId, string rewardId)
+> CreateWorldExperienceRewardDefinitionResponse UpdateWorldExperienceRewardDefinition (string experienceId, string rewardId, UpdateWorldExperienceRewardDefinitionRequest updateWorldExperienceRewardDefinitionRequest = null)
 
 Edit a reward: name, description, image, amount, per-player daily cap, on/off. Key and kind never change.
 
@@ -826,11 +842,12 @@ namespace Example
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var rewardId = "rewardId_example";  // string | 
+            var updateWorldExperienceRewardDefinitionRequest = new UpdateWorldExperienceRewardDefinitionRequest(); // UpdateWorldExperienceRewardDefinitionRequest |  (optional) 
 
             try
             {
                 // Edit a reward: name, description, image, amount, per-player daily cap, on/off. Key and kind never change.
-                CreateWorldExperienceRewardDefinitionResponse result = apiInstance.UpdateWorldExperienceRewardDefinition(experienceId, rewardId);
+                CreateWorldExperienceRewardDefinitionResponse result = apiInstance.UpdateWorldExperienceRewardDefinition(experienceId, rewardId, updateWorldExperienceRewardDefinitionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -850,6 +867,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **rewardId** | **string**|  | 
+ **updateWorldExperienceRewardDefinitionRequest** | **UpdateWorldExperienceRewardDefinitionRequest**|  | [optional] 
 
 ### Return type
 
@@ -861,7 +879,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -880,7 +898,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencerewardpool"></a>
 # **UpdateWorldExperienceRewardPool**
-> UpdateWorldExperienceRewardPoolResponse UpdateWorldExperienceRewardPool (string experienceId)
+> UpdateWorldExperienceRewardPoolResponse UpdateWorldExperienceRewardPool (string experienceId, UpdateWorldExperienceRewardPoolRequest updateWorldExperienceRewardPoolRequest = null)
 
 Set the pool's daily caps: total value per day, value and grant count per player per day.
 
@@ -905,11 +923,12 @@ namespace Example
 
             var apiInstance = new WorldsRewardsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceRewardPoolRequest = new UpdateWorldExperienceRewardPoolRequest(); // UpdateWorldExperienceRewardPoolRequest |  (optional) 
 
             try
             {
                 // Set the pool's daily caps: total value per day, value and grant count per player per day.
-                UpdateWorldExperienceRewardPoolResponse result = apiInstance.UpdateWorldExperienceRewardPool(experienceId);
+                UpdateWorldExperienceRewardPoolResponse result = apiInstance.UpdateWorldExperienceRewardPool(experienceId, updateWorldExperienceRewardPoolRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -928,6 +947,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceRewardPoolRequest** | **UpdateWorldExperienceRewardPoolRequest**|  | [optional] 
 
 ### Return type
 
@@ -939,7 +959,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

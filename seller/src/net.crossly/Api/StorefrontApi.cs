@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <returns>CreateStorefrontHighlightResponse</returns>
-        CreateStorefrontHighlightResponse CreateStorefrontHighlight();
+        CreateStorefrontHighlightResponse CreateStorefrontHighlight(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest));
 
         /// <summary>
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
@@ -40,15 +41,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStorefrontHighlightResponse</returns>
-        ApiResponse<CreateStorefrontHighlightResponse> CreateStorefrontHighlightWithHttpInfo();
+        ApiResponse<CreateStorefrontHighlightResponse> CreateStorefrontHighlightWithHttpInfo(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest));
         /// <summary>
         /// Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        StorefrontHighlightResponse CreateStorefrontHighlightItem(string id);
+        StorefrontHighlightResponse CreateStorefrontHighlightItem(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest));
 
         /// <summary>
         /// Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
@@ -58,8 +61,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        ApiResponse<StorefrontHighlightResponse> CreateStorefrontHighlightItemWithHttpInfo(string id);
+        ApiResponse<StorefrontHighlightResponse> CreateStorefrontHighlightItemWithHttpInfo(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest));
         /// <summary>
         /// Profile shelves proposed from your top tags and categories (not saved).
         /// </summary>
@@ -80,8 +84,9 @@ namespace net.crossly.Api
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <returns>StorefrontSectionResponse</returns>
-        StorefrontSectionResponse CreateStorefrontSection();
+        StorefrontSectionResponse CreateStorefrontSection(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest));
 
         /// <summary>
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
@@ -90,8 +95,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontSectionResponse</returns>
-        ApiResponse<StorefrontSectionResponse> CreateStorefrontSectionWithHttpInfo();
+        ApiResponse<StorefrontSectionResponse> CreateStorefrontSectionWithHttpInfo(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest));
         /// <summary>
         /// Resolve an unsaved design page like the live site would: every section with its listings and extras (preview: true).
         /// </summary>
@@ -194,8 +200,9 @@ namespace net.crossly.Api
         /// Publish the trade site draft (a version is kept).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        StorefrontResponse2 CreateStorefrontTradeSitePublish();
+        StorefrontResponse2 CreateStorefrontTradeSitePublish(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest));
 
         /// <summary>
         /// Publish the trade site draft (a version is kept).
@@ -204,14 +211,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        ApiResponse<StorefrontResponse2> CreateStorefrontTradeSitePublishWithHttpInfo();
+        ApiResponse<StorefrontResponse2> CreateStorefrontTradeSitePublishWithHttpInfo(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest));
         /// <summary>
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <returns>CreateStorefrontSiteResolveResponse</returns>
-        CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve();
+        CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest));
 
         /// <summary>
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
@@ -220,14 +229,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStorefrontSiteResolveResponse</returns>
-        ApiResponse<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveWithHttpInfo();
+        ApiResponse<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveWithHttpInfo(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest));
         /// <summary>
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        StorefrontResponse2 CreateStorefrontTradeSiteStarter();
+        StorefrontResponse2 CreateStorefrontTradeSiteStarter(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest));
 
         /// <summary>
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
@@ -236,8 +247,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        ApiResponse<StorefrontResponse2> CreateStorefrontTradeSiteStarterWithHttpInfo();
+        ApiResponse<StorefrontResponse2> CreateStorefrontTradeSiteStarterWithHttpInfo(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest));
         /// <summary>
         /// Trade Auto-build: trade site sections proposed from your wholesale catalogs (a spotlight, a rail per catalog, terms, apply banner). Not saved.
         /// </summary>
@@ -359,14 +371,14 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetStorefrontProfileResponse</returns>
         ApiResponse<GetStorefrontProfileResponse> GetStorefrontProfileWithHttpInfo();
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetStorefrontShippingResponse</returns>
         GetStorefrontShippingResponse GetStorefrontShipping();
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
         /// </summary>
         /// <remarks>
         /// 
@@ -458,8 +470,10 @@ namespace net.crossly.Api
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListStorefrontStoryArchiveResponse</returns>
-        ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive();
+        ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive(string before = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page.
@@ -468,14 +482,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontStoryArchiveResponse</returns>
-        ApiResponse<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveWithHttpInfo();
+        ApiResponse<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveWithHttpInfo(string before = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <returns>GetStorefrontResponse</returns>
-        GetStorefrontResponse UpdateStorefront();
+        GetStorefrontResponse UpdateStorefront(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest));
 
         /// <summary>
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront.
@@ -484,15 +501,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <returns>ApiResponse of GetStorefrontResponse</returns>
-        ApiResponse<GetStorefrontResponse> UpdateStorefrontWithHttpInfo();
+        ApiResponse<GetStorefrontResponse> UpdateStorefrontWithHttpInfo(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest));
         /// <summary>
         /// Rename a highlight or change its cover (coverUrl null &#x3D; use the first story).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        StorefrontHighlightResponse UpdateStorefrontHighlight(string id);
+        StorefrontHighlightResponse UpdateStorefrontHighlight(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest));
 
         /// <summary>
         /// Rename a highlight or change its cover (coverUrl null &#x3D; use the first story).
@@ -502,15 +521,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightWithHttpInfo(string id);
+        ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightWithHttpInfo(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest));
         /// <summary>
         /// Set the order of a highlight’s saved stories: every item id, first to last.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder(string id);
+        StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
 
         /// <summary>
         /// Set the order of a highlight’s saved stories: every item id, first to last.
@@ -520,14 +541,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderWithHttpInfo(string id);
+        ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderWithHttpInfo(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
         /// <summary>
         /// Set the highlight order in one call: every highlight id, first to last.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ListStorefrontHighlightsResponse</returns>
-        ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder();
+        ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
 
         /// <summary>
         /// Set the highlight order in one call: every highlight id, first to last.
@@ -536,8 +559,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontHighlightsResponse</returns>
-        ApiResponse<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderWithHttpInfo();
+        ApiResponse<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderWithHttpInfo(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
         /// <summary>
         /// Replace your shop profile (a complete ShopProfile). Saved straight away.
         /// </summary>
@@ -559,8 +583,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <returns>StorefrontSectionResponse</returns>
-        StorefrontSectionResponse UpdateStorefrontSection(string id);
+        StorefrontSectionResponse UpdateStorefrontSection(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest));
 
         /// <summary>
         /// Rename, show/hide, refill (listings shelves) or reconfigure a section.
@@ -570,14 +595,16 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontSectionResponse</returns>
-        ApiResponse<StorefrontSectionResponse> UpdateStorefrontSectionWithHttpInfo(string id);
+        ApiResponse<StorefrontSectionResponse> UpdateStorefrontSectionWithHttpInfo(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest));
         /// <summary>
         /// Set the section order in one atomic call: every section id, top to bottom.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>StorefrontResponse4</returns>
-        StorefrontResponse4 UpdateStorefrontSectionReorder();
+        StorefrontResponse4 UpdateStorefrontSectionReorder(CreateListingByIdRequest createListingByIdRequest);
 
         /// <summary>
         /// Set the section order in one atomic call: every section id, top to bottom.
@@ -586,24 +613,27 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of StorefrontResponse4</returns>
-        ApiResponse<StorefrontResponse4> UpdateStorefrontSectionReorderWithHttpInfo();
+        ApiResponse<StorefrontResponse4> UpdateStorefrontSectionReorderWithHttpInfo(CreateListingByIdRequest createListingByIdRequest);
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <returns>GetStorefrontShippingResponse</returns>
-        GetStorefrontShippingResponse UpdateStorefrontShipping();
+        GetStorefrontShippingResponse UpdateStorefrontShipping(UpdateStorefrontShippingRequest updateStorefrontShippingRequest);
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <returns>ApiResponse of GetStorefrontShippingResponse</returns>
-        ApiResponse<GetStorefrontShippingResponse> UpdateStorefrontShippingWithHttpInfo();
+        ApiResponse<GetStorefrontShippingResponse> UpdateStorefrontShippingWithHttpInfo(UpdateStorefrontShippingRequest updateStorefrontShippingRequest);
         /// <summary>
         /// Save the website draft (a complete SiteDesign). Validated strictly (a bad field is a 400 naming its path) and sanitized; buyers see nothing until you publish.
         /// </summary>
@@ -640,8 +670,9 @@ namespace net.crossly.Api
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        StorefrontResponse2 UpdateStorefrontTradeSiteDraft();
+        StorefrontResponse2 UpdateStorefrontTradeSiteDraft(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest));
 
         /// <summary>
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
@@ -650,14 +681,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        ApiResponse<StorefrontResponse2> UpdateStorefrontTradeSiteDraftWithHttpInfo();
+        ApiResponse<StorefrontResponse2> UpdateStorefrontTradeSiteDraftWithHttpInfo(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest));
         /// <summary>
         /// Switch the trade site on (needs a publish first) or off.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <returns>StorefrontResponse3</returns>
-        StorefrontResponse3 UpdateStorefrontTradeSiteEnabled();
+        StorefrontResponse3 UpdateStorefrontTradeSiteEnabled(EnabledRequest enabledRequest = default(EnabledRequest));
 
         /// <summary>
         /// Switch the trade site on (needs a publish first) or off.
@@ -666,14 +699,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse3</returns>
-        ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledWithHttpInfo();
+        ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledWithHttpInfo(EnabledRequest enabledRequest = default(EnabledRequest));
         /// <summary>
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <returns>StorefrontResponse3</returns>
-        StorefrontResponse3 UpdateStorefrontTradeSiteGating();
+        StorefrontResponse3 UpdateStorefrontTradeSiteGating(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest));
 
         /// <summary>
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
@@ -682,8 +717,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse3</returns>
-        ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteGatingWithHttpInfo();
+        ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteGatingWithHttpInfo(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest));
         #endregion Synchronous Operations
     }
 
@@ -700,9 +736,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStorefrontHighlightResponse</returns>
-        System.Threading.Tasks.Task<CreateStorefrontHighlightResponse> CreateStorefrontHighlightAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateStorefrontHighlightResponse> CreateStorefrontHighlightAsync(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
@@ -711,9 +748,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStorefrontHighlightResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateStorefrontHighlightResponse>> CreateStorefrontHighlightWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateStorefrontHighlightResponse>> CreateStorefrontHighlightWithHttpInfoAsync(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
         /// </summary>
@@ -722,9 +760,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        System.Threading.Tasks.Task<StorefrontHighlightResponse> CreateStorefrontHighlightItemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontHighlightResponse> CreateStorefrontHighlightItemAsync(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
@@ -734,9 +773,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> CreateStorefrontHighlightItemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> CreateStorefrontHighlightItemWithHttpInfoAsync(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Profile shelves proposed from your top tags and categories (not saved).
         /// </summary>
@@ -765,9 +805,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontSectionResponse</returns>
-        System.Threading.Tasks.Task<StorefrontSectionResponse> CreateStorefrontSectionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontSectionResponse> CreateStorefrontSectionAsync(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
@@ -776,9 +817,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontSectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontSectionResponse>> CreateStorefrontSectionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontSectionResponse>> CreateStorefrontSectionWithHttpInfoAsync(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Resolve an unsaved design page like the live site would: every section with its listings and extras (preview: true).
         /// </summary>
@@ -914,9 +956,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSitePublishAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSitePublishAsync(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Publish the trade site draft (a version is kept).
@@ -925,9 +968,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSitePublishWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSitePublishWithHttpInfoAsync(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
         /// </summary>
@@ -935,9 +979,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStorefrontSiteResolveResponse</returns>
-        System.Threading.Tasks.Task<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveAsync(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
@@ -946,9 +991,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStorefrontSiteResolveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateStorefrontSiteResolveResponse>> CreateStorefrontTradeSiteResolveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateStorefrontSiteResolveResponse>> CreateStorefrontTradeSiteResolveWithHttpInfoAsync(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
         /// </summary>
@@ -956,9 +1002,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSiteStarterAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSiteStarterAsync(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
@@ -967,9 +1014,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSiteStarterWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSiteStarterWithHttpInfoAsync(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Trade Auto-build: trade site sections proposed from your wholesale catalogs (a spotlight, a rail per catalog, terms, apply banner). Not saved.
         /// </summary>
@@ -1126,7 +1174,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetStorefrontProfileResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetStorefrontProfileResponse>> GetStorefrontProfileWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
         /// </summary>
         /// <remarks>
         /// 
@@ -1137,7 +1185,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetStorefrontShippingResponse> GetStorefrontShippingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
         /// </summary>
         /// <remarks>
         /// 
@@ -1258,9 +1306,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontStoryArchiveResponse</returns>
-        System.Threading.Tasks.Task<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveAsync(string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page.
@@ -1269,9 +1319,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontStoryArchiveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListStorefrontStoryArchiveResponse>> ListStorefrontStoryArchiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListStorefrontStoryArchiveResponse>> ListStorefrontStoryArchiveWithHttpInfoAsync(string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront.
         /// </summary>
@@ -1279,9 +1331,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontResponse</returns>
-        System.Threading.Tasks.Task<GetStorefrontResponse> UpdateStorefrontAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetStorefrontResponse> UpdateStorefrontAsync(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront.
@@ -1290,9 +1343,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetStorefrontResponse>> UpdateStorefrontWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetStorefrontResponse>> UpdateStorefrontWithHttpInfoAsync(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rename a highlight or change its cover (coverUrl null &#x3D; use the first story).
         /// </summary>
@@ -1301,9 +1355,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightAsync(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rename a highlight or change its cover (coverUrl null &#x3D; use the first story).
@@ -1313,9 +1368,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightWithHttpInfoAsync(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the order of a highlight’s saved stories: every item id, first to last.
         /// </summary>
@@ -1324,9 +1380,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderAsync(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the order of a highlight’s saved stories: every item id, first to last.
@@ -1336,9 +1393,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the highlight order in one call: every highlight id, first to last.
         /// </summary>
@@ -1346,9 +1404,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontHighlightsResponse</returns>
-        System.Threading.Tasks.Task<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderAsync(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the highlight order in one call: every highlight id, first to last.
@@ -1357,9 +1416,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontHighlightsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListStorefrontHighlightsResponse>> UpdateStorefrontHighlightOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListStorefrontHighlightsResponse>> UpdateStorefrontHighlightOrderWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace your shop profile (a complete ShopProfile). Saved straight away.
         /// </summary>
@@ -1389,9 +1449,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontSectionResponse</returns>
-        System.Threading.Tasks.Task<StorefrontSectionResponse> UpdateStorefrontSectionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontSectionResponse> UpdateStorefrontSectionAsync(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rename, show/hide, refill (listings shelves) or reconfigure a section.
@@ -1401,9 +1462,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontSectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontSectionResponse>> UpdateStorefrontSectionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontSectionResponse>> UpdateStorefrontSectionWithHttpInfoAsync(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the section order in one atomic call: every section id, top to bottom.
         /// </summary>
@@ -1411,9 +1473,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse4</returns>
-        System.Threading.Tasks.Task<StorefrontResponse4> UpdateStorefrontSectionReorderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse4> UpdateStorefrontSectionReorderAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the section order in one atomic call: every section id, top to bottom.
@@ -1422,30 +1485,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse4)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse4>> UpdateStorefrontSectionReorderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse4>> UpdateStorefrontSectionReorderWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontShippingResponse</returns>
-        System.Threading.Tasks.Task<GetStorefrontShippingResponse> UpdateStorefrontShippingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetStorefrontShippingResponse> UpdateStorefrontShippingAsync(UpdateStorefrontShippingRequest updateStorefrontShippingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontShippingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetStorefrontShippingResponse>> UpdateStorefrontShippingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetStorefrontShippingResponse>> UpdateStorefrontShippingWithHttpInfoAsync(UpdateStorefrontShippingRequest updateStorefrontShippingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Save the website draft (a complete SiteDesign). Validated strictly (a bad field is a 400 naming its path) and sanitized; buyers see nothing until you publish.
         /// </summary>
@@ -1495,9 +1561,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        System.Threading.Tasks.Task<StorefrontResponse2> UpdateStorefrontTradeSiteDraftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse2> UpdateStorefrontTradeSiteDraftAsync(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
@@ -1506,9 +1573,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse2>> UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Switch the trade site on (needs a publish first) or off.
         /// </summary>
@@ -1516,9 +1584,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse3</returns>
-        System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledAsync(EnabledRequest enabledRequest = default(EnabledRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Switch the trade site on (needs a publish first) or off.
@@ -1527,9 +1596,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse3)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(EnabledRequest enabledRequest = default(EnabledRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
         /// </summary>
@@ -1537,9 +1607,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse3</returns>
-        System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteGatingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteGatingAsync(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
@@ -1548,9 +1619,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse3)</returns>
-        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1675,10 +1747,11 @@ namespace net.crossly.Api
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <returns>CreateStorefrontHighlightResponse</returns>
-        public CreateStorefrontHighlightResponse CreateStorefrontHighlight()
+        public CreateStorefrontHighlightResponse CreateStorefrontHighlight(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest))
         {
-            net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> localVarResponse = CreateStorefrontHighlightWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> localVarResponse = CreateStorefrontHighlightWithHttpInfo(createStorefrontHighlightRequest);
             return localVarResponse.Data;
         }
 
@@ -1686,12 +1759,14 @@ namespace net.crossly.Api
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStorefrontHighlightResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> CreateStorefrontHighlightWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> CreateStorefrontHighlightWithHttpInfo(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1711,6 +1786,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontHighlightRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1737,11 +1813,12 @@ namespace net.crossly.Api
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStorefrontHighlightResponse</returns>
-        public async System.Threading.Tasks.Task<CreateStorefrontHighlightResponse> CreateStorefrontHighlightAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateStorefrontHighlightResponse> CreateStorefrontHighlightAsync(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> localVarResponse = await CreateStorefrontHighlightWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse> localVarResponse = await CreateStorefrontHighlightWithHttpInfoAsync(createStorefrontHighlightRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1749,14 +1826,16 @@ namespace net.crossly.Api
         /// Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStorefrontHighlightResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse>> CreateStorefrontHighlightWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStorefrontHighlightResponse>> CreateStorefrontHighlightWithHttpInfoAsync(CreateStorefrontHighlightRequest createStorefrontHighlightRequest = default(CreateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1776,6 +1855,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontHighlightRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1804,10 +1884,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        public StorefrontHighlightResponse CreateStorefrontHighlightItem(string id)
+        public StorefrontHighlightResponse CreateStorefrontHighlightItem(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = CreateStorefrontHighlightItemWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = CreateStorefrontHighlightItemWithHttpInfo(id, createStorefrontHighlightItemRequest);
             return localVarResponse.Data;
         }
 
@@ -1816,8 +1897,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> CreateStorefrontHighlightItemWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> CreateStorefrontHighlightItemWithHttpInfo(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1828,6 +1910,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1848,6 +1931,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createStorefrontHighlightItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1875,11 +1959,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> CreateStorefrontHighlightItemAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> CreateStorefrontHighlightItemAsync(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await CreateStorefrontHighlightItemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await CreateStorefrontHighlightItemWithHttpInfoAsync(id, createStorefrontHighlightItemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1888,9 +1973,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createStorefrontHighlightItemRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> CreateStorefrontHighlightItemWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> CreateStorefrontHighlightItemWithHttpInfoAsync(string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = default(CreateStorefrontHighlightItemRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1902,6 +1988,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1922,6 +2009,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createStorefrontHighlightItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2077,10 +2165,11 @@ namespace net.crossly.Api
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <returns>StorefrontSectionResponse</returns>
-        public StorefrontSectionResponse CreateStorefrontSection()
+        public StorefrontSectionResponse CreateStorefrontSection(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = CreateStorefrontSectionWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = CreateStorefrontSectionWithHttpInfo(createStorefrontSectionRequest);
             return localVarResponse.Data;
         }
 
@@ -2088,12 +2177,14 @@ namespace net.crossly.Api
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontSectionResponse</returns>
-        public net.crossly.Client.ApiResponse<StorefrontSectionResponse> CreateStorefrontSectionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontSectionResponse> CreateStorefrontSectionWithHttpInfo(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2113,6 +2204,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontSectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2139,11 +2231,12 @@ namespace net.crossly.Api
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontSectionResponse</returns>
-        public async System.Threading.Tasks.Task<StorefrontSectionResponse> CreateStorefrontSectionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontSectionResponse> CreateStorefrontSectionAsync(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = await CreateStorefrontSectionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = await CreateStorefrontSectionWithHttpInfoAsync(createStorefrontSectionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2151,14 +2244,16 @@ namespace net.crossly.Api
         /// Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontSectionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontSectionResponse>> CreateStorefrontSectionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontSectionResponse>> CreateStorefrontSectionWithHttpInfoAsync(CreateStorefrontSectionRequest createStorefrontSectionRequest = default(CreateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2178,6 +2273,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontSectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2991,10 +3087,11 @@ namespace net.crossly.Api
         /// Publish the trade site draft (a version is kept). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        public StorefrontResponse2 CreateStorefrontTradeSitePublish()
+        public StorefrontResponse2 CreateStorefrontTradeSitePublish(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = CreateStorefrontTradeSitePublishWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = CreateStorefrontTradeSitePublishWithHttpInfo(createStorefrontTradeSitePublishRequest);
             return localVarResponse.Data;
         }
 
@@ -3002,12 +3099,14 @@ namespace net.crossly.Api
         /// Publish the trade site draft (a version is kept). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse2> CreateStorefrontTradeSitePublishWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse2> CreateStorefrontTradeSitePublishWithHttpInfo(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3027,6 +3126,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSitePublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3053,11 +3153,12 @@ namespace net.crossly.Api
         /// Publish the trade site draft (a version is kept). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSitePublishAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSitePublishAsync(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await CreateStorefrontTradeSitePublishWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await CreateStorefrontTradeSitePublishWithHttpInfoAsync(createStorefrontTradeSitePublishRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3065,14 +3166,16 @@ namespace net.crossly.Api
         /// Publish the trade site draft (a version is kept). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSitePublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSitePublishWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSitePublishWithHttpInfoAsync(CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = default(CreateStorefrontTradeSitePublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3092,6 +3195,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSitePublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3119,10 +3223,11 @@ namespace net.crossly.Api
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <returns>CreateStorefrontSiteResolveResponse</returns>
-        public CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve()
+        public CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest))
         {
-            net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> localVarResponse = CreateStorefrontTradeSiteResolveWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> localVarResponse = CreateStorefrontTradeSiteResolveWithHttpInfo(createStorefrontTradeSiteResolveRequest);
             return localVarResponse.Data;
         }
 
@@ -3130,12 +3235,14 @@ namespace net.crossly.Api
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateStorefrontSiteResolveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveWithHttpInfo(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3155,6 +3262,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSiteResolveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3181,11 +3289,12 @@ namespace net.crossly.Api
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateStorefrontSiteResolveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateStorefrontSiteResolveResponse> CreateStorefrontTradeSiteResolveAsync(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> localVarResponse = await CreateStorefrontTradeSiteResolveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse> localVarResponse = await CreateStorefrontTradeSiteResolveWithHttpInfoAsync(createStorefrontTradeSiteResolveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3193,14 +3302,16 @@ namespace net.crossly.Api
         /// The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteResolveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateStorefrontSiteResolveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse>> CreateStorefrontTradeSiteResolveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateStorefrontSiteResolveResponse>> CreateStorefrontTradeSiteResolveWithHttpInfoAsync(CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = default(CreateStorefrontTradeSiteResolveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3220,6 +3331,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSiteResolveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3247,10 +3359,11 @@ namespace net.crossly.Api
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        public StorefrontResponse2 CreateStorefrontTradeSiteStarter()
+        public StorefrontResponse2 CreateStorefrontTradeSiteStarter(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = CreateStorefrontTradeSiteStarterWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = CreateStorefrontTradeSiteStarterWithHttpInfo(createStorefrontTradeSiteStarterRequest);
             return localVarResponse.Data;
         }
 
@@ -3258,12 +3371,14 @@ namespace net.crossly.Api
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse2> CreateStorefrontTradeSiteStarterWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse2> CreateStorefrontTradeSiteStarterWithHttpInfo(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3283,6 +3398,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSiteStarterRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3309,11 +3425,12 @@ namespace net.crossly.Api
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSiteStarterAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse2> CreateStorefrontTradeSiteStarterAsync(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await CreateStorefrontTradeSiteStarterWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await CreateStorefrontTradeSiteStarterWithHttpInfoAsync(createStorefrontTradeSiteStarterRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3321,14 +3438,16 @@ namespace net.crossly.Api
         /// Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createStorefrontTradeSiteStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSiteStarterWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> CreateStorefrontTradeSiteStarterWithHttpInfoAsync(CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = default(CreateStorefrontTradeSiteStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3348,6 +3467,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createStorefrontTradeSiteStarterRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4340,7 +4460,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address. 
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetStorefrontShippingResponse</returns>
@@ -4351,7 +4471,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address. 
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetStorefrontShippingResponse</returns>
@@ -4402,7 +4522,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address. 
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -4414,7 +4534,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address. 
+        /// Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -5111,10 +5231,12 @@ namespace net.crossly.Api
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListStorefrontStoryArchiveResponse</returns>
-        public ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive()
+        public ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive(string before = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> localVarResponse = ListStorefrontStoryArchiveWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> localVarResponse = ListStorefrontStoryArchiveWithHttpInfo(before, limit);
             return localVarResponse.Data;
         }
 
@@ -5122,8 +5244,10 @@ namespace net.crossly.Api
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontStoryArchiveResponse</returns>
-        public net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveWithHttpInfo(string before = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5147,6 +5271,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5173,11 +5305,13 @@ namespace net.crossly.Api
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontStoryArchiveResponse</returns>
-        public async System.Threading.Tasks.Task<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListStorefrontStoryArchiveResponse> ListStorefrontStoryArchiveAsync(string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> localVarResponse = await ListStorefrontStoryArchiveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse> localVarResponse = await ListStorefrontStoryArchiveWithHttpInfoAsync(before, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5185,9 +5319,11 @@ namespace net.crossly.Api
         /// Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before &#x3D; meta.nextCursor of the previous page. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="before"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontStoryArchiveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse>> ListStorefrontStoryArchiveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontStoryArchiveResponse>> ListStorefrontStoryArchiveWithHttpInfoAsync(string before = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5212,6 +5348,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (before != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "before", before));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5239,10 +5383,11 @@ namespace net.crossly.Api
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <returns>GetStorefrontResponse</returns>
-        public GetStorefrontResponse UpdateStorefront()
+        public GetStorefrontResponse UpdateStorefront(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest))
         {
-            net.crossly.Client.ApiResponse<GetStorefrontResponse> localVarResponse = UpdateStorefrontWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetStorefrontResponse> localVarResponse = UpdateStorefrontWithHttpInfo(updateStorefrontRequest);
             return localVarResponse.Data;
         }
 
@@ -5250,12 +5395,14 @@ namespace net.crossly.Api
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <returns>ApiResponse of GetStorefrontResponse</returns>
-        public net.crossly.Client.ApiResponse<GetStorefrontResponse> UpdateStorefrontWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetStorefrontResponse> UpdateStorefrontWithHttpInfo(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5275,6 +5422,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5301,11 +5449,12 @@ namespace net.crossly.Api
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontResponse</returns>
-        public async System.Threading.Tasks.Task<GetStorefrontResponse> UpdateStorefrontAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetStorefrontResponse> UpdateStorefrontAsync(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetStorefrontResponse> localVarResponse = await UpdateStorefrontWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetStorefrontResponse> localVarResponse = await UpdateStorefrontWithHttpInfoAsync(updateStorefrontRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5313,14 +5462,16 @@ namespace net.crossly.Api
         /// Update your storefront design. Omitted fields are unchanged, null clears. published&#x3D;false keeps the design as a draft and buyers see the standard storefront. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontResponse>> UpdateStorefrontWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontResponse>> UpdateStorefrontWithHttpInfoAsync(UpdateStorefrontRequest updateStorefrontRequest = default(UpdateStorefrontRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5340,6 +5491,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5368,10 +5520,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        public StorefrontHighlightResponse UpdateStorefrontHighlight(string id)
+        public StorefrontHighlightResponse UpdateStorefrontHighlight(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = UpdateStorefrontHighlightWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = UpdateStorefrontHighlightWithHttpInfo(id, updateStorefrontHighlightRequest);
             return localVarResponse.Data;
         }
 
@@ -5380,8 +5533,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightWithHttpInfo(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5392,6 +5546,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5412,6 +5567,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStorefrontHighlightRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5439,11 +5595,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightAsync(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await UpdateStorefrontHighlightWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await UpdateStorefrontHighlightWithHttpInfoAsync(id, updateStorefrontHighlightRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5452,9 +5609,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontHighlightRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightWithHttpInfoAsync(string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = default(UpdateStorefrontHighlightRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5466,6 +5624,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5486,6 +5645,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStorefrontHighlightRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5514,10 +5674,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>StorefrontHighlightResponse</returns>
-        public StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder(string id)
+        public StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = UpdateStorefrontHighlightItemOrderWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = UpdateStorefrontHighlightItemOrderWithHttpInfo(id, createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -5526,8 +5687,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontHighlightResponse</returns>
-        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderWithHttpInfo(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5538,6 +5700,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5558,6 +5721,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5585,11 +5749,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontHighlightResponse</returns>
-        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontHighlightResponse> UpdateStorefrontHighlightItemOrderAsync(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontHighlightResponse> localVarResponse = await UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(id, createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5598,9 +5763,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontHighlightResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontHighlightResponse>> UpdateStorefrontHighlightItemOrderWithHttpInfoAsync(string id, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5612,6 +5778,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5632,6 +5799,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5659,10 +5827,11 @@ namespace net.crossly.Api
         /// Set the highlight order in one call: every highlight id, first to last. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ListStorefrontHighlightsResponse</returns>
-        public ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder()
+        public ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> localVarResponse = UpdateStorefrontHighlightOrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> localVarResponse = UpdateStorefrontHighlightOrderWithHttpInfo(createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -5670,12 +5839,14 @@ namespace net.crossly.Api
         /// Set the highlight order in one call: every highlight id, first to last. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of ListStorefrontHighlightsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderWithHttpInfo(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5695,6 +5866,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5721,11 +5893,12 @@ namespace net.crossly.Api
         /// Set the highlight order in one call: every highlight id, first to last. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListStorefrontHighlightsResponse</returns>
-        public async System.Threading.Tasks.Task<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListStorefrontHighlightsResponse> UpdateStorefrontHighlightOrderAsync(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> localVarResponse = await UpdateStorefrontHighlightOrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse> localVarResponse = await UpdateStorefrontHighlightOrderWithHttpInfoAsync(createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5733,14 +5906,16 @@ namespace net.crossly.Api
         /// Set the highlight order in one call: every highlight id, first to last. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListStorefrontHighlightsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse>> UpdateStorefrontHighlightOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListStorefrontHighlightsResponse>> UpdateStorefrontHighlightOrderWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5760,6 +5935,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5916,10 +6092,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <returns>StorefrontSectionResponse</returns>
-        public StorefrontSectionResponse UpdateStorefrontSection(string id)
+        public StorefrontSectionResponse UpdateStorefrontSection(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = UpdateStorefrontSectionWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = UpdateStorefrontSectionWithHttpInfo(id, updateStorefrontSectionRequest);
             return localVarResponse.Data;
         }
 
@@ -5928,8 +6105,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontSectionResponse</returns>
-        public net.crossly.Client.ApiResponse<StorefrontSectionResponse> UpdateStorefrontSectionWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<StorefrontSectionResponse> UpdateStorefrontSectionWithHttpInfo(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -5940,6 +6118,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5960,6 +6139,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStorefrontSectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5987,11 +6167,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontSectionResponse</returns>
-        public async System.Threading.Tasks.Task<StorefrontSectionResponse> UpdateStorefrontSectionAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontSectionResponse> UpdateStorefrontSectionAsync(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = await UpdateStorefrontSectionWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontSectionResponse> localVarResponse = await UpdateStorefrontSectionWithHttpInfoAsync(id, updateStorefrontSectionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6000,9 +6181,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateStorefrontSectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontSectionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontSectionResponse>> UpdateStorefrontSectionWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontSectionResponse>> UpdateStorefrontSectionWithHttpInfoAsync(string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = default(UpdateStorefrontSectionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -6014,6 +6196,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6034,6 +6217,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateStorefrontSectionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6061,10 +6245,11 @@ namespace net.crossly.Api
         /// Set the section order in one atomic call: every section id, top to bottom. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>StorefrontResponse4</returns>
-        public StorefrontResponse4 UpdateStorefrontSectionReorder()
+        public StorefrontResponse4 UpdateStorefrontSectionReorder(CreateListingByIdRequest createListingByIdRequest)
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse4> localVarResponse = UpdateStorefrontSectionReorderWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse4> localVarResponse = UpdateStorefrontSectionReorderWithHttpInfo(createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -6072,12 +6257,20 @@ namespace net.crossly.Api
         /// Set the section order in one atomic call: every section id, top to bottom. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of StorefrontResponse4</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse4> UpdateStorefrontSectionReorderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse4> UpdateStorefrontSectionReorderWithHttpInfo(CreateListingByIdRequest createListingByIdRequest)
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling StorefrontApi->UpdateStorefrontSectionReorder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6097,6 +6290,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6123,11 +6317,12 @@ namespace net.crossly.Api
         /// Set the section order in one atomic call: every section id, top to bottom. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse4</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse4> UpdateStorefrontSectionReorderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse4> UpdateStorefrontSectionReorderAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse4> localVarResponse = await UpdateStorefrontSectionReorderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse4> localVarResponse = await UpdateStorefrontSectionReorderWithHttpInfoAsync(createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6135,14 +6330,22 @@ namespace net.crossly.Api
         /// Set the section order in one atomic call: every section id, top to bottom. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse4)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse4>> UpdateStorefrontSectionReorderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse4>> UpdateStorefrontSectionReorderWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling StorefrontApi->UpdateStorefrontSectionReorder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6162,6 +6365,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6186,26 +6390,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin). 
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <returns>GetStorefrontShippingResponse</returns>
-        public GetStorefrontShippingResponse UpdateStorefrontShipping()
+        public GetStorefrontShippingResponse UpdateStorefrontShipping(UpdateStorefrontShippingRequest updateStorefrontShippingRequest)
         {
-            net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> localVarResponse = UpdateStorefrontShippingWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> localVarResponse = UpdateStorefrontShippingWithHttpInfo(updateStorefrontShippingRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin). 
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <returns>ApiResponse of GetStorefrontShippingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> UpdateStorefrontShippingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> UpdateStorefrontShippingWithHttpInfo(UpdateStorefrontShippingRequest updateStorefrontShippingRequest)
         {
+            // verify the required parameter 'updateStorefrontShippingRequest' is set
+            if (updateStorefrontShippingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateStorefrontShippingRequest' when calling StorefrontApi->UpdateStorefrontShipping");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6225,6 +6438,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontShippingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6248,29 +6462,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin). 
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetStorefrontShippingResponse</returns>
-        public async System.Threading.Tasks.Task<GetStorefrontShippingResponse> UpdateStorefrontShippingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetStorefrontShippingResponse> UpdateStorefrontShippingAsync(UpdateStorefrontShippingRequest updateStorefrontShippingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> localVarResponse = await UpdateStorefrontShippingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetStorefrontShippingResponse> localVarResponse = await UpdateStorefrontShippingWithHttpInfoAsync(updateStorefrontShippingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin). 
+        /// Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontShippingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetStorefrontShippingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontShippingResponse>> UpdateStorefrontShippingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetStorefrontShippingResponse>> UpdateStorefrontShippingWithHttpInfoAsync(UpdateStorefrontShippingRequest updateStorefrontShippingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateStorefrontShippingRequest' is set
+            if (updateStorefrontShippingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateStorefrontShippingRequest' when calling StorefrontApi->UpdateStorefrontShipping");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6290,6 +6513,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontShippingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6573,10 +6797,11 @@ namespace net.crossly.Api
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <returns>StorefrontResponse2</returns>
-        public StorefrontResponse2 UpdateStorefrontTradeSiteDraft()
+        public StorefrontResponse2 UpdateStorefrontTradeSiteDraft(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = UpdateStorefrontTradeSiteDraftWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = UpdateStorefrontTradeSiteDraftWithHttpInfo(updateStorefrontTradeSiteDraftRequest);
             return localVarResponse.Data;
         }
 
@@ -6584,12 +6809,14 @@ namespace net.crossly.Api
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse2</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse2> UpdateStorefrontTradeSiteDraftWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse2> UpdateStorefrontTradeSiteDraftWithHttpInfo(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6609,6 +6836,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontTradeSiteDraftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6635,11 +6863,12 @@ namespace net.crossly.Api
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse2</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse2> UpdateStorefrontTradeSiteDraftAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse2> UpdateStorefrontTradeSiteDraftAsync(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse2> localVarResponse = await UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(updateStorefrontTradeSiteDraftRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6647,14 +6876,16 @@ namespace net.crossly.Api
         /// Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteDraftRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse2)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse2>> UpdateStorefrontTradeSiteDraftWithHttpInfoAsync(UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = default(UpdateStorefrontTradeSiteDraftRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6674,6 +6905,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontTradeSiteDraftRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6701,10 +6933,11 @@ namespace net.crossly.Api
         /// Switch the trade site on (needs a publish first) or off. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <returns>StorefrontResponse3</returns>
-        public StorefrontResponse3 UpdateStorefrontTradeSiteEnabled()
+        public StorefrontResponse3 UpdateStorefrontTradeSiteEnabled(EnabledRequest enabledRequest = default(EnabledRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = UpdateStorefrontTradeSiteEnabledWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = UpdateStorefrontTradeSiteEnabledWithHttpInfo(enabledRequest);
             return localVarResponse.Data;
         }
 
@@ -6712,12 +6945,14 @@ namespace net.crossly.Api
         /// Switch the trade site on (needs a publish first) or off. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse3</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledWithHttpInfo(EnabledRequest enabledRequest = default(EnabledRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6737,6 +6972,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = enabledRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6763,11 +6999,12 @@ namespace net.crossly.Api
         /// Switch the trade site on (needs a publish first) or off. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse3</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteEnabledAsync(EnabledRequest enabledRequest = default(EnabledRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = await UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = await UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(enabledRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6775,14 +7012,16 @@ namespace net.crossly.Api
         /// Switch the trade site on (needs a publish first) or off. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="enabledRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse3)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteEnabledWithHttpInfoAsync(EnabledRequest enabledRequest = default(EnabledRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6802,6 +7041,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = enabledRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6829,10 +7069,11 @@ namespace net.crossly.Api
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <returns>StorefrontResponse3</returns>
-        public StorefrontResponse3 UpdateStorefrontTradeSiteGating()
+        public StorefrontResponse3 UpdateStorefrontTradeSiteGating(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = UpdateStorefrontTradeSiteGatingWithHttpInfo();
+            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = UpdateStorefrontTradeSiteGatingWithHttpInfo(updateStorefrontTradeSiteGatingRequest);
             return localVarResponse.Data;
         }
 
@@ -6840,12 +7081,14 @@ namespace net.crossly.Api
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <returns>ApiResponse of StorefrontResponse3</returns>
-        public net.crossly.Client.ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteGatingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<StorefrontResponse3> UpdateStorefrontTradeSiteGatingWithHttpInfo(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6865,6 +7108,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontTradeSiteGatingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6891,11 +7135,12 @@ namespace net.crossly.Api
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of StorefrontResponse3</returns>
-        public async System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteGatingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<StorefrontResponse3> UpdateStorefrontTradeSiteGatingAsync(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = await UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<StorefrontResponse3> localVarResponse = await UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(updateStorefrontTradeSiteGatingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6903,14 +7148,16 @@ namespace net.crossly.Api
         /// Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateStorefrontTradeSiteGatingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (StorefrontResponse3)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<StorefrontResponse3>> UpdateStorefrontTradeSiteGatingWithHttpInfoAsync(UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = default(UpdateStorefrontTradeSiteGatingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6930,6 +7177,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateStorefrontTradeSiteGatingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

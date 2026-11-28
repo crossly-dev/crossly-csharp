@@ -38,52 +38,52 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
-            /// Enum Person for value: person
-            /// </summary>
-            [EnumMember(Value = "person")]
-            Person = 1,
-
-            /// <summary>
-            /// Enum Rule for value: rule
-            /// </summary>
-            [EnumMember(Value = "rule")]
-            Rule = 2,
-
-            /// <summary>
-            /// Enum Sale for value: sale
-            /// </summary>
-            [EnumMember(Value = "sale")]
-            Sale = 3,
-
-            /// <summary>
-            /// Enum Bulk for value: bulk
-            /// </summary>
-            [EnumMember(Value = "bulk")]
-            Bulk = 4,
-
-            /// <summary>
-            /// Enum Schedule for value: schedule
-            /// </summary>
-            [EnumMember(Value = "schedule")]
-            Schedule = 5,
-
-            /// <summary>
             /// Enum App for value: app
             /// </summary>
             [EnumMember(Value = "app")]
-            App = 6,
-
-            /// <summary>
-            /// Enum System for value: system
-            /// </summary>
-            [EnumMember(Value = "system")]
-            System = 7,
+            App = 1,
 
             /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 8
+            Unknown = 2,
+
+            /// <summary>
+            /// Enum Person for value: person
+            /// </summary>
+            [EnumMember(Value = "person")]
+            Person = 3,
+
+            /// <summary>
+            /// Enum Rule for value: rule
+            /// </summary>
+            [EnumMember(Value = "rule")]
+            Rule = 4,
+
+            /// <summary>
+            /// Enum Sale for value: sale
+            /// </summary>
+            [EnumMember(Value = "sale")]
+            Sale = 5,
+
+            /// <summary>
+            /// Enum Bulk for value: bulk
+            /// </summary>
+            [EnumMember(Value = "bulk")]
+            Bulk = 6,
+
+            /// <summary>
+            /// Enum Schedule for value: schedule
+            /// </summary>
+            [EnumMember(Value = "schedule")]
+            Schedule = 7,
+
+            /// <summary>
+            /// Enum System for value: system
+            /// </summary>
+            [EnumMember(Value = "system")]
+            System = 8
 
         }
 

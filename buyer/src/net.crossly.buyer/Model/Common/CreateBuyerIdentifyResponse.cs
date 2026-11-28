@@ -38,28 +38,28 @@ namespace net.crossly.buyer.Model
         public enum TierEnum
         {
             /// <summary>
+            /// Enum Vision for value: vision
+            /// </summary>
+            [EnumMember(Value = "vision")]
+            Vision = 1,
+
+            /// <summary>
             /// Enum None for value: none
             /// </summary>
             [EnumMember(Value = "none")]
-            None = 1,
+            None = 2,
 
             /// <summary>
             /// Enum Identifier for value: identifier
             /// </summary>
             [EnumMember(Value = "identifier")]
-            Identifier = 2,
+            Identifier = 3,
 
             /// <summary>
             /// Enum Visual for value: visual
             /// </summary>
             [EnumMember(Value = "visual")]
-            Visual = 3,
-
-            /// <summary>
-            /// Enum Vision for value: vision
-            /// </summary>
-            [EnumMember(Value = "vision")]
-            Vision = 4
+            Visual = 4
 
         }
 

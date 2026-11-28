@@ -42,15 +42,15 @@ namespace net.crossly.Model
         /// <param name="number">number.</param>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
-        /// <param name="invoiceId">invoiceId (required).</param>
-        /// <param name="buyerUserId">buyerUserId (required).</param>
-        /// <param name="reason">reason.</param>
         /// <param name="kind">kind (required).</param>
-        /// <param name="amountCents">amountCents (required).</param>
-        /// <param name="sellerUserId">sellerUserId (required).</param>
+        /// <param name="invoiceId">invoiceId (required).</param>
         /// <param name="note">note.</param>
         /// <param name="createdByUserId">createdByUserId.</param>
-        public CreateWholesaleInvoiceCreditNoteResponseDataCreditNote(string number = default(string), string id = default(string), DateTime createdAt = default(DateTime), string invoiceId = default(string), string buyerUserId = default(string), string reason = default(string), string kind = default(string), decimal amountCents = default(decimal), string sellerUserId = default(string), string note = default(string), string createdByUserId = default(string))
+        /// <param name="buyerUserId">buyerUserId (required).</param>
+        /// <param name="reason">reason.</param>
+        /// <param name="amountCents">amountCents (required).</param>
+        /// <param name="sellerUserId">sellerUserId (required).</param>
+        public CreateWholesaleInvoiceCreditNoteResponseDataCreditNote(string number = default(string), string id = default(string), DateTime createdAt = default(DateTime), string kind = default(string), string invoiceId = default(string), string note = default(string), string createdByUserId = default(string), string buyerUserId = default(string), string reason = default(string), decimal amountCents = default(decimal), string sellerUserId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -58,6 +58,11 @@ namespace net.crossly.Model
             }
             this.Id = id;
             this.CreatedAt = createdAt;
+            // to ensure "kind" is required (not null)
+            if (kind == null) {
+                throw new ArgumentNullException("kind is a required property for CreateWholesaleInvoiceCreditNoteResponseDataCreditNote and cannot be null");
+            }
+            this.Kind = kind;
             // to ensure "invoiceId" is required (not null)
             if (invoiceId == null) {
                 throw new ArgumentNullException("invoiceId is a required property for CreateWholesaleInvoiceCreditNoteResponseDataCreditNote and cannot be null");
@@ -68,11 +73,6 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("buyerUserId is a required property for CreateWholesaleInvoiceCreditNoteResponseDataCreditNote and cannot be null");
             }
             this.BuyerUserId = buyerUserId;
-            // to ensure "kind" is required (not null)
-            if (kind == null) {
-                throw new ArgumentNullException("kind is a required property for CreateWholesaleInvoiceCreditNoteResponseDataCreditNote and cannot be null");
-            }
-            this.Kind = kind;
             this.AmountCents = amountCents;
             // to ensure "sellerUserId" is required (not null)
             if (sellerUserId == null) {
@@ -80,9 +80,9 @@ namespace net.crossly.Model
             }
             this.SellerUserId = sellerUserId;
             this.Number = number;
-            this.Reason = reason;
             this.Note = note;
             this.CreatedByUserId = createdByUserId;
+            this.Reason = reason;
         }
 
         /// <summary>
@@ -104,40 +104,16 @@ namespace net.crossly.Model
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets InvoiceId
-        /// </summary>
-        [DataMember(Name = "invoiceId", IsRequired = true, EmitDefaultValue = false)]
-        public string InvoiceId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets BuyerUserId
-        /// </summary>
-        [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string BuyerUserId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Reason
-        /// </summary>
-        [DataMember(Name = "reason", EmitDefaultValue = true)]
-        public string Reason { get; set; }
-
-        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets AmountCents
+        /// Gets or Sets InvoiceId
         /// </summary>
-        [DataMember(Name = "amountCents", IsRequired = true, EmitDefaultValue = false)]
-        public decimal AmountCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SellerUserId
-        /// </summary>
-        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
-        public string SellerUserId { get; set; }
+        [DataMember(Name = "invoiceId", IsRequired = true, EmitDefaultValue = false)]
+        public string InvoiceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Note
@@ -152,6 +128,30 @@ namespace net.crossly.Model
         public string CreatedByUserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets BuyerUserId
+        /// </summary>
+        [DataMember(Name = "buyerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string BuyerUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Reason
+        /// </summary>
+        [DataMember(Name = "reason", EmitDefaultValue = true)]
+        public string Reason { get; set; }
+
+        /// <summary>
+        /// Gets or Sets AmountCents
+        /// </summary>
+        [DataMember(Name = "amountCents", IsRequired = true, EmitDefaultValue = false)]
+        public decimal AmountCents { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SellerUserId
+        /// </summary>
+        [DataMember(Name = "sellerUserId", IsRequired = true, EmitDefaultValue = false)]
+        public string SellerUserId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -162,14 +162,14 @@ namespace net.crossly.Model
             sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  InvoiceId: ").Append(InvoiceId).Append("\n");
-            sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
-            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
-            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  InvoiceId: ").Append(InvoiceId).Append("\n");
             sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  CreatedByUserId: ").Append(CreatedByUserId).Append("\n");
+            sb.Append("  BuyerUserId: ").Append(BuyerUserId).Append("\n");
+            sb.Append("  Reason: ").Append(Reason).Append("\n");
+            sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
+            sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,9 +221,24 @@ namespace net.crossly.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
                     this.InvoiceId == input.InvoiceId ||
                     (this.InvoiceId != null &&
                     this.InvoiceId.Equals(input.InvoiceId))
+                ) && 
+                (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
+                    this.CreatedByUserId == input.CreatedByUserId ||
+                    (this.CreatedByUserId != null &&
+                    this.CreatedByUserId.Equals(input.CreatedByUserId))
                 ) && 
                 (
                     this.BuyerUserId == input.BuyerUserId ||
@@ -236,11 +251,6 @@ namespace net.crossly.Model
                     this.Reason.Equals(input.Reason))
                 ) && 
                 (
-                    this.Kind == input.Kind ||
-                    (this.Kind != null &&
-                    this.Kind.Equals(input.Kind))
-                ) && 
-                (
                     this.AmountCents == input.AmountCents ||
                     this.AmountCents.Equals(input.AmountCents)
                 ) && 
@@ -248,16 +258,6 @@ namespace net.crossly.Model
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
-                ) && 
-                (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
-                ) && 
-                (
-                    this.CreatedByUserId == input.CreatedByUserId ||
-                    (this.CreatedByUserId != null &&
-                    this.CreatedByUserId.Equals(input.CreatedByUserId))
                 );
         }
 
@@ -282,9 +282,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
+                if (this.Kind != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
                 if (this.InvoiceId != null)
                 {
                     hashCode = (hashCode * 59) + this.InvoiceId.GetHashCode();
+                }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
+                if (this.CreatedByUserId != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedByUserId.GetHashCode();
                 }
                 if (this.BuyerUserId != null)
                 {
@@ -294,22 +306,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Reason.GetHashCode();
                 }
-                if (this.Kind != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
-                }
                 hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
-                }
-                if (this.Note != null)
-                {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
-                }
-                if (this.CreatedByUserId != null)
-                {
-                    hashCode = (hashCode * 59) + this.CreatedByUserId.GetHashCode();
                 }
                 return hashCode;
             }

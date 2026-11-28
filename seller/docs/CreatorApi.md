@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createcreatorexperiencekey"></a>
 # **CreateCreatorExperienceKey**
-> CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey ()
+> CreateCreatorExperienceKeyResponse CreateCreatorExperienceKey (CreateCreatorExperienceKeyRequest createCreatorExperienceKeyRequest = null)
 
 Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
 
@@ -37,11 +37,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorApi(config);
+            var createCreatorExperienceKeyRequest = new CreateCreatorExperienceKeyRequest(); // CreateCreatorExperienceKeyRequest |  (optional) 
 
             try
             {
                 // Issue an experience API key for a back-end or CI: name, creator scopes (worlds:*, items:write — only ones your token holds), an IP allowlist (CIDRs; 0.0.0.0/0 + ::/0 for anywhere), optional experienceIds and expiresInDays. The token is in the response ONCE.
-                CreateCreatorExperienceKeyResponse result = apiInstance.CreateCreatorExperienceKey();
+                CreateCreatorExperienceKeyResponse result = apiInstance.CreateCreatorExperienceKey(createCreatorExperienceKeyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -56,7 +57,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCreatorExperienceKeyRequest** | **CreateCreatorExperienceKeyRequest**|  | [optional] 
 
 ### Return type
 
@@ -68,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -88,7 +92,7 @@ This endpoint does not need any parameter.
 
 <a name="createcreatorexperiencekeyrotate"></a>
 # **CreateCreatorExperienceKeyRotate**
-> CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate (string id)
+> CreateCreatorExperienceKeyRotateResponse CreateCreatorExperienceKeyRotate (string id, CreateCreatorExperienceKeyRotateRequest createCreatorExperienceKeyRotateRequest = null)
 
 Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 = revoke now, max 168).
 
@@ -113,11 +117,12 @@ namespace Example
 
             var apiInstance = new CreatorApi(config);
             var id = "id_example";  // string | 
+            var createCreatorExperienceKeyRotateRequest = new CreateCreatorExperienceKeyRotateRequest(); // CreateCreatorExperienceKeyRotateRequest |  (optional) 
 
             try
             {
                 // Rotate a key: a replacement with the same settings (its token shown ONCE); the old key keeps working for overlapHours (default 24, 0 = revoke now, max 168).
-                CreateCreatorExperienceKeyRotateResponse result = apiInstance.CreateCreatorExperienceKeyRotate(id);
+                CreateCreatorExperienceKeyRotateResponse result = apiInstance.CreateCreatorExperienceKeyRotate(id, createCreatorExperienceKeyRotateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -136,6 +141,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createCreatorExperienceKeyRotateRequest** | **CreateCreatorExperienceKeyRotateRequest**|  | [optional] 
 
 ### Return type
 
@@ -147,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -319,7 +325,7 @@ This endpoint does not need any parameter.
 
 <a name="listcreatorexperiencekeys"></a>
 # **ListCreatorExperienceKeys**
-> ListCreatorExperienceKeysResponse ListCreatorExperienceKeys ()
+> ListCreatorExperienceKeysResponse ListCreatorExperienceKeys (string includeRevoked = null, string experienceId = null)
 
 Your experience API keys, newest first (never the secret). ?includeRevoked=true for the history; ?experienceId= for the keys that reach one game (a game's own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor=.
 
@@ -343,11 +349,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CreatorApi(config);
+            var includeRevoked = "true";  // string |  (optional) 
+            var experienceId = "experienceId_example";  // string |  (optional) 
 
             try
             {
                 // Your experience API keys, newest first (never the secret). ?includeRevoked=true for the history; ?experienceId= for the keys that reach one game (a game's own keys are narrowed to it alone). Cursor-paged: pass pagination.nextCursor back as ?cursor=.
-                ListCreatorExperienceKeysResponse result = apiInstance.ListCreatorExperienceKeys();
+                ListCreatorExperienceKeysResponse result = apiInstance.ListCreatorExperienceKeys(includeRevoked, experienceId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -362,7 +370,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includeRevoked** | **string**|  | [optional] 
+ **experienceId** | **string**|  | [optional] 
 
 ### Return type
 

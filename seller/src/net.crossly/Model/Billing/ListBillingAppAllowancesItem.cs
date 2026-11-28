@@ -101,7 +101,8 @@ namespace net.crossly.Model
         /// <param name="limitMode">limitMode (required).</param>
         /// <param name="limitPeriod">limitPeriod (required).</param>
         /// <param name="resetsAt">Monthly period: ISO instant the count resets (the plan&#39;s month boundary); null otherwise..</param>
-        public ListBillingAppAllowancesItem(string label = default(string), string appId = default(string), string appName = default(string), decimal limit = default(decimal), decimal used = default(decimal), decimal remaining = default(decimal), List<string> platforms = default(List<string>), LimitModeEnum limitMode = default(LimitModeEnum), LimitPeriodEnum limitPeriod = default(LimitPeriodEnum), string resetsAt = default(string))
+        /// <param name="storeUsed">Of &#x60;used&#x60;, the units in the asked store&#39;s plan pool (STORE-SCOPE-PLAN §4.1); null when no store was asked..</param>
+        public ListBillingAppAllowancesItem(string label = default(string), string appId = default(string), string appName = default(string), decimal limit = default(decimal), decimal used = default(decimal), decimal remaining = default(decimal), List<string> platforms = default(List<string>), LimitModeEnum limitMode = default(LimitModeEnum), LimitPeriodEnum limitPeriod = default(LimitPeriodEnum), string resetsAt = default(string), decimal? storeUsed = default(decimal?))
         {
             // to ensure "label" is required (not null)
             if (label == null) {
@@ -129,6 +130,7 @@ namespace net.crossly.Model
             this.LimitMode = limitMode;
             this.LimitPeriod = limitPeriod;
             this.ResetsAt = resetsAt;
+            this.StoreUsed = storeUsed;
         }
 
         /// <summary>
@@ -182,6 +184,13 @@ namespace net.crossly.Model
         public string ResetsAt { get; set; }
 
         /// <summary>
+        /// Of &#x60;used&#x60;, the units in the asked store&#39;s plan pool (STORE-SCOPE-PLAN §4.1); null when no store was asked.
+        /// </summary>
+        /// <value>Of &#x60;used&#x60;, the units in the asked store&#39;s plan pool (STORE-SCOPE-PLAN §4.1); null when no store was asked.</value>
+        [DataMember(Name = "storeUsed", EmitDefaultValue = true)]
+        public decimal? StoreUsed { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -199,6 +208,7 @@ namespace net.crossly.Model
             sb.Append("  LimitMode: ").Append(LimitMode).Append("\n");
             sb.Append("  LimitPeriod: ").Append(LimitPeriod).Append("\n");
             sb.Append("  ResetsAt: ").Append(ResetsAt).Append("\n");
+            sb.Append("  StoreUsed: ").Append(StoreUsed).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -279,6 +289,11 @@ namespace net.crossly.Model
                     this.ResetsAt == input.ResetsAt ||
                     (this.ResetsAt != null &&
                     this.ResetsAt.Equals(input.ResetsAt))
+                ) && 
+                (
+                    this.StoreUsed == input.StoreUsed ||
+                    (this.StoreUsed != null &&
+                    this.StoreUsed.Equals(input.StoreUsed))
                 );
         }
 
@@ -315,6 +330,10 @@ namespace net.crossly.Model
                 if (this.ResetsAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ResetsAt.GetHashCode();
+                }
+                if (this.StoreUsed != null)
+                {
+                    hashCode = (hashCode * 59) + this.StoreUsed.GetHashCode();
                 }
                 return hashCode;
             }

@@ -70,16 +70,16 @@ namespace net.crossly.Model
         public enum ReviewStateEnum
         {
             /// <summary>
-            /// Enum Pending for value: pending
-            /// </summary>
-            [EnumMember(Value = "pending")]
-            Pending = 1,
-
-            /// <summary>
             /// Enum Live for value: live
             /// </summary>
             [EnumMember(Value = "live")]
-            Live = 2,
+            Live = 1,
+
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 2,
 
             /// <summary>
             /// Enum Rejected for value: rejected

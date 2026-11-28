@@ -78,6 +78,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="ListPriceRulesItem" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="name">name.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="platform">platform (required).</param>
@@ -91,7 +92,7 @@ namespace net.crossly.Model
         /// <param name="maxPrice">maxPrice.</param>
         /// <param name="targetCurrency">targetCurrency.</param>
         /// <param name="fxBufferPercent">fxBufferPercent (required).</param>
-        public ListPriceRulesItem(string id = default(string), string createdAt = default(string), string updatedAt = default(string), string platform = default(string), decimal? accountSlot = default(decimal?), string categoryPrefix = default(string), bool enabled = default(bool), decimal? adjustPercent = default(decimal?), decimal? adjustFixed = default(decimal?), RoundingEnum rounding = default(RoundingEnum), decimal? minPrice = default(decimal?), decimal? maxPrice = default(decimal?), string targetCurrency = default(string), decimal fxBufferPercent = default(decimal))
+        public ListPriceRulesItem(string id = default(string), string name = default(string), string createdAt = default(string), string updatedAt = default(string), string platform = default(string), decimal? accountSlot = default(decimal?), string categoryPrefix = default(string), bool enabled = default(bool), decimal? adjustPercent = default(decimal?), decimal? adjustFixed = default(decimal?), RoundingEnum rounding = default(RoundingEnum), decimal? minPrice = default(decimal?), decimal? maxPrice = default(decimal?), string targetCurrency = default(string), decimal fxBufferPercent = default(decimal))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -116,6 +117,7 @@ namespace net.crossly.Model
             this.Enabled = enabled;
             this.Rounding = rounding;
             this.FxBufferPercent = fxBufferPercent;
+            this.Name = name;
             this.AccountSlot = accountSlot;
             this.CategoryPrefix = categoryPrefix;
             this.AdjustPercent = adjustPercent;
@@ -130,6 +132,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -212,6 +220,7 @@ namespace net.crossly.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListPriceRulesItem {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
@@ -264,6 +273,11 @@ namespace net.crossly.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -341,6 +355,10 @@ namespace net.crossly.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

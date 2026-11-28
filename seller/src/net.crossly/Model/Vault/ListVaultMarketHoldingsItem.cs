@@ -104,8 +104,9 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="deposit">deposit.</param>
+        /// <param name="inventoryItemId">The seller&#39;s inventory item for this unit (p5-13: a holding opens its item page): the one it was sent in from,  else the one it got when it was bought on the book (migration 1496). 1496 backfilled older units..</param>
         /// <param name="actions">actions (required).</param>
-        public ListVaultMarketHoldingsItem(string id = default(string), string status = default(string), string situation = default(string), bool past = default(bool), string source = default(string), string name = default(string), string imageUrl = default(string), string variantLabel = default(string), string condition = default(string), string gradeKey = default(string), string bookKey = default(string), string location = default(string), decimal? valueCents = default(decimal?), ValueSourceEnum valueSource = default(ValueSourceEnum), decimal? markCents = default(decimal?), decimal? lastSaleCents = default(decimal?), decimal? declaredValueCents = default(decimal?), decimal? insuredValueCents = default(decimal?), decimal storageAccruedCents = default(decimal), decimal? askPriceCents = default(decimal?), decimal earlyWithdrawFeeCents = default(decimal), string withdrawSpeed = default(string), string withdrawTracking = default(string), string receivedAt = default(string), string createdAt = default(string), string updatedAt = default(string), ListVaultMarketHoldingsItemDeposit deposit = default(ListVaultMarketHoldingsItemDeposit), ListVaultMarketHoldingsItemActions actions = default(ListVaultMarketHoldingsItemActions))
+        public ListVaultMarketHoldingsItem(string id = default(string), string status = default(string), string situation = default(string), bool past = default(bool), string source = default(string), string name = default(string), string imageUrl = default(string), string variantLabel = default(string), string condition = default(string), string gradeKey = default(string), string bookKey = default(string), string location = default(string), decimal? valueCents = default(decimal?), ValueSourceEnum valueSource = default(ValueSourceEnum), decimal? markCents = default(decimal?), decimal? lastSaleCents = default(decimal?), decimal? declaredValueCents = default(decimal?), decimal? insuredValueCents = default(decimal?), decimal storageAccruedCents = default(decimal), decimal? askPriceCents = default(decimal?), decimal earlyWithdrawFeeCents = default(decimal), string withdrawSpeed = default(string), string withdrawTracking = default(string), string receivedAt = default(string), string createdAt = default(string), string updatedAt = default(string), ListVaultMarketHoldingsItemDeposit deposit = default(ListVaultMarketHoldingsItemDeposit), string inventoryItemId = default(string), ListVaultMarketHoldingsItemActions actions = default(ListVaultMarketHoldingsItemActions))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -167,6 +168,7 @@ namespace net.crossly.Model
             this.WithdrawTracking = withdrawTracking;
             this.ReceivedAt = receivedAt;
             this.Deposit = deposit;
+            this.InventoryItemId = inventoryItemId;
         }
 
         /// <summary>
@@ -327,6 +329,13 @@ namespace net.crossly.Model
         public ListVaultMarketHoldingsItemDeposit Deposit { get; set; }
 
         /// <summary>
+        /// The seller&#39;s inventory item for this unit (p5-13: a holding opens its item page): the one it was sent in from,  else the one it got when it was bought on the book (migration 1496). 1496 backfilled older units.
+        /// </summary>
+        /// <value>The seller&#39;s inventory item for this unit (p5-13: a holding opens its item page): the one it was sent in from,  else the one it got when it was bought on the book (migration 1496). 1496 backfilled older units.</value>
+        [DataMember(Name = "inventoryItemId", EmitDefaultValue = true)]
+        public string InventoryItemId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Actions
         /// </summary>
         [DataMember(Name = "actions", IsRequired = true, EmitDefaultValue = false)]
@@ -367,6 +376,7 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Deposit: ").Append(Deposit).Append("\n");
+            sb.Append("  InventoryItemId: ").Append(InventoryItemId).Append("\n");
             sb.Append("  Actions: ").Append(Actions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -535,6 +545,11 @@ namespace net.crossly.Model
                     this.Deposit.Equals(input.Deposit))
                 ) && 
                 (
+                    this.InventoryItemId == input.InventoryItemId ||
+                    (this.InventoryItemId != null &&
+                    this.InventoryItemId.Equals(input.InventoryItemId))
+                ) && 
+                (
                     this.Actions == input.Actions ||
                     (this.Actions != null &&
                     this.Actions.Equals(input.Actions))
@@ -645,6 +660,10 @@ namespace net.crossly.Model
                 if (this.Deposit != null)
                 {
                     hashCode = (hashCode * 59) + this.Deposit.GetHashCode();
+                }
+                if (this.InventoryItemId != null)
+                {
+                    hashCode = (hashCode * 59) + this.InventoryItemId.GetHashCode();
                 }
                 if (this.Actions != null)
                 {

@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 <a name="createproductioncandidateaccept"></a>
 # **CreateProductionCandidateAccept**
-> CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept (string id)
+> CreateProductionCandidateAcceptResponse CreateProductionCandidateAccept (string id, CreateProductionCandidateAcceptRequest createProductionCandidateAcceptRequest)
 
 Accept a graduated design's production terms (edition size, cost, holder access).
 
@@ -53,11 +53,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var id = "id_example";  // string | 
+            var createProductionCandidateAcceptRequest = new CreateProductionCandidateAcceptRequest(); // CreateProductionCandidateAcceptRequest | 
 
             try
             {
                 // Accept a graduated design's production terms (edition size, cost, holder access).
-                CreateProductionCandidateAcceptResponse result = apiInstance.CreateProductionCandidateAccept(id);
+                CreateProductionCandidateAcceptResponse result = apiInstance.CreateProductionCandidateAccept(id, createProductionCandidateAcceptRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -76,6 +77,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createProductionCandidateAcceptRequest** | **CreateProductionCandidateAcceptRequest**|  | 
 
 ### Return type
 
@@ -87,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -184,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductioncandidatevote"></a>
 # **CreateProductionCandidateVote**
-> CreateProductionCandidateVoteResponse CreateProductionCandidateVote (string id)
+> CreateProductionCandidateVoteResponse CreateProductionCandidateVote (string id, CreateProductionCandidateVoteRequest createProductionCandidateVoteRequest = null)
 
 Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
 
@@ -209,11 +211,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var id = "id_example";  // string | 
+            var createProductionCandidateVoteRequest = new CreateProductionCandidateVoteRequest(); // CreateProductionCandidateVoteRequest |  (optional) 
 
             try
             {
                 // Back (support: true) or un-back a design on the production ballot. One vote per person per design; voters must have bought on Crossly.
-                CreateProductionCandidateVoteResponse result = apiInstance.CreateProductionCandidateVote(id);
+                CreateProductionCandidateVoteResponse result = apiInstance.CreateProductionCandidateVote(id, createProductionCandidateVoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -232,6 +235,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createProductionCandidateVoteRequest** | **CreateProductionCandidateVoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -243,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -262,7 +266,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductiondesignbrief"></a>
 # **CreateProductionDesignBrief**
-> CreateProductionDesignSpecResponse CreateProductionDesignBrief (string cosmeticId)
+> CreateProductionDesignSpecResponse CreateProductionDesignBrief (string cosmeticId, CreateProductionDesignBriefRequest createProductionDesignBriefRequest)
 
 Set a design's production brief (materials, finish, box, reference images).
 
@@ -287,11 +291,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var cosmeticId = "cosmeticId_example";  // string | 
+            var createProductionDesignBriefRequest = new CreateProductionDesignBriefRequest(); // CreateProductionDesignBriefRequest | 
 
             try
             {
                 // Set a design's production brief (materials, finish, box, reference images).
-                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignBrief(cosmeticId);
+                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignBrief(cosmeticId, createProductionDesignBriefRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -310,6 +315,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cosmeticId** | **string**|  | 
+ **createProductionDesignBriefRequest** | **CreateProductionDesignBriefRequest**|  | 
 
 ### Return type
 
@@ -321,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -340,7 +346,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductiondesignconsent"></a>
 # **CreateProductionDesignConsent**
-> CreateProductionDesignSpecResponse CreateProductionDesignConsent (string cosmeticId)
+> CreateProductionDesignSpecResponse CreateProductionDesignConsent (string cosmeticId, CreateProductionDesignConsentRequest createProductionDesignConsentRequest)
 
 Opt a design in or out of physical production.
 
@@ -365,11 +371,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var cosmeticId = "cosmeticId_example";  // string | 
+            var createProductionDesignConsentRequest = new CreateProductionDesignConsentRequest(); // CreateProductionDesignConsentRequest | 
 
             try
             {
                 // Opt a design in or out of physical production.
-                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignConsent(cosmeticId);
+                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignConsent(cosmeticId, createProductionDesignConsentRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -388,6 +395,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cosmeticId** | **string**|  | 
+ **createProductionDesignConsentRequest** | **CreateProductionDesignConsentRequest**|  | 
 
 ### Return type
 
@@ -399,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -418,7 +426,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductiondesignspec"></a>
 # **CreateProductionDesignSpec**
-> CreateProductionDesignSpecResponse CreateProductionDesignSpec (string cosmeticId)
+> CreateProductionDesignSpecResponse CreateProductionDesignSpec (string cosmeticId, CreateProductionDesignSpecRequest createProductionDesignSpecRequest)
 
 Set a design's production spec (category, materials, complexity, packaging).
 
@@ -443,11 +451,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var cosmeticId = "cosmeticId_example";  // string | 
+            var createProductionDesignSpecRequest = new CreateProductionDesignSpecRequest(); // CreateProductionDesignSpecRequest | 
 
             try
             {
                 // Set a design's production spec (category, materials, complexity, packaging).
-                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignSpec(cosmeticId);
+                CreateProductionDesignSpecResponse result = apiInstance.CreateProductionDesignSpec(cosmeticId, createProductionDesignSpecRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -466,6 +475,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cosmeticId** | **string**|  | 
+ **createProductionDesignSpecRequest** | **CreateProductionDesignSpecRequest**|  | 
 
 ### Return type
 
@@ -477,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -496,7 +506,7 @@ Name | Type | Description  | Notes
 
 <a name="createproductionestimate"></a>
 # **CreateProductionEstimate**
-> CreateProductionEstimateResponse CreateProductionEstimate ()
+> CreateProductionEstimateResponse CreateProductionEstimate (CreateProductionEstimateRequest createProductionEstimateRequest)
 
 Estimate a run's landed cost from a spec + edition size (overshoots for safety).
 
@@ -520,11 +530,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ProductionApi(config);
+            var createProductionEstimateRequest = new CreateProductionEstimateRequest(); // CreateProductionEstimateRequest | 
 
             try
             {
                 // Estimate a run's landed cost from a spec + edition size (overshoots for safety).
-                CreateProductionEstimateResponse result = apiInstance.CreateProductionEstimate();
+                CreateProductionEstimateResponse result = apiInstance.CreateProductionEstimate(createProductionEstimateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -539,7 +550,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createProductionEstimateRequest** | **CreateProductionEstimateRequest**|  | 
 
 ### Return type
 
@@ -551,7 +565,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -570,7 +584,7 @@ This endpoint does not need any parameter.
 
 <a name="createproductionrunpurchase"></a>
 # **CreateProductionRunPurchase**
-> CreateProductionRunPurchaseResponse CreateProductionRunPurchase (string id)
+> CreateProductionRunPurchaseResponse CreateProductionRunPurchase (string id, CreateProductionRunPurchaseRequest createProductionRunPurchaseRequest = null)
 
 Buy a limited-edition unit of a physical run (holder pricing applies).
 
@@ -595,11 +609,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var id = "id_example";  // string | 
+            var createProductionRunPurchaseRequest = new CreateProductionRunPurchaseRequest(); // CreateProductionRunPurchaseRequest |  (optional) 
 
             try
             {
                 // Buy a limited-edition unit of a physical run (holder pricing applies).
-                CreateProductionRunPurchaseResponse result = apiInstance.CreateProductionRunPurchase(id);
+                CreateProductionRunPurchaseResponse result = apiInstance.CreateProductionRunPurchase(id, createProductionRunPurchaseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -618,6 +633,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createProductionRunPurchaseRequest** | **CreateProductionRunPurchaseRequest**|  | [optional] 
 
 ### Return type
 
@@ -629,7 +645,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1482,7 +1498,7 @@ Name | Type | Description  | Notes
 
 <a name="updateproductionpo"></a>
 # **UpdateProductionPo**
-> UpdateProductionPoResponse UpdateProductionPo (string poId)
+> UpdateProductionPoResponse UpdateProductionPo (string poId, UpdateProductionPoRequest updateProductionPoRequest)
 
 Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
 
@@ -1507,11 +1523,12 @@ namespace Example
 
             var apiInstance = new ProductionApi(config);
             var poId = "poId_example";  // string | 
+            var updateProductionPoRequest = new UpdateProductionPoRequest(); // UpdateProductionPoRequest | 
 
             try
             {
                 // Ops: update a PO (supplier, freight, actuals, QC, status). Admin PAT only.
-                UpdateProductionPoResponse result = apiInstance.UpdateProductionPo(poId);
+                UpdateProductionPoResponse result = apiInstance.UpdateProductionPo(poId, updateProductionPoRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1530,6 +1547,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **poId** | **string**|  | 
+ **updateProductionPoRequest** | **UpdateProductionPoRequest**|  | 
 
 ### Return type
 
@@ -1541,7 +1559,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

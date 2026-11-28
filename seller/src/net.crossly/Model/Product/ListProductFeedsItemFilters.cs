@@ -34,39 +34,55 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListProductFeedsItemFilters" /> class.
         /// </summary>
-        /// <param name="includeCategories">Only these top-level categories (listing category &#x60;main&#x60;)..</param>
-        /// <param name="excludeCategories">Never these top-level categories..</param>
+        /// <param name="includeCategories">Only listings in one of these categories, at ANY level (main, sub or leaf name)..</param>
+        /// <param name="excludeCategories">Never listings in one of these categories, at any level..</param>
         /// <param name="includeBrands">Only these brands..</param>
         /// <param name="excludeBrands">Never these brands..</param>
+        /// <param name="includeTags">Only listings carrying at least one of these tags..</param>
+        /// <param name="excludeTags">Never listings carrying any of these tags..</param>
         /// <param name="includeListingIds">Only these listings (listing ids)..</param>
-        /// <param name="excludeListingIds">Never these listings (listing ids) — the per-item \&quot;block\&quot; switch..</param>
-        /// <param name="minPrice">Price floor in DOLLARS of the shop price (USD)..</param>
-        /// <param name="maxPrice">Price ceiling in DOLLARS of the shop price (USD)..</param>
+        /// <param name="excludeListingIds">Never these listings (listing ids) — the per-item \&quot;leave out\&quot; switch..</param>
+        /// <param name="minPrice">Price floor in the FEED&#39;s currency (settings.currency, USD when unset), on the shop price..</param>
+        /// <param name="maxPrice">Price ceiling in the feed&#39;s currency..</param>
         /// <param name="includeOutOfStock">Keep listings with no stock as availability&#x3D;out_of_stock (default true). Off drops them..</param>
-        public ListProductFeedsItemFilters(List<string> includeCategories = default(List<string>), List<string> excludeCategories = default(List<string>), List<string> includeBrands = default(List<string>), List<string> excludeBrands = default(List<string>), List<string> includeListingIds = default(List<string>), List<string> excludeListingIds = default(List<string>), decimal? minPrice = default(decimal?), decimal? maxPrice = default(decimal?), bool? includeOutOfStock = default(bool?))
+        /// <param name="minQuantity">Only listings with at least this many in stock (0/absent &#x3D; no floor)..</param>
+        /// <param name="statuses">Stock / sale status: empty &#x3D; all. &#x60;on_sale&#x60; &#x3D; a storefront sale is running on it..</param>
+        /// <param name="conditions">Item condition as the channels read it: empty &#x3D; all..</param>
+        /// <param name="onPlatforms">Only listings ALSO live on one of these marketplaces (platform ids, e.g. &#39;ebay&#39;)..</param>
+        /// <param name="notOnPlatforms">Never listings live on any of these marketplaces..</param>
+        /// <param name="listedWithinDays">Only listings put on the storefront in the last N days (new arrivals)..</param>
+        public ListProductFeedsItemFilters(List<string> includeCategories = default(List<string>), List<string> excludeCategories = default(List<string>), List<string> includeBrands = default(List<string>), List<string> excludeBrands = default(List<string>), List<string> includeTags = default(List<string>), List<string> excludeTags = default(List<string>), List<string> includeListingIds = default(List<string>), List<string> excludeListingIds = default(List<string>), decimal? minPrice = default(decimal?), decimal? maxPrice = default(decimal?), bool? includeOutOfStock = default(bool?), decimal? minQuantity = default(decimal?), List<ListProductFeedsItemFiltersStatusesItem> statuses = default(List<ListProductFeedsItemFiltersStatusesItem>), List<ListProductFeedsItemFiltersConditionsItem> conditions = default(List<ListProductFeedsItemFiltersConditionsItem>), List<string> onPlatforms = default(List<string>), List<string> notOnPlatforms = default(List<string>), decimal? listedWithinDays = default(decimal?))
         {
             this.IncludeCategories = includeCategories;
             this.ExcludeCategories = excludeCategories;
             this.IncludeBrands = includeBrands;
             this.ExcludeBrands = excludeBrands;
+            this.IncludeTags = includeTags;
+            this.ExcludeTags = excludeTags;
             this.IncludeListingIds = includeListingIds;
             this.ExcludeListingIds = excludeListingIds;
             this.MinPrice = minPrice;
             this.MaxPrice = maxPrice;
             this.IncludeOutOfStock = includeOutOfStock;
+            this.MinQuantity = minQuantity;
+            this.Statuses = statuses;
+            this.Conditions = conditions;
+            this.OnPlatforms = onPlatforms;
+            this.NotOnPlatforms = notOnPlatforms;
+            this.ListedWithinDays = listedWithinDays;
         }
 
         /// <summary>
-        /// Only these top-level categories (listing category &#x60;main&#x60;).
+        /// Only listings in one of these categories, at ANY level (main, sub or leaf name).
         /// </summary>
-        /// <value>Only these top-level categories (listing category &#x60;main&#x60;).</value>
+        /// <value>Only listings in one of these categories, at ANY level (main, sub or leaf name).</value>
         [DataMember(Name = "includeCategories", EmitDefaultValue = true)]
         public List<string> IncludeCategories { get; set; }
 
         /// <summary>
-        /// Never these top-level categories.
+        /// Never listings in one of these categories, at any level.
         /// </summary>
-        /// <value>Never these top-level categories.</value>
+        /// <value>Never listings in one of these categories, at any level.</value>
         [DataMember(Name = "excludeCategories", EmitDefaultValue = true)]
         public List<string> ExcludeCategories { get; set; }
 
@@ -85,6 +101,20 @@ namespace net.crossly.Model
         public List<string> ExcludeBrands { get; set; }
 
         /// <summary>
+        /// Only listings carrying at least one of these tags.
+        /// </summary>
+        /// <value>Only listings carrying at least one of these tags.</value>
+        [DataMember(Name = "includeTags", EmitDefaultValue = true)]
+        public List<string> IncludeTags { get; set; }
+
+        /// <summary>
+        /// Never listings carrying any of these tags.
+        /// </summary>
+        /// <value>Never listings carrying any of these tags.</value>
+        [DataMember(Name = "excludeTags", EmitDefaultValue = true)]
+        public List<string> ExcludeTags { get; set; }
+
+        /// <summary>
         /// Only these listings (listing ids).
         /// </summary>
         /// <value>Only these listings (listing ids).</value>
@@ -92,23 +122,23 @@ namespace net.crossly.Model
         public List<string> IncludeListingIds { get; set; }
 
         /// <summary>
-        /// Never these listings (listing ids) — the per-item \&quot;block\&quot; switch.
+        /// Never these listings (listing ids) — the per-item \&quot;leave out\&quot; switch.
         /// </summary>
-        /// <value>Never these listings (listing ids) — the per-item \&quot;block\&quot; switch.</value>
+        /// <value>Never these listings (listing ids) — the per-item \&quot;leave out\&quot; switch.</value>
         [DataMember(Name = "excludeListingIds", EmitDefaultValue = true)]
         public List<string> ExcludeListingIds { get; set; }
 
         /// <summary>
-        /// Price floor in DOLLARS of the shop price (USD).
+        /// Price floor in the FEED&#39;s currency (settings.currency, USD when unset), on the shop price.
         /// </summary>
-        /// <value>Price floor in DOLLARS of the shop price (USD).</value>
+        /// <value>Price floor in the FEED&#39;s currency (settings.currency, USD when unset), on the shop price.</value>
         [DataMember(Name = "minPrice", EmitDefaultValue = true)]
         public decimal? MinPrice { get; set; }
 
         /// <summary>
-        /// Price ceiling in DOLLARS of the shop price (USD).
+        /// Price ceiling in the feed&#39;s currency.
         /// </summary>
-        /// <value>Price ceiling in DOLLARS of the shop price (USD).</value>
+        /// <value>Price ceiling in the feed&#39;s currency.</value>
         [DataMember(Name = "maxPrice", EmitDefaultValue = true)]
         public decimal? MaxPrice { get; set; }
 
@@ -118,6 +148,48 @@ namespace net.crossly.Model
         /// <value>Keep listings with no stock as availability&#x3D;out_of_stock (default true). Off drops them.</value>
         [DataMember(Name = "includeOutOfStock", EmitDefaultValue = true)]
         public bool? IncludeOutOfStock { get; set; }
+
+        /// <summary>
+        /// Only listings with at least this many in stock (0/absent &#x3D; no floor).
+        /// </summary>
+        /// <value>Only listings with at least this many in stock (0/absent &#x3D; no floor).</value>
+        [DataMember(Name = "minQuantity", EmitDefaultValue = true)]
+        public decimal? MinQuantity { get; set; }
+
+        /// <summary>
+        /// Stock / sale status: empty &#x3D; all. &#x60;on_sale&#x60; &#x3D; a storefront sale is running on it.
+        /// </summary>
+        /// <value>Stock / sale status: empty &#x3D; all. &#x60;on_sale&#x60; &#x3D; a storefront sale is running on it.</value>
+        [DataMember(Name = "statuses", EmitDefaultValue = true)]
+        public List<ListProductFeedsItemFiltersStatusesItem> Statuses { get; set; }
+
+        /// <summary>
+        /// Item condition as the channels read it: empty &#x3D; all.
+        /// </summary>
+        /// <value>Item condition as the channels read it: empty &#x3D; all.</value>
+        [DataMember(Name = "conditions", EmitDefaultValue = true)]
+        public List<ListProductFeedsItemFiltersConditionsItem> Conditions { get; set; }
+
+        /// <summary>
+        /// Only listings ALSO live on one of these marketplaces (platform ids, e.g. &#39;ebay&#39;).
+        /// </summary>
+        /// <value>Only listings ALSO live on one of these marketplaces (platform ids, e.g. &#39;ebay&#39;).</value>
+        [DataMember(Name = "onPlatforms", EmitDefaultValue = true)]
+        public List<string> OnPlatforms { get; set; }
+
+        /// <summary>
+        /// Never listings live on any of these marketplaces.
+        /// </summary>
+        /// <value>Never listings live on any of these marketplaces.</value>
+        [DataMember(Name = "notOnPlatforms", EmitDefaultValue = true)]
+        public List<string> NotOnPlatforms { get; set; }
+
+        /// <summary>
+        /// Only listings put on the storefront in the last N days (new arrivals).
+        /// </summary>
+        /// <value>Only listings put on the storefront in the last N days (new arrivals).</value>
+        [DataMember(Name = "listedWithinDays", EmitDefaultValue = true)]
+        public decimal? ListedWithinDays { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -131,11 +203,19 @@ namespace net.crossly.Model
             sb.Append("  ExcludeCategories: ").Append(ExcludeCategories).Append("\n");
             sb.Append("  IncludeBrands: ").Append(IncludeBrands).Append("\n");
             sb.Append("  ExcludeBrands: ").Append(ExcludeBrands).Append("\n");
+            sb.Append("  IncludeTags: ").Append(IncludeTags).Append("\n");
+            sb.Append("  ExcludeTags: ").Append(ExcludeTags).Append("\n");
             sb.Append("  IncludeListingIds: ").Append(IncludeListingIds).Append("\n");
             sb.Append("  ExcludeListingIds: ").Append(ExcludeListingIds).Append("\n");
             sb.Append("  MinPrice: ").Append(MinPrice).Append("\n");
             sb.Append("  MaxPrice: ").Append(MaxPrice).Append("\n");
             sb.Append("  IncludeOutOfStock: ").Append(IncludeOutOfStock).Append("\n");
+            sb.Append("  MinQuantity: ").Append(MinQuantity).Append("\n");
+            sb.Append("  Statuses: ").Append(Statuses).Append("\n");
+            sb.Append("  Conditions: ").Append(Conditions).Append("\n");
+            sb.Append("  OnPlatforms: ").Append(OnPlatforms).Append("\n");
+            sb.Append("  NotOnPlatforms: ").Append(NotOnPlatforms).Append("\n");
+            sb.Append("  ListedWithinDays: ").Append(ListedWithinDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +276,18 @@ namespace net.crossly.Model
                     this.ExcludeBrands.SequenceEqual(input.ExcludeBrands)
                 ) && 
                 (
+                    this.IncludeTags == input.IncludeTags ||
+                    this.IncludeTags != null &&
+                    input.IncludeTags != null &&
+                    this.IncludeTags.SequenceEqual(input.IncludeTags)
+                ) && 
+                (
+                    this.ExcludeTags == input.ExcludeTags ||
+                    this.ExcludeTags != null &&
+                    input.ExcludeTags != null &&
+                    this.ExcludeTags.SequenceEqual(input.ExcludeTags)
+                ) && 
+                (
                     this.IncludeListingIds == input.IncludeListingIds ||
                     this.IncludeListingIds != null &&
                     input.IncludeListingIds != null &&
@@ -221,6 +313,40 @@ namespace net.crossly.Model
                     this.IncludeOutOfStock == input.IncludeOutOfStock ||
                     (this.IncludeOutOfStock != null &&
                     this.IncludeOutOfStock.Equals(input.IncludeOutOfStock))
+                ) && 
+                (
+                    this.MinQuantity == input.MinQuantity ||
+                    (this.MinQuantity != null &&
+                    this.MinQuantity.Equals(input.MinQuantity))
+                ) && 
+                (
+                    this.Statuses == input.Statuses ||
+                    this.Statuses != null &&
+                    input.Statuses != null &&
+                    this.Statuses.SequenceEqual(input.Statuses)
+                ) && 
+                (
+                    this.Conditions == input.Conditions ||
+                    this.Conditions != null &&
+                    input.Conditions != null &&
+                    this.Conditions.SequenceEqual(input.Conditions)
+                ) && 
+                (
+                    this.OnPlatforms == input.OnPlatforms ||
+                    this.OnPlatforms != null &&
+                    input.OnPlatforms != null &&
+                    this.OnPlatforms.SequenceEqual(input.OnPlatforms)
+                ) && 
+                (
+                    this.NotOnPlatforms == input.NotOnPlatforms ||
+                    this.NotOnPlatforms != null &&
+                    input.NotOnPlatforms != null &&
+                    this.NotOnPlatforms.SequenceEqual(input.NotOnPlatforms)
+                ) && 
+                (
+                    this.ListedWithinDays == input.ListedWithinDays ||
+                    (this.ListedWithinDays != null &&
+                    this.ListedWithinDays.Equals(input.ListedWithinDays))
                 );
         }
 
@@ -249,6 +375,14 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.ExcludeBrands.GetHashCode();
                 }
+                if (this.IncludeTags != null)
+                {
+                    hashCode = (hashCode * 59) + this.IncludeTags.GetHashCode();
+                }
+                if (this.ExcludeTags != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExcludeTags.GetHashCode();
+                }
                 if (this.IncludeListingIds != null)
                 {
                     hashCode = (hashCode * 59) + this.IncludeListingIds.GetHashCode();
@@ -268,6 +402,30 @@ namespace net.crossly.Model
                 if (this.IncludeOutOfStock != null)
                 {
                     hashCode = (hashCode * 59) + this.IncludeOutOfStock.GetHashCode();
+                }
+                if (this.MinQuantity != null)
+                {
+                    hashCode = (hashCode * 59) + this.MinQuantity.GetHashCode();
+                }
+                if (this.Statuses != null)
+                {
+                    hashCode = (hashCode * 59) + this.Statuses.GetHashCode();
+                }
+                if (this.Conditions != null)
+                {
+                    hashCode = (hashCode * 59) + this.Conditions.GetHashCode();
+                }
+                if (this.OnPlatforms != null)
+                {
+                    hashCode = (hashCode * 59) + this.OnPlatforms.GetHashCode();
+                }
+                if (this.NotOnPlatforms != null)
+                {
+                    hashCode = (hashCode * 59) + this.NotOnPlatforms.GetHashCode();
+                }
+                if (this.ListedWithinDays != null)
+                {
+                    hashCode = (hashCode * 59) + this.ListedWithinDays.GetHashCode();
                 }
                 return hashCode;
             }

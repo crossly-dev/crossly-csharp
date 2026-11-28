@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        WorldExperienceGalleryResponse CreateWorldExperienceGallery(string experienceId);
+        WorldExperienceGalleryResponse CreateWorldExperienceGallery(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest));
 
         /// <summary>
         /// Add an uploaded screenshot or video (your own upload&#39;s publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game&#39;s page once approved.
@@ -42,15 +43,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        ApiResponse<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryWithHttpInfo(string experienceId);
+        ApiResponse<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryWithHttpInfo(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest));
         /// <summary>
         /// A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl(string experienceId);
+        CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest));
 
         /// <summary>
         /// A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
@@ -60,8 +63,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlWithHttpInfo(string experienceId);
+        ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlWithHttpInfo(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest));
         /// <summary>
         /// Take an item off the game&#39;s page now.
         /// </summary>
@@ -106,8 +110,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        WorldExperienceGalleryResponse UpdateWorldExperienceGallery(string experienceId, string mediaId);
+        WorldExperienceGalleryResponse UpdateWorldExperienceGallery(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest));
 
         /// <summary>
         /// Change an item&#39;s caption (filtered; an approved item with a new caption goes back to review).
@@ -118,15 +123,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryWithHttpInfo(string experienceId, string mediaId);
+        ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryWithHttpInfo(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest));
         /// <summary>
         /// Set the order on the game&#39;s page: the ids you list first, the rest after in their current order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceGalleryRoleResponse</returns>
-        UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder(string experienceId);
+        UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
 
         /// <summary>
         /// Set the order on the game&#39;s page: the ids you list first, the rest after in their current order.
@@ -136,16 +143,18 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceGalleryRoleResponse</returns>
-        ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderWithHttpInfo(string experienceId);
+        ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderWithHttpInfo(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest));
         /// <summary>
         /// Make an item the game&#39;s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceGalleryRoleResponse</returns>
-        UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole(string experienceId, string mediaId);
+        UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest));
 
         /// <summary>
         /// Make an item the game&#39;s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
@@ -156,15 +165,17 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceGalleryRoleResponse</returns>
-        ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleWithHttpInfo(string experienceId, string mediaId);
+        ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleWithHttpInfo(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest));
         /// <summary>
         /// Set the game&#39;s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl(string experienceId);
+        WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest));
 
         /// <summary>
         /// Set the game&#39;s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
@@ -174,8 +185,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(string experienceId);
+        ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest));
         #endregion Synchronous Operations
     }
 
@@ -193,9 +205,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryAsync(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add an uploaded screenshot or video (your own upload&#39;s publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game&#39;s page once approved.
@@ -205,9 +218,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> CreateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> CreateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
         /// </summary>
@@ -216,9 +230,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlAsync(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
@@ -228,9 +243,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceGalleryUploadUrlResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Take an item off the game&#39;s page now.
         /// </summary>
@@ -288,9 +304,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change an item&#39;s caption (filtered; an approved item with a new caption goes back to review).
@@ -301,9 +318,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the order on the game&#39;s page: the ids you list first, the rest after in their current order.
         /// </summary>
@@ -312,9 +330,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceGalleryRoleResponse</returns>
-        System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderAsync(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the order on the game&#39;s page: the ids you list first, the rest after in their current order.
@@ -324,9 +343,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceGalleryRoleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make an item the game&#39;s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
         /// </summary>
@@ -336,9 +356,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceGalleryRoleResponse</returns>
-        System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Make an item the game&#39;s icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
@@ -349,9 +370,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceGalleryRoleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the game&#39;s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
         /// </summary>
@@ -360,9 +382,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlAsync(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the game&#39;s trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
@@ -372,9 +395,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -500,10 +524,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        public WorldExperienceGalleryResponse CreateWorldExperienceGallery(string experienceId)
+        public WorldExperienceGalleryResponse CreateWorldExperienceGallery(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = CreateWorldExperienceGalleryWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = CreateWorldExperienceGalleryWithHttpInfo(experienceId, createWorldExperienceGalleryRequest);
             return localVarResponse.Data;
         }
 
@@ -512,8 +537,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryWithHttpInfo(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -524,6 +550,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -544,6 +571,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceGalleryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -571,11 +599,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> CreateWorldExperienceGalleryAsync(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await CreateWorldExperienceGalleryWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await CreateWorldExperienceGalleryWithHttpInfoAsync(experienceId, createWorldExperienceGalleryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -584,9 +613,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> CreateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> CreateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = default(CreateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -598,6 +628,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -618,6 +649,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceGalleryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -646,10 +678,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <returns>CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        public CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl(string experienceId)
+        public CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> localVarResponse = CreateWorldExperienceGalleryUploadUrlWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> localVarResponse = CreateWorldExperienceGalleryUploadUrlWithHttpInfo(experienceId, createWorldExperienceGalleryUploadUrlRequest);
             return localVarResponse.Data;
         }
 
@@ -658,8 +691,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlWithHttpInfo(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -670,6 +704,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -690,6 +725,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceGalleryUploadUrlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -717,11 +753,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldExperienceGalleryUploadUrlResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldExperienceGalleryUploadUrlResponse> CreateWorldExperienceGalleryUploadUrlAsync(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> localVarResponse = await CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse> localVarResponse = await CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(experienceId, createWorldExperienceGalleryUploadUrlRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -730,9 +767,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createWorldExperienceGalleryUploadUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldExperienceGalleryUploadUrlResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldExperienceGalleryUploadUrlResponse>> CreateWorldExperienceGalleryUploadUrlWithHttpInfoAsync(string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = default(CreateWorldExperienceGalleryUploadUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -744,6 +782,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -764,6 +803,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createWorldExperienceGalleryUploadUrlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1103,10 +1143,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        public WorldExperienceGalleryResponse UpdateWorldExperienceGallery(string experienceId, string mediaId)
+        public WorldExperienceGalleryResponse UpdateWorldExperienceGallery(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = UpdateWorldExperienceGalleryWithHttpInfo(experienceId, mediaId);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = UpdateWorldExperienceGalleryWithHttpInfo(experienceId, mediaId, updateWorldExperienceGalleryRequest);
             return localVarResponse.Data;
         }
 
@@ -1116,8 +1157,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryWithHttpInfo(string experienceId, string mediaId)
+        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryWithHttpInfo(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1134,6 +1176,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1155,6 +1198,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("mediaId", net.crossly.Client.ClientUtils.ParameterToString(mediaId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1183,11 +1227,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await UpdateWorldExperienceGalleryWithHttpInfoAsync(experienceId, mediaId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await UpdateWorldExperienceGalleryWithHttpInfoAsync(experienceId, mediaId, updateWorldExperienceGalleryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1197,9 +1242,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryWithHttpInfoAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = default(UpdateWorldExperienceGalleryRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1217,6 +1263,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1238,6 +1285,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("mediaId", net.crossly.Client.ClientUtils.ParameterToString(mediaId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1266,10 +1314,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceGalleryRoleResponse</returns>
-        public UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder(string experienceId)
+        public UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = UpdateWorldExperienceGalleryOrderWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = UpdateWorldExperienceGalleryOrderWithHttpInfo(experienceId, createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1278,8 +1327,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceGalleryRoleResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderWithHttpInfo(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1290,6 +1340,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1310,6 +1361,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1337,11 +1389,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceGalleryRoleResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryOrderAsync(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = await UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = await UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(experienceId, createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1350,9 +1403,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="createListingByIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceGalleryRoleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryOrderWithHttpInfoAsync(string experienceId, CreateListingByIdRequest createListingByIdRequest = default(CreateListingByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1364,6 +1418,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1384,6 +1439,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1413,10 +1469,11 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <returns>UpdateWorldExperienceGalleryRoleResponse</returns>
-        public UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole(string experienceId, string mediaId)
+        public UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = UpdateWorldExperienceGalleryRoleWithHttpInfo(experienceId, mediaId);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = UpdateWorldExperienceGalleryRoleWithHttpInfo(experienceId, mediaId, updateWorldExperienceGalleryRoleRequest);
             return localVarResponse.Data;
         }
 
@@ -1426,8 +1483,9 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateWorldExperienceGalleryRoleResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleWithHttpInfo(string experienceId, string mediaId)
+        public net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleWithHttpInfo(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1444,6 +1502,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1465,6 +1524,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("mediaId", net.crossly.Client.ClientUtils.ParameterToString(mediaId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryRoleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1493,11 +1553,12 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateWorldExperienceGalleryRoleResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateWorldExperienceGalleryRoleResponse> UpdateWorldExperienceGalleryRoleAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = await UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(experienceId, mediaId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse> localVarResponse = await UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(experienceId, mediaId, updateWorldExperienceGalleryRoleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1507,9 +1568,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
         /// <param name="mediaId"></param>
+        /// <param name="updateWorldExperienceGalleryRoleRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateWorldExperienceGalleryRoleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(string experienceId, string mediaId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateWorldExperienceGalleryRoleResponse>> UpdateWorldExperienceGalleryRoleWithHttpInfoAsync(string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = default(UpdateWorldExperienceGalleryRoleRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1527,6 +1589,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1548,6 +1611,7 @@ namespace net.crossly.Api
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("mediaId", net.crossly.Client.ClientUtils.ParameterToString(mediaId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryRoleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1576,10 +1640,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <returns>WorldExperienceGalleryResponse</returns>
-        public WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl(string experienceId)
+        public WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(experienceId);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(experienceId, updateWorldExperienceGalleryTrailerUrlRequest);
             return localVarResponse.Data;
         }
 
@@ -1588,8 +1653,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <returns>ApiResponse of WorldExperienceGalleryResponse</returns>
-        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(string experienceId)
+        public net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfo(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1600,6 +1666,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1620,6 +1687,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryTrailerUrlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1647,11 +1715,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of WorldExperienceGalleryResponse</returns>
-        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<WorldExperienceGalleryResponse> UpdateWorldExperienceGalleryTrailerUrlAsync(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(experienceId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse> localVarResponse = await UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(experienceId, updateWorldExperienceGalleryTrailerUrlRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1660,9 +1729,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="experienceId"></param>
+        /// <param name="updateWorldExperienceGalleryTrailerUrlRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (WorldExperienceGalleryResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(string experienceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<WorldExperienceGalleryResponse>> UpdateWorldExperienceGalleryTrailerUrlWithHttpInfoAsync(string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = default(UpdateWorldExperienceGalleryTrailerUrlRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'experienceId' is set
             if (experienceId == null)
@@ -1674,6 +1744,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1694,6 +1765,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("experienceId", net.crossly.Client.ClientUtils.ParameterToString(experienceId)); // path parameter
+            localVarRequestOptions.Data = updateWorldExperienceGalleryTrailerUrlRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

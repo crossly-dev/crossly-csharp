@@ -208,16 +208,16 @@ namespace net.crossly.Model
             Default = 1,
 
             /// <summary>
-            /// Enum Platform for value: platform
-            /// </summary>
-            [EnumMember(Value = "platform")]
-            Platform = 2,
-
-            /// <summary>
             /// Enum App for value: app
             /// </summary>
             [EnumMember(Value = "app")]
-            App = 3,
+            App = 2,
+
+            /// <summary>
+            /// Enum Platform for value: platform
+            /// </summary>
+            [EnumMember(Value = "platform")]
+            Platform = 3,
 
             /// <summary>
             /// Enum Global for value: global

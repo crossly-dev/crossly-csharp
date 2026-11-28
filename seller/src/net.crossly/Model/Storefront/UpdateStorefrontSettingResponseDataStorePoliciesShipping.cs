@@ -50,10 +50,10 @@ namespace net.crossly.Model
             Override = 2,
 
             /// <summary>
-            /// Enum Store for value: store
+            /// Enum Legacy for value: legacy
             /// </summary>
-            [EnumMember(Value = "store")]
-            Store = 3,
+            [EnumMember(Value = "legacy")]
+            Legacy = 3,
 
             /// <summary>
             /// Enum Listing for value: listing
@@ -62,10 +62,10 @@ namespace net.crossly.Model
             Listing = 4,
 
             /// <summary>
-            /// Enum Legacy for value: legacy
+            /// Enum Store for value: store
             /// </summary>
-            [EnumMember(Value = "legacy")]
-            Legacy = 5,
+            [EnumMember(Value = "store")]
+            Store = 5,
 
             /// <summary>
             /// Enum SellerDefault for value: seller_default

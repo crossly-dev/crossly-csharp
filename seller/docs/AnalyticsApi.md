@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
 
 <a name="getanalyticbookkeeping"></a>
 # **GetAnalyticBookkeeping**
-> GetAnalyticBookkeepingResponse GetAnalyticBookkeeping ()
+> GetAnalyticBookkeepingResponse GetAnalyticBookkeeping (decimal? year = null)
 
 Monthly P&L + per-platform breakdown for a calendar year.
 
@@ -365,11 +365,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AnalyticsApi(config);
+            var year = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Monthly P&L + per-platform breakdown for a calendar year.
-                GetAnalyticBookkeepingResponse result = apiInstance.GetAnalyticBookkeeping();
+                GetAnalyticBookkeepingResponse result = apiInstance.GetAnalyticBookkeeping(year);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -384,7 +385,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **year** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -579,7 +583,7 @@ Name | Type | Description  | Notes
 
 <a name="getanalyticdashboard"></a>
 # **GetAnalyticDashboard**
-> GetAnalyticDashboardResponse GetAnalyticDashboard ()
+> GetAnalyticDashboardResponse GetAnalyticDashboard (string range = null, string startDate = null, string endDate = null, string labels = null, string tz = null)
 
 Composite dashboard: KPIs + breakdowns + recent activity.
 
@@ -603,11 +607,16 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AnalyticsApi(config);
+            var range = "custom";  // string |  (optional) 
+            var startDate = "startDate_example";  // string |  (optional) 
+            var endDate = "endDate_example";  // string |  (optional) 
+            var labels = "labels_example";  // string |  (optional) 
+            var tz = "tz_example";  // string |  (optional) 
 
             try
             {
                 // Composite dashboard: KPIs + breakdowns + recent activity.
-                GetAnalyticDashboardResponse result = apiInstance.GetAnalyticDashboard();
+                GetAnalyticDashboardResponse result = apiInstance.GetAnalyticDashboard(range, startDate, endDate, labels, tz);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -622,7 +631,14 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **range** | **string**|  | [optional] 
+ **startDate** | **string**|  | [optional] 
+ **endDate** | **string**|  | [optional] 
+ **labels** | **string**|  | [optional] 
+ **tz** | **string**|  | [optional] 
 
 ### Return type
 
@@ -913,7 +929,7 @@ Name | Type | Description  | Notes
 
 <a name="getanalyticitem"></a>
 # **GetAnalyticItem**
-> GetAnalyticItemResponse GetAnalyticItem ()
+> GetAnalyticItemResponse GetAnalyticItem (decimal? page = null, decimal? limit = null, string sortBy = null, string sortOrder = null)
 
 Per-item P&L for sold inventory.
 
@@ -937,11 +953,15 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new AnalyticsApi(config);
+            var page = 8.14D;  // decimal? |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var sortBy = "platform";  // string |  (optional) 
+            var sortOrder = "asc";  // string |  (optional) 
 
             try
             {
                 // Per-item P&L for sold inventory.
-                GetAnalyticItemResponse result = apiInstance.GetAnalyticItem();
+                GetAnalyticItemResponse result = apiInstance.GetAnalyticItem(page, limit, sortBy, sortOrder);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -956,7 +976,13 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **decimal?**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **sortBy** | **string**|  | [optional] 
+ **sortOrder** | **string**|  | [optional] 
 
 ### Return type
 

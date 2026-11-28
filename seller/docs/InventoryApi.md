@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**CreateInventoryCatalogMatchRefresh**](InventoryApi.md#createinventorycatalogmatchrefresh) | **POST** /v1/inventory/{id}/catalog-matches/refresh | Run catalog matching for one item now. An identifier (UPC, style code, catalogue number) that resolves to exactly one product links it; otherwise likely products are returned as suggestions to confirm.
 [**CreateInventoryCsvExport**](InventoryApi.md#createinventorycsvexport) | **POST** /v1/inventory/csv/export | Export inventory as CSV. Round-trips back through csv/import.
 [**CreateInventoryCsvImport**](InventoryApi.md#createinventorycsvimport) | **POST** /v1/inventory/csv/import | Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
+[**CreateInventoryHoldRelease**](InventoryApi.md#createinventoryholdrelease) | **POST** /v1/inventory/holds/{holdId}/release | Release an inventory hold.
 [**CreateInventoryLabelRename**](InventoryApi.md#createinventorylabelrename) | **POST** /v1/inventory/labels/rename | Rename a label across every inventory item.
 [**CreateInventoryMerge**](InventoryApi.md#createinventorymerge) | **POST** /v1/inventory/merge | Merge inventory items that are the same physical item into one (stock is not summed).
 [**CreateInventoryUnitIdentifier**](InventoryApi.md#createinventoryunitidentifier) | **POST** /v1/inventory/{id}/units/identifiers | Record a serial, IMEI, or licence key against an inventory item.
@@ -35,7 +36,6 @@ Method | HTTP request | Description
 [**CreateSpatialStreetRequestFound**](InventoryApi.md#createspatialstreetrequestfound) | **POST** /v1/spatial/streets/requests/{id}/found | Found an approved street, in CBX.
 [**DeleteInventory**](InventoryApi.md#deleteinventory) | **DELETE** /v1/inventory/{id} | Soft-archive an inventory item.
 [**DeleteSpatialStreetPlot**](InventoryApi.md#deletespatialstreetplot) | **DELETE** /v1/spatial/streets/{slug}/plot | Take your shop off a street.
-[**GetAnalyticInventory**](InventoryApi.md#getanalyticinventory) | **GET** /v1/analytics/inventory | Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
 [**GetGameEventSummary**](InventoryApi.md#getgameeventsummary) | **GET** /v1/games/events/{eventId}/summary | The results of one of your metaverse events (a Branding event of type scavenger_hunt or pack_break): for a hunt - - status, place, coins and clues, players, finishers, winners (place, masked name, when) and the rewards paid or failed per kind; for a pack break - - status, whether it is live on the stage, spots, spots sold and hits revealed. 404 for an event that is not a World event of yours.
 [**GetGameHuntBuild**](InventoryApi.md#getgamehuntbuild) | **GET** /v1/games/hunts/{id}/build | One of your scavenger hunts as the in-world builder sees it: place, rules (days, time limit, hints, winners, ordered), rewards, the build document (coins and clue signs with positions), what still blocks publishing, and buildLink - - the Worlds app link that opens the builder. Read-only: coins are placed in the World.
 [**GetGameLeaderboard**](InventoryApi.md#getgameleaderboard) | **GET** /v1/games/leaderboards | Game leaderboards: for each of Price Guess (wins, then points), scavenger hunts (finished) and speed trades (won), the top ten this week (Monday 00:00 UTC on) under week and of all time under all - - rank, name, named, value and, for Price Guess, score. A name appears only for somebody who chose to be seen by name in Crossly World; everyone else is \&quot;A player\&quot; in their place.
@@ -82,6 +82,8 @@ Method | HTTP request | Description
 [**ListHomeOfTheWeek**](InventoryApi.md#listhomeoftheweek) | **GET** /v1/homes/of-the-week | Home of the week: open homes by how many different people signed their guestbook in the last 7 days, most first.
 [**ListInventory**](InventoryApi.md#listinventory) | **GET** /v1/inventory | List inventory items.
 [**ListInventoryActivity**](InventoryApi.md#listinventoryactivity) | **GET** /v1/inventory/{id}/activity | Activity log for an inventory item (created/sold/edited/etc.).
+[**ListInventoryHoldIssues**](InventoryApi.md#listinventoryholdissues) | **GET** /v1/inventory/holds/issues | List the stock problems the holds ledger finds.
+[**ListInventoryHolds**](InventoryApi.md#listinventoryholds) | **GET** /v1/inventory/{id}/holds | List the holds on an inventory item.
 [**ListInventoryIds**](InventoryApi.md#listinventoryids) | **GET** /v1/inventory/ids | Filter inventory → return matching id list.
 [**ListInventoryUnits**](InventoryApi.md#listinventoryunits) | **GET** /v1/inventory/{id}/units | List the individually identified units of an inventory item.
 [**ListJobAppraisals**](InventoryApi.md#listjobappraisals) | **GET** /v1/jobs/appraisals | Open price checks appraisers can answer (Collector level 3+ holding 3+ pieces in the category), newest first, optionally one market category. Each has its bounty; meta.payOn says whether bounties are paid yet.
@@ -100,12 +102,14 @@ Method | HTTP request | Description
 [**ListSpatialScenes**](InventoryApi.md#listspatialscenes) | **GET** /v1/spatial/scenes | The rooms this account has.
 [**ListSpatialShopAddresses**](InventoryApi.md#listspatialshopaddresses) | **GET** /v1/spatial/shop/addresses | Your shop&#39;s addresses.
 [**ListSpatialStaffing**](InventoryApi.md#listspatialstaffing) | **GET** /v1/spatial/staffing | Shops you work in.
-[**ListSpatialStreetMine**](InventoryApi.md#listspatialstreetmine) | **GET** /v1/spatial/streets/mine | Your streets.
+[**ListSpatialStreetMine**](InventoryApi.md#listspatialstreetmine) | **GET** /v1/spatial/streets/mine | Streets your store holds.
 [**ListSpatialStreets**](InventoryApi.md#listspatialstreets) | **GET** /v1/spatial/streets | Every street in the world.
 [**ListWorldBlocks**](InventoryApi.md#listworldblocks) | **GET** /v1/world/blocks | The people you blocked in Crossly World, as you saw them (label, never the account behind a pseudonym), oldest first. Blocks are made in a room, on the person.
 [**ListWorldItemSearch**](InventoryApi.md#listworlditemsearch) | **GET** /v1/world/items/search | Find an item on a shelf anywhere in Crossly World: what public rooms have for sale now, by title or catalogue name (q, 2+ characters). Each hit names the room (roomSlug) and the item (itemId); /c/&lt;roomSlug&gt;?item&#x3D;&lt;itemId&gt; opens it there.
 [**ListWorldRoomWants**](InventoryApi.md#listworldroomwants) | **GET** /v1/world/rooms/{sceneId}/wants | Items your room shows but does not sell that visitors said they would buy (\&quot;I&#39;d buy this\&quot;), most wanted first: itemId and how many people.
 [**UpdateInventory**](InventoryApi.md#updateinventory) | **PATCH** /v1/inventory/{id} | Update an inventory item (partial).
+[**UpdateInventoryAssignee**](InventoryApi.md#updateinventoryassignee) | **PATCH** /v1/inventory/assignee | Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+[**UpdateInventoryAssigneeById**](InventoryApi.md#updateinventoryassigneebyid) | **PATCH** /v1/inventory/{id}/assignee | Assign one inventory item to a teammate, or unassign it (null).
 [**UpdateSpatialEmployeeConfig**](InventoryApi.md#updatespatialemployeeconfig) | **PUT** /v1/spatial/employee/config | Create or replace the shop employee in one of your rooms.
 [**UpdateSpatialShopStaffWage**](InventoryApi.md#updatespatialshopstaffwage) | **PUT** /v1/spatial/shop/staff/{grantId}/wage | Set a staff member&#39;s weekly wage.
 
@@ -268,7 +272,7 @@ Name | Type | Description  | Notes
 
 <a name="createinventory"></a>
 # **CreateInventory**
-> CreateInventoryResponse CreateInventory ()
+> CreateInventoryResponse CreateInventory (CreateInventoryRequest createInventoryRequest)
 
 Create a new inventory item.
 
@@ -292,11 +296,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryRequest = new CreateInventoryRequest(); // CreateInventoryRequest | 
 
             try
             {
                 // Create a new inventory item.
-                CreateInventoryResponse result = apiInstance.CreateInventory();
+                CreateInventoryResponse result = apiInstance.CreateInventory(createInventoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -311,7 +316,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryRequest** | **CreateInventoryRequest**|  | 
 
 ### Return type
 
@@ -323,7 +331,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -342,7 +350,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorybulkarchive"></a>
 # **CreateInventoryBulkArchive**
-> CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive ()
+> CreateInventoryBulkArchiveResponse CreateInventoryBulkArchive (CreateListingByIdRequest createListingByIdRequest)
 
 Bulk archive inventory items (soft).
 
@@ -366,11 +374,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest | 
 
             try
             {
                 // Bulk archive inventory items (soft).
-                CreateInventoryBulkArchiveResponse result = apiInstance.CreateInventoryBulkArchive();
+                CreateInventoryBulkArchiveResponse result = apiInstance.CreateInventoryBulkArchive(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -385,7 +394,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | 
 
 ### Return type
 
@@ -397,7 +409,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -416,7 +428,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorybulkdelete"></a>
 # **CreateInventoryBulkDelete**
-> CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete ()
+> CreateInventoryBulkDeleteResponse CreateInventoryBulkDelete (CreateInventoryBulkDeleteRequest createInventoryBulkDeleteRequest)
 
 Bulk delete inventory items (delinks listings).
 
@@ -440,11 +452,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryBulkDeleteRequest = new CreateInventoryBulkDeleteRequest(); // CreateInventoryBulkDeleteRequest | 
 
             try
             {
                 // Bulk delete inventory items (delinks listings).
-                CreateInventoryBulkDeleteResponse result = apiInstance.CreateInventoryBulkDelete();
+                CreateInventoryBulkDeleteResponse result = apiInstance.CreateInventoryBulkDelete(createInventoryBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -459,7 +472,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryBulkDeleteRequest** | **CreateInventoryBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -471,7 +487,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -490,7 +506,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorybulklabel"></a>
 # **CreateInventoryBulkLabel**
-> CreateListingBulkUpdateResponse CreateInventoryBulkLabel ()
+> CreateListingBulkUpdateResponse CreateInventoryBulkLabel (CreateInventoryBulkLabelRequest createInventoryBulkLabelRequest)
 
 Bulk add/remove labels on inventory items.
 
@@ -514,11 +530,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryBulkLabelRequest = new CreateInventoryBulkLabelRequest(); // CreateInventoryBulkLabelRequest | 
 
             try
             {
                 // Bulk add/remove labels on inventory items.
-                CreateListingBulkUpdateResponse result = apiInstance.CreateInventoryBulkLabel();
+                CreateListingBulkUpdateResponse result = apiInstance.CreateInventoryBulkLabel(createInventoryBulkLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -533,7 +550,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryBulkLabelRequest** | **CreateInventoryBulkLabelRequest**|  | 
 
 ### Return type
 
@@ -545,7 +565,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -640,7 +660,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorybulkrestore"></a>
 # **CreateInventoryBulkRestore**
-> CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore ()
+> CreateInventoryBulkRestoreResponse CreateInventoryBulkRestore (CreateListingByIdRequest createListingByIdRequest)
 
 Restore archived inventory items (status returns to active, or sold_out when no stock).
 
@@ -664,11 +684,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest | 
 
             try
             {
                 // Restore archived inventory items (status returns to active, or sold_out when no stock).
-                CreateInventoryBulkRestoreResponse result = apiInstance.CreateInventoryBulkRestore();
+                CreateInventoryBulkRestoreResponse result = apiInstance.CreateInventoryBulkRestore(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -683,7 +704,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | 
 
 ### Return type
 
@@ -695,7 +719,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -792,7 +816,7 @@ Name | Type | Description  | Notes
 
 <a name="createinventorycsvexport"></a>
 # **CreateInventoryCsvExport**
-> string CreateInventoryCsvExport ()
+> string CreateInventoryCsvExport (CreateInventoryCsvExportRequest createInventoryCsvExportRequest = null)
 
 Export inventory as CSV. Round-trips back through csv/import.
 
@@ -816,11 +840,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryCsvExportRequest = new CreateInventoryCsvExportRequest(); // CreateInventoryCsvExportRequest |  (optional) 
 
             try
             {
                 // Export inventory as CSV. Round-trips back through csv/import.
-                string result = apiInstance.CreateInventoryCsvExport();
+                string result = apiInstance.CreateInventoryCsvExport(createInventoryCsvExportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -835,7 +860,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryCsvExportRequest** | **CreateInventoryCsvExportRequest**|  | [optional] 
 
 ### Return type
 
@@ -847,7 +875,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -866,7 +894,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorycsvimport"></a>
 # **CreateInventoryCsvImport**
-> CreateInventoryCsvImportResponse CreateInventoryCsvImport ()
+> CreateInventoryCsvImportResponse CreateInventoryCsvImport (CreateInventoryCsvImportRequest createInventoryCsvImportRequest)
 
 Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
 
@@ -890,11 +918,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryCsvImportRequest = new CreateInventoryCsvImportRequest(); // CreateInventoryCsvImportRequest | 
 
             try
             {
                 // Import a CSV. Rows whose sku matches an existing item update it; others are added. Pass dryRun to preview.
-                CreateInventoryCsvImportResponse result = apiInstance.CreateInventoryCsvImport();
+                CreateInventoryCsvImportResponse result = apiInstance.CreateInventoryCsvImport(createInventoryCsvImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -909,7 +938,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryCsvImportRequest** | **CreateInventoryCsvImportRequest**|  | 
 
 ### Return type
 
@@ -921,7 +953,89 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createinventoryholdrelease"></a>
+# **CreateInventoryHoldRelease**
+> CreateInventoryHoldReleaseResponse CreateInventoryHoldRelease (string holdId, CreateInventoryHoldReleaseRequest createInventoryHoldReleaseRequest = null)
+
+Release an inventory hold.
+
+Ends a hold now and puts its units back on sale. 404 for a hold that is not yours; 409 `hold_already_released` for one that already ended (released, converted to an order or expired).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateInventoryHoldReleaseExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var holdId = "holdId_example";  // string | 
+            var createInventoryHoldReleaseRequest = new CreateInventoryHoldReleaseRequest(); // CreateInventoryHoldReleaseRequest |  (optional) 
+
+            try
+            {
+                // Release an inventory hold.
+                CreateInventoryHoldReleaseResponse result = apiInstance.CreateInventoryHoldRelease(holdId, createInventoryHoldReleaseRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.CreateInventoryHoldRelease: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **holdId** | **string**|  | 
+ **createInventoryHoldReleaseRequest** | **CreateInventoryHoldReleaseRequest**|  | [optional] 
+
+### Return type
+
+**CreateInventoryHoldReleaseResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -940,7 +1054,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorylabelrename"></a>
 # **CreateInventoryLabelRename**
-> UpdatedResponse CreateInventoryLabelRename ()
+> UpdatedResponse CreateInventoryLabelRename (CreateListingTagRenameRequest createListingTagRenameRequest)
 
 Rename a label across every inventory item.
 
@@ -964,11 +1078,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createListingTagRenameRequest = new CreateListingTagRenameRequest(); // CreateListingTagRenameRequest | 
 
             try
             {
                 // Rename a label across every inventory item.
-                UpdatedResponse result = apiInstance.CreateInventoryLabelRename();
+                UpdatedResponse result = apiInstance.CreateInventoryLabelRename(createListingTagRenameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -983,7 +1098,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingTagRenameRequest** | **CreateListingTagRenameRequest**|  | 
 
 ### Return type
 
@@ -995,7 +1113,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1014,7 +1132,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventorymerge"></a>
 # **CreateInventoryMerge**
-> CreateInventoryMergeResponse CreateInventoryMerge ()
+> CreateInventoryMergeResponse CreateInventoryMerge (CreateInventoryMergeRequest createInventoryMergeRequest)
 
 Merge inventory items that are the same physical item into one (stock is not summed).
 
@@ -1038,11 +1156,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryMergeRequest = new CreateInventoryMergeRequest(); // CreateInventoryMergeRequest | 
 
             try
             {
                 // Merge inventory items that are the same physical item into one (stock is not summed).
-                CreateInventoryMergeResponse result = apiInstance.CreateInventoryMerge();
+                CreateInventoryMergeResponse result = apiInstance.CreateInventoryMerge(createInventoryMergeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1057,7 +1176,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryMergeRequest** | **CreateInventoryMergeRequest**|  | 
 
 ### Return type
 
@@ -1069,7 +1191,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1088,7 +1210,7 @@ This endpoint does not need any parameter.
 
 <a name="createinventoryunitidentifier"></a>
 # **CreateInventoryUnitIdentifier**
-> CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier (string id)
+> CreateInventoryUnitIdentifierResponse CreateInventoryUnitIdentifier (string id, CreateInventoryUnitIdentifierRequest createInventoryUnitIdentifierRequest)
 
 Record a serial, IMEI, or licence key against an inventory item.
 
@@ -1115,11 +1237,12 @@ namespace Example
 
             var apiInstance = new InventoryApi(config);
             var id = "id_example";  // string | 
+            var createInventoryUnitIdentifierRequest = new CreateInventoryUnitIdentifierRequest(); // CreateInventoryUnitIdentifierRequest | 
 
             try
             {
                 // Record a serial, IMEI, or licence key against an inventory item.
-                CreateInventoryUnitIdentifierResponse result = apiInstance.CreateInventoryUnitIdentifier(id);
+                CreateInventoryUnitIdentifierResponse result = apiInstance.CreateInventoryUnitIdentifier(id, createInventoryUnitIdentifierRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1138,6 +1261,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createInventoryUnitIdentifierRequest** | **CreateInventoryUnitIdentifierRequest**|  | 
 
 ### Return type
 
@@ -1149,7 +1273,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1168,7 +1292,7 @@ Name | Type | Description  | Notes
 
 <a name="createinventoryunitlookup"></a>
 # **CreateInventoryUnitLookup**
-> CreateInventoryUnitLookupResponse CreateInventoryUnitLookup ()
+> CreateInventoryUnitLookupResponse CreateInventoryUnitLookup (CreateInventoryUnitLookupRequest createInventoryUnitLookupRequest)
 
 Find a unit by identifier.
 
@@ -1194,11 +1318,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var createInventoryUnitLookupRequest = new CreateInventoryUnitLookupRequest(); // CreateInventoryUnitLookupRequest | 
 
             try
             {
                 // Find a unit by identifier.
-                CreateInventoryUnitLookupResponse result = apiInstance.CreateInventoryUnitLookup();
+                CreateInventoryUnitLookupResponse result = apiInstance.CreateInventoryUnitLookup(createInventoryUnitLookupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1213,7 +1338,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInventoryUnitLookupRequest** | **CreateInventoryUnitLookupRequest**|  | 
 
 ### Return type
 
@@ -1225,7 +1353,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2518,106 +2646,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
-<a name="getanalyticinventory"></a>
-# **GetAnalyticInventory**
-> GetAnalyticInventoryResponse GetAnalyticInventory (string range = null, string from = null, string to = null, string compare = null, string cmpFrom = null, string cmpTo = null, string labels = null, string platforms = null, string category = null, string brand = null, string tz = null, int? maturity = null)
-
-Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using net.crossly.Api;
-using net.crossly.Client;
-using net.crossly.Model;
-
-namespace Example
-{
-    public class GetAnalyticInventoryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://crossly.net/api";
-            // Configure Bearer token for authorization: PersonalAccessToken
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
-            var apiInstance = new InventoryApi(config);
-            var range = "7d";  // string | Reporting window. Default 30d. custom needs from and to. (optional) 
-            var from = "from_example";  // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional) 
-            var to = "to_example";  // string | YYYY-MM-DD, inclusive, in tz. Only with range=custom. (optional) 
-            var compare = "prev";  // string | Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). (optional) 
-            var cmpFrom = "cmpFrom_example";  // string | YYYY-MM-DD. Only with compare=custom. (optional) 
-            var cmpTo = "cmpTo_example";  // string | YYYY-MM-DD. Only with compare=custom. (optional) 
-            var labels = "labels_example";  // string | Comma-separated inventory labels (any of them). (optional) 
-            var platforms = "platforms_example";  // string | Comma-separated platform ids. (optional) 
-            var category = "category_example";  // string | Canonical main-category key. (optional) 
-            var brand = "brand_example";  // string | Brand name. (optional) 
-            var tz = "tz_example";  // string | IANA time zone for day boundaries. Default UTC. An invalid name is a 400. (optional) 
-            var maturity = 30;  // int? | Days an item has to sell within to count as sold in the cohort. Default 30. (optional) 
-
-            try
-            {
-                // Unsold stock: aging buckets with cost, listed value and market value, the 20 listings most in need of attention, shelf value over time, cohort sell-through at the chosen maturity, listed vs sold velocity and data health.
-                GetAnalyticInventoryResponse result = apiInstance.GetAnalyticInventory(range, from, to, compare, cmpFrom, cmpTo, labels, platforms, category, brand, tz, maturity);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InventoryApi.GetAnalyticInventory: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **range** | **string**| Reporting window. Default 30d. custom needs from and to. | [optional] 
- **from** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional] 
- **to** | **string**| YYYY-MM-DD, inclusive, in tz. Only with range&#x3D;custom. | [optional] 
- **compare** | **string**| Comparison window for deltas: prev (same length just before), yoy, none, custom (cmpFrom/cmpTo). | [optional] 
- **cmpFrom** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional] 
- **cmpTo** | **string**| YYYY-MM-DD. Only with compare&#x3D;custom. | [optional] 
- **labels** | **string**| Comma-separated inventory labels (any of them). | [optional] 
- **platforms** | **string**| Comma-separated platform ids. | [optional] 
- **category** | **string**| Canonical main-category key. | [optional] 
- **brand** | **string**| Brand name. | [optional] 
- **tz** | **string**| IANA time zone for day boundaries. Default UTC. An invalid name is a 400. | [optional] 
- **maturity** | **int?**| Days an item has to sell within to count as sold in the cohort. Default 30. | [optional] 
-
-### Return type
-
-**GetAnalyticInventoryResponse**
-
-### Authorization
-
-[PersonalAccessToken](../README.md#PersonalAccessToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Error |  -  |
-| **401** | Error |  -  |
-| **403** | Error |  -  |
-| **404** | Error |  -  |
-| **429** | Error |  -  |
-| **500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 <a name="getgameeventsummary"></a>
 # **GetGameEventSummary**
 > GetGameEventSummaryResponse GetGameEventSummary (Guid eventId)
@@ -3454,7 +3482,7 @@ This endpoint does not need any parameter.
 
 <a name="getinventorysellthrough"></a>
 # **GetInventorySellThrough**
-> GetInventorySellThroughResponse GetInventorySellThrough ()
+> GetInventorySellThroughResponse GetInventorySellThrough (string start = null, string end = null)
 
 Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
 
@@ -3478,11 +3506,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var start = "start_example";  // string |  (optional) 
+            var end = "end_example";  // string |  (optional) 
 
             try
             {
                 // Cohort sell-through: of the items first listed in the window (default 30-60 days ago), the share sold within 30 days of listing, with n, immature items left out, and the change vs the previous window in percentage points (pp).
-                GetInventorySellThroughResponse result = apiInstance.GetInventorySellThrough();
+                GetInventorySellThroughResponse result = apiInstance.GetInventorySellThrough(start, end);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3497,7 +3527,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **start** | **string**|  | [optional] 
+ **end** | **string**|  | [optional] 
 
 ### Return type
 
@@ -3606,7 +3640,7 @@ Name | Type | Description  | Notes
 
 <a name="getinventoryvaluehistory"></a>
 # **GetInventoryValueHistory**
-> GetInventoryValueHistoryResponse GetInventoryValueHistory ()
+> GetInventoryValueHistoryResponse GetInventoryValueHistory (decimal? days = null)
 
 Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
 
@@ -3630,11 +3664,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Cost and listed value of unsold stock over time, oldest first (one point per nightly snapshot).
-                GetInventoryValueHistoryResponse result = apiInstance.GetInventoryValueHistory();
+                GetInventoryValueHistoryResponse result = apiInstance.GetInventoryValueHistory(days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3649,7 +3684,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -5992,7 +6030,7 @@ This endpoint does not need any parameter.
 
 <a name="listinventory"></a>
 # **ListInventory**
-> ListInventoryResponse ListInventory (int? page = null, int? limit = null, string search = null, string status = null, string kind = null, string platforms = null, string platformMode = null, string sku = null, DateTime? updatedSince = null)
+> ListInventoryResponse ListInventory (int? page = null, int? limit = null, string search = null, string status = null, string kind = null, string platforms = null, string platformMode = null, string assignee = null, string sku = null, DateTime? updatedSince = null)
 
 List inventory items.
 
@@ -6023,13 +6061,14 @@ namespace Example
             var kind = "physical";  // string | Physical goods or Web3 assets (NFTs). Omit for both. (optional) 
             var platforms = "platforms_example";  // string | Comma-separated marketplaces, e.g. \"ebay,vinted\". Items live (an active listing) on any of them. (optional) 
             var platformMode = "listed";  // string | \"not_listed\" inverts `platforms`: items live on none of them. Default \"listed\". (optional) 
+            var assignee = "assignee_example";  // string | Work assignment: 'me' (your own seat), 'none' (unassigned), 'any' (assigned to someone) or a team member id. (optional) 
             var sku = "sku_example";  // string | Exact SKU match: look up the row a supplier product maps to. (optional) 
             var updatedSince = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. (optional) 
 
             try
             {
                 // List inventory items.
-                ListInventoryResponse result = apiInstance.ListInventory(page, limit, search, status, kind, platforms, platformMode, sku, updatedSince);
+                ListInventoryResponse result = apiInstance.ListInventory(page, limit, search, status, kind, platforms, platformMode, assignee, sku, updatedSince);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6054,6 +6093,7 @@ Name | Type | Description  | Notes
  **kind** | **string**| Physical goods or Web3 assets (NFTs). Omit for both. | [optional] 
  **platforms** | **string**| Comma-separated marketplaces, e.g. \&quot;ebay,vinted\&quot;. Items live (an active listing) on any of them. | [optional] 
  **platformMode** | **string**| \&quot;not_listed\&quot; inverts &#x60;platforms&#x60;: items live on none of them. Default \&quot;listed\&quot;. | [optional] 
+ **assignee** | **string**| Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. | [optional] 
  **sku** | **string**| Exact SKU match: look up the row a supplier product maps to. | [optional] 
  **updatedSince** | **DateTime?**| Only rows created or changed at or after this time (ISO 8601), oldest change first. Poll with the updatedAt of the last row you saw. | [optional] 
 
@@ -6140,6 +6180,164 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListInventoryActivityResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listinventoryholdissues"></a>
+# **ListInventoryHoldIssues**
+> ListInventoryHoldIssuesResponse ListInventoryHoldIssues ()
+
+List the stock problems the holds ledger finds.
+
+`held_but_listed`: every unit of an item is held for a program while a marketplace listing is still live. `expired_hold_unreleased`: a hold ran past its expiry and still keeps its units off sale.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListInventoryHoldIssuesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+
+            try
+            {
+                // List the stock problems the holds ledger finds.
+                ListInventoryHoldIssuesResponse result = apiInstance.ListInventoryHoldIssues();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.ListInventoryHoldIssues: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**ListInventoryHoldIssuesResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="listinventoryholds"></a>
+# **ListInventoryHolds**
+> ListInventoryHoldsResponse ListInventoryHolds (string id, string history = null)
+
+List the holds on an inventory item.
+
+Each hold names the program that set units aside (`sourceKind`: wholesale_quote, rental_booking, live_lineup, cart, vault_submission, consignment, manual), its record (`sourceId`), how many units and until when. `state` is `active`, `lapsed` (past its expiry, not released yet) or `released`. Holds in force by default; `history=true` adds released ones.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListInventoryHoldsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var id = "id_example";  // string | 
+            var history = "true";  // string |  (optional) 
+
+            try
+            {
+                // List the holds on an inventory item.
+                ListInventoryHoldsResponse result = apiInstance.ListInventoryHolds(id, history);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.ListInventoryHolds: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **history** | **string**|  | [optional] 
+
+### Return type
+
+**ListInventoryHoldsResponse**
 
 ### Authorization
 
@@ -7578,9 +7776,9 @@ This endpoint does not need any parameter.
 # **ListSpatialStreetMine**
 > ListSpatialStreetMineResponse ListSpatialStreetMine ()
 
-Your streets.
+Streets your store holds.
 
-Streets you hold or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly's `reviewNote`.
+Streets the store (`X-Storefront-Id`, else your default store) holds or asked to found, newest first: `status` (pending review, approved, founding, active, dormant, rejected, released), `upkeep` (active, grace, delinquent - - a delinquent owner collects no stall rent; three weeks late the street is foreclosed and closed), `paidThrough`, `admission`, `occupied` of `plotCount`, `pendingApplications`, and Crossly's `reviewNote`.
 
 ### Example
 ```csharp
@@ -7605,7 +7803,7 @@ namespace Example
 
             try
             {
-                // Your streets.
+                // Streets your store holds.
                 ListSpatialStreetMineResponse result = apiInstance.ListSpatialStreetMine();
                 Debug.WriteLine(result);
             }
@@ -7958,7 +8156,7 @@ Name | Type | Description  | Notes
 
 <a name="updateinventory"></a>
 # **UpdateInventory**
-> CreateInventoryResponse UpdateInventory (Guid id)
+> CreateInventoryResponse UpdateInventory (Guid id, UpdateInventoryRequest updateInventoryRequest)
 
 Update an inventory item (partial).
 
@@ -7983,11 +8181,12 @@ namespace Example
 
             var apiInstance = new InventoryApi(config);
             var id = "id_example";  // Guid | 
+            var updateInventoryRequest = new UpdateInventoryRequest(); // UpdateInventoryRequest | 
 
             try
             {
                 // Update an inventory item (partial).
-                CreateInventoryResponse result = apiInstance.UpdateInventory(id);
+                CreateInventoryResponse result = apiInstance.UpdateInventory(id, updateInventoryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8006,10 +8205,163 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateInventoryRequest** | **UpdateInventoryRequest**|  | 
 
 ### Return type
 
 **CreateInventoryResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateinventoryassignee"></a>
+# **UpdateInventoryAssignee**
+> UpdateOrderAssigneeResponse UpdateInventoryAssignee ()
+
+Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateInventoryAssigneeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+
+            try
+            {
+                // Assign many inventory items to a teammate, round robin across several, or unassign them (null).
+                UpdateOrderAssigneeResponse result = apiInstance.UpdateInventoryAssignee();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.UpdateInventoryAssignee: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**UpdateOrderAssigneeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateinventoryassigneebyid"></a>
+# **UpdateInventoryAssigneeById**
+> UpdateOrderAssigneeByIdResponse UpdateInventoryAssigneeById (string id)
+
+Assign one inventory item to a teammate, or unassign it (null).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateInventoryAssigneeByIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new InventoryApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Assign one inventory item to a teammate, or unassign it (null).
+                UpdateOrderAssigneeByIdResponse result = apiInstance.UpdateInventoryAssigneeById(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InventoryApi.UpdateInventoryAssigneeById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**UpdateOrderAssigneeByIdResponse**
 
 ### Authorization
 
@@ -8036,7 +8388,7 @@ Name | Type | Description  | Notes
 
 <a name="updatespatialemployeeconfig"></a>
 # **UpdateSpatialEmployeeConfig**
-> UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig ()
+> UpdateSpatialEmployeeConfigResponse UpdateSpatialEmployeeConfig (UpdateSpatialEmployeeConfigRequest updateSpatialEmployeeConfigRequest = null)
 
 Create or replace the shop employee in one of your rooms.
 
@@ -8062,11 +8414,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InventoryApi(config);
+            var updateSpatialEmployeeConfigRequest = new UpdateSpatialEmployeeConfigRequest(); // UpdateSpatialEmployeeConfigRequest |  (optional) 
 
             try
             {
                 // Create or replace the shop employee in one of your rooms.
-                UpdateSpatialEmployeeConfigResponse result = apiInstance.UpdateSpatialEmployeeConfig();
+                UpdateSpatialEmployeeConfigResponse result = apiInstance.UpdateSpatialEmployeeConfig(updateSpatialEmployeeConfigRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8081,7 +8434,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateSpatialEmployeeConfigRequest** | **UpdateSpatialEmployeeConfigRequest**|  | [optional] 
 
 ### Return type
 
@@ -8093,7 +8449,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

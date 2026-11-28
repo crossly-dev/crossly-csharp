@@ -86,7 +86,7 @@ This endpoint does not need any parameter.
 
 <a name="createmobilepushtoken"></a>
 # **CreateMobilePushToken**
-> OkResponse CreateMobilePushToken ()
+> OkResponse CreateMobilePushToken (CreateMobilePushTokenRequest createMobilePushTokenRequest)
 
 Register an Expo push token for this user.
 
@@ -110,11 +110,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new MobileApi(config);
+            var createMobilePushTokenRequest = new CreateMobilePushTokenRequest(); // CreateMobilePushTokenRequest | 
 
             try
             {
                 // Register an Expo push token for this user.
-                OkResponse result = apiInstance.CreateMobilePushToken();
+                OkResponse result = apiInstance.CreateMobilePushToken(createMobilePushTokenRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -129,7 +130,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMobilePushTokenRequest** | **CreateMobilePushTokenRequest**|  | 
 
 ### Return type
 
@@ -141,7 +145,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -89,7 +89,8 @@ namespace net.crossly.Model
         /// <param name="itemId">itemId.</param>
         /// <param name="eventId">eventId.</param>
         /// <param name="bonusBps">bonusBps.</param>
-        public CreateLoyaltyTierResponseDataPerksItem(string type = default(string), decimal? percentBps = default(decimal?), string id = default(string), Dictionary<string, Object> scope = default(Dictionary<string, Object>), decimal? amountCents = default(decimal?), decimal minSubtotalCents = default(decimal), decimal hours = default(decimal), List<string> listingIds = default(List<string>), string tag = default(string), string catalogId = default(string), string groupId = default(string), string collectionId = default(string), decimal quantity = default(decimal), decimal multiplierBps = default(decimal), decimal cents = default(decimal), CadenceEnum? cadence = default(CadenceEnum?), decimal validDays = default(decimal), decimal windowDays = default(decimal), decimal depositBps = default(decimal), decimal weeks = default(decimal), decimal minutes = default(decimal), string itemId = default(string), string eventId = default(string), decimal bonusBps = default(decimal))
+        /// <param name="days">days.</param>
+        public CreateLoyaltyTierResponseDataPerksItem(string type = default(string), decimal? percentBps = default(decimal?), string id = default(string), Dictionary<string, Object> scope = default(Dictionary<string, Object>), decimal? amountCents = default(decimal?), decimal minSubtotalCents = default(decimal), decimal hours = default(decimal), List<string> listingIds = default(List<string>), string tag = default(string), string catalogId = default(string), string groupId = default(string), string collectionId = default(string), decimal quantity = default(decimal), decimal multiplierBps = default(decimal), decimal cents = default(decimal), CadenceEnum? cadence = default(CadenceEnum?), decimal validDays = default(decimal), decimal windowDays = default(decimal), decimal depositBps = default(decimal), decimal weeks = default(decimal), decimal minutes = default(decimal), string itemId = default(string), string eventId = default(string), decimal bonusBps = default(decimal), decimal days = default(decimal))
         {
             // to ensure "type" is required (not null)
             if (type == null) {
@@ -123,6 +124,7 @@ namespace net.crossly.Model
             this.ItemId = itemId;
             this.EventId = eventId;
             this.BonusBps = bonusBps;
+            this.Days = days;
         }
 
         /// <summary>
@@ -264,6 +266,12 @@ namespace net.crossly.Model
         public decimal BonusBps { get; set; }
 
         /// <summary>
+        /// Gets or Sets Days
+        /// </summary>
+        [DataMember(Name = "days", EmitDefaultValue = false)]
+        public decimal Days { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -295,6 +303,7 @@ namespace net.crossly.Model
             sb.Append("  ItemId: ").Append(ItemId).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
             sb.Append("  BonusBps: ").Append(BonusBps).Append("\n");
+            sb.Append("  Days: ").Append(Days).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -439,6 +448,10 @@ namespace net.crossly.Model
                 (
                     this.BonusBps == input.BonusBps ||
                     this.BonusBps.Equals(input.BonusBps)
+                ) && 
+                (
+                    this.Days == input.Days ||
+                    this.Days.Equals(input.Days)
                 );
         }
 
@@ -511,6 +524,7 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.EventId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BonusBps.GetHashCode();
+                hashCode = (hashCode * 59) + this.Days.GetHashCode();
                 return hashCode;
             }
         }

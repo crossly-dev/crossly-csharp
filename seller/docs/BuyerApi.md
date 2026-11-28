@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="createspatialauctionroombid"></a>
 # **CreateSpatialAuctionRoomBid**
-> CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid (Guid sceneId)
+> CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid (Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest)
 
 Bid on the lot currently up in a room.
 
@@ -36,11 +36,12 @@ namespace Example
 
             var apiInstance = new BuyerApi(config);
             var sceneId = "sceneId_example";  // Guid | 
+            var createSpatialAuctionRoomBidRequest = new CreateSpatialAuctionRoomBidRequest(); // CreateSpatialAuctionRoomBidRequest | 
 
             try
             {
                 // Bid on the lot currently up in a room.
-                CreateSpatialAuctionRoomBidResponse result = apiInstance.CreateSpatialAuctionRoomBid(sceneId);
+                CreateSpatialAuctionRoomBidResponse result = apiInstance.CreateSpatialAuctionRoomBid(sceneId, createSpatialAuctionRoomBidRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -59,6 +60,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sceneId** | **Guid**|  | 
+ **createSpatialAuctionRoomBidRequest** | **CreateSpatialAuctionRoomBidRequest**|  | 
 
 ### Return type
 
@@ -70,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

@@ -103,8 +103,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <returns>ListSourceSyncItem</returns>
-        ListSourceSyncItem UpdateSourceSync(string platform);
+        ListSourceSyncItem UpdateSourceSync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest));
 
         /// <summary>
         /// Update a store&#39;s source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
@@ -114,8 +115,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <returns>ApiResponse of ListSourceSyncItem</returns>
-        ApiResponse<ListSourceSyncItem> UpdateSourceSyncWithHttpInfo(string platform);
+        ApiResponse<ListSourceSyncItem> UpdateSourceSyncWithHttpInfo(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest));
         /// <summary>
         /// POS only: choose the shop (R-Series) / outlet (X-Series) / Square location whose stock and sales Crossly syncs. Must be one GET .../locations lists.
         /// </summary>
@@ -245,9 +247,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSourceSyncItem</returns>
-        System.Threading.Tasks.Task<ListSourceSyncItem> UpdateSourceSyncAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSourceSyncItem> UpdateSourceSyncAsync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a store&#39;s source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
@@ -257,9 +260,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSourceSyncItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSourceSyncItem>> UpdateSourceSyncWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSourceSyncItem>> UpdateSourceSyncWithHttpInfoAsync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// POS only: choose the shop (R-Series) / outlet (X-Series) / Square location whose stock and sales Crossly syncs. Must be one GET .../locations lists.
         /// </summary>
@@ -982,10 +986,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <returns>ListSourceSyncItem</returns>
-        public ListSourceSyncItem UpdateSourceSync(string platform)
+        public ListSourceSyncItem UpdateSourceSync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest))
         {
-            net.crossly.Client.ApiResponse<ListSourceSyncItem> localVarResponse = UpdateSourceSyncWithHttpInfo(platform);
+            net.crossly.Client.ApiResponse<ListSourceSyncItem> localVarResponse = UpdateSourceSyncWithHttpInfo(platform, updateSourceSyncRequest);
             return localVarResponse.Data;
         }
 
@@ -994,8 +999,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <returns>ApiResponse of ListSourceSyncItem</returns>
-        public net.crossly.Client.ApiResponse<ListSourceSyncItem> UpdateSourceSyncWithHttpInfo(string platform)
+        public net.crossly.Client.ApiResponse<ListSourceSyncItem> UpdateSourceSyncWithHttpInfo(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -1006,6 +1012,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1026,6 +1033,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = updateSourceSyncRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1053,11 +1061,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSourceSyncItem</returns>
-        public async System.Threading.Tasks.Task<ListSourceSyncItem> UpdateSourceSyncAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSourceSyncItem> UpdateSourceSyncAsync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSourceSyncItem> localVarResponse = await UpdateSourceSyncWithHttpInfoAsync(platform, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSourceSyncItem> localVarResponse = await UpdateSourceSyncWithHttpInfoAsync(platform, updateSourceSyncRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1066,9 +1075,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"></param>
+        /// <param name="updateSourceSyncRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSourceSyncItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSourceSyncItem>> UpdateSourceSyncWithHttpInfoAsync(string platform, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSourceSyncItem>> UpdateSourceSyncWithHttpInfoAsync(string platform, UpdateSourceSyncRequest updateSourceSyncRequest = default(UpdateSourceSyncRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'platform' is set
             if (platform == null)
@@ -1080,6 +1090,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1100,6 +1111,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("platform", net.crossly.Client.ClientUtils.ParameterToString(platform)); // path parameter
+            localVarRequestOptions.Data = updateSourceSyncRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

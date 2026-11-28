@@ -57,28 +57,28 @@ namespace net.crossly.Model
             Returns = 3,
 
             /// <summary>
+            /// Enum Profile for value: profile
+            /// </summary>
+            [EnumMember(Value = "profile")]
+            Profile = 4,
+
+            /// <summary>
             /// Enum Visibility for value: visibility
             /// </summary>
             [EnumMember(Value = "visibility")]
-            Visibility = 4,
+            Visibility = 5,
 
             /// <summary>
             /// Enum Payment for value: payment
             /// </summary>
             [EnumMember(Value = "payment")]
-            Payment = 5,
+            Payment = 6,
 
             /// <summary>
             /// Enum ShipsFrom for value: ships_from
             /// </summary>
             [EnumMember(Value = "ships_from")]
-            ShipsFrom = 6,
-
-            /// <summary>
-            /// Enum Profile for value: profile
-            /// </summary>
-            [EnumMember(Value = "profile")]
-            Profile = 7
+            ShipsFrom = 7
 
         }
 
@@ -103,22 +103,22 @@ namespace net.crossly.Model
             Invoices = 1,
 
             /// <summary>
+            /// Enum Profile for value: profile
+            /// </summary>
+            [EnumMember(Value = "profile")]
+            Profile = 2,
+
+            /// <summary>
             /// Enum Buyers for value: buyers
             /// </summary>
             [EnumMember(Value = "buyers")]
-            Buyers = 2,
+            Buyers = 3,
 
             /// <summary>
             /// Enum Catalogs for value: catalogs
             /// </summary>
             [EnumMember(Value = "catalogs")]
-            Catalogs = 3,
-
-            /// <summary>
-            /// Enum Profile for value: profile
-            /// </summary>
-            [EnumMember(Value = "profile")]
-            Profile = 4
+            Catalogs = 4
 
         }
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="createimport"></a>
 # **CreateImport**
-> CreateImportResponse CreateImport ()
+> CreateImportResponse CreateImport (CreateImportRequest createImportRequest)
 
 Start a bulk-import job for an existing platform connection.
 
@@ -36,11 +36,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new ImportsApi(config);
+            var createImportRequest = new CreateImportRequest(); // CreateImportRequest | 
 
             try
             {
                 // Start a bulk-import job for an existing platform connection.
-                CreateImportResponse result = apiInstance.CreateImport();
+                CreateImportResponse result = apiInstance.CreateImport(createImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createImportRequest** | **CreateImportRequest**|  | 
 
 ### Return type
 
@@ -67,7 +71,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

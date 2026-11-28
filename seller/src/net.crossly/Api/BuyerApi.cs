@@ -34,8 +34,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <returns>CreateSpatialAuctionRoomBidResponse</returns>
-        CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid(Guid sceneId);
+        CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest);
 
         /// <summary>
         /// Bid on the lot currently up in a room.
@@ -45,8 +46,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <returns>ApiResponse of CreateSpatialAuctionRoomBidResponse</returns>
-        ApiResponse<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidWithHttpInfo(Guid sceneId);
+        ApiResponse<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidWithHttpInfo(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest);
         #endregion Synchronous Operations
     }
 
@@ -64,9 +66,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpatialAuctionRoomBidResponse</returns>
-        System.Threading.Tasks.Task<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidAsync(Guid sceneId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidAsync(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bid on the lot currently up in a room.
@@ -76,9 +79,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpatialAuctionRoomBidResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSpatialAuctionRoomBidResponse>> CreateSpatialAuctionRoomBidWithHttpInfoAsync(Guid sceneId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSpatialAuctionRoomBidResponse>> CreateSpatialAuctionRoomBidWithHttpInfoAsync(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -204,10 +208,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <returns>CreateSpatialAuctionRoomBidResponse</returns>
-        public CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid(Guid sceneId)
+        public CreateSpatialAuctionRoomBidResponse CreateSpatialAuctionRoomBid(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> localVarResponse = CreateSpatialAuctionRoomBidWithHttpInfo(sceneId);
+            net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> localVarResponse = CreateSpatialAuctionRoomBidWithHttpInfo(sceneId, createSpatialAuctionRoomBidRequest);
             return localVarResponse.Data;
         }
 
@@ -216,12 +221,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <returns>ApiResponse of CreateSpatialAuctionRoomBidResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidWithHttpInfo(Guid sceneId)
+        public net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidWithHttpInfo(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest)
         {
+            // verify the required parameter 'createSpatialAuctionRoomBidRequest' is set
+            if (createSpatialAuctionRoomBidRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSpatialAuctionRoomBidRequest' when calling BuyerApi->CreateSpatialAuctionRoomBid");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -242,6 +255,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("sceneId", net.crossly.Client.ClientUtils.ParameterToString(sceneId)); // path parameter
+            localVarRequestOptions.Data = createSpatialAuctionRoomBidRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -269,11 +283,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpatialAuctionRoomBidResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidAsync(Guid sceneId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSpatialAuctionRoomBidResponse> CreateSpatialAuctionRoomBidAsync(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> localVarResponse = await CreateSpatialAuctionRoomBidWithHttpInfoAsync(sceneId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse> localVarResponse = await CreateSpatialAuctionRoomBidWithHttpInfoAsync(sceneId, createSpatialAuctionRoomBidRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -282,14 +297,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sceneId"></param>
+        /// <param name="createSpatialAuctionRoomBidRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpatialAuctionRoomBidResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse>> CreateSpatialAuctionRoomBidWithHttpInfoAsync(Guid sceneId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSpatialAuctionRoomBidResponse>> CreateSpatialAuctionRoomBidWithHttpInfoAsync(Guid sceneId, CreateSpatialAuctionRoomBidRequest createSpatialAuctionRoomBidRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSpatialAuctionRoomBidRequest' is set
+            if (createSpatialAuctionRoomBidRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSpatialAuctionRoomBidRequest' when calling BuyerApi->CreateSpatialAuctionRoomBid");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -310,6 +333,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("sceneId", net.crossly.Client.ClientUtils.ParameterToString(sceneId)); // path parameter
+            localVarRequestOptions.Data = createSpatialAuctionRoomBidRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

@@ -38,22 +38,22 @@ namespace net.crossly.buyer.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 1,
+            Accepted = 2,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 2,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
+            Declined = 3,
 
             /// <summary>
             /// Enum Requested for value: requested

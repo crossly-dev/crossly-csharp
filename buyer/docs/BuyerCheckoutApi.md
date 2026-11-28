@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createbuyercheckout"></a>
 # **CreateBuyerCheckout**
-> CreateBuyerCheckoutResponse CreateBuyerCheckout ()
+> CreateBuyerCheckoutResponse CreateBuyerCheckout (CreateBuyerCheckoutRequest createBuyerCheckoutRequest)
 
 Buy a listing without being present.
 
@@ -37,11 +37,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCheckoutApi(config);
+            var createBuyerCheckoutRequest = new CreateBuyerCheckoutRequest(); // CreateBuyerCheckoutRequest | 
 
             try
             {
                 // Buy a listing without being present.
-                CreateBuyerCheckoutResponse result = apiInstance.CreateBuyerCheckout();
+                CreateBuyerCheckoutResponse result = apiInstance.CreateBuyerCheckout(createBuyerCheckoutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -56,7 +57,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createBuyerCheckoutRequest** | **CreateBuyerCheckoutRequest**|  | 
 
 ### Return type
 
@@ -68,7 +72,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -163,7 +167,7 @@ This endpoint does not need any parameter.
 
 <a name="updatebuyercheckoutcontrol"></a>
 # **UpdateBuyerCheckoutControl**
-> GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl ()
+> GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl (UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest)
 
 Switch this key on for spending, and set its limits.
 
@@ -189,11 +193,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new BuyerCheckoutApi(config);
+            var updateBuyerCheckoutControlRequest = new UpdateBuyerCheckoutControlRequest(); // UpdateBuyerCheckoutControlRequest | 
 
             try
             {
                 // Switch this key on for spending, and set its limits.
-                GetBuyerCheckoutControlResponse result = apiInstance.UpdateBuyerCheckoutControl();
+                GetBuyerCheckoutControlResponse result = apiInstance.UpdateBuyerCheckoutControl(updateBuyerCheckoutControlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -208,7 +213,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateBuyerCheckoutControlRequest** | **UpdateBuyerCheckoutControlRequest**|  | 
 
 ### Return type
 
@@ -220,7 +228,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

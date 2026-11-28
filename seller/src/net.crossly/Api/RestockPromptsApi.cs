@@ -49,8 +49,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <returns>CreateRestockPromptRepublishResponse</returns>
-        CreateRestockPromptRepublishResponse CreateRestockPromptRepublish(Guid id);
+        CreateRestockPromptRepublishResponse CreateRestockPromptRepublish(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest);
 
         /// <summary>
         /// Republish a restock prompt to platforms.
@@ -60,26 +61,29 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <returns>ApiResponse of CreateRestockPromptRepublishResponse</returns>
-        ApiResponse<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishWithHttpInfo(Guid id);
+        ApiResponse<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishWithHttpInfo(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest);
         /// <summary>
-        /// Whether restocked items are republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically.
         /// </summary>
         /// <remarks>
-        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         GetRestockPromptSettingResponse GetRestockPromptSetting();
 
         /// <summary>
-        /// Whether restocked items are republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically.
         /// </summary>
         /// <remarks>
-        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         ApiResponse<GetRestockPromptSettingResponse> GetRestockPromptSettingWithHttpInfo();
         /// <summary>
         /// List pending restock prompts.
@@ -98,15 +102,16 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListRestockPromptsResponse</returns>
         ApiResponse<ListRestockPromptsResponse> ListRestockPromptsWithHttpInfo();
         /// <summary>
-        /// Turn automatic republish of restocked items on or off.
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <returns>GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         GetRestockPromptSettingResponse UpdateRestockPromptSetting(GetRestockPromptSettingResponse getRestockPromptSettingResponse);
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off.
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -114,6 +119,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <returns>ApiResponse of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         ApiResponse<GetRestockPromptSettingResponse> UpdateRestockPromptSettingWithHttpInfo(GetRestockPromptSettingResponse getRestockPromptSettingResponse);
         #endregion Synchronous Operations
     }
@@ -155,9 +161,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateRestockPromptRepublishResponse</returns>
-        System.Threading.Tasks.Task<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishAsync(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Republish a restock prompt to platforms.
@@ -167,29 +174,32 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateRestockPromptRepublishResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateRestockPromptRepublishResponse>> CreateRestockPromptRepublishWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateRestockPromptRepublishResponse>> CreateRestockPromptRepublishWithHttpInfoAsync(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Whether restocked items are republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically.
         /// </summary>
         /// <remarks>
-        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetRestockPromptSettingResponse> GetRestockPromptSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Whether restocked items are republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically.
         /// </summary>
         /// <remarks>
-        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetRestockPromptSettingResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetRestockPromptSettingResponse>> GetRestockPromptSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List pending restock prompts.
@@ -213,7 +223,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListRestockPromptsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListRestockPromptsResponse>> ListRestockPromptsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Turn automatic republish of restocked items on or off.
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -222,10 +232,11 @@ namespace net.crossly.Api
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetRestockPromptSettingResponse> UpdateRestockPromptSettingAsync(GetRestockPromptSettingResponse getRestockPromptSettingResponse, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off.
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release).
         /// </summary>
         /// <remarks>
         /// 
@@ -234,6 +245,7 @@ namespace net.crossly.Api
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetRestockPromptSettingResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetRestockPromptSettingResponse>> UpdateRestockPromptSettingWithHttpInfoAsync(GetRestockPromptSettingResponse getRestockPromptSettingResponse, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
@@ -494,10 +506,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <returns>CreateRestockPromptRepublishResponse</returns>
-        public CreateRestockPromptRepublishResponse CreateRestockPromptRepublish(Guid id)
+        public CreateRestockPromptRepublishResponse CreateRestockPromptRepublish(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest)
         {
-            net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> localVarResponse = CreateRestockPromptRepublishWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> localVarResponse = CreateRestockPromptRepublishWithHttpInfo(id, createRestockPromptRepublishRequest);
             return localVarResponse.Data;
         }
 
@@ -506,12 +519,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <returns>ApiResponse of CreateRestockPromptRepublishResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishWithHttpInfo(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest)
         {
+            // verify the required parameter 'createRestockPromptRepublishRequest' is set
+            if (createRestockPromptRepublishRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createRestockPromptRepublishRequest' when calling RestockPromptsApi->CreateRestockPromptRepublish");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -532,6 +553,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createRestockPromptRepublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -559,11 +581,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateRestockPromptRepublishResponse</returns>
-        public async System.Threading.Tasks.Task<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateRestockPromptRepublishResponse> CreateRestockPromptRepublishAsync(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> localVarResponse = await CreateRestockPromptRepublishWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse> localVarResponse = await CreateRestockPromptRepublishWithHttpInfoAsync(id, createRestockPromptRepublishRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -572,14 +595,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createRestockPromptRepublishRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateRestockPromptRepublishResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse>> CreateRestockPromptRepublishWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateRestockPromptRepublishResponse>> CreateRestockPromptRepublishWithHttpInfoAsync(Guid id, CreateRestockPromptRepublishRequest createRestockPromptRepublishRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createRestockPromptRepublishRequest' is set
+            if (createRestockPromptRepublishRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createRestockPromptRepublishRequest' when calling RestockPromptsApi->CreateRestockPromptRepublish");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -600,6 +631,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createRestockPromptRepublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -624,10 +656,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Whether restocked items are republished automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public GetRestockPromptSettingResponse GetRestockPromptSetting()
         {
             net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> localVarResponse = GetRestockPromptSettingWithHttpInfo();
@@ -635,10 +668,11 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Whether restocked items are republished automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> GetRestockPromptSettingWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -686,11 +720,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Whether restocked items are republished automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetRestockPromptSettingResponse> GetRestockPromptSettingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> localVarResponse = await GetRestockPromptSettingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
@@ -698,11 +733,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Whether restocked items are republished automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically.
+        /// Deprecated: whether every platform account of the store republishes restocked items automatically. autoRepublish (default true): when an item that sold out comes back in stock, Crossly republishes it to the marketplaces it came off without asking. False: a restock prompt is raised instead. A listing the seller ended by hand is never republished automatically. The setting is per platform account now (GET /api/v1/channel-accounts/:accountId/settings → restock.autoRepublish); this reads true only while every account of the store has it on. Removed next release.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetRestockPromptSettingResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse>> GetRestockPromptSettingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -880,11 +916,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off. 
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <returns>GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public GetRestockPromptSettingResponse UpdateRestockPromptSetting(GetRestockPromptSettingResponse getRestockPromptSettingResponse)
         {
             net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> localVarResponse = UpdateRestockPromptSettingWithHttpInfo(getRestockPromptSettingResponse);
@@ -892,11 +929,12 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off. 
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <returns>ApiResponse of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> UpdateRestockPromptSettingWithHttpInfo(GetRestockPromptSettingResponse getRestockPromptSettingResponse)
         {
             // verify the required parameter 'getRestockPromptSettingResponse' is set
@@ -952,12 +990,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off. 
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetRestockPromptSettingResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetRestockPromptSettingResponse> UpdateRestockPromptSettingAsync(GetRestockPromptSettingResponse getRestockPromptSettingResponse, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse> localVarResponse = await UpdateRestockPromptSettingWithHttpInfoAsync(getRestockPromptSettingResponse, cancellationToken).ConfigureAwait(false);
@@ -965,12 +1004,13 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Turn automatic republish of restocked items on or off. 
+        /// Deprecated: turn automatic republish on or off for every platform account of the store at once. Use PUT /api/v1/channel-accounts/:accountId/settings { autoRepublish } per account (removed next release). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="getRestockPromptSettingResponse"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetRestockPromptSettingResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetRestockPromptSettingResponse>> UpdateRestockPromptSettingWithHttpInfoAsync(GetRestockPromptSettingResponse getRestockPromptSettingResponse, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'getRestockPromptSettingResponse' is set

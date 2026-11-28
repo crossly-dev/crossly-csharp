@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 <a name="createtcgcreatorgame"></a>
 # **CreateTcgCreatorGame**
-> CreateTcgCreatorGameResponse CreateTcgCreatorGame ()
+> CreateTcgCreatorGameResponse CreateTcgCreatorGame (CreateTcgCreatorGameRequest createTcgCreatorGameRequest)
 
 Submit a card-game package version for review: game.json, cards.json, rules/game.js, thumb.png, art/_*.png as { path, base64 }. Checked, conformance-run, art quarantined, then reviewed by a person.
 
@@ -44,11 +44,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TCGCreatorsApi(config);
+            var createTcgCreatorGameRequest = new CreateTcgCreatorGameRequest(); // CreateTcgCreatorGameRequest | 
 
             try
             {
                 // Submit a card-game package version for review: game.json, cards.json, rules/game.js, thumb.png, art/_*.png as { path, base64 }. Checked, conformance-run, art quarantined, then reviewed by a person.
-                CreateTcgCreatorGameResponse result = apiInstance.CreateTcgCreatorGame();
+                CreateTcgCreatorGameResponse result = apiInstance.CreateTcgCreatorGame(createTcgCreatorGameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -63,7 +64,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTcgCreatorGameRequest** | **CreateTcgCreatorGameRequest**|  | 
 
 ### Return type
 
@@ -75,7 +79,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -94,7 +98,7 @@ This endpoint does not need any parameter.
 
 <a name="createtcgcreatorgamecheck"></a>
 # **CreateTcgCreatorGameCheck**
-> CreateTcgCreatorGameCheckResponse CreateTcgCreatorGameCheck ()
+> CreateTcgCreatorGameCheckResponse CreateTcgCreatorGameCheck (CreateTcgCreatorGameRequest createTcgCreatorGameRequest)
 
 Check a card-game package exactly as a submission is checked - - the static report and bot games played against your rules in the sandbox - - storing nothing. Files as { path, base64 }.
 
@@ -118,11 +122,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TCGCreatorsApi(config);
+            var createTcgCreatorGameRequest = new CreateTcgCreatorGameRequest(); // CreateTcgCreatorGameRequest | 
 
             try
             {
                 // Check a card-game package exactly as a submission is checked - - the static report and bot games played against your rules in the sandbox - - storing nothing. Files as { path, base64 }.
-                CreateTcgCreatorGameCheckResponse result = apiInstance.CreateTcgCreatorGameCheck();
+                CreateTcgCreatorGameCheckResponse result = apiInstance.CreateTcgCreatorGameCheck(createTcgCreatorGameRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -137,7 +142,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createTcgCreatorGameRequest** | **CreateTcgCreatorGameRequest**|  | 
 
 ### Return type
 
@@ -149,7 +157,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -248,7 +256,7 @@ Name | Type | Description  | Notes
 
 <a name="createtcgcreatorgamestarter"></a>
 # **CreateTcgCreatorGameStarter**
-> CreateTcgStarterResponse CreateTcgCreatorGameStarter (string id)
+> CreateTcgStarterResponse CreateTcgCreatorGameStarter (string id, CreateTcgCreatorGameStarterRequest createTcgCreatorGameStarterRequest = null)
 
 Claim a creator game's free starter deck by its key (once per account; account-bound, never tradeable).
 
@@ -273,11 +281,12 @@ namespace Example
 
             var apiInstance = new TCGCreatorsApi(config);
             var id = "id_example";  // string | 
+            var createTcgCreatorGameStarterRequest = new CreateTcgCreatorGameStarterRequest(); // CreateTcgCreatorGameStarterRequest |  (optional) 
 
             try
             {
                 // Claim a creator game's free starter deck by its key (once per account; account-bound, never tradeable).
-                CreateTcgStarterResponse result = apiInstance.CreateTcgCreatorGameStarter(id);
+                CreateTcgStarterResponse result = apiInstance.CreateTcgCreatorGameStarter(id, createTcgCreatorGameStarterRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -296,6 +305,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createTcgCreatorGameStarterRequest** | **CreateTcgCreatorGameStarterRequest**|  | [optional] 
 
 ### Return type
 
@@ -307,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

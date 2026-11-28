@@ -32,7 +32,7 @@ Method | HTTP request | Description
 
 <a name="createcosmdesignerchainautounlock"></a>
 # **CreateCosmDesignerChainAutoUnlock**
-> CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerChainAutoUnlockResponse CreateCosmDesignerChainAutoUnlock (CreateCosmDesignerChainAutoUnlockRequest createCosmDesignerChainAutoUnlockRequest)
 
 
 
@@ -58,11 +58,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerChainAutoUnlockRequest = new CreateCosmDesignerChainAutoUnlockRequest(); // CreateCosmDesignerChainAutoUnlockRequest | 
 
             try
             {
-                CreateCosmDesignerChainAutoUnlockResponse result = apiInstance.CreateCosmDesignerChainAutoUnlock(requestBody);
+                CreateCosmDesignerChainAutoUnlockResponse result = apiInstance.CreateCosmDesignerChainAutoUnlock(createCosmDesignerChainAutoUnlockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -80,7 +80,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerChainAutoUnlockRequest** | **CreateCosmDesignerChainAutoUnlockRequest**|  | 
 
 ### Return type
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignerchainunlock"></a>
 # **CreateCosmDesignerChainUnlock**
-> CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerChainUnlockResponse CreateCosmDesignerChainUnlock (CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
 
 
 
@@ -137,11 +137,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerChainUnlockRequest = new CreateCosmDesignerChainUnlockRequest(); // CreateCosmDesignerChainUnlockRequest | 
 
             try
             {
-                CreateCosmDesignerChainUnlockResponse result = apiInstance.CreateCosmDesignerChainUnlock(requestBody);
+                CreateCosmDesignerChainUnlockResponse result = apiInstance.CreateCosmDesignerChainUnlock(createCosmDesignerChainUnlockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -159,7 +159,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerChainUnlockRequest** | **CreateCosmDesignerChainUnlockRequest**|  | 
 
 ### Return type
 
@@ -190,7 +190,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignermaterialise"></a>
 # **CreateCosmDesignerMaterialise**
-> CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerMaterialiseResponse CreateCosmDesignerMaterialise (CreateCosmDesignerMaterialiseRequest createCosmDesignerMaterialiseRequest)
 
 
 
@@ -216,11 +216,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerMaterialiseRequest = new CreateCosmDesignerMaterialiseRequest(); // CreateCosmDesignerMaterialiseRequest | 
 
             try
             {
-                CreateCosmDesignerMaterialiseResponse result = apiInstance.CreateCosmDesignerMaterialise(requestBody);
+                CreateCosmDesignerMaterialiseResponse result = apiInstance.CreateCosmDesignerMaterialise(createCosmDesignerMaterialiseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -238,7 +238,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerMaterialiseRequest** | **CreateCosmDesignerMaterialiseRequest**|  | 
 
 ### Return type
 
@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignermaterialiseconfirm"></a>
 # **CreateCosmDesignerMaterialiseConfirm**
-> CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerMaterialiseConfirmResponse CreateCosmDesignerMaterialiseConfirm (CreateCosmDesignerMaterialiseConfirmRequest createCosmDesignerMaterialiseConfirmRequest)
 
 
 
@@ -295,11 +295,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerMaterialiseConfirmRequest = new CreateCosmDesignerMaterialiseConfirmRequest(); // CreateCosmDesignerMaterialiseConfirmRequest | 
 
             try
             {
-                CreateCosmDesignerMaterialiseConfirmResponse result = apiInstance.CreateCosmDesignerMaterialiseConfirm(requestBody);
+                CreateCosmDesignerMaterialiseConfirmResponse result = apiInstance.CreateCosmDesignerMaterialiseConfirm(createCosmDesignerMaterialiseConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -317,7 +317,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerMaterialiseConfirmRequest** | **CreateCosmDesignerMaterialiseConfirmRequest**|  | 
 
 ### Return type
 
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignermaterialiserelease"></a>
 # **CreateCosmDesignerMaterialiseRelease**
-> CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease (Dictionary<string, Object> requestBody)
+> CreateWorldJobShiftReleaseResponse CreateCosmDesignerMaterialiseRelease (CreateCosmDesignerMaterialiseReleaseRequest createCosmDesignerMaterialiseReleaseRequest)
 
 
 
@@ -374,11 +374,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerMaterialiseReleaseRequest = new CreateCosmDesignerMaterialiseReleaseRequest(); // CreateCosmDesignerMaterialiseReleaseRequest | 
 
             try
             {
-                CreateWorldJobShiftReleaseResponse result = apiInstance.CreateCosmDesignerMaterialiseRelease(requestBody);
+                CreateWorldJobShiftReleaseResponse result = apiInstance.CreateCosmDesignerMaterialiseRelease(createCosmDesignerMaterialiseReleaseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -396,7 +396,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerMaterialiseReleaseRequest** | **CreateCosmDesignerMaterialiseReleaseRequest**|  | 
 
 ### Return type
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignersubmitforreview"></a>
 # **CreateCosmDesignerSubmitForReview**
-> CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerSubmitForReviewResponse CreateCosmDesignerSubmitForReview (CreateCosmDesignerChainUnlockRequest createCosmDesignerChainUnlockRequest)
 
 
 
@@ -453,11 +453,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerChainUnlockRequest = new CreateCosmDesignerChainUnlockRequest(); // CreateCosmDesignerChainUnlockRequest | 
 
             try
             {
-                CreateCosmDesignerSubmitForReviewResponse result = apiInstance.CreateCosmDesignerSubmitForReview(requestBody);
+                CreateCosmDesignerSubmitForReviewResponse result = apiInstance.CreateCosmDesignerSubmitForReview(createCosmDesignerChainUnlockRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -475,7 +475,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerChainUnlockRequest** | **CreateCosmDesignerChainUnlockRequest**|  | 
 
 ### Return type
 
@@ -506,7 +506,7 @@ Name | Type | Description  | Notes
 
 <a name="createcosmdesignerterm"></a>
 # **CreateCosmDesignerTerm**
-> CreateCosmDesignerTermResponse CreateCosmDesignerTerm (Dictionary<string, Object> requestBody)
+> CreateCosmDesignerTermResponse CreateCosmDesignerTerm (CreateCosmDesignerTermRequest createCosmDesignerTermRequest)
 
 
 
@@ -532,11 +532,11 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DefaultApi(config);
-            var requestBody = new Dictionary<string, Object>(); // Dictionary<string, Object> | 
+            var createCosmDesignerTermRequest = new CreateCosmDesignerTermRequest(); // CreateCosmDesignerTermRequest | 
 
             try
             {
-                CreateCosmDesignerTermResponse result = apiInstance.CreateCosmDesignerTerm(requestBody);
+                CreateCosmDesignerTermResponse result = apiInstance.CreateCosmDesignerTerm(createCosmDesignerTermRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -554,7 +554,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requestBody** | **Dictionary&lt;string, Object&gt;**|  | 
+ **createCosmDesignerTermRequest** | **CreateCosmDesignerTermRequest**|  | 
 
 ### Return type
 

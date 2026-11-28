@@ -82,23 +82,20 @@ namespace net.crossly.Model
         /// <param name="arrivalConditionWindowHours">arrivalConditionWindowHours.</param>
         /// <param name="theme">theme.</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        /// <param name="published">published (required).</param>
         /// <param name="storefrontId">storefrontId (required).</param>
+        /// <param name="published">published (required).</param>
         /// <param name="publishedAt">publishedAt.</param>
         /// <param name="bio">bio.</param>
         /// <param name="tagline">tagline.</param>
         /// <param name="bannerImageUrl">bannerImageUrl.</param>
         /// <param name="bundleDiscountBps">bundleDiscountBps (required).</param>
-        /// <param name="returnPresetId">returnPresetId.</param>
-        /// <param name="shippingPresetId">shippingPresetId.</param>
-        /// <param name="paymentPresetId">paymentPresetId.</param>
-        /// <param name="customDomain">customDomain.</param>
         /// <param name="featuredListingIds">featuredListingIds.</param>
         /// <param name="shipFromCity">shipFromCity.</param>
         /// <param name="shipFromState">shipFromState.</param>
         /// <param name="shipFromZip">shipFromZip.</param>
         /// <param name="shipFromCountry">shipFromCountry.</param>
         /// <param name="acceptsCustomOrders">acceptsCustomOrders (required).</param>
+        /// <param name="customDomain">customDomain.</param>
         /// <param name="customDomainVerifiedAt">customDomainVerifiedAt.</param>
         /// <param name="logoImageUrl">logoImageUrl.</param>
         /// <param name="seoTitle">seoTitle.</param>
@@ -115,6 +112,9 @@ namespace net.crossly.Model
         /// <param name="shipFromAddressId">shipFromAddressId.</param>
         /// <param name="returnAddressId">returnAddressId.</param>
         /// <param name="matchOwnPrices">matchOwnPrices (required).</param>
+        /// <param name="shippingPresetId">shippingPresetId.</param>
+        /// <param name="returnPresetId">returnPresetId.</param>
+        /// <param name="paymentPresetId">paymentPresetId.</param>
         /// <param name="sitePublishedAt">sitePublishedAt.</param>
         /// <param name="siteDraftUpdatedAt">siteDraftUpdatedAt.</param>
         /// <param name="siteEnabled">siteEnabled (required).</param>
@@ -126,7 +126,7 @@ namespace net.crossly.Model
         /// <param name="policySummary">policySummary (required).</param>
         /// <param name="policySource">policySource (required).</param>
         /// <param name="usesOwnPolicy">usesOwnPolicy (required).</param>
-        public UpdateStorefrontSettingResponseData(UpdateStorefrontSettingResponseDataStorePolicies storePolicies = default(UpdateStorefrontSettingResponseDataStorePolicies), bool? offersFreeShipping = default(bool?), decimal? freeShippingThresholdCents = default(decimal?), bool? offersLocalPickup = default(bool?), bool? localCourierEnabled = default(bool?), bool? acceptsLayaway = default(bool?), List<string> sellerProtections = default(List<string>), bool? requestArrivalCondition = default(bool?), decimal? arrivalConditionWindowHours = default(decimal?), Dictionary<string, Object> theme = default(Dictionary<string, Object>), DateTime updatedAt = default(DateTime), bool published = default(bool), string storefrontId = default(string), DateTime? publishedAt = default(DateTime?), string bio = default(string), string tagline = default(string), string bannerImageUrl = default(string), decimal bundleDiscountBps = default(decimal), string returnPresetId = default(string), string shippingPresetId = default(string), string paymentPresetId = default(string), string customDomain = default(string), List<string> featuredListingIds = default(List<string>), string shipFromCity = default(string), string shipFromState = default(string), string shipFromZip = default(string), string shipFromCountry = default(string), bool acceptsCustomOrders = default(bool), DateTime? customDomainVerifiedAt = default(DateTime?), string logoImageUrl = default(string), string seoTitle = default(string), string seoDescription = default(string), decimal? autoShareHours = default(decimal?), DateTime? lastSharedAt = default(DateTime?), string returnName = default(string), string returnStreet1 = default(string), string returnStreet2 = default(string), string returnCity = default(string), string returnState = default(string), string returnZip = default(string), string returnCountry = default(string), string shipFromAddressId = default(string), string returnAddressId = default(string), bool matchOwnPrices = default(bool), DateTime? sitePublishedAt = default(DateTime?), DateTime? siteDraftUpdatedAt = default(DateTime?), bool siteEnabled = default(bool), Dictionary<string, Object> brandingDefaults = default(Dictionary<string, Object>), DateTime? tradeSitePublishedAt = default(DateTime?), DateTime? tradeSiteDraftUpdatedAt = default(DateTime?), bool tradeSiteEnabled = default(bool), TradeSiteGatingEnum tradeSiteGating = default(TradeSiteGatingEnum), UpdateStorefrontSettingResponseDataPolicySummary policySummary = default(UpdateStorefrontSettingResponseDataPolicySummary), UpdateStorefrontSettingResponseDataPolicySource policySource = default(UpdateStorefrontSettingResponseDataPolicySource), bool usesOwnPolicy = default(bool))
+        public UpdateStorefrontSettingResponseData(UpdateStorefrontSettingResponseDataStorePolicies storePolicies = default(UpdateStorefrontSettingResponseDataStorePolicies), bool? offersFreeShipping = default(bool?), decimal? freeShippingThresholdCents = default(decimal?), bool? offersLocalPickup = default(bool?), bool? localCourierEnabled = default(bool?), bool? acceptsLayaway = default(bool?), List<string> sellerProtections = default(List<string>), bool? requestArrivalCondition = default(bool?), decimal? arrivalConditionWindowHours = default(decimal?), Dictionary<string, Object> theme = default(Dictionary<string, Object>), DateTime updatedAt = default(DateTime), string storefrontId = default(string), bool published = default(bool), DateTime? publishedAt = default(DateTime?), string bio = default(string), string tagline = default(string), string bannerImageUrl = default(string), decimal bundleDiscountBps = default(decimal), List<string> featuredListingIds = default(List<string>), string shipFromCity = default(string), string shipFromState = default(string), string shipFromZip = default(string), string shipFromCountry = default(string), bool acceptsCustomOrders = default(bool), string customDomain = default(string), DateTime? customDomainVerifiedAt = default(DateTime?), string logoImageUrl = default(string), string seoTitle = default(string), string seoDescription = default(string), decimal? autoShareHours = default(decimal?), DateTime? lastSharedAt = default(DateTime?), string returnName = default(string), string returnStreet1 = default(string), string returnStreet2 = default(string), string returnCity = default(string), string returnState = default(string), string returnZip = default(string), string returnCountry = default(string), string shipFromAddressId = default(string), string returnAddressId = default(string), bool matchOwnPrices = default(bool), string shippingPresetId = default(string), string returnPresetId = default(string), string paymentPresetId = default(string), DateTime? sitePublishedAt = default(DateTime?), DateTime? siteDraftUpdatedAt = default(DateTime?), bool siteEnabled = default(bool), Dictionary<string, Object> brandingDefaults = default(Dictionary<string, Object>), DateTime? tradeSitePublishedAt = default(DateTime?), DateTime? tradeSiteDraftUpdatedAt = default(DateTime?), bool tradeSiteEnabled = default(bool), TradeSiteGatingEnum tradeSiteGating = default(TradeSiteGatingEnum), UpdateStorefrontSettingResponseDataPolicySummary policySummary = default(UpdateStorefrontSettingResponseDataPolicySummary), UpdateStorefrontSettingResponseDataPolicySource policySource = default(UpdateStorefrontSettingResponseDataPolicySource), bool usesOwnPolicy = default(bool))
         {
             // to ensure "storePolicies" is required (not null)
             if (storePolicies == null) {
@@ -134,12 +134,12 @@ namespace net.crossly.Model
             }
             this.StorePolicies = storePolicies;
             this.UpdatedAt = updatedAt;
-            this.Published = published;
             // to ensure "storefrontId" is required (not null)
             if (storefrontId == null) {
                 throw new ArgumentNullException("storefrontId is a required property for UpdateStorefrontSettingResponseData and cannot be null");
             }
             this.StorefrontId = storefrontId;
+            this.Published = published;
             this.BundleDiscountBps = bundleDiscountBps;
             this.AcceptsCustomOrders = acceptsCustomOrders;
             this.MatchOwnPrices = matchOwnPrices;
@@ -175,15 +175,12 @@ namespace net.crossly.Model
             this.Bio = bio;
             this.Tagline = tagline;
             this.BannerImageUrl = bannerImageUrl;
-            this.ReturnPresetId = returnPresetId;
-            this.ShippingPresetId = shippingPresetId;
-            this.PaymentPresetId = paymentPresetId;
-            this.CustomDomain = customDomain;
             this.FeaturedListingIds = featuredListingIds;
             this.ShipFromCity = shipFromCity;
             this.ShipFromState = shipFromState;
             this.ShipFromZip = shipFromZip;
             this.ShipFromCountry = shipFromCountry;
+            this.CustomDomain = customDomain;
             this.CustomDomainVerifiedAt = customDomainVerifiedAt;
             this.LogoImageUrl = logoImageUrl;
             this.SeoTitle = seoTitle;
@@ -199,6 +196,9 @@ namespace net.crossly.Model
             this.ReturnCountry = returnCountry;
             this.ShipFromAddressId = shipFromAddressId;
             this.ReturnAddressId = returnAddressId;
+            this.ShippingPresetId = shippingPresetId;
+            this.ReturnPresetId = returnPresetId;
+            this.PaymentPresetId = paymentPresetId;
             this.SitePublishedAt = sitePublishedAt;
             this.SiteDraftUpdatedAt = siteDraftUpdatedAt;
             this.TradeSitePublishedAt = tradeSitePublishedAt;
@@ -272,16 +272,16 @@ namespace net.crossly.Model
         public DateTime UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Published
-        /// </summary>
-        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
-        public bool Published { get; set; }
-
-        /// <summary>
         /// Gets or Sets StorefrontId
         /// </summary>
         [DataMember(Name = "storefrontId", IsRequired = true, EmitDefaultValue = false)]
         public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Published
+        /// </summary>
+        [DataMember(Name = "published", IsRequired = true, EmitDefaultValue = true)]
+        public bool Published { get; set; }
 
         /// <summary>
         /// Gets or Sets PublishedAt
@@ -312,30 +312,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "bundleDiscountBps", IsRequired = true, EmitDefaultValue = false)]
         public decimal BundleDiscountBps { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ReturnPresetId
-        /// </summary>
-        [DataMember(Name = "returnPresetId", EmitDefaultValue = true)]
-        public string ReturnPresetId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ShippingPresetId
-        /// </summary>
-        [DataMember(Name = "shippingPresetId", EmitDefaultValue = true)]
-        public string ShippingPresetId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PaymentPresetId
-        /// </summary>
-        [DataMember(Name = "paymentPresetId", EmitDefaultValue = true)]
-        public string PaymentPresetId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CustomDomain
-        /// </summary>
-        [DataMember(Name = "customDomain", EmitDefaultValue = true)]
-        public string CustomDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets FeaturedListingIds
@@ -372,6 +348,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "acceptsCustomOrders", IsRequired = true, EmitDefaultValue = true)]
         public bool AcceptsCustomOrders { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustomDomain
+        /// </summary>
+        [DataMember(Name = "customDomain", EmitDefaultValue = true)]
+        public string CustomDomain { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomDomainVerifiedAt
@@ -470,6 +452,24 @@ namespace net.crossly.Model
         public bool MatchOwnPrices { get; set; }
 
         /// <summary>
+        /// Gets or Sets ShippingPresetId
+        /// </summary>
+        [DataMember(Name = "shippingPresetId", EmitDefaultValue = true)]
+        public string ShippingPresetId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReturnPresetId
+        /// </summary>
+        [DataMember(Name = "returnPresetId", EmitDefaultValue = true)]
+        public string ReturnPresetId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PaymentPresetId
+        /// </summary>
+        [DataMember(Name = "paymentPresetId", EmitDefaultValue = true)]
+        public string PaymentPresetId { get; set; }
+
+        /// <summary>
         /// Gets or Sets SitePublishedAt
         /// </summary>
         [DataMember(Name = "sitePublishedAt", EmitDefaultValue = true)]
@@ -548,23 +548,20 @@ namespace net.crossly.Model
             sb.Append("  ArrivalConditionWindowHours: ").Append(ArrivalConditionWindowHours).Append("\n");
             sb.Append("  Theme: ").Append(Theme).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Published: ").Append(Published).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Published: ").Append(Published).Append("\n");
             sb.Append("  PublishedAt: ").Append(PublishedAt).Append("\n");
             sb.Append("  Bio: ").Append(Bio).Append("\n");
             sb.Append("  Tagline: ").Append(Tagline).Append("\n");
             sb.Append("  BannerImageUrl: ").Append(BannerImageUrl).Append("\n");
             sb.Append("  BundleDiscountBps: ").Append(BundleDiscountBps).Append("\n");
-            sb.Append("  ReturnPresetId: ").Append(ReturnPresetId).Append("\n");
-            sb.Append("  ShippingPresetId: ").Append(ShippingPresetId).Append("\n");
-            sb.Append("  PaymentPresetId: ").Append(PaymentPresetId).Append("\n");
-            sb.Append("  CustomDomain: ").Append(CustomDomain).Append("\n");
             sb.Append("  FeaturedListingIds: ").Append(FeaturedListingIds).Append("\n");
             sb.Append("  ShipFromCity: ").Append(ShipFromCity).Append("\n");
             sb.Append("  ShipFromState: ").Append(ShipFromState).Append("\n");
             sb.Append("  ShipFromZip: ").Append(ShipFromZip).Append("\n");
             sb.Append("  ShipFromCountry: ").Append(ShipFromCountry).Append("\n");
             sb.Append("  AcceptsCustomOrders: ").Append(AcceptsCustomOrders).Append("\n");
+            sb.Append("  CustomDomain: ").Append(CustomDomain).Append("\n");
             sb.Append("  CustomDomainVerifiedAt: ").Append(CustomDomainVerifiedAt).Append("\n");
             sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
             sb.Append("  SeoTitle: ").Append(SeoTitle).Append("\n");
@@ -581,6 +578,9 @@ namespace net.crossly.Model
             sb.Append("  ShipFromAddressId: ").Append(ShipFromAddressId).Append("\n");
             sb.Append("  ReturnAddressId: ").Append(ReturnAddressId).Append("\n");
             sb.Append("  MatchOwnPrices: ").Append(MatchOwnPrices).Append("\n");
+            sb.Append("  ShippingPresetId: ").Append(ShippingPresetId).Append("\n");
+            sb.Append("  ReturnPresetId: ").Append(ReturnPresetId).Append("\n");
+            sb.Append("  PaymentPresetId: ").Append(PaymentPresetId).Append("\n");
             sb.Append("  SitePublishedAt: ").Append(SitePublishedAt).Append("\n");
             sb.Append("  SiteDraftUpdatedAt: ").Append(SiteDraftUpdatedAt).Append("\n");
             sb.Append("  SiteEnabled: ").Append(SiteEnabled).Append("\n");
@@ -685,13 +685,13 @@ namespace net.crossly.Model
                     this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
-                    this.Published == input.Published ||
-                    this.Published.Equals(input.Published)
-                ) && 
-                (
                     this.StorefrontId == input.StorefrontId ||
                     (this.StorefrontId != null &&
                     this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Published == input.Published ||
+                    this.Published.Equals(input.Published)
                 ) && 
                 (
                     this.PublishedAt == input.PublishedAt ||
@@ -716,26 +716,6 @@ namespace net.crossly.Model
                 (
                     this.BundleDiscountBps == input.BundleDiscountBps ||
                     this.BundleDiscountBps.Equals(input.BundleDiscountBps)
-                ) && 
-                (
-                    this.ReturnPresetId == input.ReturnPresetId ||
-                    (this.ReturnPresetId != null &&
-                    this.ReturnPresetId.Equals(input.ReturnPresetId))
-                ) && 
-                (
-                    this.ShippingPresetId == input.ShippingPresetId ||
-                    (this.ShippingPresetId != null &&
-                    this.ShippingPresetId.Equals(input.ShippingPresetId))
-                ) && 
-                (
-                    this.PaymentPresetId == input.PaymentPresetId ||
-                    (this.PaymentPresetId != null &&
-                    this.PaymentPresetId.Equals(input.PaymentPresetId))
-                ) && 
-                (
-                    this.CustomDomain == input.CustomDomain ||
-                    (this.CustomDomain != null &&
-                    this.CustomDomain.Equals(input.CustomDomain))
                 ) && 
                 (
                     this.FeaturedListingIds == input.FeaturedListingIds ||
@@ -766,6 +746,11 @@ namespace net.crossly.Model
                 (
                     this.AcceptsCustomOrders == input.AcceptsCustomOrders ||
                     this.AcceptsCustomOrders.Equals(input.AcceptsCustomOrders)
+                ) && 
+                (
+                    this.CustomDomain == input.CustomDomain ||
+                    (this.CustomDomain != null &&
+                    this.CustomDomain.Equals(input.CustomDomain))
                 ) && 
                 (
                     this.CustomDomainVerifiedAt == input.CustomDomainVerifiedAt ||
@@ -845,6 +830,21 @@ namespace net.crossly.Model
                 (
                     this.MatchOwnPrices == input.MatchOwnPrices ||
                     this.MatchOwnPrices.Equals(input.MatchOwnPrices)
+                ) && 
+                (
+                    this.ShippingPresetId == input.ShippingPresetId ||
+                    (this.ShippingPresetId != null &&
+                    this.ShippingPresetId.Equals(input.ShippingPresetId))
+                ) && 
+                (
+                    this.ReturnPresetId == input.ReturnPresetId ||
+                    (this.ReturnPresetId != null &&
+                    this.ReturnPresetId.Equals(input.ReturnPresetId))
+                ) && 
+                (
+                    this.PaymentPresetId == input.PaymentPresetId ||
+                    (this.PaymentPresetId != null &&
+                    this.PaymentPresetId.Equals(input.PaymentPresetId))
                 ) && 
                 (
                     this.SitePublishedAt == input.SitePublishedAt ||
@@ -953,11 +953,11 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Published.GetHashCode();
                 if (this.StorefrontId != null)
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Published.GetHashCode();
                 if (this.PublishedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.PublishedAt.GetHashCode();
@@ -975,22 +975,6 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.BannerImageUrl.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.BundleDiscountBps.GetHashCode();
-                if (this.ReturnPresetId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ReturnPresetId.GetHashCode();
-                }
-                if (this.ShippingPresetId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ShippingPresetId.GetHashCode();
-                }
-                if (this.PaymentPresetId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PaymentPresetId.GetHashCode();
-                }
-                if (this.CustomDomain != null)
-                {
-                    hashCode = (hashCode * 59) + this.CustomDomain.GetHashCode();
-                }
                 if (this.FeaturedListingIds != null)
                 {
                     hashCode = (hashCode * 59) + this.FeaturedListingIds.GetHashCode();
@@ -1012,6 +996,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.ShipFromCountry.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AcceptsCustomOrders.GetHashCode();
+                if (this.CustomDomain != null)
+                {
+                    hashCode = (hashCode * 59) + this.CustomDomain.GetHashCode();
+                }
                 if (this.CustomDomainVerifiedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CustomDomainVerifiedAt.GetHashCode();
@@ -1073,6 +1061,18 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.ReturnAddressId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.MatchOwnPrices.GetHashCode();
+                if (this.ShippingPresetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShippingPresetId.GetHashCode();
+                }
+                if (this.ReturnPresetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReturnPresetId.GetHashCode();
+                }
+                if (this.PaymentPresetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentPresetId.GetHashCode();
+                }
                 if (this.SitePublishedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.SitePublishedAt.GetHashCode();

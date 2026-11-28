@@ -43,8 +43,8 @@ namespace net.crossly.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="lastError">lastError.</param>
         /// <param name="deliveredAt">deliveredAt.</param>
+        /// <param name="lastError">lastError.</param>
         /// <param name="attempts">attempts (required).</param>
         /// <param name="lastAttemptAt">lastAttemptAt.</param>
         /// <param name="eventId">eventId (required).</param>
@@ -52,7 +52,7 @@ namespace net.crossly.Model
         /// <param name="eventName">eventName (required).</param>
         /// <param name="lastStatusCode">lastStatusCode.</param>
         /// <param name="redeliveryOf">redeliveryOf.</param>
-        public ListWebhookDeliveriesItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), string lastError = default(string), DateTime? deliveredAt = default(DateTime?), decimal attempts = default(decimal), DateTime? lastAttemptAt = default(DateTime?), string eventId = default(string), string webhookId = default(string), string eventName = default(string), decimal? lastStatusCode = default(decimal?), string redeliveryOf = default(string))
+        public ListWebhookDeliveriesItem(string id = default(string), DateTime createdAt = default(DateTime), string userId = default(string), string status = default(string), DateTime? deliveredAt = default(DateTime?), string lastError = default(string), decimal attempts = default(decimal), DateTime? lastAttemptAt = default(DateTime?), string eventId = default(string), string webhookId = default(string), string eventName = default(string), decimal? lastStatusCode = default(decimal?), string redeliveryOf = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -86,8 +86,8 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("eventName is a required property for ListWebhookDeliveriesItem and cannot be null");
             }
             this.EventName = eventName;
-            this.LastError = lastError;
             this.DeliveredAt = deliveredAt;
+            this.LastError = lastError;
             this.LastAttemptAt = lastAttemptAt;
             this.LastStatusCode = lastStatusCode;
             this.RedeliveryOf = redeliveryOf;
@@ -118,16 +118,16 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets LastError
-        /// </summary>
-        [DataMember(Name = "lastError", EmitDefaultValue = true)]
-        public string LastError { get; set; }
-
-        /// <summary>
         /// Gets or Sets DeliveredAt
         /// </summary>
         [DataMember(Name = "deliveredAt", EmitDefaultValue = true)]
         public DateTime? DeliveredAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastError
+        /// </summary>
+        [DataMember(Name = "lastError", EmitDefaultValue = true)]
+        public string LastError { get; set; }
 
         /// <summary>
         /// Gets or Sets Attempts
@@ -183,8 +183,8 @@ namespace net.crossly.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  DeliveredAt: ").Append(DeliveredAt).Append("\n");
+            sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  Attempts: ").Append(Attempts).Append("\n");
             sb.Append("  LastAttemptAt: ").Append(LastAttemptAt).Append("\n");
             sb.Append("  EventId: ").Append(EventId).Append("\n");
@@ -248,14 +248,14 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.LastError == input.LastError ||
-                    (this.LastError != null &&
-                    this.LastError.Equals(input.LastError))
-                ) && 
-                (
                     this.DeliveredAt == input.DeliveredAt ||
                     (this.DeliveredAt != null &&
                     this.DeliveredAt.Equals(input.DeliveredAt))
+                ) && 
+                (
+                    this.LastError == input.LastError ||
+                    (this.LastError != null &&
+                    this.LastError.Equals(input.LastError))
                 ) && 
                 (
                     this.Attempts == input.Attempts ||
@@ -318,13 +318,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.LastError != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
-                }
                 if (this.DeliveredAt != null)
                 {
                     hashCode = (hashCode * 59) + this.DeliveredAt.GetHashCode();
+                }
+                if (this.LastError != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Attempts.GetHashCode();
                 if (this.LastAttemptAt != null)

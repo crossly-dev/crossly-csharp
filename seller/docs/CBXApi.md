@@ -73,7 +73,7 @@ Method | HTTP request | Description
 
 <a name="createcbxaccrual"></a>
 # **CreateCbxAccrual**
-> CreateCbxAccrualResponse CreateCbxAccrual ()
+> CreateCbxAccrualResponse CreateCbxAccrual (CreateCbxAccrualRequest createCbxAccrualRequest)
 
 Record cashback a user earned, in cents.
 
@@ -99,11 +99,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxAccrualRequest = new CreateCbxAccrualRequest(); // CreateCbxAccrualRequest | 
 
             try
             {
                 // Record cashback a user earned, in cents.
-                CreateCbxAccrualResponse result = apiInstance.CreateCbxAccrual();
+                CreateCbxAccrualResponse result = apiInstance.CreateCbxAccrual(createCbxAccrualRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -118,7 +119,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxAccrualRequest** | **CreateCbxAccrualRequest**|  | 
 
 ### Return type
 
@@ -130,7 +134,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -149,7 +153,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxaccrualpurchase"></a>
 # **CreateCbxAccrualPurchase**
-> CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase ()
+> CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase (CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest)
 
 Accrue cashback for an order at the resolved rate.
 
@@ -175,11 +179,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxAccrualPurchaseRequest = new CreateCbxAccrualPurchaseRequest(); // CreateCbxAccrualPurchaseRequest | 
 
             try
             {
                 // Accrue cashback for an order at the resolved rate.
-                CreateCbxAccrualPurchaseResponse result = apiInstance.CreateCbxAccrualPurchase();
+                CreateCbxAccrualPurchaseResponse result = apiInstance.CreateCbxAccrualPurchase(createCbxAccrualPurchaseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -194,7 +199,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxAccrualPurchaseRequest** | **CreateCbxAccrualPurchaseRequest**|  | 
 
 ### Return type
 
@@ -206,7 +214,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -225,7 +233,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxaccrualreverse"></a>
 # **CreateCbxAccrualReverse**
-> CreateCbxSpendReverseResponse CreateCbxAccrualReverse (string accrualId)
+> CreateCbxSpendReverseResponse CreateCbxAccrualReverse (string accrualId, ReasonRequest reasonRequest)
 
 Claw back a pending accrual — a refund, a cancellation, fraud.
 
@@ -252,11 +260,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var accrualId = "accrualId_example";  // string | 
+            var reasonRequest = new ReasonRequest(); // ReasonRequest | 
 
             try
             {
                 // Claw back a pending accrual — a refund, a cancellation, fraud.
-                CreateCbxSpendReverseResponse result = apiInstance.CreateCbxAccrualReverse(accrualId);
+                CreateCbxSpendReverseResponse result = apiInstance.CreateCbxAccrualReverse(accrualId, reasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -275,6 +284,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **accrualId** | **string**|  | 
+ **reasonRequest** | **ReasonRequest**|  | 
 
 ### Return type
 
@@ -286,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -305,7 +315,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxadcreditpurchase"></a>
 # **CreateCbxAdCreditPurchase**
-> CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase ()
+> CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase (CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest)
 
 Claim ad credit against a CBX transfer you sent.
 
@@ -331,11 +341,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxAdCreditPurchaseRequest = new CreateCbxAdCreditPurchaseRequest(); // CreateCbxAdCreditPurchaseRequest | 
 
             try
             {
                 // Claim ad credit against a CBX transfer you sent.
-                CreateCbxAdCreditPurchaseResponse result = apiInstance.CreateCbxAdCreditPurchase();
+                CreateCbxAdCreditPurchaseResponse result = apiInstance.CreateCbxAdCreditPurchase(createCbxAdCreditPurchaseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -350,7 +361,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxAdCreditPurchaseRequest** | **CreateCbxAdCreditPurchaseRequest**|  | 
 
 ### Return type
 
@@ -362,7 +376,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -381,7 +395,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxadcreditquote"></a>
 # **CreateCbxAdCreditQuote**
-> CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote ()
+> CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote (CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
 
 What a given number of tokens buys in ad credit.
 
@@ -407,11 +421,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxSubjectStakeRequest = new CreateCbxSubjectStakeRequest(); // CreateCbxSubjectStakeRequest | 
 
             try
             {
                 // What a given number of tokens buys in ad credit.
-                CreateCbxAdCreditQuoteResponse result = apiInstance.CreateCbxAdCreditQuote();
+                CreateCbxAdCreditQuoteResponse result = apiInstance.CreateCbxAdCreditQuote(createCbxSubjectStakeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -426,7 +441,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxSubjectStakeRequest** | **CreateCbxSubjectStakeRequest**|  | 
 
 ### Return type
 
@@ -438,7 +456,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -457,7 +475,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxadcreditspend"></a>
 # **CreateCbxAdCreditSpend**
-> CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend ()
+> CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend (CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest)
 
 Consume credit for a billing period.
 
@@ -483,11 +501,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxAdCreditSpendRequest = new CreateCbxAdCreditSpendRequest(); // CreateCbxAdCreditSpendRequest | 
 
             try
             {
                 // Consume credit for a billing period.
-                CreateCbxAdCreditSpendResponse result = apiInstance.CreateCbxAdCreditSpend();
+                CreateCbxAdCreditSpendResponse result = apiInstance.CreateCbxAdCreditSpend(createCbxAdCreditSpendRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -502,7 +521,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxAdCreditSpendRequest** | **CreateCbxAdCreditSpendRequest**|  | 
 
 ### Return type
 
@@ -514,7 +536,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -533,7 +555,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxboost"></a>
 # **CreateCbxBoost**
-> CreateCbxBoostResponse CreateCbxBoost ()
+> CreateCbxBoostResponse CreateCbxBoost (CreateCbxBoostRequest createCbxBoostRequest)
 
 Fund elevated cashback on matching items.
 
@@ -559,11 +581,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxBoostRequest = new CreateCbxBoostRequest(); // CreateCbxBoostRequest | 
 
             try
             {
                 // Fund elevated cashback on matching items.
-                CreateCbxBoostResponse result = apiInstance.CreateCbxBoost();
+                CreateCbxBoostResponse result = apiInstance.CreateCbxBoost(createCbxBoostRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -578,7 +601,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxBoostRequest** | **CreateCbxBoostRequest**|  | 
 
 ### Return type
 
@@ -590,7 +616,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -689,7 +715,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxcampaign"></a>
 # **CreateCbxCampaign**
-> CreateCbxCampaignResponse CreateCbxCampaign ()
+> CreateCbxCampaignResponse CreateCbxCampaign (CreateCbxCampaignRequest createCbxCampaignRequest)
 
 Create a campaign in draft.
 
@@ -715,11 +741,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxCampaignRequest = new CreateCbxCampaignRequest(); // CreateCbxCampaignRequest | 
 
             try
             {
                 // Create a campaign in draft.
-                CreateCbxCampaignResponse result = apiInstance.CreateCbxCampaign();
+                CreateCbxCampaignResponse result = apiInstance.CreateCbxCampaign(createCbxCampaignRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -734,7 +761,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxCampaignRequest** | **CreateCbxCampaignRequest**|  | 
 
 ### Return type
 
@@ -746,7 +776,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -843,7 +873,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxcampaignexecutebycampaignid"></a>
 # **CreateCbxCampaignExecuteByCampaignId**
-> CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId (string campaignId)
+> CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId (string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest)
 
 Pay an approved campaign.
 
@@ -870,11 +900,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var campaignId = "campaignId_example";  // string | 
+            var createCbxCampaignExecuteByCampaignIdRequest = new CreateCbxCampaignExecuteByCampaignIdRequest(); // CreateCbxCampaignExecuteByCampaignIdRequest | 
 
             try
             {
                 // Pay an approved campaign.
-                CreateCbxCampaignExecuteByCampaignIdResponse result = apiInstance.CreateCbxCampaignExecuteByCampaignId(campaignId);
+                CreateCbxCampaignExecuteByCampaignIdResponse result = apiInstance.CreateCbxCampaignExecuteByCampaignId(campaignId, createCbxCampaignExecuteByCampaignIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -893,6 +924,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaignId** | **string**|  | 
+ **createCbxCampaignExecuteByCampaignIdRequest** | **CreateCbxCampaignExecuteByCampaignIdRequest**|  | 
 
 ### Return type
 
@@ -904,7 +936,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1003,7 +1035,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxclaim"></a>
 # **CreateCbxClaim**
-> CreateCbxClaimResponse CreateCbxClaim ()
+> CreateCbxClaimResponse CreateCbxClaim (CreateCbxClaimRequest createCbxClaimRequest)
 
 Reserve a claim. Debits the balance and queues the transfer.
 
@@ -1029,11 +1061,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxClaimRequest = new CreateCbxClaimRequest(); // CreateCbxClaimRequest | 
 
             try
             {
                 // Reserve a claim. Debits the balance and queues the transfer.
-                CreateCbxClaimResponse result = apiInstance.CreateCbxClaim();
+                CreateCbxClaimResponse result = apiInstance.CreateCbxClaim(createCbxClaimRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1048,7 +1081,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxClaimRequest** | **CreateCbxClaimRequest**|  | 
 
 ### Return type
 
@@ -1060,7 +1096,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1079,7 +1115,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxclaimquote"></a>
 # **CreateCbxClaimQuote**
-> CreateCbxClaimQuoteResponse CreateCbxClaimQuote ()
+> CreateCbxClaimQuoteResponse CreateCbxClaimQuote (CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest)
 
 What a claim would cost, without committing to it.
 
@@ -1105,11 +1141,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxClaimQuoteRequest = new CreateCbxClaimQuoteRequest(); // CreateCbxClaimQuoteRequest | 
 
             try
             {
                 // What a claim would cost, without committing to it.
-                CreateCbxClaimQuoteResponse result = apiInstance.CreateCbxClaimQuote();
+                CreateCbxClaimQuoteResponse result = apiInstance.CreateCbxClaimQuote(createCbxClaimQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1124,7 +1161,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxClaimQuoteRequest** | **CreateCbxClaimQuoteRequest**|  | 
 
 ### Return type
 
@@ -1136,7 +1176,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1235,7 +1275,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxcreditdraw"></a>
 # **CreateCbxCreditDraw**
-> CreateCbxCreditDrawResponse CreateCbxCreditDraw ()
+> CreateCbxCreditDrawResponse CreateCbxCreditDraw (CreateCbxCreditDrawRequest createCbxCreditDrawRequest)
 
 Draw against a line, receiving grant credit.
 
@@ -1261,11 +1301,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxCreditDrawRequest = new CreateCbxCreditDrawRequest(); // CreateCbxCreditDrawRequest | 
 
             try
             {
                 // Draw against a line, receiving grant credit.
-                CreateCbxCreditDrawResponse result = apiInstance.CreateCbxCreditDraw();
+                CreateCbxCreditDrawResponse result = apiInstance.CreateCbxCreditDraw(createCbxCreditDrawRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1280,7 +1321,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxCreditDrawRequest** | **CreateCbxCreditDrawRequest**|  | 
 
 ### Return type
 
@@ -1292,7 +1336,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1311,7 +1355,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxcreditfreeze"></a>
 # **CreateCbxCreditFreeze**
-> CreateCbxCreditFreezeResponse CreateCbxCreditFreeze ()
+> CreateCbxCreditFreezeResponse CreateCbxCreditFreeze (CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest)
 
 Stop new draws. Leaves the drawn balance on its terms.
 
@@ -1337,11 +1381,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxCreditFreezeRequest = new CreateCbxCreditFreezeRequest(); // CreateCbxCreditFreezeRequest | 
 
             try
             {
                 // Stop new draws. Leaves the drawn balance on its terms.
-                CreateCbxCreditFreezeResponse result = apiInstance.CreateCbxCreditFreeze();
+                CreateCbxCreditFreezeResponse result = apiInstance.CreateCbxCreditFreeze(createCbxCreditFreezeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1356,7 +1401,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxCreditFreezeRequest** | **CreateCbxCreditFreezeRequest**|  | 
 
 ### Return type
 
@@ -1368,7 +1416,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1463,7 +1511,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxcreditrepay"></a>
 # **CreateCbxCreditRepay**
-> CreateCbxCreditRepayResponse CreateCbxCreditRepay ()
+> CreateCbxCreditRepayResponse CreateCbxCreditRepay (CreateCbxCreditRepayRequest createCbxCreditRepayRequest)
 
 Apply a repayment to a line.
 
@@ -1489,11 +1537,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxCreditRepayRequest = new CreateCbxCreditRepayRequest(); // CreateCbxCreditRepayRequest | 
 
             try
             {
                 // Apply a repayment to a line.
-                CreateCbxCreditRepayResponse result = apiInstance.CreateCbxCreditRepay();
+                CreateCbxCreditRepayResponse result = apiInstance.CreateCbxCreditRepay(createCbxCreditRepayRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1508,7 +1557,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxCreditRepayRequest** | **CreateCbxCreditRepayRequest**|  | 
 
 ### Return type
 
@@ -1520,7 +1572,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1539,7 +1591,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxdisbursementrule"></a>
 # **CreateCbxDisbursementRule**
-> CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule ()
+> CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule (CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest)
 
 Fire a distribution when the events pool crosses a threshold.
 
@@ -1565,11 +1617,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxDisbursementRuleRequest = new CreateCbxDisbursementRuleRequest(); // CreateCbxDisbursementRuleRequest | 
 
             try
             {
                 // Fire a distribution when the events pool crosses a threshold.
-                CreateCbxDisbursementRuleResponse result = apiInstance.CreateCbxDisbursementRule();
+                CreateCbxDisbursementRuleResponse result = apiInstance.CreateCbxDisbursementRule(createCbxDisbursementRuleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1584,7 +1637,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxDisbursementRuleRequest** | **CreateCbxDisbursementRuleRequest**|  | 
 
 ### Return type
 
@@ -1596,7 +1652,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1773,7 +1829,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxearntier"></a>
 # **CreateCbxEarnTier**
-> CreateCbxEarnTierResponse CreateCbxEarnTier ()
+> CreateCbxEarnTierResponse CreateCbxEarnTier (CreateCbxEarnTierRequest createCbxEarnTierRequest)
 
 Define an earn term.
 
@@ -1799,11 +1855,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxEarnTierRequest = new CreateCbxEarnTierRequest(); // CreateCbxEarnTierRequest | 
 
             try
             {
                 // Define an earn term.
-                CreateCbxEarnTierResponse result = apiInstance.CreateCbxEarnTier();
+                CreateCbxEarnTierResponse result = apiInstance.CreateCbxEarnTier(createCbxEarnTierRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1818,7 +1875,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxEarnTierRequest** | **CreateCbxEarnTierRequest**|  | 
 
 ### Return type
 
@@ -1830,7 +1890,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1849,7 +1909,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxratequote"></a>
 # **CreateCbxRateQuote**
-> CreateCbxRateQuoteResponse CreateCbxRateQuote ()
+> CreateCbxRateQuoteResponse CreateCbxRateQuote (CreateCbxRateQuoteRequest createCbxRateQuoteRequest)
 
 What would this order earn, and why.
 
@@ -1875,11 +1935,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxRateQuoteRequest = new CreateCbxRateQuoteRequest(); // CreateCbxRateQuoteRequest | 
 
             try
             {
                 // What would this order earn, and why.
-                CreateCbxRateQuoteResponse result = apiInstance.CreateCbxRateQuote();
+                CreateCbxRateQuoteResponse result = apiInstance.CreateCbxRateQuote(createCbxRateQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1894,7 +1955,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxRateQuoteRequest** | **CreateCbxRateQuoteRequest**|  | 
 
 ### Return type
 
@@ -1906,7 +1970,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1925,7 +1989,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxredemption"></a>
 # **CreateCbxRedemption**
-> CreateCbxRedemptionResponse CreateCbxRedemption ()
+> CreateCbxRedemptionResponse CreateCbxRedemption (CreateCbxRedemptionRequest createCbxRedemptionRequest)
 
 Pay for a service in CBX.
 
@@ -1951,11 +2015,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxRedemptionRequest = new CreateCbxRedemptionRequest(); // CreateCbxRedemptionRequest | 
 
             try
             {
                 // Pay for a service in CBX.
-                CreateCbxRedemptionResponse result = apiInstance.CreateCbxRedemption();
+                CreateCbxRedemptionResponse result = apiInstance.CreateCbxRedemption(createCbxRedemptionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1970,7 +2035,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxRedemptionRequest** | **CreateCbxRedemptionRequest**|  | 
 
 ### Return type
 
@@ -1982,7 +2050,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2001,7 +2069,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxredemptionquote"></a>
 # **CreateCbxRedemptionQuote**
-> CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote ()
+> CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote (CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest)
 
 What a service costs in tokens right now.
 
@@ -2027,11 +2095,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxRedemptionQuoteRequest = new CreateCbxRedemptionQuoteRequest(); // CreateCbxRedemptionQuoteRequest | 
 
             try
             {
                 // What a service costs in tokens right now.
-                CreateCbxRedemptionQuoteResponse result = apiInstance.CreateCbxRedemptionQuote();
+                CreateCbxRedemptionQuoteResponse result = apiInstance.CreateCbxRedemptionQuote(createCbxRedemptionQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2046,7 +2115,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxRedemptionQuoteRequest** | **CreateCbxRedemptionQuoteRequest**|  | 
 
 ### Return type
 
@@ -2058,7 +2130,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2077,7 +2149,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxreserve"></a>
 # **CreateCbxReserve**
-> CreateCbxReserveResponse CreateCbxReserve ()
+> CreateCbxReserveResponse CreateCbxReserve (CreateCbxReserveRequest createCbxReserveRequest)
 
 Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
 
@@ -2101,11 +2173,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxReserveRequest = new CreateCbxReserveRequest(); // CreateCbxReserveRequest | 
 
             try
             {
                 // Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
-                CreateCbxReserveResponse result = apiInstance.CreateCbxReserve();
+                CreateCbxReserveResponse result = apiInstance.CreateCbxReserve(createCbxReserveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2120,7 +2193,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxReserveRequest** | **CreateCbxReserveRequest**|  | 
 
 ### Return type
 
@@ -2132,7 +2208,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2151,7 +2227,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxrevenuesweep"></a>
 # **CreateCbxRevenueSweep**
-> CreateCbxRevenueSweepResponse CreateCbxRevenueSweep ()
+> CreateCbxRevenueSweepResponse CreateCbxRevenueSweep (CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = null)
 
 Move accrued revenue from the reserve to your revenue wallet.
 
@@ -2177,11 +2253,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxRevenueSweepRequest = new CreateCbxRevenueSweepRequest(); // CreateCbxRevenueSweepRequest |  (optional) 
 
             try
             {
                 // Move accrued revenue from the reserve to your revenue wallet.
-                CreateCbxRevenueSweepResponse result = apiInstance.CreateCbxRevenueSweep();
+                CreateCbxRevenueSweepResponse result = apiInstance.CreateCbxRevenueSweep(createCbxRevenueSweepRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2196,7 +2273,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxRevenueSweepRequest** | **CreateCbxRevenueSweepRequest**|  | [optional] 
 
 ### Return type
 
@@ -2208,7 +2288,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2227,7 +2307,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxspend"></a>
 # **CreateCbxSpend**
-> CreateCbxSpendResponse CreateCbxSpend ()
+> CreateCbxSpendResponse CreateCbxSpend (CreateCbxSpendRequest createCbxSpendRequest)
 
 Redeem a user's CBX against an order.
 
@@ -2253,11 +2333,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxSpendRequest = new CreateCbxSpendRequest(); // CreateCbxSpendRequest | 
 
             try
             {
                 // Redeem a user's CBX against an order.
-                CreateCbxSpendResponse result = apiInstance.CreateCbxSpend();
+                CreateCbxSpendResponse result = apiInstance.CreateCbxSpend(createCbxSpendRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2272,7 +2353,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxSpendRequest** | **CreateCbxSpendRequest**|  | 
 
 ### Return type
 
@@ -2284,7 +2368,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2303,7 +2387,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxspendreverse"></a>
 # **CreateCbxSpendReverse**
-> CreateCbxSpendReverseResponse CreateCbxSpendReverse (string externalId)
+> CreateCbxSpendReverseResponse CreateCbxSpendReverse (string externalId, ReasonRequest reasonRequest)
 
 Refund a spend — give the tokens back and claw the skim back.
 
@@ -2330,11 +2414,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var externalId = "externalId_example";  // string | 
+            var reasonRequest = new ReasonRequest(); // ReasonRequest | 
 
             try
             {
                 // Refund a spend — give the tokens back and claw the skim back.
-                CreateCbxSpendReverseResponse result = apiInstance.CreateCbxSpendReverse(externalId);
+                CreateCbxSpendReverseResponse result = apiInstance.CreateCbxSpendReverse(externalId, reasonRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2353,6 +2438,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **externalId** | **string**|  | 
+ **reasonRequest** | **ReasonRequest**|  | 
 
 ### Return type
 
@@ -2364,7 +2450,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2383,7 +2469,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxstaketier"></a>
 # **CreateCbxStakeTier**
-> CreateCbxStakeTierResponse CreateCbxStakeTier ()
+> CreateCbxStakeTierResponse CreateCbxStakeTier (CreateCbxStakeTierRequest createCbxStakeTierRequest)
 
 Define a staking tier.
 
@@ -2409,11 +2495,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxStakeTierRequest = new CreateCbxStakeTierRequest(); // CreateCbxStakeTierRequest | 
 
             try
             {
                 // Define a staking tier.
-                CreateCbxStakeTierResponse result = apiInstance.CreateCbxStakeTier();
+                CreateCbxStakeTierResponse result = apiInstance.CreateCbxStakeTier(createCbxStakeTierRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2428,7 +2515,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxStakeTierRequest** | **CreateCbxStakeTierRequest**|  | 
 
 ### Return type
 
@@ -2440,7 +2530,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2459,7 +2549,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxsubject"></a>
 # **CreateCbxSubject**
-> CreateCbxSubjectResponse CreateCbxSubject ()
+> CreateCbxSubjectResponse CreateCbxSubject (CreateCbxSubjectRequest createCbxSubjectRequest)
 
 Map one of your user ids to a CBX subject.
 
@@ -2485,11 +2575,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxSubjectRequest = new CreateCbxSubjectRequest(); // CreateCbxSubjectRequest | 
 
             try
             {
                 // Map one of your user ids to a CBX subject.
-                CreateCbxSubjectResponse result = apiInstance.CreateCbxSubject();
+                CreateCbxSubjectResponse result = apiInstance.CreateCbxSubject(createCbxSubjectRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2504,7 +2595,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxSubjectRequest** | **CreateCbxSubjectRequest**|  | 
 
 ### Return type
 
@@ -2516,7 +2610,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2535,7 +2629,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxsubjectgrant"></a>
 # **CreateCbxSubjectGrant**
-> CreateCbxSubjectGrantResponse CreateCbxSubjectGrant (string subjectId)
+> CreateCbxSubjectGrantResponse CreateCbxSubjectGrant (string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest)
 
 Issue grant credit — in-platform, non-withdrawable.
 
@@ -2562,11 +2656,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var subjectId = "subjectId_example";  // string | 
+            var createCbxSubjectGrantRequest = new CreateCbxSubjectGrantRequest(); // CreateCbxSubjectGrantRequest | 
 
             try
             {
                 // Issue grant credit — in-platform, non-withdrawable.
-                CreateCbxSubjectGrantResponse result = apiInstance.CreateCbxSubjectGrant(subjectId);
+                CreateCbxSubjectGrantResponse result = apiInstance.CreateCbxSubjectGrant(subjectId, createCbxSubjectGrantRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2585,6 +2680,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subjectId** | **string**|  | 
+ **createCbxSubjectGrantRequest** | **CreateCbxSubjectGrantRequest**|  | 
 
 ### Return type
 
@@ -2596,7 +2692,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2615,7 +2711,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxsubjectspendplan"></a>
 # **CreateCbxSubjectSpendPlan**
-> CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan (string subjectId)
+> CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan (string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest)
 
 Which balances would pay for a spend, and in what order.
 
@@ -2642,11 +2738,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var subjectId = "subjectId_example";  // string | 
+            var createCbxSubjectSpendPlanRequest = new CreateCbxSubjectSpendPlanRequest(); // CreateCbxSubjectSpendPlanRequest | 
 
             try
             {
                 // Which balances would pay for a spend, and in what order.
-                CreateCbxSubjectSpendPlanResponse result = apiInstance.CreateCbxSubjectSpendPlan(subjectId);
+                CreateCbxSubjectSpendPlanResponse result = apiInstance.CreateCbxSubjectSpendPlan(subjectId, createCbxSubjectSpendPlanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2665,6 +2762,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subjectId** | **string**|  | 
+ **createCbxSubjectSpendPlanRequest** | **CreateCbxSubjectSpendPlanRequest**|  | 
 
 ### Return type
 
@@ -2676,7 +2774,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2695,7 +2793,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxsubjectstake"></a>
 # **CreateCbxSubjectStake**
-> CreateCbxSubjectStakeResponse CreateCbxSubjectStake (string subjectId)
+> CreateCbxSubjectStakeResponse CreateCbxSubjectStake (string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
 
 Lock a subject's tokens for a tier.
 
@@ -2722,11 +2820,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var subjectId = "subjectId_example";  // string | 
+            var createCbxSubjectStakeRequest = new CreateCbxSubjectStakeRequest(); // CreateCbxSubjectStakeRequest | 
 
             try
             {
                 // Lock a subject's tokens for a tier.
-                CreateCbxSubjectStakeResponse result = apiInstance.CreateCbxSubjectStake(subjectId);
+                CreateCbxSubjectStakeResponse result = apiInstance.CreateCbxSubjectStake(subjectId, createCbxSubjectStakeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2745,6 +2844,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subjectId** | **string**|  | 
+ **createCbxSubjectStakeRequest** | **CreateCbxSubjectStakeRequest**|  | 
 
 ### Return type
 
@@ -2756,7 +2856,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2855,7 +2955,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxwalletchallenge"></a>
 # **CreateCbxWalletChallenge**
-> CreateCbxWalletChallengeResponse CreateCbxWalletChallenge ()
+> CreateCbxWalletChallengeResponse CreateCbxWalletChallenge (CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest)
 
 Start wallet verification. Returns a message for the user to sign.
 
@@ -2881,11 +2981,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxWalletChallengeRequest = new CreateCbxWalletChallengeRequest(); // CreateCbxWalletChallengeRequest | 
 
             try
             {
                 // Start wallet verification. Returns a message for the user to sign.
-                CreateCbxWalletChallengeResponse result = apiInstance.CreateCbxWalletChallenge();
+                CreateCbxWalletChallengeResponse result = apiInstance.CreateCbxWalletChallenge(createCbxWalletChallengeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2900,7 +3001,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxWalletChallengeRequest** | **CreateCbxWalletChallengeRequest**|  | 
 
 ### Return type
 
@@ -2912,7 +3016,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2931,7 +3035,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxwalletpaymentconfirm"></a>
 # **CreateCbxWalletPaymentConfirm**
-> CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm ()
+> CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm (CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest)
 
 Present the signature. Returns a ship / do-not-ship decision.
 
@@ -2957,11 +3061,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxWalletPaymentConfirmRequest = new CreateCbxWalletPaymentConfirmRequest(); // CreateCbxWalletPaymentConfirmRequest | 
 
             try
             {
                 // Present the signature. Returns a ship / do-not-ship decision.
-                CreateCbxWalletPaymentConfirmResponse result = apiInstance.CreateCbxWalletPaymentConfirm();
+                CreateCbxWalletPaymentConfirmResponse result = apiInstance.CreateCbxWalletPaymentConfirm(createCbxWalletPaymentConfirmRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2976,7 +3081,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxWalletPaymentConfirmRequest** | **CreateCbxWalletPaymentConfirmRequest**|  | 
 
 ### Return type
 
@@ -2988,7 +3096,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3007,7 +3115,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxwalletpaymentquote"></a>
 # **CreateCbxWalletPaymentQuote**
-> CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote ()
+> CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote (CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest)
 
 Build a transfer for the buyer to sign themselves.
 
@@ -3033,11 +3141,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxWalletPaymentQuoteRequest = new CreateCbxWalletPaymentQuoteRequest(); // CreateCbxWalletPaymentQuoteRequest | 
 
             try
             {
                 // Build a transfer for the buyer to sign themselves.
-                CreateCbxWalletPaymentQuoteResponse result = apiInstance.CreateCbxWalletPaymentQuote();
+                CreateCbxWalletPaymentQuoteResponse result = apiInstance.CreateCbxWalletPaymentQuote(createCbxWalletPaymentQuoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3052,7 +3161,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxWalletPaymentQuoteRequest** | **CreateCbxWalletPaymentQuoteRequest**|  | 
 
 ### Return type
 
@@ -3064,7 +3176,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3083,7 +3195,7 @@ This endpoint does not need any parameter.
 
 <a name="createcbxwalletpaymentresolve"></a>
 # **CreateCbxWalletPaymentResolve**
-> CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve (string paymentId)
+> CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve (string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest)
 
 A human decides on a held payment.
 
@@ -3110,11 +3222,12 @@ namespace Example
 
             var apiInstance = new CBXApi(config);
             var paymentId = "paymentId_example";  // string | 
+            var createCbxWalletPaymentResolveRequest = new CreateCbxWalletPaymentResolveRequest(); // CreateCbxWalletPaymentResolveRequest | 
 
             try
             {
                 // A human decides on a held payment.
-                CreateCbxWalletPaymentResolveResponse result = apiInstance.CreateCbxWalletPaymentResolve(paymentId);
+                CreateCbxWalletPaymentResolveResponse result = apiInstance.CreateCbxWalletPaymentResolve(paymentId, createCbxWalletPaymentResolveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3133,6 +3246,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **paymentId** | **string**|  | 
+ **createCbxWalletPaymentResolveRequest** | **CreateCbxWalletPaymentResolveRequest**|  | 
 
 ### Return type
 
@@ -3144,7 +3258,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3163,7 +3277,7 @@ Name | Type | Description  | Notes
 
 <a name="createcbxwalletverify"></a>
 # **CreateCbxWalletVerify**
-> CreateCbxWalletVerifyResponse CreateCbxWalletVerify ()
+> CreateCbxWalletVerifyResponse CreateCbxWalletVerify (CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest)
 
 Complete wallet verification with the user's signature.
 
@@ -3189,11 +3303,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new CBXApi(config);
+            var createCbxWalletVerifyRequest = new CreateCbxWalletVerifyRequest(); // CreateCbxWalletVerifyRequest | 
 
             try
             {
                 // Complete wallet verification with the user's signature.
-                CreateCbxWalletVerifyResponse result = apiInstance.CreateCbxWalletVerify();
+                CreateCbxWalletVerifyResponse result = apiInstance.CreateCbxWalletVerify(createCbxWalletVerifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3208,7 +3323,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCbxWalletVerifyRequest** | **CreateCbxWalletVerifyRequest**|  | 
 
 ### Return type
 
@@ -3220,7 +3338,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

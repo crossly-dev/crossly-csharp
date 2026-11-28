@@ -32,16 +32,16 @@ namespace net.crossly.Model
     public enum ListBrandingDropsItemConfigWherePlacementsItem
     {
         /// <summary>
-        /// Enum Live for value: live
-        /// </summary>
-        [EnumMember(Value = "live")]
-        Live = 1,
-
-        /// <summary>
         /// Enum Storefront for value: storefront
         /// </summary>
         [EnumMember(Value = "storefront")]
-        Storefront = 2,
+        Storefront = 1,
+
+        /// <summary>
+        /// Enum Live for value: live
+        /// </summary>
+        [EnumMember(Value = "live")]
+        Live = 2,
 
         /// <summary>
         /// Enum Wholesale for value: wholesale

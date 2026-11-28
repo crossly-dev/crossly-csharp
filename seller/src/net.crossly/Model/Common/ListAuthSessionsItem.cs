@@ -32,6 +32,104 @@ namespace net.crossly.Model
     public partial class ListAuthSessionsItem : IEquatable<ListAuthSessionsItem>, IValidatableObject
     {
         /// <summary>
+        /// &#39;atlas&#39;, or &#39;legacy&#39; for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15).
+        /// </summary>
+        /// <value>&#39;atlas&#39;, or &#39;legacy&#39; for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15).</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum SourceEnum
+        {
+            /// <summary>
+            /// Enum Atlas for value: atlas
+            /// </summary>
+            [EnumMember(Value = "atlas")]
+            Atlas = 1,
+
+            /// <summary>
+            /// Enum Legacy for value: legacy
+            /// </summary>
+            [EnumMember(Value = "legacy")]
+            Legacy = 2
+
+        }
+
+
+        /// <summary>
+        /// &#39;atlas&#39;, or &#39;legacy&#39; for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15).
+        /// </summary>
+        /// <value>&#39;atlas&#39;, or &#39;legacy&#39; for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15).</value>
+        [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
+        public SourceEnum Source { get; set; }
+        /// <summary>
+        /// Defines Status
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum StatusEnum
+        {
+            /// <summary>
+            /// Enum Active for value: active
+            /// </summary>
+            [EnumMember(Value = "active")]
+            Active = 1,
+
+            /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 2
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public StatusEnum Status { get; set; }
+        /// <summary>
+        /// Defines DeviceType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DeviceTypeEnum
+        {
+            /// <summary>
+            /// Enum Desktop for value: desktop
+            /// </summary>
+            [EnumMember(Value = "desktop")]
+            Desktop = 1,
+
+            /// <summary>
+            /// Enum Mobile for value: mobile
+            /// </summary>
+            [EnumMember(Value = "mobile")]
+            Mobile = 2,
+
+            /// <summary>
+            /// Enum Tablet for value: tablet
+            /// </summary>
+            [EnumMember(Value = "tablet")]
+            Tablet = 3,
+
+            /// <summary>
+            /// Enum App for value: app
+            /// </summary>
+            [EnumMember(Value = "app")]
+            App = 4,
+
+            /// <summary>
+            /// Enum Unknown for value: unknown
+            /// </summary>
+            [EnumMember(Value = "unknown")]
+            Unknown = 5
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets DeviceType
+        /// </summary>
+        [DataMember(Name = "deviceType", IsRequired = true, EmitDefaultValue = false)]
+        public DeviceTypeEnum DeviceType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ListAuthSessionsItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,41 +137,49 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListAuthSessionsItem" /> class.
         /// </summary>
-        /// <param name="isCurrent">isCurrent (required).</param>
-        /// <param name="id">id (required).</param>
         /// <param name="userAgent">userAgent.</param>
-        /// <param name="ipAddress">ipAddress.</param>
         /// <param name="ipCountry">ipCountry.</param>
+        /// <param name="lastUsedAt">&#x3D; lastActiveAt (the v1 name since before Atlas)..</param>
+        /// <param name="source">&#39;atlas&#39;, or &#39;legacy&#39; for an old Crossly session the bridge could still revive (v1 only, until 2027-01-15). (required).</param>
+        /// <param name="status">status (required).</param>
+        /// <param name="deviceType">deviceType (required).</param>
+        /// <param name="id">id (required).</param>
+        /// <param name="device">\&quot;Chrome on macOS\&quot;. (required).</param>
+        /// <param name="ipAddress">ipAddress.</param>
+        /// <param name="location">\&quot;New Brunswick, US\&quot;..</param>
         /// <param name="createdAt">createdAt.</param>
-        /// <param name="lastUsedAt">lastUsedAt.</param>
+        /// <param name="lastActiveAt">lastActiveAt.</param>
         /// <param name="expiresAt">expiresAt.</param>
-        public ListAuthSessionsItem(bool isCurrent = default(bool), string id = default(string), string userAgent = default(string), string ipAddress = default(string), string ipCountry = default(string), string createdAt = default(string), string lastUsedAt = default(string), string expiresAt = default(string))
+        /// <param name="isCurrent">The session making the call (cookie or bearer: Atlas marks exactly one). (required).</param>
+        /// <param name="signedInWith">How it signed in: \&quot;Google\&quot;, \&quot;Password\&quot;, \&quot;Passkey\&quot;…; null for a session from before Atlas recorded it..</param>
+        /// <param name="twoStep">A second step was proven at sign-in (or by a later step-up). (required).</param>
+        public ListAuthSessionsItem(string userAgent = default(string), string ipCountry = default(string), string lastUsedAt = default(string), SourceEnum source = default(SourceEnum), StatusEnum status = default(StatusEnum), DeviceTypeEnum deviceType = default(DeviceTypeEnum), string id = default(string), string device = default(string), string ipAddress = default(string), string location = default(string), string createdAt = default(string), string lastActiveAt = default(string), string expiresAt = default(string), bool isCurrent = default(bool), string signedInWith = default(string), bool twoStep = default(bool))
         {
-            this.IsCurrent = isCurrent;
+            this.Source = source;
+            this.Status = status;
+            this.DeviceType = deviceType;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for ListAuthSessionsItem and cannot be null");
             }
             this.Id = id;
+            // to ensure "device" is required (not null)
+            if (device == null) {
+                throw new ArgumentNullException("device is a required property for ListAuthSessionsItem and cannot be null");
+            }
+            this.Device = device;
+            this.IsCurrent = isCurrent;
+            this.TwoStep = twoStep;
             this.UserAgent = userAgent;
-            this.IpAddress = ipAddress;
             this.IpCountry = ipCountry;
-            this.CreatedAt = createdAt;
             this.LastUsedAt = lastUsedAt;
+            this.IpAddress = ipAddress;
+            this.Location = location;
+            this.CreatedAt = createdAt;
+            this.LastActiveAt = lastActiveAt;
             this.ExpiresAt = expiresAt;
+            this.SignedInWith = signedInWith;
         }
-
-        /// <summary>
-        /// Gets or Sets IsCurrent
-        /// </summary>
-        [DataMember(Name = "isCurrent", IsRequired = true, EmitDefaultValue = true)]
-        public bool IsCurrent { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Id
-        /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
-        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets UserAgent
@@ -82,16 +188,43 @@ namespace net.crossly.Model
         public string UserAgent { get; set; }
 
         /// <summary>
+        /// Gets or Sets IpCountry
+        /// </summary>
+        [DataMember(Name = "ipCountry", EmitDefaultValue = true)]
+        public string IpCountry { get; set; }
+
+        /// <summary>
+        /// &#x3D; lastActiveAt (the v1 name since before Atlas).
+        /// </summary>
+        /// <value>&#x3D; lastActiveAt (the v1 name since before Atlas).</value>
+        [DataMember(Name = "lastUsedAt", EmitDefaultValue = true)]
+        public string LastUsedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// \&quot;Chrome on macOS\&quot;.
+        /// </summary>
+        /// <value>\&quot;Chrome on macOS\&quot;.</value>
+        [DataMember(Name = "device", IsRequired = true, EmitDefaultValue = false)]
+        public string Device { get; set; }
+
+        /// <summary>
         /// Gets or Sets IpAddress
         /// </summary>
         [DataMember(Name = "ipAddress", EmitDefaultValue = true)]
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets IpCountry
+        /// \&quot;New Brunswick, US\&quot;.
         /// </summary>
-        [DataMember(Name = "ipCountry", EmitDefaultValue = true)]
-        public string IpCountry { get; set; }
+        /// <value>\&quot;New Brunswick, US\&quot;.</value>
+        [DataMember(Name = "location", EmitDefaultValue = true)]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -100,16 +233,37 @@ namespace net.crossly.Model
         public string CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets LastUsedAt
+        /// Gets or Sets LastActiveAt
         /// </summary>
-        [DataMember(Name = "lastUsedAt", EmitDefaultValue = true)]
-        public string LastUsedAt { get; set; }
+        [DataMember(Name = "lastActiveAt", EmitDefaultValue = true)]
+        public string LastActiveAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiresAt
         /// </summary>
         [DataMember(Name = "expiresAt", EmitDefaultValue = true)]
         public string ExpiresAt { get; set; }
+
+        /// <summary>
+        /// The session making the call (cookie or bearer: Atlas marks exactly one).
+        /// </summary>
+        /// <value>The session making the call (cookie or bearer: Atlas marks exactly one).</value>
+        [DataMember(Name = "isCurrent", IsRequired = true, EmitDefaultValue = true)]
+        public bool IsCurrent { get; set; }
+
+        /// <summary>
+        /// How it signed in: \&quot;Google\&quot;, \&quot;Password\&quot;, \&quot;Passkey\&quot;…; null for a session from before Atlas recorded it.
+        /// </summary>
+        /// <value>How it signed in: \&quot;Google\&quot;, \&quot;Password\&quot;, \&quot;Passkey\&quot;…; null for a session from before Atlas recorded it.</value>
+        [DataMember(Name = "signedInWith", EmitDefaultValue = true)]
+        public string SignedInWith { get; set; }
+
+        /// <summary>
+        /// A second step was proven at sign-in (or by a later step-up).
+        /// </summary>
+        /// <value>A second step was proven at sign-in (or by a later step-up).</value>
+        [DataMember(Name = "twoStep", IsRequired = true, EmitDefaultValue = true)]
+        public bool TwoStep { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,14 +273,22 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListAuthSessionsItem {\n");
-            sb.Append("  IsCurrent: ").Append(IsCurrent).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  UserAgent: ").Append(UserAgent).Append("\n");
-            sb.Append("  IpAddress: ").Append(IpAddress).Append("\n");
             sb.Append("  IpCountry: ").Append(IpCountry).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  LastUsedAt: ").Append(LastUsedAt).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  DeviceType: ").Append(DeviceType).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Device: ").Append(Device).Append("\n");
+            sb.Append("  IpAddress: ").Append(IpAddress).Append("\n");
+            sb.Append("  Location: ").Append(Location).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  LastActiveAt: ").Append(LastActiveAt).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("  IsCurrent: ").Append(IsCurrent).Append("\n");
+            sb.Append("  SignedInWith: ").Append(SignedInWith).Append("\n");
+            sb.Append("  TwoStep: ").Append(TwoStep).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,23 +325,9 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.IsCurrent == input.IsCurrent ||
-                    this.IsCurrent.Equals(input.IsCurrent)
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
                     this.UserAgent == input.UserAgent ||
                     (this.UserAgent != null &&
                     this.UserAgent.Equals(input.UserAgent))
-                ) && 
-                (
-                    this.IpAddress == input.IpAddress ||
-                    (this.IpAddress != null &&
-                    this.IpAddress.Equals(input.IpAddress))
                 ) && 
                 (
                     this.IpCountry == input.IpCountry ||
@@ -187,19 +335,69 @@ namespace net.crossly.Model
                     this.IpCountry.Equals(input.IpCountry))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
                     this.LastUsedAt == input.LastUsedAt ||
                     (this.LastUsedAt != null &&
                     this.LastUsedAt.Equals(input.LastUsedAt))
                 ) && 
                 (
+                    this.Source == input.Source ||
+                    this.Source.Equals(input.Source)
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
+                ) && 
+                (
+                    this.DeviceType == input.DeviceType ||
+                    this.DeviceType.Equals(input.DeviceType)
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Device == input.Device ||
+                    (this.Device != null &&
+                    this.Device.Equals(input.Device))
+                ) && 
+                (
+                    this.IpAddress == input.IpAddress ||
+                    (this.IpAddress != null &&
+                    this.IpAddress.Equals(input.IpAddress))
+                ) && 
+                (
+                    this.Location == input.Location ||
+                    (this.Location != null &&
+                    this.Location.Equals(input.Location))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.LastActiveAt == input.LastActiveAt ||
+                    (this.LastActiveAt != null &&
+                    this.LastActiveAt.Equals(input.LastActiveAt))
+                ) && 
+                (
                     this.ExpiresAt == input.ExpiresAt ||
                     (this.ExpiresAt != null &&
                     this.ExpiresAt.Equals(input.ExpiresAt))
+                ) && 
+                (
+                    this.IsCurrent == input.IsCurrent ||
+                    this.IsCurrent.Equals(input.IsCurrent)
+                ) && 
+                (
+                    this.SignedInWith == input.SignedInWith ||
+                    (this.SignedInWith != null &&
+                    this.SignedInWith.Equals(input.SignedInWith))
+                ) && 
+                (
+                    this.TwoStep == input.TwoStep ||
+                    this.TwoStep.Equals(input.TwoStep)
                 );
         }
 
@@ -212,35 +410,55 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.IsCurrent.GetHashCode();
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
                 if (this.UserAgent != null)
                 {
                     hashCode = (hashCode * 59) + this.UserAgent.GetHashCode();
-                }
-                if (this.IpAddress != null)
-                {
-                    hashCode = (hashCode * 59) + this.IpAddress.GetHashCode();
                 }
                 if (this.IpCountry != null)
                 {
                     hashCode = (hashCode * 59) + this.IpCountry.GetHashCode();
                 }
+                if (this.LastUsedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastUsedAt.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                hashCode = (hashCode * 59) + this.DeviceType.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.Device != null)
+                {
+                    hashCode = (hashCode * 59) + this.Device.GetHashCode();
+                }
+                if (this.IpAddress != null)
+                {
+                    hashCode = (hashCode * 59) + this.IpAddress.GetHashCode();
+                }
+                if (this.Location != null)
+                {
+                    hashCode = (hashCode * 59) + this.Location.GetHashCode();
+                }
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 }
-                if (this.LastUsedAt != null)
+                if (this.LastActiveAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.LastUsedAt.GetHashCode();
+                    hashCode = (hashCode * 59) + this.LastActiveAt.GetHashCode();
                 }
                 if (this.ExpiresAt != null)
                 {
                     hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.IsCurrent.GetHashCode();
+                if (this.SignedInWith != null)
+                {
+                    hashCode = (hashCode * 59) + this.SignedInWith.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.TwoStep.GetHashCode();
                 return hashCode;
             }
         }

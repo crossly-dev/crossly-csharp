@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        ToolboxAssetResponse CreateToolboxAsset();
+        ToolboxAssetResponse CreateToolboxAsset(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest));
 
         /// <summary>
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        ApiResponse<ToolboxAssetResponse> CreateToolboxAssetWithHttpInfo();
+        ApiResponse<ToolboxAssetResponse> CreateToolboxAssetWithHttpInfo(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest));
         /// <summary>
         /// Open a Crossly checkout for a paid asset. Nothing is charged here: a person pays at checkoutUrl. The author earns 80% of net; the licence is use in your own experiences.
         /// </summary>
@@ -83,8 +85,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <returns>CreateToolboxAssetUseResponse</returns>
-        CreateToolboxAssetUseResponse CreateToolboxAssetUse(string assetId);
+        CreateToolboxAssetUseResponse CreateToolboxAssetUse(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest));
 
         /// <summary>
         /// Get the asset&#39;s nodes stamped with its id for a place you can edit; insert:true also inserts them into the place&#39;s live session. Paid assets need the experience owner&#39;s licence.
@@ -94,15 +97,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateToolboxAssetUseResponse</returns>
-        ApiResponse<CreateToolboxAssetUseResponse> CreateToolboxAssetUseWithHttpInfo(string assetId);
+        ApiResponse<CreateToolboxAssetUseResponse> CreateToolboxAssetUseWithHttpInfo(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest));
         /// <summary>
         /// A new version (reviewed); the live one keeps serving until it is approved.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        ToolboxAssetResponse CreateToolboxAssetVersion(string assetId);
+        ToolboxAssetResponse CreateToolboxAssetVersion(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest));
 
         /// <summary>
         /// A new version (reviewed); the live one keeps serving until it is approved.
@@ -112,15 +117,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        ApiResponse<ToolboxAssetResponse> CreateToolboxAssetVersionWithHttpInfo(string assetId);
+        ApiResponse<ToolboxAssetResponse> CreateToolboxAssetVersionWithHttpInfo(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest));
         /// <summary>
         /// Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author&#39;s share is reversed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>CreateWorldMeReceiptRefundResponse</returns>
-        CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund(string purchaseId);
+        CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2));
 
         /// <summary>
         /// Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author&#39;s share is reversed.
@@ -130,8 +137,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldMeReceiptRefundResponse</returns>
-        ApiResponse<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundWithHttpInfo(string purchaseId);
+        ApiResponse<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundWithHttpInfo(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2));
         /// <summary>
         /// Remove your rating of an asset.
         /// </summary>
@@ -208,8 +216,15 @@ namespace net.crossly.Api
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListToolboxAssetsResponse</returns>
-        ListToolboxAssetsResponse ListToolboxAssets();
+        ListToolboxAssetsResponse ListToolboxAssets(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now.
@@ -218,8 +233,15 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListToolboxAssetsResponse</returns>
-        ApiResponse<ListToolboxAssetsResponse> ListToolboxAssetsWithHttpInfo();
+        ApiResponse<ListToolboxAssetsResponse> ListToolboxAssetsWithHttpInfo(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Assets you may insert: licences you bought, your own, free ones you used.
         /// </summary>
@@ -256,8 +278,10 @@ namespace net.crossly.Api
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListToolboxSalesResponse</returns>
-        ListToolboxSalesResponse ListToolboxSales();
+        ListToolboxSalesResponse ListToolboxSales(string cursor = default(string), decimal? limit = default(decimal?));
 
         /// <summary>
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
@@ -266,15 +290,18 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListToolboxSalesResponse</returns>
-        ApiResponse<ListToolboxSalesResponse> ListToolboxSalesWithHttpInfo();
+        ApiResponse<ListToolboxSalesResponse> ListToolboxSalesWithHttpInfo(string cursor = default(string), decimal? limit = default(decimal?));
         /// <summary>
         /// Edit name, description, tags, thumbnail or price.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        ToolboxAssetResponse UpdateToolboxAsset(string assetId);
+        ToolboxAssetResponse UpdateToolboxAsset(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest));
 
         /// <summary>
         /// Edit name, description, tags, thumbnail or price.
@@ -284,15 +311,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        ApiResponse<ToolboxAssetResponse> UpdateToolboxAssetWithHttpInfo(string assetId);
+        ApiResponse<ToolboxAssetResponse> UpdateToolboxAssetWithHttpInfo(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest));
         /// <summary>
         /// Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <returns>UpdateToolboxAssetRatingMineResponse</returns>
-        UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine(string assetId);
+        UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest));
 
         /// <summary>
         /// Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
@@ -302,8 +331,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateToolboxAssetRatingMineResponse</returns>
-        ApiResponse<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineWithHttpInfo(string assetId);
+        ApiResponse<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineWithHttpInfo(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest));
         #endregion Synchronous Operations
     }
 
@@ -320,9 +350,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetAsync(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity.
@@ -331,9 +362,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetWithHttpInfoAsync(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open a Crossly checkout for a paid asset. Nothing is charged here: a person pays at checkoutUrl. The author earns 80% of net; the licence is use in your own experiences.
         /// </summary>
@@ -388,9 +420,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateToolboxAssetUseResponse</returns>
-        System.Threading.Tasks.Task<CreateToolboxAssetUseResponse> CreateToolboxAssetUseAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateToolboxAssetUseResponse> CreateToolboxAssetUseAsync(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get the asset&#39;s nodes stamped with its id for a place you can edit; insert:true also inserts them into the place&#39;s live session. Paid assets need the experience owner&#39;s licence.
@@ -400,9 +433,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateToolboxAssetUseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateToolboxAssetUseResponse>> CreateToolboxAssetUseWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateToolboxAssetUseResponse>> CreateToolboxAssetUseWithHttpInfoAsync(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A new version (reviewed); the live one keeps serving until it is approved.
         /// </summary>
@@ -411,9 +445,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetVersionAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetVersionAsync(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A new version (reviewed); the live one keeps serving until it is approved.
@@ -423,9 +458,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetVersionWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetVersionWithHttpInfoAsync(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author&#39;s share is reversed.
         /// </summary>
@@ -434,9 +470,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldMeReceiptRefundResponse</returns>
-        System.Threading.Tasks.Task<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundAsync(string purchaseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundAsync(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Refund a licence within 14 days while no published version of yours uses the asset. Ends the licence; the author&#39;s share is reversed.
@@ -446,9 +483,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldMeReceiptRefundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateWorldMeReceiptRefundResponse>> CreateToolboxPurchaseRefundWithHttpInfoAsync(string purchaseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateWorldMeReceiptRefundResponse>> CreateToolboxPurchaseRefundWithHttpInfoAsync(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Remove your rating of an asset.
         /// </summary>
@@ -548,9 +586,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListToolboxAssetsResponse</returns>
-        System.Threading.Tasks.Task<ListToolboxAssetsResponse> ListToolboxAssetsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListToolboxAssetsResponse> ListToolboxAssetsAsync(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now.
@@ -559,9 +604,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListToolboxAssetsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListToolboxAssetsResponse>> ListToolboxAssetsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListToolboxAssetsResponse>> ListToolboxAssetsWithHttpInfoAsync(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Assets you may insert: licences you bought, your own, free ones you used.
         /// </summary>
@@ -611,9 +663,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListToolboxSalesResponse</returns>
-        System.Threading.Tasks.Task<ListToolboxSalesResponse> ListToolboxSalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListToolboxSalesResponse> ListToolboxSalesAsync(string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought.
@@ -622,9 +676,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListToolboxSalesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListToolboxSalesResponse>> ListToolboxSalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListToolboxSalesResponse>> ListToolboxSalesWithHttpInfoAsync(string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit name, description, tags, thumbnail or price.
         /// </summary>
@@ -633,9 +689,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        System.Threading.Tasks.Task<ToolboxAssetResponse> UpdateToolboxAssetAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ToolboxAssetResponse> UpdateToolboxAssetAsync(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Edit name, description, tags, thumbnail or price.
@@ -645,9 +702,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> UpdateToolboxAssetWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ToolboxAssetResponse>> UpdateToolboxAssetWithHttpInfoAsync(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
         /// </summary>
@@ -656,9 +714,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateToolboxAssetRatingMineResponse</returns>
-        System.Threading.Tasks.Task<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineAsync(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rate an asset you bought or installed: 1–5 stars and an optional review (1000 characters). Not your own.
@@ -668,9 +727,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateToolboxAssetRatingMineResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateToolboxAssetRatingMineResponse>> UpdateToolboxAssetRatingMineWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateToolboxAssetRatingMineResponse>> UpdateToolboxAssetRatingMineWithHttpInfoAsync(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -795,10 +855,11 @@ namespace net.crossly.Api
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        public ToolboxAssetResponse CreateToolboxAsset()
+        public ToolboxAssetResponse CreateToolboxAsset(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = CreateToolboxAssetWithHttpInfo();
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = CreateToolboxAssetWithHttpInfo(createToolboxAssetRequest);
             return localVarResponse.Data;
         }
 
@@ -806,12 +867,14 @@ namespace net.crossly.Api
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> CreateToolboxAssetWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> CreateToolboxAssetWithHttpInfo(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -831,6 +894,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createToolboxAssetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -857,11 +921,12 @@ namespace net.crossly.Api
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        public async System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetAsync(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await CreateToolboxAssetWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await CreateToolboxAssetWithHttpInfoAsync(createToolboxAssetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -869,14 +934,16 @@ namespace net.crossly.Api
         /// Publish an asset (place nodes). Scanned (lint, text, credits, uploads) then reviewed. Free by default; paid needs Pro and a verified identity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetWithHttpInfoAsync(CreateToolboxAssetRequest createToolboxAssetRequest = default(CreateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -896,6 +963,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createToolboxAssetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1216,10 +1284,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <returns>CreateToolboxAssetUseResponse</returns>
-        public CreateToolboxAssetUseResponse CreateToolboxAssetUse(string assetId)
+        public CreateToolboxAssetUseResponse CreateToolboxAssetUse(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest))
         {
-            net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> localVarResponse = CreateToolboxAssetUseWithHttpInfo(assetId);
+            net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> localVarResponse = CreateToolboxAssetUseWithHttpInfo(assetId, createToolboxAssetUseRequest);
             return localVarResponse.Data;
         }
 
@@ -1228,8 +1297,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateToolboxAssetUseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> CreateToolboxAssetUseWithHttpInfo(string assetId)
+        public net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> CreateToolboxAssetUseWithHttpInfo(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -1240,6 +1310,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1260,6 +1331,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = createToolboxAssetUseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1287,11 +1359,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateToolboxAssetUseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateToolboxAssetUseResponse> CreateToolboxAssetUseAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateToolboxAssetUseResponse> CreateToolboxAssetUseAsync(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> localVarResponse = await CreateToolboxAssetUseWithHttpInfoAsync(assetId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse> localVarResponse = await CreateToolboxAssetUseWithHttpInfoAsync(assetId, createToolboxAssetUseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1300,9 +1373,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetUseRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateToolboxAssetUseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse>> CreateToolboxAssetUseWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateToolboxAssetUseResponse>> CreateToolboxAssetUseWithHttpInfoAsync(string assetId, CreateToolboxAssetUseRequest createToolboxAssetUseRequest = default(CreateToolboxAssetUseRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -1314,6 +1388,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1334,6 +1409,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = createToolboxAssetUseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1362,10 +1438,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        public ToolboxAssetResponse CreateToolboxAssetVersion(string assetId)
+        public ToolboxAssetResponse CreateToolboxAssetVersion(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = CreateToolboxAssetVersionWithHttpInfo(assetId);
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = CreateToolboxAssetVersionWithHttpInfo(assetId, createToolboxAssetVersionRequest);
             return localVarResponse.Data;
         }
 
@@ -1374,8 +1451,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> CreateToolboxAssetVersionWithHttpInfo(string assetId)
+        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> CreateToolboxAssetVersionWithHttpInfo(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -1386,6 +1464,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1406,6 +1485,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = createToolboxAssetVersionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1433,11 +1513,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        public async System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetVersionAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ToolboxAssetResponse> CreateToolboxAssetVersionAsync(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await CreateToolboxAssetVersionWithHttpInfoAsync(assetId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await CreateToolboxAssetVersionWithHttpInfoAsync(assetId, createToolboxAssetVersionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1446,9 +1527,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="createToolboxAssetVersionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetVersionWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> CreateToolboxAssetVersionWithHttpInfoAsync(string assetId, CreateToolboxAssetVersionRequest createToolboxAssetVersionRequest = default(CreateToolboxAssetVersionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -1460,6 +1542,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1480,6 +1563,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = createToolboxAssetVersionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1508,10 +1592,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>CreateWorldMeReceiptRefundResponse</returns>
-        public CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund(string purchaseId)
+        public CreateWorldMeReceiptRefundResponse CreateToolboxPurchaseRefund(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2))
         {
-            net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> localVarResponse = CreateToolboxPurchaseRefundWithHttpInfo(purchaseId);
+            net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> localVarResponse = CreateToolboxPurchaseRefundWithHttpInfo(purchaseId, reasonRequest2);
             return localVarResponse.Data;
         }
 
@@ -1520,8 +1605,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <returns>ApiResponse of CreateWorldMeReceiptRefundResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundWithHttpInfo(string purchaseId)
+        public net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundWithHttpInfo(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2))
         {
             // verify the required parameter 'purchaseId' is set
             if (purchaseId == null)
@@ -1532,6 +1618,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1552,6 +1639,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("purchaseId", net.crossly.Client.ClientUtils.ParameterToString(purchaseId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest2;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1579,11 +1667,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateWorldMeReceiptRefundResponse</returns>
-        public async System.Threading.Tasks.Task<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundAsync(string purchaseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateWorldMeReceiptRefundResponse> CreateToolboxPurchaseRefundAsync(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> localVarResponse = await CreateToolboxPurchaseRefundWithHttpInfoAsync(purchaseId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse> localVarResponse = await CreateToolboxPurchaseRefundWithHttpInfoAsync(purchaseId, reasonRequest2, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1592,9 +1681,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="purchaseId"></param>
+        /// <param name="reasonRequest2"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateWorldMeReceiptRefundResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse>> CreateToolboxPurchaseRefundWithHttpInfoAsync(string purchaseId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateWorldMeReceiptRefundResponse>> CreateToolboxPurchaseRefundWithHttpInfoAsync(string purchaseId, ReasonRequest2 reasonRequest2 = default(ReasonRequest2), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'purchaseId' is set
             if (purchaseId == null)
@@ -1606,6 +1696,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1626,6 +1717,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("purchaseId", net.crossly.Client.ClientUtils.ParameterToString(purchaseId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest2;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2237,10 +2329,17 @@ namespace net.crossly.Api
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListToolboxAssetsResponse</returns>
-        public ListToolboxAssetsResponse ListToolboxAssets()
+        public ListToolboxAssetsResponse ListToolboxAssets(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> localVarResponse = ListToolboxAssetsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> localVarResponse = ListToolboxAssetsWithHttpInfo(q, kind, price, sort, minRating, cursor, limit);
             return localVarResponse.Data;
         }
 
@@ -2248,8 +2347,15 @@ namespace net.crossly.Api
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListToolboxAssetsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> ListToolboxAssetsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> ListToolboxAssetsWithHttpInfo(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2273,6 +2379,34 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (price != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "price", price));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (minRating != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minRating", minRating));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2299,11 +2433,18 @@ namespace net.crossly.Api
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListToolboxAssetsResponse</returns>
-        public async System.Threading.Tasks.Task<ListToolboxAssetsResponse> ListToolboxAssetsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListToolboxAssetsResponse> ListToolboxAssetsAsync(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> localVarResponse = await ListToolboxAssetsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListToolboxAssetsResponse> localVarResponse = await ListToolboxAssetsWithHttpInfoAsync(q, kind, price, sort, minRating, cursor, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2311,9 +2452,16 @@ namespace net.crossly.Api
         /// Search the Toolbox: models, scripts, sounds, images, packages. Free and paid; &#x60;owned&#x60; says whether you may insert it now. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="kind"> (optional)</param>
+        /// <param name="price"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="minRating"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListToolboxAssetsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListToolboxAssetsResponse>> ListToolboxAssetsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListToolboxAssetsResponse>> ListToolboxAssetsWithHttpInfoAsync(string q = default(string), string kind = default(string), string price = default(string), string sort = default(string), decimal? minRating = default(decimal?), string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2338,6 +2486,34 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (kind != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "kind", kind));
+            }
+            if (price != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "price", price));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (minRating != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "minRating", minRating));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2621,10 +2797,12 @@ namespace net.crossly.Api
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListToolboxSalesResponse</returns>
-        public ListToolboxSalesResponse ListToolboxSales()
+        public ListToolboxSalesResponse ListToolboxSales(string cursor = default(string), decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListToolboxSalesResponse> localVarResponse = ListToolboxSalesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListToolboxSalesResponse> localVarResponse = ListToolboxSalesWithHttpInfo(cursor, limit);
             return localVarResponse.Data;
         }
 
@@ -2632,8 +2810,10 @@ namespace net.crossly.Api
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListToolboxSalesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListToolboxSalesResponse> ListToolboxSalesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListToolboxSalesResponse> ListToolboxSalesWithHttpInfo(string cursor = default(string), decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2657,6 +2837,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2683,11 +2871,13 @@ namespace net.crossly.Api
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListToolboxSalesResponse</returns>
-        public async System.Threading.Tasks.Task<ListToolboxSalesResponse> ListToolboxSalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListToolboxSalesResponse> ListToolboxSalesAsync(string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListToolboxSalesResponse> localVarResponse = await ListToolboxSalesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListToolboxSalesResponse> localVarResponse = await ListToolboxSalesWithHttpInfoAsync(cursor, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2695,9 +2885,11 @@ namespace net.crossly.Api
         /// Your Toolbox sales: gross, net, your 80% share after refunds. Never who bought. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cursor"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListToolboxSalesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListToolboxSalesResponse>> ListToolboxSalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListToolboxSalesResponse>> ListToolboxSalesWithHttpInfoAsync(string cursor = default(string), decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2722,6 +2914,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2750,10 +2950,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <returns>ToolboxAssetResponse</returns>
-        public ToolboxAssetResponse UpdateToolboxAsset(string assetId)
+        public ToolboxAssetResponse UpdateToolboxAsset(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = UpdateToolboxAssetWithHttpInfo(assetId);
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = UpdateToolboxAssetWithHttpInfo(assetId, updateToolboxAssetRequest);
             return localVarResponse.Data;
         }
 
@@ -2762,8 +2963,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <returns>ApiResponse of ToolboxAssetResponse</returns>
-        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> UpdateToolboxAssetWithHttpInfo(string assetId)
+        public net.crossly.Client.ApiResponse<ToolboxAssetResponse> UpdateToolboxAssetWithHttpInfo(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -2774,6 +2976,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2794,6 +2997,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = updateToolboxAssetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2821,11 +3025,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ToolboxAssetResponse</returns>
-        public async System.Threading.Tasks.Task<ToolboxAssetResponse> UpdateToolboxAssetAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ToolboxAssetResponse> UpdateToolboxAssetAsync(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await UpdateToolboxAssetWithHttpInfoAsync(assetId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ToolboxAssetResponse> localVarResponse = await UpdateToolboxAssetWithHttpInfoAsync(assetId, updateToolboxAssetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2834,9 +3039,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ToolboxAssetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> UpdateToolboxAssetWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ToolboxAssetResponse>> UpdateToolboxAssetWithHttpInfoAsync(string assetId, UpdateToolboxAssetRequest updateToolboxAssetRequest = default(UpdateToolboxAssetRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -2848,6 +3054,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2868,6 +3075,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = updateToolboxAssetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2896,10 +3104,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <returns>UpdateToolboxAssetRatingMineResponse</returns>
-        public UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine(string assetId)
+        public UpdateToolboxAssetRatingMineResponse UpdateToolboxAssetRatingMine(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> localVarResponse = UpdateToolboxAssetRatingMineWithHttpInfo(assetId);
+            net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> localVarResponse = UpdateToolboxAssetRatingMineWithHttpInfo(assetId, updateToolboxAssetRatingMineRequest);
             return localVarResponse.Data;
         }
 
@@ -2908,8 +3117,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateToolboxAssetRatingMineResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineWithHttpInfo(string assetId)
+        public net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineWithHttpInfo(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -2920,6 +3130,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2940,6 +3151,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = updateToolboxAssetRatingMineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2967,11 +3179,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateToolboxAssetRatingMineResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateToolboxAssetRatingMineResponse> UpdateToolboxAssetRatingMineAsync(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> localVarResponse = await UpdateToolboxAssetRatingMineWithHttpInfoAsync(assetId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse> localVarResponse = await UpdateToolboxAssetRatingMineWithHttpInfoAsync(assetId, updateToolboxAssetRatingMineRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2980,9 +3193,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetId"></param>
+        /// <param name="updateToolboxAssetRatingMineRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateToolboxAssetRatingMineResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse>> UpdateToolboxAssetRatingMineWithHttpInfoAsync(string assetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateToolboxAssetRatingMineResponse>> UpdateToolboxAssetRatingMineWithHttpInfoAsync(string assetId, UpdateToolboxAssetRatingMineRequest updateToolboxAssetRatingMineRequest = default(UpdateToolboxAssetRatingMineRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'assetId' is set
             if (assetId == null)
@@ -2994,6 +3208,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3014,6 +3229,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("assetId", net.crossly.Client.ClientUtils.ParameterToString(assetId)); // path parameter
+            localVarRequestOptions.Data = updateToolboxAssetRatingMineRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

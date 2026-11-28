@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum OfferStatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Pending for value: pending
             /// </summary>
             [EnumMember(Value = "pending")]
-            Pending = 1,
+            Pending = 2,
 
             /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 2,
+            Accepted = 3,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 3,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 4,
+            Declined = 4,
 
             /// <summary>
             /// Enum Voided for value: voided

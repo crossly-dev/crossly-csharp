@@ -46,8 +46,9 @@ namespace net.crossly.Model
         /// <param name="bps">bps.</param>
         /// <param name="status">status (required).</param>
         /// <param name="saleId">saleId.</param>
+        /// <param name="storefrontId">The store the row belongs to (drizzle/1320); null while the app waits for a store..</param>
         /// <param name="createdAt">createdAt (required).</param>
-        public GetAppEarningResponseLedger(string id = default(string), string kind = default(string), decimal amountCents = default(decimal), decimal? basisCents = default(decimal?), decimal? bps = default(decimal?), string status = default(string), string saleId = default(string), DateTime createdAt = default(DateTime))
+        public GetAppEarningResponseLedger(string id = default(string), string kind = default(string), decimal amountCents = default(decimal), decimal? basisCents = default(decimal?), decimal? bps = default(decimal?), string status = default(string), string saleId = default(string), string storefrontId = default(string), DateTime createdAt = default(DateTime))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -69,6 +70,7 @@ namespace net.crossly.Model
             this.BasisCents = basisCents;
             this.Bps = bps;
             this.SaleId = saleId;
+            this.StorefrontId = storefrontId;
         }
 
         /// <summary>
@@ -114,6 +116,13 @@ namespace net.crossly.Model
         public string SaleId { get; set; }
 
         /// <summary>
+        /// The store the row belongs to (drizzle/1320); null while the app waits for a store.
+        /// </summary>
+        /// <value>The store the row belongs to (drizzle/1320); null while the app waits for a store.</value>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -134,6 +143,7 @@ namespace net.crossly.Model
             sb.Append("  Bps: ").Append(Bps).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SaleId: ").Append(SaleId).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -205,6 +215,11 @@ namespace net.crossly.Model
                     this.SaleId.Equals(input.SaleId))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -244,6 +259,10 @@ namespace net.crossly.Model
                 if (this.SaleId != null)
                 {
                     hashCode = (hashCode * 59) + this.SaleId.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

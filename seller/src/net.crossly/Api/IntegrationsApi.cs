@@ -27,23 +27,135 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination.
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>IdResponse</returns>
-        IdResponse CreateNotificationIntegration();
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <returns>CreateCrmIntegrationResponse</returns>
+        CreateCrmIntegrationResponse CreateCrmIntegration(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest));
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination.
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of IdResponse</returns>
-        ApiResponse<IdResponse> CreateNotificationIntegrationWithHttpInfo();
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateCrmIntegrationResponse</returns>
+        ApiResponse<CreateCrmIntegrationResponse> CreateCrmIntegrationWithHttpInfo(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest));
         /// <summary>
-        /// Fire a canned test message to a notification destination.
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateCrmIntegrationTestResponse</returns>
+        CreateCrmIntegrationTestResponse CreateCrmIntegrationTest(string id);
+
+        /// <summary>
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateCrmIntegrationTestResponse</returns>
+        ApiResponse<CreateCrmIntegrationTestResponse> CreateCrmIntegrationTestWithHttpInfo(string id);
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <returns>CreateDesignToolImportResponse</returns>
+        CreateDesignToolImportResponse CreateDesignToolImport(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest));
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateDesignToolImportResponse</returns>
+        ApiResponse<CreateDesignToolImportResponse> CreateDesignToolImportWithHttpInfo(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest));
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <returns>CreateEmailProviderResponse</returns>
+        CreateEmailProviderResponse CreateEmailProvider(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest));
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateEmailProviderResponse</returns>
+        ApiResponse<CreateEmailProviderResponse> CreateEmailProviderWithHttpInfo(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest));
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <returns>CreateEmailProviderTestResponse</returns>
+        CreateEmailProviderTestResponse CreateEmailProviderTest(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest));
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateEmailProviderTestResponse</returns>
+        ApiResponse<CreateEmailProviderTestResponse> CreateEmailProviderTestWithHttpInfo(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest));
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateEmailProviderWebhookUrlResponse</returns>
+        CreateEmailProviderWebhookUrlResponse CreateEmailProviderWebhookUrl(string id);
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateEmailProviderWebhookUrlResponse</returns>
+        ApiResponse<CreateEmailProviderWebhookUrlResponse> CreateEmailProviderWebhookUrlWithHttpInfo(string id);
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <returns>CreateNotificationIntegrationResponse</returns>
+        CreateNotificationIntegrationResponse CreateNotificationIntegration(CreateNotificationIntegrationRequest createNotificationIntegrationRequest);
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <returns>ApiResponse of CreateNotificationIntegrationResponse</returns>
+        ApiResponse<CreateNotificationIntegrationResponse> CreateNotificationIntegrationWithHttpInfo(CreateNotificationIntegrationRequest createNotificationIntegrationRequest);
+        /// <summary>
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -51,7 +163,7 @@ namespace net.crossly.Api
         CreateNotificationIntegrationTestResponse CreateNotificationIntegrationTest(Guid id);
 
         /// <summary>
-        /// Fire a canned test message to a notification destination.
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
         /// </summary>
         /// <remarks>
         /// 
@@ -61,7 +173,133 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateNotificationIntegrationTestResponse</returns>
         ApiResponse<CreateNotificationIntegrationTestResponse> CreateNotificationIntegrationTestWithHttpInfo(Guid id);
         /// <summary>
-        /// Delete a notification destination.
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <returns>CreateNotifyActionResponse</returns>
+        CreateNotifyActionResponse CreateNotifyAction(TokenObject tokenObject);
+
+        /// <summary>
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <returns>ApiResponse of CreateNotifyActionResponse</returns>
+        ApiResponse<CreateNotifyActionResponse> CreateNotifyActionWithHttpInfo(TokenObject tokenObject);
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialResponse</returns>
+        CreatePrintMailCredentialResponse CreatePrintMailCredential(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest));
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialResponse</returns>
+        ApiResponse<CreatePrintMailCredentialResponse> CreatePrintMailCredentialWithHttpInfo(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest));
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialTestResponse</returns>
+        CreatePrintMailCredentialTestResponse CreatePrintMailCredentialTest(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest));
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialTestResponse</returns>
+        ApiResponse<CreatePrintMailCredentialTestResponse> CreatePrintMailCredentialTestWithHttpInfo(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest));
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatePrintMailCredentialTestByIdResponse</returns>
+        CreatePrintMailCredentialTestByIdResponse CreatePrintMailCredentialTestById(string id);
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialTestByIdResponse</returns>
+        ApiResponse<CreatePrintMailCredentialTestByIdResponse> CreatePrintMailCredentialTestByIdWithHttpInfo(string id);
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeleteCrmIntegration(string id);
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeleteCrmIntegrationWithHttpInfo(string id);
+        /// <summary>
+        /// Disconnect Figma or Canva for the store.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeleteDesignTool(string tool);
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeleteDesignToolWithHttpInfo(string tool);
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeleteEmailProvider(string id);
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeleteEmailProviderWithHttpInfo(string id);
+        /// <summary>
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -69,7 +307,7 @@ namespace net.crossly.Api
         OkResponse DeleteNotificationIntegration(Guid id);
 
         /// <summary>
-        /// Delete a notification destination.
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
         /// </summary>
         /// <remarks>
         /// 
@@ -79,14 +317,130 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of OkResponse</returns>
         ApiResponse<OkResponse> DeleteNotificationIntegrationWithHttpInfo(Guid id);
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions.
+        /// Remove a print and mail account.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        UpdateGroupBuyResponse DeletePrintMailCredential(string id);
+
+        /// <summary>
+        /// Remove a print and mail account.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        ApiResponse<UpdateGroupBuyResponse> DeletePrintMailCredentialWithHttpInfo(string id);
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>GetDesignToolResponse</returns>
+        GetDesignToolResponse GetDesignTool(string tool);
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>ApiResponse of GetDesignToolResponse</returns>
+        ApiResponse<GetDesignToolResponse> GetDesignToolWithHttpInfo(string tool);
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetIntegrationResponse</returns>
+        GetIntegrationResponse GetIntegration();
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetIntegrationResponse</returns>
+        ApiResponse<GetIntegrationResponse> GetIntegrationWithHttpInfo();
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <returns>GetPrintMailEstimateResponse</returns>
+        GetPrintMailEstimateResponse GetPrintMailEstimate(string lookbookId, decimal count, string credentialId = default(string), string format = default(string));
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <returns>ApiResponse of GetPrintMailEstimateResponse</returns>
+        ApiResponse<GetPrintMailEstimateResponse> GetPrintMailEstimateWithHttpInfo(string lookbookId, decimal count, string credentialId = default(string), string format = default(string));
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <returns>ListCrmIntegrationLogsResponse</returns>
+        ListCrmIntegrationLogsResponse ListCrmIntegrationLogs(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string));
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <returns>ApiResponse of ListCrmIntegrationLogsResponse</returns>
+        ApiResponse<ListCrmIntegrationLogsResponse> ListCrmIntegrationLogsWithHttpInfo(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string));
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListCrmIntegrationsResponse</returns>
+        ListCrmIntegrationsResponse ListCrmIntegrations();
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListCrmIntegrationsResponse</returns>
+        ApiResponse<ListCrmIntegrationsResponse> ListCrmIntegrationsWithHttpInfo();
+        /// <summary>
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListNotificationIntegrationsResponse</returns>
         ListNotificationIntegrationsResponse ListNotificationIntegrations();
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions.
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
         /// </summary>
         /// <remarks>
         /// 
@@ -95,23 +449,121 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListNotificationIntegrationsResponse</returns>
         ApiResponse<ListNotificationIntegrationsResponse> ListNotificationIntegrationsWithHttpInfo();
         /// <summary>
-        /// Edit a notification destination.
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListPrintMailCredentialsResponse</returns>
+        ListPrintMailCredentialsResponse ListPrintMailCredentials();
+
+        /// <summary>
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListPrintMailCredentialsResponse</returns>
+        ApiResponse<ListPrintMailCredentialsResponse> ListPrintMailCredentialsWithHttpInfo();
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>OkResponse</returns>
-        OkResponse UpdateNotificationIntegration(Guid id);
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <returns>CreateCrmIntegrationResponse</returns>
+        CreateCrmIntegrationResponse UpdateCrmIntegration(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest));
 
         /// <summary>
-        /// Edit a notification destination.
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateCrmIntegrationResponse</returns>
+        ApiResponse<CreateCrmIntegrationResponse> UpdateCrmIntegrationWithHttpInfo(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest));
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <returns>UpdateDesignToolResponse</returns>
+        UpdateDesignToolResponse UpdateDesignTool(string tool, TokenObject tokenObject = default(TokenObject));
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <returns>ApiResponse of UpdateDesignToolResponse</returns>
+        ApiResponse<UpdateDesignToolResponse> UpdateDesignToolWithHttpInfo(string tool, TokenObject tokenObject = default(TokenObject));
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <returns>UpdateEmailProviderResponse</returns>
+        UpdateEmailProviderResponse UpdateEmailProvider(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest));
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateEmailProviderResponse</returns>
+        ApiResponse<UpdateEmailProviderResponse> UpdateEmailProviderWithHttpInfo(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest));
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
+        /// <returns>OkResponse</returns>
+        OkResponse UpdateNotificationIntegration(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest);
+
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> UpdateNotificationIntegrationWithHttpInfo(Guid id);
+        ApiResponse<OkResponse> UpdateNotificationIntegrationWithHttpInfo(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest);
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialResponse</returns>
+        CreatePrintMailCredentialResponse UpdatePrintMailCredential(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest));
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialResponse</returns>
+        ApiResponse<CreatePrintMailCredentialResponse> UpdatePrintMailCredentialWithHttpInfo(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest));
         #endregion Synchronous Operations
     }
 
@@ -122,28 +574,170 @@ namespace net.crossly.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination.
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IdResponse</returns>
-        System.Threading.Tasks.Task<IdResponse> CreateNotificationIntegrationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of CreateCrmIntegrationResponse</returns>
+        System.Threading.Tasks.Task<CreateCrmIntegrationResponse> CreateCrmIntegrationAsync(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination.
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<IdResponse>> CreateNotificationIntegrationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateCrmIntegrationResponse>> CreateCrmIntegrationWithHttpInfoAsync(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Fire a canned test message to a notification destination.
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCrmIntegrationTestResponse</returns>
+        System.Threading.Tasks.Task<CreateCrmIntegrationTestResponse> CreateCrmIntegrationTestAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateCrmIntegrationTestResponse>> CreateCrmIntegrationTestWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDesignToolImportResponse</returns>
+        System.Threading.Tasks.Task<CreateDesignToolImportResponse> CreateDesignToolImportAsync(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDesignToolImportResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDesignToolImportResponse>> CreateDesignToolImportWithHttpInfoAsync(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderResponse</returns>
+        System.Threading.Tasks.Task<CreateEmailProviderResponse> CreateEmailProviderAsync(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateEmailProviderResponse>> CreateEmailProviderWithHttpInfoAsync(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderTestResponse</returns>
+        System.Threading.Tasks.Task<CreateEmailProviderTestResponse> CreateEmailProviderTestAsync(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateEmailProviderTestResponse>> CreateEmailProviderTestWithHttpInfoAsync(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderWebhookUrlResponse</returns>
+        System.Threading.Tasks.Task<CreateEmailProviderWebhookUrlResponse> CreateEmailProviderWebhookUrlAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderWebhookUrlResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateEmailProviderWebhookUrlResponse>> CreateEmailProviderWebhookUrlWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateNotificationIntegrationResponse</returns>
+        System.Threading.Tasks.Task<CreateNotificationIntegrationResponse> CreateNotificationIntegrationAsync(CreateNotificationIntegrationRequest createNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateNotificationIntegrationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateNotificationIntegrationResponse>> CreateNotificationIntegrationWithHttpInfoAsync(CreateNotificationIntegrationRequest createNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
         /// </summary>
         /// <remarks>
         /// 
@@ -155,7 +749,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<CreateNotificationIntegrationTestResponse> CreateNotificationIntegrationTestAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Fire a canned test message to a notification destination.
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test.
         /// </summary>
         /// <remarks>
         /// 
@@ -166,7 +760,168 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateNotificationIntegrationTestResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateNotificationIntegrationTestResponse>> CreateNotificationIntegrationTestWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Delete a notification destination.
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateNotifyActionResponse</returns>
+        System.Threading.Tasks.Task<CreateNotifyActionResponse> CreateNotifyActionAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateNotifyActionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateNotifyActionResponse>> CreateNotifyActionWithHttpInfoAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialResponse</returns>
+        System.Threading.Tasks.Task<CreatePrintMailCredentialResponse> CreatePrintMailCredentialAsync(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailCredentialResponse>> CreatePrintMailCredentialWithHttpInfoAsync(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialTestResponse</returns>
+        System.Threading.Tasks.Task<CreatePrintMailCredentialTestResponse> CreatePrintMailCredentialTestAsync(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailCredentialTestResponse>> CreatePrintMailCredentialTestWithHttpInfoAsync(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialTestByIdResponse</returns>
+        System.Threading.Tasks.Task<CreatePrintMailCredentialTestByIdResponse> CreatePrintMailCredentialTestByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialTestByIdResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailCredentialTestByIdResponse>> CreatePrintMailCredentialTestByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteCrmIntegrationAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeleteCrmIntegrationWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Disconnect Figma or Canva for the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteDesignToolAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeleteDesignToolWithHttpInfoAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteEmailProviderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeleteEmailProviderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
         /// </summary>
         /// <remarks>
         /// 
@@ -178,7 +933,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<OkResponse> DeleteNotificationIntegrationAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Delete a notification destination.
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}.
         /// </summary>
         /// <remarks>
         /// 
@@ -189,7 +944,153 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (OkResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<OkResponse>> DeleteNotificationIntegrationWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions.
+        /// Remove a print and mail account.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeletePrintMailCredentialAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Remove a print and mail account.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateGroupBuyResponse>> DeletePrintMailCredentialWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDesignToolResponse</returns>
+        System.Threading.Tasks.Task<GetDesignToolResponse> GetDesignToolAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDesignToolResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDesignToolResponse>> GetDesignToolWithHttpInfoAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetIntegrationResponse</returns>
+        System.Threading.Tasks.Task<GetIntegrationResponse> GetIntegrationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetIntegrationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetIntegrationResponse>> GetIntegrationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPrintMailEstimateResponse</returns>
+        System.Threading.Tasks.Task<GetPrintMailEstimateResponse> GetPrintMailEstimateAsync(string lookbookId, decimal count, string credentialId = default(string), string format = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPrintMailEstimateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPrintMailEstimateResponse>> GetPrintMailEstimateWithHttpInfoAsync(string lookbookId, decimal count, string credentialId = default(string), string format = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCrmIntegrationLogsResponse</returns>
+        System.Threading.Tasks.Task<ListCrmIntegrationLogsResponse> ListCrmIntegrationLogsAsync(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCrmIntegrationLogsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCrmIntegrationLogsResponse>> ListCrmIntegrationLogsWithHttpInfoAsync(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCrmIntegrationsResponse</returns>
+        System.Threading.Tasks.Task<ListCrmIntegrationsResponse> ListCrmIntegrationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCrmIntegrationsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListCrmIntegrationsResponse>> ListCrmIntegrationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
         /// </summary>
         /// <remarks>
         /// 
@@ -200,7 +1101,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListNotificationIntegrationsResponse> ListNotificationIntegrationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions.
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks.
         /// </summary>
         /// <remarks>
         /// 
@@ -210,28 +1111,151 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListNotificationIntegrationsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListNotificationIntegrationsResponse>> ListNotificationIntegrationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Edit a notification destination.
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> UpdateNotificationIntegrationAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ListPrintMailCredentialsResponse</returns>
+        System.Threading.Tasks.Task<ListPrintMailCredentialsResponse> ListPrintMailCredentialsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Edit a notification destination.
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPrintMailCredentialsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListPrintMailCredentialsResponse>> ListPrintMailCredentialsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCrmIntegrationResponse</returns>
+        System.Threading.Tasks.Task<CreateCrmIntegrationResponse> UpdateCrmIntegrationAsync(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateCrmIntegrationResponse>> UpdateCrmIntegrationWithHttpInfoAsync(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDesignToolResponse</returns>
+        System.Threading.Tasks.Task<UpdateDesignToolResponse> UpdateDesignToolAsync(string tool, TokenObject tokenObject = default(TokenObject), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDesignToolResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateDesignToolResponse>> UpdateDesignToolWithHttpInfoAsync(string tool, TokenObject tokenObject = default(TokenObject), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateEmailProviderResponse</returns>
+        System.Threading.Tasks.Task<UpdateEmailProviderResponse> UpdateEmailProviderAsync(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateEmailProviderResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateEmailProviderResponse>> UpdateEmailProviderWithHttpInfoAsync(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of OkResponse</returns>
+        System.Threading.Tasks.Task<OkResponse> UpdateNotificationIntegrationAsync(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateNotificationIntegrationWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> UpdateNotificationIntegrationWithHttpInfoAsync(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialResponse</returns>
+        System.Threading.Tasks.Task<CreatePrintMailCredentialResponse> UpdatePrintMailCredentialAsync(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreatePrintMailCredentialResponse>> UpdatePrintMailCredentialWithHttpInfoAsync(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -353,23 +1377,167 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination. 
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>IdResponse</returns>
-        public IdResponse CreateNotificationIntegration()
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <returns>CreateCrmIntegrationResponse</returns>
+        public CreateCrmIntegrationResponse CreateCrmIntegration(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = CreateNotificationIntegrationWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> localVarResponse = CreateCrmIntegrationWithHttpInfo(createCrmIntegrationRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination. 
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of IdResponse</returns>
-        public net.crossly.Client.ApiResponse<IdResponse> CreateNotificationIntegrationWithHttpInfo()
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateCrmIntegrationResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> CreateCrmIntegrationWithHttpInfo(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest))
         {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCrmIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateCrmIntegrationResponse>("/v1/crm/integrations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCrmIntegrationResponse</returns>
+        public async System.Threading.Tasks.Task<CreateCrmIntegrationResponse> CreateCrmIntegrationAsync(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> localVarResponse = await CreateCrmIntegrationWithHttpInfoAsync(createCrmIntegrationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect a custom webhook CRM or Mailchimp. HubSpot, Salesforce, Pipedrive and Zoho connect by signing in from the dashboard. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse>> CreateCrmIntegrationWithHttpInfoAsync(CreateCrmIntegrationRequest createCrmIntegrationRequest = default(CreateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createCrmIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateCrmIntegrationResponse>("/v1/crm/integrations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateCrmIntegrationTestResponse</returns>
+        public CreateCrmIntegrationTestResponse CreateCrmIntegrationTest(string id)
+        {
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationTestResponse> localVarResponse = CreateCrmIntegrationTestWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateCrmIntegrationTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateCrmIntegrationTestResponse> CreateCrmIntegrationTestWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateCrmIntegrationTest");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -392,6 +1560,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -401,10 +1570,10 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<IdResponse>("/v1/notification-integrations", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateCrmIntegrationTestResponse>("/v1/crm/integrations/{id}/test", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreateNotificationIntegration", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreateCrmIntegrationTest", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -415,25 +1584,33 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination. 
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of IdResponse</returns>
-        public async System.Threading.Tasks.Task<IdResponse> CreateNotificationIntegrationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of CreateCrmIntegrationTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateCrmIntegrationTestResponse> CreateCrmIntegrationTestAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<IdResponse> localVarResponse = await CreateNotificationIntegrationWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationTestResponse> localVarResponse = await CreateCrmIntegrationTestWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Add a Slack/Discord/Webhook destination. 
+        /// Send a sample buyer to the CRM and report whether it arrived, in one sanitized line. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (IdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<IdResponse>> CreateNotificationIntegrationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCrmIntegrationTestResponse>> CreateCrmIntegrationTestWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateCrmIntegrationTest");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -457,6 +1634,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -466,7 +1644,727 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<IdResponse>("/v1/notification-integrations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateCrmIntegrationTestResponse>("/v1/crm/integrations/{id}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateCrmIntegrationTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <returns>CreateDesignToolImportResponse</returns>
+        public CreateDesignToolImportResponse CreateDesignToolImport(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateDesignToolImportResponse> localVarResponse = CreateDesignToolImportWithHttpInfo(createDesignToolImportRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateDesignToolImportResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateDesignToolImportResponse> CreateDesignToolImportWithHttpInfo(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createDesignToolImportRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDesignToolImportResponse>("/v1/design-tools/import", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDesignToolImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDesignToolImportResponse</returns>
+        public async System.Threading.Tasks.Task<CreateDesignToolImportResponse> CreateDesignToolImportAsync(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateDesignToolImportResponse> localVarResponse = await CreateDesignToolImportWithHttpInfoAsync(createDesignToolImportRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Import Figma frames or Canva pages as images on the Crossly CDN, for the site editor, share cards, ad creatives, Branding drops or lookbooks. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createDesignToolImportRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDesignToolImportResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDesignToolImportResponse>> CreateDesignToolImportWithHttpInfoAsync(CreateDesignToolImportRequest createDesignToolImportRequest = default(CreateDesignToolImportRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createDesignToolImportRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDesignToolImportResponse>("/v1/design-tools/import", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDesignToolImport", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <returns>CreateEmailProviderResponse</returns>
+        public CreateEmailProviderResponse CreateEmailProvider(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderResponse> localVarResponse = CreateEmailProviderWithHttpInfo(createEmailProviderRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateEmailProviderResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateEmailProviderResponse> CreateEmailProviderWithHttpInfo(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createEmailProviderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateEmailProviderResponse>("/v1/email-providers", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderResponse</returns>
+        public async System.Threading.Tasks.Task<CreateEmailProviderResponse> CreateEmailProviderAsync(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderResponse> localVarResponse = await CreateEmailProviderWithHttpInfoAsync(createEmailProviderRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect an email sender (16 providers). The key is encrypted; the event webhook URL is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateEmailProviderResponse>> CreateEmailProviderWithHttpInfoAsync(CreateEmailProviderRequest createEmailProviderRequest = default(CreateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createEmailProviderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateEmailProviderResponse>("/v1/email-providers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <returns>CreateEmailProviderTestResponse</returns>
+        public CreateEmailProviderTestResponse CreateEmailProviderTest(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderTestResponse> localVarResponse = CreateEmailProviderTestWithHttpInfo(id, createEmailProviderTestRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateEmailProviderTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateEmailProviderTestResponse> CreateEmailProviderTestWithHttpInfo(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateEmailProviderTest");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createEmailProviderTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateEmailProviderTestResponse>("/v1/email-providers/{id}/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProviderTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateEmailProviderTestResponse> CreateEmailProviderTestAsync(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderTestResponse> localVarResponse = await CreateEmailProviderTestWithHttpInfoAsync(id, createEmailProviderTestRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Send a real test email through the sender; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createEmailProviderTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateEmailProviderTestResponse>> CreateEmailProviderTestWithHttpInfoAsync(string id, CreateEmailProviderTestRequest createEmailProviderTestRequest = default(CreateEmailProviderTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateEmailProviderTest");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createEmailProviderTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateEmailProviderTestResponse>("/v1/email-providers/{id}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProviderTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateEmailProviderWebhookUrlResponse</returns>
+        public CreateEmailProviderWebhookUrlResponse CreateEmailProviderWebhookUrl(string id)
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderWebhookUrlResponse> localVarResponse = CreateEmailProviderWebhookUrlWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateEmailProviderWebhookUrlResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateEmailProviderWebhookUrlResponse> CreateEmailProviderWebhookUrlWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateEmailProviderWebhookUrl");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateEmailProviderWebhookUrlResponse>("/v1/email-providers/{id}/webhook-url", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProviderWebhookUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateEmailProviderWebhookUrlResponse</returns>
+        public async System.Threading.Tasks.Task<CreateEmailProviderWebhookUrlResponse> CreateEmailProviderWebhookUrlAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateEmailProviderWebhookUrlResponse> localVarResponse = await CreateEmailProviderWebhookUrlWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make a new event webhook URL for the sender (the old one stops working). It is returned once. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateEmailProviderWebhookUrlResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateEmailProviderWebhookUrlResponse>> CreateEmailProviderWebhookUrlWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreateEmailProviderWebhookUrl");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateEmailProviderWebhookUrlResponse>("/v1/email-providers/{id}/webhook-url", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailProviderWebhookUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <returns>CreateNotificationIntegrationResponse</returns>
+        public CreateNotificationIntegrationResponse CreateNotificationIntegration(CreateNotificationIntegrationRequest createNotificationIntegrationRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateNotificationIntegrationResponse> localVarResponse = CreateNotificationIntegrationWithHttpInfo(createNotificationIntegrationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <returns>ApiResponse of CreateNotificationIntegrationResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateNotificationIntegrationResponse> CreateNotificationIntegrationWithHttpInfo(CreateNotificationIntegrationRequest createNotificationIntegrationRequest)
+        {
+            // verify the required parameter 'createNotificationIntegrationRequest' is set
+            if (createNotificationIntegrationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNotificationIntegrationRequest' when calling IntegrationsApi->CreateNotificationIntegration");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createNotificationIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateNotificationIntegrationResponse>("/v1/notification-integrations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateNotificationIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateNotificationIntegrationResponse</returns>
+        public async System.Threading.Tasks.Task<CreateNotificationIntegrationResponse> CreateNotificationIntegrationAsync(CreateNotificationIntegrationRequest createNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateNotificationIntegrationResponse> localVarResponse = await CreateNotificationIntegrationWithHttpInfoAsync(createNotificationIntegrationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias: add a Slack/Discord/JSON webhook for automations. Use POST /api/v1/webhooks with kind. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createNotificationIntegrationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateNotificationIntegrationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNotificationIntegrationResponse>> CreateNotificationIntegrationWithHttpInfoAsync(CreateNotificationIntegrationRequest createNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createNotificationIntegrationRequest' is set
+            if (createNotificationIntegrationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createNotificationIntegrationRequest' when calling IntegrationsApi->CreateNotificationIntegration");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createNotificationIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateNotificationIntegrationResponse>("/v1/notification-integrations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -481,7 +2379,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a canned test message to a notification destination. 
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -493,7 +2391,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a canned test message to a notification destination. 
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -546,7 +2444,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a canned test message to a notification destination. 
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -559,7 +2457,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Fire a canned test message to a notification destination. 
+        /// Deprecated alias: send a test message to a destination. Use POST /api/v1/webhooks/{id}/test. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -615,7 +2513,1011 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a notification destination. 
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <returns>CreateNotifyActionResponse</returns>
+        public CreateNotifyActionResponse CreateNotifyAction(TokenObject tokenObject)
+        {
+            net.crossly.Client.ApiResponse<CreateNotifyActionResponse> localVarResponse = CreateNotifyActionWithHttpInfo(tokenObject);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <returns>ApiResponse of CreateNotifyActionResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateNotifyActionResponse> CreateNotifyActionWithHttpInfo(TokenObject tokenObject)
+        {
+            // verify the required parameter 'tokenObject' is set
+            if (tokenObject == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenObject' when calling IntegrationsApi->CreateNotifyAction");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = tokenObject;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateNotifyActionResponse>("/v1/notify/actions", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateNotifyAction", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateNotifyActionResponse</returns>
+        public async System.Threading.Tasks.Task<CreateNotifyActionResponse> CreateNotifyActionAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateNotifyActionResponse> localVarResponse = await CreateNotifyActionWithHttpInfoAsync(tokenObject, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Decide a notification action from its signed token (an offer, a reprice, a label buy, a workflow approval). Single use; the token must be your own. Errors: expired (410), already decided (409). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tokenObject"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateNotifyActionResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateNotifyActionResponse>> CreateNotifyActionWithHttpInfoAsync(TokenObject tokenObject, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'tokenObject' is set
+            if (tokenObject == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tokenObject' when calling IntegrationsApi->CreateNotifyAction");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = tokenObject;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateNotifyActionResponse>("/v1/notify/actions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateNotifyAction", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialResponse</returns>
+        public CreatePrintMailCredentialResponse CreatePrintMailCredential(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> localVarResponse = CreatePrintMailCredentialWithHttpInfo(createPrintMailCredentialRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> CreatePrintMailCredentialWithHttpInfo(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPrintMailCredentialRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatePrintMailCredentialResponse>("/v1/print-mail/credentials", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredential", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePrintMailCredentialResponse> CreatePrintMailCredentialAsync(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> localVarResponse = await CreatePrintMailCredentialWithHttpInfoAsync(createPrintMailCredentialRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save a Lob or PostGrid key (tested against the provider first), with the return address and your per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse>> CreatePrintMailCredentialWithHttpInfoAsync(CreatePrintMailCredentialRequest createPrintMailCredentialRequest = default(CreatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPrintMailCredentialRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePrintMailCredentialResponse>("/v1/print-mail/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredential", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialTestResponse</returns>
+        public CreatePrintMailCredentialTestResponse CreatePrintMailCredentialTest(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestResponse> localVarResponse = CreatePrintMailCredentialTestWithHttpInfo(createPrintMailCredentialTestRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestResponse> CreatePrintMailCredentialTestWithHttpInfo(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPrintMailCredentialTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatePrintMailCredentialTestResponse>("/v1/print-mail/credentials/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredentialTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePrintMailCredentialTestResponse> CreatePrintMailCredentialTestAsync(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestResponse> localVarResponse = await CreatePrintMailCredentialTestWithHttpInfoAsync(createPrintMailCredentialTestRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Check a Lob or PostGrid key with the provider before saving it. Saves nothing, mails nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPrintMailCredentialTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestResponse>> CreatePrintMailCredentialTestWithHttpInfoAsync(CreatePrintMailCredentialTestRequest createPrintMailCredentialTestRequest = default(CreatePrintMailCredentialTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPrintMailCredentialTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePrintMailCredentialTestResponse>("/v1/print-mail/credentials/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredentialTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreatePrintMailCredentialTestByIdResponse</returns>
+        public CreatePrintMailCredentialTestByIdResponse CreatePrintMailCredentialTestById(string id)
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestByIdResponse> localVarResponse = CreatePrintMailCredentialTestByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialTestByIdResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestByIdResponse> CreatePrintMailCredentialTestByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreatePrintMailCredentialTestById");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreatePrintMailCredentialTestByIdResponse>("/v1/print-mail/credentials/{id}/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredentialTestById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialTestByIdResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePrintMailCredentialTestByIdResponse> CreatePrintMailCredentialTestByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestByIdResponse> localVarResponse = await CreatePrintMailCredentialTestByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-check a saved Lob or PostGrid key; the result is one sanitized line. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialTestByIdResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailCredentialTestByIdResponse>> CreatePrintMailCredentialTestByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->CreatePrintMailCredentialTestById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePrintMailCredentialTestByIdResponse>("/v1/print-mail/credentials/{id}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePrintMailCredentialTestById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeleteCrmIntegration(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeleteCrmIntegrationWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeleteCrmIntegrationWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeleteCrmIntegration");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/crm/integrations/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteCrmIntegrationAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeleteCrmIntegrationWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect a CRM. Buyers stop flowing to it; its delivery log goes with it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeleteCrmIntegrationWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeleteCrmIntegration");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/crm/integrations/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeleteDesignTool(string tool)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeleteDesignToolWithHttpInfo(tool);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeleteDesignToolWithHttpInfo(string tool)
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->DeleteDesignTool");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteDesignToolAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeleteDesignToolWithHttpInfoAsync(tool, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect Figma or Canva for the store. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeleteDesignToolWithHttpInfoAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->DeleteDesignTool");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeleteEmailProvider(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeleteEmailProviderWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeleteEmailProviderWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeleteEmailProvider");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/email-providers/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeleteEmailProviderAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeleteEmailProviderWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an email sender. The next newest becomes the default. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeleteEmailProviderWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeleteEmailProvider");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/email-providers/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -627,7 +3529,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a notification destination. 
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -680,7 +3582,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a notification destination. 
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -693,7 +3595,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Delete a notification destination. 
+        /// Deprecated alias: delete a notification destination. Use DELETE /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -749,7 +3651,913 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions. 
+        /// Remove a print and mail account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>UpdateGroupBuyResponse</returns>
+        public UpdateGroupBuyResponse DeletePrintMailCredential(string id)
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = DeletePrintMailCredentialWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove a print and mail account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of UpdateGroupBuyResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> DeletePrintMailCredentialWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeletePrintMailCredential");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<UpdateGroupBuyResponse>("/v1/print-mail/credentials/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeletePrintMailCredential", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Remove a print and mail account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateGroupBuyResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateGroupBuyResponse> DeletePrintMailCredentialAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateGroupBuyResponse> localVarResponse = await DeletePrintMailCredentialWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Remove a print and mail account. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateGroupBuyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateGroupBuyResponse>> DeletePrintMailCredentialWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->DeletePrintMailCredential");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<UpdateGroupBuyResponse>("/v1/print-mail/credentials/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeletePrintMailCredential", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>GetDesignToolResponse</returns>
+        public GetDesignToolResponse GetDesignTool(string tool)
+        {
+            net.crossly.Client.ApiResponse<GetDesignToolResponse> localVarResponse = GetDesignToolWithHttpInfo(tool);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <returns>ApiResponse of GetDesignToolResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDesignToolResponse> GetDesignToolWithHttpInfo(string tool)
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->GetDesignTool");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDesignToolResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDesignToolResponse</returns>
+        public async System.Threading.Tasks.Task<GetDesignToolResponse> GetDesignToolAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDesignToolResponse> localVarResponse = await GetDesignToolWithHttpInfoAsync(tool, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Whether Figma or Canva is connected for the store, and as whom. Never the token. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDesignToolResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDesignToolResponse>> GetDesignToolWithHttpInfoAsync(string tool, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->GetDesignTool");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDesignToolResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetIntegrationResponse</returns>
+        public GetIntegrationResponse GetIntegration()
+        {
+            net.crossly.Client.ApiResponse<GetIntegrationResponse> localVarResponse = GetIntegrationWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetIntegrationResponse</returns>
+        public net.crossly.Client.ApiResponse<GetIntegrationResponse> GetIntegrationWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetIntegrationResponse>("/v1/integrations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetIntegrationResponse</returns>
+        public async System.Threading.Tasks.Task<GetIntegrationResponse> GetIntegrationAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetIntegrationResponse> localVarResponse = await GetIntegrationWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every connected integration of the store (AI, CRM, email senders, design apps) as uniform rows. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetIntegrationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetIntegrationResponse>> GetIntegrationWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetIntegrationResponse>("/v1/integrations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <returns>GetPrintMailEstimateResponse</returns>
+        public GetPrintMailEstimateResponse GetPrintMailEstimate(string lookbookId, decimal count, string credentialId = default(string), string format = default(string))
+        {
+            net.crossly.Client.ApiResponse<GetPrintMailEstimateResponse> localVarResponse = GetPrintMailEstimateWithHttpInfo(lookbookId, count, credentialId, format);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <returns>ApiResponse of GetPrintMailEstimateResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPrintMailEstimateResponse> GetPrintMailEstimateWithHttpInfo(string lookbookId, decimal count, string credentialId = default(string), string format = default(string))
+        {
+            // verify the required parameter 'lookbookId' is set
+            if (lookbookId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'lookbookId' when calling IntegrationsApi->GetPrintMailEstimate");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "lookbookId", lookbookId));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "count", count));
+            if (credentialId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "credentialId", credentialId));
+            }
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPrintMailEstimateResponse>("/v1/print-mail/estimate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPrintMailEstimate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPrintMailEstimateResponse</returns>
+        public async System.Threading.Tasks.Task<GetPrintMailEstimateResponse> GetPrintMailEstimateAsync(string lookbookId, decimal count, string credentialId = default(string), string format = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPrintMailEstimateResponse> localVarResponse = await GetPrintMailEstimateWithHttpInfoAsync(lookbookId, count, credentialId, format, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Estimate a printed lookbook send: pieces × the seller&#39;s own per-piece price, per format the account&#39;s provider prints. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="lookbookId"></param>
+        /// <param name="count"></param>
+        /// <param name="credentialId"> (optional)</param>
+        /// <param name="format"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPrintMailEstimateResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPrintMailEstimateResponse>> GetPrintMailEstimateWithHttpInfoAsync(string lookbookId, decimal count, string credentialId = default(string), string format = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'lookbookId' is set
+            if (lookbookId == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'lookbookId' when calling IntegrationsApi->GetPrintMailEstimate");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "lookbookId", lookbookId));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "count", count));
+            if (credentialId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "credentialId", credentialId));
+            }
+            if (format != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "format", format));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPrintMailEstimateResponse>("/v1/print-mail/estimate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPrintMailEstimate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <returns>ListCrmIntegrationLogsResponse</returns>
+        public ListCrmIntegrationLogsResponse ListCrmIntegrationLogs(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string))
+        {
+            net.crossly.Client.ApiResponse<ListCrmIntegrationLogsResponse> localVarResponse = ListCrmIntegrationLogsWithHttpInfo(id, page, pageSize, status);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <returns>ApiResponse of ListCrmIntegrationLogsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListCrmIntegrationLogsResponse> ListCrmIntegrationLogsWithHttpInfo(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->ListCrmIntegrationLogs");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCrmIntegrationLogsResponse>("/v1/crm/integrations/{id}/logs", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCrmIntegrationLogs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCrmIntegrationLogsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCrmIntegrationLogsResponse> ListCrmIntegrationLogsAsync(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListCrmIntegrationLogsResponse> localVarResponse = await ListCrmIntegrationLogsWithHttpInfoAsync(id, page, pageSize, status, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A CRM connection&#39;s delivery log, newest first, paged; filter by status. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCrmIntegrationLogsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCrmIntegrationLogsResponse>> ListCrmIntegrationLogsWithHttpInfoAsync(string id, decimal? page = default(decimal?), decimal? pageSize = default(decimal?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->ListCrmIntegrationLogs");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCrmIntegrationLogsResponse>("/v1/crm/integrations/{id}/logs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCrmIntegrationLogs", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListCrmIntegrationsResponse</returns>
+        public ListCrmIntegrationsResponse ListCrmIntegrations()
+        {
+            net.crossly.Client.ApiResponse<ListCrmIntegrationsResponse> localVarResponse = ListCrmIntegrationsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListCrmIntegrationsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListCrmIntegrationsResponse> ListCrmIntegrationsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListCrmIntegrationsResponse>("/v1/crm/integrations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCrmIntegrations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListCrmIntegrationsResponse</returns>
+        public async System.Threading.Tasks.Task<ListCrmIntegrationsResponse> ListCrmIntegrationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListCrmIntegrationsResponse> localVarResponse = await ListCrmIntegrationsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s CRM connections: provider, name, sync settings, health. Secrets are redacted. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListCrmIntegrationsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCrmIntegrationsResponse>> ListCrmIntegrationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListCrmIntegrationsResponse>("/v1/crm/integrations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListCrmIntegrations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ListNotificationIntegrationsResponse</returns>
@@ -760,7 +4568,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions. 
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListNotificationIntegrationsResponse</returns>
@@ -811,7 +4619,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions. 
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -823,7 +4631,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List Slack/Discord/Webhook destinations for notify.* automation actions. 
+        /// Deprecated (one release; use GET /api/v1/webhooks): every webhook of the seller as an old-style notification destination (provider slack/discord/webhook, plus kind), and any destination not yet copied to webhooks. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -877,24 +4685,22 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit a notification destination. 
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <returns>OkResponse</returns>
-        public OkResponse UpdateNotificationIntegration(Guid id)
+        /// <returns>ListPrintMailCredentialsResponse</returns>
+        public ListPrintMailCredentialsResponse ListPrintMailCredentials()
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateNotificationIntegrationWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListPrintMailCredentialsResponse> localVarResponse = ListPrintMailCredentialsWithHttpInfo();
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit a notification destination. 
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="id"></param>
-        /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> UpdateNotificationIntegrationWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of ListPrintMailCredentialsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListPrintMailCredentialsResponse> ListPrintMailCredentialsWithHttpInfo()
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -918,7 +4724,609 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListPrintMailCredentialsResponse>("/v1/print-mail/credentials", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPrintMailCredentials", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPrintMailCredentialsResponse</returns>
+        public async System.Threading.Tasks.Task<ListPrintMailCredentialsResponse> ListPrintMailCredentialsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListPrintMailCredentialsResponse> localVarResponse = await ListPrintMailCredentialsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s Lob and PostGrid accounts: mode, key as last 4, return address, per-piece prices. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPrintMailCredentialsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPrintMailCredentialsResponse>> ListPrintMailCredentialsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListPrintMailCredentialsResponse>("/v1/print-mail/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPrintMailCredentials", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <returns>CreateCrmIntegrationResponse</returns>
+        public CreateCrmIntegrationResponse UpdateCrmIntegration(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> localVarResponse = UpdateCrmIntegrationWithHttpInfo(id, updateCrmIntegrationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateCrmIntegrationResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> UpdateCrmIntegrationWithHttpInfo(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdateCrmIntegration");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCrmIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CreateCrmIntegrationResponse>("/v1/crm/integrations/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateCrmIntegrationResponse</returns>
+        public async System.Threading.Tasks.Task<CreateCrmIntegrationResponse> UpdateCrmIntegrationAsync(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse> localVarResponse = await UpdateCrmIntegrationWithHttpInfoAsync(id, updateCrmIntegrationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Rename, pause, re-key or change what a CRM receives (sources, opted-in only, field mapping). Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateCrmIntegrationRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateCrmIntegrationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCrmIntegrationResponse>> UpdateCrmIntegrationWithHttpInfoAsync(string id, UpdateCrmIntegrationRequest updateCrmIntegrationRequest = default(UpdateCrmIntegrationRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdateCrmIntegration");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateCrmIntegrationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreateCrmIntegrationResponse>("/v1/crm/integrations/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateCrmIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <returns>UpdateDesignToolResponse</returns>
+        public UpdateDesignToolResponse UpdateDesignTool(string tool, TokenObject tokenObject = default(TokenObject))
+        {
+            net.crossly.Client.ApiResponse<UpdateDesignToolResponse> localVarResponse = UpdateDesignToolWithHttpInfo(tool, tokenObject);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <returns>ApiResponse of UpdateDesignToolResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateDesignToolResponse> UpdateDesignToolWithHttpInfo(string tool, TokenObject tokenObject = default(TokenObject))
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->UpdateDesignTool");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+            localVarRequestOptions.Data = tokenObject;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateDesignToolResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDesignToolResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateDesignToolResponse> UpdateDesignToolAsync(string tool, TokenObject tokenObject = default(TokenObject), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateDesignToolResponse> localVarResponse = await UpdateDesignToolWithHttpInfoAsync(tool, tokenObject, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect Figma with a personal access token, or save your own Canva Connect app (client id + secret; finish the Canva sign-in in the dashboard). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tool"></param>
+        /// <param name="tokenObject"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDesignToolResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateDesignToolResponse>> UpdateDesignToolWithHttpInfoAsync(string tool, TokenObject tokenObject = default(TokenObject), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'tool' is set
+            if (tool == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'tool' when calling IntegrationsApi->UpdateDesignTool");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("tool", net.crossly.Client.ClientUtils.ParameterToString(tool)); // path parameter
+            localVarRequestOptions.Data = tokenObject;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateDesignToolResponse>("/v1/design-tools/{tool}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDesignTool", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <returns>UpdateEmailProviderResponse</returns>
+        public UpdateEmailProviderResponse UpdateEmailProvider(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest))
+        {
+            net.crossly.Client.ApiResponse<UpdateEmailProviderResponse> localVarResponse = UpdateEmailProviderWithHttpInfo(id, updateEmailProviderRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateEmailProviderResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateEmailProviderResponse> UpdateEmailProviderWithHttpInfo(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdateEmailProvider");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateEmailProviderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateEmailProviderResponse>("/v1/email-providers/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateEmailProviderResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateEmailProviderResponse> UpdateEmailProviderAsync(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateEmailProviderResponse> localVarResponse = await UpdateEmailProviderWithHttpInfoAsync(id, updateEmailProviderRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an email sender: label, from address, reply-to, default, settings. Blank secrets keep the stored ones. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateEmailProviderRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateEmailProviderResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateEmailProviderResponse>> UpdateEmailProviderWithHttpInfoAsync(string id, UpdateEmailProviderRequest updateEmailProviderRequest = default(UpdateEmailProviderRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdateEmailProvider");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateEmailProviderRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateEmailProviderResponse>("/v1/email-providers/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateEmailProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
+        /// <returns>OkResponse</returns>
+        public OkResponse UpdateNotificationIntegration(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest)
+        {
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = UpdateNotificationIntegrationWithHttpInfo(id, updateNotificationIntegrationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
+        /// <returns>ApiResponse of OkResponse</returns>
+        public net.crossly.Client.ApiResponse<OkResponse> UpdateNotificationIntegrationWithHttpInfo(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest)
+        {
+            // verify the required parameter 'updateNotificationIntegrationRequest' is set
+            if (updateNotificationIntegrationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateNotificationIntegrationRequest' when calling IntegrationsApi->UpdateNotificationIntegration");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateNotificationIntegrationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -942,31 +5350,40 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Edit a notification destination. 
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> UpdateNotificationIntegrationAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> UpdateNotificationIntegrationAsync(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateNotificationIntegrationWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await UpdateNotificationIntegrationWithHttpInfoAsync(id, updateNotificationIntegrationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Edit a notification destination. 
+        /// Deprecated alias: edit a notification destination. Use PATCH /api/v1/webhooks/{id}. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateNotificationIntegrationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateNotificationIntegrationWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> UpdateNotificationIntegrationWithHttpInfoAsync(Guid id, UpdateNotificationIntegrationRequest updateNotificationIntegrationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateNotificationIntegrationRequest' is set
+            if (updateNotificationIntegrationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateNotificationIntegrationRequest' when calling IntegrationsApi->UpdateNotificationIntegration");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -987,6 +5404,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateNotificationIntegrationRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1001,6 +5419,160 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateNotificationIntegration", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <returns>CreatePrintMailCredentialResponse</returns>
+        public CreatePrintMailCredentialResponse UpdatePrintMailCredential(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> localVarResponse = UpdatePrintMailCredentialWithHttpInfo(id, updatePrintMailCredentialRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreatePrintMailCredentialResponse</returns>
+        public net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> UpdatePrintMailCredentialWithHttpInfo(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdatePrintMailCredential");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePrintMailCredentialRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CreatePrintMailCredentialResponse>("/v1/print-mail/credentials/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePrintMailCredential", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreatePrintMailCredentialResponse</returns>
+        public async System.Threading.Tasks.Task<CreatePrintMailCredentialResponse> UpdatePrintMailCredentialAsync(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse> localVarResponse = await UpdatePrintMailCredentialWithHttpInfoAsync(id, updatePrintMailCredentialRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Change a print and mail account: label, return address, per-piece prices (cents per format). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePrintMailCredentialRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreatePrintMailCredentialResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePrintMailCredentialResponse>> UpdatePrintMailCredentialWithHttpInfoAsync(string id, UpdatePrintMailCredentialRequest updatePrintMailCredentialRequest = default(UpdatePrintMailCredentialRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling IntegrationsApi->UpdatePrintMailCredential");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePrintMailCredentialRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreatePrintMailCredentialResponse>("/v1/print-mail/credentials/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePrintMailCredential", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

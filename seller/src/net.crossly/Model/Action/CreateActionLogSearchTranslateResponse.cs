@@ -43,7 +43,7 @@ namespace net.crossly.Model
         /// <param name="explanation">What the search does, in one or two sentences. (required).</param>
         /// <param name="assumptions">Every guess that was made. (required).</param>
         /// <param name="error">Why there is no &#x60;q&#x60;, when there is none. (required).</param>
-        public CreateActionLogSearchTranslateResponse(Object q = default(Object), string explanation = default(string), List<string> assumptions = default(List<string>), Object error = default(Object))
+        public CreateActionLogSearchTranslateResponse(string q = default(string), string explanation = default(string), List<string> assumptions = default(List<string>), string error = default(string))
         {
             // to ensure "q" is required (not null)
             if (q == null) {
@@ -72,7 +72,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <value>The search for the list filter &#x60;q&#x60;; null when none parsed.</value>
         [DataMember(Name = "q", IsRequired = true, EmitDefaultValue = true)]
-        public Object Q { get; set; }
+        public string Q { get; set; }
 
         /// <summary>
         /// What the search does, in one or two sentences.
@@ -93,7 +93,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <value>Why there is no &#x60;q&#x60;, when there is none.</value>
         [DataMember(Name = "error", IsRequired = true, EmitDefaultValue = true)]
-        public Object Error { get; set; }
+        public string Error { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

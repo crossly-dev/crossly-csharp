@@ -68,8 +68,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
-        /// <returns>CreateDetectedEventEventUndoResponse</returns>
-        CreateDetectedEventEventUndoResponse CreateDetectedEventEventConfirm(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest);
+        /// <returns>DetectedEventEventResponse</returns>
+        DetectedEventEventResponse CreateDetectedEventEventConfirm(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest);
 
         /// <summary>
         /// Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
@@ -80,15 +80,55 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
-        /// <returns>ApiResponse of CreateDetectedEventEventUndoResponse</returns>
-        ApiResponse<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventConfirmWithHttpInfo(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest);
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventConfirmWithHttpInfo(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest);
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <returns>DetectedEventEventResponse</returns>
+        DetectedEventEventResponse CreateDetectedEventEventDismiss(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest);
+
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventDismissWithHttpInfo(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest);
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <returns>DetectedEventEventResponse</returns>
+        DetectedEventEventResponse CreateDetectedEventEventReject(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest);
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventRejectWithHttpInfo(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest);
         /// <summary>
         /// Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateDetectedEventEventUndoResponse</returns>
-        CreateDetectedEventEventUndoResponse CreateDetectedEventEventUndo(Guid id);
+        /// <returns>DetectedEventEventResponse</returns>
+        DetectedEventEventResponse CreateDetectedEventEventUndo(Guid id);
 
         /// <summary>
         /// Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
@@ -98,8 +138,8 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateDetectedEventEventUndoResponse</returns>
-        ApiResponse<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventUndoWithHttpInfo(Guid id);
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventUndoWithHttpInfo(Guid id);
         /// <summary>
         /// Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id.
         /// </summary>
@@ -118,6 +158,26 @@ namespace net.crossly.Api
         /// <param name="createDetectedEventRuleRequest"></param>
         /// <returns>ApiResponse of CreateDetectedEventRuleResponse</returns>
         ApiResponse<CreateDetectedEventRuleResponse> CreateDetectedEventRuleWithHttpInfo(CreateDetectedEventRuleRequest createDetectedEventRuleRequest);
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <returns>CreateDetectedEventRuleCopyResponse</returns>
+        CreateDetectedEventRuleCopyResponse CreateDetectedEventRuleCopy(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest);
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <returns>ApiResponse of CreateDetectedEventRuleCopyResponse</returns>
+        ApiResponse<CreateDetectedEventRuleCopyResponse> CreateDetectedEventRuleCopyWithHttpInfo(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest);
         /// <summary>
         /// Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list.
         /// </summary>
@@ -209,6 +269,24 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateDetectedEventSimulateImpactResponse</returns>
         ApiResponse<CreateDetectedEventSimulateImpactResponse> CreateDetectedEventSimulateImpactWithHttpInfo(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest);
         /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>CreateDetectedEventStartingPointPreviewResponse</returns>
+        CreateDetectedEventStartingPointPreviewResponse CreateDetectedEventStartingPointPreview(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest);
+
+        /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>ApiResponse of CreateDetectedEventStartingPointPreviewResponse</returns>
+        ApiResponse<CreateDetectedEventStartingPointPreviewResponse> CreateDetectedEventStartingPointPreviewWithHttpInfo(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest);
+        /// <summary>
         /// Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -247,11 +325,30 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of IdStatusResponse</returns>
         ApiResponse<IdStatusResponse> CreateEmailEventDismissWithHttpInfo(Guid id);
         /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventResponse</returns>
+        GetEmailEventResponse CreateEmailEventReprocess(Guid id);
+
+        /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventResponse</returns>
+        ApiResponse<GetEmailEventResponse> CreateEmailEventReprocessWithHttpInfo(Guid id);
+        /// <summary>
         /// Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         CreateEventPolicyDecisionConfirmResponse CreateEventPolicyDecisionConfirm(Guid id);
 
         /// <summary>
@@ -263,6 +360,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         ApiResponse<CreateEventPolicyDecisionConfirmResponse> CreateEventPolicyDecisionConfirmWithHttpInfo(Guid id);
         /// <summary>
         /// Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too.
@@ -288,6 +386,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>DeleteStoryResponse</returns>
+        [Obsolete]
         DeleteStoryResponse DeleteEventPolicyRule(Guid id);
 
         /// <summary>
@@ -299,6 +398,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        [Obsolete]
         ApiResponse<DeleteStoryResponse> DeleteEventPolicyRuleWithHttpInfo(Guid id);
         /// <summary>
         /// One Activity Log event by id, with &#x60;view&#x60; including its steps and, for bulk jobs, its children.
@@ -389,12 +489,99 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetDetectedEventEventResponse</returns>
         ApiResponse<GetDetectedEventEventResponse> GetDetectedEventEventWithHttpInfo(Guid id);
         /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetDetectedEventOverviewResponse</returns>
+        GetDetectedEventOverviewResponse GetDetectedEventOverview();
+
+        /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetDetectedEventOverviewResponse</returns>
+        ApiResponse<GetDetectedEventOverviewResponse> GetDetectedEventOverviewWithHttpInfo();
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <returns>GetDetectedEventRuleResponse</returns>
+        GetDetectedEventRuleResponse GetDetectedEventRule(string _ref);
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <returns>ApiResponse of GetDetectedEventRuleResponse</returns>
+        ApiResponse<GetDetectedEventRuleResponse> GetDetectedEventRuleWithHttpInfo(string _ref);
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetDetectedEventStartingPointResponse</returns>
+        GetDetectedEventStartingPointResponse GetDetectedEventStartingPoint();
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetDetectedEventStartingPointResponse</returns>
+        ApiResponse<GetDetectedEventStartingPointResponse> GetDetectedEventStartingPointWithHttpInfo();
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventResponse</returns>
+        GetEmailEventResponse GetEmailEvent(Guid id);
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventResponse</returns>
+        ApiResponse<GetEmailEventResponse> GetEmailEventWithHttpInfo(Guid id);
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventPreviewResponse</returns>
+        GetEmailEventPreviewResponse GetEmailEventPreview(Guid id);
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventPreviewResponse</returns>
+        ApiResponse<GetEmailEventPreviewResponse> GetEmailEventPreviewWithHttpInfo(Guid id);
+        /// <summary>
         /// What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"> (optional)</param>
         /// <param name="appId"> (optional)</param>
         /// <returns>GetEventPolicyResponse</returns>
+        [Obsolete]
         GetEventPolicyResponse GetEventPolicy(string platform = default(string), Guid? appId = default(Guid?));
 
         /// <summary>
@@ -407,6 +594,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="appId"> (optional)</param>
         /// <returns>ApiResponse of GetEventPolicyResponse</returns>
+        [Obsolete]
         ApiResponse<GetEventPolicyResponse> GetEventPolicyWithHttpInfo(string platform = default(string), Guid? appId = default(Guid?));
         /// <summary>
         /// List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches.
@@ -515,21 +703,27 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListActionLogHistogramResponse</returns>
         ApiResponse<ListActionLogHistogramResponse> ListActionLogHistogramWithHttpInfo(string platform = default(string), string action = default(string), string category = default(string), string area = default(string), string status = default(string), string source = default(string), string targetType = default(string), string targetId = default(string), string actorUserId = default(string), string q = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?));
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <returns>ListDetectedEventEventsResponse</returns>
-        ListDetectedEventEventsResponse ListDetectedEventEvents(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?));
+        ListDetectedEventEventsResponse ListDetectedEventEvents(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?));
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
         /// </summary>
         /// <remarks>
         /// 
@@ -538,12 +732,18 @@ namespace net.crossly.Api
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListDetectedEventEventsResponse</returns>
-        ApiResponse<ListDetectedEventEventsResponse> ListDetectedEventEventsWithHttpInfo(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?));
+        ApiResponse<ListDetectedEventEventsResponse> ListDetectedEventEventsWithHttpInfo(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?));
         /// <summary>
         /// The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings.
         /// </summary>
@@ -560,6 +760,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ListDetectedEventRulesResponse</returns>
         ApiResponse<ListDetectedEventRulesResponse> ListDetectedEventRulesWithHttpInfo();
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListDetectedEventSituationsResponse</returns>
+        ListDetectedEventSituationsResponse ListDetectedEventSituations();
+
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListDetectedEventSituationsResponse</returns>
+        ApiResponse<ListDetectedEventSituationsResponse> ListDetectedEventSituationsWithHttpInfo();
         /// <summary>
         /// List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically.
         /// </summary>
@@ -589,6 +805,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="outcome"> (optional)</param>
         /// <returns>ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         ListEventPolicyDecisionsResponse ListEventPolicyDecisions(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string));
 
         /// <summary>
@@ -605,6 +822,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="outcome"> (optional)</param>
         /// <returns>ApiResponse of ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         ApiResponse<ListEventPolicyDecisionsResponse> ListEventPolicyDecisionsWithHttpInfo(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string));
         /// <summary>
         /// Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one).
@@ -627,11 +845,30 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of CreateDetectedEventRuleResponse</returns>
         ApiResponse<CreateDetectedEventRuleResponse> UpdateDetectedEventRuleWithHttpInfo(string id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest);
         /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>GetDetectedEventStartingPointResponse</returns>
+        GetDetectedEventStartingPointResponse UpdateDetectedEventStartingPoint(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest);
+
+        /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>ApiResponse of GetDetectedEventStartingPointResponse</returns>
+        ApiResponse<GetDetectedEventStartingPointResponse> UpdateDetectedEventStartingPointWithHttpInfo(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest);
+        /// <summary>
         /// Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <returns>UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         UpdateEventPolicyRuleResponse UpdateEventPolicyRule(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest);
 
         /// <summary>
@@ -643,6 +880,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <returns>ApiResponse of UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         ApiResponse<UpdateEventPolicyRuleResponse> UpdateEventPolicyRuleWithHttpInfo(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest);
         #endregion Synchronous Operations
     }
@@ -709,8 +947,8 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateDetectedEventEventUndoResponse</returns>
-        System.Threading.Tasks.Task<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventConfirmAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventConfirmAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Answer an open ask (canConfirm true): optionally which item it is (itemId, one of the match candidates) and which actions to run instead of the ask&#39;s preselected ones. Returns the event. 409 ask_not_open when the event is not waiting.
@@ -722,8 +960,58 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateDetectedEventEventUndoResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventEventUndoResponse>> CreateDetectedEventEventConfirmWithHttpInfoAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventConfirmWithHttpInfoAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventDismissAsync(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventDismissWithHttpInfoAsync(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventRejectAsync(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventRejectWithHttpInfoAsync(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
         /// </summary>
@@ -733,8 +1021,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateDetectedEventEventUndoResponse</returns>
-        System.Threading.Tasks.Task<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventUndoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventUndoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible.
@@ -745,8 +1033,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateDetectedEventEventUndoResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventEventUndoResponse>> CreateDetectedEventEventUndoWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventUndoWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create a detection rule: which detected events it applies to (filter + optional condition over any event axis) and what Crossly does then (and else). Without order it is placed most-specific-first, above the default set. Returns the stored rule with its id.
         /// </summary>
@@ -770,6 +1058,31 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDetectedEventRuleResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventRuleResponse>> CreateDetectedEventRuleWithHttpInfoAsync(CreateDetectedEventRuleRequest createDetectedEventRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDetectedEventRuleCopyResponse</returns>
+        System.Threading.Tasks.Task<CreateDetectedEventRuleCopyResponse> CreateDetectedEventRuleCopyAsync(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDetectedEventRuleCopyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventRuleCopyResponse>> CreateDetectedEventRuleCopyWithHttpInfoAsync(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Save one rule and the whole evaluation order in one transaction: rule.id is an existing id (replace) or any new client id (create); ids is every rule id top-down, naming the rule by that id. Returns the stored rule and the list.
         /// </summary>
@@ -886,6 +1199,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateDetectedEventSimulateImpactResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventSimulateImpactResponse>> CreateDetectedEventSimulateImpactWithHttpInfoAsync(CreateDetectedEventSimulateImpactRequest createDetectedEventSimulateImpactRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDetectedEventStartingPointPreviewResponse</returns>
+        System.Threading.Tasks.Task<CreateDetectedEventStartingPointPreviewResponse> CreateDetectedEventStartingPointPreviewAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDetectedEventStartingPointPreviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventStartingPointPreviewResponse>> CreateDetectedEventStartingPointPreviewWithHttpInfoAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one.
         /// </summary>
         /// <remarks>
@@ -934,6 +1270,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (IdStatusResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<IdStatusResponse>> CreateEmailEventDismissWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventResponse</returns>
+        System.Threading.Tasks.Task<GetEmailEventResponse> CreateEmailEventReprocessAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetEmailEventResponse>> CreateEmailEventReprocessWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card).
         /// </summary>
         /// <remarks>
@@ -943,6 +1302,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<CreateEventPolicyDecisionConfirmResponse> CreateEventPolicyDecisionConfirmAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -955,6 +1315,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEventPolicyDecisionConfirmResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<CreateEventPolicyDecisionConfirmResponse>> CreateEventPolicyDecisionConfirmWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a detection rule. Deleting your edit of a default (its id, or default:&lt;key&gt;) brings the shipped default back; deleting a translated event-policy rule deletes that policy rule too.
@@ -989,6 +1350,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteStoryResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<DeleteStoryResponse> DeleteEventPolicyRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -1001,6 +1363,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<DeleteStoryResponse>> DeleteEventPolicyRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One Activity Log event by id, with &#x60;view&#x60; including its steps and, for bulk jobs, its children.
@@ -1116,6 +1479,117 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetDetectedEventEventResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetDetectedEventEventResponse>> GetDetectedEventEventWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventOverviewResponse</returns>
+        System.Threading.Tasks.Task<GetDetectedEventOverviewResponse> GetDetectedEventOverviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventOverviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDetectedEventOverviewResponse>> GetDetectedEventOverviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventRuleResponse</returns>
+        System.Threading.Tasks.Task<GetDetectedEventRuleResponse> GetDetectedEventRuleAsync(string _ref, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventRuleResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDetectedEventRuleResponse>> GetDetectedEventRuleWithHttpInfoAsync(string _ref, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventStartingPointResponse</returns>
+        System.Threading.Tasks.Task<GetDetectedEventStartingPointResponse> GetDetectedEventStartingPointAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventStartingPointResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDetectedEventStartingPointResponse>> GetDetectedEventStartingPointWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventResponse</returns>
+        System.Threading.Tasks.Task<GetEmailEventResponse> GetEmailEventAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetEmailEventResponse>> GetEmailEventWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventPreviewResponse</returns>
+        System.Threading.Tasks.Task<GetEmailEventPreviewResponse> GetEmailEventPreviewAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventPreviewResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetEmailEventPreviewResponse>> GetEmailEventPreviewWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps.
         /// </summary>
         /// <remarks>
@@ -1126,6 +1600,7 @@ namespace net.crossly.Api
         /// <param name="appId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetEventPolicyResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<GetEventPolicyResponse> GetEventPolicyAsync(string platform = default(string), Guid? appId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -1139,6 +1614,7 @@ namespace net.crossly.Api
         /// <param name="appId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetEventPolicyResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<GetEventPolicyResponse>> GetEventPolicyWithHttpInfoAsync(string platform = default(string), Guid? appId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List Activity Log events, newest first. Each event carries &#x60;view&#x60; (title, sentence, fields, failure advice, who did it) and typed &#x60;detail&#x60;. Page with &#x60;cursor&#x60;; &#x60;pagination.total&#x60; counts matches.
@@ -1262,7 +1738,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListActionLogHistogramResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListActionLogHistogramResponse>> ListActionLogHistogramWithHttpInfoAsync(string platform = default(string), string action = default(string), string category = default(string), string area = default(string), string status = default(string), string source = default(string), string targetType = default(string), string targetId = default(string), string actorUserId = default(string), string q = default(string), DateTime? since = default(DateTime?), DateTime? until = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
         /// </summary>
         /// <remarks>
         /// 
@@ -1271,16 +1747,22 @@ namespace net.crossly.Api
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDetectedEventEventsResponse</returns>
-        System.Threading.Tasks.Task<ListDetectedEventEventsResponse> ListDetectedEventEventsAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListDetectedEventEventsResponse> ListDetectedEventEventsAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time).
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed).
         /// </summary>
         /// <remarks>
         /// 
@@ -1289,13 +1771,19 @@ namespace net.crossly.Api
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDetectedEventEventsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDetectedEventEventsResponse>> ListDetectedEventEventsWithHttpInfoAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListDetectedEventEventsResponse>> ListDetectedEventEventsWithHttpInfoAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The seller&#39;s detection rules, top-down in the order they are evaluated (first match wins unless a rule says continue): the seller&#39;s own rules, translations of their event-policy rules (source legacy), then the shipped default set (source default, ids default:&lt;key&gt;; a stored edit of a default replaces it). Each rule has a filter (event kinds, platforms, accounts, apps, tags, items), an optional condition over any event axis, the actions it runs (then / else) and its guard loosenings.
         /// </summary>
@@ -1317,6 +1805,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDetectedEventRulesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListDetectedEventRulesResponse>> ListDetectedEventRulesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListDetectedEventSituationsResponse</returns>
+        System.Threading.Tasks.Task<ListDetectedEventSituationsResponse> ListDetectedEventSituationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListDetectedEventSituationsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListDetectedEventSituationsResponse>> ListDetectedEventSituationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically.
         /// </summary>
@@ -1355,6 +1864,7 @@ namespace net.crossly.Api
         /// <param name="outcome"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ListEventPolicyDecisionsResponse> ListEventPolicyDecisionsAsync(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -1372,6 +1882,7 @@ namespace net.crossly.Api
         /// <param name="outcome"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEventPolicyDecisionsResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<ListEventPolicyDecisionsResponse>> ListEventPolicyDecisionsWithHttpInfoAsync(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Replace a detection rule. An id default:&lt;key&gt; stores your edit of that shipped default (delete it, or reset-defaults, to go back to the shipped one).
@@ -1399,6 +1910,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (CreateDetectedEventRuleResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateDetectedEventRuleResponse>> UpdateDetectedEventRuleWithHttpInfoAsync(string id, CreateDetectedEventRuleRequest createDetectedEventRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventStartingPointResponse</returns>
+        System.Threading.Tasks.Task<GetDetectedEventStartingPointResponse> UpdateDetectedEventStartingPointAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventStartingPointResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDetectedEventStartingPointResponse>> UpdateDetectedEventStartingPointWithHttpInfoAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items.
         /// </summary>
         /// <remarks>
@@ -1408,6 +1942,7 @@ namespace net.crossly.Api
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<UpdateEventPolicyRuleResponse> UpdateEventPolicyRuleAsync(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
@@ -1420,6 +1955,7 @@ namespace net.crossly.Api
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateEventPolicyRuleResponse)</returns>
+        [Obsolete]
         System.Threading.Tasks.Task<ApiResponse<UpdateEventPolicyRuleResponse>> UpdateEventPolicyRuleWithHttpInfoAsync(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
@@ -1843,10 +2379,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
-        /// <returns>CreateDetectedEventEventUndoResponse</returns>
-        public CreateDetectedEventEventUndoResponse CreateDetectedEventEventConfirm(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
+        /// <returns>DetectedEventEventResponse</returns>
+        public DetectedEventEventResponse CreateDetectedEventEventConfirm(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
         {
-            net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> localVarResponse = CreateDetectedEventEventConfirmWithHttpInfo(id, createDetectedEventEventConfirmRequest);
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = CreateDetectedEventEventConfirmWithHttpInfo(id, createDetectedEventEventConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -1856,8 +2392,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
-        /// <returns>ApiResponse of CreateDetectedEventEventUndoResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventConfirmWithHttpInfo(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        public net.crossly.Client.ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventConfirmWithHttpInfo(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest)
         {
             // verify the required parameter 'createDetectedEventEventConfirmRequest' is set
             if (createDetectedEventEventConfirmRequest == null)
@@ -1899,7 +2435,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateDetectedEventEventUndoResponse>("/v1/detected-events/events/{id}/confirm", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<DetectedEventEventResponse>("/v1/detected-events/events/{id}/confirm", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDetectedEventEventConfirm", localVarResponse);
@@ -1919,10 +2455,10 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateDetectedEventEventUndoResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventConfirmAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        public async System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventConfirmAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> localVarResponse = await CreateDetectedEventEventConfirmWithHttpInfoAsync(id, createDetectedEventEventConfirmRequest, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = await CreateDetectedEventEventConfirmWithHttpInfoAsync(id, createDetectedEventEventConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1933,8 +2469,8 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="createDetectedEventEventConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateDetectedEventEventUndoResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse>> CreateDetectedEventEventConfirmWithHttpInfoAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventConfirmWithHttpInfoAsync(Guid id, CreateDetectedEventEventConfirmRequest createDetectedEventEventConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'createDetectedEventEventConfirmRequest' is set
             if (createDetectedEventEventConfirmRequest == null)
@@ -1977,7 +2513,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDetectedEventEventUndoResponse>("/v1/detected-events/events/{id}/confirm", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DetectedEventEventResponse>("/v1/detected-events/events/{id}/confirm", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1992,14 +2528,322 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <returns>DetectedEventEventResponse</returns>
+        public DetectedEventEventResponse CreateDetectedEventEventDismiss(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest)
+        {
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = CreateDetectedEventEventDismissWithHttpInfo(id, createDetectedEventEventDismissRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        public net.crossly.Client.ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventDismissWithHttpInfo(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest)
+        {
+            // verify the required parameter 'createDetectedEventEventDismissRequest' is set
+            if (createDetectedEventEventDismissRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventEventDismissRequest' when calling ActivityApi->CreateDetectedEventEventDismiss");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventEventDismissRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DetectedEventEventResponse>("/v1/detected-events/events/{id}/dismiss", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventEventDismiss", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        public async System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventDismissAsync(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = await CreateDetectedEventEventDismissWithHttpInfoAsync(id, createDetectedEventEventDismissRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Close an open ask without acting (status dismissed): nothing runs and nothing is recorded for the event. reason is kept with it. Returns the event. 409 ask_not_open when the event is not waiting. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventDismissRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventDismissWithHttpInfoAsync(Guid id, CreateDetectedEventEventDismissRequest createDetectedEventEventDismissRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createDetectedEventEventDismissRequest' is set
+            if (createDetectedEventEventDismissRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventEventDismissRequest' when calling ActivityApi->CreateDetectedEventEventDismiss");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventEventDismissRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DetectedEventEventResponse>("/v1/detected-events/events/{id}/dismiss", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventEventDismiss", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <returns>DetectedEventEventResponse</returns>
+        public DetectedEventEventResponse CreateDetectedEventEventReject(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest)
+        {
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = CreateDetectedEventEventRejectWithHttpInfo(id, createDetectedEventEventRejectRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        public net.crossly.Client.ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventRejectWithHttpInfo(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest)
+        {
+            // verify the required parameter 'createDetectedEventEventRejectRequest' is set
+            if (createDetectedEventEventRejectRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventEventRejectRequest' when calling ActivityApi->CreateDetectedEventEventReject");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventEventRejectRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<DetectedEventEventResponse>("/v1/detected-events/events/{id}/reject", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventEventReject", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        public async System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventRejectAsync(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = await CreateDetectedEventEventRejectWithHttpInfoAsync(id, createDetectedEventEventRejectRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// \&quot;Not this item\&quot;: drop the suggested match of an open ask (itemId: just that candidate; omitted: every candidate). The ask stays open with the remaining candidates, or asks which item it is. Returns the event. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="createDetectedEventEventRejectRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventRejectWithHttpInfoAsync(Guid id, CreateDetectedEventEventRejectRequest createDetectedEventEventRejectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createDetectedEventEventRejectRequest' is set
+            if (createDetectedEventEventRejectRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventEventRejectRequest' when calling ActivityApi->CreateDetectedEventEventReject");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventEventRejectRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DetectedEventEventResponse>("/v1/detected-events/events/{id}/reject", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventEventReject", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Undo what Crossly did for an event (canUndo true): every executed action&#39;s stored inverse runs, newest first (restore stock, relist, unlink…). Returns the event. 409 nothing_to_undo when nothing is reversible. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>CreateDetectedEventEventUndoResponse</returns>
-        public CreateDetectedEventEventUndoResponse CreateDetectedEventEventUndo(Guid id)
+        /// <returns>DetectedEventEventResponse</returns>
+        public DetectedEventEventResponse CreateDetectedEventEventUndo(Guid id)
         {
-            net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> localVarResponse = CreateDetectedEventEventUndoWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = CreateDetectedEventEventUndoWithHttpInfo(id);
             return localVarResponse.Data;
         }
 
@@ -2008,8 +2852,8 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
-        /// <returns>ApiResponse of CreateDetectedEventEventUndoResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventUndoWithHttpInfo(Guid id)
+        /// <returns>ApiResponse of DetectedEventEventResponse</returns>
+        public net.crossly.Client.ApiResponse<DetectedEventEventResponse> CreateDetectedEventEventUndoWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2043,7 +2887,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateDetectedEventEventUndoResponse>("/v1/detected-events/events/{id}/undo", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<DetectedEventEventResponse>("/v1/detected-events/events/{id}/undo", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDetectedEventEventUndo", localVarResponse);
@@ -2062,10 +2906,10 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of CreateDetectedEventEventUndoResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDetectedEventEventUndoResponse> CreateDetectedEventEventUndoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of DetectedEventEventResponse</returns>
+        public async System.Threading.Tasks.Task<DetectedEventEventResponse> CreateDetectedEventEventUndoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse> localVarResponse = await CreateDetectedEventEventUndoWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<DetectedEventEventResponse> localVarResponse = await CreateDetectedEventEventUndoWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2075,8 +2919,8 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (CreateDetectedEventEventUndoResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDetectedEventEventUndoResponse>> CreateDetectedEventEventUndoWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (DetectedEventEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DetectedEventEventResponse>> CreateDetectedEventEventUndoWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2111,7 +2955,7 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDetectedEventEventUndoResponse>("/v1/detected-events/events/{id}/undo", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DetectedEventEventResponse>("/v1/detected-events/events/{id}/undo", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2264,6 +3108,172 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDetectedEventRule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <returns>CreateDetectedEventRuleCopyResponse</returns>
+        public CreateDetectedEventRuleCopyResponse CreateDetectedEventRuleCopy(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateDetectedEventRuleCopyResponse> localVarResponse = CreateDetectedEventRuleCopyWithHttpInfo(_ref, createDetectedEventRuleCopyRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <returns>ApiResponse of CreateDetectedEventRuleCopyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateDetectedEventRuleCopyResponse> CreateDetectedEventRuleCopyWithHttpInfo(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest)
+        {
+            // verify the required parameter '_ref' is set
+            if (_ref == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter '_ref' when calling ActivityApi->CreateDetectedEventRuleCopy");
+            }
+
+            // verify the required parameter 'createDetectedEventRuleCopyRequest' is set
+            if (createDetectedEventRuleCopyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventRuleCopyRequest' when calling ActivityApi->CreateDetectedEventRuleCopy");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ref", net.crossly.Client.ClientUtils.ParameterToString(_ref)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventRuleCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDetectedEventRuleCopyResponse>("/v1/detected-events/rules/{ref}/copy", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventRuleCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDetectedEventRuleCopyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateDetectedEventRuleCopyResponse> CreateDetectedEventRuleCopyAsync(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateDetectedEventRuleCopyResponse> localVarResponse = await CreateDetectedEventRuleCopyWithHttpInfoAsync(_ref, createDetectedEventRuleCopyRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy one rule (a stored id, or default.&lt;key&gt; for the store&#39;s effective rule of a situation) into other stores of yours, at the same relative position. A target store that already has its own rule for that situation keeps it unless overwrite is true. Returns what was copied (and whether it replaced a rule) and what was skipped, and why. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A rule id, or default.&lt;key&gt; (default:&lt;key&gt; works).</param>
+        /// <param name="createDetectedEventRuleCopyRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDetectedEventRuleCopyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDetectedEventRuleCopyResponse>> CreateDetectedEventRuleCopyWithHttpInfoAsync(string _ref, CreateDetectedEventRuleCopyRequest createDetectedEventRuleCopyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter '_ref' is set
+            if (_ref == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter '_ref' when calling ActivityApi->CreateDetectedEventRuleCopy");
+            }
+
+            // verify the required parameter 'createDetectedEventRuleCopyRequest' is set
+            if (createDetectedEventRuleCopyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createDetectedEventRuleCopyRequest' when calling ActivityApi->CreateDetectedEventRuleCopy");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ref", net.crossly.Client.ClientUtils.ParameterToString(_ref)); // path parameter
+            localVarRequestOptions.Data = createDetectedEventRuleCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDetectedEventRuleCopyResponse>("/v1/detected-events/rules/{ref}/copy", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventRuleCopy", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3014,6 +4024,154 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>CreateDetectedEventStartingPointPreviewResponse</returns>
+        public CreateDetectedEventStartingPointPreviewResponse CreateDetectedEventStartingPointPreview(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateDetectedEventStartingPointPreviewResponse> localVarResponse = CreateDetectedEventStartingPointPreviewWithHttpInfo(updateDetectedEventStartingPointRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>ApiResponse of CreateDetectedEventStartingPointPreviewResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateDetectedEventStartingPointPreviewResponse> CreateDetectedEventStartingPointPreviewWithHttpInfo(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+        {
+            // verify the required parameter 'updateDetectedEventStartingPointRequest' is set
+            if (updateDetectedEventStartingPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDetectedEventStartingPointRequest' when calling ActivityApi->CreateDetectedEventStartingPointPreview");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateDetectedEventStartingPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDetectedEventStartingPointPreviewResponse>("/v1/detected-events/starting-point/preview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventStartingPointPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDetectedEventStartingPointPreviewResponse</returns>
+        public async System.Threading.Tasks.Task<CreateDetectedEventStartingPointPreviewResponse> CreateDetectedEventStartingPointPreviewAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateDetectedEventStartingPointPreviewResponse> localVarResponse = await CreateDetectedEventStartingPointPreviewWithHttpInfoAsync(updateDetectedEventStartingPointRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What applying a starting point would change, nothing saved: per situation its title, the outcome now and after, and whether it would overwrite a default you edited by hand (those are kept: a starting point only rewrites untouched defaults, never your own rules). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDetectedEventStartingPointPreviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDetectedEventStartingPointPreviewResponse>> CreateDetectedEventStartingPointPreviewWithHttpInfoAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateDetectedEventStartingPointRequest' is set
+            if (updateDetectedEventStartingPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDetectedEventStartingPointRequest' when calling ActivityApi->CreateDetectedEventStartingPointPreview");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateDetectedEventStartingPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDetectedEventStartingPointPreviewResponse>("/v1/detected-events/starting-point/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDetectedEventStartingPointPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Confirm an email-detected event: re-run it as certain (a possible sale records the sale and delists the item elsewhere). When several listings could be meant, pass platformListingDbId to choose one. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3302,11 +4460,146 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventResponse</returns>
+        public GetEmailEventResponse CreateEmailEventReprocess(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventResponse> localVarResponse = CreateEmailEventReprocessWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventResponse</returns>
+        public net.crossly.Client.ApiResponse<GetEmailEventResponse> CreateEmailEventReprocessWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GetEmailEventResponse>("/v1/email-events/{id}/reprocess", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailEventReprocess", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventResponse</returns>
+        public async System.Threading.Tasks.Task<GetEmailEventResponse> CreateEmailEventReprocessAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventResponse> localVarResponse = await CreateEmailEventReprocessWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-process a marketplace email with the current templates (one Crossly did not recognise, could not finish, or ignored). Refused (409) for an email that already changed something, or once its 30-day copy is gone. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetEmailEventResponse>> CreateEmailEventReprocessWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetEmailEventResponse>("/v1/email-events/{id}/reprocess", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateEmailEventReprocess", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Confirm a review decision from a webhook, order poller or app relay (canConfirm true): the event runs again with the seller confirmed, so a review rule runs the strongest allowed non-review action for that cell. Returns the new decision. 409 when the decision was already confirmed or is not confirmable (email review decisions are confirmed on their review card). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         public CreateEventPolicyDecisionConfirmResponse CreateEventPolicyDecisionConfirm(Guid id)
         {
             net.crossly.Client.ApiResponse<CreateEventPolicyDecisionConfirmResponse> localVarResponse = CreateEventPolicyDecisionConfirmWithHttpInfo(id);
@@ -3319,6 +4612,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<CreateEventPolicyDecisionConfirmResponse> CreateEventPolicyDecisionConfirmWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3373,6 +4667,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEventPolicyDecisionConfirmResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<CreateEventPolicyDecisionConfirmResponse> CreateEventPolicyDecisionConfirmAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<CreateEventPolicyDecisionConfirmResponse> localVarResponse = await CreateEventPolicyDecisionConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -3386,6 +4681,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEventPolicyDecisionConfirmResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateEventPolicyDecisionConfirmResponse>> CreateEventPolicyDecisionConfirmWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -3587,6 +4883,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>DeleteStoryResponse</returns>
+        [Obsolete]
         public DeleteStoryResponse DeleteEventPolicyRule(Guid id)
         {
             net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = DeleteEventPolicyRuleWithHttpInfo(id);
@@ -3599,6 +4896,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <returns>ApiResponse of DeleteStoryResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<DeleteStoryResponse> DeleteEventPolicyRuleWithHttpInfo(Guid id)
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3653,6 +4951,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteStoryResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<DeleteStoryResponse> DeleteEventPolicyRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<DeleteStoryResponse> localVarResponse = await DeleteEventPolicyRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
@@ -3666,6 +4965,7 @@ namespace net.crossly.Api
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteStoryResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<DeleteStoryResponse>> DeleteEventPolicyRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -4404,12 +5704,683 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetDetectedEventOverviewResponse</returns>
+        public GetDetectedEventOverviewResponse GetDetectedEventOverview()
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventOverviewResponse> localVarResponse = GetDetectedEventOverviewWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetDetectedEventOverviewResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDetectedEventOverviewResponse> GetDetectedEventOverviewWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDetectedEventOverviewResponse>("/v1/detected-events/overview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventOverview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventOverviewResponse</returns>
+        public async System.Threading.Tasks.Task<GetDetectedEventOverviewResponse> GetDetectedEventOverviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventOverviewResponse> localVarResponse = await GetDetectedEventOverviewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// What Crossly does today in each situation for the store, computed from the store&#39;s real rules the way the engine decides: per situation its topic, title, the outcome in words, the rule ref that decides it, whether it differs from the recommended default, and narrower rules (one marketplace, account or app) that decide it differently there. Also the headline situations per topic, the starting point (hands_on / balanced / hands_off / custom), how many rules are your own and how many events wait for you. The store is X-Storefront-Id (omitted: the default store). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventOverviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDetectedEventOverviewResponse>> GetDetectedEventOverviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDetectedEventOverviewResponse>("/v1/detected-events/overview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventOverview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <returns>GetDetectedEventRuleResponse</returns>
+        public GetDetectedEventRuleResponse GetDetectedEventRule(string _ref)
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventRuleResponse> localVarResponse = GetDetectedEventRuleWithHttpInfo(_ref);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <returns>ApiResponse of GetDetectedEventRuleResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDetectedEventRuleResponse> GetDetectedEventRuleWithHttpInfo(string _ref)
+        {
+            // verify the required parameter '_ref' is set
+            if (_ref == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter '_ref' when calling ActivityApi->GetDetectedEventRule");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ref", net.crossly.Client.ClientUtils.ParameterToString(_ref)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDetectedEventRuleResponse>("/v1/detected-events/rules/{ref}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventRule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventRuleResponse</returns>
+        public async System.Threading.Tasks.Task<GetDetectedEventRuleResponse> GetDetectedEventRuleAsync(string _ref, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventRuleResponse> localVarResponse = await GetDetectedEventRuleWithHttpInfoAsync(_ref, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One detection rule by its ref: a stored rule&#39;s id, or default.&lt;key&gt; for a situation (the store&#39;s effective rule for it: your edit when there is one, else the shipped default). Returns the rule, the situation it decides (topic, title, why it is the default), the choice cards offered for that situation (each a complete rule body, the recommended one first) and which card the rule is (custom when none). A retired key (order.notify, account) opens the key it was split into. 404 when the ref names nothing. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="_ref">A stored rule id (uuid), or default.&lt;key&gt; for a situation default (default:&lt;key&gt; also works).</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventRuleResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDetectedEventRuleResponse>> GetDetectedEventRuleWithHttpInfoAsync(string _ref, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter '_ref' is set
+            if (_ref == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter '_ref' when calling ActivityApi->GetDetectedEventRule");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ref", net.crossly.Client.ClientUtils.ParameterToString(_ref)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDetectedEventRuleResponse>("/v1/detected-events/rules/{ref}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventRule", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetDetectedEventStartingPointResponse</returns>
+        public GetDetectedEventStartingPointResponse GetDetectedEventStartingPoint()
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> localVarResponse = GetDetectedEventStartingPointWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetDetectedEventStartingPointResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> GetDetectedEventStartingPointWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDetectedEventStartingPointResponse>("/v1/detected-events/starting-point", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventStartingPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventStartingPointResponse</returns>
+        public async System.Threading.Tasks.Task<GetDetectedEventStartingPointResponse> GetDetectedEventStartingPointAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> localVarResponse = await GetDetectedEventStartingPointWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s starting point: hands_on, balanced (recommended), hands_off, or custom once a default was edited by hand. Preview a change with POST starting-point/preview, apply it with PUT starting-point. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventStartingPointResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse>> GetDetectedEventStartingPointWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDetectedEventStartingPointResponse>("/v1/detected-events/starting-point", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDetectedEventStartingPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventResponse</returns>
+        public GetEmailEventResponse GetEmailEvent(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventResponse> localVarResponse = GetEmailEventWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventResponse</returns>
+        public net.crossly.Client.ApiResponse<GetEmailEventResponse> GetEmailEventWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetEmailEventResponse>("/v1/email-events/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEmailEvent", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventResponse</returns>
+        public async System.Threading.Tasks.Task<GetEmailEventResponse> GetEmailEventAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventResponse> localVarResponse = await GetEmailEventWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One marketplace email Crossly read: what it did with it (outcome), the fields the template extracted, and the mailbox it came from. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetEmailEventResponse>> GetEmailEventWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetEmailEventResponse>("/v1/email-events/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEmailEvent", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetEmailEventPreviewResponse</returns>
+        public GetEmailEventPreviewResponse GetEmailEventPreview(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventPreviewResponse> localVarResponse = GetEmailEventPreviewWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetEmailEventPreviewResponse</returns>
+        public net.crossly.Client.ApiResponse<GetEmailEventPreviewResponse> GetEmailEventPreviewWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetEmailEventPreviewResponse>("/v1/email-events/{id}/preview", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEmailEventPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEmailEventPreviewResponse</returns>
+        public async System.Threading.Tasks.Task<GetEmailEventPreviewResponse> GetEmailEventPreviewAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetEmailEventPreviewResponse> localVarResponse = await GetEmailEventPreviewWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// A marketplace email&#39;s sanitized preview: text only, buyer address lines hidden, links without their query. Crossly keeps each email 30 days; after that this is a 409. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEmailEventPreviewResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetEmailEventPreviewResponse>> GetEmailEventPreviewWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetEmailEventPreviewResponse>("/v1/email-events/{id}/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEmailEventPreview", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// What Crossly does with each detected marketplace event (sale, listing ended, offer, cancellation, label, shipped, delivered, refund, return, payout, message), per who owns the item (crossly, imported, app_managed, other_tool, untracked). Each matrix cell lists the allowed actions and the effective one, with the scope it comes from (app &gt; platform &gt; global &gt; default). Pass platform (or appId) to see the matrix as that platform&#39;s (or app&#39;s) items see it. Also returns the rules, platforms and connected apps. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="platform"> (optional)</param>
         /// <param name="appId"> (optional)</param>
         /// <returns>GetEventPolicyResponse</returns>
+        [Obsolete]
         public GetEventPolicyResponse GetEventPolicy(string platform = default(string), Guid? appId = default(Guid?))
         {
             net.crossly.Client.ApiResponse<GetEventPolicyResponse> localVarResponse = GetEventPolicyWithHttpInfo(platform, appId);
@@ -4423,6 +6394,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="appId"> (optional)</param>
         /// <returns>ApiResponse of GetEventPolicyResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<GetEventPolicyResponse> GetEventPolicyWithHttpInfo(string platform = default(string), Guid? appId = default(Guid?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -4485,6 +6457,7 @@ namespace net.crossly.Api
         /// <param name="appId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetEventPolicyResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<GetEventPolicyResponse> GetEventPolicyAsync(string platform = default(string), Guid? appId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<GetEventPolicyResponse> localVarResponse = await GetEventPolicyWithHttpInfoAsync(platform, appId, cancellationToken).ConfigureAwait(false);
@@ -4499,6 +6472,7 @@ namespace net.crossly.Api
         /// <param name="appId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetEventPolicyResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetEventPolicyResponse>> GetEventPolicyWithHttpInfoAsync(string platform = default(string), Guid? appId = default(Guid?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -5282,36 +7256,48 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time). 
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <returns>ListDetectedEventEventsResponse</returns>
-        public ListDetectedEventEventsResponse ListDetectedEventEvents(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?))
+        public ListDetectedEventEventsResponse ListDetectedEventEvents(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?))
         {
-            net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> localVarResponse = ListDetectedEventEventsWithHttpInfo(kinds, platforms, accounts, statuses, since, cursor, limit);
+            net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> localVarResponse = ListDetectedEventEventsWithHttpInfo(kinds, platforms, accounts, statuses, channels, itemId, listingId, orderId, ruleId, ownership, since, cursor, limit);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time). 
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListDetectedEventEventsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> ListDetectedEventEventsWithHttpInfo(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?))
+        public net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> ListDetectedEventEventsWithHttpInfo(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -5350,6 +7336,30 @@ namespace net.crossly.Api
             if (statuses != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "statuses", statuses));
+            }
+            if (channels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "channels", channels));
+            }
+            if (itemId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "itemId", itemId));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
+            if (orderId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "orderId", orderId));
+            }
+            if (ruleId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ruleId", ruleId));
+            }
+            if (ownership != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ownership", ownership));
             }
             if (since != null)
             {
@@ -5386,38 +7396,50 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time). 
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDetectedEventEventsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDetectedEventEventsResponse> ListDetectedEventEventsAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListDetectedEventEventsResponse> ListDetectedEventEventsAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> localVarResponse = await ListDetectedEventEventsWithHttpInfoAsync(kinds, platforms, accounts, statuses, since, cursor, limit, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse> localVarResponse = await ListDetectedEventEventsWithHttpInfoAsync(kinds, platforms, accounts, statuses, channels, itemId, listingId, orderId, ruleId, ownership, since, cursor, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms statuses and accounts (comma-separated) and since (ISO time). 
+        /// Every event Crossly detected (sales, order changes, listing changes, offers, messages, account notices), newest first: all its axes, the rule that decided it, its corroborating reports, the plan per target and how each action went, with canConfirm (an open ask) and canUndo. Cursor-paged; filter by kinds, platforms, statuses, accounts and channels (comma-separated), one item, listing, order or deciding rule, and since (ISO time). statuses&#x3D;asked is what waits for you; dismissed is an ask closed without acting. Rows from before the rules update carry legacy: true and have no actions. Per store: X-Storefront-Id (omitted: the default store, which also keeps events recorded before stores existed). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kinds"> (optional)</param>
         /// <param name="platforms"> (optional)</param>
         /// <param name="accounts">Comma-separated platform account ids (scope.account). (optional)</param>
-        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected (optional)</param>
+        /// <param name="statuses">Comma-separated: acted, held, asked, confirmed, ignored, undone, failed, received, corrected, dismissed (optional)</param>
+        /// <param name="channels">Comma-separated, how it was reported: platform_webhook, platform_poll, cookie_poll, health_probe, listing_discovery, app_push, email, extension, manual (optional)</param>
+        /// <param name="itemId">Only events about this inventory item. (optional)</param>
+        /// <param name="listingId">Only events about this platform listing. (optional)</param>
+        /// <param name="orderId">Only events about this order. (optional)</param>
+        /// <param name="ruleId">Only events this rule decided (a rule id, or default:&lt;key&gt;). (optional)</param>
+        /// <param name="ownership">Comma-separated, who manages the item (crossly, imported, app_managed, other_tool, untracked). (optional)</param>
         /// <param name="since"> (optional)</param>
         /// <param name="cursor"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDetectedEventEventsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse>> ListDetectedEventEventsWithHttpInfoAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDetectedEventEventsResponse>> ListDetectedEventEventsWithHttpInfoAsync(string kinds = default(string), string platforms = default(string), string accounts = default(string), string statuses = default(string), string channels = default(string), Guid? itemId = default(Guid?), Guid? listingId = default(Guid?), Guid? orderId = default(Guid?), string ruleId = default(string), string ownership = default(string), DateTime? since = default(DateTime?), string cursor = default(string), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5457,6 +7479,30 @@ namespace net.crossly.Api
             if (statuses != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "statuses", statuses));
+            }
+            if (channels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "channels", channels));
+            }
+            if (itemId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "itemId", itemId));
+            }
+            if (listingId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "listingId", listingId));
+            }
+            if (orderId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "orderId", orderId));
+            }
+            if (ruleId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ruleId", ruleId));
+            }
+            if (ownership != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "ownership", ownership));
             }
             if (since != null)
             {
@@ -5622,6 +7668,134 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListDetectedEventSituationsResponse</returns>
+        public ListDetectedEventSituationsResponse ListDetectedEventSituations()
+        {
+            net.crossly.Client.ApiResponse<ListDetectedEventSituationsResponse> localVarResponse = ListDetectedEventSituationsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListDetectedEventSituationsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListDetectedEventSituationsResponse> ListDetectedEventSituationsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListDetectedEventSituationsResponse>("/v1/detected-events/situations", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListDetectedEventSituations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListDetectedEventSituationsResponse</returns>
+        public async System.Threading.Tasks.Task<ListDetectedEventSituationsResponse> ListDetectedEventSituationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListDetectedEventSituationsResponse> localVarResponse = await ListDetectedEventSituationsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Every situation Crossly decides (a sale of an item in Crossly, a sale not in Crossly with no match, a return opened, a connection lost…), grouped by topic (sales, orders, listings, buyers, account): its title, whether it is a headline row of the Overview, why the default is what it is, its rule ref (default.&lt;key&gt;) and the choice cards offered for it. To pick a card, PUT its body to the rule default:&lt;key&gt;. The same catalog for every seller; GET overview says what each does today. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListDetectedEventSituationsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDetectedEventSituationsResponse>> ListDetectedEventSituationsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDetectedEventSituationsResponse>("/v1/detected-events/situations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListDetectedEventSituations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// List email-detected events waiting for the seller (status&#x3D;needs_review): a possible sale, ended listing, cancellation or other event an email reported that was not certain enough to act on automatically. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -5772,6 +7946,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="outcome"> (optional)</param>
         /// <returns>ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         public ListEventPolicyDecisionsResponse ListEventPolicyDecisions(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string))
         {
             net.crossly.Client.ApiResponse<ListEventPolicyDecisionsResponse> localVarResponse = ListEventPolicyDecisionsWithHttpInfo(cursor, limit, _event, ownership, platform, outcome);
@@ -5789,6 +7964,7 @@ namespace net.crossly.Api
         /// <param name="platform"> (optional)</param>
         /// <param name="outcome"> (optional)</param>
         /// <returns>ApiResponse of ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<ListEventPolicyDecisionsResponse> ListEventPolicyDecisionsWithHttpInfo(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -5871,6 +8047,7 @@ namespace net.crossly.Api
         /// <param name="outcome"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEventPolicyDecisionsResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<ListEventPolicyDecisionsResponse> ListEventPolicyDecisionsAsync(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<ListEventPolicyDecisionsResponse> localVarResponse = await ListEventPolicyDecisionsWithHttpInfoAsync(cursor, limit, _event, ownership, platform, outcome, cancellationToken).ConfigureAwait(false);
@@ -5889,6 +8066,7 @@ namespace net.crossly.Api
         /// <param name="outcome"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEventPolicyDecisionsResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListEventPolicyDecisionsResponse>> ListEventPolicyDecisionsWithHttpInfoAsync(string cursor = default(string), int? limit = default(int?), string _event = default(string), string ownership = default(string), string platform = default(string), string outcome = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
@@ -6128,11 +8306,160 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>GetDetectedEventStartingPointResponse</returns>
+        public GetDetectedEventStartingPointResponse UpdateDetectedEventStartingPoint(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> localVarResponse = UpdateDetectedEventStartingPointWithHttpInfo(updateDetectedEventStartingPointRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <returns>ApiResponse of GetDetectedEventStartingPointResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> UpdateDetectedEventStartingPointWithHttpInfo(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest)
+        {
+            // verify the required parameter 'updateDetectedEventStartingPointRequest' is set
+            if (updateDetectedEventStartingPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDetectedEventStartingPointRequest' when calling ActivityApi->UpdateDetectedEventStartingPoint");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateDetectedEventStartingPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<GetDetectedEventStartingPointResponse>("/v1/detected-events/starting-point", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDetectedEventStartingPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDetectedEventStartingPointResponse</returns>
+        public async System.Threading.Tasks.Task<GetDetectedEventStartingPointResponse> UpdateDetectedEventStartingPointAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse> localVarResponse = await UpdateDetectedEventStartingPointWithHttpInfoAsync(updateDetectedEventStartingPointRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Apply a starting point to the store: rewrites the store&#39;s untouched default rules as ordinary rules (balanced removes them, so the shipped defaults apply). Defaults you edited and your own rules stay as they are; starting points do not stack. Logged to Activity. Returns the starting point now in effect. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateDetectedEventStartingPointRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDetectedEventStartingPointResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDetectedEventStartingPointResponse>> UpdateDetectedEventStartingPointWithHttpInfoAsync(UpdateDetectedEventStartingPointRequest updateDetectedEventStartingPointRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateDetectedEventStartingPointRequest' is set
+            if (updateDetectedEventStartingPointRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDetectedEventStartingPointRequest' when calling ActivityApi->UpdateDetectedEventStartingPoint");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updateDetectedEventStartingPointRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<GetDetectedEventStartingPointResponse>("/v1/detected-events/starting-point", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDetectedEventStartingPoint", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Set what Crossly does with one kind of detected event for one kind of item: scope global (scopeValue null), platform (scopeValue &#x3D; platform id) or app (scopeValue &#x3D; OAuth app id, app_managed items only). Replaces the rule for the same cell and scope. The action must be one the matrix allows for that cell; import actions exist only for untracked items. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <returns>UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         public UpdateEventPolicyRuleResponse UpdateEventPolicyRule(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest)
         {
             net.crossly.Client.ApiResponse<UpdateEventPolicyRuleResponse> localVarResponse = UpdateEventPolicyRuleWithHttpInfo(updateEventPolicyRuleRequest);
@@ -6145,6 +8472,7 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <returns>ApiResponse of UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         public net.crossly.Client.ApiResponse<UpdateEventPolicyRuleResponse> UpdateEventPolicyRuleWithHttpInfo(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest)
         {
             // verify the required parameter 'updateEventPolicyRuleRequest' is set
@@ -6206,6 +8534,7 @@ namespace net.crossly.Api
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateEventPolicyRuleResponse</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<UpdateEventPolicyRuleResponse> UpdateEventPolicyRuleAsync(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             net.crossly.Client.ApiResponse<UpdateEventPolicyRuleResponse> localVarResponse = await UpdateEventPolicyRuleWithHttpInfoAsync(updateEventPolicyRuleRequest, cancellationToken).ConfigureAwait(false);
@@ -6219,6 +8548,7 @@ namespace net.crossly.Api
         /// <param name="updateEventPolicyRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateEventPolicyRuleResponse)</returns>
+        [Obsolete]
         public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateEventPolicyRuleResponse>> UpdateEventPolicyRuleWithHttpInfoAsync(UpdateEventPolicyRuleRequest updateEventPolicyRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'updateEventPolicyRuleRequest' is set

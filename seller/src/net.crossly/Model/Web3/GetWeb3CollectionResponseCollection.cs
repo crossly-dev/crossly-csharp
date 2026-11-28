@@ -42,11 +42,12 @@ namespace net.crossly.Model
         /// <param name="symbol">symbol.</param>
         /// <param name="name">name.</param>
         /// <param name="description">description.</param>
-        /// <param name="category">category.</param>
         /// <param name="slug">slug.</param>
+        /// <param name="category">category.</param>
         /// <param name="imageUrl">imageUrl.</param>
         /// <param name="verified">verified (required).</param>
         /// <param name="hiddenAt">hiddenAt.</param>
+        /// <param name="discord">discord.</param>
         /// <param name="refreshedAt">refreshedAt (required).</param>
         /// <param name="externalUrl">externalUrl.</param>
         /// <param name="chain">chain (required).</param>
@@ -57,7 +58,6 @@ namespace net.crossly.Model
         /// <param name="firstSeenAt">firstSeenAt (required).</param>
         /// <param name="bannerUrl">bannerUrl.</param>
         /// <param name="twitter">twitter.</param>
-        /// <param name="discord">discord.</param>
         /// <param name="deployedBlock">deployedBlock.</param>
         /// <param name="collectors">collectors (required).</param>
         /// <param name="indexedAt">indexedAt.</param>
@@ -69,7 +69,7 @@ namespace net.crossly.Model
         /// <param name="rehostCheckedAt">rehostCheckedAt.</param>
         /// <param name="hiddenReason">hiddenReason.</param>
         /// <param name="hiddenCategory">hiddenCategory.</param>
-        public GetWeb3CollectionResponseCollection(string symbol = default(string), string name = default(string), string description = default(string), string category = default(string), string slug = default(string), string imageUrl = default(string), bool verified = default(bool), DateTime? hiddenAt = default(DateTime?), DateTime refreshedAt = default(DateTime), string externalUrl = default(string), string chain = default(string), string contract = default(string), string tokenType = default(string), string totalSupply = default(string), decimal? featuredRank = default(decimal?), DateTime firstSeenAt = default(DateTime), string bannerUrl = default(string), string twitter = default(string), string discord = default(string), decimal? deployedBlock = default(decimal?), decimal collectors = default(decimal), DateTime? indexedAt = default(DateTime?), decimal? indexedCount = default(decimal?), string imageSource = default(string), string bannerSource = default(string), string imageThumbUrl = default(string), string bannerThumbUrl = default(string), DateTime? rehostCheckedAt = default(DateTime?), string hiddenReason = default(string), string hiddenCategory = default(string))
+        public GetWeb3CollectionResponseCollection(string symbol = default(string), string name = default(string), string description = default(string), string slug = default(string), string category = default(string), string imageUrl = default(string), bool verified = default(bool), DateTime? hiddenAt = default(DateTime?), string discord = default(string), DateTime refreshedAt = default(DateTime), string externalUrl = default(string), string chain = default(string), string contract = default(string), string tokenType = default(string), string totalSupply = default(string), decimal? featuredRank = default(decimal?), DateTime firstSeenAt = default(DateTime), string bannerUrl = default(string), string twitter = default(string), decimal? deployedBlock = default(decimal?), decimal collectors = default(decimal), DateTime? indexedAt = default(DateTime?), decimal? indexedCount = default(decimal?), string imageSource = default(string), string bannerSource = default(string), string imageThumbUrl = default(string), string bannerThumbUrl = default(string), DateTime? rehostCheckedAt = default(DateTime?), string hiddenReason = default(string), string hiddenCategory = default(string))
         {
             this.Verified = verified;
             this.RefreshedAt = refreshedAt;
@@ -88,17 +88,17 @@ namespace net.crossly.Model
             this.Symbol = symbol;
             this.Name = name;
             this.Description = description;
-            this.Category = category;
             this.Slug = slug;
+            this.Category = category;
             this.ImageUrl = imageUrl;
             this.HiddenAt = hiddenAt;
+            this.Discord = discord;
             this.ExternalUrl = externalUrl;
             this.TokenType = tokenType;
             this.TotalSupply = totalSupply;
             this.FeaturedRank = featuredRank;
             this.BannerUrl = bannerUrl;
             this.Twitter = twitter;
-            this.Discord = discord;
             this.DeployedBlock = deployedBlock;
             this.IndexedAt = indexedAt;
             this.IndexedCount = indexedCount;
@@ -130,16 +130,16 @@ namespace net.crossly.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Category
-        /// </summary>
-        [DataMember(Name = "category", EmitDefaultValue = true)]
-        public string Category { get; set; }
-
-        /// <summary>
         /// Gets or Sets Slug
         /// </summary>
         [DataMember(Name = "slug", EmitDefaultValue = true)]
         public string Slug { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Category
+        /// </summary>
+        [DataMember(Name = "category", EmitDefaultValue = true)]
+        public string Category { get; set; }
 
         /// <summary>
         /// Gets or Sets ImageUrl
@@ -158,6 +158,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "hiddenAt", EmitDefaultValue = true)]
         public DateTime? HiddenAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Discord
+        /// </summary>
+        [DataMember(Name = "discord", EmitDefaultValue = true)]
+        public string Discord { get; set; }
 
         /// <summary>
         /// Gets or Sets RefreshedAt
@@ -218,12 +224,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "twitter", EmitDefaultValue = true)]
         public string Twitter { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Discord
-        /// </summary>
-        [DataMember(Name = "discord", EmitDefaultValue = true)]
-        public string Discord { get; set; }
 
         /// <summary>
         /// Gets or Sets DeployedBlock
@@ -302,11 +302,12 @@ namespace net.crossly.Model
             sb.Append("  Symbol: ").Append(Symbol).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  Verified: ").Append(Verified).Append("\n");
             sb.Append("  HiddenAt: ").Append(HiddenAt).Append("\n");
+            sb.Append("  Discord: ").Append(Discord).Append("\n");
             sb.Append("  RefreshedAt: ").Append(RefreshedAt).Append("\n");
             sb.Append("  ExternalUrl: ").Append(ExternalUrl).Append("\n");
             sb.Append("  Chain: ").Append(Chain).Append("\n");
@@ -317,7 +318,6 @@ namespace net.crossly.Model
             sb.Append("  FirstSeenAt: ").Append(FirstSeenAt).Append("\n");
             sb.Append("  BannerUrl: ").Append(BannerUrl).Append("\n");
             sb.Append("  Twitter: ").Append(Twitter).Append("\n");
-            sb.Append("  Discord: ").Append(Discord).Append("\n");
             sb.Append("  DeployedBlock: ").Append(DeployedBlock).Append("\n");
             sb.Append("  Collectors: ").Append(Collectors).Append("\n");
             sb.Append("  IndexedAt: ").Append(IndexedAt).Append("\n");
@@ -380,14 +380,14 @@ namespace net.crossly.Model
                     this.Description.Equals(input.Description))
                 ) && 
                 (
-                    this.Category == input.Category ||
-                    (this.Category != null &&
-                    this.Category.Equals(input.Category))
-                ) && 
-                (
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.Category == input.Category ||
+                    (this.Category != null &&
+                    this.Category.Equals(input.Category))
                 ) && 
                 (
                     this.ImageUrl == input.ImageUrl ||
@@ -402,6 +402,11 @@ namespace net.crossly.Model
                     this.HiddenAt == input.HiddenAt ||
                     (this.HiddenAt != null &&
                     this.HiddenAt.Equals(input.HiddenAt))
+                ) && 
+                (
+                    this.Discord == input.Discord ||
+                    (this.Discord != null &&
+                    this.Discord.Equals(input.Discord))
                 ) && 
                 (
                     this.RefreshedAt == input.RefreshedAt ||
@@ -452,11 +457,6 @@ namespace net.crossly.Model
                     this.Twitter == input.Twitter ||
                     (this.Twitter != null &&
                     this.Twitter.Equals(input.Twitter))
-                ) && 
-                (
-                    this.Discord == input.Discord ||
-                    (this.Discord != null &&
-                    this.Discord.Equals(input.Discord))
                 ) && 
                 (
                     this.DeployedBlock == input.DeployedBlock ||
@@ -535,13 +535,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
                 }
-                if (this.Category != null)
-                {
-                    hashCode = (hashCode * 59) + this.Category.GetHashCode();
-                }
                 if (this.Slug != null)
                 {
                     hashCode = (hashCode * 59) + this.Slug.GetHashCode();
+                }
+                if (this.Category != null)
+                {
+                    hashCode = (hashCode * 59) + this.Category.GetHashCode();
                 }
                 if (this.ImageUrl != null)
                 {
@@ -551,6 +551,10 @@ namespace net.crossly.Model
                 if (this.HiddenAt != null)
                 {
                     hashCode = (hashCode * 59) + this.HiddenAt.GetHashCode();
+                }
+                if (this.Discord != null)
+                {
+                    hashCode = (hashCode * 59) + this.Discord.GetHashCode();
                 }
                 if (this.RefreshedAt != null)
                 {
@@ -591,10 +595,6 @@ namespace net.crossly.Model
                 if (this.Twitter != null)
                 {
                     hashCode = (hashCode * 59) + this.Twitter.GetHashCode();
-                }
-                if (this.Discord != null)
-                {
-                    hashCode = (hashCode * 59) + this.Discord.GetHashCode();
                 }
                 if (this.DeployedBlock != null)
                 {

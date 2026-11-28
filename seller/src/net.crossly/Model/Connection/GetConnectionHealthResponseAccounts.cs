@@ -32,6 +32,40 @@ namespace net.crossly.Model
     public partial class GetConnectionHealthResponseAccounts : IEquatable<GetConnectionHealthResponseAccounts>, IValidatableObject
     {
         /// <summary>
+        /// The row&#39;s own status (null &#x3D; never connected). The CN1 alert sweep reads it: only an &#x60;active&#x60; account alerts here, a needs_reauth one is connection_incidents&#39;.
+        /// </summary>
+        /// <value>The row&#39;s own status (null &#x3D; never connected). The CN1 alert sweep reads it: only an &#x60;active&#x60; account alerts here, a needs_reauth one is connection_incidents&#39;.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum AccountStatusEnum
+        {
+            /// <summary>
+            /// Enum Active for value: active
+            /// </summary>
+            [EnumMember(Value = "active")]
+            Active = 1,
+
+            /// <summary>
+            /// Enum Archived for value: archived
+            /// </summary>
+            [EnumMember(Value = "archived")]
+            Archived = 2,
+
+            /// <summary>
+            /// Enum NeedsReauth for value: needs_reauth
+            /// </summary>
+            [EnumMember(Value = "needs_reauth")]
+            NeedsReauth = 3
+
+        }
+
+
+        /// <summary>
+        /// The row&#39;s own status (null &#x3D; never connected). The CN1 alert sweep reads it: only an &#x60;active&#x60; account alerts here, a needs_reauth one is connection_incidents&#39;.
+        /// </summary>
+        /// <value>The row&#39;s own status (null &#x3D; never connected). The CN1 alert sweep reads it: only an &#x60;active&#x60; account alerts here, a needs_reauth one is connection_incidents&#39;.</value>
+        [DataMember(Name = "accountStatus", EmitDefaultValue = true)]
+        public AccountStatusEnum? AccountStatus { get; set; }
+        /// <summary>
         /// Defines State
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -112,34 +146,34 @@ namespace net.crossly.Model
         public enum SeverityEnum
         {
             /// <summary>
-            /// Enum Info for value: info
-            /// </summary>
-            [EnumMember(Value = "info")]
-            Info = 1,
-
-            /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 2,
+            Unknown = 1,
 
             /// <summary>
-            /// Enum Error for value: error
+            /// Enum Info for value: info
             /// </summary>
-            [EnumMember(Value = "error")]
-            Error = 3,
-
-            /// <summary>
-            /// Enum Warn for value: warn
-            /// </summary>
-            [EnumMember(Value = "warn")]
-            Warn = 4,
+            [EnumMember(Value = "info")]
+            Info = 2,
 
             /// <summary>
             /// Enum Ok for value: ok
             /// </summary>
             [EnumMember(Value = "ok")]
-            Ok = 5
+            Ok = 3,
+
+            /// <summary>
+            /// Enum Error for value: error
+            /// </summary>
+            [EnumMember(Value = "error")]
+            Error = 4,
+
+            /// <summary>
+            /// Enum Warn for value: warn
+            /// </summary>
+            [EnumMember(Value = "warn")]
+            Warn = 5
 
         }
 
@@ -156,16 +190,16 @@ namespace net.crossly.Model
         public enum AudienceEnum
         {
             /// <summary>
-            /// Enum Seller for value: seller
-            /// </summary>
-            [EnumMember(Value = "seller")]
-            Seller = 1,
-
-            /// <summary>
             /// Enum Crossly for value: crossly
             /// </summary>
             [EnumMember(Value = "crossly")]
-            Crossly = 2,
+            Crossly = 1,
+
+            /// <summary>
+            /// Enum Seller for value: seller
+            /// </summary>
+            [EnumMember(Value = "seller")]
+            Seller = 2,
 
             /// <summary>
             /// Enum Nobody for value: nobody
@@ -194,6 +228,7 @@ namespace net.crossly.Model
         /// <param name="accountSlot">accountSlot.</param>
         /// <param name="label">label.</param>
         /// <param name="platformUsername">platformUsername.</param>
+        /// <param name="accountStatus">The row&#39;s own status (null &#x3D; never connected). The CN1 alert sweep reads it: only an &#x60;active&#x60; account alerts here, a needs_reauth one is connection_incidents&#39;..</param>
         /// <param name="summary">Plain-English \&quot;what is true\&quot; + \&quot;what to do\&quot;. Never empty. (required).</param>
         /// <param name="action">action (required).</param>
         /// <param name="liveness">liveness (required).</param>
@@ -204,7 +239,7 @@ namespace net.crossly.Model
         /// <param name="audience">audience (required).</param>
         /// <param name="anchors">anchors.</param>
         /// <param name="notes">Secondary observations that do not change the verdict but change the debugging. Always safe to show; never the only thing shown. (required).</param>
-        public GetConnectionHealthResponseAccounts(string platformName = default(string), string accountId = default(string), decimal? accountSlot = default(decimal?), string label = default(string), string platformUsername = default(string), string summary = default(string), string action = default(string), GetConnectionHealthResponseAccountsLiveness liveness = default(GetConnectionHealthResponseAccountsLiveness), GetConnectionHealthResponseAccountsBrowser browser = default(GetConnectionHealthResponseAccountsBrowser), string platform = default(string), StateEnum state = default(StateEnum), SeverityEnum severity = default(SeverityEnum), AudienceEnum audience = default(AudienceEnum), GetConnectionHealthResponseAccountsAnchors anchors = default(GetConnectionHealthResponseAccountsAnchors), List<string> notes = default(List<string>))
+        public GetConnectionHealthResponseAccounts(string platformName = default(string), string accountId = default(string), decimal? accountSlot = default(decimal?), string label = default(string), string platformUsername = default(string), AccountStatusEnum? accountStatus = default(AccountStatusEnum?), string summary = default(string), string action = default(string), GetConnectionHealthResponseAccountsLiveness liveness = default(GetConnectionHealthResponseAccountsLiveness), GetConnectionHealthResponseAccountsBrowser browser = default(GetConnectionHealthResponseAccountsBrowser), string platform = default(string), StateEnum state = default(StateEnum), SeverityEnum severity = default(SeverityEnum), AudienceEnum audience = default(AudienceEnum), GetConnectionHealthResponseAccountsAnchors anchors = default(GetConnectionHealthResponseAccountsAnchors), List<string> notes = default(List<string>))
         {
             // to ensure "platformName" is required (not null)
             if (platformName == null) {
@@ -243,6 +278,7 @@ namespace net.crossly.Model
             this.AccountSlot = accountSlot;
             this.Label = label;
             this.PlatformUsername = platformUsername;
+            this.AccountStatus = accountStatus;
             this.Browser = browser;
             this.Anchors = anchors;
         }
@@ -334,6 +370,7 @@ namespace net.crossly.Model
             sb.Append("  AccountSlot: ").Append(AccountSlot).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  PlatformUsername: ").Append(PlatformUsername).Append("\n");
+            sb.Append("  AccountStatus: ").Append(AccountStatus).Append("\n");
             sb.Append("  Summary: ").Append(Summary).Append("\n");
             sb.Append("  Action: ").Append(Action).Append("\n");
             sb.Append("  Liveness: ").Append(Liveness).Append("\n");
@@ -403,6 +440,10 @@ namespace net.crossly.Model
                     this.PlatformUsername == input.PlatformUsername ||
                     (this.PlatformUsername != null &&
                     this.PlatformUsername.Equals(input.PlatformUsername))
+                ) && 
+                (
+                    this.AccountStatus == input.AccountStatus ||
+                    this.AccountStatus.Equals(input.AccountStatus)
                 ) && 
                 (
                     this.Summary == input.Summary ||
@@ -483,6 +524,7 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.PlatformUsername.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.AccountStatus.GetHashCode();
                 if (this.Summary != null)
                 {
                     hashCode = (hashCode * 59) + this.Summary.GetHashCode();

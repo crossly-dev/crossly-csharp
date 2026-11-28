@@ -44,7 +44,9 @@ namespace net.crossly.Model
         /// <param name="truncated">True when the catalogue is bigger than the scan cap and the counts cover only the first part. (required).</param>
         /// <param name="items">Items with at least one issue (errors first), capped. (required).</param>
         /// <param name="sample">The first few items exactly as the channel will receive them. (required).</param>
-        public GetProductFeedReportResponse(GetProductFeedReportResponseStats stats = default(GetProductFeedReportResponseStats), decimal scanned = default(decimal), bool truncated = default(bool), List<GetProductFeedReportResponseItems> items = default(List<GetProductFeedReportResponseItems>), List<GetProductFeedReportResponseSample> sample = default(List<GetProductFeedReportResponseSample>))
+        /// <param name="store">store (required).</param>
+        /// <param name="currency">currency (required).</param>
+        public GetProductFeedReportResponse(GetProductFeedReportResponseStats stats = default(GetProductFeedReportResponseStats), decimal scanned = default(decimal), bool truncated = default(bool), List<GetProductFeedIssueResponseItems> items = default(List<GetProductFeedIssueResponseItems>), List<GetProductFeedReportResponseSample> sample = default(List<GetProductFeedReportResponseSample>), GetProductFeedReportResponseStore store = default(GetProductFeedReportResponseStore), GetProductFeedReportResponseCurrency currency = default(GetProductFeedReportResponseCurrency))
         {
             // to ensure "stats" is required (not null)
             if (stats == null) {
@@ -63,6 +65,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("sample is a required property for GetProductFeedReportResponse and cannot be null");
             }
             this.Sample = sample;
+            // to ensure "store" is required (not null)
+            if (store == null) {
+                throw new ArgumentNullException("store is a required property for GetProductFeedReportResponse and cannot be null");
+            }
+            this.Store = store;
+            // to ensure "currency" is required (not null)
+            if (currency == null) {
+                throw new ArgumentNullException("currency is a required property for GetProductFeedReportResponse and cannot be null");
+            }
+            this.Currency = currency;
         }
 
         /// <summary>
@@ -90,7 +102,7 @@ namespace net.crossly.Model
         /// </summary>
         /// <value>Items with at least one issue (errors first), capped.</value>
         [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = false)]
-        public List<GetProductFeedReportResponseItems> Items { get; set; }
+        public List<GetProductFeedIssueResponseItems> Items { get; set; }
 
         /// <summary>
         /// The first few items exactly as the channel will receive them.
@@ -98,6 +110,18 @@ namespace net.crossly.Model
         /// <value>The first few items exactly as the channel will receive them.</value>
         [DataMember(Name = "sample", IsRequired = true, EmitDefaultValue = false)]
         public List<GetProductFeedReportResponseSample> Sample { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Store
+        /// </summary>
+        [DataMember(Name = "store", IsRequired = true, EmitDefaultValue = false)]
+        public GetProductFeedReportResponseStore Store { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = false)]
+        public GetProductFeedReportResponseCurrency Currency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,6 +136,8 @@ namespace net.crossly.Model
             sb.Append("  Truncated: ").Append(Truncated).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Sample: ").Append(Sample).Append("\n");
+            sb.Append("  Store: ").Append(Store).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,6 +197,16 @@ namespace net.crossly.Model
                     this.Sample != null &&
                     input.Sample != null &&
                     this.Sample.SequenceEqual(input.Sample)
+                ) && 
+                (
+                    this.Store == input.Store ||
+                    (this.Store != null &&
+                    this.Store.Equals(input.Store))
+                ) && 
+                (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
                 );
         }
 
@@ -196,6 +232,14 @@ namespace net.crossly.Model
                 if (this.Sample != null)
                 {
                     hashCode = (hashCode * 59) + this.Sample.GetHashCode();
+                }
+                if (this.Store != null)
+                {
+                    hashCode = (hashCode * 59) + this.Store.GetHashCode();
+                }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 return hashCode;
             }

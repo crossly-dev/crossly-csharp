@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 <a name="updatenetworkpool"></a>
 # **UpdateNetworkPool**
-> OkResponse UpdateNetworkPool ()
+> OkResponse UpdateNetworkPool (UpdateNetworkPoolRequest updateNetworkPoolRequest)
 
 Update per-action toggles + platforms on pool membership.
 
@@ -412,11 +412,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new NetworkApi(config);
+            var updateNetworkPoolRequest = new UpdateNetworkPoolRequest(); // UpdateNetworkPoolRequest | 
 
             try
             {
                 // Update per-action toggles + platforms on pool membership.
-                OkResponse result = apiInstance.UpdateNetworkPool();
+                OkResponse result = apiInstance.UpdateNetworkPool(updateNetworkPoolRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -431,7 +432,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateNetworkPoolRequest** | **UpdateNetworkPoolRequest**|  | 
 
 ### Return type
 
@@ -443,7 +447,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

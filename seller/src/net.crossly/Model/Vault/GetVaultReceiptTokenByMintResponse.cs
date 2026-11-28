@@ -38,10 +38,10 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Pending for value: pending
+            /// Enum Expired for value: expired
             /// </summary>
-            [EnumMember(Value = "pending")]
-            Pending = 1,
+            [EnumMember(Value = "expired")]
+            Expired = 1,
 
             /// <summary>
             /// Enum Live for value: live
@@ -50,10 +50,10 @@ namespace net.crossly.Model
             Live = 2,
 
             /// <summary>
-            /// Enum Expired for value: expired
+            /// Enum Pending for value: pending
             /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
+            [EnumMember(Value = "pending")]
+            Pending = 3,
 
             /// <summary>
             /// Enum Conflict for value: conflict

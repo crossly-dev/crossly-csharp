@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum KeyEnum
         {
             /// <summary>
+            /// Enum Fill for value: fill
+            /// </summary>
+            [EnumMember(Value = "fill")]
+            Fill = 1,
+
+            /// <summary>
             /// Enum Account for value: account
             /// </summary>
             [EnumMember(Value = "account")]
-            Account = 1,
+            Account = 2,
 
             /// <summary>
             /// Enum Price for value: price
             /// </summary>
             [EnumMember(Value = "price")]
-            Price = 2,
-
-            /// <summary>
-            /// Enum Fill for value: fill
-            /// </summary>
-            [EnumMember(Value = "fill")]
-            Fill = 3,
+            Price = 3,
 
             /// <summary>
             /// Enum Auction for value: auction
@@ -62,58 +62,58 @@ namespace net.crossly.Model
             Auction = 4,
 
             /// <summary>
+            /// Enum Follow for value: follow
+            /// </summary>
+            [EnumMember(Value = "follow")]
+            Follow = 5,
+
+            /// <summary>
             /// Enum Prediction for value: prediction
             /// </summary>
             [EnumMember(Value = "prediction")]
-            Prediction = 5,
+            Prediction = 6,
 
             /// <summary>
             /// Enum OptionExpiry for value: option_expiry
             /// </summary>
             [EnumMember(Value = "option_expiry")]
-            OptionExpiry = 6,
+            OptionExpiry = 7,
 
             /// <summary>
             /// Enum MarginCall for value: margin_call
             /// </summary>
             [EnumMember(Value = "margin_call")]
-            MarginCall = 7,
+            MarginCall = 8,
 
             /// <summary>
             /// Enum Adl for value: adl
             /// </summary>
             [EnumMember(Value = "adl")]
-            Adl = 8,
+            Adl = 9,
 
             /// <summary>
             /// Enum P2pLoan for value: p2p_loan
             /// </summary>
             [EnumMember(Value = "p2p_loan")]
-            P2pLoan = 9,
+            P2pLoan = 10,
 
             /// <summary>
             /// Enum MarketOpen for value: market_open
             /// </summary>
             [EnumMember(Value = "market_open")]
-            MarketOpen = 10,
+            MarketOpen = 11,
 
             /// <summary>
             /// Enum ReceiptToken for value: receipt_token
             /// </summary>
             [EnumMember(Value = "receipt_token")]
-            ReceiptToken = 11,
+            ReceiptToken = 12,
 
             /// <summary>
             /// Enum SetGoal for value: set_goal
             /// </summary>
             [EnumMember(Value = "set_goal")]
-            SetGoal = 12,
-
-            /// <summary>
-            /// Enum Follow for value: follow
-            /// </summary>
-            [EnumMember(Value = "follow")]
-            Follow = 13,
+            SetGoal = 13,
 
             /// <summary>
             /// Enum ShareOffering for value: share_offering

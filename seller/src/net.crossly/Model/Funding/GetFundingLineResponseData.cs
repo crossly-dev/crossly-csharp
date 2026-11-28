@@ -51,7 +51,8 @@ namespace net.crossly.Model
         /// <param name="overdue">overdue.</param>
         /// <param name="schedule">schedule (required).</param>
         /// <param name="autorepayPct">autorepayPct (required).</param>
-        public GetFundingLineResponseData(string merchantId = default(string), GetFundingLineResponseDataLine line = default(GetFundingLineResponseDataLine), decimal outstandingCents = default(decimal), decimal principalOutstandingCents = default(decimal), decimal interestOutstandingCents = default(decimal), decimal accruedInterestCents = default(decimal), decimal payoffCents = default(decimal), decimal utilizationBps = default(decimal), GetFundingLineResponseDataNextDue nextDue = default(GetFundingLineResponseDataNextDue), GetFundingLineResponseDataOverdue overdue = default(GetFundingLineResponseDataOverdue), List<GetFundingLineResponseDataSchedule> schedule = default(List<GetFundingLineResponseDataSchedule>), decimal autorepayPct = default(decimal))
+        /// <param name="lateRules">lateRules (required).</param>
+        public GetFundingLineResponseData(string merchantId = default(string), GetFundingLineResponseDataLine line = default(GetFundingLineResponseDataLine), decimal outstandingCents = default(decimal), decimal principalOutstandingCents = default(decimal), decimal interestOutstandingCents = default(decimal), decimal accruedInterestCents = default(decimal), decimal payoffCents = default(decimal), decimal utilizationBps = default(decimal), GetFundingLineResponseDataNextDue nextDue = default(GetFundingLineResponseDataNextDue), GetFundingLineResponseDataOverdue overdue = default(GetFundingLineResponseDataOverdue), List<GetFundingLineResponseDataSchedule> schedule = default(List<GetFundingLineResponseDataSchedule>), decimal autorepayPct = default(decimal), GetFundingLineResponseDataLateRules lateRules = default(GetFundingLineResponseDataLateRules))
         {
             // to ensure "merchantId" is required (not null)
             if (merchantId == null) {
@@ -70,6 +71,11 @@ namespace net.crossly.Model
             }
             this.Schedule = schedule;
             this.AutorepayPct = autorepayPct;
+            // to ensure "lateRules" is required (not null)
+            if (lateRules == null) {
+                throw new ArgumentNullException("lateRules is a required property for GetFundingLineResponseData and cannot be null");
+            }
+            this.LateRules = lateRules;
             this.Line = line;
             this.NextDue = nextDue;
             this.Overdue = overdue;
@@ -150,6 +156,12 @@ namespace net.crossly.Model
         public decimal AutorepayPct { get; set; }
 
         /// <summary>
+        /// Gets or Sets LateRules
+        /// </summary>
+        [DataMember(Name = "lateRules", IsRequired = true, EmitDefaultValue = false)]
+        public GetFundingLineResponseDataLateRules LateRules { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -169,6 +181,7 @@ namespace net.crossly.Model
             sb.Append("  Overdue: ").Append(Overdue).Append("\n");
             sb.Append("  Schedule: ").Append(Schedule).Append("\n");
             sb.Append("  AutorepayPct: ").Append(AutorepayPct).Append("\n");
+            sb.Append("  LateRules: ").Append(LateRules).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -257,6 +270,11 @@ namespace net.crossly.Model
                 (
                     this.AutorepayPct == input.AutorepayPct ||
                     this.AutorepayPct.Equals(input.AutorepayPct)
+                ) && 
+                (
+                    this.LateRules == input.LateRules ||
+                    (this.LateRules != null &&
+                    this.LateRules.Equals(input.LateRules))
                 );
         }
 
@@ -296,6 +314,10 @@ namespace net.crossly.Model
                     hashCode = (hashCode * 59) + this.Schedule.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AutorepayPct.GetHashCode();
+                if (this.LateRules != null)
+                {
+                    hashCode = (hashCode * 59) + this.LateRules.GetHashCode();
+                }
                 return hashCode;
             }
         }

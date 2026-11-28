@@ -218,16 +218,16 @@ namespace net.crossly.Model
         public enum PackagingEnum
         {
             /// <summary>
-            /// Enum Poly for value: poly
-            /// </summary>
-            [EnumMember(Value = "poly")]
-            Poly = 1,
-
-            /// <summary>
             /// Enum Box for value: box
             /// </summary>
             [EnumMember(Value = "box")]
-            Box = 2,
+            Box = 1,
+
+            /// <summary>
+            /// Enum Poly for value: poly
+            /// </summary>
+            [EnumMember(Value = "poly")]
+            Poly = 2,
 
             /// <summary>
             /// Enum PremiumBox for value: premium_box

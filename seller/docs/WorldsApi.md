@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**CreateWorldExperienceExperimentStart**](WorldsApi.md#createworldexperienceexperimentstart) | **POST** /v1/worlds/experiences/{experienceId}/experiments/{experimentId}/start | Start: running servers begin assigning players by their per-experience id.
 [**CreateWorldExperienceExperimentStop**](WorldsApi.md#createworldexperienceexperimentstop) | **POST** /v1/worlds/experiences/{experienceId}/experiments/{experimentId}/stop | Stop: every player sees the base config again.
 [**CreateWorldExperienceJoin**](WorldsApi.md#createworldexperiencejoin) | **POST** /v1/worlds/experiences/{experienceId}/join | Join as the token&#39;s owner: a server and a 60-second single-use ticket for wss …/v1/realtime/worlds/{serverId}. 202 while a new server boots.
+[**CreateWorldExperienceLocalizationImport**](WorldsApi.md#createworldexperiencelocalizationimport) | **POST** /v1/worlds/experiences/{experienceId}/localization/import | Import a sheet: { csv } with a \&quot;key\&quot; column then one column per language code; rows @name and @description carry the game listing. { dryRun: true } previews (issues with line and column) without saving; an error refuses the whole import.
 [**CreateWorldExperienceModerationAppeal**](WorldsApi.md#createworldexperiencemoderationappeal) | **POST** /v1/worlds/experiences/{experienceId}/moderation/appeals | Appeal a moderation decision on your game within 6 months (183 days): { kind: action | game | version | asset, targetId (from GET …/moderation/appeals targets), reason (20-4000 characters), evidence?: up to 5 https links }. The older shape { actionId, statement } still appeals an action. One open appeal per decision; a different reviewer answers and you are notified.
 [**CreateWorldExperienceOpen**](WorldsApi.md#createworldexperienceopen) | **POST** /v1/worlds/experiences/{experienceId}/open | Open the experience to players (needs a published start place).
 [**CreateWorldExperiencePlace**](WorldsApi.md#createworldexperienceplace) | **POST** /v1/worlds/experiences/{experienceId}/places | Add a place (at most 10 per experience in P1).
@@ -50,6 +51,7 @@ Method | HTTP request | Description
 [**CreateWorldTransferRequestDecline**](WorldsApi.md#createworldtransferrequestdecline) | **POST** /v1/worlds/transfer-requests/{requestId}/decline | Decline a transfer asked of you; nothing changes.
 [**DeleteWorldExperience**](WorldsApi.md#deleteworldexperience) | **DELETE** /v1/worlds/experiences/{experienceId} | Delete a game (a tombstone, restorable for 30 days). Body { confirmName } &#x3D; the game&#39;s name.
 [**DeleteWorldExperienceBan**](WorldsApi.md#deleteworldexperienceban) | **DELETE** /v1/worlds/experiences/{experienceId}/bans/{sub} | Lift your experience&#39;s ban on a player. Bans placed by Crossly safety are lifted only by appeal.
+[**DeleteWorldExperienceLocalization**](WorldsApi.md#deleteworldexperiencelocalization) | **DELETE** /v1/worlds/experiences/{experienceId}/localization/{locale} | Remove one language (its name, description and strings).
 [**DeleteWorldExperiencePlaytester**](WorldsApi.md#deleteworldexperienceplaytester) | **DELETE** /v1/worlds/experiences/{experienceId}/playtesters/{userId} | Remove a playtester.
 [**DeleteWorldParentalInvite**](WorldsApi.md#deleteworldparentalinvite) | **DELETE** /v1/worlds/parental/invite | Withdraw a pending parent invite.
 [**GetWorldChart**](WorldsApi.md#getworldchart) | **GET** /v1/worlds/charts/{chart} | A chart: top-playing (players now), trending (this week vs last, retention-weighted), top-rated (Wilson lower bound of thumbs up, 10+ votes), new-rising, friends, most-favorited; ?genre&#x3D; cuts it to one genre. Organic only: nothing paid.
@@ -63,6 +65,8 @@ Method | HTTP request | Description
 [**GetWorldExperienceChatSetting**](WorldsApi.md#getworldexperiencechatsetting) | **GET** /v1/worlds/experiences/{experienceId}/chat-settings | The game&#39;s text chat setting and filter level.
 [**GetWorldExperienceConfig**](WorldsApi.md#getworldexperienceconfig) | **GET** /v1/worlds/experiences/{experienceId}/configs | The remote config document ({ values, rules }) and its version.
 [**GetWorldExperienceExperiment**](WorldsApi.md#getworldexperienceexperiment) | **GET** /v1/worlds/experiences/{experienceId}/experiments/{experimentId} | Results per variant: n, mean, lift, fixed and always-valid 95% intervals, the verdict and a sample-size estimate.
+[**GetWorldExperienceLocalization**](WorldsApi.md#getworldexperiencelocalization) | **GET** /v1/worlds/experiences/{experienceId}/localization | A game&#39;s translations: per language its name, description and in-game strings (key -&gt; text), the English source (the game&#39;s Details and string table) and what each language still misses.
+[**GetWorldExperienceLocalizationExport**](WorldsApi.md#getworldexperiencelocalizationexport) | **GET** /v1/worlds/experiences/{experienceId}/localization/export | The game&#39;s translations as one CSV sheet (key, en, then each language; ?locales&#x3D;es,fr picks the columns).
 [**GetWorldExperienceMaturity**](WorldsApi.md#getworldexperiencematurity) | **GET** /v1/worlds/experiences/{experienceId}/maturity | The content maturity questionnaire: questions, answers, the published rating and any rating waiting for the next publish.
 [**GetWorldExperienceModeration**](WorldsApi.md#getworldexperiencemoderation) | **GET** /v1/worlds/experiences/{experienceId}/moderation | Moderation status of your experience: holds (unlisted / taken down), the latest review, the automated scan, strikes, trusted-lane status, open reports and live bans.
 [**GetWorldExperienceModerationAppeal**](WorldsApi.md#getworldexperiencemoderationappeal) | **GET** /v1/worlds/experiences/{experienceId}/moderation/appeals | What you can appeal on your game and every appeal of it: data.targets (Crossly&#39;s actions, a moderation hold, rejected versions, blocked assets; each with appealableUntil and its latest appeal) and data.appeals (newest first: kind, status open | upheld | overturned, reason, evidence, the reviewer&#39;s note).
@@ -118,6 +122,7 @@ Method | HTTP request | Description
 [**UpdateWorldExperienceConfigValue**](WorldsApi.md#updateworldexperienceconfigvalue) | **PATCH** /v1/worlds/experiences/{experienceId}/configs/values | Set and/or remove individual config keys.
 [**UpdateWorldExperienceEvent**](WorldsApi.md#updateworldexperienceevent) | **PATCH** /v1/worlds/experiences/{experienceId}/events/{eventId} | Reschedule or change a scheduled event; a live event may only move its end.
 [**UpdateWorldExperienceExperiment**](WorldsApi.md#updateworldexperienceexperiment) | **PATCH** /v1/worlds/experiences/{experienceId}/experiments/{experimentId} | Edit a draft (a running experiment may only rename or reword).
+[**UpdateWorldExperienceLocalization**](WorldsApi.md#updateworldexperiencelocalization) | **PUT** /v1/worlds/experiences/{experienceId}/localization | Save languages: { locales: { es: { name, description, strings: { \&quot;shop.title\&quot;: \&quot;Tienda\&quot; } } } }. Each language sent replaces that language; the rest stay. English holds the source string table (its name and description are the Details).
 [**UpdateWorldExperienceMaturity**](WorldsApi.md#updateworldexperiencematurity) | **PUT** /v1/worlds/experiences/{experienceId}/maturity | Answer the questionnaire: { answers }. A stricter rating applies now; a looser or first Mature rating waits for the next reviewed publish (takesEffect).
 [**UpdateWorldExperiencePlace**](WorldsApi.md#updateworldexperienceplace) | **PATCH** /v1/worlds/experiences/{experienceId}/places/{placeId} | Place settings: name, max players (1-50), fill target, social slots, empty shutdown.
 [**UpdateWorldExperiencePlaceDraft**](WorldsApi.md#updateworldexperienceplacedraft) | **PUT** /v1/worlds/experiences/{experienceId}/places/{placeId}/draft | Save the draft. baseRevision is the revision you loaded (0 for none); a newer save elsewhere answers 409 draft_conflict.
@@ -133,7 +138,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperience"></a>
 # **CreateWorldExperience**
-> CreateWorldExperienceResponse CreateWorldExperience ()
+> CreateWorldExperienceResponse CreateWorldExperience (CreateWorldExperienceRequest createWorldExperienceRequest = null)
 
 Create an experience with a start place (no version yet). Counts against the plan's experience limit.
 
@@ -157,11 +162,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var createWorldExperienceRequest = new CreateWorldExperienceRequest(); // CreateWorldExperienceRequest |  (optional) 
 
             try
             {
                 // Create an experience with a start place (no version yet). Counts against the plan's experience limit.
-                CreateWorldExperienceResponse result = apiInstance.CreateWorldExperience();
+                CreateWorldExperienceResponse result = apiInstance.CreateWorldExperience(createWorldExperienceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -176,7 +182,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldExperienceRequest** | **CreateWorldExperienceRequest**|  | [optional] 
 
 ### Return type
 
@@ -188,7 +197,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -207,7 +216,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldexperienceaccess"></a>
 # **CreateWorldExperienceAccess**
-> WorldExperienceResponse CreateWorldExperienceAccess (string experienceId)
+> WorldExperienceResponse CreateWorldExperienceAccess (string experienceId, CreateWorldExperienceAccessRequest createWorldExperienceAccessRequest = null)
 
 Who can play: private, friends, unlisted or public (public/unlisted need a reviewed publish).
 
@@ -232,11 +241,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceAccessRequest = new CreateWorldExperienceAccessRequest(); // CreateWorldExperienceAccessRequest |  (optional) 
 
             try
             {
                 // Who can play: private, friends, unlisted or public (public/unlisted need a reviewed publish).
-                WorldExperienceResponse result = apiInstance.CreateWorldExperienceAccess(experienceId);
+                WorldExperienceResponse result = apiInstance.CreateWorldExperienceAccess(experienceId, createWorldExperienceAccessRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -255,6 +265,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceAccessRequest** | **CreateWorldExperienceAccessRequest**|  | [optional] 
 
 ### Return type
 
@@ -266,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -365,7 +376,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceanalyticquery"></a>
 # **CreateWorldExperienceAnalyticQuery**
-> CreateWorldExperienceAnalyticQueryResponse CreateWorldExperienceAnalyticQuery (string experienceId)
+> CreateWorldExperienceAnalyticQueryResponse CreateWorldExperienceAnalyticQuery (string experienceId, CreateWorldExperienceAnalyticQueryRequest createWorldExperienceAnalyticQueryRequest = null)
 
 Query one custom event over ≤ 31 days: count, sum, avg or players, by day or hour, optionally grouped by a field. Groups under 50 players are suppressed.
 
@@ -390,11 +401,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceAnalyticQueryRequest = new CreateWorldExperienceAnalyticQueryRequest(); // CreateWorldExperienceAnalyticQueryRequest |  (optional) 
 
             try
             {
                 // Query one custom event over ≤ 31 days: count, sum, avg or players, by day or hour, optionally grouped by a field. Groups under 50 players are suppressed.
-                CreateWorldExperienceAnalyticQueryResponse result = apiInstance.CreateWorldExperienceAnalyticQuery(experienceId);
+                CreateWorldExperienceAnalyticQueryResponse result = apiInstance.CreateWorldExperienceAnalyticQuery(experienceId, createWorldExperienceAnalyticQueryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -413,6 +425,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceAnalyticQueryRequest** | **CreateWorldExperienceAnalyticQueryRequest**|  | [optional] 
 
 ### Return type
 
@@ -424,7 +437,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -521,7 +534,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceban"></a>
 # **CreateWorldExperienceBan**
-> GetWorldExperienceBanResponse CreateWorldExperienceBan (string experienceId)
+> GetWorldExperienceBanResponse CreateWorldExperienceBan (string experienceId, CreateWorldExperienceBanRequest createWorldExperienceBanRequest = null)
 
 Ban a player from your experience: { sub, duration (seconds, null = permanent), reason, displayReason?, applyToAlts? }. Enforced at join and on every running server.
 
@@ -546,11 +559,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceBanRequest = new CreateWorldExperienceBanRequest(); // CreateWorldExperienceBanRequest |  (optional) 
 
             try
             {
                 // Ban a player from your experience: { sub, duration (seconds, null = permanent), reason, displayReason?, applyToAlts? }. Enforced at join and on every running server.
-                GetWorldExperienceBanResponse result = apiInstance.CreateWorldExperienceBan(experienceId);
+                GetWorldExperienceBanResponse result = apiInstance.CreateWorldExperienceBan(experienceId, createWorldExperienceBanRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -569,6 +583,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceBanRequest** | **CreateWorldExperienceBanRequest**|  | [optional] 
 
 ### Return type
 
@@ -580,7 +595,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -677,7 +692,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceconfigrollback"></a>
 # **CreateWorldExperienceConfigRollback**
-> WorldExperienceConfigResponse CreateWorldExperienceConfigRollback (string experienceId)
+> WorldExperienceConfigResponse CreateWorldExperienceConfigRollback (string experienceId, CreateWorldExperienceConfigRollbackRequest createWorldExperienceConfigRollbackRequest = null)
 
 Instant rollback: an earlier version becomes the newest one.
 
@@ -702,11 +717,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceConfigRollbackRequest = new CreateWorldExperienceConfigRollbackRequest(); // CreateWorldExperienceConfigRollbackRequest |  (optional) 
 
             try
             {
                 // Instant rollback: an earlier version becomes the newest one.
-                WorldExperienceConfigResponse result = apiInstance.CreateWorldExperienceConfigRollback(experienceId);
+                WorldExperienceConfigResponse result = apiInstance.CreateWorldExperienceConfigRollback(experienceId, createWorldExperienceConfigRollbackRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -725,6 +741,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceConfigRollbackRequest** | **CreateWorldExperienceConfigRollbackRequest**|  | [optional] 
 
 ### Return type
 
@@ -736,7 +753,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -755,7 +772,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceevent"></a>
 # **CreateWorldExperienceEvent**
-> WorldExperienceEventResponse CreateWorldExperienceEvent (string experienceId)
+> WorldExperienceEventResponse CreateWorldExperienceEvent (string experienceId, CreateWorldExperienceEventRequest createWorldExperienceEventRequest = null)
 
 Schedule a live event: start and end, config values while live, an optional Messaging topic the platform publishes to at start and end.
 
@@ -780,11 +797,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceEventRequest = new CreateWorldExperienceEventRequest(); // CreateWorldExperienceEventRequest |  (optional) 
 
             try
             {
                 // Schedule a live event: start and end, config values while live, an optional Messaging topic the platform publishes to at start and end.
-                WorldExperienceEventResponse result = apiInstance.CreateWorldExperienceEvent(experienceId);
+                WorldExperienceEventResponse result = apiInstance.CreateWorldExperienceEvent(experienceId, createWorldExperienceEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -803,6 +821,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceEventRequest** | **CreateWorldExperienceEventRequest**|  | [optional] 
 
 ### Return type
 
@@ -814,7 +833,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -913,7 +932,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceexperiment"></a>
 # **CreateWorldExperienceExperiment**
-> WorldExperienceExperimentResponse CreateWorldExperienceExperiment (string experienceId)
+> WorldExperienceExperimentResponse CreateWorldExperienceExperiment (string experienceId, CreateWorldExperienceExperimentRequest createWorldExperienceExperimentRequest = null)
 
 Create a draft experiment: 2–5 variants of config values with traffic weights (+ holdout = 100), targeting, a primary metric and guardrails, minimum 7 days.
 
@@ -938,11 +957,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceExperimentRequest = new CreateWorldExperienceExperimentRequest(); // CreateWorldExperienceExperimentRequest |  (optional) 
 
             try
             {
                 // Create a draft experiment: 2–5 variants of config values with traffic weights (+ holdout = 100), targeting, a primary metric and guardrails, minimum 7 days.
-                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperiment(experienceId);
+                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperiment(experienceId, createWorldExperienceExperimentRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -961,6 +981,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceExperimentRequest** | **CreateWorldExperienceExperimentRequest**|  | [optional] 
 
 ### Return type
 
@@ -972,7 +993,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -991,7 +1012,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceexperimentship"></a>
 # **CreateWorldExperienceExperimentShip**
-> WorldExperienceExperimentResponse CreateWorldExperienceExperimentShip (string experienceId, string experimentId)
+> WorldExperienceExperimentResponse CreateWorldExperienceExperimentShip (string experienceId, string experimentId, CreateWorldExperienceExperimentShipRequest createWorldExperienceExperimentShipRequest = null)
 
 Ship a variant: its values become the base config for everyone and the experiment ends.
 
@@ -1017,11 +1038,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var experimentId = "experimentId_example";  // string | 
+            var createWorldExperienceExperimentShipRequest = new CreateWorldExperienceExperimentShipRequest(); // CreateWorldExperienceExperimentShipRequest |  (optional) 
 
             try
             {
                 // Ship a variant: its values become the base config for everyone and the experiment ends.
-                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperimentShip(experienceId, experimentId);
+                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperimentShip(experienceId, experimentId, createWorldExperienceExperimentShipRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1041,6 +1063,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **experimentId** | **string**|  | 
+ **createWorldExperienceExperimentShipRequest** | **CreateWorldExperienceExperimentShipRequest**|  | [optional] 
 
 ### Return type
 
@@ -1052,7 +1075,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1151,7 +1174,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceexperimentstop"></a>
 # **CreateWorldExperienceExperimentStop**
-> WorldExperienceExperimentResponse CreateWorldExperienceExperimentStop (string experienceId, string experimentId)
+> WorldExperienceExperimentResponse CreateWorldExperienceExperimentStop (string experienceId, string experimentId, ReasonRequest2 reasonRequest2 = null)
 
 Stop: every player sees the base config again.
 
@@ -1177,11 +1200,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var experimentId = "experimentId_example";  // string | 
+            var reasonRequest2 = new ReasonRequest2(); // ReasonRequest2 |  (optional) 
 
             try
             {
                 // Stop: every player sees the base config again.
-                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperimentStop(experienceId, experimentId);
+                WorldExperienceExperimentResponse result = apiInstance.CreateWorldExperienceExperimentStop(experienceId, experimentId, reasonRequest2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1201,6 +1225,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **experimentId** | **string**|  | 
+ **reasonRequest2** | **ReasonRequest2**|  | [optional] 
 
 ### Return type
 
@@ -1212,7 +1237,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1231,7 +1256,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencejoin"></a>
 # **CreateWorldExperienceJoin**
-> CreateWorldExperienceJoinResponse CreateWorldExperienceJoin (string experienceId)
+> CreateWorldExperienceJoinResponse CreateWorldExperienceJoin (string experienceId, CreateWorldExperienceJoinRequest createWorldExperienceJoinRequest = null)
 
 Join as the token's owner: a server and a 60-second single-use ticket for wss …/v1/realtime/worlds/{serverId}. 202 while a new server boots.
 
@@ -1256,11 +1281,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceJoinRequest = new CreateWorldExperienceJoinRequest(); // CreateWorldExperienceJoinRequest |  (optional) 
 
             try
             {
                 // Join as the token's owner: a server and a 60-second single-use ticket for wss …/v1/realtime/worlds/{serverId}. 202 while a new server boots.
-                CreateWorldExperienceJoinResponse result = apiInstance.CreateWorldExperienceJoin(experienceId);
+                CreateWorldExperienceJoinResponse result = apiInstance.CreateWorldExperienceJoin(experienceId, createWorldExperienceJoinRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1279,6 +1305,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceJoinRequest** | **CreateWorldExperienceJoinRequest**|  | [optional] 
 
 ### Return type
 
@@ -1290,7 +1317,87 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createworldexperiencelocalizationimport"></a>
+# **CreateWorldExperienceLocalizationImport**
+> CreateWorldExperienceLocalizationImportResponse CreateWorldExperienceLocalizationImport (string experienceId, CreateInventoryCsvImportRequest createInventoryCsvImportRequest = null)
+
+Import a sheet: { csv } with a \"key\" column then one column per language code; rows @name and @description carry the game listing. { dryRun: true } previews (issues with line and column) without saving; an error refuses the whole import.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateWorldExperienceLocalizationImportExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldsApi(config);
+            var experienceId = "experienceId_example";  // string | 
+            var createInventoryCsvImportRequest = new CreateInventoryCsvImportRequest(); // CreateInventoryCsvImportRequest |  (optional) 
+
+            try
+            {
+                // Import a sheet: { csv } with a \"key\" column then one column per language code; rows @name and @description carry the game listing. { dryRun: true } previews (issues with line and column) without saving; an error refuses the whole import.
+                CreateWorldExperienceLocalizationImportResponse result = apiInstance.CreateWorldExperienceLocalizationImport(experienceId, createInventoryCsvImportRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldsApi.CreateWorldExperienceLocalizationImport: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **experienceId** | **string**|  | 
+ **createInventoryCsvImportRequest** | **CreateInventoryCsvImportRequest**|  | [optional] 
+
+### Return type
+
+**CreateWorldExperienceLocalizationImportResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1465,7 +1572,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplace"></a>
 # **CreateWorldExperiencePlace**
-> WorldExperiencePlaceResponse CreateWorldExperiencePlace (string experienceId)
+> WorldExperiencePlaceResponse CreateWorldExperiencePlace (string experienceId, CreateWorldExperiencePlaceRequest createWorldExperiencePlaceRequest = null)
 
 Add a place (at most 10 per experience in P1).
 
@@ -1490,11 +1597,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperiencePlaceRequest = new CreateWorldExperiencePlaceRequest(); // CreateWorldExperiencePlaceRequest |  (optional) 
 
             try
             {
                 // Add a place (at most 10 per experience in P1).
-                WorldExperiencePlaceResponse result = apiInstance.CreateWorldExperiencePlace(experienceId);
+                WorldExperiencePlaceResponse result = apiInstance.CreateWorldExperiencePlace(experienceId, createWorldExperiencePlaceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1513,6 +1621,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperiencePlaceRequest** | **CreateWorldExperiencePlaceRequest**|  | [optional] 
 
 ### Return type
 
@@ -1524,7 +1633,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1543,7 +1652,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacecheck"></a>
 # **CreateWorldExperiencePlaceCheck**
-> CreateWorldExperiencePlaceCheckResponse CreateWorldExperiencePlaceCheck (string experienceId, string placeId)
+> CreateWorldExperiencePlaceCheckResponse CreateWorldExperiencePlaceCheck (string experienceId, string placeId, CreateWorldExperiencePlaceCheckRequest createWorldExperiencePlaceCheckRequest = null)
 
 Run the publish checks (script lint, budgets, shop-object listings) on a project. Writes nothing.
 
@@ -1569,11 +1678,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceCheckRequest = new CreateWorldExperiencePlaceCheckRequest(); // CreateWorldExperiencePlaceCheckRequest |  (optional) 
 
             try
             {
                 // Run the publish checks (script lint, budgets, shop-object listings) on a project. Writes nothing.
-                CreateWorldExperiencePlaceCheckResponse result = apiInstance.CreateWorldExperiencePlaceCheck(experienceId, placeId);
+                CreateWorldExperiencePlaceCheckResponse result = apiInstance.CreateWorldExperiencePlaceCheck(experienceId, placeId, createWorldExperiencePlaceCheckRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1593,6 +1703,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceCheckRequest** | **CreateWorldExperiencePlaceCheckRequest**|  | [optional] 
 
 ### Return type
 
@@ -1604,7 +1715,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1623,7 +1734,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacepublish"></a>
 # **CreateWorldExperiencePlacePublish**
-> WorldExperienceResponse2 CreateWorldExperiencePlacePublish (string experienceId, string placeId)
+> WorldExperienceResponse2 CreateWorldExperiencePlacePublish (string experienceId, string placeId, CreateWorldExperiencePlacePublishRequest createWorldExperiencePlacePublishRequest = null)
 
 Step 1: run checks and freeze a version (the saved draft, or an uploaded versionId). Blocking problems answer 400 with the list.
 
@@ -1649,11 +1760,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlacePublishRequest = new CreateWorldExperiencePlacePublishRequest(); // CreateWorldExperiencePlacePublishRequest |  (optional) 
 
             try
             {
                 // Step 1: run checks and freeze a version (the saved draft, or an uploaded versionId). Blocking problems answer 400 with the list.
-                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePlacePublish(experienceId, placeId);
+                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePlacePublish(experienceId, placeId, createWorldExperiencePlacePublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1673,6 +1785,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlacePublishRequest** | **CreateWorldExperiencePlacePublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -1684,7 +1797,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1863,7 +1976,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplaceversion"></a>
 # **CreateWorldExperiencePlaceVersion**
-> WorldExperiencePlaceVersionResponse CreateWorldExperiencePlaceVersion (string experienceId, string placeId)
+> WorldExperiencePlaceVersionResponse CreateWorldExperiencePlaceVersion (string experienceId, string placeId, CreateWorldExperiencePlaceVersionRequest createWorldExperiencePlaceVersionRequest = null)
 
 Upload a version bundle (crossly-worlds-project/1). Not live until published.
 
@@ -1889,11 +2002,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceVersionRequest = new CreateWorldExperiencePlaceVersionRequest(); // CreateWorldExperiencePlaceVersionRequest |  (optional) 
 
             try
             {
                 // Upload a version bundle (crossly-worlds-project/1). Not live until published.
-                WorldExperiencePlaceVersionResponse result = apiInstance.CreateWorldExperiencePlaceVersion(experienceId, placeId);
+                WorldExperiencePlaceVersionResponse result = apiInstance.CreateWorldExperiencePlaceVersion(experienceId, placeId, createWorldExperiencePlaceVersionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1913,6 +2027,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceVersionRequest** | **CreateWorldExperiencePlaceVersionRequest**|  | [optional] 
 
 ### Return type
 
@@ -1924,7 +2039,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2107,7 +2222,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplaytester"></a>
 # **CreateWorldExperiencePlaytester**
-> CreateWorldExperiencePlaytesterResponse CreateWorldExperiencePlaytester (string experienceId)
+> CreateWorldExperiencePlaytesterResponse CreateWorldExperiencePlaytester (string experienceId, CreateWorldExperiencePlaytesterRequest createWorldExperiencePlaytesterRequest = null)
 
 Add a playtester by Crossly handle (max 200 per game).
 
@@ -2132,11 +2247,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperiencePlaytesterRequest = new CreateWorldExperiencePlaytesterRequest(); // CreateWorldExperiencePlaytesterRequest |  (optional) 
 
             try
             {
                 // Add a playtester by Crossly handle (max 200 per game).
-                CreateWorldExperiencePlaytesterResponse result = apiInstance.CreateWorldExperiencePlaytester(experienceId);
+                CreateWorldExperiencePlaytesterResponse result = apiInstance.CreateWorldExperiencePlaytester(experienceId, createWorldExperiencePlaytesterRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2155,6 +2271,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperiencePlaytesterRequest** | **CreateWorldExperiencePlaytesterRequest**|  | [optional] 
 
 ### Return type
 
@@ -2166,7 +2283,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2265,7 +2382,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencepublishhalt"></a>
 # **CreateWorldExperiencePublishHalt**
-> WorldExperienceResponse2 CreateWorldExperiencePublishHalt (string experienceId, string requestId)
+> WorldExperienceResponse2 CreateWorldExperiencePublishHalt (string experienceId, string requestId, ReasonRequest2 reasonRequest2 = null)
 
 Stop a rollout: new joins go back to the current version.
 
@@ -2291,11 +2408,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var requestId = "requestId_example";  // string | 
+            var reasonRequest2 = new ReasonRequest2(); // ReasonRequest2 |  (optional) 
 
             try
             {
                 // Stop a rollout: new joins go back to the current version.
-                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePublishHalt(experienceId, requestId);
+                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePublishHalt(experienceId, requestId, reasonRequest2);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2315,6 +2433,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **requestId** | **string**|  | 
+ **reasonRequest2** | **ReasonRequest2**|  | [optional] 
 
 ### Return type
 
@@ -2326,7 +2445,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2345,7 +2464,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencepublishrollout"></a>
 # **CreateWorldExperiencePublishRollout**
-> WorldExperienceResponse2 CreateWorldExperiencePublishRollout (string experienceId, string requestId)
+> WorldExperienceResponse2 CreateWorldExperiencePublishRollout (string experienceId, string requestId, CreateWorldExperiencePublishRolloutRequest createWorldExperiencePublishRolloutRequest = null)
 
 Step 7: serve the approved version to percent (1–100) of new joins; 100 makes it current. Crash-heavy rollouts halt automatically.
 
@@ -2371,11 +2490,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var requestId = "requestId_example";  // string | 
+            var createWorldExperiencePublishRolloutRequest = new CreateWorldExperiencePublishRolloutRequest(); // CreateWorldExperiencePublishRolloutRequest |  (optional) 
 
             try
             {
                 // Step 7: serve the approved version to percent (1–100) of new joins; 100 makes it current. Crash-heavy rollouts halt automatically.
-                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePublishRollout(experienceId, requestId);
+                WorldExperienceResponse2 result = apiInstance.CreateWorldExperiencePublishRollout(experienceId, requestId, createWorldExperiencePublishRolloutRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2395,6 +2515,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **requestId** | **string**|  | 
+ **createWorldExperiencePublishRolloutRequest** | **CreateWorldExperiencePublishRolloutRequest**|  | [optional] 
 
 ### Return type
 
@@ -2406,7 +2527,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2505,7 +2626,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencereservedserver"></a>
 # **CreateWorldExperienceReservedServer**
-> CreateWorldExperienceReservedServerResponse CreateWorldExperienceReservedServer (string experienceId)
+> CreateWorldExperienceReservedServerResponse CreateWorldExperienceReservedServer (string experienceId, CreateWorldExperienceReservedServerRequest createWorldExperienceReservedServerRequest = null)
 
 An access code for a reserved server of a place (teleports, matches, tournaments). The code is shown once.
 
@@ -2530,11 +2651,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceReservedServerRequest = new CreateWorldExperienceReservedServerRequest(); // CreateWorldExperienceReservedServerRequest |  (optional) 
 
             try
             {
                 // An access code for a reserved server of a place (teleports, matches, tournaments). The code is shown once.
-                CreateWorldExperienceReservedServerResponse result = apiInstance.CreateWorldExperienceReservedServer(experienceId);
+                CreateWorldExperienceReservedServerResponse result = apiInstance.CreateWorldExperienceReservedServer(experienceId, createWorldExperienceReservedServerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2553,6 +2675,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceReservedServerRequest** | **CreateWorldExperienceReservedServerRequest**|  | [optional] 
 
 ### Return type
 
@@ -2564,7 +2687,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2661,7 +2784,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceservershutdown"></a>
 # **CreateWorldExperienceServerShutdown**
-> CreateWorldExperienceServerShutdownResponse CreateWorldExperienceServerShutdown (string experienceId)
+> CreateWorldExperienceServerShutdownResponse CreateWorldExperienceServerShutdown (string experienceId, CreateWorldExperienceServerShutdownRequest createWorldExperienceServerShutdownRequest = null)
 
 Shut down servers: mode soft (default) teleports players to fresh servers of the current version first; hard stops now. scope all | outdated (only servers not on a served version).
 
@@ -2686,11 +2809,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceServerShutdownRequest = new CreateWorldExperienceServerShutdownRequest(); // CreateWorldExperienceServerShutdownRequest |  (optional) 
 
             try
             {
                 // Shut down servers: mode soft (default) teleports players to fresh servers of the current version first; hard stops now. scope all | outdated (only servers not on a served version).
-                CreateWorldExperienceServerShutdownResponse result = apiInstance.CreateWorldExperienceServerShutdown(experienceId);
+                CreateWorldExperienceServerShutdownResponse result = apiInstance.CreateWorldExperienceServerShutdown(experienceId, createWorldExperienceServerShutdownRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2709,6 +2833,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceServerShutdownRequest** | **CreateWorldExperienceServerShutdownRequest**|  | [optional] 
 
 ### Return type
 
@@ -2720,7 +2845,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2739,7 +2864,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencetransferrequest"></a>
 # **CreateWorldExperienceTransferRequest**
-> WorldResponse2 CreateWorldExperienceTransferRequest (string experienceId)
+> WorldResponse2 CreateWorldExperienceTransferRequest (string experienceId, CreateWorldExperienceTransferRequestRequest createWorldExperienceTransferRequestRequest = null)
 
 Ask another Crossly account (handle or email) to take over a 3D game you own. One waiting request per game; it expires after 14 days.
 
@@ -2764,11 +2889,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceTransferRequestRequest = new CreateWorldExperienceTransferRequestRequest(); // CreateWorldExperienceTransferRequestRequest |  (optional) 
 
             try
             {
                 // Ask another Crossly account (handle or email) to take over a 3D game you own. One waiting request per game; it expires after 14 days.
-                WorldResponse2 result = apiInstance.CreateWorldExperienceTransferRequest(experienceId);
+                WorldResponse2 result = apiInstance.CreateWorldExperienceTransferRequest(experienceId, createWorldExperienceTransferRequestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2787,6 +2913,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceTransferRequestRequest** | **CreateWorldExperienceTransferRequestRequest**|  | [optional] 
 
 ### Return type
 
@@ -2798,7 +2925,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2817,7 +2944,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldmatureverify"></a>
 # **CreateWorldMatureVerify**
-> CreateWorldMatureVerifyResponse CreateWorldMatureVerify ()
+> CreateWorldMatureVerifyResponse CreateWorldMatureVerify (CreateWorldMatureVerifyRequest createWorldMatureVerifyRequest = null)
 
 Start the ID check Mature needs (Stripe Identity: photo ID + selfie; the date of birth is read off the ID). Returns a hosted URL and client secret, or alreadyVerified.
 
@@ -2841,11 +2968,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var createWorldMatureVerifyRequest = new CreateWorldMatureVerifyRequest(); // CreateWorldMatureVerifyRequest |  (optional) 
 
             try
             {
                 // Start the ID check Mature needs (Stripe Identity: photo ID + selfie; the date of birth is read off the ID). Returns a hosted URL and client secret, or alreadyVerified.
-                CreateWorldMatureVerifyResponse result = apiInstance.CreateWorldMatureVerify();
+                CreateWorldMatureVerifyResponse result = apiInstance.CreateWorldMatureVerify(createWorldMatureVerifyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2860,7 +2988,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldMatureVerifyRequest** | **CreateWorldMatureVerifyRequest**|  | [optional] 
 
 ### Return type
 
@@ -2872,7 +3003,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2891,7 +3022,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldparentalaccept"></a>
 # **CreateWorldParentalAccept**
-> WorldParentalResponse CreateWorldParentalAccept ()
+> WorldParentalResponse CreateWorldParentalAccept (CreateWorldParentalAcceptRequest createWorldParentalAcceptRequest = null)
 
 Accept a child's invite as the parent: { code, pin }. The parent must be an ID-verified adult (18+ by the date of birth on the ID). The PIN protects every later change.
 
@@ -2915,11 +3046,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var createWorldParentalAcceptRequest = new CreateWorldParentalAcceptRequest(); // CreateWorldParentalAcceptRequest |  (optional) 
 
             try
             {
                 // Accept a child's invite as the parent: { code, pin }. The parent must be an ID-verified adult (18+ by the date of birth on the ID). The PIN protects every later change.
-                WorldParentalResponse result = apiInstance.CreateWorldParentalAccept();
+                WorldParentalResponse result = apiInstance.CreateWorldParentalAccept(createWorldParentalAcceptRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2934,7 +3066,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldParentalAcceptRequest** | **CreateWorldParentalAcceptRequest**|  | [optional] 
 
 ### Return type
 
@@ -2946,7 +3081,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2965,7 +3100,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldparentalchildrenpin"></a>
 # **CreateWorldParentalChildrenPin**
-> CreateWorldParentalChildrenPinResponse CreateWorldParentalChildrenPin (string childId)
+> CreateWorldParentalChildrenPinResponse CreateWorldParentalChildrenPin (string childId, CreateWorldParentalChildrenPinRequest createWorldParentalChildrenPinRequest = null)
 
 Change the parent PIN: { pin, newPin } (4-8 digits). Five wrong PINs lock changes for 15 minutes.
 
@@ -2990,11 +3125,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var childId = "childId_example";  // string | 
+            var createWorldParentalChildrenPinRequest = new CreateWorldParentalChildrenPinRequest(); // CreateWorldParentalChildrenPinRequest |  (optional) 
 
             try
             {
                 // Change the parent PIN: { pin, newPin } (4-8 digits). Five wrong PINs lock changes for 15 minutes.
-                CreateWorldParentalChildrenPinResponse result = apiInstance.CreateWorldParentalChildrenPin(childId);
+                CreateWorldParentalChildrenPinResponse result = apiInstance.CreateWorldParentalChildrenPin(childId, createWorldParentalChildrenPinRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3013,6 +3149,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **childId** | **string**|  | 
+ **createWorldParentalChildrenPinRequest** | **CreateWorldParentalChildrenPinRequest**|  | [optional] 
 
 ### Return type
 
@@ -3024,7 +3161,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3043,7 +3180,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldparentalchildrenunlink"></a>
 # **CreateWorldParentalChildrenUnlink**
-> CreateWorldParentalChildrenUnlinkResponse CreateWorldParentalChildrenUnlink (string childId)
+> CreateWorldParentalChildrenUnlinkResponse CreateWorldParentalChildrenUnlink (string childId, CreateWorldParentalChildrenUnlinkRequest createWorldParentalChildrenUnlinkRequest = null)
 
 Remove the parent link (and its limits) with your PIN: { pin }.
 
@@ -3068,11 +3205,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var childId = "childId_example";  // string | 
+            var createWorldParentalChildrenUnlinkRequest = new CreateWorldParentalChildrenUnlinkRequest(); // CreateWorldParentalChildrenUnlinkRequest |  (optional) 
 
             try
             {
                 // Remove the parent link (and its limits) with your PIN: { pin }.
-                CreateWorldParentalChildrenUnlinkResponse result = apiInstance.CreateWorldParentalChildrenUnlink(childId);
+                CreateWorldParentalChildrenUnlinkResponse result = apiInstance.CreateWorldParentalChildrenUnlink(childId, createWorldParentalChildrenUnlinkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3091,6 +3229,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **childId** | **string**|  | 
+ **createWorldParentalChildrenUnlinkRequest** | **CreateWorldParentalChildrenUnlinkRequest**|  | [optional] 
 
 ### Return type
 
@@ -3102,7 +3241,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3195,7 +3334,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldratingcompute"></a>
 # **CreateWorldRatingCompute**
-> CreateWorldRatingComputeResponse CreateWorldRatingCompute ()
+> CreateWorldRatingComputeResponse CreateWorldRatingCompute (CreateWorldRatingComputeRequest createWorldRatingComputeRequest = null)
 
 Rate a set of questionnaire answers exactly as publishing does: { answers } → rating (null when refused), reasons, content descriptors, interactive notices and refusals.
 
@@ -3219,11 +3358,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var createWorldRatingComputeRequest = new CreateWorldRatingComputeRequest(); // CreateWorldRatingComputeRequest |  (optional) 
 
             try
             {
                 // Rate a set of questionnaire answers exactly as publishing does: { answers } → rating (null when refused), reasons, content descriptors, interactive notices and refusals.
-                CreateWorldRatingComputeResponse result = apiInstance.CreateWorldRatingCompute();
+                CreateWorldRatingComputeResponse result = apiInstance.CreateWorldRatingCompute(createWorldRatingComputeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3238,7 +3378,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldRatingComputeRequest** | **CreateWorldRatingComputeRequest**|  | [optional] 
 
 ### Return type
 
@@ -3250,7 +3393,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3577,7 +3720,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteworldexperience"></a>
 # **DeleteWorldExperience**
-> DeleteWorldExperienceResponse DeleteWorldExperience (string experienceId)
+> DeleteWorldExperienceResponse DeleteWorldExperience (string experienceId, DeleteWorldExperienceRequest deleteWorldExperienceRequest = null)
 
 Delete a game (a tombstone, restorable for 30 days). Body { confirmName } = the game's name.
 
@@ -3602,11 +3745,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var deleteWorldExperienceRequest = new DeleteWorldExperienceRequest(); // DeleteWorldExperienceRequest |  (optional) 
 
             try
             {
                 // Delete a game (a tombstone, restorable for 30 days). Body { confirmName } = the game's name.
-                DeleteWorldExperienceResponse result = apiInstance.DeleteWorldExperience(experienceId);
+                DeleteWorldExperienceResponse result = apiInstance.DeleteWorldExperience(experienceId, deleteWorldExperienceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3625,6 +3769,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **deleteWorldExperienceRequest** | **DeleteWorldExperienceRequest**|  | [optional] 
 
 ### Return type
 
@@ -3636,7 +3781,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3709,6 +3854,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 **DeleteWorldExperienceBanResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="deleteworldexperiencelocalization"></a>
+# **DeleteWorldExperienceLocalization**
+> WorldExperienceLocalizationResponse DeleteWorldExperienceLocalization (string experienceId, string locale)
+
+Remove one language (its name, description and strings).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class DeleteWorldExperienceLocalizationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldsApi(config);
+            var experienceId = "experienceId_example";  // string | 
+            var locale = "locale_example";  // string | 
+
+            try
+            {
+                // Remove one language (its name, description and strings).
+                WorldExperienceLocalizationResponse result = apiInstance.DeleteWorldExperienceLocalization(experienceId, locale);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldsApi.DeleteWorldExperienceLocalization: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **experienceId** | **string**|  | 
+ **locale** | **string**|  | 
+
+### Return type
+
+**WorldExperienceLocalizationResponse**
 
 ### Authorization
 
@@ -3889,7 +4114,7 @@ This endpoint does not need any parameter.
 
 <a name="getworldchart"></a>
 # **GetWorldChart**
-> GetWorldChartResponse GetWorldChart (string chart)
+> GetWorldChartResponse GetWorldChart (string chart, string genre = null, decimal? limit = null)
 
 A chart: top-playing (players now), trending (this week vs last, retention-weighted), top-rated (Wilson lower bound of thumbs up, 10+ votes), new-rising, friends, most-favorited; ?genre= cuts it to one genre. Organic only: nothing paid.
 
@@ -3914,11 +4139,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var chart = "chart_example";  // string | 
+            var genre = "shopping";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // A chart: top-playing (players now), trending (this week vs last, retention-weighted), top-rated (Wilson lower bound of thumbs up, 10+ votes), new-rising, friends, most-favorited; ?genre= cuts it to one genre. Organic only: nothing paid.
-                GetWorldChartResponse result = apiInstance.GetWorldChart(chart);
+                GetWorldChartResponse result = apiInstance.GetWorldChart(chart, genre, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3937,6 +4164,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **chart** | **string**|  | 
+ **genre** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -4353,7 +4582,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceanalytic"></a>
 # **GetWorldExperienceAnalytic**
-> GetWorldExperienceAnalyticResponse GetWorldExperienceAnalytic (string experienceId, string report)
+> GetWorldExperienceAnalyticResponse GetWorldExperienceAnalytic (string experienceId, string report, string from = null, string to = null, string segment = null, string funnel = null, string currency = null)
 
 An analytics report: overview, engagement, retention, monetization, funnels, economy, performance, custom or costs (fleet CPU-minutes, egress, estimated cost). ?from=&to= (YYYY-MM-DD), retention ?segment=, funnels ?funnel=, economy ?currency=.
 
@@ -4379,11 +4608,16 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var report = "report_example";  // string | 
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
+            var segment = "segment_example";  // string |  (optional) 
+            var funnel = "funnel_example";  // string |  (optional) 
+            var currency = "currency_example";  // string |  (optional) 
 
             try
             {
                 // An analytics report: overview, engagement, retention, monetization, funnels, economy, performance, custom or costs (fleet CPU-minutes, egress, estimated cost). ?from=&to= (YYYY-MM-DD), retention ?segment=, funnels ?funnel=, economy ?currency=.
-                GetWorldExperienceAnalyticResponse result = apiInstance.GetWorldExperienceAnalytic(experienceId, report);
+                GetWorldExperienceAnalyticResponse result = apiInstance.GetWorldExperienceAnalytic(experienceId, report, from, to, segment, funnel, currency);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -4403,6 +4637,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **report** | **string**|  | 
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
+ **segment** | **string**|  | [optional] 
+ **funnel** | **string**|  | [optional] 
+ **currency** | **string**|  | [optional] 
 
 ### Return type
 
@@ -4723,6 +4962,164 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetWorldExperienceExperimentResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getworldexperiencelocalization"></a>
+# **GetWorldExperienceLocalization**
+> WorldExperienceLocalizationResponse GetWorldExperienceLocalization (string experienceId)
+
+A game's translations: per language its name, description and in-game strings (key -> text), the English source (the game's Details and string table) and what each language still misses.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetWorldExperienceLocalizationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldsApi(config);
+            var experienceId = "experienceId_example";  // string | 
+
+            try
+            {
+                // A game's translations: per language its name, description and in-game strings (key -> text), the English source (the game's Details and string table) and what each language still misses.
+                WorldExperienceLocalizationResponse result = apiInstance.GetWorldExperienceLocalization(experienceId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldsApi.GetWorldExperienceLocalization: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **experienceId** | **string**|  | 
+
+### Return type
+
+**WorldExperienceLocalizationResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getworldexperiencelocalizationexport"></a>
+# **GetWorldExperienceLocalizationExport**
+> string GetWorldExperienceLocalizationExport (string experienceId, string locales = null)
+
+The game's translations as one CSV sheet (key, en, then each language; ?locales=es,fr picks the columns).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetWorldExperienceLocalizationExportExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldsApi(config);
+            var experienceId = "experienceId_example";  // string | 
+            var locales = "locales_example";  // string |  (optional) 
+
+            try
+            {
+                // The game's translations as one CSV sheet (key, en, then each language; ?locales=es,fr picks the columns).
+                string result = apiInstance.GetWorldExperienceLocalizationExport(experienceId, locales);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldsApi.GetWorldExperienceLocalizationExport: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **experienceId** | **string**|  | 
+ **locales** | **string**|  | [optional] 
+
+### Return type
+
+**string**
 
 ### Authorization
 
@@ -6067,7 +6464,7 @@ This endpoint does not need any parameter.
 
 <a name="getworldparentalchildren"></a>
 # **GetWorldParentalChildren**
-> WorldParentalResponse GetWorldParentalChildren (string childId)
+> WorldParentalResponse GetWorldParentalChildren (string childId, decimal? days = null)
 
 One linked account with ?days= (1-90) of playtime per experience.
 
@@ -6092,11 +6489,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var childId = "childId_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // One linked account with ?days= (1-90) of playtime per experience.
-                WorldParentalResponse result = apiInstance.GetWorldParentalChildren(childId);
+                WorldParentalResponse result = apiInstance.GetWorldParentalChildren(childId, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6115,6 +6513,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **childId** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -6441,7 +6840,7 @@ This endpoint does not need any parameter.
 
 <a name="getworldsearch"></a>
 # **GetWorldSearch**
-> GetWorldSearchResponse GetWorldSearch ()
+> GetWorldSearchResponse GetWorldSearch (string q = null, string genre = null, string rating = null, string device = null, decimal? players = null, decimal? minThumbs = null, string live = null, string friends = null, decimal? limit = null)
 
 Search experiences by title, creator, tags and genre (typo-tolerant, synonyms such as obby / obstacle). Filters: genre, rating (everyone keeps to Everyone), device, players (one server holds at least N), minThumbs (percent), live, friends. No results suggests a chart.
 
@@ -6465,11 +6864,20 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var genre = "shopping";  // string |  (optional) 
+            var rating = "everyone";  // string |  (optional) 
+            var device = "desktop";  // string |  (optional) 
+            var players = 8.14D;  // decimal? |  (optional) 
+            var minThumbs = 8.14D;  // decimal? |  (optional) 
+            var live = "0";  // string |  (optional) 
+            var friends = "0";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Search experiences by title, creator, tags and genre (typo-tolerant, synonyms such as obby / obstacle). Filters: genre, rating (everyone keeps to Everyone), device, players (one server holds at least N), minThumbs (percent), live, friends. No results suggests a chart.
-                GetWorldSearchResponse result = apiInstance.GetWorldSearch();
+                GetWorldSearchResponse result = apiInstance.GetWorldSearch(q, genre, rating, device, players, minThumbs, live, friends, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6484,7 +6892,18 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **genre** | **string**|  | [optional] 
+ **rating** | **string**|  | [optional] 
+ **device** | **string**|  | [optional] 
+ **players** | **decimal?**|  | [optional] 
+ **minThumbs** | **decimal?**|  | [optional] 
+ **live** | **string**|  | [optional] 
+ **friends** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -6745,7 +7164,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldexperiencealerts"></a>
 # **ListWorldExperienceAlerts**
-> ListWorldExperienceAlertsResponse ListWorldExperienceAlerts (string experienceId)
+> ListWorldExperienceAlertsResponse ListWorldExperienceAlerts (string experienceId, decimal? limit = null, string cursor = null)
 
 Alerts that fired, newest first.
 
@@ -6770,11 +7189,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
 
             try
             {
                 // Alerts that fired, newest first.
-                ListWorldExperienceAlertsResponse result = apiInstance.ListWorldExperienceAlerts(experienceId);
+                ListWorldExperienceAlertsResponse result = apiInstance.ListWorldExperienceAlerts(experienceId, limit, cursor);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6793,6 +7214,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **limit** | **decimal?**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
 
 ### Return type
 
@@ -6823,7 +7246,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperienceaudit"></a>
 # **ListWorldExperienceAudit**
-> ListWorldExperienceAuditResponse ListWorldExperienceAudit (string experienceId)
+> ListWorldExperienceAuditResponse ListWorldExperienceAudit (string experienceId, decimal? limit = null, string cursor = null)
 
 The live-ops audit log: every config, experiment, event and alert change, who made it, when.
 
@@ -6848,11 +7271,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
 
             try
             {
                 // The live-ops audit log: every config, experiment, event and alert change, who made it, when.
-                ListWorldExperienceAuditResponse result = apiInstance.ListWorldExperienceAudit(experienceId);
+                ListWorldExperienceAuditResponse result = apiInstance.ListWorldExperienceAudit(experienceId, limit, cursor);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6871,6 +7296,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **limit** | **decimal?**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
 
 ### Return type
 
@@ -6901,7 +7328,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiencebans"></a>
 # **ListWorldExperienceBans**
-> ListWorldExperienceBansResponse ListWorldExperienceBans (string experienceId)
+> ListWorldExperienceBansResponse ListWorldExperienceBans (string experienceId, string cursor = null, decimal? limit = null)
 
 Players banned from your experience (by pairwise sub), oldest first (cursor).
 
@@ -6926,11 +7353,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Players banned from your experience (by pairwise sub), oldest first (cursor).
-                ListWorldExperienceBansResponse result = apiInstance.ListWorldExperienceBans(experienceId);
+                ListWorldExperienceBansResponse result = apiInstance.ListWorldExperienceBans(experienceId, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6949,6 +7378,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -6979,7 +7410,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperienceconfigversions"></a>
 # **ListWorldExperienceConfigVersions**
-> ListWorldExperienceConfigVersionsResponse ListWorldExperienceConfigVersions (string experienceId)
+> ListWorldExperienceConfigVersionsResponse ListWorldExperienceConfigVersions (string experienceId, decimal? limit = null, string cursor = null)
 
 Config history, newest first: who changed which keys, when.
 
@@ -7004,11 +7435,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var cursor = "cursor_example";  // string |  (optional) 
 
             try
             {
                 // Config history, newest first: who changed which keys, when.
-                ListWorldExperienceConfigVersionsResponse result = apiInstance.ListWorldExperienceConfigVersions(experienceId);
+                ListWorldExperienceConfigVersionsResponse result = apiInstance.ListWorldExperienceConfigVersions(experienceId, limit, cursor);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7027,6 +7460,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **limit** | **decimal?**|  | [optional] 
+ **cursor** | **string**|  | [optional] 
 
 ### Return type
 
@@ -7057,7 +7492,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperienceevents"></a>
 # **ListWorldExperienceEvents**
-> ListWorldExperienceEventsResponse ListWorldExperienceEvents (string experienceId)
+> ListWorldExperienceEventsResponse ListWorldExperienceEvents (string experienceId, string includeEnded = null)
 
 Scheduled and live events (?includeEnded=true for history).
 
@@ -7082,11 +7517,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var includeEnded = "true";  // string |  (optional) 
 
             try
             {
                 // Scheduled and live events (?includeEnded=true for history).
-                ListWorldExperienceEventsResponse result = apiInstance.ListWorldExperienceEvents(experienceId);
+                ListWorldExperienceEventsResponse result = apiInstance.ListWorldExperienceEvents(experienceId, includeEnded);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7105,6 +7541,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **includeEnded** | **string**|  | [optional] 
 
 ### Return type
 
@@ -7213,7 +7650,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiencemoderationreports"></a>
 # **ListWorldExperienceModerationReports**
-> ListWorldExperienceModerationReportsResponse ListWorldExperienceModerationReports (string experienceId)
+> ListWorldExperienceModerationReportsResponse ListWorldExperienceModerationReports (string experienceId, string cursor = null, decimal? limit = null)
 
 Reports about your experience, newest first (cursor). Reporter identity, account ids and other players' words are removed.
 
@@ -7238,11 +7675,13 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Reports about your experience, newest first (cursor). Reporter identity, account ids and other players' words are removed.
-                ListWorldExperienceModerationReportsResponse result = apiInstance.ListWorldExperienceModerationReports(experienceId);
+                ListWorldExperienceModerationReportsResponse result = apiInstance.ListWorldExperienceModerationReports(experienceId, cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7261,6 +7700,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7685,7 +8126,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiences"></a>
 # **ListWorldExperiences**
-> ListWorldExperiencesResponse ListWorldExperiences ()
+> ListWorldExperiencesResponse ListWorldExperiences (string cursor = null, decimal? limit = null)
 
 Your experiences, newest first; cursor-paged (?cursor=&limit=).
 
@@ -7709,11 +8150,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your experiences, newest first; cursor-paged (?cursor=&limit=).
-                ListWorldExperiencesResponse result = apiInstance.ListWorldExperiences();
+                ListWorldExperiencesResponse result = apiInstance.ListWorldExperiences(cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7728,7 +8171,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -7833,7 +8280,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldgamemine"></a>
 # **ListWorldGameMine**
-> ListWorldGameMineResponse ListWorldGameMine ()
+> ListWorldGameMineResponse ListWorldGameMine (string q = null, string status = null, string engine = null, string genre = null, string template = null, string owner = null, string flag = null, string sort = null)
 
 Every game you own or collaborate on, 3D worlds and Classic, filtered (?q&status&engine&genre&template&owner&flag&sort; sort=revenue = highest earning first). Each row carries revenueCents: your creator-ledger earnings from it in USD cents (null for Classic).
 
@@ -7857,11 +8304,19 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var status = "active";  // string |  (optional) 
+            var engine = "all";  // string |  (optional) 
+            var genre = "genre_example";  // string |  (optional) 
+            var template = "template_example";  // string |  (optional) 
+            var owner = "all";  // string |  (optional) 
+            var flag = "all";  // string |  (optional) 
+            var sort = "name";  // string |  (optional) 
 
             try
             {
                 // Every game you own or collaborate on, 3D worlds and Classic, filtered (?q&status&engine&genre&template&owner&flag&sort; sort=revenue = highest earning first). Each row carries revenueCents: your creator-ledger earnings from it in USD cents (null for Classic).
-                ListWorldGameMineResponse result = apiInstance.ListWorldGameMine();
+                ListWorldGameMineResponse result = apiInstance.ListWorldGameMine(q, status, engine, genre, template, owner, flag, sort);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -7876,7 +8331,17 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **engine** | **string**|  | [optional] 
+ **genre** | **string**|  | [optional] 
+ **template** | **string**|  | [optional] 
+ **owner** | **string**|  | [optional] 
+ **flag** | **string**|  | [optional] 
+ **sort** | **string**|  | [optional] 
 
 ### Return type
 
@@ -8129,7 +8594,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldshoplistings"></a>
 # **ListWorldShopListings**
-> ListWorldShopListingsResponse ListWorldShopListings ()
+> ListWorldShopListingsResponse ListWorldShopListings (string q = null, decimal? limit = null, string experienceId = null)
 
 Your live Crossly listings a game can show and sell (shop objects bind to their id).
 
@@ -8153,11 +8618,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var q = "q_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var experienceId = "experienceId_example";  // string |  (optional) 
 
             try
             {
                 // Your live Crossly listings a game can show and sell (shop objects bind to their id).
-                ListWorldShopListingsResponse result = apiInstance.ListWorldShopListings();
+                ListWorldShopListingsResponse result = apiInstance.ListWorldShopListings(q, limit, experienceId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8172,7 +8640,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **experienceId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -8203,7 +8676,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldtransferrequests"></a>
 # **ListWorldTransferRequests**
-> ListWorldTransferRequestsResponse ListWorldTransferRequests ()
+> ListWorldTransferRequestsResponse ListWorldTransferRequests (string direction = null, string status = null, string experienceId = null)
 
 Ownership transfer requests you were asked (incoming) or sent (outgoing), newest first (?direction&status&experienceId).
 
@@ -8227,11 +8700,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var direction = "all";  // string |  (optional) 
+            var status = "all";  // string |  (optional) 
+            var experienceId = "experienceId_example";  // string |  (optional) 
 
             try
             {
                 // Ownership transfer requests you were asked (incoming) or sent (outgoing), newest first (?direction&status&experienceId).
-                ListWorldTransferRequestsResponse result = apiInstance.ListWorldTransferRequests();
+                ListWorldTransferRequestsResponse result = apiInstance.ListWorldTransferRequests(direction, status, experienceId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8246,7 +8722,12 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **direction** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **experienceId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -8351,7 +8832,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldexperience"></a>
 # **UpdateWorldExperience**
-> WorldExperienceResponse UpdateWorldExperience (string experienceId)
+> WorldExperienceResponse UpdateWorldExperience (string experienceId, UpdateWorldExperienceRequest updateWorldExperienceRequest = null)
 
 Edit name, description, genre, rating or icon.
 
@@ -8376,11 +8857,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceRequest = new UpdateWorldExperienceRequest(); // UpdateWorldExperienceRequest |  (optional) 
 
             try
             {
                 // Edit name, description, genre, rating or icon.
-                WorldExperienceResponse result = apiInstance.UpdateWorldExperience(experienceId);
+                WorldExperienceResponse result = apiInstance.UpdateWorldExperience(experienceId, updateWorldExperienceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8399,6 +8881,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceRequest** | **UpdateWorldExperienceRequest**|  | [optional] 
 
 ### Return type
 
@@ -8410,7 +8893,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8429,7 +8912,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceaccesslimit"></a>
 # **UpdateWorldExperienceAccessLimit**
-> GetWorldExperienceAccessLimitResponse UpdateWorldExperienceAccessLimit (string experienceId)
+> GetWorldExperienceAccessLimitResponse UpdateWorldExperienceAccessLimit (string experienceId, UpdateWorldExperienceAccessLimitRequest updateWorldExperienceAccessLimitRequest = null)
 
 Limit who can play: { crewOnly } (only members of the owner's crew), { countryMode: all|allow|block, countries: ['US', ...] }. The owner and team are never limited.
 
@@ -8454,11 +8937,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceAccessLimitRequest = new UpdateWorldExperienceAccessLimitRequest(); // UpdateWorldExperienceAccessLimitRequest |  (optional) 
 
             try
             {
                 // Limit who can play: { crewOnly } (only members of the owner's crew), { countryMode: all|allow|block, countries: ['US', ...] }. The owner and team are never limited.
-                GetWorldExperienceAccessLimitResponse result = apiInstance.UpdateWorldExperienceAccessLimit(experienceId);
+                GetWorldExperienceAccessLimitResponse result = apiInstance.UpdateWorldExperienceAccessLimit(experienceId, updateWorldExperienceAccessLimitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8477,6 +8961,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceAccessLimitRequest** | **UpdateWorldExperienceAccessLimitRequest**|  | [optional] 
 
 ### Return type
 
@@ -8488,7 +8973,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8507,7 +8992,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencealertsetting"></a>
 # **UpdateWorldExperienceAlertSetting**
-> GetWorldExperienceAlertSettingResponse UpdateWorldExperienceAlertSetting (string experienceId)
+> GetWorldExperienceAlertSettingResponse UpdateWorldExperienceAlertSetting (string experienceId, UpdateWorldExperienceAlertSettingRequest updateWorldExperienceAlertSettingRequest = null)
 
 Change alert rules and quiet hours.
 
@@ -8532,11 +9017,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceAlertSettingRequest = new UpdateWorldExperienceAlertSettingRequest(); // UpdateWorldExperienceAlertSettingRequest |  (optional) 
 
             try
             {
                 // Change alert rules and quiet hours.
-                GetWorldExperienceAlertSettingResponse result = apiInstance.UpdateWorldExperienceAlertSetting(experienceId);
+                GetWorldExperienceAlertSettingResponse result = apiInstance.UpdateWorldExperienceAlertSetting(experienceId, updateWorldExperienceAlertSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8555,6 +9041,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceAlertSettingRequest** | **UpdateWorldExperienceAlertSettingRequest**|  | [optional] 
 
 ### Return type
 
@@ -8566,7 +9053,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8585,7 +9072,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencechatsetting"></a>
 # **UpdateWorldExperienceChatSetting**
-> GetWorldExperienceChatSettingResponse UpdateWorldExperienceChatSetting (string experienceId)
+> GetWorldExperienceChatSettingResponse UpdateWorldExperienceChatSetting (string experienceId, UpdateWorldExperienceChatSettingRequest updateWorldExperienceChatSettingRequest = null)
 
 Turn text chat off or use the strict filter for everyone (never looser than the platform).
 
@@ -8610,11 +9097,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceChatSettingRequest = new UpdateWorldExperienceChatSettingRequest(); // UpdateWorldExperienceChatSettingRequest |  (optional) 
 
             try
             {
                 // Turn text chat off or use the strict filter for everyone (never looser than the platform).
-                GetWorldExperienceChatSettingResponse result = apiInstance.UpdateWorldExperienceChatSetting(experienceId);
+                GetWorldExperienceChatSettingResponse result = apiInstance.UpdateWorldExperienceChatSetting(experienceId, updateWorldExperienceChatSettingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8633,6 +9121,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceChatSettingRequest** | **UpdateWorldExperienceChatSettingRequest**|  | [optional] 
 
 ### Return type
 
@@ -8644,7 +9133,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8663,7 +9152,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceconfig"></a>
 # **UpdateWorldExperienceConfig**
-> WorldExperienceConfigResponse UpdateWorldExperienceConfig (string experienceId)
+> WorldExperienceConfigResponse UpdateWorldExperienceConfig (string experienceId, UpdateWorldExperienceConfigRequest updateWorldExperienceConfigRequest = null)
 
 Save the whole config document. Running servers get it within seconds (ConfigService.Changed). baseVersion guards against overwriting a newer save (409).
 
@@ -8688,11 +9177,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceConfigRequest = new UpdateWorldExperienceConfigRequest(); // UpdateWorldExperienceConfigRequest |  (optional) 
 
             try
             {
                 // Save the whole config document. Running servers get it within seconds (ConfigService.Changed). baseVersion guards against overwriting a newer save (409).
-                WorldExperienceConfigResponse result = apiInstance.UpdateWorldExperienceConfig(experienceId);
+                WorldExperienceConfigResponse result = apiInstance.UpdateWorldExperienceConfig(experienceId, updateWorldExperienceConfigRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8711,6 +9201,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceConfigRequest** | **UpdateWorldExperienceConfigRequest**|  | [optional] 
 
 ### Return type
 
@@ -8722,7 +9213,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8741,7 +9232,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceconfigvalue"></a>
 # **UpdateWorldExperienceConfigValue**
-> WorldExperienceConfigResponse UpdateWorldExperienceConfigValue (string experienceId)
+> WorldExperienceConfigResponse UpdateWorldExperienceConfigValue (string experienceId, UpdateWorldExperienceConfigValueRequest updateWorldExperienceConfigValueRequest = null)
 
 Set and/or remove individual config keys.
 
@@ -8766,11 +9257,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceConfigValueRequest = new UpdateWorldExperienceConfigValueRequest(); // UpdateWorldExperienceConfigValueRequest |  (optional) 
 
             try
             {
                 // Set and/or remove individual config keys.
-                WorldExperienceConfigResponse result = apiInstance.UpdateWorldExperienceConfigValue(experienceId);
+                WorldExperienceConfigResponse result = apiInstance.UpdateWorldExperienceConfigValue(experienceId, updateWorldExperienceConfigValueRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8789,6 +9281,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceConfigValueRequest** | **UpdateWorldExperienceConfigValueRequest**|  | [optional] 
 
 ### Return type
 
@@ -8800,7 +9293,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8819,7 +9312,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceevent"></a>
 # **UpdateWorldExperienceEvent**
-> WorldExperienceEventResponse UpdateWorldExperienceEvent (string experienceId, string eventId)
+> WorldExperienceEventResponse UpdateWorldExperienceEvent (string experienceId, string eventId, UpdateWorldExperienceEventRequest updateWorldExperienceEventRequest = null)
 
 Reschedule or change a scheduled event; a live event may only move its end.
 
@@ -8845,11 +9338,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var eventId = "eventId_example";  // string | 
+            var updateWorldExperienceEventRequest = new UpdateWorldExperienceEventRequest(); // UpdateWorldExperienceEventRequest |  (optional) 
 
             try
             {
                 // Reschedule or change a scheduled event; a live event may only move its end.
-                WorldExperienceEventResponse result = apiInstance.UpdateWorldExperienceEvent(experienceId, eventId);
+                WorldExperienceEventResponse result = apiInstance.UpdateWorldExperienceEvent(experienceId, eventId, updateWorldExperienceEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8869,6 +9363,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **eventId** | **string**|  | 
+ **updateWorldExperienceEventRequest** | **UpdateWorldExperienceEventRequest**|  | [optional] 
 
 ### Return type
 
@@ -8880,7 +9375,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8899,7 +9394,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceexperiment"></a>
 # **UpdateWorldExperienceExperiment**
-> WorldExperienceExperimentResponse UpdateWorldExperienceExperiment (string experienceId, string experimentId)
+> WorldExperienceExperimentResponse UpdateWorldExperienceExperiment (string experienceId, string experimentId, UpdateWorldExperienceExperimentRequest updateWorldExperienceExperimentRequest = null)
 
 Edit a draft (a running experiment may only rename or reword).
 
@@ -8925,11 +9420,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var experimentId = "experimentId_example";  // string | 
+            var updateWorldExperienceExperimentRequest = new UpdateWorldExperienceExperimentRequest(); // UpdateWorldExperienceExperimentRequest |  (optional) 
 
             try
             {
                 // Edit a draft (a running experiment may only rename or reword).
-                WorldExperienceExperimentResponse result = apiInstance.UpdateWorldExperienceExperiment(experienceId, experimentId);
+                WorldExperienceExperimentResponse result = apiInstance.UpdateWorldExperienceExperiment(experienceId, experimentId, updateWorldExperienceExperimentRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -8949,6 +9445,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **experimentId** | **string**|  | 
+ **updateWorldExperienceExperimentRequest** | **UpdateWorldExperienceExperimentRequest**|  | [optional] 
 
 ### Return type
 
@@ -8960,7 +9457,87 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateworldexperiencelocalization"></a>
+# **UpdateWorldExperienceLocalization**
+> WorldExperienceLocalizationResponse UpdateWorldExperienceLocalization (string experienceId, UpdateWorldExperienceLocalizationRequest updateWorldExperienceLocalizationRequest = null)
+
+Save languages: { locales: { es: { name, description, strings: { \"shop.title\": \"Tienda\" } } } }. Each language sent replaces that language; the rest stay. English holds the source string table (its name and description are the Details).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateWorldExperienceLocalizationExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new WorldsApi(config);
+            var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceLocalizationRequest = new UpdateWorldExperienceLocalizationRequest(); // UpdateWorldExperienceLocalizationRequest |  (optional) 
+
+            try
+            {
+                // Save languages: { locales: { es: { name, description, strings: { \"shop.title\": \"Tienda\" } } } }. Each language sent replaces that language; the rest stay. English holds the source string table (its name and description are the Details).
+                WorldExperienceLocalizationResponse result = apiInstance.UpdateWorldExperienceLocalization(experienceId, updateWorldExperienceLocalizationRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling WorldsApi.UpdateWorldExperienceLocalization: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **experienceId** | **string**|  | 
+ **updateWorldExperienceLocalizationRequest** | **UpdateWorldExperienceLocalizationRequest**|  | [optional] 
+
+### Return type
+
+**WorldExperienceLocalizationResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -8979,7 +9556,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencematurity"></a>
 # **UpdateWorldExperienceMaturity**
-> UpdateWorldExperienceMaturityResponse UpdateWorldExperienceMaturity (string experienceId)
+> UpdateWorldExperienceMaturityResponse UpdateWorldExperienceMaturity (string experienceId, CreateWorldRatingComputeRequest createWorldRatingComputeRequest = null)
 
 Answer the questionnaire: { answers }. A stricter rating applies now; a looser or first Mature rating waits for the next reviewed publish (takesEffect).
 
@@ -9004,11 +9581,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldRatingComputeRequest = new CreateWorldRatingComputeRequest(); // CreateWorldRatingComputeRequest |  (optional) 
 
             try
             {
                 // Answer the questionnaire: { answers }. A stricter rating applies now; a looser or first Mature rating waits for the next reviewed publish (takesEffect).
-                UpdateWorldExperienceMaturityResponse result = apiInstance.UpdateWorldExperienceMaturity(experienceId);
+                UpdateWorldExperienceMaturityResponse result = apiInstance.UpdateWorldExperienceMaturity(experienceId, createWorldRatingComputeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9027,6 +9605,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldRatingComputeRequest** | **CreateWorldRatingComputeRequest**|  | [optional] 
 
 ### Return type
 
@@ -9038,7 +9617,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9057,7 +9636,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceplace"></a>
 # **UpdateWorldExperiencePlace**
-> WorldExperiencePlaceResponse UpdateWorldExperiencePlace (string experienceId, string placeId)
+> WorldExperiencePlaceResponse UpdateWorldExperiencePlace (string experienceId, string placeId, CreateWorldExperiencePlaceRequest createWorldExperiencePlaceRequest = null)
 
 Place settings: name, max players (1-50), fill target, social slots, empty shutdown.
 
@@ -9083,11 +9662,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceRequest = new CreateWorldExperiencePlaceRequest(); // CreateWorldExperiencePlaceRequest |  (optional) 
 
             try
             {
                 // Place settings: name, max players (1-50), fill target, social slots, empty shutdown.
-                WorldExperiencePlaceResponse result = apiInstance.UpdateWorldExperiencePlace(experienceId, placeId);
+                WorldExperiencePlaceResponse result = apiInstance.UpdateWorldExperiencePlace(experienceId, placeId, createWorldExperiencePlaceRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9107,6 +9687,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceRequest** | **CreateWorldExperiencePlaceRequest**|  | [optional] 
 
 ### Return type
 
@@ -9118,7 +9699,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9137,7 +9718,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceplacedraft"></a>
 # **UpdateWorldExperiencePlaceDraft**
-> GetWorldExperiencePlaceDraftResponse UpdateWorldExperiencePlaceDraft (string experienceId, string placeId)
+> GetWorldExperiencePlaceDraftResponse UpdateWorldExperiencePlaceDraft (string experienceId, string placeId, UpdateWorldExperiencePlaceDraftRequest updateWorldExperiencePlaceDraftRequest = null)
 
 Save the draft. baseRevision is the revision you loaded (0 for none); a newer save elsewhere answers 409 draft_conflict.
 
@@ -9163,11 +9744,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var updateWorldExperiencePlaceDraftRequest = new UpdateWorldExperiencePlaceDraftRequest(); // UpdateWorldExperiencePlaceDraftRequest |  (optional) 
 
             try
             {
                 // Save the draft. baseRevision is the revision you loaded (0 for none); a newer save elsewhere answers 409 draft_conflict.
-                GetWorldExperiencePlaceDraftResponse result = apiInstance.UpdateWorldExperiencePlaceDraft(experienceId, placeId);
+                GetWorldExperiencePlaceDraftResponse result = apiInstance.UpdateWorldExperiencePlaceDraft(experienceId, placeId, updateWorldExperiencePlaceDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9187,6 +9769,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **updateWorldExperiencePlaceDraftRequest** | **UpdateWorldExperiencePlaceDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -9198,7 +9781,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9217,7 +9800,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceplaceversionnote"></a>
 # **UpdateWorldExperiencePlaceVersionNote**
-> UpdateWorldExperiencePlaceVersionNoteResponse UpdateWorldExperiencePlaceVersionNote (string experienceId, string placeId, string versionId)
+> UpdateWorldExperiencePlaceVersionNoteResponse UpdateWorldExperiencePlaceVersionNote (string experienceId, string placeId, string versionId, UpdateWorldExperiencePlaceVersionNoteRequest updateWorldExperiencePlaceVersionNoteRequest = null)
 
 Edit a release version's changelog (the game page's What's new): { notes } up to 2000 characters.
 
@@ -9244,11 +9827,12 @@ namespace Example
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
             var versionId = "versionId_example";  // string | 
+            var updateWorldExperiencePlaceVersionNoteRequest = new UpdateWorldExperiencePlaceVersionNoteRequest(); // UpdateWorldExperiencePlaceVersionNoteRequest |  (optional) 
 
             try
             {
                 // Edit a release version's changelog (the game page's What's new): { notes } up to 2000 characters.
-                UpdateWorldExperiencePlaceVersionNoteResponse result = apiInstance.UpdateWorldExperiencePlaceVersionNote(experienceId, placeId, versionId);
+                UpdateWorldExperiencePlaceVersionNoteResponse result = apiInstance.UpdateWorldExperiencePlaceVersionNote(experienceId, placeId, versionId, updateWorldExperiencePlaceVersionNoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9269,6 +9853,7 @@ Name | Type | Description  | Notes
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
  **versionId** | **string**|  | 
+ **updateWorldExperiencePlaceVersionNoteRequest** | **UpdateWorldExperiencePlaceVersionNoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -9280,7 +9865,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9299,7 +9884,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencepublish"></a>
 # **UpdateWorldExperiencePublish**
-> WorldExperienceResponse2 UpdateWorldExperiencePublish (string experienceId, string requestId)
+> WorldExperienceResponse2 UpdateWorldExperiencePublish (string experienceId, string requestId, UpdateWorldExperiencePublishRequest updateWorldExperiencePublishRequest = null)
 
 Steps 2–5: details, rating questionnaire answers, access (private | friends | unlisted | public), money review acknowledgement.
 
@@ -9325,11 +9910,12 @@ namespace Example
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
             var requestId = "requestId_example";  // string | 
+            var updateWorldExperiencePublishRequest = new UpdateWorldExperiencePublishRequest(); // UpdateWorldExperiencePublishRequest |  (optional) 
 
             try
             {
                 // Steps 2–5: details, rating questionnaire answers, access (private | friends | unlisted | public), money review acknowledgement.
-                WorldExperienceResponse2 result = apiInstance.UpdateWorldExperiencePublish(experienceId, requestId);
+                WorldExperienceResponse2 result = apiInstance.UpdateWorldExperiencePublish(experienceId, requestId, updateWorldExperiencePublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9349,6 +9935,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **requestId** | **string**|  | 
+ **updateWorldExperiencePublishRequest** | **UpdateWorldExperiencePublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -9360,7 +9947,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9379,7 +9966,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceshowcase"></a>
 # **UpdateWorldExperienceShowcase**
-> UpdateWorldExperienceShowcaseResponse UpdateWorldExperienceShowcase (string experienceId)
+> UpdateWorldExperienceShowcaseResponse UpdateWorldExperienceShowcase (string experienceId, UpdateBrandDropListingRequest updateBrandDropListingRequest = null)
 
 Set the showcased listings: { listingIds } (Crossly shop slugs of the owner's live listings, max 12, in order).
 
@@ -9404,11 +9991,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateBrandDropListingRequest = new UpdateBrandDropListingRequest(); // UpdateBrandDropListingRequest |  (optional) 
 
             try
             {
                 // Set the showcased listings: { listingIds } (Crossly shop slugs of the owner's live listings, max 12, in order).
-                UpdateWorldExperienceShowcaseResponse result = apiInstance.UpdateWorldExperienceShowcase(experienceId);
+                UpdateWorldExperienceShowcaseResponse result = apiInstance.UpdateWorldExperienceShowcase(experienceId, updateBrandDropListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9427,6 +10015,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateBrandDropListingRequest** | **UpdateBrandDropListingRequest**|  | [optional] 
 
 ### Return type
 
@@ -9438,7 +10027,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9457,7 +10046,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldfavorite"></a>
 # **UpdateWorldFavorite**
-> WorldResponse3 UpdateWorldFavorite ()
+> WorldResponse3 UpdateWorldFavorite (UpdateWorldFavoriteRequest updateWorldFavoriteRequest = null)
 
 Favourite or un-favourite an experience (idempotent).
 
@@ -9481,11 +10070,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var updateWorldFavoriteRequest = new UpdateWorldFavoriteRequest(); // UpdateWorldFavoriteRequest |  (optional) 
 
             try
             {
                 // Favourite or un-favourite an experience (idempotent).
-                WorldResponse3 result = apiInstance.UpdateWorldFavorite();
+                WorldResponse3 result = apiInstance.UpdateWorldFavorite(updateWorldFavoriteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9500,7 +10090,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldFavoriteRequest** | **UpdateWorldFavoriteRequest**|  | [optional] 
 
 ### Return type
 
@@ -9512,7 +10105,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9531,7 +10124,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldmature"></a>
 # **UpdateWorldMature**
-> GetWorldMatureResponse UpdateWorldMature ()
+> GetWorldMatureResponse UpdateWorldMature (UpdateWorldMatureRequest updateWorldMatureRequest = null)
 
 Switch \"Show Mature experiences\" on or off: { showMature }. On is refused while a final step blocks (too young, region, parental controls, safety hold); it never skips the ID check.
 
@@ -9555,11 +10148,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var updateWorldMatureRequest = new UpdateWorldMatureRequest(); // UpdateWorldMatureRequest |  (optional) 
 
             try
             {
                 // Switch \"Show Mature experiences\" on or off: { showMature }. On is refused while a final step blocks (too young, region, parental controls, safety hold); it never skips the ID check.
-                GetWorldMatureResponse result = apiInstance.UpdateWorldMature();
+                GetWorldMatureResponse result = apiInstance.UpdateWorldMature(updateWorldMatureRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9574,7 +10168,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldMatureRequest** | **UpdateWorldMatureRequest**|  | [optional] 
 
 ### Return type
 
@@ -9586,7 +10183,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9605,7 +10202,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldmepref"></a>
 # **UpdateWorldMePref**
-> GetWorldMePrefResponse UpdateWorldMePref ()
+> GetWorldMePrefResponse UpdateWorldMePref (UpdateWorldMePrefRequest updateWorldMePrefRequest = null)
 
 Set your Crossly Carnival choices.
 
@@ -9629,11 +10226,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var updateWorldMePrefRequest = new UpdateWorldMePrefRequest(); // UpdateWorldMePrefRequest |  (optional) 
 
             try
             {
                 // Set your Crossly Carnival choices.
-                GetWorldMePrefResponse result = apiInstance.UpdateWorldMePref();
+                GetWorldMePrefResponse result = apiInstance.UpdateWorldMePref(updateWorldMePrefRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9648,7 +10246,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldMePrefRequest** | **UpdateWorldMePrefRequest**|  | [optional] 
 
 ### Return type
 
@@ -9660,7 +10261,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9679,7 +10280,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldparentalchildren"></a>
 # **UpdateWorldParentalChildren**
-> WorldParentalResponse UpdateWorldParentalChildren (string childId)
+> WorldParentalResponse UpdateWorldParentalChildren (string childId, UpdateWorldParentalChildrenRequest updateWorldParentalChildrenRequest = null)
 
 Change a linked account's limits with your PIN: { pin, settings: { maxRating: everyone|teen, chat: on|friends|off, monthlySpendLimitCents (0 = no purchases, null = no limit) } }. Enforced server-side at join, chat, the purchase prompt and checkout.
 
@@ -9704,11 +10305,12 @@ namespace Example
 
             var apiInstance = new WorldsApi(config);
             var childId = "childId_example";  // string | 
+            var updateWorldParentalChildrenRequest = new UpdateWorldParentalChildrenRequest(); // UpdateWorldParentalChildrenRequest |  (optional) 
 
             try
             {
                 // Change a linked account's limits with your PIN: { pin, settings: { maxRating: everyone|teen, chat: on|friends|off, monthlySpendLimitCents (0 = no purchases, null = no limit) } }. Enforced server-side at join, chat, the purchase prompt and checkout.
-                WorldParentalResponse result = apiInstance.UpdateWorldParentalChildren(childId);
+                WorldParentalResponse result = apiInstance.UpdateWorldParentalChildren(childId, updateWorldParentalChildrenRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9727,6 +10329,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **childId** | **string**|  | 
+ **updateWorldParentalChildrenRequest** | **UpdateWorldParentalChildrenRequest**|  | [optional] 
 
 ### Return type
 
@@ -9738,7 +10341,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -9757,7 +10360,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldvote"></a>
 # **UpdateWorldVote**
-> WorldResponse3 UpdateWorldVote ()
+> WorldResponse3 UpdateWorldVote (UpdateWorldVoteRequest updateWorldVoteRequest = null)
 
 Thumbs up, down, or null to withdraw: one vote per player per experience, counted only after 10 minutes of play (403 vote_needs_playtime before). A light ranking signal.
 
@@ -9781,11 +10384,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsApi(config);
+            var updateWorldVoteRequest = new UpdateWorldVoteRequest(); // UpdateWorldVoteRequest |  (optional) 
 
             try
             {
                 // Thumbs up, down, or null to withdraw: one vote per player per experience, counted only after 10 minutes of play (403 vote_needs_playtime before). A light ranking signal.
-                WorldResponse3 result = apiInstance.UpdateWorldVote();
+                WorldResponse3 result = apiInstance.UpdateWorldVote(updateWorldVoteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -9800,7 +10404,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldVoteRequest** | **UpdateWorldVoteRequest**|  | [optional] 
 
 ### Return type
 
@@ -9812,7 +10419,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

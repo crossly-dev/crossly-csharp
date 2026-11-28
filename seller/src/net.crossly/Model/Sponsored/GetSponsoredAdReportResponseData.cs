@@ -44,7 +44,7 @@ namespace net.crossly.Model
         /// <param name="daily">daily (required).</param>
         /// <param name="campaigns">campaigns (required).</param>
         /// <param name="catalogs">Per boosted catalog: impressions, clicks, spend, attributed trade orders and revenue, CTR and ROAS. (required).</param>
-        public GetSponsoredAdReportResponseData(FromTo2 range = default(FromTo2), SponsoredAdCampaignResponseDataStats totals = default(SponsoredAdCampaignResponseDataStats), List<GetSponsoredAdReportResponseDataDaily> daily = default(List<GetSponsoredAdReportResponseDataDaily>), List<GetSponsoredAdReportResponseDataCampaignsItem> campaigns = default(List<GetSponsoredAdReportResponseDataCampaignsItem>), List<GetSponsoredAdReportResponseDataCatalogs> catalogs = default(List<GetSponsoredAdReportResponseDataCatalogs>))
+        public GetSponsoredAdReportResponseData(CreateListingTagRenameRequest range = default(CreateListingTagRenameRequest), SponsoredAdCampaignResponseDataStats totals = default(SponsoredAdCampaignResponseDataStats), List<GetSponsoredAdReportResponseDataDaily> daily = default(List<GetSponsoredAdReportResponseDataDaily>), List<GetSponsoredAdReportResponseDataCampaignsItem> campaigns = default(List<GetSponsoredAdReportResponseDataCampaignsItem>), List<GetSponsoredAdReportResponseDataCatalogs> catalogs = default(List<GetSponsoredAdReportResponseDataCatalogs>))
         {
             // to ensure "range" is required (not null)
             if (range == null) {
@@ -77,7 +77,7 @@ namespace net.crossly.Model
         /// Gets or Sets Range
         /// </summary>
         [DataMember(Name = "range", IsRequired = true, EmitDefaultValue = false)]
-        public FromTo2 Range { get; set; }
+        public CreateListingTagRenameRequest Range { get; set; }
 
         /// <summary>
         /// Gets or Sets Totals

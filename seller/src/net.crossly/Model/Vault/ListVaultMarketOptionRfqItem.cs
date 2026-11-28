@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 1,
+            Cancelled = 2,
 
             /// <summary>
             /// Enum Open for value: open
             /// </summary>
             [EnumMember(Value = "open")]
-            Open = 2,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 3,
+            Open = 3,
 
             /// <summary>
             /// Enum Filled for value: filled

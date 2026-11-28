@@ -24,7 +24,7 @@ Method | HTTP request | Description
 [**GetStorefront**](StorefrontApi.md#getstorefront) | **GET** /v1/storefront | Your storefront design: banner, logo, tagline, bio, theme, SEO title and description, social links, and whether it is published.
 [**GetStorefrontMerch**](StorefrontApi.md#getstorefrontmerch) | **GET** /v1/storefront/merch | Your store&#39;s live listings by tag, category, condition and brand, with the price range: what product sources can select.
 [**GetStorefrontProfile**](StorefrontApi.md#getstorefrontprofile) | **GET** /v1/storefront/profile | Your shop profile (the Crossly Shop page): banner, logo, tagline, bio, accent, announcement, shelves, blocks and All items options.
-[**GetStorefrontShipping**](StorefrontApi.md#getstorefrontshipping) | **GET** /v1/storefront/shipping | Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+[**GetStorefrontShipping**](StorefrontApi.md#getstorefrontshipping) | **GET** /v1/storefront/shipping | Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
 [**GetStorefrontSite**](StorefrontApi.md#getstorefrontsite) | **GET** /v1/storefront/site | Your store website: the draft design, what is live, when each changed, whether the site is switched on, and its custom domain.
 [**GetStorefrontTradeSite**](StorefrontApi.md#getstorefronttradesite) | **GET** /v1/storefront/trade-site | Your store&#39;s trade (wholesale) site at /site/:slug/trade: the draft, what is live, whether it is on and its gating (public | prices_private | approved_only).
 [**ListStorefrontHighlights**](StorefrontApi.md#liststorefronthighlights) | **GET** /v1/storefront/highlights | Your store’s story highlights in display order, each with its saved stories (media, overlays, product tie-in, when posted). Empty highlights included.
@@ -38,7 +38,7 @@ Method | HTTP request | Description
 [**UpdateStorefrontProfile**](StorefrontApi.md#updatestorefrontprofile) | **PUT** /v1/storefront/profile | Replace your shop profile (a complete ShopProfile). Saved straight away.
 [**UpdateStorefrontSection**](StorefrontApi.md#updatestorefrontsection) | **PATCH** /v1/storefront/sections/{id} | Rename, show/hide, refill (listings shelves) or reconfigure a section.
 [**UpdateStorefrontSectionReorder**](StorefrontApi.md#updatestorefrontsectionreorder) | **PUT** /v1/storefront/sections/reorder | Set the section order in one atomic call: every section id, top to bottom.
-[**UpdateStorefrontShipping**](StorefrontApi.md#updatestorefrontshipping) | **PUT** /v1/storefront/shipping | Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+[**UpdateStorefrontShipping**](StorefrontApi.md#updatestorefrontshipping) | **PUT** /v1/storefront/shipping | Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
 [**UpdateStorefrontSiteDraft**](StorefrontApi.md#updatestorefrontsitedraft) | **PUT** /v1/storefront/site/draft | Save the website draft (a complete SiteDesign). Validated strictly (a bad field is a 400 naming its path) and sanitized; buyers see nothing until you publish.
 [**UpdateStorefrontSiteEnabled**](StorefrontApi.md#updatestorefrontsiteenabled) | **PUT** /v1/storefront/site/enabled | Switch the website on or off. On requires a publish first; off makes /site/:slug 404 and the custom domain show the shop profile.
 [**UpdateStorefrontTradeSiteDraft**](StorefrontApi.md#updatestorefronttradesitedraft) | **PUT** /v1/storefront/trade-site/draft | Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
@@ -48,7 +48,7 @@ Method | HTTP request | Description
 
 <a name="createstorefronthighlight"></a>
 # **CreateStorefrontHighlight**
-> CreateStorefrontHighlightResponse CreateStorefrontHighlight ()
+> CreateStorefrontHighlightResponse CreateStorefrontHighlight (CreateStorefrontHighlightRequest createStorefrontHighlightRequest = null)
 
 Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
 
@@ -72,11 +72,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createStorefrontHighlightRequest = new CreateStorefrontHighlightRequest(); // CreateStorefrontHighlightRequest |  (optional) 
 
             try
             {
                 // Create a highlight: title (up to 24 characters), optional coverUrl, and optional storyIds (your live or archived stories) to save into it. Up to 50 per store.
-                CreateStorefrontHighlightResponse result = apiInstance.CreateStorefrontHighlight();
+                CreateStorefrontHighlightResponse result = apiInstance.CreateStorefrontHighlight(createStorefrontHighlightRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -91,7 +92,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStorefrontHighlightRequest** | **CreateStorefrontHighlightRequest**|  | [optional] 
 
 ### Return type
 
@@ -103,7 +107,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -122,7 +126,7 @@ This endpoint does not need any parameter.
 
 <a name="createstorefronthighlightitem"></a>
 # **CreateStorefrontHighlightItem**
-> StorefrontHighlightResponse CreateStorefrontHighlightItem (string id)
+> StorefrontHighlightResponse CreateStorefrontHighlightItem (string id, CreateStorefrontHighlightItemRequest createStorefrontHighlightItemRequest = null)
 
 Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
 
@@ -147,11 +151,12 @@ namespace Example
 
             var apiInstance = new StorefrontApi(config);
             var id = "id_example";  // string | 
+            var createStorefrontHighlightItemRequest = new CreateStorefrontHighlightItemRequest(); // CreateStorefrontHighlightItemRequest |  (optional) 
 
             try
             {
                 // Save stories into a highlight (appended in the order given). Each is copied, so it stays after the story expires. A story already in the highlight is skipped.
-                StorefrontHighlightResponse result = apiInstance.CreateStorefrontHighlightItem(id);
+                StorefrontHighlightResponse result = apiInstance.CreateStorefrontHighlightItem(id, createStorefrontHighlightItemRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -170,6 +175,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createStorefrontHighlightItemRequest** | **CreateStorefrontHighlightItemRequest**|  | [optional] 
 
 ### Return type
 
@@ -181,7 +187,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -274,7 +280,7 @@ This endpoint does not need any parameter.
 
 <a name="createstorefrontsection"></a>
 # **CreateStorefrontSection**
-> StorefrontSectionResponse CreateStorefrontSection ()
+> StorefrontSectionResponse CreateStorefrontSection (CreateStorefrontSectionRequest createStorefrontSectionRequest = null)
 
 Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
 
@@ -298,11 +304,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createStorefrontSectionRequest = new CreateStorefrontSectionRequest(); // CreateStorefrontSectionRequest |  (optional) 
 
             try
             {
                 // Add a section at the bottom: kind hero | listings | collections | about | policies | social | announcement | faq (default listings), with its config.
-                StorefrontSectionResponse result = apiInstance.CreateStorefrontSection();
+                StorefrontSectionResponse result = apiInstance.CreateStorefrontSection(createStorefrontSectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -317,7 +324,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStorefrontSectionRequest** | **CreateStorefrontSectionRequest**|  | [optional] 
 
 ### Return type
 
@@ -329,7 +339,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -796,7 +806,7 @@ Name | Type | Description  | Notes
 
 <a name="createstorefronttradesitepublish"></a>
 # **CreateStorefrontTradeSitePublish**
-> StorefrontResponse2 CreateStorefrontTradeSitePublish ()
+> StorefrontResponse2 CreateStorefrontTradeSitePublish (CreateStorefrontTradeSitePublishRequest createStorefrontTradeSitePublishRequest = null)
 
 Publish the trade site draft (a version is kept).
 
@@ -820,11 +830,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createStorefrontTradeSitePublishRequest = new CreateStorefrontTradeSitePublishRequest(); // CreateStorefrontTradeSitePublishRequest |  (optional) 
 
             try
             {
                 // Publish the trade site draft (a version is kept).
-                StorefrontResponse2 result = apiInstance.CreateStorefrontTradeSitePublish();
+                StorefrontResponse2 result = apiInstance.CreateStorefrontTradeSitePublish(createStorefrontTradeSitePublishRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -839,7 +850,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStorefrontTradeSitePublishRequest** | **CreateStorefrontTradeSitePublishRequest**|  | [optional] 
 
 ### Return type
 
@@ -851,7 +865,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -870,7 +884,7 @@ This endpoint does not need any parameter.
 
 <a name="createstorefronttradesiteresolve"></a>
 # **CreateStorefrontTradeSiteResolve**
-> CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve ()
+> CreateStorefrontSiteResolveResponse CreateStorefrontTradeSiteResolve (CreateStorefrontTradeSiteResolveRequest createStorefrontTradeSiteResolveRequest = null)
 
 The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
 
@@ -894,11 +908,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createStorefrontTradeSiteResolveRequest = new CreateStorefrontTradeSiteResolveRequest(); // CreateStorefrontTradeSiteResolveRequest |  (optional) 
 
             try
             {
                 // The listings a ListingSource selects on your trade site: only items in your active wholesale catalogs (narrowed further by source.catalogIds), and how many match.
-                CreateStorefrontSiteResolveResponse result = apiInstance.CreateStorefrontTradeSiteResolve();
+                CreateStorefrontSiteResolveResponse result = apiInstance.CreateStorefrontTradeSiteResolve(createStorefrontTradeSiteResolveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -913,7 +928,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStorefrontTradeSiteResolveRequest** | **CreateStorefrontTradeSiteResolveRequest**|  | [optional] 
 
 ### Return type
 
@@ -925,7 +943,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -944,7 +962,7 @@ This endpoint does not need any parameter.
 
 <a name="createstorefronttradesitestarter"></a>
 # **CreateStorefrontTradeSiteStarter**
-> StorefrontResponse2 CreateStorefrontTradeSiteStarter ()
+> StorefrontResponse2 CreateStorefrontTradeSiteStarter (CreateStorefrontTradeSiteStarterRequest createStorefrontTradeSiteStarterRequest = null)
 
 Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
 
@@ -968,11 +986,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createStorefrontTradeSiteStarterRequest = new CreateStorefrontTradeSiteStarterRequest(); // CreateStorefrontTradeSiteStarterRequest |  (optional) 
 
             try
             {
                 // Replace the trade site draft with a trade starter (trade_classic, trade_line_sheet, trade_brand_house, trade_apply_first). The current draft is kept as a version first.
-                StorefrontResponse2 result = apiInstance.CreateStorefrontTradeSiteStarter();
+                StorefrontResponse2 result = apiInstance.CreateStorefrontTradeSiteStarter(createStorefrontTradeSiteStarterRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -987,7 +1006,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createStorefrontTradeSiteStarterRequest** | **CreateStorefrontTradeSiteStarterRequest**|  | [optional] 
 
 ### Return type
 
@@ -999,7 +1021,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1552,7 +1574,7 @@ This endpoint does not need any parameter.
 # **GetStorefrontShipping**
 > GetStorefrontShippingResponse GetStorefrontShipping ()
 
-Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
 
 ### Example
 ```csharp
@@ -1577,7 +1599,7 @@ namespace Example
 
             try
             {
-                // Your Crossly shipping policy (domestic and international services, which countries you ship to) and your default ship-from address.
+                // Your Crossly shipping policy (domestic and international services, which countries you ship to) and the default ship-from address of the store named by X-Storefront-Id (else your default store).
                 GetStorefrontShippingResponse result = apiInstance.GetStorefrontShipping();
                 Debug.WriteLine(result);
             }
@@ -1994,7 +2016,7 @@ This endpoint does not need any parameter.
 
 <a name="liststorefrontstoryarchive"></a>
 # **ListStorefrontStoryArchive**
-> ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive ()
+> ListStorefrontStoryArchiveResponse ListStorefrontStoryArchive (string before = null, decimal? limit = null)
 
 Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before = meta.nextCursor of the previous page.
 
@@ -2018,11 +2040,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var before = "before_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your stories, live and expired, newest first: what can be saved to a highlight. Paginated: pass before = meta.nextCursor of the previous page.
-                ListStorefrontStoryArchiveResponse result = apiInstance.ListStorefrontStoryArchive();
+                ListStorefrontStoryArchiveResponse result = apiInstance.ListStorefrontStoryArchive(before, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2037,7 +2061,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **before** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -2068,7 +2096,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefront"></a>
 # **UpdateStorefront**
-> GetStorefrontResponse UpdateStorefront ()
+> GetStorefrontResponse UpdateStorefront (UpdateStorefrontRequest updateStorefrontRequest = null)
 
 Update your storefront design. Omitted fields are unchanged, null clears. published=false keeps the design as a draft and buyers see the standard storefront.
 
@@ -2092,11 +2120,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var updateStorefrontRequest = new UpdateStorefrontRequest(); // UpdateStorefrontRequest |  (optional) 
 
             try
             {
                 // Update your storefront design. Omitted fields are unchanged, null clears. published=false keeps the design as a draft and buyers see the standard storefront.
-                GetStorefrontResponse result = apiInstance.UpdateStorefront();
+                GetStorefrontResponse result = apiInstance.UpdateStorefront(updateStorefrontRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2111,7 +2140,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateStorefrontRequest** | **UpdateStorefrontRequest**|  | [optional] 
 
 ### Return type
 
@@ -2123,7 +2155,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2142,7 +2174,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefronthighlight"></a>
 # **UpdateStorefrontHighlight**
-> StorefrontHighlightResponse UpdateStorefrontHighlight (string id)
+> StorefrontHighlightResponse UpdateStorefrontHighlight (string id, UpdateStorefrontHighlightRequest updateStorefrontHighlightRequest = null)
 
 Rename a highlight or change its cover (coverUrl null = use the first story).
 
@@ -2167,11 +2199,12 @@ namespace Example
 
             var apiInstance = new StorefrontApi(config);
             var id = "id_example";  // string | 
+            var updateStorefrontHighlightRequest = new UpdateStorefrontHighlightRequest(); // UpdateStorefrontHighlightRequest |  (optional) 
 
             try
             {
                 // Rename a highlight or change its cover (coverUrl null = use the first story).
-                StorefrontHighlightResponse result = apiInstance.UpdateStorefrontHighlight(id);
+                StorefrontHighlightResponse result = apiInstance.UpdateStorefrontHighlight(id, updateStorefrontHighlightRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2190,6 +2223,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateStorefrontHighlightRequest** | **UpdateStorefrontHighlightRequest**|  | [optional] 
 
 ### Return type
 
@@ -2201,7 +2235,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2220,7 +2254,7 @@ Name | Type | Description  | Notes
 
 <a name="updatestorefronthighlightitemorder"></a>
 # **UpdateStorefrontHighlightItemOrder**
-> StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder (string id)
+> StorefrontHighlightResponse UpdateStorefrontHighlightItemOrder (string id, CreateListingByIdRequest createListingByIdRequest = null)
 
 Set the order of a highlight’s saved stories: every item id, first to last.
 
@@ -2245,11 +2279,12 @@ namespace Example
 
             var apiInstance = new StorefrontApi(config);
             var id = "id_example";  // string | 
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest |  (optional) 
 
             try
             {
                 // Set the order of a highlight’s saved stories: every item id, first to last.
-                StorefrontHighlightResponse result = apiInstance.UpdateStorefrontHighlightItemOrder(id);
+                StorefrontHighlightResponse result = apiInstance.UpdateStorefrontHighlightItemOrder(id, createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2268,6 +2303,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -2279,7 +2315,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2298,7 +2334,7 @@ Name | Type | Description  | Notes
 
 <a name="updatestorefronthighlightorder"></a>
 # **UpdateStorefrontHighlightOrder**
-> ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder ()
+> ListStorefrontHighlightsResponse UpdateStorefrontHighlightOrder (CreateListingByIdRequest createListingByIdRequest = null)
 
 Set the highlight order in one call: every highlight id, first to last.
 
@@ -2322,11 +2358,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest |  (optional) 
 
             try
             {
                 // Set the highlight order in one call: every highlight id, first to last.
-                ListStorefrontHighlightsResponse result = apiInstance.UpdateStorefrontHighlightOrder();
+                ListStorefrontHighlightsResponse result = apiInstance.UpdateStorefrontHighlightOrder(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2341,7 +2378,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -2353,7 +2393,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2446,7 +2486,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefrontsection"></a>
 # **UpdateStorefrontSection**
-> StorefrontSectionResponse UpdateStorefrontSection (string id)
+> StorefrontSectionResponse UpdateStorefrontSection (string id, UpdateStorefrontSectionRequest updateStorefrontSectionRequest = null)
 
 Rename, show/hide, refill (listings shelves) or reconfigure a section.
 
@@ -2471,11 +2511,12 @@ namespace Example
 
             var apiInstance = new StorefrontApi(config);
             var id = "id_example";  // string | 
+            var updateStorefrontSectionRequest = new UpdateStorefrontSectionRequest(); // UpdateStorefrontSectionRequest |  (optional) 
 
             try
             {
                 // Rename, show/hide, refill (listings shelves) or reconfigure a section.
-                StorefrontSectionResponse result = apiInstance.UpdateStorefrontSection(id);
+                StorefrontSectionResponse result = apiInstance.UpdateStorefrontSection(id, updateStorefrontSectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2494,6 +2535,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateStorefrontSectionRequest** | **UpdateStorefrontSectionRequest**|  | [optional] 
 
 ### Return type
 
@@ -2505,7 +2547,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2524,7 +2566,7 @@ Name | Type | Description  | Notes
 
 <a name="updatestorefrontsectionreorder"></a>
 # **UpdateStorefrontSectionReorder**
-> StorefrontResponse4 UpdateStorefrontSectionReorder ()
+> StorefrontResponse4 UpdateStorefrontSectionReorder (CreateListingByIdRequest createListingByIdRequest)
 
 Set the section order in one atomic call: every section id, top to bottom.
 
@@ -2548,11 +2590,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest | 
 
             try
             {
                 // Set the section order in one atomic call: every section id, top to bottom.
-                StorefrontResponse4 result = apiInstance.UpdateStorefrontSectionReorder();
+                StorefrontResponse4 result = apiInstance.UpdateStorefrontSectionReorder(createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2567,7 +2610,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | 
 
 ### Return type
 
@@ -2579,7 +2625,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2598,9 +2644,9 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefrontshipping"></a>
 # **UpdateStorefrontShipping**
-> GetStorefrontShippingResponse UpdateStorefrontShipping ()
+> GetStorefrontShippingResponse UpdateStorefrontShipping (UpdateStorefrontShippingRequest updateStorefrontShippingRequest)
 
-Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
+Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
 
 ### Example
 ```csharp
@@ -2622,11 +2668,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var updateStorefrontShippingRequest = new UpdateStorefrontShippingRequest(); // UpdateStorefrontShippingRequest | 
 
             try
             {
-                // Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or your default ship-from address (any country; 422 for a sanctioned origin).
-                GetStorefrontShippingResponse result = apiInstance.UpdateStorefrontShipping();
+                // Set your shipping policy (international.enabled, shipsTo worldwide or ISO codes, excludes) and/or the default ship-from address of the store named by X-Storefront-Id, else your default store (any country; 422 for a sanctioned origin).
+                GetStorefrontShippingResponse result = apiInstance.UpdateStorefrontShipping(updateStorefrontShippingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2641,7 +2688,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateStorefrontShippingRequest** | **UpdateStorefrontShippingRequest**|  | 
 
 ### Return type
 
@@ -2653,7 +2703,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2820,7 +2870,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefronttradesitedraft"></a>
 # **UpdateStorefrontTradeSiteDraft**
-> StorefrontResponse2 UpdateStorefrontTradeSiteDraft ()
+> StorefrontResponse2 UpdateStorefrontTradeSiteDraft (UpdateStorefrontTradeSiteDraftRequest updateStorefrontTradeSiteDraftRequest = null)
 
 Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
 
@@ -2844,11 +2894,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var updateStorefrontTradeSiteDraftRequest = new UpdateStorefrontTradeSiteDraftRequest(); // UpdateStorefrontTradeSiteDraftRequest |  (optional) 
 
             try
             {
                 // Save the trade site draft (a complete SiteDesign; trade sections included). Validated strictly and sanitized.
-                StorefrontResponse2 result = apiInstance.UpdateStorefrontTradeSiteDraft();
+                StorefrontResponse2 result = apiInstance.UpdateStorefrontTradeSiteDraft(updateStorefrontTradeSiteDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2863,7 +2914,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateStorefrontTradeSiteDraftRequest** | **UpdateStorefrontTradeSiteDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -2875,7 +2929,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2894,7 +2948,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefronttradesiteenabled"></a>
 # **UpdateStorefrontTradeSiteEnabled**
-> StorefrontResponse3 UpdateStorefrontTradeSiteEnabled ()
+> StorefrontResponse3 UpdateStorefrontTradeSiteEnabled (EnabledRequest enabledRequest = null)
 
 Switch the trade site on (needs a publish first) or off.
 
@@ -2918,11 +2972,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var enabledRequest = new EnabledRequest(); // EnabledRequest |  (optional) 
 
             try
             {
                 // Switch the trade site on (needs a publish first) or off.
-                StorefrontResponse3 result = apiInstance.UpdateStorefrontTradeSiteEnabled();
+                StorefrontResponse3 result = apiInstance.UpdateStorefrontTradeSiteEnabled(enabledRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2937,7 +2992,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **enabledRequest** | **EnabledRequest**|  | [optional] 
 
 ### Return type
 
@@ -2949,7 +3007,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2968,7 +3026,7 @@ This endpoint does not need any parameter.
 
 <a name="updatestorefronttradesitegating"></a>
 # **UpdateStorefrontTradeSiteGating**
-> StorefrontResponse3 UpdateStorefrontTradeSiteGating ()
+> StorefrontResponse3 UpdateStorefrontTradeSiteGating (UpdateStorefrontTradeSiteGatingRequest updateStorefrontTradeSiteGatingRequest = null)
 
 Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
 
@@ -2992,11 +3050,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new StorefrontApi(config);
+            var updateStorefrontTradeSiteGatingRequest = new UpdateStorefrontTradeSiteGatingRequest(); // UpdateStorefrontTradeSiteGatingRequest |  (optional) 
 
             try
             {
                 // Who sees the trade site: public (everyone, with prices), prices_private (everyone, prices for approved buyers) or approved_only (approved buyers; others get the apply page).
-                StorefrontResponse3 result = apiInstance.UpdateStorefrontTradeSiteGating();
+                StorefrontResponse3 result = apiInstance.UpdateStorefrontTradeSiteGating(updateStorefrontTradeSiteGatingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3011,7 +3070,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateStorefrontTradeSiteGatingRequest** | **UpdateStorefrontTradeSiteGatingRequest**|  | [optional] 
 
 ### Return type
 
@@ -3023,7 +3085,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

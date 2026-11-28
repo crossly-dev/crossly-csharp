@@ -12,7 +12,7 @@
     <Description>Official .NET client for the Crossly seller API (listings, crossposting, orders, analytics), generated from the public OpenAPI spec, with retries, idempotency keys and typed errors. Webhook verification: Crossly.Core; ASP.NET Core middleware: Crossly.AspNetCore.</Description>
     <Copyright>Copyright (c) Crossly</Copyright>
     <RootNamespace>net.crossly</RootNamespace>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\net.crossly.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/crossly-dev/crossly-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

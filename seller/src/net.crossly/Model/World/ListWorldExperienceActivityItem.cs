@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum ViaEnum
         {
             /// <summary>
+            /// Enum Api for value: api
+            /// </summary>
+            [EnumMember(Value = "api")]
+            Api = 1,
+
+            /// <summary>
             /// Enum System for value: system
             /// </summary>
             [EnumMember(Value = "system")]
-            System = 1,
+            System = 2,
 
             /// <summary>
             /// Enum Package for value: package
             /// </summary>
             [EnumMember(Value = "package")]
-            Package = 2,
-
-            /// <summary>
-            /// Enum Api for value: api
-            /// </summary>
-            [EnumMember(Value = "api")]
-            Api = 3,
+            Package = 3,
 
             /// <summary>
             /// Enum Studio for value: studio

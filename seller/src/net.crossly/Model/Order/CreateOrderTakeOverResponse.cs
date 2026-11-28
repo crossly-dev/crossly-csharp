@@ -65,16 +65,16 @@ namespace net.crossly.Model
         public enum EbayModelEnum
         {
             /// <summary>
-            /// Enum Trading for value: trading
-            /// </summary>
-            [EnumMember(Value = "trading")]
-            Trading = 1,
-
-            /// <summary>
             /// Enum Unknown for value: unknown
             /// </summary>
             [EnumMember(Value = "unknown")]
-            Unknown = 2,
+            Unknown = 1,
+
+            /// <summary>
+            /// Enum Trading for value: trading
+            /// </summary>
+            [EnumMember(Value = "trading")]
+            Trading = 2,
 
             /// <summary>
             /// Enum InventoryOwn for value: inventory_own

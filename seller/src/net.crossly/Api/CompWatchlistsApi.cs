@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a sold-comp watchlist.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <returns>ListCompWatchlistsItem</returns>
-        ListCompWatchlistsItem CreateCompWatchlist();
+        ListCompWatchlistsItem CreateCompWatchlist(CreateCompWatchlistRequest createCompWatchlistRequest);
 
         /// <summary>
         /// Create a sold-comp watchlist.
@@ -40,8 +41,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <returns>ApiResponse of ListCompWatchlistsItem</returns>
-        ApiResponse<ListCompWatchlistsItem> CreateCompWatchlistWithHttpInfo();
+        ApiResponse<ListCompWatchlistsItem> CreateCompWatchlistWithHttpInfo(CreateCompWatchlistRequest createCompWatchlistRequest);
         /// <summary>
         /// Manually trigger a watchlist scrape.
         /// </summary>
@@ -128,9 +130,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCompWatchlistsItem</returns>
-        System.Threading.Tasks.Task<ListCompWatchlistsItem> CreateCompWatchlistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListCompWatchlistsItem> CreateCompWatchlistAsync(CreateCompWatchlistRequest createCompWatchlistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a sold-comp watchlist.
@@ -139,9 +142,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCompWatchlistsItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCompWatchlistsItem>> CreateCompWatchlistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListCompWatchlistsItem>> CreateCompWatchlistWithHttpInfoAsync(CreateCompWatchlistRequest createCompWatchlistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Manually trigger a watchlist scrape.
         /// </summary>
@@ -356,10 +360,11 @@ namespace net.crossly.Api
         /// Create a sold-comp watchlist. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <returns>ListCompWatchlistsItem</returns>
-        public ListCompWatchlistsItem CreateCompWatchlist()
+        public ListCompWatchlistsItem CreateCompWatchlist(CreateCompWatchlistRequest createCompWatchlistRequest)
         {
-            net.crossly.Client.ApiResponse<ListCompWatchlistsItem> localVarResponse = CreateCompWatchlistWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListCompWatchlistsItem> localVarResponse = CreateCompWatchlistWithHttpInfo(createCompWatchlistRequest);
             return localVarResponse.Data;
         }
 
@@ -367,12 +372,20 @@ namespace net.crossly.Api
         /// Create a sold-comp watchlist. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <returns>ApiResponse of ListCompWatchlistsItem</returns>
-        public net.crossly.Client.ApiResponse<ListCompWatchlistsItem> CreateCompWatchlistWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListCompWatchlistsItem> CreateCompWatchlistWithHttpInfo(CreateCompWatchlistRequest createCompWatchlistRequest)
         {
+            // verify the required parameter 'createCompWatchlistRequest' is set
+            if (createCompWatchlistRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCompWatchlistRequest' when calling CompWatchlistsApi->CreateCompWatchlist");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -392,6 +405,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCompWatchlistRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -418,11 +432,12 @@ namespace net.crossly.Api
         /// Create a sold-comp watchlist. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCompWatchlistsItem</returns>
-        public async System.Threading.Tasks.Task<ListCompWatchlistsItem> CreateCompWatchlistAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListCompWatchlistsItem> CreateCompWatchlistAsync(CreateCompWatchlistRequest createCompWatchlistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListCompWatchlistsItem> localVarResponse = await CreateCompWatchlistWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListCompWatchlistsItem> localVarResponse = await CreateCompWatchlistWithHttpInfoAsync(createCompWatchlistRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -430,14 +445,22 @@ namespace net.crossly.Api
         /// Create a sold-comp watchlist. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCompWatchlistRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCompWatchlistsItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCompWatchlistsItem>> CreateCompWatchlistWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListCompWatchlistsItem>> CreateCompWatchlistWithHttpInfoAsync(CreateCompWatchlistRequest createCompWatchlistRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCompWatchlistRequest' is set
+            if (createCompWatchlistRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCompWatchlistRequest' when calling CompWatchlistsApi->CreateCompWatchlist");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -457,6 +480,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCompWatchlistRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

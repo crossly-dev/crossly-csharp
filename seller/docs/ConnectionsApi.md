@@ -4,9 +4,89 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**DeleteDevice**](ConnectionsApi.md#deletedevice) | **DELETE** /v1/devices/{id} | Unpair a machine. Its access ends at once and any waiting print job is cancelled.
 [**GetConnectionHealth**](ConnectionsApi.md#getconnectionhealth) | **GET** /v1/connection-health | Health of each connected marketplace account, with a plain-English diagnosis.
 [**ListDevices**](ConnectionsApi.md#listdevices) | **GET** /v1/devices | Machines paired to this account, and what each can do.
+[**UpdateDevice**](ConnectionsApi.md#updatedevice) | **PATCH** /v1/devices/{id} | Rename a paired machine.
 
+
+<a name="deletedevice"></a>
+# **DeleteDevice**
+> DeleteDeviceResponse DeleteDevice (string id)
+
+Unpair a machine. Its access ends at once and any waiting print job is cancelled.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class DeleteDeviceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ConnectionsApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Unpair a machine. Its access ends at once and any waiting print job is cancelled.
+                DeleteDeviceResponse result = apiInstance.DeleteDevice(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ConnectionsApi.DeleteDevice: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**DeleteDeviceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 <a name="getconnectionhealth"></a>
 # **GetConnectionHealth**
@@ -148,6 +228,86 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatedevice"></a>
+# **UpdateDevice**
+> UpdateDeviceResponse UpdateDevice (string id, UpdateDeviceRequest updateDeviceRequest)
+
+Rename a paired machine.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateDeviceExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new ConnectionsApi(config);
+            var id = "id_example";  // string | 
+            var updateDeviceRequest = new UpdateDeviceRequest(); // UpdateDeviceRequest | 
+
+            try
+            {
+                // Rename a paired machine.
+                UpdateDeviceResponse result = apiInstance.UpdateDevice(id, updateDeviceRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ConnectionsApi.UpdateDevice: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+ **updateDeviceRequest** | **UpdateDeviceRequest**|  | 
+
+### Return type
+
+**UpdateDeviceResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

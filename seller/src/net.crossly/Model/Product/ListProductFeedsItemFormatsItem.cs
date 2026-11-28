@@ -32,22 +32,34 @@ namespace net.crossly.Model
     public enum ListProductFeedsItemFormatsItem
     {
         /// <summary>
-        /// Enum Xml for value: xml
+        /// Enum Json for value: json
         /// </summary>
-        [EnumMember(Value = "xml")]
-        Xml = 1,
-
-        /// <summary>
-        /// Enum Tsv for value: tsv
-        /// </summary>
-        [EnumMember(Value = "tsv")]
-        Tsv = 2,
+        [EnumMember(Value = "json")]
+        Json = 1,
 
         /// <summary>
         /// Enum Csv for value: csv
         /// </summary>
         [EnumMember(Value = "csv")]
-        Csv = 3
+        Csv = 2,
+
+        /// <summary>
+        /// Enum Xml for value: xml
+        /// </summary>
+        [EnumMember(Value = "xml")]
+        Xml = 3,
+
+        /// <summary>
+        /// Enum Tsv for value: tsv
+        /// </summary>
+        [EnumMember(Value = "tsv")]
+        Tsv = 4,
+
+        /// <summary>
+        /// Enum Atom for value: atom
+        /// </summary>
+        [EnumMember(Value = "atom")]
+        Atom = 5
 
     }
 

@@ -47,8 +47,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <returns>CreateBuyerAgentSessionActResponse</returns>
-        CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct(string id);
+        CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest);
 
         /// <summary>
         /// Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
@@ -58,15 +59,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <returns>ApiResponse of CreateBuyerAgentSessionActResponse</returns>
-        ApiResponse<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActWithHttpInfo(string id);
+        ApiResponse<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActWithHttpInfo(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest);
         /// <summary>
         /// Like or dislike an option; the next search leans toward likes and drops dislikes.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <returns>DeleteBuyerAgentSessionResponse</returns>
-        DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact(string id);
+        DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest);
 
         /// <summary>
         /// Like or dislike an option; the next search leans toward likes and drops dislikes.
@@ -76,15 +79,17 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <returns>ApiResponse of DeleteBuyerAgentSessionResponse</returns>
-        ApiResponse<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactWithHttpInfo(string id);
+        ApiResponse<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactWithHttpInfo(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest);
         /// <summary>
         /// Say something to the agent: what you want, a critique of the options (\&quot;cheaper\&quot;, \&quot;more like #2\&quot;), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <returns>CreateBuyerAgentSessionTurnResponse</returns>
-        CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn(string id);
+        CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest);
 
         /// <summary>
         /// Say something to the agent: what you want, a critique of the options (\&quot;cheaper\&quot;, \&quot;more like #2\&quot;), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
@@ -94,8 +99,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <returns>ApiResponse of CreateBuyerAgentSessionTurnResponse</returns>
-        ApiResponse<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnWithHttpInfo(string id);
+        ApiResponse<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnWithHttpInfo(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest);
         /// <summary>
         /// Delete a conversation.
         /// </summary>
@@ -186,9 +192,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerAgentSessionActResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActAsync(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Act on an option: save, cart, alert, registry, price (real-sales check), offer (prepare / confirm), or buy (quote — complete with POST /api/v1/buyer/checkout). Needs the action’s own scope too.
@@ -198,9 +205,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerAgentSessionActResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerAgentSessionActResponse>> CreateBuyerAgentSessionActWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerAgentSessionActResponse>> CreateBuyerAgentSessionActWithHttpInfoAsync(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Like or dislike an option; the next search leans toward likes and drops dislikes.
         /// </summary>
@@ -209,9 +217,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteBuyerAgentSessionResponse</returns>
-        System.Threading.Tasks.Task<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactAsync(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Like or dislike an option; the next search leans toward likes and drops dislikes.
@@ -221,9 +230,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteBuyerAgentSessionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteBuyerAgentSessionResponse>> CreateBuyerAgentSessionReactWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DeleteBuyerAgentSessionResponse>> CreateBuyerAgentSessionReactWithHttpInfoAsync(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Say something to the agent: what you want, a critique of the options (\&quot;cheaper\&quot;, \&quot;more like #2\&quot;), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
         /// </summary>
@@ -232,9 +242,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerAgentSessionTurnResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnAsync(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Say something to the agent: what you want, a critique of the options (\&quot;cheaper\&quot;, \&quot;more like #2\&quot;), or send a photo (imageBase64) to find things like it. Returns its reply and the new numbered options.
@@ -244,9 +255,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerAgentSessionTurnResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerAgentSessionTurnResponse>> CreateBuyerAgentSessionTurnWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerAgentSessionTurnResponse>> CreateBuyerAgentSessionTurnWithHttpInfoAsync(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a conversation.
         /// </summary>
@@ -567,10 +579,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <returns>CreateBuyerAgentSessionActResponse</returns>
-        public CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct(string id)
+        public CreateBuyerAgentSessionActResponse CreateBuyerAgentSessionAct(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> localVarResponse = CreateBuyerAgentSessionActWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> localVarResponse = CreateBuyerAgentSessionActWithHttpInfo(id, createBuyerAgentSessionActRequest);
             return localVarResponse.Data;
         }
 
@@ -579,8 +592,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <returns>ApiResponse of CreateBuyerAgentSessionActResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActWithHttpInfo(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -588,9 +602,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionAct");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionActRequest' is set
+            if (createBuyerAgentSessionActRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionActRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionAct");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -611,6 +632,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionActRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -638,11 +660,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerAgentSessionActResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerAgentSessionActResponse> CreateBuyerAgentSessionActAsync(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> localVarResponse = await CreateBuyerAgentSessionActWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse> localVarResponse = await CreateBuyerAgentSessionActWithHttpInfoAsync(id, createBuyerAgentSessionActRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -651,9 +674,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionActRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerAgentSessionActResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse>> CreateBuyerAgentSessionActWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionActResponse>> CreateBuyerAgentSessionActWithHttpInfoAsync(string id, CreateBuyerAgentSessionActRequest createBuyerAgentSessionActRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -661,10 +685,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionAct");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionActRequest' is set
+            if (createBuyerAgentSessionActRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionActRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionAct");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -685,6 +716,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionActRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -713,10 +745,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <returns>DeleteBuyerAgentSessionResponse</returns>
-        public DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact(string id)
+        public DeleteBuyerAgentSessionResponse CreateBuyerAgentSessionReact(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> localVarResponse = CreateBuyerAgentSessionReactWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> localVarResponse = CreateBuyerAgentSessionReactWithHttpInfo(id, createBuyerAgentSessionReactRequest);
             return localVarResponse.Data;
         }
 
@@ -725,8 +758,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <returns>ApiResponse of DeleteBuyerAgentSessionResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactWithHttpInfo(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -734,9 +768,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionReact");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionReactRequest' is set
+            if (createBuyerAgentSessionReactRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionReactRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionReact");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -757,6 +798,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionReactRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -784,11 +826,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteBuyerAgentSessionResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<DeleteBuyerAgentSessionResponse> CreateBuyerAgentSessionReactAsync(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> localVarResponse = await CreateBuyerAgentSessionReactWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse> localVarResponse = await CreateBuyerAgentSessionReactWithHttpInfoAsync(id, createBuyerAgentSessionReactRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -797,9 +840,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionReactRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteBuyerAgentSessionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse>> CreateBuyerAgentSessionReactWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<DeleteBuyerAgentSessionResponse>> CreateBuyerAgentSessionReactWithHttpInfoAsync(string id, CreateBuyerAgentSessionReactRequest createBuyerAgentSessionReactRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -807,10 +851,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionReact");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionReactRequest' is set
+            if (createBuyerAgentSessionReactRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionReactRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionReact");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -831,6 +882,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionReactRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -859,10 +911,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <returns>CreateBuyerAgentSessionTurnResponse</returns>
-        public CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn(string id)
+        public CreateBuyerAgentSessionTurnResponse CreateBuyerAgentSessionTurn(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> localVarResponse = CreateBuyerAgentSessionTurnWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> localVarResponse = CreateBuyerAgentSessionTurnWithHttpInfo(id, createBuyerAgentSessionTurnRequest);
             return localVarResponse.Data;
         }
 
@@ -871,8 +924,9 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <returns>ApiResponse of CreateBuyerAgentSessionTurnResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnWithHttpInfo(string id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnWithHttpInfo(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -880,9 +934,16 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionTurn");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionTurnRequest' is set
+            if (createBuyerAgentSessionTurnRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionTurnRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionTurn");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -903,6 +964,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionTurnRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -930,11 +992,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerAgentSessionTurnResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerAgentSessionTurnResponse> CreateBuyerAgentSessionTurnAsync(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> localVarResponse = await CreateBuyerAgentSessionTurnWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse> localVarResponse = await CreateBuyerAgentSessionTurnWithHttpInfoAsync(id, createBuyerAgentSessionTurnRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -943,9 +1006,10 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerAgentSessionTurnRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerAgentSessionTurnResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse>> CreateBuyerAgentSessionTurnWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerAgentSessionTurnResponse>> CreateBuyerAgentSessionTurnWithHttpInfoAsync(string id, CreateBuyerAgentSessionTurnRequest createBuyerAgentSessionTurnRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -953,10 +1017,17 @@ namespace net.crossly.buyer.Api
                 throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'id' when calling BuyerAgentApi->CreateBuyerAgentSessionTurn");
             }
 
+            // verify the required parameter 'createBuyerAgentSessionTurnRequest' is set
+            if (createBuyerAgentSessionTurnRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerAgentSessionTurnRequest' when calling BuyerAgentApi->CreateBuyerAgentSessionTurn");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -977,6 +1048,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerAgentSessionTurnRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required

@@ -31,8 +31,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        TcgResponse CreateTcgChallenge(string game);
+        TcgResponse CreateTcgChallenge(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
 
         /// <summary>
         /// Open a 1v1 challenge with one of your decks; another player joins it.
@@ -42,15 +43,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        ApiResponse<TcgResponse> CreateTcgChallengeWithHttpInfo(string game);
+        ApiResponse<TcgResponse> CreateTcgChallengeWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
         /// <summary>
         /// Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <returns>CreateTcgDeckResponse</returns>
-        CreateTcgDeckResponse CreateTcgDeck(string game);
+        CreateTcgDeckResponse CreateTcgDeck(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest));
 
         /// <summary>
         /// Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
@@ -60,15 +63,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgDeckResponse</returns>
-        ApiResponse<CreateTcgDeckResponse> CreateTcgDeckWithHttpInfo(string game);
+        ApiResponse<CreateTcgDeckResponse> CreateTcgDeckWithHttpInfo(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest));
         /// <summary>
         /// Make one move: { action } as listed in the match&#39;s legal moves. The engine checks it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        TcgResponse CreateTcgMatchAct(string id);
+        TcgResponse CreateTcgMatchAct(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest));
 
         /// <summary>
         /// Make one move: { action } as listed in the match&#39;s legal moves. The engine checks it.
@@ -78,15 +83,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        ApiResponse<TcgResponse> CreateTcgMatchActWithHttpInfo(string id);
+        ApiResponse<TcgResponse> CreateTcgMatchActWithHttpInfo(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest));
         /// <summary>
         /// Join an open 1v1 challenge with one of your decks.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        TcgResponse CreateTcgMatchJoin(string id);
+        TcgResponse CreateTcgMatchJoin(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest));
 
         /// <summary>
         /// Join an open 1v1 challenge with one of your decks.
@@ -96,8 +103,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        ApiResponse<TcgResponse> CreateTcgMatchJoinWithHttpInfo(string id);
+        ApiResponse<TcgResponse> CreateTcgMatchJoinWithHttpInfo(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest));
         /// <summary>
         /// Open one of your earned packs: its eight cards join your collection.
         /// </summary>
@@ -121,8 +129,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        TcgResponse CreateTcgPractice(string game);
+        TcgResponse CreateTcgPractice(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
 
         /// <summary>
         /// Start a practice match against the house bot with one of your decks.
@@ -132,15 +141,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        ApiResponse<TcgResponse> CreateTcgPracticeWithHttpInfo(string game);
+        ApiResponse<TcgResponse> CreateTcgPracticeWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
         /// <summary>
         /// Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>CreateTcgQueueResponse</returns>
-        CreateTcgQueueResponse CreateTcgQueue(string game);
+        CreateTcgQueueResponse CreateTcgQueue(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
 
         /// <summary>
         /// Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
@@ -150,15 +161,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgQueueResponse</returns>
-        ApiResponse<CreateTcgQueueResponse> CreateTcgQueueWithHttpInfo(string game);
+        ApiResponse<CreateTcgQueueResponse> CreateTcgQueueWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest));
         /// <summary>
         /// Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <returns>CreateTcgStarterResponse</returns>
-        CreateTcgStarterResponse CreateTcgStarter(string game);
+        CreateTcgStarterResponse CreateTcgStarter(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest));
 
         /// <summary>
         /// Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
@@ -168,15 +181,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgStarterResponse</returns>
-        ApiResponse<CreateTcgStarterResponse> CreateTcgStarterWithHttpInfo(string game);
+        ApiResponse<CreateTcgStarterResponse> CreateTcgStarterWithHttpInfo(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest));
         /// <summary>
         /// Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        TcgResponse CreateTcgTable(string game);
+        TcgResponse CreateTcgTable(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest));
 
         /// <summary>
         /// Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
@@ -186,15 +201,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        ApiResponse<TcgResponse> CreateTcgTableWithHttpInfo(string game);
+        ApiResponse<TcgResponse> CreateTcgTableWithHttpInfo(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest));
         /// <summary>
         /// Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <returns>CreateTcgTournamentResponse</returns>
-        CreateTcgTournamentResponse CreateTcgTournament(string game);
+        CreateTcgTournamentResponse CreateTcgTournament(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest));
 
         /// <summary>
         /// Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
@@ -204,8 +221,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgTournamentResponse</returns>
-        ApiResponse<CreateTcgTournamentResponse> CreateTcgTournamentWithHttpInfo(string game);
+        ApiResponse<CreateTcgTournamentResponse> CreateTcgTournamentWithHttpInfo(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest));
         /// <summary>
         /// Leave a tournament before it starts, or drop from it (your results stand).
         /// </summary>
@@ -229,8 +247,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgTournamentResponse</returns>
-        TcgTournamentResponse CreateTcgTournamentRegister(string id);
+        TcgTournamentResponse CreateTcgTournamentRegister(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest));
 
         /// <summary>
         /// Enter a tournament with an owned, legal deck before it starts.
@@ -240,8 +259,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgTournamentResponse</returns>
-        ApiResponse<TcgTournamentResponse> CreateTcgTournamentRegisterWithHttpInfo(string id);
+        ApiResponse<TcgTournamentResponse> CreateTcgTournamentRegisterWithHttpInfo(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest));
         /// <summary>
         /// As the host, start the tournament: Swiss rounds are sized to the field and round 1 is dealt.
         /// </summary>
@@ -529,9 +549,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        System.Threading.Tasks.Task<TcgResponse> CreateTcgChallengeAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgResponse> CreateTcgChallengeAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open a 1v1 challenge with one of your decks; another player joins it.
@@ -541,9 +562,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgChallengeWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgChallengeWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
         /// </summary>
@@ -552,9 +574,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgDeckResponse</returns>
-        System.Threading.Tasks.Task<CreateTcgDeckResponse> CreateTcgDeckAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTcgDeckResponse> CreateTcgDeckAsync(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create (no id) or update a deck: its lead (Crew Boss, Mastermind or Keeper) and 40 cards you own, checked against the deck rules of its game.
@@ -564,9 +587,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgDeckResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTcgDeckResponse>> CreateTcgDeckWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTcgDeckResponse>> CreateTcgDeckWithHttpInfoAsync(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Make one move: { action } as listed in the match&#39;s legal moves. The engine checks it.
         /// </summary>
@@ -575,9 +599,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchActAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchActAsync(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Make one move: { action } as listed in the match&#39;s legal moves. The engine checks it.
@@ -587,9 +612,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgMatchActWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgMatchActWithHttpInfoAsync(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Join an open 1v1 challenge with one of your decks.
         /// </summary>
@@ -598,9 +624,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchJoinAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchJoinAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Join an open 1v1 challenge with one of your decks.
@@ -610,9 +637,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgMatchJoinWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgMatchJoinWithHttpInfoAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open one of your earned packs: its eight cards join your collection.
         /// </summary>
@@ -644,9 +672,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        System.Threading.Tasks.Task<TcgResponse> CreateTcgPracticeAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgResponse> CreateTcgPracticeAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start a practice match against the house bot with one of your decks.
@@ -656,9 +685,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgPracticeWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgPracticeWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
         /// </summary>
@@ -667,9 +697,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgQueueResponse</returns>
-        System.Threading.Tasks.Task<CreateTcgQueueResponse> CreateTcgQueueAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTcgQueueResponse> CreateTcgQueueAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Join the ranked queue with an owned, legal deck (free). Returns the match at once when an opponent fits.
@@ -679,9 +710,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgQueueResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTcgQueueResponse>> CreateTcgQueueWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTcgQueueResponse>> CreateTcgQueueWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
         /// </summary>
@@ -690,9 +722,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgStarterResponse</returns>
-        System.Threading.Tasks.Task<CreateTcgStarterResponse> CreateTcgStarterAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTcgStarterResponse> CreateTcgStarterAsync(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim the free starter deck for a game, choosing its faction (once per account; account-bound, untradeable).
@@ -702,9 +735,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgStarterResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTcgStarterResponse>> CreateTcgStarterWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTcgStarterResponse>> CreateTcgStarterWithHttpInfoAsync(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
         /// </summary>
@@ -713,9 +747,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        System.Threading.Tasks.Task<TcgResponse> CreateTcgTableAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgResponse> CreateTcgTableAsync(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Sit at a table with your free starter deck (claimed now if you never did: starter names it, else one is picked for you): joins the oldest open 1v1 challenge, or opens one; already waiting, your own seat back.
@@ -725,9 +760,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgTableWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgResponse>> CreateTcgTableWithHttpInfoAsync(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
         /// </summary>
@@ -736,9 +772,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgTournamentResponse</returns>
-        System.Threading.Tasks.Task<CreateTcgTournamentResponse> CreateTcgTournamentAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTcgTournamentResponse> CreateTcgTournamentAsync(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Host a Swiss tournament: name, optional top cut (4 or 8), round length, player cap and start time.
@@ -748,9 +785,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgTournamentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTcgTournamentResponse>> CreateTcgTournamentWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTcgTournamentResponse>> CreateTcgTournamentWithHttpInfoAsync(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Leave a tournament before it starts, or drop from it (your results stand).
         /// </summary>
@@ -782,9 +820,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgTournamentResponse</returns>
-        System.Threading.Tasks.Task<TcgTournamentResponse> CreateTcgTournamentRegisterAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TcgTournamentResponse> CreateTcgTournamentRegisterAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Enter a tournament with an owned, legal deck before it starts.
@@ -794,9 +833,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgTournamentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TcgTournamentResponse>> CreateTcgTournamentRegisterWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TcgTournamentResponse>> CreateTcgTournamentRegisterWithHttpInfoAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// As the host, start the tournament: Swiss rounds are sized to the field and round 1 is dealt.
         /// </summary>
@@ -1267,10 +1307,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        public TcgResponse CreateTcgChallenge(string game)
+        public TcgResponse CreateTcgChallenge(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgChallengeWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgChallengeWithHttpInfo(game, deckIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1279,8 +1320,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgChallengeWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgChallengeWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -1291,6 +1333,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1311,6 +1354,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1338,11 +1382,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgChallengeAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgChallengeAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgChallengeWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgChallengeWithHttpInfoAsync(game, deckIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1351,9 +1396,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgChallengeWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgChallengeWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -1365,6 +1411,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1385,6 +1432,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1413,10 +1461,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <returns>CreateTcgDeckResponse</returns>
-        public CreateTcgDeckResponse CreateTcgDeck(string game)
+        public CreateTcgDeckResponse CreateTcgDeck(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest))
         {
-            net.crossly.Client.ApiResponse<CreateTcgDeckResponse> localVarResponse = CreateTcgDeckWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<CreateTcgDeckResponse> localVarResponse = CreateTcgDeckWithHttpInfo(game, createTcgDeckRequest);
             return localVarResponse.Data;
         }
 
@@ -1425,8 +1474,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgDeckResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTcgDeckResponse> CreateTcgDeckWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<CreateTcgDeckResponse> CreateTcgDeckWithHttpInfo(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -1437,6 +1487,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1457,6 +1508,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgDeckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1484,11 +1536,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgDeckResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTcgDeckResponse> CreateTcgDeckAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTcgDeckResponse> CreateTcgDeckAsync(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTcgDeckResponse> localVarResponse = await CreateTcgDeckWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTcgDeckResponse> localVarResponse = await CreateTcgDeckWithHttpInfoAsync(game, createTcgDeckRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1497,9 +1550,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgDeckRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgDeckResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgDeckResponse>> CreateTcgDeckWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgDeckResponse>> CreateTcgDeckWithHttpInfoAsync(string game, CreateTcgDeckRequest createTcgDeckRequest = default(CreateTcgDeckRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -1511,6 +1565,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1531,6 +1586,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgDeckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1559,10 +1615,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        public TcgResponse CreateTcgMatchAct(string id)
+        public TcgResponse CreateTcgMatchAct(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgMatchActWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgMatchActWithHttpInfo(id, createTcgMatchActRequest);
             return localVarResponse.Data;
         }
 
@@ -1571,8 +1628,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgMatchActWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgMatchActWithHttpInfo(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1583,6 +1641,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1603,6 +1662,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTcgMatchActRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1630,11 +1690,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchActAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchActAsync(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgMatchActWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgMatchActWithHttpInfoAsync(id, createTcgMatchActRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1643,9 +1704,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createTcgMatchActRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgMatchActWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgMatchActWithHttpInfoAsync(string id, CreateTcgMatchActRequest createTcgMatchActRequest = default(CreateTcgMatchActRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1657,6 +1719,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1677,6 +1740,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createTcgMatchActRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1705,10 +1769,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        public TcgResponse CreateTcgMatchJoin(string id)
+        public TcgResponse CreateTcgMatchJoin(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgMatchJoinWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgMatchJoinWithHttpInfo(id, deckIdRequest);
             return localVarResponse.Data;
         }
 
@@ -1717,8 +1782,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgMatchJoinWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgMatchJoinWithHttpInfo(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1729,6 +1795,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1749,6 +1816,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1776,11 +1844,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchJoinAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgMatchJoinAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgMatchJoinWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgMatchJoinWithHttpInfoAsync(id, deckIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1789,9 +1858,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgMatchJoinWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgMatchJoinWithHttpInfoAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1803,6 +1873,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1823,6 +1894,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1997,10 +2069,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        public TcgResponse CreateTcgPractice(string game)
+        public TcgResponse CreateTcgPractice(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgPracticeWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgPracticeWithHttpInfo(game, deckIdRequest);
             return localVarResponse.Data;
         }
 
@@ -2009,8 +2082,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgPracticeWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgPracticeWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2021,6 +2095,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2041,6 +2116,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2068,11 +2144,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgPracticeAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgPracticeAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgPracticeWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgPracticeWithHttpInfoAsync(game, deckIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2081,9 +2158,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgPracticeWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgPracticeWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2095,6 +2173,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2115,6 +2194,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2143,10 +2223,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>CreateTcgQueueResponse</returns>
-        public CreateTcgQueueResponse CreateTcgQueue(string game)
+        public CreateTcgQueueResponse CreateTcgQueue(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
-            net.crossly.Client.ApiResponse<CreateTcgQueueResponse> localVarResponse = CreateTcgQueueWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<CreateTcgQueueResponse> localVarResponse = CreateTcgQueueWithHttpInfo(game, deckIdRequest);
             return localVarResponse.Data;
         }
 
@@ -2155,8 +2236,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgQueueResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTcgQueueResponse> CreateTcgQueueWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<CreateTcgQueueResponse> CreateTcgQueueWithHttpInfo(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2167,6 +2249,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2187,6 +2270,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2214,11 +2298,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgQueueResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTcgQueueResponse> CreateTcgQueueAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTcgQueueResponse> CreateTcgQueueAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTcgQueueResponse> localVarResponse = await CreateTcgQueueWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTcgQueueResponse> localVarResponse = await CreateTcgQueueWithHttpInfoAsync(game, deckIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2227,9 +2312,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgQueueResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgQueueResponse>> CreateTcgQueueWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgQueueResponse>> CreateTcgQueueWithHttpInfoAsync(string game, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2241,6 +2327,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2261,6 +2348,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2289,10 +2377,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <returns>CreateTcgStarterResponse</returns>
-        public CreateTcgStarterResponse CreateTcgStarter(string game)
+        public CreateTcgStarterResponse CreateTcgStarter(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest))
         {
-            net.crossly.Client.ApiResponse<CreateTcgStarterResponse> localVarResponse = CreateTcgStarterWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<CreateTcgStarterResponse> localVarResponse = CreateTcgStarterWithHttpInfo(game, createTcgStarterRequest);
             return localVarResponse.Data;
         }
 
@@ -2301,8 +2390,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgStarterResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTcgStarterResponse> CreateTcgStarterWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<CreateTcgStarterResponse> CreateTcgStarterWithHttpInfo(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2313,6 +2403,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2333,6 +2424,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgStarterRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2360,11 +2452,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgStarterResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTcgStarterResponse> CreateTcgStarterAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTcgStarterResponse> CreateTcgStarterAsync(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTcgStarterResponse> localVarResponse = await CreateTcgStarterWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTcgStarterResponse> localVarResponse = await CreateTcgStarterWithHttpInfoAsync(game, createTcgStarterRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2373,9 +2466,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgStarterRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgStarterResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgStarterResponse>> CreateTcgStarterWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgStarterResponse>> CreateTcgStarterWithHttpInfoAsync(string game, CreateTcgStarterRequest createTcgStarterRequest = default(CreateTcgStarterRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2387,6 +2481,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2407,6 +2502,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgStarterRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2435,10 +2531,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <returns>TcgResponse</returns>
-        public TcgResponse CreateTcgTable(string game)
+        public TcgResponse CreateTcgTable(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgTableWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = CreateTcgTableWithHttpInfo(game, createTcgTableRequest);
             return localVarResponse.Data;
         }
 
@@ -2447,8 +2544,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgTableWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<TcgResponse> CreateTcgTableWithHttpInfo(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2459,6 +2557,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2479,6 +2578,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgTableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2506,11 +2606,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgResponse</returns>
-        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgTableAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgResponse> CreateTcgTableAsync(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgTableWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgResponse> localVarResponse = await CreateTcgTableWithHttpInfoAsync(game, createTcgTableRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2519,9 +2620,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTableRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgTableWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgResponse>> CreateTcgTableWithHttpInfoAsync(string game, CreateTcgTableRequest createTcgTableRequest = default(CreateTcgTableRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2533,6 +2635,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2553,6 +2656,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgTableRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2581,10 +2685,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <returns>CreateTcgTournamentResponse</returns>
-        public CreateTcgTournamentResponse CreateTcgTournament(string game)
+        public CreateTcgTournamentResponse CreateTcgTournament(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest))
         {
-            net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> localVarResponse = CreateTcgTournamentWithHttpInfo(game);
+            net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> localVarResponse = CreateTcgTournamentWithHttpInfo(game, createTcgTournamentRequest);
             return localVarResponse.Data;
         }
 
@@ -2593,8 +2698,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateTcgTournamentResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> CreateTcgTournamentWithHttpInfo(string game)
+        public net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> CreateTcgTournamentWithHttpInfo(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2605,6 +2711,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2625,6 +2732,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgTournamentRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2652,11 +2760,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTcgTournamentResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTcgTournamentResponse> CreateTcgTournamentAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTcgTournamentResponse> CreateTcgTournamentAsync(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> localVarResponse = await CreateTcgTournamentWithHttpInfoAsync(game, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateTcgTournamentResponse> localVarResponse = await CreateTcgTournamentWithHttpInfoAsync(game, createTcgTournamentRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2665,9 +2774,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="game"></param>
+        /// <param name="createTcgTournamentRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTcgTournamentResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgTournamentResponse>> CreateTcgTournamentWithHttpInfoAsync(string game, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateTcgTournamentResponse>> CreateTcgTournamentWithHttpInfoAsync(string game, CreateTcgTournamentRequest createTcgTournamentRequest = default(CreateTcgTournamentRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'game' is set
             if (game == null)
@@ -2679,6 +2789,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2699,6 +2810,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("game", net.crossly.Client.ClientUtils.ParameterToString(game)); // path parameter
+            localVarRequestOptions.Data = createTcgTournamentRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2873,10 +2985,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>TcgTournamentResponse</returns>
-        public TcgTournamentResponse CreateTcgTournamentRegister(string id)
+        public TcgTournamentResponse CreateTcgTournamentRegister(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
-            net.crossly.Client.ApiResponse<TcgTournamentResponse> localVarResponse = CreateTcgTournamentRegisterWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<TcgTournamentResponse> localVarResponse = CreateTcgTournamentRegisterWithHttpInfo(id, deckIdRequest);
             return localVarResponse.Data;
         }
 
@@ -2885,8 +2998,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <returns>ApiResponse of TcgTournamentResponse</returns>
-        public net.crossly.Client.ApiResponse<TcgTournamentResponse> CreateTcgTournamentRegisterWithHttpInfo(string id)
+        public net.crossly.Client.ApiResponse<TcgTournamentResponse> CreateTcgTournamentRegisterWithHttpInfo(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2897,6 +3011,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2917,6 +3032,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2944,11 +3060,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TcgTournamentResponse</returns>
-        public async System.Threading.Tasks.Task<TcgTournamentResponse> CreateTcgTournamentRegisterAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TcgTournamentResponse> CreateTcgTournamentRegisterAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<TcgTournamentResponse> localVarResponse = await CreateTcgTournamentRegisterWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<TcgTournamentResponse> localVarResponse = await CreateTcgTournamentRegisterWithHttpInfoAsync(id, deckIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2957,9 +3074,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="deckIdRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TcgTournamentResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgTournamentResponse>> CreateTcgTournamentRegisterWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<TcgTournamentResponse>> CreateTcgTournamentRegisterWithHttpInfoAsync(string id, DeckIdRequest deckIdRequest = default(DeckIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -2971,6 +3089,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2991,6 +3110,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = deckIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

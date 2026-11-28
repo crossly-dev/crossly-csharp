@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createfieldrule"></a>
 # **CreateFieldRule**
-> ListFieldRulesItem CreateFieldRule ()
+> ListFieldRulesItem CreateFieldRule (CreateFieldRuleRequest createFieldRuleRequest)
 
 Create a per-channel field rule.
 
@@ -39,11 +39,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FieldRulesApi(config);
+            var createFieldRuleRequest = new CreateFieldRuleRequest(); // CreateFieldRuleRequest | 
 
             try
             {
                 // Create a per-channel field rule.
-                ListFieldRulesItem result = apiInstance.CreateFieldRule();
+                ListFieldRulesItem result = apiInstance.CreateFieldRule(createFieldRuleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -58,7 +59,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFieldRuleRequest** | **CreateFieldRuleRequest**|  | 
 
 ### Return type
 
@@ -70,7 +74,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -89,7 +93,7 @@ This endpoint does not need any parameter.
 
 <a name="createfieldrulepreview"></a>
 # **CreateFieldRulePreview**
-> CreateFieldRulePreviewResponse CreateFieldRulePreview ()
+> CreateFieldRulePreviewResponse CreateFieldRulePreview (CreateFieldRulePreviewRequest createFieldRulePreviewRequest)
 
 Preview field-rule output for a listing on one channel.
 
@@ -113,11 +117,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FieldRulesApi(config);
+            var createFieldRulePreviewRequest = new CreateFieldRulePreviewRequest(); // CreateFieldRulePreviewRequest | 
 
             try
             {
                 // Preview field-rule output for a listing on one channel.
-                CreateFieldRulePreviewResponse result = apiInstance.CreateFieldRulePreview();
+                CreateFieldRulePreviewResponse result = apiInstance.CreateFieldRulePreview(createFieldRulePreviewRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -132,7 +137,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFieldRulePreviewRequest** | **CreateFieldRulePreviewRequest**|  | 
 
 ### Return type
 
@@ -144,7 +152,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -163,7 +171,7 @@ This endpoint does not need any parameter.
 
 <a name="createfieldrulereorder"></a>
 # **CreateFieldRuleReorder**
-> OkResponse CreateFieldRuleReorder ()
+> OkResponse CreateFieldRuleReorder (CreateFieldRuleReorderRequest createFieldRuleReorderRequest)
 
 Set the run order of several field rules.
 
@@ -187,11 +195,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new FieldRulesApi(config);
+            var createFieldRuleReorderRequest = new CreateFieldRuleReorderRequest(); // CreateFieldRuleReorderRequest | 
 
             try
             {
                 // Set the run order of several field rules.
-                OkResponse result = apiInstance.CreateFieldRuleReorder();
+                OkResponse result = apiInstance.CreateFieldRuleReorder(createFieldRuleReorderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -206,7 +215,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFieldRuleReorderRequest** | **CreateFieldRuleReorderRequest**|  | 
 
 ### Return type
 
@@ -218,7 +230,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -471,7 +483,7 @@ Name | Type | Description  | Notes
 
 <a name="updatefieldrule"></a>
 # **UpdateFieldRule**
-> ListFieldRulesItem UpdateFieldRule (Guid id)
+> ListFieldRulesItem UpdateFieldRule (Guid id, UpdateFieldRuleRequest updateFieldRuleRequest)
 
 Update a field rule.
 
@@ -496,11 +508,12 @@ namespace Example
 
             var apiInstance = new FieldRulesApi(config);
             var id = "id_example";  // Guid | 
+            var updateFieldRuleRequest = new UpdateFieldRuleRequest(); // UpdateFieldRuleRequest | 
 
             try
             {
                 // Update a field rule.
-                ListFieldRulesItem result = apiInstance.UpdateFieldRule(id);
+                ListFieldRulesItem result = apiInstance.UpdateFieldRule(id, updateFieldRuleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -519,6 +532,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateFieldRuleRequest** | **UpdateFieldRuleRequest**|  | 
 
 ### Return type
 
@@ -530,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

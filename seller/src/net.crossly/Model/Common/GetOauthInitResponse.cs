@@ -37,14 +37,16 @@ namespace net.crossly.Model
         /// <param name="url">url.</param>
         /// <param name="oneShot">oneShot.</param>
         /// <param name="status">status.</param>
-        /// <param name="requestUrl">requestUrl.</param>
+        /// <param name="connectWith">Where the keys go: a v1 route (cardnexus) or the dashboard&#39;s connect dialog..</param>
+        /// <param name="docsUrl">docsUrl.</param>
         /// <param name="message">message.</param>
-        public GetOauthInitResponse(string url = default(string), bool oneShot = default(bool), string status = default(string), string requestUrl = default(string), string message = default(string))
+        public GetOauthInitResponse(string url = default(string), bool oneShot = default(bool), string status = default(string), string connectWith = default(string), string docsUrl = default(string), string message = default(string))
         {
             this.Url = url;
             this.OneShot = oneShot;
             this.Status = status;
-            this.RequestUrl = requestUrl;
+            this.ConnectWith = connectWith;
+            this.DocsUrl = docsUrl;
             this.Message = message;
         }
 
@@ -67,10 +69,17 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets RequestUrl
+        /// Where the keys go: a v1 route (cardnexus) or the dashboard&#39;s connect dialog.
         /// </summary>
-        [DataMember(Name = "requestUrl", EmitDefaultValue = false)]
-        public string RequestUrl { get; set; }
+        /// <value>Where the keys go: a v1 route (cardnexus) or the dashboard&#39;s connect dialog.</value>
+        [DataMember(Name = "connectWith", EmitDefaultValue = false)]
+        public string ConnectWith { get; set; }
+
+        /// <summary>
+        /// Gets or Sets DocsUrl
+        /// </summary>
+        [DataMember(Name = "docsUrl", EmitDefaultValue = false)]
+        public string DocsUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets Message
@@ -89,7 +98,8 @@ namespace net.crossly.Model
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  OneShot: ").Append(OneShot).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  RequestUrl: ").Append(RequestUrl).Append("\n");
+            sb.Append("  ConnectWith: ").Append(ConnectWith).Append("\n");
+            sb.Append("  DocsUrl: ").Append(DocsUrl).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -141,9 +151,14 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
-                    this.RequestUrl == input.RequestUrl ||
-                    (this.RequestUrl != null &&
-                    this.RequestUrl.Equals(input.RequestUrl))
+                    this.ConnectWith == input.ConnectWith ||
+                    (this.ConnectWith != null &&
+                    this.ConnectWith.Equals(input.ConnectWith))
+                ) && 
+                (
+                    this.DocsUrl == input.DocsUrl ||
+                    (this.DocsUrl != null &&
+                    this.DocsUrl.Equals(input.DocsUrl))
                 ) && 
                 (
                     this.Message == input.Message ||
@@ -170,9 +185,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
-                if (this.RequestUrl != null)
+                if (this.ConnectWith != null)
                 {
-                    hashCode = (hashCode * 59) + this.RequestUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ConnectWith.GetHashCode();
+                }
+                if (this.DocsUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.DocsUrl.GetHashCode();
                 }
                 if (this.Message != null)
                 {

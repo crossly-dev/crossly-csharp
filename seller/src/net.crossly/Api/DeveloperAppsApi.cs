@@ -27,6 +27,22 @@ namespace net.crossly.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateDeveloperAppResponse</returns>
+        CreateDeveloperAppResponse CreateDeveloperApp();
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateDeveloperAppResponse</returns>
+        ApiResponse<CreateDeveloperAppResponse> CreateDeveloperAppWithHttpInfo();
+        /// <summary>
         /// Send the application to Crossly review. Needs a passing conformance run on this client version and report-menu evidence.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -192,6 +208,24 @@ namespace net.crossly.Api
         /// <param name="appId"></param>
         /// <returns>ApiResponse of DeveloperAppVerificationResponse</returns>
         ApiResponse<DeveloperAppVerificationResponse> CreateDeveloperAppVerificationWithdrawWithHttpInfo(string appId);
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>GetDeveloperAppResponse</returns>
+        GetDeveloperAppResponse GetDeveloperApp(Guid appId);
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>ApiResponse of GetDeveloperAppResponse</returns>
+        ApiResponse<GetDeveloperAppResponse> GetDeveloperAppWithHttpInfo(Guid appId);
         /// <summary>
         /// The Crossly Carnival client certification application (null until you create it): status, client, evidence, the passing run and what still blocks submission.
         /// </summary>
@@ -359,6 +393,50 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListDeveloperAppConformanceRunsResponse</returns>
         ApiResponse<ListDeveloperAppConformanceRunsResponse> ListDeveloperAppConformanceRunsWithHttpInfo(string appId);
         /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListDeveloperAppsResponse</returns>
+        ListDeveloperAppsResponse ListDeveloperApps(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?));
+
+        /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListDeveloperAppsResponse</returns>
+        ApiResponse<ListDeveloperAppsResponse> ListDeveloperAppsWithHttpInfo(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?));
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>UpdateDeveloperAppResponse</returns>
+        UpdateDeveloperAppResponse UpdateDeveloperApp(Guid appId);
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>ApiResponse of UpdateDeveloperAppResponse</returns>
+        ApiResponse<UpdateDeveloperAppResponse> UpdateDeveloperAppWithHttpInfo(Guid appId);
+        /// <summary>
         /// Create or edit the application: client name, platform, version, build and source URLs, description and evidence (report menu, chat, Policy UI). Changing the client clears the passing run.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -381,8 +459,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <returns>UpdateDeveloperAppListingResponse</returns>
-        UpdateDeveloperAppListingResponse UpdateDeveloperAppListing(string appId);
+        UpdateDeveloperAppListingResponse UpdateDeveloperAppListing(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest));
 
         /// <summary>
         /// Turn \&quot;Listed publicly\&quot; on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
@@ -392,8 +471,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateDeveloperAppListingResponse</returns>
-        ApiResponse<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingWithHttpInfo(string appId);
+        ApiResponse<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingWithHttpInfo(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest));
         /// <summary>
         /// Edit your app&#39;s directory profile: name, slug, tagline, description, longDescription (markdown), category, audience (auto|seller|buyer|both), logoUrl, bannerUrl (4:1, 1600×400), screenshots (≤6), demoVideoUrl, homepageUrl, installUrl, support/privacy/terms links, docsLinks [{label,url}] and pricingNote. Absent keys are kept, null clears. Images not on Crossly&#39;s CDN are copied onto it. Renaming a listed app or changing its audience sends it back to review.
         /// </summary>
@@ -412,6 +492,26 @@ namespace net.crossly.Api
         /// <param name="appId"></param>
         /// <returns>ApiResponse of UpdateDeveloperAppProfileResponse</returns>
         ApiResponse<UpdateDeveloperAppProfileResponse> UpdateDeveloperAppProfileWithHttpInfo(string appId);
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <returns>UpdateDeveloperAppStoreResponse</returns>
+        UpdateDeveloperAppStoreResponse UpdateDeveloperAppStore(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest);
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <returns>ApiResponse of UpdateDeveloperAppStoreResponse</returns>
+        ApiResponse<UpdateDeveloperAppStoreResponse> UpdateDeveloperAppStoreWithHttpInfo(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest);
         /// <summary>
         /// Create or edit the verification: domain, requested scopes with a justification each, privacy policy, terms, support email, demo.
         /// </summary>
@@ -439,6 +539,27 @@ namespace net.crossly.Api
     public interface IDeveloperAppsApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDeveloperAppResponse</returns>
+        System.Threading.Tasks.Task<CreateDeveloperAppResponse> CreateDeveloperAppAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDeveloperAppResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateDeveloperAppResponse>> CreateDeveloperAppWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send the application to Crossly review. Needs a passing conformance run on this client version and report-menu evidence.
         /// </summary>
@@ -651,6 +772,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (DeveloperAppVerificationResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DeveloperAppVerificationResponse>> CreateDeveloperAppVerificationWithdrawWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// One of your OAuth apps, with the store that owns it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDeveloperAppResponse</returns>
+        System.Threading.Tasks.Task<GetDeveloperAppResponse> GetDeveloperAppAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDeveloperAppResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDeveloperAppResponse>> GetDeveloperAppWithHttpInfoAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// The Crossly Carnival client certification application (null until you create it): status, client, evidence, the passing run and what still blocks submission.
         /// </summary>
         /// <remarks>
@@ -862,6 +1006,60 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListDeveloperAppConformanceRunsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListDeveloperAppConformanceRunsResponse>> ListDeveloperAppConformanceRunsWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListDeveloperAppsResponse</returns>
+        System.Threading.Tasks.Task<ListDeveloperAppsResponse> ListDeveloperAppsAsync(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListDeveloperAppsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListDeveloperAppsResponse>> ListDeveloperAppsWithHttpInfoAsync(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDeveloperAppResponse</returns>
+        System.Threading.Tasks.Task<UpdateDeveloperAppResponse> UpdateDeveloperAppAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDeveloperAppResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateDeveloperAppResponse>> UpdateDeveloperAppWithHttpInfoAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Create or edit the application: client name, platform, version, build and source URLs, description and evidence (report menu, chat, Policy UI). Changing the client clears the passing run.
         /// </summary>
         /// <remarks>
@@ -892,9 +1090,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDeveloperAppListingResponse</returns>
-        System.Threading.Tasks.Task<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingAsync(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Turn \&quot;Listed publicly\&quot; on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
@@ -904,9 +1103,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDeveloperAppListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateDeveloperAppListingResponse>> UpdateDeveloperAppListingWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateDeveloperAppListingResponse>> UpdateDeveloperAppListingWithHttpInfoAsync(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Edit your app&#39;s directory profile: name, slug, tagline, description, longDescription (markdown), category, audience (auto|seller|buyer|both), logoUrl, bannerUrl (4:1, 1600×400), screenshots (≤6), demoVideoUrl, homepageUrl, installUrl, support/privacy/terms links, docsLinks [{label,url}] and pricingNote. Absent keys are kept, null clears. Images not on Crossly&#39;s CDN are copied onto it. Renaming a listed app or changing its audience sends it back to review.
         /// </summary>
@@ -930,6 +1130,31 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDeveloperAppProfileResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<UpdateDeveloperAppProfileResponse>> UpdateDeveloperAppProfileWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDeveloperAppStoreResponse</returns>
+        System.Threading.Tasks.Task<UpdateDeveloperAppStoreResponse> UpdateDeveloperAppStoreAsync(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDeveloperAppStoreResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateDeveloperAppStoreResponse>> UpdateDeveloperAppStoreWithHttpInfoAsync(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create or edit the verification: domain, requested scopes with a justification each, privacy policy, terms, support email, demo.
         /// </summary>
@@ -1071,6 +1296,134 @@ namespace net.crossly.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>CreateDeveloperAppResponse</returns>
+        public CreateDeveloperAppResponse CreateDeveloperApp()
+        {
+            net.crossly.Client.ApiResponse<CreateDeveloperAppResponse> localVarResponse = CreateDeveloperAppWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of CreateDeveloperAppResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateDeveloperAppResponse> CreateDeveloperAppWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateDeveloperAppResponse>("/v1/developer/apps", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDeveloperApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateDeveloperAppResponse</returns>
+        public async System.Threading.Tasks.Task<CreateDeveloperAppResponse> CreateDeveloperAppAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateDeveloperAppResponse> localVarResponse = await CreateDeveloperAppWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateDeveloperAppResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateDeveloperAppResponse>> CreateDeveloperAppWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDeveloperAppResponse>("/v1/developer/apps", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateDeveloperApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>
@@ -2414,6 +2767,140 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateDeveloperAppVerificationWithdraw", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>GetDeveloperAppResponse</returns>
+        public GetDeveloperAppResponse GetDeveloperApp(Guid appId)
+        {
+            net.crossly.Client.ApiResponse<GetDeveloperAppResponse> localVarResponse = GetDeveloperAppWithHttpInfo(appId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>ApiResponse of GetDeveloperAppResponse</returns>
+        public net.crossly.Client.ApiResponse<GetDeveloperAppResponse> GetDeveloperAppWithHttpInfo(Guid appId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetDeveloperAppResponse>("/v1/developer/apps/{appId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDeveloperApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetDeveloperAppResponse</returns>
+        public async System.Threading.Tasks.Task<GetDeveloperAppResponse> GetDeveloperAppAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetDeveloperAppResponse> localVarResponse = await GetDeveloperAppWithHttpInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One of your OAuth apps, with the store that owns it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetDeveloperAppResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetDeveloperAppResponse>> GetDeveloperAppWithHttpInfoAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDeveloperAppResponse>("/v1/developer/apps/{appId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetDeveloperApp", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -3774,6 +4261,328 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ListDeveloperAppsResponse</returns>
+        public ListDeveloperAppsResponse ListDeveloperApps(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?))
+        {
+            net.crossly.Client.ApiResponse<ListDeveloperAppsResponse> localVarResponse = ListDeveloperAppsWithHttpInfo(storefrontId, q, status, page, pageSize);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <returns>ApiResponse of ListDeveloperAppsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListDeveloperAppsResponse> ListDeveloperAppsWithHttpInfo(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (storefrontId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "storefrontId", storefrontId));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListDeveloperAppsResponse>("/v1/developer/apps", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListDeveloperApps", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListDeveloperAppsResponse</returns>
+        public async System.Threading.Tasks.Task<ListDeveloperAppsResponse> ListDeveloperAppsAsync(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListDeveloperAppsResponse> localVarResponse = await ListDeveloperAppsWithHttpInfoAsync(storefrontId, q, status, page, pageSize, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="storefrontId"> (optional)</param>
+        /// <param name="q"> (optional)</param>
+        /// <param name="status"> (optional)</param>
+        /// <param name="page"> (optional)</param>
+        /// <param name="pageSize"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListDeveloperAppsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListDeveloperAppsResponse>> ListDeveloperAppsWithHttpInfoAsync(Guid? storefrontId = default(Guid?), string q = default(string), string status = default(string), int? page = default(int?), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (storefrontId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "storefrontId", storefrontId));
+            }
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "status", status));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "pageSize", pageSize));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDeveloperAppsResponse>("/v1/developer/apps", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListDeveloperApps", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>UpdateDeveloperAppResponse</returns>
+        public UpdateDeveloperAppResponse UpdateDeveloperApp(Guid appId)
+        {
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppResponse> localVarResponse = UpdateDeveloperAppWithHttpInfo(appId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <returns>ApiResponse of UpdateDeveloperAppResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateDeveloperAppResponse> UpdateDeveloperAppWithHttpInfo(Guid appId)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateDeveloperAppResponse>("/v1/developer/apps/{appId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDeveloperApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDeveloperAppResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateDeveloperAppResponse> UpdateDeveloperAppAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppResponse> localVarResponse = await UpdateDeveloperAppWithHttpInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDeveloperAppResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateDeveloperAppResponse>> UpdateDeveloperAppWithHttpInfoAsync(Guid appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateDeveloperAppResponse>("/v1/developer/apps/{appId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDeveloperApp", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Create or edit the application: client name, platform, version, build and source URLs, description and evidence (report menu, chat, Policy UI). Changing the client clears the passing run. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3924,10 +4733,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <returns>UpdateDeveloperAppListingResponse</returns>
-        public UpdateDeveloperAppListingResponse UpdateDeveloperAppListing(string appId)
+        public UpdateDeveloperAppListingResponse UpdateDeveloperAppListing(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> localVarResponse = UpdateDeveloperAppListingWithHttpInfo(appId);
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> localVarResponse = UpdateDeveloperAppListingWithHttpInfo(appId, updateDeveloperAppListingRequest);
             return localVarResponse.Data;
         }
 
@@ -3936,8 +4746,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateDeveloperAppListingResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingWithHttpInfo(string appId)
+        public net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingWithHttpInfo(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -3948,6 +4759,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3968,6 +4780,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.Data = updateDeveloperAppListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3995,11 +4808,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDeveloperAppListingResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateDeveloperAppListingResponse> UpdateDeveloperAppListingAsync(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> localVarResponse = await UpdateDeveloperAppListingWithHttpInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse> localVarResponse = await UpdateDeveloperAppListingWithHttpInfoAsync(appId, updateDeveloperAppListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4008,9 +4822,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppListingRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDeveloperAppListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse>> UpdateDeveloperAppListingWithHttpInfoAsync(string appId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateDeveloperAppListingResponse>> UpdateDeveloperAppListingWithHttpInfoAsync(string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = default(UpdateDeveloperAppListingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -4022,6 +4837,7 @@ namespace net.crossly.Api
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4042,6 +4858,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.Data = updateDeveloperAppListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4202,6 +5019,160 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateDeveloperAppProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <returns>UpdateDeveloperAppStoreResponse</returns>
+        public UpdateDeveloperAppStoreResponse UpdateDeveloperAppStore(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppStoreResponse> localVarResponse = UpdateDeveloperAppStoreWithHttpInfo(appId, updateDeveloperAppStoreRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <returns>ApiResponse of UpdateDeveloperAppStoreResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateDeveloperAppStoreResponse> UpdateDeveloperAppStoreWithHttpInfo(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest)
+        {
+            // verify the required parameter 'updateDeveloperAppStoreRequest' is set
+            if (updateDeveloperAppStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDeveloperAppStoreRequest' when calling DeveloperAppsApi->UpdateDeveloperAppStore");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.Data = updateDeveloperAppStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateDeveloperAppStoreResponse>("/v1/developer/apps/{appId}/store", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDeveloperAppStore", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateDeveloperAppStoreResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateDeveloperAppStoreResponse> UpdateDeveloperAppStoreAsync(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateDeveloperAppStoreResponse> localVarResponse = await UpdateDeveloperAppStoreWithHttpInfoAsync(appId, updateDeveloperAppStoreRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="appId"></param>
+        /// <param name="updateDeveloperAppStoreRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateDeveloperAppStoreResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateDeveloperAppStoreResponse>> UpdateDeveloperAppStoreWithHttpInfoAsync(Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updateDeveloperAppStoreRequest' is set
+            if (updateDeveloperAppStoreRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateDeveloperAppStoreRequest' when calling DeveloperAppsApi->UpdateDeveloperAppStore");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("appId", net.crossly.Client.ClientUtils.ParameterToString(appId)); // path parameter
+            localVarRequestOptions.Data = updateDeveloperAppStoreRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateDeveloperAppStoreResponse>("/v1/developer/apps/{appId}/store", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateDeveloperAppStore", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -33,8 +33,9 @@ namespace net.crossly.buyer.Api
         /// An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <returns>CreateBuyerCheckoutResponse</returns>
-        CreateBuyerCheckoutResponse CreateBuyerCheckout();
+        CreateBuyerCheckoutResponse CreateBuyerCheckout(CreateBuyerCheckoutRequest createBuyerCheckoutRequest);
 
         /// <summary>
         /// Buy a listing without being present.
@@ -43,8 +44,9 @@ namespace net.crossly.buyer.Api
         /// An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCheckoutResponse</returns>
-        ApiResponse<CreateBuyerCheckoutResponse> CreateBuyerCheckoutWithHttpInfo();
+        ApiResponse<CreateBuyerCheckoutResponse> CreateBuyerCheckoutWithHttpInfo(CreateBuyerCheckoutRequest createBuyerCheckoutRequest);
         /// <summary>
         /// What this key is allowed to spend.
         /// </summary>
@@ -71,8 +73,9 @@ namespace net.crossly.buyer.Api
         /// A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <returns>GetBuyerCheckoutControlResponse</returns>
-        GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl();
+        GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest);
 
         /// <summary>
         /// Switch this key on for spending, and set its limits.
@@ -81,8 +84,9 @@ namespace net.crossly.buyer.Api
         /// A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <returns>ApiResponse of GetBuyerCheckoutControlResponse</returns>
-        ApiResponse<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlWithHttpInfo();
+        ApiResponse<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlWithHttpInfo(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest);
         #endregion Synchronous Operations
     }
 
@@ -99,9 +103,10 @@ namespace net.crossly.buyer.Api
         /// An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCheckoutResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerCheckoutResponse> CreateBuyerCheckoutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerCheckoutResponse> CreateBuyerCheckoutAsync(CreateBuyerCheckoutRequest createBuyerCheckoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Buy a listing without being present.
@@ -110,9 +115,10 @@ namespace net.crossly.buyer.Api
         /// An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCheckoutResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCheckoutResponse>> CreateBuyerCheckoutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerCheckoutResponse>> CreateBuyerCheckoutWithHttpInfoAsync(CreateBuyerCheckoutRequest createBuyerCheckoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What this key is allowed to spend.
         /// </summary>
@@ -141,9 +147,10 @@ namespace net.crossly.buyer.Api
         /// A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerCheckoutControlResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlAsync(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Switch this key on for spending, and set its limits.
@@ -152,9 +159,10 @@ namespace net.crossly.buyer.Api
         /// A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerCheckoutControlResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerCheckoutControlResponse>> UpdateBuyerCheckoutControlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerCheckoutControlResponse>> UpdateBuyerCheckoutControlWithHttpInfoAsync(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -279,10 +287,11 @@ namespace net.crossly.buyer.Api
         /// Buy a listing without being present. An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <returns>CreateBuyerCheckoutResponse</returns>
-        public CreateBuyerCheckoutResponse CreateBuyerCheckout()
+        public CreateBuyerCheckoutResponse CreateBuyerCheckout(CreateBuyerCheckoutRequest createBuyerCheckoutRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> localVarResponse = CreateBuyerCheckoutWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> localVarResponse = CreateBuyerCheckoutWithHttpInfo(createBuyerCheckoutRequest);
             return localVarResponse.Data;
         }
 
@@ -290,12 +299,20 @@ namespace net.crossly.buyer.Api
         /// Buy a listing without being present. An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <returns>ApiResponse of CreateBuyerCheckoutResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> CreateBuyerCheckoutWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> CreateBuyerCheckoutWithHttpInfo(CreateBuyerCheckoutRequest createBuyerCheckoutRequest)
         {
+            // verify the required parameter 'createBuyerCheckoutRequest' is set
+            if (createBuyerCheckoutRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCheckoutRequest' when calling BuyerCheckoutApi->CreateBuyerCheckout");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -315,6 +332,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCheckoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -341,11 +359,12 @@ namespace net.crossly.buyer.Api
         /// Buy a listing without being present. An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerCheckoutResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerCheckoutResponse> CreateBuyerCheckoutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerCheckoutResponse> CreateBuyerCheckoutAsync(CreateBuyerCheckoutRequest createBuyerCheckoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> localVarResponse = await CreateBuyerCheckoutWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse> localVarResponse = await CreateBuyerCheckoutWithHttpInfoAsync(createBuyerCheckoutRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -353,14 +372,22 @@ namespace net.crossly.buyer.Api
         /// Buy a listing without being present. An Idempotency-Key header is REQUIRED — this endpoint refuses without one, because a retried request would otherwise buy the item twice and a retry is the most likely thing an automated buyer does. Derive the key from what you are buying and reuse it across retries; a fresh random value per attempt satisfies the check and keeps the bug. The item is QUOTED first and the delivered total is checked against both your maxTotalCents and this key&#39;s limits before anything is charged. Pass shippingServiceId to choose the shipping speed (default: the cheapest). On a listing with options (catalog detail &#x60;variants&#x60;), pass listingVariantId: without one the quote is refused and &#x60;details.options&#x60; names them. A card that demands 3-D Secure cannot be charged unattended; that answers 402 with &#x60;authentication_required&#x60; and the purchase must be finished on Crossly. Optional payInCurrency (e.g. \&quot;eur\&quot;) charges the card in that currency at the rate quoted in this request, including a 3% conversion charge; the response then carries chargeCurrency + chargeAmountMinor. Limits and maxTotalCents stay in USD cents. Pre-orders cannot be paid in another currency (422 currency_unavailable).
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerCheckoutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerCheckoutResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse>> CreateBuyerCheckoutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerCheckoutResponse>> CreateBuyerCheckoutWithHttpInfoAsync(CreateBuyerCheckoutRequest createBuyerCheckoutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerCheckoutRequest' is set
+            if (createBuyerCheckoutRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerCheckoutRequest' when calling BuyerCheckoutApi->CreateBuyerCheckout");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -380,6 +407,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerCheckoutRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -535,10 +563,11 @@ namespace net.crossly.buyer.Api
         /// Switch this key on for spending, and set its limits. A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <returns>GetBuyerCheckoutControlResponse</returns>
-        public GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl()
+        public GetBuyerCheckoutControlResponse UpdateBuyerCheckoutControl(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> localVarResponse = UpdateBuyerCheckoutControlWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> localVarResponse = UpdateBuyerCheckoutControlWithHttpInfo(updateBuyerCheckoutControlRequest);
             return localVarResponse.Data;
         }
 
@@ -546,12 +575,20 @@ namespace net.crossly.buyer.Api
         /// Switch this key on for spending, and set its limits. A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <returns>ApiResponse of GetBuyerCheckoutControlResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlWithHttpInfo(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest)
         {
+            // verify the required parameter 'updateBuyerCheckoutControlRequest' is set
+            if (updateBuyerCheckoutControlRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerCheckoutControlRequest' when calling BuyerCheckoutApi->UpdateBuyerCheckoutControl");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -571,6 +608,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerCheckoutControlRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -597,11 +635,12 @@ namespace net.crossly.buyer.Api
         /// Switch this key on for spending, and set its limits. A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerCheckoutControlResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerCheckoutControlResponse> UpdateBuyerCheckoutControlAsync(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> localVarResponse = await UpdateBuyerCheckoutControlWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse> localVarResponse = await UpdateBuyerCheckoutControlWithHttpInfoAsync(updateBuyerCheckoutControlRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -609,14 +648,22 @@ namespace net.crossly.buyer.Api
         /// Switch this key on for spending, and set its limits. A key can only ever raise or lower ITS OWN limits, and only if the token already carries buyer:checkout:write. Turning it off takes effect immediately.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateBuyerCheckoutControlRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerCheckoutControlResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse>> UpdateBuyerCheckoutControlWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerCheckoutControlResponse>> UpdateBuyerCheckoutControlWithHttpInfoAsync(UpdateBuyerCheckoutControlRequest updateBuyerCheckoutControlRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBuyerCheckoutControlRequest' is set
+            if (updateBuyerCheckoutControlRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'updateBuyerCheckoutControlRequest' when calling BuyerCheckoutApi->UpdateBuyerCheckoutControl");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -636,6 +683,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateBuyerCheckoutControlRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required

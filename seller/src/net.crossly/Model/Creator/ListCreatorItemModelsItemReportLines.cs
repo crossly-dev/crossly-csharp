@@ -39,22 +39,22 @@ namespace net.crossly.Model
         public enum TierEnum
         {
             /// <summary>
+            /// Enum Desktop for value: desktop
+            /// </summary>
+            [EnumMember(Value = "desktop")]
+            Desktop = 1,
+
+            /// <summary>
             /// Enum Phone for value: phone
             /// </summary>
             [EnumMember(Value = "phone")]
-            Phone = 1,
+            Phone = 2,
 
             /// <summary>
             /// Enum Any for value: any
             /// </summary>
             [EnumMember(Value = "any")]
-            Any = 2,
-
-            /// <summary>
-            /// Enum Desktop for value: desktop
-            /// </summary>
-            [EnumMember(Value = "desktop")]
-            Desktop = 3
+            Any = 3
 
         }
 

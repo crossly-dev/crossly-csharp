@@ -34,23 +34,29 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetStorefrontResponseDataSocialLinks" /> class.
         /// </summary>
+        /// <param name="facebook">facebook.</param>
         /// <param name="website">website.</param>
         /// <param name="x">x.</param>
-        /// <param name="facebook">facebook.</param>
-        /// <param name="tiktok">tiktok.</param>
         /// <param name="instagram">instagram.</param>
+        /// <param name="tiktok">tiktok.</param>
         /// <param name="youtube">youtube.</param>
         /// <param name="pinterest">pinterest.</param>
-        public GetStorefrontResponseDataSocialLinks(string website = default(string), string x = default(string), string facebook = default(string), string tiktok = default(string), string instagram = default(string), string youtube = default(string), string pinterest = default(string))
+        public GetStorefrontResponseDataSocialLinks(string facebook = default(string), string website = default(string), string x = default(string), string instagram = default(string), string tiktok = default(string), string youtube = default(string), string pinterest = default(string))
         {
+            this.Facebook = facebook;
             this.Website = website;
             this.X = x;
-            this.Facebook = facebook;
-            this.Tiktok = tiktok;
             this.Instagram = instagram;
+            this.Tiktok = tiktok;
             this.Youtube = youtube;
             this.Pinterest = pinterest;
         }
+
+        /// <summary>
+        /// Gets or Sets Facebook
+        /// </summary>
+        [DataMember(Name = "facebook", EmitDefaultValue = true)]
+        public string Facebook { get; set; }
 
         /// <summary>
         /// Gets or Sets Website
@@ -65,22 +71,16 @@ namespace net.crossly.Model
         public string X { get; set; }
 
         /// <summary>
-        /// Gets or Sets Facebook
+        /// Gets or Sets Instagram
         /// </summary>
-        [DataMember(Name = "facebook", EmitDefaultValue = true)]
-        public string Facebook { get; set; }
+        [DataMember(Name = "instagram", EmitDefaultValue = true)]
+        public string Instagram { get; set; }
 
         /// <summary>
         /// Gets or Sets Tiktok
         /// </summary>
         [DataMember(Name = "tiktok", EmitDefaultValue = true)]
         public string Tiktok { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Instagram
-        /// </summary>
-        [DataMember(Name = "instagram", EmitDefaultValue = true)]
-        public string Instagram { get; set; }
 
         /// <summary>
         /// Gets or Sets Youtube
@@ -102,11 +102,11 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetStorefrontResponseDataSocialLinks {\n");
+            sb.Append("  Facebook: ").Append(Facebook).Append("\n");
             sb.Append("  Website: ").Append(Website).Append("\n");
             sb.Append("  X: ").Append(X).Append("\n");
-            sb.Append("  Facebook: ").Append(Facebook).Append("\n");
-            sb.Append("  Tiktok: ").Append(Tiktok).Append("\n");
             sb.Append("  Instagram: ").Append(Instagram).Append("\n");
+            sb.Append("  Tiktok: ").Append(Tiktok).Append("\n");
             sb.Append("  Youtube: ").Append(Youtube).Append("\n");
             sb.Append("  Pinterest: ").Append(Pinterest).Append("\n");
             sb.Append("}\n");
@@ -145,6 +145,11 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.Facebook == input.Facebook ||
+                    (this.Facebook != null &&
+                    this.Facebook.Equals(input.Facebook))
+                ) && 
+                (
                     this.Website == input.Website ||
                     (this.Website != null &&
                     this.Website.Equals(input.Website))
@@ -155,19 +160,14 @@ namespace net.crossly.Model
                     this.X.Equals(input.X))
                 ) && 
                 (
-                    this.Facebook == input.Facebook ||
-                    (this.Facebook != null &&
-                    this.Facebook.Equals(input.Facebook))
+                    this.Instagram == input.Instagram ||
+                    (this.Instagram != null &&
+                    this.Instagram.Equals(input.Instagram))
                 ) && 
                 (
                     this.Tiktok == input.Tiktok ||
                     (this.Tiktok != null &&
                     this.Tiktok.Equals(input.Tiktok))
-                ) && 
-                (
-                    this.Instagram == input.Instagram ||
-                    (this.Instagram != null &&
-                    this.Instagram.Equals(input.Instagram))
                 ) && 
                 (
                     this.Youtube == input.Youtube ||
@@ -190,6 +190,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Facebook != null)
+                {
+                    hashCode = (hashCode * 59) + this.Facebook.GetHashCode();
+                }
                 if (this.Website != null)
                 {
                     hashCode = (hashCode * 59) + this.Website.GetHashCode();
@@ -198,17 +202,13 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.X.GetHashCode();
                 }
-                if (this.Facebook != null)
+                if (this.Instagram != null)
                 {
-                    hashCode = (hashCode * 59) + this.Facebook.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Instagram.GetHashCode();
                 }
                 if (this.Tiktok != null)
                 {
                     hashCode = (hashCode * 59) + this.Tiktok.GetHashCode();
-                }
-                if (this.Instagram != null)
-                {
-                    hashCode = (hashCode * 59) + this.Instagram.GetHashCode();
                 }
                 if (this.Youtube != null)
                 {

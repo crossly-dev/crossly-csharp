@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateAutomaticDiscountPreview**](DiscountsApi.md#createautomaticdiscountpreview) | **POST** /v1/automatic-discounts/preview | Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
 [**CreateDiscountCode**](DiscountsApi.md#creatediscountcode) | **POST** /v1/discount-codes | Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
 [**CreateDiscountCodeGenerate**](DiscountsApi.md#creatediscountcodegenerate) | **POST** /v1/discount-codes/{id}/generate | Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
+[**CreateDiscountCodePauseAll**](DiscountsApi.md#creatediscountcodepauseall) | **POST** /v1/discount-codes/pause-all | Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
 [**CreateDiscountCodeStatus**](DiscountsApi.md#creatediscountcodestatus) | **POST** /v1/discount-codes/{id}/status | Pause, resume (active) or archive a discount code.
 [**CreateDiscountHolder**](DiscountsApi.md#creatediscountholder) | **POST** /v1/discounts/holders | Create a Collection holders deal in the store (X-Storefront-Id; default store when omitted).
 [**DeleteAutomaticDiscount**](DiscountsApi.md#deleteautomaticdiscount) | **DELETE** /v1/automatic-discounts/{id} | Delete an automatic discount.
@@ -26,7 +27,7 @@ Method | HTTP request | Description
 
 <a name="createautomaticdiscount"></a>
 # **CreateAutomaticDiscount**
-> CreateAutomaticDiscountResponse CreateAutomaticDiscount ()
+> CreateAutomaticDiscountResponse CreateAutomaticDiscount (CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
 
 Create an automatic discount.
 
@@ -50,11 +51,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DiscountsApi(config);
+            var createAutomaticDiscountRequest = new CreateAutomaticDiscountRequest(); // CreateAutomaticDiscountRequest | 
 
             try
             {
                 // Create an automatic discount.
-                CreateAutomaticDiscountResponse result = apiInstance.CreateAutomaticDiscount();
+                CreateAutomaticDiscountResponse result = apiInstance.CreateAutomaticDiscount(createAutomaticDiscountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -69,7 +71,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAutomaticDiscountRequest** | **CreateAutomaticDiscountRequest**|  | 
 
 ### Return type
 
@@ -81,7 +86,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -100,7 +105,7 @@ This endpoint does not need any parameter.
 
 <a name="createautomaticdiscountpreview"></a>
 # **CreateAutomaticDiscountPreview**
-> CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview ()
+> CreateAutomaticDiscountPreviewResponse CreateAutomaticDiscountPreview (CreateAutomaticDiscountPreviewRequest createAutomaticDiscountPreviewRequest)
 
 Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
 
@@ -124,11 +129,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DiscountsApi(config);
+            var createAutomaticDiscountPreviewRequest = new CreateAutomaticDiscountPreviewRequest(); // CreateAutomaticDiscountPreviewRequest | 
 
             try
             {
                 // Preview a hypothetical cart of your listings against your automatic discounts (or an unsaved draft): what each line gets.
-                CreateAutomaticDiscountPreviewResponse result = apiInstance.CreateAutomaticDiscountPreview();
+                CreateAutomaticDiscountPreviewResponse result = apiInstance.CreateAutomaticDiscountPreview(createAutomaticDiscountPreviewRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -143,7 +149,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createAutomaticDiscountPreviewRequest** | **CreateAutomaticDiscountPreviewRequest**|  | 
 
 ### Return type
 
@@ -155,7 +164,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -174,7 +183,7 @@ This endpoint does not need any parameter.
 
 <a name="creatediscountcode"></a>
 # **CreateDiscountCode**
-> DiscountCodeResponse CreateDiscountCode ()
+> DiscountCodeResponse CreateDiscountCode (CreateDiscountCodeRequest createDiscountCodeRequest)
 
 Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
 
@@ -198,11 +207,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DiscountsApi(config);
+            var createDiscountCodeRequest = new CreateDiscountCodeRequest(); // CreateDiscountCodeRequest | 
 
             try
             {
                 // Create a discount code: percent, fixed, free shipping, buy X get Y, spend tiers or a set price, with requirements, item scope, limits (total, per buyer, per day, budget, regions), schedule and stacking.
-                DiscountCodeResponse result = apiInstance.CreateDiscountCode();
+                DiscountCodeResponse result = apiInstance.CreateDiscountCode(createDiscountCodeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -217,7 +227,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDiscountCodeRequest** | **CreateDiscountCodeRequest**|  | 
 
 ### Return type
 
@@ -229,7 +242,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -248,7 +261,7 @@ This endpoint does not need any parameter.
 
 <a name="creatediscountcodegenerate"></a>
 # **CreateDiscountCodeGenerate**
-> CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate (string id)
+> CreateDiscountCodeGenerateResponse CreateDiscountCodeGenerate (string id, CreateDiscountCodeGenerateRequest createDiscountCodeGenerateRequest)
 
 Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
 
@@ -273,11 +286,12 @@ namespace Example
 
             var apiInstance = new DiscountsApi(config);
             var id = "id_example";  // string | 
+            var createDiscountCodeGenerateRequest = new CreateDiscountCodeGenerateRequest(); // CreateDiscountCodeGenerateRequest | 
 
             try
             {
                 // Generate up to 5,000 unique single-use codes with this code’s rules (their uses count toward its limits).
-                CreateDiscountCodeGenerateResponse result = apiInstance.CreateDiscountCodeGenerate(id);
+                CreateDiscountCodeGenerateResponse result = apiInstance.CreateDiscountCodeGenerate(id, createDiscountCodeGenerateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -296,6 +310,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createDiscountCodeGenerateRequest** | **CreateDiscountCodeGenerateRequest**|  | 
 
 ### Return type
 
@@ -307,7 +322,85 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="creatediscountcodepauseall"></a>
+# **CreateDiscountCodePauseAll**
+> CreateDiscountCodePauseAllResponse CreateDiscountCodePauseAll (CreateDiscountCodePauseAllRequest createDiscountCodePauseAllRequest)
+
+Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDiscountCodePauseAllExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DiscountsApi(config);
+            var createDiscountCodePauseAllRequest = new CreateDiscountCodePauseAllRequest(); // CreateDiscountCodePauseAllRequest | 
+
+            try
+            {
+                // Pause every active discount code of the store at once (paused: true), or resume every paused one (paused: false). Archived codes are left alone; returns how many changed.
+                CreateDiscountCodePauseAllResponse result = apiInstance.CreateDiscountCodePauseAll(createDiscountCodePauseAllRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DiscountsApi.CreateDiscountCodePauseAll: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createDiscountCodePauseAllRequest** | **CreateDiscountCodePauseAllRequest**|  | 
+
+### Return type
+
+**CreateDiscountCodePauseAllResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -326,7 +419,7 @@ Name | Type | Description  | Notes
 
 <a name="creatediscountcodestatus"></a>
 # **CreateDiscountCodeStatus**
-> DiscountCodeResponse CreateDiscountCodeStatus (string id)
+> DiscountCodeResponse CreateDiscountCodeStatus (string id, CreateDiscountCodeStatusRequest createDiscountCodeStatusRequest)
 
 Pause, resume (active) or archive a discount code.
 
@@ -351,11 +444,12 @@ namespace Example
 
             var apiInstance = new DiscountsApi(config);
             var id = "id_example";  // string | 
+            var createDiscountCodeStatusRequest = new CreateDiscountCodeStatusRequest(); // CreateDiscountCodeStatusRequest | 
 
             try
             {
                 // Pause, resume (active) or archive a discount code.
-                DiscountCodeResponse result = apiInstance.CreateDiscountCodeStatus(id);
+                DiscountCodeResponse result = apiInstance.CreateDiscountCodeStatus(id, createDiscountCodeStatusRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -374,6 +468,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createDiscountCodeStatusRequest** | **CreateDiscountCodeStatusRequest**|  | 
 
 ### Return type
 
@@ -385,7 +480,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -942,7 +1037,7 @@ This endpoint does not need any parameter.
 
 <a name="listdiscountcoderedemptions"></a>
 # **ListDiscountCodeRedemptions**
-> ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions (string id)
+> ListDiscountCodeRedemptionsResponse ListDiscountCodeRedemptions (string id, decimal? limit = null, decimal? offset = null)
 
 A code’s usage history: orders, masked buyers, region, channel and the amount given, newest first.
 
@@ -967,11 +1062,13 @@ namespace Example
 
             var apiInstance = new DiscountsApi(config);
             var id = "id_example";  // string | 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // A code’s usage history: orders, masked buyers, region, channel and the amount given, newest first.
-                ListDiscountCodeRedemptionsResponse result = apiInstance.ListDiscountCodeRedemptions(id);
+                ListDiscountCodeRedemptionsResponse result = apiInstance.ListDiscountCodeRedemptions(id, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -990,6 +1087,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **limit** | **decimal?**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1020,7 +1119,7 @@ Name | Type | Description  | Notes
 
 <a name="listdiscountcodes"></a>
 # **ListDiscountCodes**
-> ListDiscountCodesResponse ListDiscountCodes ()
+> ListDiscountCodesResponse ListDiscountCodes (string archived = null)
 
 Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
 
@@ -1044,11 +1143,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new DiscountsApi(config);
+            var archived = "true";  // string |  (optional) 
 
             try
             {
                 // Your discount codes: kind, status (active, scheduled, paused, expired, exhausted, archived), every rule, and usage.
-                ListDiscountCodesResponse result = apiInstance.ListDiscountCodes();
+                ListDiscountCodesResponse result = apiInstance.ListDiscountCodes(archived);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1063,7 +1163,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **archived** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1168,7 +1271,7 @@ This endpoint does not need any parameter.
 
 <a name="updateautomaticdiscount"></a>
 # **UpdateAutomaticDiscount**
-> CreateAutomaticDiscountResponse UpdateAutomaticDiscount (string id)
+> CreateAutomaticDiscountResponse UpdateAutomaticDiscount (string id, CreateAutomaticDiscountRequest createAutomaticDiscountRequest)
 
 Replace an automatic discount.
 
@@ -1193,11 +1296,12 @@ namespace Example
 
             var apiInstance = new DiscountsApi(config);
             var id = "id_example";  // string | 
+            var createAutomaticDiscountRequest = new CreateAutomaticDiscountRequest(); // CreateAutomaticDiscountRequest | 
 
             try
             {
                 // Replace an automatic discount.
-                CreateAutomaticDiscountResponse result = apiInstance.UpdateAutomaticDiscount(id);
+                CreateAutomaticDiscountResponse result = apiInstance.UpdateAutomaticDiscount(id, createAutomaticDiscountRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1216,6 +1320,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createAutomaticDiscountRequest** | **CreateAutomaticDiscountRequest**|  | 
 
 ### Return type
 
@@ -1227,7 +1332,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1246,7 +1351,7 @@ Name | Type | Description  | Notes
 
 <a name="updatediscountcode"></a>
 # **UpdateDiscountCode**
-> DiscountCodeResponse UpdateDiscountCode (string id)
+> DiscountCodeResponse UpdateDiscountCode (string id, UpdateDiscountCodeRequest updateDiscountCodeRequest)
 
 Update a discount code. The code itself can be renamed only until it is first used.
 
@@ -1271,11 +1376,12 @@ namespace Example
 
             var apiInstance = new DiscountsApi(config);
             var id = "id_example";  // string | 
+            var updateDiscountCodeRequest = new UpdateDiscountCodeRequest(); // UpdateDiscountCodeRequest | 
 
             try
             {
                 // Update a discount code. The code itself can be renamed only until it is first used.
-                DiscountCodeResponse result = apiInstance.UpdateDiscountCode(id);
+                DiscountCodeResponse result = apiInstance.UpdateDiscountCode(id, updateDiscountCodeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1294,6 +1400,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **updateDiscountCodeRequest** | **UpdateDiscountCodeRequest**|  | 
 
 ### Return type
 
@@ -1305,7 +1412,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

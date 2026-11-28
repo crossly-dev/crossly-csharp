@@ -38,22 +38,22 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum Api for value: api
+            /// </summary>
+            [EnumMember(Value = "api")]
+            Api = 1,
+
+            /// <summary>
             /// Enum Cookie for value: cookie
             /// </summary>
             [EnumMember(Value = "cookie")]
-            Cookie = 1,
+            Cookie = 2,
 
             /// <summary>
             /// Enum Crossly for value: crossly
             /// </summary>
             [EnumMember(Value = "crossly")]
-            Crossly = 2,
-
-            /// <summary>
-            /// Enum Api for value: api
-            /// </summary>
-            [EnumMember(Value = "api")]
-            Api = 3
+            Crossly = 3
 
         }
 

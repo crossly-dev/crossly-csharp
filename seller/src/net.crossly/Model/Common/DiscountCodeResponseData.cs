@@ -47,10 +47,10 @@ namespace net.crossly.Model
         /// <param name="expiresAt">expiresAt.</param>
         /// <param name="status">status (required).</param>
         /// <param name="storefrontId">storefrontId.</param>
-        /// <param name="batchId">batchId.</param>
         /// <param name="kind">kind.</param>
-        /// <param name="code">code (required).</param>
+        /// <param name="batchId">batchId.</param>
         /// <param name="sellerUserId">sellerUserId.</param>
+        /// <param name="code">code (required).</param>
         /// <param name="startsAt">startsAt.</param>
         /// <param name="discountType">discountType (required).</param>
         /// <param name="percentOffBps">percentOffBps.</param>
@@ -63,7 +63,7 @@ namespace net.crossly.Model
         /// <param name="givenCents">givenCents (required).</param>
         /// <param name="parentCodeId">parentCodeId.</param>
         /// <param name="autoApply">autoApply (required).</param>
-        public DiscountCodeResponseData(string id = default(string), string name = default(string), bool active = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), DateTime? expiresAt = default(DateTime?), string status = default(string), string storefrontId = default(string), string batchId = default(string), string kind = default(string), string code = default(string), string sellerUserId = default(string), DateTime? startsAt = default(DateTime?), string discountType = default(string), decimal? percentOffBps = default(decimal?), decimal? fixedOffCents = default(decimal?), decimal minOrderCents = default(decimal), List<string> platformListingIds = default(List<string>), decimal? maxRedemptions = default(decimal?), decimal redemptionCount = default(decimal), Dictionary<string, Object> rules = default(Dictionary<string, Object>), decimal givenCents = default(decimal), string parentCodeId = default(string), bool autoApply = default(bool))
+        public DiscountCodeResponseData(string id = default(string), string name = default(string), bool active = default(bool), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), DateTime? expiresAt = default(DateTime?), string status = default(string), string storefrontId = default(string), string kind = default(string), string batchId = default(string), string sellerUserId = default(string), string code = default(string), DateTime? startsAt = default(DateTime?), string discountType = default(string), decimal? percentOffBps = default(decimal?), decimal? fixedOffCents = default(decimal?), decimal minOrderCents = default(decimal), List<string> platformListingIds = default(List<string>), decimal? maxRedemptions = default(decimal?), decimal redemptionCount = default(decimal), Dictionary<string, Object> rules = default(Dictionary<string, Object>), decimal givenCents = default(decimal), string parentCodeId = default(string), bool autoApply = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -95,8 +95,8 @@ namespace net.crossly.Model
             this.Name = name;
             this.ExpiresAt = expiresAt;
             this.StorefrontId = storefrontId;
-            this.BatchId = batchId;
             this.Kind = kind;
+            this.BatchId = batchId;
             this.SellerUserId = sellerUserId;
             this.StartsAt = startsAt;
             this.PercentOffBps = percentOffBps;
@@ -156,28 +156,28 @@ namespace net.crossly.Model
         public string StorefrontId { get; set; }
 
         /// <summary>
-        /// Gets or Sets BatchId
-        /// </summary>
-        [DataMember(Name = "batchId", EmitDefaultValue = true)]
-        public string BatchId { get; set; }
-
-        /// <summary>
         /// Gets or Sets Kind
         /// </summary>
         [DataMember(Name = "kind", EmitDefaultValue = true)]
         public string Kind { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets BatchId
         /// </summary>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
-        public string Code { get; set; }
+        [DataMember(Name = "batchId", EmitDefaultValue = true)]
+        public string BatchId { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerUserId
         /// </summary>
         [DataMember(Name = "sellerUserId", EmitDefaultValue = true)]
         public string SellerUserId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = false)]
+        public string Code { get; set; }
 
         /// <summary>
         /// Gets or Sets StartsAt
@@ -267,10 +267,10 @@ namespace net.crossly.Model
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
-            sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  Kind: ").Append(Kind).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  StartsAt: ").Append(StartsAt).Append("\n");
             sb.Append("  DiscountType: ").Append(DiscountType).Append("\n");
             sb.Append("  PercentOffBps: ").Append(PercentOffBps).Append("\n");
@@ -358,24 +358,24 @@ namespace net.crossly.Model
                     this.StorefrontId.Equals(input.StorefrontId))
                 ) && 
                 (
-                    this.BatchId == input.BatchId ||
-                    (this.BatchId != null &&
-                    this.BatchId.Equals(input.BatchId))
-                ) && 
-                (
                     this.Kind == input.Kind ||
                     (this.Kind != null &&
                     this.Kind.Equals(input.Kind))
                 ) && 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.BatchId == input.BatchId ||
+                    (this.BatchId != null &&
+                    this.BatchId.Equals(input.BatchId))
                 ) && 
                 (
                     this.SellerUserId == input.SellerUserId ||
                     (this.SellerUserId != null &&
                     this.SellerUserId.Equals(input.SellerUserId))
+                ) && 
+                (
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 ) && 
                 (
                     this.StartsAt == input.StartsAt ||
@@ -475,21 +475,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
                 }
-                if (this.BatchId != null)
-                {
-                    hashCode = (hashCode * 59) + this.BatchId.GetHashCode();
-                }
                 if (this.Kind != null)
                 {
                     hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
-                if (this.Code != null)
+                if (this.BatchId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                    hashCode = (hashCode * 59) + this.BatchId.GetHashCode();
                 }
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
+                }
+                if (this.Code != null)
+                {
+                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
                 }
                 if (this.StartsAt != null)
                 {

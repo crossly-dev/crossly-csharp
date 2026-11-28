@@ -118,16 +118,16 @@ namespace net.crossly.Model
         public enum OwnershipEnum
         {
             /// <summary>
-            /// Enum Imported for value: imported
-            /// </summary>
-            [EnumMember(Value = "imported")]
-            Imported = 1,
-
-            /// <summary>
             /// Enum Crossly for value: crossly
             /// </summary>
             [EnumMember(Value = "crossly")]
-            Crossly = 2,
+            Crossly = 1,
+
+            /// <summary>
+            /// Enum Imported for value: imported
+            /// </summary>
+            [EnumMember(Value = "imported")]
+            Imported = 2,
 
             /// <summary>
             /// Enum OtherTool for value: other_tool

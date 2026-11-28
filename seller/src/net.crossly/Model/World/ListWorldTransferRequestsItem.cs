@@ -67,34 +67,34 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
+            /// Enum Expired for value: expired
+            /// </summary>
+            [EnumMember(Value = "expired")]
+            Expired = 1,
+
+            /// <summary>
             /// Enum Pending for value: pending
             /// </summary>
             [EnumMember(Value = "pending")]
-            Pending = 1,
+            Pending = 2,
 
             /// <summary>
             /// Enum Cancelled for value: cancelled
             /// </summary>
             [EnumMember(Value = "cancelled")]
-            Cancelled = 2,
+            Cancelled = 3,
 
             /// <summary>
             /// Enum Accepted for value: accepted
             /// </summary>
             [EnumMember(Value = "accepted")]
-            Accepted = 3,
+            Accepted = 4,
 
             /// <summary>
             /// Enum Declined for value: declined
             /// </summary>
             [EnumMember(Value = "declined")]
-            Declined = 4,
-
-            /// <summary>
-            /// Enum Expired for value: expired
-            /// </summary>
-            [EnumMember(Value = "expired")]
-            Expired = 5
+            Declined = 5
 
         }
 

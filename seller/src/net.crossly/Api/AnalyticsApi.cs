@@ -100,8 +100,9 @@ namespace net.crossly.Api
         /// Monthly P&amp;L + per-platform breakdown for a calendar year.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <returns>GetAnalyticBookkeepingResponse</returns>
-        GetAnalyticBookkeepingResponse GetAnalyticBookkeeping();
+        GetAnalyticBookkeepingResponse GetAnalyticBookkeeping(decimal? year = default(decimal?));
 
         /// <summary>
         /// Monthly P&amp;L + per-platform breakdown for a calendar year.
@@ -110,8 +111,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticBookkeepingResponse</returns>
-        ApiResponse<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingWithHttpInfo();
+        ApiResponse<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingWithHttpInfo(decimal? year = default(decimal?));
         /// <summary>
         /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
@@ -160,8 +162,13 @@ namespace net.crossly.Api
         /// Composite dashboard: KPIs + breakdowns + recent activity.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <returns>GetAnalyticDashboardResponse</returns>
-        GetAnalyticDashboardResponse GetAnalyticDashboard();
+        GetAnalyticDashboardResponse GetAnalyticDashboard(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string));
 
         /// <summary>
         /// Composite dashboard: KPIs + breakdowns + recent activity.
@@ -170,8 +177,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticDashboardResponse</returns>
-        ApiResponse<GetAnalyticDashboardResponse> GetAnalyticDashboardWithHttpInfo();
+        ApiResponse<GetAnalyticDashboardResponse> GetAnalyticDashboardWithHttpInfo(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string));
         /// <summary>
         /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
         /// </summary>
@@ -256,8 +268,12 @@ namespace net.crossly.Api
         /// Per-item P&amp;L for sold inventory.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <returns>GetAnalyticItemResponse</returns>
-        GetAnalyticItemResponse GetAnalyticItem();
+        GetAnalyticItemResponse GetAnalyticItem(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string));
 
         /// <summary>
         /// Per-item P&amp;L for sold inventory.
@@ -266,8 +282,12 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticItemResponse</returns>
-        ApiResponse<GetAnalyticItemResponse> GetAnalyticItemWithHttpInfo();
+        ApiResponse<GetAnalyticItemResponse> GetAnalyticItemWithHttpInfo(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string));
         /// <summary>
         /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
         /// </summary>
@@ -778,9 +798,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticBookkeepingResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingAsync(decimal? year = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Monthly P&amp;L + per-platform breakdown for a calendar year.
@@ -789,9 +810,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticBookkeepingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticBookkeepingResponse>> GetAnalyticBookkeepingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticBookkeepingResponse>> GetAnalyticBookkeepingWithHttpInfoAsync(decimal? year = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Sales, net sales, fees and net profit by platform for the last N days.
         /// </summary>
@@ -853,9 +875,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticDashboardResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticDashboardResponse> GetAnalyticDashboardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticDashboardResponse> GetAnalyticDashboardAsync(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Composite dashboard: KPIs + breakdowns + recent activity.
@@ -864,9 +891,14 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticDashboardResponse>> GetAnalyticDashboardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticDashboardResponse>> GetAnalyticDashboardWithHttpInfoAsync(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Your listing A/B experiments, newest first, with status, days running and the current verdict.
         /// </summary>
@@ -969,9 +1001,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticItemResponse</returns>
-        System.Threading.Tasks.Task<GetAnalyticItemResponse> GetAnalyticItemAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAnalyticItemResponse> GetAnalyticItemAsync(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Per-item P&amp;L for sold inventory.
@@ -980,9 +1016,13 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticItemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAnalyticItemResponse>> GetAnalyticItemWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAnalyticItemResponse>> GetAnalyticItemWithHttpInfoAsync(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// One listing in depth: channels with views, favorites and offers, the merged timeline, engagement series, price history, comps, money waterfall, days on market, offers, messages, experiments and suggestions.
         /// </summary>
@@ -2142,10 +2182,11 @@ namespace net.crossly.Api
         /// Monthly P&amp;L + per-platform breakdown for a calendar year. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <returns>GetAnalyticBookkeepingResponse</returns>
-        public GetAnalyticBookkeepingResponse GetAnalyticBookkeeping()
+        public GetAnalyticBookkeepingResponse GetAnalyticBookkeeping(decimal? year = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> localVarResponse = GetAnalyticBookkeepingWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> localVarResponse = GetAnalyticBookkeepingWithHttpInfo(year);
             return localVarResponse.Data;
         }
 
@@ -2153,8 +2194,9 @@ namespace net.crossly.Api
         /// Monthly P&amp;L + per-platform breakdown for a calendar year. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticBookkeepingResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingWithHttpInfo(decimal? year = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2178,6 +2220,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2204,11 +2250,12 @@ namespace net.crossly.Api
         /// Monthly P&amp;L + per-platform breakdown for a calendar year. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticBookkeepingResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticBookkeepingResponse> GetAnalyticBookkeepingAsync(decimal? year = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> localVarResponse = await GetAnalyticBookkeepingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse> localVarResponse = await GetAnalyticBookkeepingWithHttpInfoAsync(year, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2216,9 +2263,10 @@ namespace net.crossly.Api
         /// Monthly P&amp;L + per-platform breakdown for a calendar year. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="year"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticBookkeepingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse>> GetAnalyticBookkeepingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticBookkeepingResponse>> GetAnalyticBookkeepingWithHttpInfoAsync(decimal? year = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2243,6 +2291,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (year != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "year", year));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2604,10 +2656,15 @@ namespace net.crossly.Api
         /// Composite dashboard: KPIs + breakdowns + recent activity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <returns>GetAnalyticDashboardResponse</returns>
-        public GetAnalyticDashboardResponse GetAnalyticDashboard()
+        public GetAnalyticDashboardResponse GetAnalyticDashboard(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> localVarResponse = GetAnalyticDashboardWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> localVarResponse = GetAnalyticDashboardWithHttpInfo(range, startDate, endDate, labels, tz);
             return localVarResponse.Data;
         }
 
@@ -2615,8 +2672,13 @@ namespace net.crossly.Api
         /// Composite dashboard: KPIs + breakdowns + recent activity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticDashboardResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> GetAnalyticDashboardWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> GetAnalyticDashboardWithHttpInfo(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2640,6 +2702,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2666,11 +2748,16 @@ namespace net.crossly.Api
         /// Composite dashboard: KPIs + breakdowns + recent activity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticDashboardResponse> GetAnalyticDashboardAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticDashboardResponse> GetAnalyticDashboardAsync(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> localVarResponse = await GetAnalyticDashboardWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse> localVarResponse = await GetAnalyticDashboardWithHttpInfoAsync(range, startDate, endDate, labels, tz, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2678,9 +2765,14 @@ namespace net.crossly.Api
         /// Composite dashboard: KPIs + breakdowns + recent activity. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="range"> (optional)</param>
+        /// <param name="startDate"> (optional)</param>
+        /// <param name="endDate"> (optional)</param>
+        /// <param name="labels"> (optional)</param>
+        /// <param name="tz"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse>> GetAnalyticDashboardWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticDashboardResponse>> GetAnalyticDashboardWithHttpInfoAsync(string range = default(string), string startDate = default(string), string endDate = default(string), string labels = default(string), string tz = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2705,6 +2797,26 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (range != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "range", range));
+            }
+            if (startDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "startDate", startDate));
+            }
+            if (endDate != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "endDate", endDate));
+            }
+            if (labels != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "labels", labels));
+            }
+            if (tz != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "tz", tz));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3314,10 +3426,14 @@ namespace net.crossly.Api
         /// Per-item P&amp;L for sold inventory. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <returns>GetAnalyticItemResponse</returns>
-        public GetAnalyticItemResponse GetAnalyticItem()
+        public GetAnalyticItemResponse GetAnalyticItem(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticItemResponse> localVarResponse = GetAnalyticItemWithHttpInfo();
+            net.crossly.Client.ApiResponse<GetAnalyticItemResponse> localVarResponse = GetAnalyticItemWithHttpInfo(page, limit, sortBy, sortOrder);
             return localVarResponse.Data;
         }
 
@@ -3325,8 +3441,12 @@ namespace net.crossly.Api
         /// Per-item P&amp;L for sold inventory. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <returns>ApiResponse of GetAnalyticItemResponse</returns>
-        public net.crossly.Client.ApiResponse<GetAnalyticItemResponse> GetAnalyticItemWithHttpInfo()
+        public net.crossly.Client.ApiResponse<GetAnalyticItemResponse> GetAnalyticItemWithHttpInfo(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -3350,6 +3470,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sortBy", sortBy));
+            }
+            if (sortOrder != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sortOrder", sortOrder));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3376,11 +3512,15 @@ namespace net.crossly.Api
         /// Per-item P&amp;L for sold inventory. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAnalyticItemResponse</returns>
-        public async System.Threading.Tasks.Task<GetAnalyticItemResponse> GetAnalyticItemAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAnalyticItemResponse> GetAnalyticItemAsync(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<GetAnalyticItemResponse> localVarResponse = await GetAnalyticItemWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<GetAnalyticItemResponse> localVarResponse = await GetAnalyticItemWithHttpInfoAsync(page, limit, sortBy, sortOrder, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3388,9 +3528,13 @@ namespace net.crossly.Api
         /// Per-item P&amp;L for sold inventory. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="sortBy"> (optional)</param>
+        /// <param name="sortOrder"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAnalyticItemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticItemResponse>> GetAnalyticItemWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAnalyticItemResponse>> GetAnalyticItemWithHttpInfoAsync(decimal? page = default(decimal?), decimal? limit = default(decimal?), string sortBy = default(string), string sortOrder = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -3415,6 +3559,22 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (sortBy != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sortBy", sortBy));
+            }
+            if (sortOrder != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "sortOrder", sortOrder));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

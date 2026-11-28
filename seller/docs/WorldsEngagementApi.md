@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperienceexperienceevent"></a>
 # **CreateWorldExperienceExperienceEvent**
-> WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent (string experienceId)
+> WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEvent (string experienceId, CreateWorldExperienceExperienceEventRequest createWorldExperienceExperienceEventRequest = null)
 
 Schedule an Experience Event shown on the game's card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event's schedule.
 
@@ -49,11 +49,12 @@ namespace Example
 
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceExperienceEventRequest = new CreateWorldExperienceExperienceEventRequest(); // CreateWorldExperienceExperienceEventRequest |  (optional) 
 
             try
             {
                 // Schedule an Experience Event shown on the game's card: title, description, start/end (5 min–14 days, ≤ 180 days ahead), thumbnail, place. With liveEventId it follows that live-ops event's schedule.
-                WorldExperienceExperienceEventResponse result = apiInstance.CreateWorldExperienceExperienceEvent(experienceId);
+                WorldExperienceExperienceEventResponse result = apiInstance.CreateWorldExperienceExperienceEvent(experienceId, createWorldExperienceExperienceEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -72,6 +73,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceExperienceEventRequest** | **CreateWorldExperienceExperienceEventRequest**|  | [optional] 
 
 ### Return type
 
@@ -83,7 +85,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -182,7 +184,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceexperienceeventrsvp"></a>
 # **CreateWorldExperienceExperienceEventRsvp**
-> WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp (string experienceId, string eventId)
+> WorldExperienceExperienceEventResponse CreateWorldExperienceExperienceEventRsvp (string experienceId, string eventId, CreateWorldExperienceExperienceEventRsvpRequest createWorldExperienceExperienceEventRsvpRequest = null)
 
 RSVP (going: true) or take it back. remind: true also turns the experience's notifications on, so the 15-minute reminder can reach you.
 
@@ -208,11 +210,12 @@ namespace Example
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
             var eventId = "eventId_example";  // string | 
+            var createWorldExperienceExperienceEventRsvpRequest = new CreateWorldExperienceExperienceEventRsvpRequest(); // CreateWorldExperienceExperienceEventRsvpRequest |  (optional) 
 
             try
             {
                 // RSVP (going: true) or take it back. remind: true also turns the experience's notifications on, so the 15-minute reminder can reach you.
-                WorldExperienceExperienceEventResponse result = apiInstance.CreateWorldExperienceExperienceEventRsvp(experienceId, eventId);
+                WorldExperienceExperienceEventResponse result = apiInstance.CreateWorldExperienceExperienceEventRsvp(experienceId, eventId, createWorldExperienceExperienceEventRsvpRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -232,6 +235,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **eventId** | **string**|  | 
+ **createWorldExperienceExperienceEventRsvpRequest** | **CreateWorldExperienceExperienceEventRsvpRequest**|  | [optional] 
 
 ### Return type
 
@@ -243,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -262,7 +266,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencenotification"></a>
 # **CreateWorldExperienceNotification**
-> CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification (string experienceId)
+> CreateWorldExperienceNotificationResponse CreateWorldExperienceNotification (string experienceId, CreateWorldExperienceNotificationRequest createWorldExperienceNotificationRequest = null)
 
 Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
 
@@ -287,11 +291,12 @@ namespace Example
 
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceNotificationRequest = new CreateWorldExperienceNotificationRequest(); // CreateWorldExperienceNotificationRequest |  (optional) 
 
             try
             {
                 // Send an approved template to one player (sub) or up to 100 (subs). Only players who turned notifications on, 13+, not banned, at most 2 a day per player and outside their quiet hours receive it; every other send is logged as suppressed with its reason.
-                CreateWorldExperienceNotificationResponse result = apiInstance.CreateWorldExperienceNotification(experienceId);
+                CreateWorldExperienceNotificationResponse result = apiInstance.CreateWorldExperienceNotification(experienceId, createWorldExperienceNotificationRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -310,6 +315,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceNotificationRequest** | **CreateWorldExperienceNotificationRequest**|  | [optional] 
 
 ### Return type
 
@@ -321,7 +327,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -498,7 +504,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperiencenotificationreport"></a>
 # **GetWorldExperienceNotificationReport**
-> GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport (string experienceId)
+> GetWorldExperienceNotificationReportResponse GetWorldExperienceNotificationReport (string experienceId, decimal? days = null)
 
 Sends over the last N days (default 7, max 90): delivered, suppressed by reason, per template, and how many players turned notifications on.
 
@@ -523,11 +529,12 @@ namespace Example
 
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var days = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Sends over the last N days (default 7, max 90): delivered, suppressed by reason, per template, and how many players turned notifications on.
-                GetWorldExperienceNotificationReportResponse result = apiInstance.GetWorldExperienceNotificationReport(experienceId);
+                GetWorldExperienceNotificationReportResponse result = apiInstance.GetWorldExperienceNotificationReport(experienceId, days);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -546,6 +553,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **days** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -576,7 +584,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperienceeventupcoming"></a>
 # **ListWorldExperienceEventUpcoming**
-> ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming ()
+> ListWorldExperienceEventUpcomingResponse ListWorldExperienceEventUpcoming (decimal? limit = null)
 
 Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza's \"Coming up\" board.
 
@@ -600,11 +608,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsEngagementApi(config);
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Events across public experiences in the next 7 days (and live now), soonest first — the Carnival Plaza's \"Coming up\" board.
-                ListWorldExperienceEventUpcomingResponse result = apiInstance.ListWorldExperienceEventUpcoming();
+                ListWorldExperienceEventUpcomingResponse result = apiInstance.ListWorldExperienceEventUpcoming(limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -619,7 +628,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1032,7 +1044,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldexperienceexperienceevent"></a>
 # **UpdateWorldExperienceExperienceEvent**
-> WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent (string experienceId, string eventId)
+> WorldExperienceExperienceEventResponse UpdateWorldExperienceExperienceEvent (string experienceId, string eventId, UpdateWorldExperienceExperienceEventRequest updateWorldExperienceExperienceEventRequest = null)
 
 Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
 
@@ -1058,11 +1070,12 @@ namespace Example
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
             var eventId = "eventId_example";  // string | 
+            var updateWorldExperienceExperienceEventRequest = new UpdateWorldExperienceExperienceEventRequest(); // UpdateWorldExperienceExperienceEventRequest |  (optional) 
 
             try
             {
                 // Change an event. A started event keeps its start; a new start time earns RSVPs a new reminder.
-                WorldExperienceExperienceEventResponse result = apiInstance.UpdateWorldExperienceExperienceEvent(experienceId, eventId);
+                WorldExperienceExperienceEventResponse result = apiInstance.UpdateWorldExperienceExperienceEvent(experienceId, eventId, updateWorldExperienceExperienceEventRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1082,6 +1095,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **eventId** | **string**|  | 
+ **updateWorldExperienceExperienceEventRequest** | **UpdateWorldExperienceExperienceEventRequest**|  | [optional] 
 
 ### Return type
 
@@ -1093,7 +1107,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1112,7 +1126,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencenotificationoptin"></a>
 # **UpdateWorldExperienceNotificationOptIn**
-> GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn (string experienceId)
+> GetWorldExperienceNotificationOptInResponse UpdateWorldExperienceNotificationOptIn (string experienceId, UpdateWorldExperienceNotificationOptInRequest updateWorldExperienceNotificationOptInRequest = null)
 
 Turn this experience's notifications on or off for you. timeZone (IANA) keeps them out of your night.
 
@@ -1137,11 +1151,12 @@ namespace Example
 
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceNotificationOptInRequest = new UpdateWorldExperienceNotificationOptInRequest(); // UpdateWorldExperienceNotificationOptInRequest |  (optional) 
 
             try
             {
                 // Turn this experience's notifications on or off for you. timeZone (IANA) keeps them out of your night.
-                GetWorldExperienceNotificationOptInResponse result = apiInstance.UpdateWorldExperienceNotificationOptIn(experienceId);
+                GetWorldExperienceNotificationOptInResponse result = apiInstance.UpdateWorldExperienceNotificationOptIn(experienceId, updateWorldExperienceNotificationOptInRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1160,6 +1175,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceNotificationOptInRequest** | **UpdateWorldExperienceNotificationOptInRequest**|  | [optional] 
 
 ### Return type
 
@@ -1171,7 +1187,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1190,7 +1206,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencenotificationtemplate"></a>
 # **UpdateWorldExperienceNotificationTemplate**
-> UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate (string experienceId, string key)
+> UpdateWorldExperienceNotificationTemplateResponse UpdateWorldExperienceNotificationTemplate (string experienceId, string key, CreateGroupBuyMessageRequest createGroupBuyMessageRequest = null)
 
 Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
 
@@ -1216,11 +1232,12 @@ namespace Example
             var apiInstance = new WorldsEngagementApi(config);
             var experienceId = "experienceId_example";  // string | 
             var key = "key_example";  // string | 
+            var createGroupBuyMessageRequest = new CreateGroupBuyMessageRequest(); // CreateGroupBuyMessageRequest |  (optional) 
 
             try
             {
                 // Create or reword a template. Clean words with no link are approved at once; anything the text filter flags, or any link, waits for Crossly review (24 h). Rewording re-reviews.
-                UpdateWorldExperienceNotificationTemplateResponse result = apiInstance.UpdateWorldExperienceNotificationTemplate(experienceId, key);
+                UpdateWorldExperienceNotificationTemplateResponse result = apiInstance.UpdateWorldExperienceNotificationTemplate(experienceId, key, createGroupBuyMessageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1240,6 +1257,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **key** | **string**|  | 
+ **createGroupBuyMessageRequest** | **CreateGroupBuyMessageRequest**|  | [optional] 
 
 ### Return type
 
@@ -1251,7 +1269,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

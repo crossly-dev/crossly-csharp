@@ -39,16 +39,16 @@ namespace net.crossly.Model
         public enum SourceEnum
         {
             /// <summary>
-            /// Enum Vault for value: vault
-            /// </summary>
-            [EnumMember(Value = "vault")]
-            Vault = 1,
-
-            /// <summary>
             /// Enum Listing for value: listing
             /// </summary>
             [EnumMember(Value = "listing")]
-            Listing = 2
+            Listing = 1,
+
+            /// <summary>
+            /// Enum Vault for value: vault
+            /// </summary>
+            [EnumMember(Value = "vault")]
+            Vault = 2
 
         }
 

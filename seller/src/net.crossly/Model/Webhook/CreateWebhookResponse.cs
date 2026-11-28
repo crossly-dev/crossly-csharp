@@ -32,6 +32,68 @@ namespace net.crossly.Model
     public partial class CreateWebhookResponse : IEquatable<CreateWebhookResponse>, IValidatableObject
     {
         /// <summary>
+        /// Defines Kind
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum KindEnum
+        {
+            /// <summary>
+            /// Enum Json for value: json
+            /// </summary>
+            [EnumMember(Value = "json")]
+            Json = 1,
+
+            /// <summary>
+            /// Enum Teams for value: teams
+            /// </summary>
+            [EnumMember(Value = "teams")]
+            Teams = 2,
+
+            /// <summary>
+            /// Enum Discord for value: discord
+            /// </summary>
+            [EnumMember(Value = "discord")]
+            Discord = 3,
+
+            /// <summary>
+            /// Enum Slack for value: slack
+            /// </summary>
+            [EnumMember(Value = "slack")]
+            Slack = 4,
+
+            /// <summary>
+            /// Enum Telegram for value: telegram
+            /// </summary>
+            [EnumMember(Value = "telegram")]
+            Telegram = 5,
+
+            /// <summary>
+            /// Enum GoogleChat for value: google_chat
+            /// </summary>
+            [EnumMember(Value = "google_chat")]
+            GoogleChat = 6,
+
+            /// <summary>
+            /// Enum Mattermost for value: mattermost
+            /// </summary>
+            [EnumMember(Value = "mattermost")]
+            Mattermost = 7,
+
+            /// <summary>
+            /// Enum Zapier for value: zapier
+            /// </summary>
+            [EnumMember(Value = "zapier")]
+            Zapier = 8
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public KindEnum Kind { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateWebhookResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,26 +101,36 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateWebhookResponse" /> class.
         /// </summary>
-        /// <param name="secret">secret (required).</param>
+        /// <param name="secret">secret.</param>
         /// <param name="id">id (required).</param>
+        /// <param name="name">name.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="description">description.</param>
+        /// <param name="storefrontId">storefrontId.</param>
+        /// <param name="kind">kind (required).</param>
+        /// <param name="enabled">enabled (required).</param>
+        /// <param name="consecutiveFailures">consecutiveFailures (required).</param>
+        /// <param name="lastError">lastError.</param>
+        /// <param name="lastErrorAt">lastErrorAt.</param>
         /// <param name="events">events (required).</param>
         /// <param name="url">url (required).</param>
-        /// <param name="enabled">enabled (required).</param>
-        public CreateWebhookResponse(string secret = default(string), string id = default(string), DateTime createdAt = default(DateTime), string description = default(string), List<string> events = default(List<string>), string url = default(string), bool enabled = default(bool))
+        /// <param name="lastDeliveryAt">lastDeliveryAt.</param>
+        /// <param name="oauthAppId">oauthAppId.</param>
+        /// <param name="destination">destination (required).</param>
+        /// <param name="eventDelivery">eventDelivery (required).</param>
+        /// <param name="hasBotToken">hasBotToken (required).</param>
+        /// <param name="headerNames">json: the custom header NAMES (values are credentials and never leave the api). (required).</param>
+        public CreateWebhookResponse(string secret = default(string), string id = default(string), string name = default(string), DateTime createdAt = default(DateTime), string description = default(string), string storefrontId = default(string), KindEnum kind = default(KindEnum), bool enabled = default(bool), decimal consecutiveFailures = default(decimal), string lastError = default(string), DateTime? lastErrorAt = default(DateTime?), List<string> events = default(List<string>), string url = default(string), DateTime? lastDeliveryAt = default(DateTime?), string oauthAppId = default(string), Dictionary<string, Object> destination = default(Dictionary<string, Object>), bool eventDelivery = default(bool), bool hasBotToken = default(bool), List<string> headerNames = default(List<string>))
         {
-            // to ensure "secret" is required (not null)
-            if (secret == null) {
-                throw new ArgumentNullException("secret is a required property for CreateWebhookResponse and cannot be null");
-            }
-            this.Secret = secret;
             // to ensure "id" is required (not null)
             if (id == null) {
                 throw new ArgumentNullException("id is a required property for CreateWebhookResponse and cannot be null");
             }
             this.Id = id;
             this.CreatedAt = createdAt;
+            this.Kind = kind;
+            this.Enabled = enabled;
+            this.ConsecutiveFailures = consecutiveFailures;
             // to ensure "events" is required (not null)
             if (events == null) {
                 throw new ArgumentNullException("events is a required property for CreateWebhookResponse and cannot be null");
@@ -69,14 +141,32 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("url is a required property for CreateWebhookResponse and cannot be null");
             }
             this.Url = url;
-            this.Enabled = enabled;
+            // to ensure "destination" is required (not null)
+            if (destination == null) {
+                throw new ArgumentNullException("destination is a required property for CreateWebhookResponse and cannot be null");
+            }
+            this.Destination = destination;
+            this.EventDelivery = eventDelivery;
+            this.HasBotToken = hasBotToken;
+            // to ensure "headerNames" is required (not null)
+            if (headerNames == null) {
+                throw new ArgumentNullException("headerNames is a required property for CreateWebhookResponse and cannot be null");
+            }
+            this.HeaderNames = headerNames;
+            this.Secret = secret;
+            this.Name = name;
             this.Description = description;
+            this.StorefrontId = storefrontId;
+            this.LastError = lastError;
+            this.LastErrorAt = lastErrorAt;
+            this.LastDeliveryAt = lastDeliveryAt;
+            this.OauthAppId = oauthAppId;
         }
 
         /// <summary>
         /// Gets or Sets Secret
         /// </summary>
-        [DataMember(Name = "secret", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "secret", EmitDefaultValue = true)]
         public string Secret { get; set; }
 
         /// <summary>
@@ -84,6 +174,12 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -98,6 +194,36 @@ namespace net.crossly.Model
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Enabled
+        /// </summary>
+        [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
+        public bool Enabled { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConsecutiveFailures
+        /// </summary>
+        [DataMember(Name = "consecutiveFailures", IsRequired = true, EmitDefaultValue = false)]
+        public decimal ConsecutiveFailures { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastError
+        /// </summary>
+        [DataMember(Name = "lastError", EmitDefaultValue = true)]
+        public string LastError { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastErrorAt
+        /// </summary>
+        [DataMember(Name = "lastErrorAt", EmitDefaultValue = true)]
+        public DateTime? LastErrorAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Events
         /// </summary>
         [DataMember(Name = "events", IsRequired = true, EmitDefaultValue = false)]
@@ -110,10 +236,41 @@ namespace net.crossly.Model
         public string Url { get; set; }
 
         /// <summary>
-        /// Gets or Sets Enabled
+        /// Gets or Sets LastDeliveryAt
         /// </summary>
-        [DataMember(Name = "enabled", IsRequired = true, EmitDefaultValue = true)]
-        public bool Enabled { get; set; }
+        [DataMember(Name = "lastDeliveryAt", EmitDefaultValue = true)]
+        public DateTime? LastDeliveryAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OauthAppId
+        /// </summary>
+        [DataMember(Name = "oauthAppId", EmitDefaultValue = true)]
+        public string OauthAppId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Destination
+        /// </summary>
+        [DataMember(Name = "destination", IsRequired = true, EmitDefaultValue = false)]
+        public Dictionary<string, Object> Destination { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EventDelivery
+        /// </summary>
+        [DataMember(Name = "eventDelivery", IsRequired = true, EmitDefaultValue = true)]
+        public bool EventDelivery { get; set; }
+
+        /// <summary>
+        /// Gets or Sets HasBotToken
+        /// </summary>
+        [DataMember(Name = "hasBotToken", IsRequired = true, EmitDefaultValue = true)]
+        public bool HasBotToken { get; set; }
+
+        /// <summary>
+        /// json: the custom header NAMES (values are credentials and never leave the api).
+        /// </summary>
+        /// <value>json: the custom header NAMES (values are credentials and never leave the api).</value>
+        [DataMember(Name = "headerNames", IsRequired = true, EmitDefaultValue = false)]
+        public List<string> HeaderNames { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,11 +282,23 @@ namespace net.crossly.Model
             sb.Append("class CreateWebhookResponse {\n");
             sb.Append("  Secret: ").Append(Secret).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
+            sb.Append("  ConsecutiveFailures: ").Append(ConsecutiveFailures).Append("\n");
+            sb.Append("  LastError: ").Append(LastError).Append("\n");
+            sb.Append("  LastErrorAt: ").Append(LastErrorAt).Append("\n");
             sb.Append("  Events: ").Append(Events).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
+            sb.Append("  LastDeliveryAt: ").Append(LastDeliveryAt).Append("\n");
+            sb.Append("  OauthAppId: ").Append(OauthAppId).Append("\n");
+            sb.Append("  Destination: ").Append(Destination).Append("\n");
+            sb.Append("  EventDelivery: ").Append(EventDelivery).Append("\n");
+            sb.Append("  HasBotToken: ").Append(HasBotToken).Append("\n");
+            sb.Append("  HeaderNames: ").Append(HeaderNames).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -176,6 +345,11 @@ namespace net.crossly.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -184,6 +358,33 @@ namespace net.crossly.Model
                     this.Description == input.Description ||
                     (this.Description != null &&
                     this.Description.Equals(input.Description))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.Kind == input.Kind ||
+                    this.Kind.Equals(input.Kind)
+                ) && 
+                (
+                    this.Enabled == input.Enabled ||
+                    this.Enabled.Equals(input.Enabled)
+                ) && 
+                (
+                    this.ConsecutiveFailures == input.ConsecutiveFailures ||
+                    this.ConsecutiveFailures.Equals(input.ConsecutiveFailures)
+                ) && 
+                (
+                    this.LastError == input.LastError ||
+                    (this.LastError != null &&
+                    this.LastError.Equals(input.LastError))
+                ) && 
+                (
+                    this.LastErrorAt == input.LastErrorAt ||
+                    (this.LastErrorAt != null &&
+                    this.LastErrorAt.Equals(input.LastErrorAt))
                 ) && 
                 (
                     this.Events == input.Events ||
@@ -197,8 +398,34 @@ namespace net.crossly.Model
                     this.Url.Equals(input.Url))
                 ) && 
                 (
-                    this.Enabled == input.Enabled ||
-                    this.Enabled.Equals(input.Enabled)
+                    this.LastDeliveryAt == input.LastDeliveryAt ||
+                    (this.LastDeliveryAt != null &&
+                    this.LastDeliveryAt.Equals(input.LastDeliveryAt))
+                ) && 
+                (
+                    this.OauthAppId == input.OauthAppId ||
+                    (this.OauthAppId != null &&
+                    this.OauthAppId.Equals(input.OauthAppId))
+                ) && 
+                (
+                    this.Destination == input.Destination ||
+                    this.Destination != null &&
+                    input.Destination != null &&
+                    this.Destination.SequenceEqual(input.Destination)
+                ) && 
+                (
+                    this.EventDelivery == input.EventDelivery ||
+                    this.EventDelivery.Equals(input.EventDelivery)
+                ) && 
+                (
+                    this.HasBotToken == input.HasBotToken ||
+                    this.HasBotToken.Equals(input.HasBotToken)
+                ) && 
+                (
+                    this.HeaderNames == input.HeaderNames ||
+                    this.HeaderNames != null &&
+                    input.HeaderNames != null &&
+                    this.HeaderNames.SequenceEqual(input.HeaderNames)
                 );
         }
 
@@ -219,6 +446,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
+                }
                 if (this.CreatedAt != null)
                 {
                     hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
@@ -226,6 +457,21 @@ namespace net.crossly.Model
                 if (this.Description != null)
                 {
                     hashCode = (hashCode * 59) + this.Description.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
+                hashCode = (hashCode * 59) + this.ConsecutiveFailures.GetHashCode();
+                if (this.LastError != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastError.GetHashCode();
+                }
+                if (this.LastErrorAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastErrorAt.GetHashCode();
                 }
                 if (this.Events != null)
                 {
@@ -235,7 +481,24 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Url.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Enabled.GetHashCode();
+                if (this.LastDeliveryAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastDeliveryAt.GetHashCode();
+                }
+                if (this.OauthAppId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OauthAppId.GetHashCode();
+                }
+                if (this.Destination != null)
+                {
+                    hashCode = (hashCode * 59) + this.Destination.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.EventDelivery.GetHashCode();
+                hashCode = (hashCode * 59) + this.HasBotToken.GetHashCode();
+                if (this.HeaderNames != null)
+                {
+                    hashCode = (hashCode * 59) + this.HeaderNames.GetHashCode();
+                }
                 return hashCode;
             }
         }

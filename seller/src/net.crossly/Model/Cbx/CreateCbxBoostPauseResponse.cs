@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateCbxBoostPauseResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public CreateCbxBoostPauseResponse(CreateCbxBoostPauseResponseData data = default(CreateCbxBoostPauseResponseData))
+        public CreateCbxBoostPauseResponse(CreateDiscountCodePauseAllRequest data = default(CreateDiscountCodePauseAllRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public CreateCbxBoostPauseResponseData Data { get; set; }
+        public CreateDiscountCodePauseAllRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

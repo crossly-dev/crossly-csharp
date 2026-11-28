@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Live for value: live
-            /// </summary>
-            [EnumMember(Value = "live")]
-            Live = 1,
-
-            /// <summary>
             /// Enum Expired for value: expired
             /// </summary>
             [EnumMember(Value = "expired")]
-            Expired = 2,
+            Expired = 1,
+
+            /// <summary>
+            /// Enum Live for value: live
+            /// </summary>
+            [EnumMember(Value = "live")]
+            Live = 2,
 
             /// <summary>
             /// Enum Redeemed for value: redeemed

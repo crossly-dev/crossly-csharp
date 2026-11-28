@@ -88,58 +88,58 @@ namespace net.crossly.Model
             Data = 1,
 
             /// <summary>
+            /// Enum Storefront for value: storefront
+            /// </summary>
+            [EnumMember(Value = "storefront")]
+            Storefront = 2,
+
+            /// <summary>
             /// Enum Listings for value: listings
             /// </summary>
             [EnumMember(Value = "listings")]
-            Listings = 2,
+            Listings = 3,
 
             /// <summary>
             /// Enum Inventory for value: inventory
             /// </summary>
             [EnumMember(Value = "inventory")]
-            Inventory = 3,
+            Inventory = 4,
 
             /// <summary>
             /// Enum Orders for value: orders
             /// </summary>
             [EnumMember(Value = "orders")]
-            Orders = 4,
+            Orders = 5,
 
             /// <summary>
             /// Enum Shipping for value: shipping
             /// </summary>
             [EnumMember(Value = "shipping")]
-            Shipping = 5,
+            Shipping = 6,
 
             /// <summary>
             /// Enum Account for value: account
             /// </summary>
             [EnumMember(Value = "account")]
-            Account = 6,
+            Account = 7,
 
             /// <summary>
             /// Enum Offers for value: offers
             /// </summary>
             [EnumMember(Value = "offers")]
-            Offers = 7,
+            Offers = 8,
 
             /// <summary>
             /// Enum Sales for value: sales
             /// </summary>
             [EnumMember(Value = "sales")]
-            Sales = 8,
+            Sales = 9,
 
             /// <summary>
             /// Enum Inbox for value: inbox
             /// </summary>
             [EnumMember(Value = "inbox")]
-            Inbox = 9,
-
-            /// <summary>
-            /// Enum Storefront for value: storefront
-            /// </summary>
-            [EnumMember(Value = "storefront")]
-            Storefront = 10,
+            Inbox = 10,
 
             /// <summary>
             /// Enum Notify for value: notify
@@ -309,16 +309,16 @@ namespace net.crossly.Model
         public enum StatusEnum
         {
             /// <summary>
-            /// Enum Ready for value: ready
-            /// </summary>
-            [EnumMember(Value = "ready")]
-            Ready = 1,
-
-            /// <summary>
             /// Enum Beta for value: beta
             /// </summary>
             [EnumMember(Value = "beta")]
-            Beta = 2
+            Beta = 1,
+
+            /// <summary>
+            /// Enum Ready for value: ready
+            /// </summary>
+            [EnumMember(Value = "ready")]
+            Ready = 2
 
         }
 

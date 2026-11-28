@@ -42,13 +42,13 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="variantId">variantId.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="condition">condition.</param>
         /// <param name="grading">grading.</param>
         /// <param name="costBasisCents">costBasisCents.</param>
         /// <param name="title">title.</param>
         /// <param name="listingId">listingId.</param>
-        /// <param name="variantId">variantId.</param>
         /// <param name="batchId">batchId (required).</param>
         /// <param name="error">error.</param>
         /// <param name="position">position (required).</param>
@@ -71,7 +71,7 @@ namespace net.crossly.Model
         /// <param name="magicRunId">magicRunId.</param>
         /// <param name="magicDraftId">magicDraftId.</param>
         /// <param name="scanCaptureId">scanCaptureId.</param>
-        public CreateBulkBatchItemResponse(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), decimal quantity = default(decimal), string condition = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), decimal? costBasisCents = default(decimal?), string title = default(string), string listingId = default(string), string variantId = default(string), string batchId = default(string), string error = default(string), decimal position = default(decimal), string identifyRoute = default(string), string sourceImageUrl = default(string), List<string> imageUrls = default(List<string>), CreateBulkBatchItemResponseCellRegion cellRegion = default(CreateBulkBatchItemResponseCellRegion), string cropUrl = default(string), string backImageUrl = default(string), string backCropUrl = default(string), string anchorKind = default(string), string anchorValue = default(string), string skuId = default(string), decimal? confidence = default(decimal?), decimal? priceSuggestedCents = default(decimal?), decimal? priceCents = default(decimal?), string priceBasis = default(string), decimal? priceSampleSize = default(decimal?), string matchSource = default(string), string magicRunId = default(string), string magicDraftId = default(string), string scanCaptureId = default(string))
+        public CreateBulkBatchItemResponse(string id = default(string), DateTime createdAt = default(DateTime), string status = default(string), string variantId = default(string), decimal quantity = default(decimal), string condition = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), decimal? costBasisCents = default(decimal?), string title = default(string), string listingId = default(string), string batchId = default(string), string error = default(string), decimal position = default(decimal), string identifyRoute = default(string), string sourceImageUrl = default(string), List<string> imageUrls = default(List<string>), CreateBulkBatchItemResponseCellRegion cellRegion = default(CreateBulkBatchItemResponseCellRegion), string cropUrl = default(string), string backImageUrl = default(string), string backCropUrl = default(string), string anchorKind = default(string), string anchorValue = default(string), string skuId = default(string), decimal? confidence = default(decimal?), decimal? priceSuggestedCents = default(decimal?), decimal? priceCents = default(decimal?), string priceBasis = default(string), decimal? priceSampleSize = default(decimal?), string matchSource = default(string), string magicRunId = default(string), string magicDraftId = default(string), string scanCaptureId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -101,12 +101,12 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("imageUrls is a required property for CreateBulkBatchItemResponse and cannot be null");
             }
             this.ImageUrls = imageUrls;
+            this.VariantId = variantId;
             this.Condition = condition;
             this.Grading = grading;
             this.CostBasisCents = costBasisCents;
             this.Title = title;
             this.ListingId = listingId;
-            this.VariantId = variantId;
             this.Error = error;
             this.IdentifyRoute = identifyRoute;
             this.CellRegion = cellRegion;
@@ -146,6 +146,12 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or Sets VariantId
+        /// </summary>
+        [DataMember(Name = "variantId", EmitDefaultValue = true)]
+        public string VariantId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = false)]
@@ -180,12 +186,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "listingId", EmitDefaultValue = true)]
         public string ListingId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VariantId
-        /// </summary>
-        [DataMember(Name = "variantId", EmitDefaultValue = true)]
-        public string VariantId { get; set; }
 
         /// <summary>
         /// Gets or Sets BatchId
@@ -330,13 +330,13 @@ namespace net.crossly.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  VariantId: ").Append(VariantId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Condition: ").Append(Condition).Append("\n");
             sb.Append("  Grading: ").Append(Grading).Append("\n");
             sb.Append("  CostBasisCents: ").Append(CostBasisCents).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  ListingId: ").Append(ListingId).Append("\n");
-            sb.Append("  VariantId: ").Append(VariantId).Append("\n");
             sb.Append("  BatchId: ").Append(BatchId).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  Position: ").Append(Position).Append("\n");
@@ -410,6 +410,11 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.VariantId == input.VariantId ||
+                    (this.VariantId != null &&
+                    this.VariantId.Equals(input.VariantId))
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 ) && 
@@ -437,11 +442,6 @@ namespace net.crossly.Model
                     this.ListingId == input.ListingId ||
                     (this.ListingId != null &&
                     this.ListingId.Equals(input.ListingId))
-                ) && 
-                (
-                    this.VariantId == input.VariantId ||
-                    (this.VariantId != null &&
-                    this.VariantId.Equals(input.VariantId))
                 ) && 
                 (
                     this.BatchId == input.BatchId ||
@@ -576,6 +576,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                if (this.VariantId != null)
+                {
+                    hashCode = (hashCode * 59) + this.VariantId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.Condition != null)
                 {
@@ -596,10 +600,6 @@ namespace net.crossly.Model
                 if (this.ListingId != null)
                 {
                     hashCode = (hashCode * 59) + this.ListingId.GetHashCode();
-                }
-                if (this.VariantId != null)
-                {
-                    hashCode = (hashCode * 59) + this.VariantId.GetHashCode();
                 }
                 if (this.BatchId != null)
                 {

@@ -16,10 +16,12 @@ Method | HTTP request | Description
 [**CreateOrderDispute**](OrdersApi.md#createorderdispute) | **POST** /v1/orders/{id}/dispute | Flag an order as disputed.
 [**CreateOrderImport**](OrdersApi.md#createorderimport) | **POST** /v1/orders/import | Manually (re-)pull one or more connected platforms&#39; order history for a day-window.
 [**CreateOrderLabel**](OrdersApi.md#createorderlabel) | **POST** /v1/orders/{id}/label | Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
+[**CreateOrderLabelPrint**](OrdersApi.md#createorderlabelprint) | **POST** /v1/orders/{id}/label/print | Send the label to your print agent: mode agent (jobId), pdf (url, reason no_agent | offline | not_capable) or skipped (already_printed; pass reprint true to print again).
 [**CreateOrderLabelVoid**](OrdersApi.md#createorderlabelvoid) | **POST** /v1/orders/{id}/label/void | Void a Crossly Shipping label and refund it to the shipping wallet.
 [**CreateOrderLinkListing**](OrdersApi.md#createorderlinklisting) | **POST** /v1/orders/{id}/link-listing | Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
 [**CreateOrderMessage**](OrdersApi.md#createordermessage) | **POST** /v1/orders/{id}/message | Message the order&#39;s buyer on the marketplace.
 [**CreateOrderOrderChat**](OrdersApi.md#createorderorderchat) | **POST** /v1/orders/{id}/order-chat | Send a message to the order&#39;s buyer chat on the marketplace. Mirrored into the Crossly inbox.
+[**CreateOrderPackScan**](OrdersApi.md#createorderpackscan) | **POST** /v1/orders/{id}/pack-scan | Check a scanned item against the order being packed: ok true with matchedBy (sku | custom_label | item_id) and expectedQuantity, or ok false with reason (wrong_item | no_item) and the expected item.
 [**CreateOrderPickup**](OrdersApi.md#createorderpickup) | **POST** /v1/orders/pickups | Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
 [**CreateOrderPickupLabel**](OrdersApi.md#createorderpickuplabel) | **POST** /v1/orders/{id}/pickup-label | Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
 [**CreateOrderPlatformLabelPackage**](OrdersApi.md#createorderplatformlabelpackage) | **POST** /v1/orders/{id}/platform-label/package | Save the package (weight oz, box inches) the marketplace prices the label from.
@@ -49,6 +51,7 @@ Method | HTTP request | Description
 [**CreateRentalReleaseDeposit**](OrdersApi.md#createrentalreleasedeposit) | **POST** /v1/rentals/{id}/release-deposit | Release the deposit now, without a claim.
 [**CreateRentalReturned**](OrdersApi.md#createrentalreturned) | **POST** /v1/rentals/{id}/returned | Mark a rental back with you. You then have 3 days to claim damage before the deposit goes back.
 [**CreateRentalShipped**](OrdersApi.md#createrentalshipped) | **POST** /v1/rentals/{id}/shipped | Mark a booked rental shipped, with at least 2 photos of its condition as it leaves (URLs you uploaded) — the evidence any later claim is judged against.
+[**GetDeviceScale**](OrdersApi.md#getdevicescale) | **GET** /v1/devices/scale | Read your USB postal scale: ok true with weightOz and stable, or ok false with reason (no_agent | not_capable | offline | failed | timeout).
 [**GetOrder**](OrdersApi.md#getorder) | **GET** /v1/orders/{id} | Get one order, with its sale price, fees, SKU and line items.
 [**GetOrderCancelEligibility**](OrdersApi.md#getordercanceleligibility) | **GET** /v1/orders/{id}/cancel-eligibility | Whether this order can be cancelled, and which reason codes the marketplace accepts.
 [**GetOrderCount**](OrdersApi.md#getordercount) | **GET** /v1/orders/counts | Tab badge counts by status.
@@ -57,6 +60,7 @@ Method | HTTP request | Description
 [**GetOrderLabelPrint**](OrdersApi.md#getorderlabelprint) | **GET** /v1/orders/{id}/label/print | The order&#39;s shipping label as a PDF sized for printing (cropped, upright, fitted).
 [**GetOrderOrderChat**](OrdersApi.md#getorderorderchat) | **GET** /v1/orders/{id}/order-chat | The order&#39;s buyer chat thread on the marketplace (separate from listing comments): { orderId, platform, messages: [{ id, sender (buyer|seller|platform), body, sentAt, attachments? }], canSend }, oldest message first.
 [**GetOrderPackingSlip**](OrdersApi.md#getorderpackingslip) | **GET** /v1/orders/{id}/packing-slip | Single-order packing slip PDF.
+[**GetOrderPickList**](OrdersApi.md#getorderpicklist) | **GET** /v1/orders/pick-list | The items to pull for a batch of orders, grouped by storage bin: groups[{bin, lines[{orderId, orderNumber, platform, title, sku, quantity, buyer}]}], orderCount, itemCount. orderIds (comma list, at most 500) or every order still to ship; storefrontId for one store; format&#x3D;pdf for the printable list.
 [**GetOrderPlatformLabelOption**](OrdersApi.md#getorderplatformlabeloption) | **GET** /v1/orders/{id}/platform-label/options | What buying a marketplace label offers for this order (weight tiers, mailbox state).
 [**GetOrderPlatformLabelPackingSlip**](OrdersApi.md#getorderplatformlabelpackingslip) | **GET** /v1/orders/{id}/platform-label/packing-slip | A fresh link to the marketplace&#39;s own packing slip PDF.
 [**GetOrderPlatformLabelState**](OrdersApi.md#getorderplatformlabelstate) | **GET** /v1/orders/{id}/platform-label/state | The marketplace&#39;s shipment for an order (package, label, tracking). Records a label found on it.
@@ -66,10 +70,12 @@ Method | HTTP request | Description
 [**GetOrderSalesTax**](OrdersApi.md#getordersalestax) | **GET** /v1/orders/{id}/sales-tax | Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
 [**GetOrderScanForm**](OrdersApi.md#getorderscanform) | **GET** /v1/orders/scan-forms/{id} | One SCAN form; a queued form is re-read from the carrier and its PDF appears once built.
 [**GetOrderShipment**](OrdersApi.md#getordershipment) | **GET** /v1/orders/{id}/shipments | List the parcels an order shipped in.
+[**GetOrderSuggestedParcel**](OrdersApi.md#getordersuggestedparcel) | **GET** /v1/orders/{id}/suggested-parcel | The suggested parcel for this order: source (learned | box | item | none), presetId, presetName, lengthIn, widthIn, heightIn, weightOz, sampleSize.
 [**GetOrderWhatnotPackingSlip**](OrdersApi.md#getorderwhatnotpackingslip) | **GET** /v1/orders/{id}/whatnot/packing-slip | A fresh link to Whatnot&#39;s packing slip PDF.
 [**GetOrderWhatnotShipment**](OrdersApi.md#getorderwhatnotshipment) | **GET** /v1/orders/{id}/whatnot/shipment | Whatnot shipment for an order (package, label, tracking). Records a label found on it.
 [**GetRental**](OrdersApi.md#getrental) | **GET** /v1/rentals/{id} | One rental: its timeline, both sides’ condition photos, payments, extensions and what can be done next.
 [**GetRentalCalendar**](OrdersApi.md#getrentalcalendar) | **GET** /v1/rentals/calendar | Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
+[**GetRentalInventory**](OrdersApi.md#getrentalinventory) | **GET** /v1/rentals/inventory/{inventoryItemId} | An inventory item’s rentals: units out with a renter now (reserved on the item), upcoming bookings and returns waiting for inspection.
 [**ListLayaways**](OrdersApi.md#listlayaways) | **GET** /v1/layaways | Your items on layaway (active and paid off). Do not ship an active one: its order moves to needs_fulfillment when paid in full.
 [**ListLiveShipments**](OrdersApi.md#listliveshipments) | **GET** /v1/live-shipments | Your show boxes: every buyer’s orders from one live show, to ship together.
 [**ListOrderPickupReady**](OrdersApi.md#listorderpickupready) | **GET** /v1/orders/pickup-ready | Orders with a purchased Crossly Shipping label a courier can collect or a SCAN form can cover, grouped by carrier.
@@ -81,6 +87,8 @@ Method | HTTP request | Description
 [**ListRentalHistory**](OrdersApi.md#listrentalhistory) | **GET** /v1/rentals/history | Active rentals and history, filtered by view, status, dates, item or a search.
 [**ListRentals**](OrdersApi.md#listrentals) | **GET** /v1/rentals | Rentals of your items, with the ship-to and the outbound label.
 [**UpdateOrder**](OrdersApi.md#updateorder) | **PATCH** /v1/orders/{id} | Update order (status, notes, tracking).
+[**UpdateOrderAssignee**](OrdersApi.md#updateorderassignee) | **PATCH** /v1/orders/assignee | Assign many orders to a teammate, round robin across several, or unassign them (null).
+[**UpdateOrderAssigneeById**](OrdersApi.md#updateorderassigneebyid) | **PATCH** /v1/orders/{id}/assignee | Assign one order to a teammate, or unassign it (null).
 
 
 <a name="createliveshipmentlabel"></a>
@@ -163,7 +171,7 @@ Name | Type | Description  | Notes
 
 <a name="createliveshipmentship"></a>
 # **CreateLiveShipmentShip**
-> CreateLiveShipmentShipResponse CreateLiveShipmentShip (string id)
+> CreateLiveShipmentShipResponse CreateLiveShipmentShip (string id, CreateLiveShipmentShipRequest createLiveShipmentShipRequest)
 
 Ship a show box with your own label: every order is marked shipped with this tracking and the buyer’s extra postage is refunded.
 
@@ -188,11 +196,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
+            var createLiveShipmentShipRequest = new CreateLiveShipmentShipRequest(); // CreateLiveShipmentShipRequest | 
 
             try
             {
                 // Ship a show box with your own label: every order is marked shipped with this tracking and the buyer’s extra postage is refunded.
-                CreateLiveShipmentShipResponse result = apiInstance.CreateLiveShipmentShip(id);
+                CreateLiveShipmentShipResponse result = apiInstance.CreateLiveShipmentShip(id, createLiveShipmentShipRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -211,6 +220,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createLiveShipmentShipRequest** | **CreateLiveShipmentShipRequest**|  | 
 
 ### Return type
 
@@ -222,7 +232,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -241,7 +251,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderbulkdelete"></a>
 # **CreateOrderBulkDelete**
-> CreateOrderBulkDeleteResponse CreateOrderBulkDelete ()
+> CreateOrderBulkDeleteResponse CreateOrderBulkDelete (CreateOrderBulkDeleteRequest createOrderBulkDeleteRequest)
 
 Bulk soft- or hard-delete orders by id.
 
@@ -265,11 +275,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderBulkDeleteRequest = new CreateOrderBulkDeleteRequest(); // CreateOrderBulkDeleteRequest | 
 
             try
             {
                 // Bulk soft- or hard-delete orders by id.
-                CreateOrderBulkDeleteResponse result = apiInstance.CreateOrderBulkDelete();
+                CreateOrderBulkDeleteResponse result = apiInstance.CreateOrderBulkDelete(createOrderBulkDeleteRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -284,7 +295,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderBulkDeleteRequest** | **CreateOrderBulkDeleteRequest**|  | 
 
 ### Return type
 
@@ -296,7 +310,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -315,7 +329,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderbulkexport"></a>
 # **CreateOrderBulkExport**
-> string CreateOrderBulkExport ()
+> string CreateOrderBulkExport (CreateOrderBulkExportRequest createOrderBulkExportRequest)
 
 Bulk export selected orders as CSV.
 
@@ -339,11 +353,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderBulkExportRequest = new CreateOrderBulkExportRequest(); // CreateOrderBulkExportRequest | 
 
             try
             {
                 // Bulk export selected orders as CSV.
-                string result = apiInstance.CreateOrderBulkExport();
+                string result = apiInstance.CreateOrderBulkExport(createOrderBulkExportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -358,7 +373,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderBulkExportRequest** | **CreateOrderBulkExportRequest**|  | 
 
 ### Return type
 
@@ -370,7 +388,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -389,7 +407,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderbulkmarkdisputed"></a>
 # **CreateOrderBulkMarkDisputed**
-> UpdatedResponse CreateOrderBulkMarkDisputed ()
+> UpdatedResponse CreateOrderBulkMarkDisputed (CreateOrderBulkMarkDisputedRequest createOrderBulkMarkDisputedRequest)
 
 Bulk mark orders as disputed with a shared reason.
 
@@ -413,11 +431,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderBulkMarkDisputedRequest = new CreateOrderBulkMarkDisputedRequest(); // CreateOrderBulkMarkDisputedRequest | 
 
             try
             {
                 // Bulk mark orders as disputed with a shared reason.
-                UpdatedResponse result = apiInstance.CreateOrderBulkMarkDisputed();
+                UpdatedResponse result = apiInstance.CreateOrderBulkMarkDisputed(createOrderBulkMarkDisputedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -432,7 +451,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderBulkMarkDisputedRequest** | **CreateOrderBulkMarkDisputedRequest**|  | 
 
 ### Return type
 
@@ -444,7 +466,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -463,7 +485,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderbulkmarkshipped"></a>
 # **CreateOrderBulkMarkShipped**
-> CreateOrderBulkMarkShippedResponse CreateOrderBulkMarkShipped ()
+> CreateOrderBulkMarkShippedResponse CreateOrderBulkMarkShipped (CreateOrderBulkMarkShippedRequest createOrderBulkMarkShippedRequest)
 
 Bulk flip status=shipped, clear the reserved-stock marker, and notify each platform.
 
@@ -487,11 +509,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderBulkMarkShippedRequest = new CreateOrderBulkMarkShippedRequest(); // CreateOrderBulkMarkShippedRequest | 
 
             try
             {
                 // Bulk flip status=shipped, clear the reserved-stock marker, and notify each platform.
-                CreateOrderBulkMarkShippedResponse result = apiInstance.CreateOrderBulkMarkShipped();
+                CreateOrderBulkMarkShippedResponse result = apiInstance.CreateOrderBulkMarkShipped(createOrderBulkMarkShippedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -506,7 +529,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderBulkMarkShippedRequest** | **CreateOrderBulkMarkShippedRequest**|  | 
 
 ### Return type
 
@@ -518,7 +544,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -537,7 +563,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderbulkpackingslip"></a>
 # **CreateOrderBulkPackingSlip**
-> System.IO.Stream CreateOrderBulkPackingSlip ()
+> System.IO.Stream CreateOrderBulkPackingSlip (CreateOrderBulkExportRequest createOrderBulkExportRequest)
 
 Bulk packing slips PDF.
 
@@ -561,11 +587,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderBulkExportRequest = new CreateOrderBulkExportRequest(); // CreateOrderBulkExportRequest | 
 
             try
             {
                 // Bulk packing slips PDF.
-                System.IO.Stream result = apiInstance.CreateOrderBulkPackingSlip();
+                System.IO.Stream result = apiInstance.CreateOrderBulkPackingSlip(createOrderBulkExportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -580,7 +607,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderBulkExportRequest** | **CreateOrderBulkExportRequest**|  | 
 
 ### Return type
 
@@ -592,7 +622,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/pdf, application/json
 
 
@@ -611,7 +641,7 @@ This endpoint does not need any parameter.
 
 <a name="createordercancel"></a>
 # **CreateOrderCancel**
-> CreateOrderCancelResponse CreateOrderCancel (Guid id)
+> CreateOrderCancelResponse CreateOrderCancel (Guid id, CreateOrderCancelRequest createOrderCancelRequest = null)
 
 Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
 
@@ -636,11 +666,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderCancelRequest = new CreateOrderCancelRequest(); // CreateOrderCancelRequest |  (optional) 
 
             try
             {
                 // Cancel an order before it ships. Crossly-marketplace orders refund the buyer (also needs orders:refund) and restock; crossposted orders go to the marketplace, or fail not_supported_on_platform (recordOnly: true records a cancel made on the marketplace). Fires order.cancelled.
-                CreateOrderCancelResponse result = apiInstance.CreateOrderCancel(id);
+                CreateOrderCancelResponse result = apiInstance.CreateOrderCancel(id, createOrderCancelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -659,6 +690,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderCancelRequest** | **CreateOrderCancelRequest**|  | [optional] 
 
 ### Return type
 
@@ -670,7 +702,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -689,7 +721,7 @@ Name | Type | Description  | Notes
 
 <a name="createordercorrecttracking"></a>
 # **CreateOrderCorrectTracking**
-> CreateOrderCorrectTrackingResponse CreateOrderCorrectTracking (Guid id)
+> CreateOrderCorrectTrackingResponse CreateOrderCorrectTracking (Guid id, CreateOrderCorrectTrackingRequest createOrderCorrectTrackingRequest = null)
 
 Correct a wrong tracking number the marketplace already holds.
 
@@ -716,11 +748,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderCorrectTrackingRequest = new CreateOrderCorrectTrackingRequest(); // CreateOrderCorrectTrackingRequest |  (optional) 
 
             try
             {
                 // Correct a wrong tracking number the marketplace already holds.
-                CreateOrderCorrectTrackingResponse result = apiInstance.CreateOrderCorrectTracking(id);
+                CreateOrderCorrectTrackingResponse result = apiInstance.CreateOrderCorrectTracking(id, createOrderCorrectTrackingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -739,6 +772,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderCorrectTrackingRequest** | **CreateOrderCorrectTrackingRequest**|  | [optional] 
 
 ### Return type
 
@@ -750,7 +784,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -769,7 +803,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderdispute"></a>
 # **CreateOrderDispute**
-> CreateOrderDisputeResponse CreateOrderDispute (Guid id)
+> CreateOrderDisputeResponse CreateOrderDispute (Guid id, CreateOrderDisputeRequest createOrderDisputeRequest)
 
 Flag an order as disputed.
 
@@ -794,11 +828,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderDisputeRequest = new CreateOrderDisputeRequest(); // CreateOrderDisputeRequest | 
 
             try
             {
                 // Flag an order as disputed.
-                CreateOrderDisputeResponse result = apiInstance.CreateOrderDispute(id);
+                CreateOrderDisputeResponse result = apiInstance.CreateOrderDispute(id, createOrderDisputeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -817,6 +852,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderDisputeRequest** | **CreateOrderDisputeRequest**|  | 
 
 ### Return type
 
@@ -828,7 +864,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -847,7 +883,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderimport"></a>
 # **CreateOrderImport**
-> CreateOrderImportResponse CreateOrderImport ()
+> CreateOrderImportResponse CreateOrderImport (CreateOrderImportRequest createOrderImportRequest)
 
 Manually (re-)pull one or more connected platforms' order history for a day-window.
 
@@ -871,11 +907,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderImportRequest = new CreateOrderImportRequest(); // CreateOrderImportRequest | 
 
             try
             {
                 // Manually (re-)pull one or more connected platforms' order history for a day-window.
-                CreateOrderImportResponse result = apiInstance.CreateOrderImport();
+                CreateOrderImportResponse result = apiInstance.CreateOrderImport(createOrderImportRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -890,7 +927,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderImportRequest** | **CreateOrderImportRequest**|  | 
 
 ### Return type
 
@@ -902,7 +942,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -921,7 +961,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderlabel"></a>
 # **CreateOrderLabel**
-> CreateOrderLabelResponse CreateOrderLabel (Guid id)
+> CreateOrderLabelResponse CreateOrderLabel (Guid id, CreateOrderLabelRequest createOrderLabelRequest)
 
 Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
 
@@ -946,11 +986,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderLabelRequest = new CreateOrderLabelRequest(); // CreateOrderLabelRequest | 
 
             try
             {
                 // Purchase a Crossly Shipping label. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
-                CreateOrderLabelResponse result = apiInstance.CreateOrderLabel(id);
+                CreateOrderLabelResponse result = apiInstance.CreateOrderLabel(id, createOrderLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -969,6 +1010,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderLabelRequest** | **CreateOrderLabelRequest**|  | 
 
 ### Return type
 
@@ -980,7 +1022,87 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="createorderlabelprint"></a>
+# **CreateOrderLabelPrint**
+> CreateOrderLabelPrintResponse CreateOrderLabelPrint (Guid id, CreateOrderLabelPrintRequest createOrderLabelPrintRequest = null)
+
+Send the label to your print agent: mode agent (jobId), pdf (url, reason no_agent | offline | not_capable) or skipped (already_printed; pass reprint true to print again).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateOrderLabelPrintExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var id = "id_example";  // Guid | 
+            var createOrderLabelPrintRequest = new CreateOrderLabelPrintRequest(); // CreateOrderLabelPrintRequest |  (optional) 
+
+            try
+            {
+                // Send the label to your print agent: mode agent (jobId), pdf (url, reason no_agent | offline | not_capable) or skipped (already_printed; pass reprint true to print again).
+                CreateOrderLabelPrintResponse result = apiInstance.CreateOrderLabelPrint(id, createOrderLabelPrintRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.CreateOrderLabelPrint: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **createOrderLabelPrintRequest** | **CreateOrderLabelPrintRequest**|  | [optional] 
+
+### Return type
+
+**CreateOrderLabelPrintResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1079,7 +1201,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderlinklisting"></a>
 # **CreateOrderLinkListing**
-> CreateOrderLinkListingResponse CreateOrderLinkListing (Guid id)
+> CreateOrderLinkListingResponse CreateOrderLinkListing (Guid id, CreateOrderLinkListingRequest createOrderLinkListingRequest)
 
 Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
 
@@ -1106,11 +1228,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderLinkListingRequest = new CreateOrderLinkListingRequest(); // CreateOrderLinkListingRequest | 
 
             try
             {
                 // Link an unmatched sale to one of your listings (marks it sold, delists it elsewhere).
-                CreateOrderLinkListingResponse result = apiInstance.CreateOrderLinkListing(id);
+                CreateOrderLinkListingResponse result = apiInstance.CreateOrderLinkListing(id, createOrderLinkListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1129,6 +1252,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderLinkListingRequest** | **CreateOrderLinkListingRequest**|  | 
 
 ### Return type
 
@@ -1140,7 +1264,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1159,7 +1283,7 @@ Name | Type | Description  | Notes
 
 <a name="createordermessage"></a>
 # **CreateOrderMessage**
-> CreateOrderMessageResponse CreateOrderMessage (Guid id)
+> CreateOrderMessageResponse CreateOrderMessage (Guid id, CreateOrderMessageRequest createOrderMessageRequest)
 
 Message the order's buyer on the marketplace.
 
@@ -1184,11 +1308,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderMessageRequest = new CreateOrderMessageRequest(); // CreateOrderMessageRequest | 
 
             try
             {
                 // Message the order's buyer on the marketplace.
-                CreateOrderMessageResponse result = apiInstance.CreateOrderMessage(id);
+                CreateOrderMessageResponse result = apiInstance.CreateOrderMessage(id, createOrderMessageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1207,6 +1332,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderMessageRequest** | **CreateOrderMessageRequest**|  | 
 
 ### Return type
 
@@ -1218,7 +1344,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1315,9 +1441,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="createorderpackscan"></a>
+# **CreateOrderPackScan**
+> CreateOrderPackScanResponse CreateOrderPackScan (Guid id, CreateOrderPackScanRequest createOrderPackScanRequest = null)
+
+Check a scanned item against the order being packed: ok true with matchedBy (sku | custom_label | item_id) and expectedQuantity, or ok false with reason (wrong_item | no_item) and the expected item.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateOrderPackScanExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var id = "id_example";  // Guid | 
+            var createOrderPackScanRequest = new CreateOrderPackScanRequest(); // CreateOrderPackScanRequest |  (optional) 
+
+            try
+            {
+                // Check a scanned item against the order being packed: ok true with matchedBy (sku | custom_label | item_id) and expectedQuantity, or ok false with reason (wrong_item | no_item) and the expected item.
+                CreateOrderPackScanResponse result = apiInstance.CreateOrderPackScan(id, createOrderPackScanRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.CreateOrderPackScan: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+ **createOrderPackScanRequest** | **CreateOrderPackScanRequest**|  | [optional] 
+
+### Return type
+
+**CreateOrderPackScanResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="createorderpickup"></a>
 # **CreateOrderPickup**
-> CreateOrderPickupResponse CreateOrderPickup ()
+> CreateOrderPickupResponse CreateOrderPickup (CreateOrderPickupRequest createOrderPickupRequest)
 
 Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
 
@@ -1341,11 +1547,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderPickupRequest = new CreateOrderPickupRequest(); // CreateOrderPickupRequest | 
 
             try
             {
                 // Book a carrier pickup for labelled orders (one carrier per pickup; window at least an hour, up to 14 days ahead).
-                CreateOrderPickupResponse result = apiInstance.CreateOrderPickup();
+                CreateOrderPickupResponse result = apiInstance.CreateOrderPickup(createOrderPickupRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1360,7 +1567,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderPickupRequest** | **CreateOrderPickupRequest**|  | 
 
 ### Return type
 
@@ -1372,7 +1582,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1391,7 +1601,7 @@ This endpoint does not need any parameter.
 
 <a name="createorderpickuplabel"></a>
 # **CreateOrderPickupLabel**
-> CreateOrderPickupLabelResponse CreateOrderPickupLabel (string id)
+> CreateOrderPickupLabelResponse CreateOrderPickupLabel (string id, CreateOrderPickupLabelRequest createOrderPickupLabelRequest = null)
 
 Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
 
@@ -1416,11 +1626,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
+            var createOrderPickupLabelRequest = new CreateOrderPickupLabelRequest(); // CreateOrderPickupLabelRequest |  (optional) 
 
             try
             {
                 // Buy the carrier label for a Crossly order the buyer collects from a pickup point (debits your shipping wallet). 402 when the wallet is short. An order that already has a label answers 409 label_exists unless allowSecondLabel is true.
-                CreateOrderPickupLabelResponse result = apiInstance.CreateOrderPickupLabel(id);
+                CreateOrderPickupLabelResponse result = apiInstance.CreateOrderPickupLabel(id, createOrderPickupLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1439,6 +1650,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createOrderPickupLabelRequest** | **CreateOrderPickupLabelRequest**|  | [optional] 
 
 ### Return type
 
@@ -1450,7 +1662,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1937,7 +2149,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderrate"></a>
 # **CreateOrderRate**
-> CreateOrderRateResponse CreateOrderRate (Guid id)
+> CreateOrderRateResponse CreateOrderRate (Guid id, CreateOrderRateRequest createOrderRateRequest)
 
 Crossly Shipping rate quote for an order.
 
@@ -1962,11 +2174,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderRateRequest = new CreateOrderRateRequest(); // CreateOrderRateRequest | 
 
             try
             {
                 // Crossly Shipping rate quote for an order.
-                CreateOrderRateResponse result = apiInstance.CreateOrderRate(id);
+                CreateOrderRateResponse result = apiInstance.CreateOrderRate(id, createOrderRateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1985,6 +2198,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderRateRequest** | **CreateOrderRateRequest**|  | 
 
 ### Return type
 
@@ -1996,7 +2210,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2015,7 +2229,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderrefund"></a>
 # **CreateOrderRefund**
-> CreateOrderRefundResponse CreateOrderRefund (Guid id)
+> CreateOrderRefundResponse CreateOrderRefund (Guid id, CreateOrderRefundRequest createOrderRefundRequest = null)
 
 DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
 
@@ -2040,11 +2254,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderRefundRequest = new CreateOrderRefundRequest(); // CreateOrderRefundRequest |  (optional) 
 
             try
             {
                 // DEPRECATED: use POST /v1/orders/{id}/refunds. Full or partial refund (amount in dollars). Same idempotency and cap as /refunds: the same request twice refunds once (Idempotency-Key, else the body), never past what the buyer paid.
-                CreateOrderRefundResponse result = apiInstance.CreateOrderRefund(id);
+                CreateOrderRefundResponse result = apiInstance.CreateOrderRefund(id, createOrderRefundRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2063,6 +2278,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderRefundRequest** | **CreateOrderRefundRequest**|  | [optional] 
 
 ### Return type
 
@@ -2074,7 +2290,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2093,7 +2309,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderrefundbyid"></a>
 # **CreateOrderRefundById**
-> CreateOrderRefundByIdResponse CreateOrderRefundById (Guid id)
+> CreateOrderRefundByIdResponse CreateOrderRefundById (Guid id, CreateOrderRefundByIdRequest createOrderRefundByIdRequest = null)
 
 Refund an order, in full or in part. `amount` is dollars; omit it for everything left (or the line items' value). Crossly-marketplace orders refund the buyer's card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order's status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
 
@@ -2118,11 +2334,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderRefundByIdRequest = new CreateOrderRefundByIdRequest(); // CreateOrderRefundByIdRequest |  (optional) 
 
             try
             {
                 // Refund an order, in full or in part. `amount` is dollars; omit it for everything left (or the line items' value). Crossly-marketplace orders refund the buyer's card; crossposted orders refund through the marketplace, or fail not_supported_on_platform. Never refunds past the order (refund_exceeds_remaining). The same request twice refunds once: send an Idempotency-Key (without one, the body is the key). A partial refund keeps the order's status. What the platform takes (full/partial, its own reason keys, a comment) is GET /v1/orders/{id}/refund-options; a request outside it fails partial_refund_unsupported, invalid_refund_reason or refund_exceeds_item_amount. Fires order.refunded.
-                CreateOrderRefundByIdResponse result = apiInstance.CreateOrderRefundById(id);
+                CreateOrderRefundByIdResponse result = apiInstance.CreateOrderRefundById(id, createOrderRefundByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2141,6 +2358,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderRefundByIdRequest** | **CreateOrderRefundByIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -2152,7 +2370,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2171,7 +2389,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderrefundresolve"></a>
 # **CreateOrderRefundResolve**
-> ListOrderRefundsItem CreateOrderRefundResolve (Guid id, Guid refundId)
+> ListOrderRefundsItem CreateOrderRefundResolve (Guid id, Guid refundId, CreateOrderRefundResolveRequest createOrderRefundResolveRequest = null)
 
 Settle an `unverified` refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
 
@@ -2197,11 +2415,12 @@ namespace Example
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
             var refundId = "refundId_example";  // Guid | 
+            var createOrderRefundResolveRequest = new CreateOrderRefundResolveRequest(); // CreateOrderRefundResolveRequest |  (optional) 
 
             try
             {
                 // Settle an `unverified` refund (one Crossly could not confirm with the marketplace after its request was interrupted) once you have checked the marketplace: succeeded (with the amount actually refunded, dollars) or failed (nothing moved; the same Idempotency-Key can then try again). Crossly-marketplace refunds are confirmed by support instead.
-                ListOrderRefundsItem result = apiInstance.CreateOrderRefundResolve(id, refundId);
+                ListOrderRefundsItem result = apiInstance.CreateOrderRefundResolve(id, refundId, createOrderRefundResolveRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2221,6 +2440,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
  **refundId** | **Guid**|  | 
+ **createOrderRefundResolveRequest** | **CreateOrderRefundResolveRequest**|  | [optional] 
 
 ### Return type
 
@@ -2232,7 +2452,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2251,7 +2471,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderscanform"></a>
 # **CreateOrderScanForm**
-> CreateOrderScanFormResponse CreateOrderScanForm ()
+> CreateOrderScanFormResponse CreateOrderScanForm (CreateOrderScanFormRequest createOrderScanFormRequest = null)
 
 Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
 
@@ -2275,11 +2495,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var createOrderScanFormRequest = new CreateOrderScanFormRequest(); // CreateOrderScanFormRequest |  (optional) 
 
             try
             {
                 // Create SCAN forms (one per carrier account and ship-from address) for labels the carrier has not scanned yet.
-                CreateOrderScanFormResponse result = apiInstance.CreateOrderScanForm();
+                CreateOrderScanFormResponse result = apiInstance.CreateOrderScanForm(createOrderScanFormRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2294,7 +2515,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createOrderScanFormRequest** | **CreateOrderScanFormRequest**|  | [optional] 
 
 ### Return type
 
@@ -2306,7 +2530,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2325,7 +2549,7 @@ This endpoint does not need any parameter.
 
 <a name="createordertracking"></a>
 # **CreateOrderTracking**
-> CreateOrderTrackingResponse CreateOrderTracking (Guid id)
+> CreateOrderTrackingResponse CreateOrderTracking (Guid id, CreateOrderTrackingRequest createOrderTrackingRequest)
 
 Submit tracking number + carrier and notify the platform.
 
@@ -2350,11 +2574,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderTrackingRequest = new CreateOrderTrackingRequest(); // CreateOrderTrackingRequest | 
 
             try
             {
                 // Submit tracking number + carrier and notify the platform.
-                CreateOrderTrackingResponse result = apiInstance.CreateOrderTracking(id);
+                CreateOrderTrackingResponse result = apiInstance.CreateOrderTracking(id, createOrderTrackingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2373,6 +2598,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderTrackingRequest** | **CreateOrderTrackingRequest**|  | 
 
 ### Return type
 
@@ -2384,7 +2610,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2403,7 +2629,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderwhatnotlabel"></a>
 # **CreateOrderWhatnotLabel**
-> CreateOrderWhatnotLabelResponse CreateOrderWhatnotLabel (Guid id)
+> CreateOrderWhatnotLabelResponse CreateOrderWhatnotLabel (Guid id, CreateOrderWhatnotLabelRequest createOrderWhatnotLabelRequest = null)
 
 Generate the Whatnot shipping label and record it on the order.
 
@@ -2428,11 +2654,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderWhatnotLabelRequest = new CreateOrderWhatnotLabelRequest(); // CreateOrderWhatnotLabelRequest |  (optional) 
 
             try
             {
                 // Generate the Whatnot shipping label and record it on the order.
-                CreateOrderWhatnotLabelResponse result = apiInstance.CreateOrderWhatnotLabel(id);
+                CreateOrderWhatnotLabelResponse result = apiInstance.CreateOrderWhatnotLabel(id, createOrderWhatnotLabelRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2451,6 +2678,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderWhatnotLabelRequest** | **CreateOrderWhatnotLabelRequest**|  | [optional] 
 
 ### Return type
 
@@ -2462,7 +2690,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2481,7 +2709,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderwhatnotpackage"></a>
 # **CreateOrderWhatnotPackage**
-> GetOrderWhatnotShipmentResponse CreateOrderWhatnotPackage (Guid id)
+> GetOrderWhatnotShipmentResponse CreateOrderWhatnotPackage (Guid id, CreateOrderWhatnotPackageRequest createOrderWhatnotPackageRequest)
 
 Save a Whatnot shipment package (weight oz, box inches).
 
@@ -2506,11 +2734,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderWhatnotPackageRequest = new CreateOrderWhatnotPackageRequest(); // CreateOrderWhatnotPackageRequest | 
 
             try
             {
                 // Save a Whatnot shipment package (weight oz, box inches).
-                GetOrderWhatnotShipmentResponse result = apiInstance.CreateOrderWhatnotPackage(id);
+                GetOrderWhatnotShipmentResponse result = apiInstance.CreateOrderWhatnotPackage(id, createOrderWhatnotPackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2529,6 +2758,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderWhatnotPackageRequest** | **CreateOrderWhatnotPackageRequest**|  | 
 
 ### Return type
 
@@ -2540,7 +2770,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2559,7 +2789,7 @@ Name | Type | Description  | Notes
 
 <a name="createorderwhatnotpackagequote"></a>
 # **CreateOrderWhatnotPackageQuote**
-> CreateOrderWhatnotPackageQuoteResponse CreateOrderWhatnotPackageQuote (Guid id)
+> CreateOrderWhatnotPackageQuoteResponse CreateOrderWhatnotPackageQuote (Guid id, CreateOrderWhatnotPackageRequest createOrderWhatnotPackageRequest)
 
 Quote what a Whatnot package change costs (cents).
 
@@ -2584,11 +2814,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var createOrderWhatnotPackageRequest = new CreateOrderWhatnotPackageRequest(); // CreateOrderWhatnotPackageRequest | 
 
             try
             {
                 // Quote what a Whatnot package change costs (cents).
-                CreateOrderWhatnotPackageQuoteResponse result = apiInstance.CreateOrderWhatnotPackageQuote(id);
+                CreateOrderWhatnotPackageQuoteResponse result = apiInstance.CreateOrderWhatnotPackageQuote(id, createOrderWhatnotPackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2607,6 +2838,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createOrderWhatnotPackageRequest** | **CreateOrderWhatnotPackageRequest**|  | 
 
 ### Return type
 
@@ -2618,7 +2850,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -2793,7 +3025,7 @@ Name | Type | Description  | Notes
 
 <a name="createrentalclaim"></a>
 # **CreateRentalClaim**
-> RentalResponse CreateRentalClaim (string id)
+> RentalResponse CreateRentalClaim (string id, CreateRentalClaimRequest createRentalClaimRequest)
 
 Claim part or all of the deposit (cents, a note, photo URLs): within 3 days of the return, or 14 days after the end if it never came back.
 
@@ -2818,11 +3050,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
+            var createRentalClaimRequest = new CreateRentalClaimRequest(); // CreateRentalClaimRequest | 
 
             try
             {
                 // Claim part or all of the deposit (cents, a note, photo URLs): within 3 days of the return, or 14 days after the end if it never came back.
-                RentalResponse result = apiInstance.CreateRentalClaim(id);
+                RentalResponse result = apiInstance.CreateRentalClaim(id, createRentalClaimRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2841,6 +3074,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createRentalClaimRequest** | **CreateRentalClaimRequest**|  | 
 
 ### Return type
 
@@ -2852,7 +3086,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3027,7 +3261,7 @@ Name | Type | Description  | Notes
 
 <a name="createrentalextensiondecide"></a>
 # **CreateRentalExtensionDecide**
-> CreateRentalExtensionDecideResponse CreateRentalExtensionDecide (string id, string extensionId)
+> CreateRentalExtensionDecideResponse CreateRentalExtensionDecide (string id, string extensionId, CreateRentalExtensionDecideRequest createRentalExtensionDecideRequest)
 
 Approve or decline a renter’s request for more days.
 
@@ -3053,11 +3287,12 @@ namespace Example
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
             var extensionId = "extensionId_example";  // string | 
+            var createRentalExtensionDecideRequest = new CreateRentalExtensionDecideRequest(); // CreateRentalExtensionDecideRequest | 
 
             try
             {
                 // Approve or decline a renter’s request for more days.
-                CreateRentalExtensionDecideResponse result = apiInstance.CreateRentalExtensionDecide(id, extensionId);
+                CreateRentalExtensionDecideResponse result = apiInstance.CreateRentalExtensionDecide(id, extensionId, createRentalExtensionDecideRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3077,6 +3312,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
  **extensionId** | **string**|  | 
+ **createRentalExtensionDecideRequest** | **CreateRentalExtensionDecideRequest**|  | 
 
 ### Return type
 
@@ -3088,7 +3324,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3107,7 +3343,7 @@ Name | Type | Description  | Notes
 
 <a name="createrentalinspect"></a>
 # **CreateRentalInspect**
-> RentalResponse CreateRentalInspect (string id)
+> RentalResponse CreateRentalInspect (string id, CreateRentalInspectRequest createRentalInspectRequest = null)
 
 Record the return inspection: the checklist, photos, and optionally release the deposit.
 
@@ -3132,11 +3368,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
+            var createRentalInspectRequest = new CreateRentalInspectRequest(); // CreateRentalInspectRequest |  (optional) 
 
             try
             {
                 // Record the return inspection: the checklist, photos, and optionally release the deposit.
-                RentalResponse result = apiInstance.CreateRentalInspect(id);
+                RentalResponse result = apiInstance.CreateRentalInspect(id, createRentalInspectRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3155,6 +3392,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createRentalInspectRequest** | **CreateRentalInspectRequest**|  | [optional] 
 
 ### Return type
 
@@ -3166,7 +3404,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -3497,7 +3735,7 @@ Name | Type | Description  | Notes
 
 <a name="createrentalshipped"></a>
 # **CreateRentalShipped**
-> RentalResponse CreateRentalShipped (string id)
+> RentalResponse CreateRentalShipped (string id, CreateRentalShippedRequest createRentalShippedRequest = null)
 
 Mark a booked rental shipped, with at least 2 photos of its condition as it leaves (URLs you uploaded) — the evidence any later claim is judged against.
 
@@ -3522,11 +3760,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // string | 
+            var createRentalShippedRequest = new CreateRentalShippedRequest(); // CreateRentalShippedRequest |  (optional) 
 
             try
             {
                 // Mark a booked rental shipped, with at least 2 photos of its condition as it leaves (URLs you uploaded) — the evidence any later claim is judged against.
-                RentalResponse result = apiInstance.CreateRentalShipped(id);
+                RentalResponse result = apiInstance.CreateRentalShipped(id, createRentalShippedRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3545,10 +3784,91 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createRentalShippedRequest** | **CreateRentalShippedRequest**|  | [optional] 
 
 ### Return type
 
 **RentalResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getdevicescale"></a>
+# **GetDeviceScale**
+> GetDeviceScaleResponse GetDeviceScale (Guid? agentId = null, int? timeoutMs = null)
+
+Read your USB postal scale: ok true with weightOz and stable, or ok false with reason (no_agent | not_capable | offline | failed | timeout).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDeviceScaleExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var agentId = "agentId_example";  // Guid? |  (optional) 
+            var timeoutMs = 56;  // int? |  (optional) 
+
+            try
+            {
+                // Read your USB postal scale: ok true with weightOz and stable, or ok false with reason (no_agent | not_capable | offline | failed | timeout).
+                GetDeviceScaleResponse result = apiInstance.GetDeviceScale(agentId, timeoutMs);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.GetDeviceScale: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **agentId** | **Guid?**|  | [optional] 
+ **timeoutMs** | **int?**|  | [optional] 
+
+### Return type
+
+**GetDeviceScaleResponse**
 
 ### Authorization
 
@@ -3579,7 +3899,7 @@ Name | Type | Description  | Notes
 
 Get one order, with its sale price, fees, SKU and line items.
 
-Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer's PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer's PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer's business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
 
 ### Example
 ```csharp
@@ -4196,6 +4516,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | A PDF document. |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getorderpicklist"></a>
+# **GetOrderPickList**
+> GetOrderPickListResponse GetOrderPickList (string orderIds = null, string format = null, Guid? storefrontId = null)
+
+The items to pull for a batch of orders, grouped by storage bin: groups[{bin, lines[{orderId, orderNumber, platform, title, sku, quantity, buyer}]}], orderCount, itemCount. orderIds (comma list, at most 500) or every order still to ship; storefrontId for one store; format=pdf for the printable list.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetOrderPickListExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var orderIds = "orderIds_example";  // string |  (optional) 
+            var format = "json";  // string |  (optional) 
+            var storefrontId = "storefrontId_example";  // Guid? |  (optional) 
+
+            try
+            {
+                // The items to pull for a batch of orders, grouped by storage bin: groups[{bin, lines[{orderId, orderNumber, platform, title, sku, quantity, buyer}]}], orderCount, itemCount. orderIds (comma list, at most 500) or every order still to ship; storefrontId for one store; format=pdf for the printable list.
+                GetOrderPickListResponse result = apiInstance.GetOrderPickList(orderIds, format, storefrontId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.GetOrderPickList: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderIds** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] 
+ **storefrontId** | **Guid?**|  | [optional] 
+
+### Return type
+
+**GetOrderPickListResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | Error |  -  |
 | **401** | Error |  -  |
 | **403** | Error |  -  |
@@ -4909,6 +5311,84 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="getordersuggestedparcel"></a>
+# **GetOrderSuggestedParcel**
+> GetOrderSuggestedParcelResponse GetOrderSuggestedParcel (Guid id)
+
+The suggested parcel for this order: source (learned | box | item | none), presetId, presetName, lengthIn, widthIn, heightIn, weightOz, sampleSize.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetOrderSuggestedParcelExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var id = "id_example";  // Guid | 
+
+            try
+            {
+                // The suggested parcel for this order: source (learned | box | item | none), presetId, presetName, lengthIn, widthIn, heightIn, weightOz, sampleSize.
+                GetOrderSuggestedParcelResponse result = apiInstance.GetOrderSuggestedParcel(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.GetOrderSuggestedParcel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Guid**|  | 
+
+### Return type
+
+**GetOrderSuggestedParcelResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="getorderwhatnotpackingslip"></a>
 # **GetOrderWhatnotPackingSlip**
 > UrlExpiresInSecondsResponse GetOrderWhatnotPackingSlip (Guid id)
@@ -5145,7 +5625,7 @@ Name | Type | Description  | Notes
 
 <a name="getrentalcalendar"></a>
 # **GetRentalCalendar**
-> GetRentalCalendarResponse GetRentalCalendar ()
+> GetRentalCalendarResponse GetRentalCalendar (string from, string to, string platformListingId = null)
 
 Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
 
@@ -5169,11 +5649,14 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var from = "from_example";  // string | 
+            var to = "to_example";  // string | 
+            var platformListingId = "platformListingId_example";  // string |  (optional) 
 
             try
             {
                 // Every rentable item’s bookings (per unit), turnaround buffers and blackouts between two dates (≤ 93 days).
-                GetRentalCalendarResponse result = apiInstance.GetRentalCalendar();
+                GetRentalCalendarResponse result = apiInstance.GetRentalCalendar(from, to, platformListingId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5188,11 +5671,94 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**|  | 
+ **to** | **string**|  | 
+ **platformListingId** | **string**|  | [optional] 
 
 ### Return type
 
 **GetRentalCalendarResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getrentalinventory"></a>
+# **GetRentalInventory**
+> GetRentalInventoryResponse GetRentalInventory (string inventoryItemId)
+
+An inventory item’s rentals: units out with a renter now (reserved on the item), upcoming bookings and returns waiting for inspection.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetRentalInventoryExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var inventoryItemId = "inventoryItemId_example";  // string | 
+
+            try
+            {
+                // An inventory item’s rentals: units out with a renter now (reserved on the item), upcoming bookings and returns waiting for inspection.
+                GetRentalInventoryResponse result = apiInstance.GetRentalInventory(inventoryItemId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.GetRentalInventory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **inventoryItemId** | **string**|  | 
+
+### Return type
+
+**GetRentalInventoryResponse**
 
 ### Authorization
 
@@ -5293,7 +5859,7 @@ This endpoint does not need any parameter.
 
 <a name="listliveshipments"></a>
 # **ListLiveShipments**
-> ListLiveShipmentsResponse ListLiveShipments ()
+> ListLiveShipmentsResponse ListLiveShipments (string streamId = null, string status = null)
 
 Your show boxes: every buyer’s orders from one live show, to ship together.
 
@@ -5317,11 +5883,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var streamId = "streamId_example";  // string |  (optional) 
+            var status = "open";  // string |  (optional) 
 
             try
             {
                 // Your show boxes: every buyer’s orders from one live show, to ship together.
-                ListLiveShipmentsResponse result = apiInstance.ListLiveShipments();
+                ListLiveShipmentsResponse result = apiInstance.ListLiveShipments(streamId, status);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5336,7 +5904,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **streamId** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
 
 ### Return type
 
@@ -5747,11 +6319,11 @@ Name | Type | Description  | Notes
 
 <a name="listorders"></a>
 # **ListOrders**
-> ListOrdersResponse ListOrders (int? page = null, int? limit = null, string status = null, string platform = null, string channel = null, string details = null, string unlinked = null, DateTime? updatedSince = null)
+> ListOrdersResponse ListOrders (int? page = null, int? limit = null, string status = null, string platform = null, string channel = null, string details = null, string unlinked = null, string orderNumber = null, DateTime? updatedSince = null, string assignee = null)
 
 List orders, each with its sale price, fees, SKU and line items.
 
-Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer's PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null.
+Each order carries its sale exactly as the order.created webhook sent it: salePrice, platformFee, taxCollected and shippingCharged in DOLLARS as JSON numbers (not decimal strings), feeSource (\"exact\" = the fee the marketplace charged, \"estimated\"), sku (the SKU of the listing), quantity (units), and lineItems: one entry per order row {lineKey, listingId, inventoryItemId, platformListingId (the MARKETPLACE listing id), sku (variant SKU, else the listing SKU), variantId, quantity, unitPrice (dollars per unit, rounded to the cent), total (dollars)}. A multi-item marketplace order is one order row per line sharing platformOrderId, each with its own lineKey. detailsPending: true (the sale was recorded before its price and buyer loaded), an order with no sale, or a sale with no listing behind it has null money and lineItems [] (sku and quantity are still given when known). channel is the business channel that sold it (retail, wholesale, auction, live, world, pos), purchaseOrderRef the buyer's PO number, and trade the on-account invoice behind a wholesale order {invoiceId, invoiceNumber, invoiceStatus (open, partial, overdue, paid, void), netDays, dueAt, totalCents, amountPaidCents, balanceCents} or null, and buyerCompany the trade buyer's business {id, name}: their company (id set), else their verified business name (id null), or null on a consumer order. orderNumber is the readable order number of a Crossly sale (NNN-NNNNNNN-NNNNNNN, the same number the buyer sees); null on other platforms, whose platformOrderId is readable. Show orderNumber ?? platformOrderId; platformOrderId stays the payment reference of a Crossly sale.
 
 ### Example
 ```csharp
@@ -5780,12 +6352,14 @@ namespace Example
             var channel = "retail";  // string | Only orders sold through this business channel (e.g. wholesale). (optional) 
             var details = "pending";  // string | pending = only orders whose sale details (price, buyer) have not loaded yet. (optional) 
             var unlinked = "1";  // string | 1 or true = only orders whose sale is not linked to any listing (an orphan sale). (optional) 
+            var orderNumber = "orderNumber_example";  // string | Find an order by the number the buyer quotes: a Crossly order number (NNN-NNNNNNN-NNNNNNN, also accepted without dashes or with a leading #) or a marketplace order id (exact match on platformOrderId). (optional) 
             var updatedSince = DateTime.Parse("2013-10-20T19:20:30+01:00");  // DateTime? | Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. (optional) 
+            var assignee = "assignee_example";  // string | Work assignment: 'me' (your own seat), 'none' (unassigned), 'any' (assigned to someone) or a team member id. (optional) 
 
             try
             {
                 // List orders, each with its sale price, fees, SKU and line items.
-                ListOrdersResponse result = apiInstance.ListOrders(page, limit, status, platform, channel, details, unlinked, updatedSince);
+                ListOrdersResponse result = apiInstance.ListOrders(page, limit, status, platform, channel, details, unlinked, orderNumber, updatedSince, assignee);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5810,7 +6384,9 @@ Name | Type | Description  | Notes
  **channel** | **string**| Only orders sold through this business channel (e.g. wholesale). | [optional] 
  **details** | **string**| pending &#x3D; only orders whose sale details (price, buyer) have not loaded yet. | [optional] 
  **unlinked** | **string**| 1 or true &#x3D; only orders whose sale is not linked to any listing (an orphan sale). | [optional] 
+ **orderNumber** | **string**| Find an order by the number the buyer quotes: a Crossly order number (NNN-NNNNNNN-NNNNNNN, also accepted without dashes or with a leading #) or a marketplace order id (exact match on platformOrderId). | [optional] 
  **updatedSince** | **DateTime?**| Only orders created or changed at or after this time (ISO 8601): poll with the time of your last call to catch new orders and status/tracking changes. | [optional] 
+ **assignee** | **string**| Work assignment: &#39;me&#39; (your own seat), &#39;none&#39; (unassigned), &#39;any&#39; (assigned to someone) or a team member id. | [optional] 
 
 ### Return type
 
@@ -5841,7 +6417,7 @@ Name | Type | Description  | Notes
 
 <a name="listrentalhistory"></a>
 # **ListRentalHistory**
-> ListRentalHistoryResponse ListRentalHistory ()
+> ListRentalHistoryResponse ListRentalHistory (string view = null, List<string> status = null, string q = null, string from = null, string to = null, string platformListingId = null, decimal? limit = null, decimal? offset = null)
 
 Active rentals and history, filtered by view, status, dates, item or a search.
 
@@ -5865,11 +6441,19 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new OrdersApi(config);
+            var view = "active";  // string |  (optional) 
+            var status = new List<string>(); // List<string> |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var from = "from_example";  // string |  (optional) 
+            var to = "to_example";  // string |  (optional) 
+            var platformListingId = "platformListingId_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var offset = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Active rentals and history, filtered by view, status, dates, item or a search.
-                ListRentalHistoryResponse result = apiInstance.ListRentalHistory();
+                ListRentalHistoryResponse result = apiInstance.ListRentalHistory(view, status, q, from, to, platformListingId, limit, offset);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -5884,7 +6468,17 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **view** | **string**|  | [optional] 
+ **status** | **List&lt;string&gt;**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **from** | **string**|  | [optional] 
+ **to** | **string**|  | [optional] 
+ **platformListingId** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **offset** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -5989,7 +6583,7 @@ This endpoint does not need any parameter.
 
 <a name="updateorder"></a>
 # **UpdateOrder**
-> UpdateOrderResponse UpdateOrder (Guid id)
+> UpdateOrderResponse UpdateOrder (Guid id, UpdateOrderRequest updateOrderRequest)
 
 Update order (status, notes, tracking).
 
@@ -6014,11 +6608,12 @@ namespace Example
 
             var apiInstance = new OrdersApi(config);
             var id = "id_example";  // Guid | 
+            var updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
 
             try
             {
                 // Update order (status, notes, tracking).
-                UpdateOrderResponse result = apiInstance.UpdateOrder(id);
+                UpdateOrderResponse result = apiInstance.UpdateOrder(id, updateOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -6037,10 +6632,163 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateOrderRequest** | **UpdateOrderRequest**|  | 
 
 ### Return type
 
 **UpdateOrderResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateorderassignee"></a>
+# **UpdateOrderAssignee**
+> UpdateOrderAssigneeResponse UpdateOrderAssignee ()
+
+Assign many orders to a teammate, round robin across several, or unassign them (null).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateOrderAssigneeExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+
+            try
+            {
+                // Assign many orders to a teammate, round robin across several, or unassign them (null).
+                UpdateOrderAssigneeResponse result = apiInstance.UpdateOrderAssignee();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.UpdateOrderAssignee: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**UpdateOrderAssigneeResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updateorderassigneebyid"></a>
+# **UpdateOrderAssigneeById**
+> UpdateOrderAssigneeByIdResponse UpdateOrderAssigneeById (string id)
+
+Assign one order to a teammate, or unassign it (null).
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateOrderAssigneeByIdExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new OrdersApi(config);
+            var id = "id_example";  // string | 
+
+            try
+            {
+                // Assign one order to a teammate, or unassign it (null).
+                UpdateOrderAssigneeByIdResponse result = apiInstance.UpdateOrderAssigneeById(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling OrdersApi.UpdateOrderAssigneeById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**|  | 
+
+### Return type
+
+**UpdateOrderAssigneeByIdResponse**
 
 ### Authorization
 

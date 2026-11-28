@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateTcgStarterResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public CreateTcgStarterResponse(CreateTcgStarterResponseData data = default(CreateTcgStarterResponseData))
+        public CreateTcgStarterResponse(DeckIdRequest data = default(DeckIdRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public CreateTcgStarterResponseData Data { get; set; }
+        public DeckIdRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

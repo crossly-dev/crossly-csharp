@@ -41,14 +41,14 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="_2xx">_2xx (required).</param>
         /// <param name="_3xx">_3xx (required).</param>
-        /// <param name="_4xx">_4xx (required).</param>
         /// <param name="_5xx">_5xx (required).</param>
-        public GetDeveloperAppHealthResponseDataLast24hByClass(decimal _2xx = default(decimal), decimal _3xx = default(decimal), decimal _4xx = default(decimal), decimal _5xx = default(decimal))
+        /// <param name="_4xx">_4xx (required).</param>
+        public GetDeveloperAppHealthResponseDataLast24hByClass(decimal _2xx = default(decimal), decimal _3xx = default(decimal), decimal _5xx = default(decimal), decimal _4xx = default(decimal))
         {
             this._2xx = _2xx;
             this._3xx = _3xx;
-            this._4xx = _4xx;
             this._5xx = _5xx;
+            this._4xx = _4xx;
         }
 
         /// <summary>
@@ -64,16 +64,16 @@ namespace net.crossly.Model
         public decimal _3xx { get; set; }
 
         /// <summary>
-        /// Gets or Sets _4xx
-        /// </summary>
-        [DataMember(Name = "4xx", IsRequired = true, EmitDefaultValue = false)]
-        public decimal _4xx { get; set; }
-
-        /// <summary>
         /// Gets or Sets _5xx
         /// </summary>
         [DataMember(Name = "5xx", IsRequired = true, EmitDefaultValue = false)]
         public decimal _5xx { get; set; }
+
+        /// <summary>
+        /// Gets or Sets _4xx
+        /// </summary>
+        [DataMember(Name = "4xx", IsRequired = true, EmitDefaultValue = false)]
+        public decimal _4xx { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,8 +85,8 @@ namespace net.crossly.Model
             sb.Append("class GetDeveloperAppHealthResponseDataLast24hByClass {\n");
             sb.Append("  _2xx: ").Append(_2xx).Append("\n");
             sb.Append("  _3xx: ").Append(_3xx).Append("\n");
-            sb.Append("  _4xx: ").Append(_4xx).Append("\n");
             sb.Append("  _5xx: ").Append(_5xx).Append("\n");
+            sb.Append("  _4xx: ").Append(_4xx).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -131,12 +131,12 @@ namespace net.crossly.Model
                     this._3xx.Equals(input._3xx)
                 ) && 
                 (
-                    this._4xx == input._4xx ||
-                    this._4xx.Equals(input._4xx)
-                ) && 
-                (
                     this._5xx == input._5xx ||
                     this._5xx.Equals(input._5xx)
+                ) && 
+                (
+                    this._4xx == input._4xx ||
+                    this._4xx.Equals(input._4xx)
                 );
         }
 
@@ -151,8 +151,8 @@ namespace net.crossly.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this._2xx.GetHashCode();
                 hashCode = (hashCode * 59) + this._3xx.GetHashCode();
-                hashCode = (hashCode * 59) + this._4xx.GetHashCode();
                 hashCode = (hashCode * 59) + this._5xx.GetHashCode();
+                hashCode = (hashCode * 59) + this._4xx.GetHashCode();
                 return hashCode;
             }
         }

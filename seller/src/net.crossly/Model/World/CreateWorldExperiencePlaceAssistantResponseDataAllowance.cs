@@ -45,16 +45,16 @@ namespace net.crossly.Model
             Monthly = 1,
 
             /// <summary>
-            /// Enum Daily for value: daily
-            /// </summary>
-            [EnumMember(Value = "daily")]
-            Daily = 2,
-
-            /// <summary>
             /// Enum Plan for value: plan
             /// </summary>
             [EnumMember(Value = "plan")]
-            Plan = 3
+            Plan = 2,
+
+            /// <summary>
+            /// Enum Daily for value: daily
+            /// </summary>
+            [EnumMember(Value = "daily")]
+            Daily = 3
 
         }
 

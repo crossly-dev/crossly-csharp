@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperienceplacepackage"></a>
 # **CreateWorldExperiencePlacePackage**
-> CreateWorldExperiencePlacePackageResponse CreateWorldExperiencePlacePackage (string experienceId, string placeId)
+> CreateWorldExperiencePlacePackageResponse CreateWorldExperiencePlacePackage (string experienceId, string placeId, CreateWorldExperiencePlacePackageRequest createWorldExperiencePlacePackageRequest = null)
 
 Insert a copy of a package (default: the newest version, auto-update on).
 
@@ -46,11 +46,12 @@ namespace Example
             var apiInstance = new WorldsPackagesApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlacePackageRequest = new CreateWorldExperiencePlacePackageRequest(); // CreateWorldExperiencePlacePackageRequest |  (optional) 
 
             try
             {
                 // Insert a copy of a package (default: the newest version, auto-update on).
-                CreateWorldExperiencePlacePackageResponse result = apiInstance.CreateWorldExperiencePlacePackage(experienceId, placeId);
+                CreateWorldExperiencePlacePackageResponse result = apiInstance.CreateWorldExperiencePlacePackage(experienceId, placeId, createWorldExperiencePlacePackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -70,6 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlacePackageRequest** | **CreateWorldExperiencePlacePackageRequest**|  | [optional] 
 
 ### Return type
 
@@ -81,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -100,7 +102,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacepackageupdate"></a>
 # **CreateWorldExperiencePlacePackageUpdate**
-> CreateWorldExperiencePlacePackageUpdateResponse CreateWorldExperiencePlacePackageUpdate (string experienceId, string placeId, string nodeId)
+> CreateWorldExperiencePlacePackageUpdateResponse CreateWorldExperiencePlacePackageUpdate (string experienceId, string placeId, string nodeId, CreateWorldExperiencePlacePackageUpdateRequest createWorldExperiencePlacePackageUpdateRequest = null)
 
 Update a copy to a version (default newest). A copy edited in the place needs force: true (its edits are replaced).
 
@@ -127,11 +129,12 @@ namespace Example
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
             var nodeId = "nodeId_example";  // string | 
+            var createWorldExperiencePlacePackageUpdateRequest = new CreateWorldExperiencePlacePackageUpdateRequest(); // CreateWorldExperiencePlacePackageUpdateRequest |  (optional) 
 
             try
             {
                 // Update a copy to a version (default newest). A copy edited in the place needs force: true (its edits are replaced).
-                CreateWorldExperiencePlacePackageUpdateResponse result = apiInstance.CreateWorldExperiencePlacePackageUpdate(experienceId, placeId, nodeId);
+                CreateWorldExperiencePlacePackageUpdateResponse result = apiInstance.CreateWorldExperiencePlacePackageUpdate(experienceId, placeId, nodeId, createWorldExperiencePlacePackageUpdateRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -152,6 +155,7 @@ Name | Type | Description  | Notes
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
  **nodeId** | **string**|  | 
+ **createWorldExperiencePlacePackageUpdateRequest** | **CreateWorldExperiencePlacePackageUpdateRequest**|  | [optional] 
 
 ### Return type
 
@@ -163,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -182,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpackage"></a>
 # **CreateWorldPackage**
-> GetWorldPackageResponse CreateWorldPackage ()
+> GetWorldPackageResponse CreateWorldPackage (CreateWorldPackageRequest createWorldPackageRequest = null)
 
 Create a package (v1) from one node (place JSON) or from a node in a place — which then becomes copy v1, auto-updating.
 
@@ -206,11 +210,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsPackagesApi(config);
+            var createWorldPackageRequest = new CreateWorldPackageRequest(); // CreateWorldPackageRequest |  (optional) 
 
             try
             {
                 // Create a package (v1) from one node (place JSON) or from a node in a place — which then becomes copy v1, auto-updating.
-                GetWorldPackageResponse result = apiInstance.CreateWorldPackage();
+                GetWorldPackageResponse result = apiInstance.CreateWorldPackage(createWorldPackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -225,7 +230,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createWorldPackageRequest** | **CreateWorldPackageRequest**|  | [optional] 
 
 ### Return type
 
@@ -237,7 +245,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -256,7 +264,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldpackagetoolbox"></a>
 # **CreateWorldPackageToolbox**
-> CreateWorldPackageToolboxResponse CreateWorldPackageToolbox (string packageId)
+> CreateWorldPackageToolboxResponse CreateWorldPackageToolbox (string packageId, CreateWorldPackageToolboxRequest createWorldPackageToolboxRequest = null)
 
 List the latest version in the Toolbox as an asset of kind package (Toolbox review and pricing rules apply).
 
@@ -281,11 +289,12 @@ namespace Example
 
             var apiInstance = new WorldsPackagesApi(config);
             var packageId = "packageId_example";  // string | 
+            var createWorldPackageToolboxRequest = new CreateWorldPackageToolboxRequest(); // CreateWorldPackageToolboxRequest |  (optional) 
 
             try
             {
                 // List the latest version in the Toolbox as an asset of kind package (Toolbox review and pricing rules apply).
-                CreateWorldPackageToolboxResponse result = apiInstance.CreateWorldPackageToolbox(packageId);
+                CreateWorldPackageToolboxResponse result = apiInstance.CreateWorldPackageToolbox(packageId, createWorldPackageToolboxRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -304,6 +313,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **packageId** | **string**|  | 
+ **createWorldPackageToolboxRequest** | **CreateWorldPackageToolboxRequest**|  | [optional] 
 
 ### Return type
 
@@ -315,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -334,7 +344,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldpackageversion"></a>
 # **CreateWorldPackageVersion**
-> CreateWorldPackageVersionResponse CreateWorldPackageVersion (string packageId)
+> CreateWorldPackageVersionResponse CreateWorldPackageVersion (string packageId, CreateWorldPackageVersionRequest createWorldPackageVersionRequest = null)
 
 Publish a new version; every auto-updating, unmodified copy in your places is updated through its co-editing session. Returns what happened per place.
 
@@ -359,11 +369,12 @@ namespace Example
 
             var apiInstance = new WorldsPackagesApi(config);
             var packageId = "packageId_example";  // string | 
+            var createWorldPackageVersionRequest = new CreateWorldPackageVersionRequest(); // CreateWorldPackageVersionRequest |  (optional) 
 
             try
             {
                 // Publish a new version; every auto-updating, unmodified copy in your places is updated through its co-editing session. Returns what happened per place.
-                CreateWorldPackageVersionResponse result = apiInstance.CreateWorldPackageVersion(packageId);
+                CreateWorldPackageVersionResponse result = apiInstance.CreateWorldPackageVersion(packageId, createWorldPackageVersionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -382,6 +393,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **packageId** | **string**|  | 
+ **createWorldPackageVersionRequest** | **CreateWorldPackageVersionRequest**|  | [optional] 
 
 ### Return type
 
@@ -393,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -728,7 +740,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldpackages"></a>
 # **ListWorldPackages**
-> ListWorldPackagesResponse ListWorldPackages ()
+> ListWorldPackagesResponse ListWorldPackages (string archived = null)
 
 Your package library: reusable models and modules, newest first, with how many places hold copies.
 
@@ -752,11 +764,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsPackagesApi(config);
+            var archived = "true";  // string |  (optional) 
 
             try
             {
                 // Your package library: reusable models and modules, newest first, with how many places hold copies.
-                ListWorldPackagesResponse result = apiInstance.ListWorldPackages();
+                ListWorldPackagesResponse result = apiInstance.ListWorldPackages(archived);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -771,7 +784,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **archived** | **string**|  | [optional] 
 
 ### Return type
 
@@ -802,7 +818,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldexperienceplacepackage"></a>
 # **UpdateWorldExperiencePlacePackage**
-> UpdateWorldExperiencePlacePackageResponse UpdateWorldExperiencePlacePackage (string experienceId, string placeId, string nodeId)
+> UpdateWorldExperiencePlacePackageResponse UpdateWorldExperiencePlacePackage (string experienceId, string placeId, string nodeId, UpdateWorldExperiencePlacePackageRequest updateWorldExperiencePlacePackageRequest = null)
 
 Turn auto-update on or off for one copy.
 
@@ -829,11 +845,12 @@ namespace Example
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
             var nodeId = "nodeId_example";  // string | 
+            var updateWorldExperiencePlacePackageRequest = new UpdateWorldExperiencePlacePackageRequest(); // UpdateWorldExperiencePlacePackageRequest |  (optional) 
 
             try
             {
                 // Turn auto-update on or off for one copy.
-                UpdateWorldExperiencePlacePackageResponse result = apiInstance.UpdateWorldExperiencePlacePackage(experienceId, placeId, nodeId);
+                UpdateWorldExperiencePlacePackageResponse result = apiInstance.UpdateWorldExperiencePlacePackage(experienceId, placeId, nodeId, updateWorldExperiencePlacePackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -854,6 +871,7 @@ Name | Type | Description  | Notes
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
  **nodeId** | **string**|  | 
+ **updateWorldExperiencePlacePackageRequest** | **UpdateWorldExperiencePlacePackageRequest**|  | [optional] 
 
 ### Return type
 
@@ -865,7 +883,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -884,7 +902,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldpackage"></a>
 # **UpdateWorldPackage**
-> DeleteWorldPackageResponse UpdateWorldPackage (string packageId)
+> DeleteWorldPackageResponse UpdateWorldPackage (string packageId, UpdateWorldPackageRequest updateWorldPackageRequest = null)
 
 Rename a package or change its description.
 
@@ -909,11 +927,12 @@ namespace Example
 
             var apiInstance = new WorldsPackagesApi(config);
             var packageId = "packageId_example";  // string | 
+            var updateWorldPackageRequest = new UpdateWorldPackageRequest(); // UpdateWorldPackageRequest |  (optional) 
 
             try
             {
                 // Rename a package or change its description.
-                DeleteWorldPackageResponse result = apiInstance.UpdateWorldPackage(packageId);
+                DeleteWorldPackageResponse result = apiInstance.UpdateWorldPackage(packageId, updateWorldPackageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -932,6 +951,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **packageId** | **string**|  | 
+ **updateWorldPackageRequest** | **UpdateWorldPackageRequest**|  | [optional] 
 
 ### Return type
 
@@ -943,7 +963,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

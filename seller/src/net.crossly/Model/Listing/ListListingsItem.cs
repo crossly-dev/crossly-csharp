@@ -82,7 +82,10 @@ namespace net.crossly.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="description">description.</param>
         /// <param name="status">status (required).</param>
+        /// <param name="currency">currency.</param>
+        /// <param name="storefrontId">storefrontId.</param>
         /// <param name="source">source (required).</param>
+        /// <param name="images">images.</param>
         /// <param name="sku">sku.</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
@@ -96,7 +99,6 @@ namespace net.crossly.Model
         /// <param name="itemType">itemType.</param>
         /// <param name="sizeSystem">sizeSystem.</param>
         /// <param name="color">color (required).</param>
-        /// <param name="images">images.</param>
         /// <param name="videoUrl">videoUrl.</param>
         /// <param name="tags">tags (required).</param>
         /// <param name="gradeKey">gradeKey.</param>
@@ -108,10 +110,10 @@ namespace net.crossly.Model
         /// <param name="dimensionLIn">dimensionLIn.</param>
         /// <param name="dimensionWIn">dimensionWIn.</param>
         /// <param name="dimensionHIn">dimensionHIn.</param>
+        /// <param name="assigneeMemberId">assigneeMemberId.</param>
         /// <param name="title">title.</param>
         /// <param name="descriptionHtml">descriptionHtml.</param>
         /// <param name="price">price.</param>
-        /// <param name="currency">currency.</param>
         /// <param name="aiMediaUrls">aiMediaUrls (required).</param>
         /// <param name="aiMediaDeclared">aiMediaDeclared (required).</param>
         /// <param name="aiMediaDetectedUrls">aiMediaDetectedUrls (required).</param>
@@ -137,7 +139,7 @@ namespace net.crossly.Model
         /// <param name="attributedOauthAppId">attributedOauthAppId.</param>
         /// <param name="attributedGrantId">attributedGrantId.</param>
         /// <param name="quotaBucket">quotaBucket.</param>
-        public ListListingsItem(bool aiMedia = default(bool), bool aiMediaDetected = default(bool), ListListingsItemPricing pricing = default(ListListingsItemPricing), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string description = default(string), string status = default(string), string source = default(string), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> images = default(List<string>), string videoUrl = default(string), List<string> tags = default(List<string>), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string title = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), bool isDigital = default(bool), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string))
+        public ListListingsItem(bool aiMedia = default(bool), bool aiMediaDetected = default(bool), ListListingsItemPricing pricing = default(ListListingsItemPricing), string id = default(string), string brand = default(string), string name = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), string userId = default(string), string description = default(string), string status = default(string), string currency = default(string), string storefrontId = default(string), string source = default(string), List<string> images = default(List<string>), string sku = default(string), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string condition = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), string videoUrl = default(string), List<string> tags = default(List<string>), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), string assigneeMemberId = default(string), string title = default(string), string descriptionHtml = default(string), string price = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), bool isDigital = default(bool), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string))
         {
             this.AiMedia = aiMedia;
             this.AiMediaDetected = aiMediaDetected;
@@ -227,6 +229,9 @@ namespace net.crossly.Model
             this.Brand = brand;
             this.Name = name;
             this.Description = description;
+            this.Currency = currency;
+            this.StorefrontId = storefrontId;
+            this.Images = images;
             this.Sku = sku;
             this.Condition = condition;
             this.Size = size;
@@ -237,7 +242,6 @@ namespace net.crossly.Model
             this.Gender = gender;
             this.ItemType = itemType;
             this.SizeSystem = sizeSystem;
-            this.Images = images;
             this.VideoUrl = videoUrl;
             this.GradeKey = gradeKey;
             this.Grading = grading;
@@ -247,10 +251,10 @@ namespace net.crossly.Model
             this.DimensionLIn = dimensionLIn;
             this.DimensionWIn = dimensionWIn;
             this.DimensionHIn = dimensionHIn;
+            this.AssigneeMemberId = assigneeMemberId;
             this.Title = title;
             this.DescriptionHtml = descriptionHtml;
             this.Price = price;
-            this.Currency = currency;
             this.PublishAt = publishAt;
             this.ScheduledPlatforms = scheduledPlatforms;
             this.ParentListingId = parentListingId;
@@ -334,10 +338,28 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or Sets Currency
+        /// </summary>
+        [DataMember(Name = "currency", EmitDefaultValue = true)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StorefrontId
+        /// </summary>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Source
         /// </summary>
         [DataMember(Name = "source", IsRequired = true, EmitDefaultValue = false)]
         public string Source { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Images
+        /// </summary>
+        [DataMember(Name = "images", EmitDefaultValue = true)]
+        public List<string> Images { get; set; }
 
         /// <summary>
         /// Gets or Sets Sku
@@ -418,12 +440,6 @@ namespace net.crossly.Model
         public List<string> Color { get; set; }
 
         /// <summary>
-        /// Gets or Sets Images
-        /// </summary>
-        [DataMember(Name = "images", EmitDefaultValue = true)]
-        public List<string> Images { get; set; }
-
-        /// <summary>
         /// Gets or Sets VideoUrl
         /// </summary>
         [DataMember(Name = "videoUrl", EmitDefaultValue = true)]
@@ -490,6 +506,12 @@ namespace net.crossly.Model
         public string DimensionHIn { get; set; }
 
         /// <summary>
+        /// Gets or Sets AssigneeMemberId
+        /// </summary>
+        [DataMember(Name = "assigneeMemberId", EmitDefaultValue = true)]
+        public string AssigneeMemberId { get; set; }
+
+        /// <summary>
         /// Gets or Sets Title
         /// </summary>
         [DataMember(Name = "title", EmitDefaultValue = true)]
@@ -506,12 +528,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "price", EmitDefaultValue = true)]
         public string Price { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", EmitDefaultValue = true)]
-        public string Currency { get; set; }
 
         /// <summary>
         /// Gets or Sets AiMediaUrls
@@ -676,7 +692,10 @@ namespace net.crossly.Model
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  Images: ").Append(Images).Append("\n");
             sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
@@ -690,7 +709,6 @@ namespace net.crossly.Model
             sb.Append("  ItemType: ").Append(ItemType).Append("\n");
             sb.Append("  SizeSystem: ").Append(SizeSystem).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
-            sb.Append("  Images: ").Append(Images).Append("\n");
             sb.Append("  VideoUrl: ").Append(VideoUrl).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  GradeKey: ").Append(GradeKey).Append("\n");
@@ -702,10 +720,10 @@ namespace net.crossly.Model
             sb.Append("  DimensionLIn: ").Append(DimensionLIn).Append("\n");
             sb.Append("  DimensionWIn: ").Append(DimensionWIn).Append("\n");
             sb.Append("  DimensionHIn: ").Append(DimensionHIn).Append("\n");
+            sb.Append("  AssigneeMemberId: ").Append(AssigneeMemberId).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  DescriptionHtml: ").Append(DescriptionHtml).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  AiMediaUrls: ").Append(AiMediaUrls).Append("\n");
             sb.Append("  AiMediaDeclared: ").Append(AiMediaDeclared).Append("\n");
             sb.Append("  AiMediaDetectedUrls: ").Append(AiMediaDetectedUrls).Append("\n");
@@ -820,9 +838,25 @@ namespace net.crossly.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.Currency == input.Currency ||
+                    (this.Currency != null &&
+                    this.Currency.Equals(input.Currency))
+                ) && 
+                (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
                     this.Source == input.Source ||
                     (this.Source != null &&
                     this.Source.Equals(input.Source))
+                ) && 
+                (
+                    this.Images == input.Images ||
+                    this.Images != null &&
+                    input.Images != null &&
+                    this.Images.SequenceEqual(input.Images)
                 ) && 
                 (
                     this.Sku == input.Sku ||
@@ -889,12 +923,6 @@ namespace net.crossly.Model
                     this.Color.SequenceEqual(input.Color)
                 ) && 
                 (
-                    this.Images == input.Images ||
-                    this.Images != null &&
-                    input.Images != null &&
-                    this.Images.SequenceEqual(input.Images)
-                ) && 
-                (
                     this.VideoUrl == input.VideoUrl ||
                     (this.VideoUrl != null &&
                     this.VideoUrl.Equals(input.VideoUrl))
@@ -950,6 +978,11 @@ namespace net.crossly.Model
                     this.DimensionHIn.Equals(input.DimensionHIn))
                 ) && 
                 (
+                    this.AssigneeMemberId == input.AssigneeMemberId ||
+                    (this.AssigneeMemberId != null &&
+                    this.AssigneeMemberId.Equals(input.AssigneeMemberId))
+                ) && 
+                (
                     this.Title == input.Title ||
                     (this.Title != null &&
                     this.Title.Equals(input.Title))
@@ -963,11 +996,6 @@ namespace net.crossly.Model
                     this.Price == input.Price ||
                     (this.Price != null &&
                     this.Price.Equals(input.Price))
-                ) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
                 ) && 
                 (
                     this.AiMediaUrls == input.AiMediaUrls ||
@@ -1148,9 +1176,21 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                if (this.Currency != null)
+                {
+                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.Images != null)
+                {
+                    hashCode = (hashCode * 59) + this.Images.GetHashCode();
                 }
                 if (this.Sku != null)
                 {
@@ -1198,10 +1238,6 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.Color.GetHashCode();
                 }
-                if (this.Images != null)
-                {
-                    hashCode = (hashCode * 59) + this.Images.GetHashCode();
-                }
                 if (this.VideoUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.VideoUrl.GetHashCode();
@@ -1243,6 +1279,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.DimensionHIn.GetHashCode();
                 }
+                if (this.AssigneeMemberId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssigneeMemberId.GetHashCode();
+                }
                 if (this.Title != null)
                 {
                     hashCode = (hashCode * 59) + this.Title.GetHashCode();
@@ -1254,10 +1294,6 @@ namespace net.crossly.Model
                 if (this.Price != null)
                 {
                     hashCode = (hashCode * 59) + this.Price.GetHashCode();
-                }
-                if (this.Currency != null)
-                {
-                    hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 }
                 if (this.AiMediaUrls != null)
                 {

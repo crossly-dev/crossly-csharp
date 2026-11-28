@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Bulk soft-delete sales rows.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateSaleBulkDeleteResponse</returns>
-        CreateSaleBulkDeleteResponse CreateSaleBulkDelete();
+        CreateSaleBulkDeleteResponse CreateSaleBulkDelete(CreateListingByIdRequest createListingByIdRequest);
 
         /// <summary>
         /// Bulk soft-delete sales rows.
@@ -40,14 +41,17 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateSaleBulkDeleteResponse</returns>
-        ApiResponse<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteWithHttpInfo();
+        ApiResponse<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteWithHttpInfo(CreateListingByIdRequest createListingByIdRequest);
         /// <summary>
         /// List sales (each unique sale event).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <returns>ListSalesResponse</returns>
-        ListSalesResponse ListSales();
+        ListSalesResponse ListSales(int? page = default(int?), int? limit = default(int?));
 
         /// <summary>
         /// List sales (each unique sale event).
@@ -56,8 +60,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <returns>ApiResponse of ListSalesResponse</returns>
-        ApiResponse<ListSalesResponse> ListSalesWithHttpInfo();
+        ApiResponse<ListSalesResponse> ListSalesWithHttpInfo(int? page = default(int?), int? limit = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -74,9 +80,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSaleBulkDeleteResponse</returns>
-        System.Threading.Tasks.Task<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Bulk soft-delete sales rows.
@@ -85,9 +92,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSaleBulkDeleteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSaleBulkDeleteResponse>> CreateSaleBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSaleBulkDeleteResponse>> CreateSaleBulkDeleteWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List sales (each unique sale event).
         /// </summary>
@@ -95,9 +103,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSalesResponse</returns>
-        System.Threading.Tasks.Task<ListSalesResponse> ListSalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSalesResponse> ListSalesAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// List sales (each unique sale event).
@@ -106,9 +116,11 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSalesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSalesResponse>> ListSalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSalesResponse>> ListSalesWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -233,10 +245,11 @@ namespace net.crossly.Api
         /// Bulk soft-delete sales rows. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>CreateSaleBulkDeleteResponse</returns>
-        public CreateSaleBulkDeleteResponse CreateSaleBulkDelete()
+        public CreateSaleBulkDeleteResponse CreateSaleBulkDelete(CreateListingByIdRequest createListingByIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> localVarResponse = CreateSaleBulkDeleteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> localVarResponse = CreateSaleBulkDeleteWithHttpInfo(createListingByIdRequest);
             return localVarResponse.Data;
         }
 
@@ -244,12 +257,20 @@ namespace net.crossly.Api
         /// Bulk soft-delete sales rows. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <returns>ApiResponse of CreateSaleBulkDeleteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteWithHttpInfo(CreateListingByIdRequest createListingByIdRequest)
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling SalesApi->CreateSaleBulkDelete");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -269,6 +290,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -295,11 +317,12 @@ namespace net.crossly.Api
         /// Bulk soft-delete sales rows. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSaleBulkDeleteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSaleBulkDeleteResponse> CreateSaleBulkDeleteAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> localVarResponse = await CreateSaleBulkDeleteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse> localVarResponse = await CreateSaleBulkDeleteWithHttpInfoAsync(createListingByIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -307,14 +330,22 @@ namespace net.crossly.Api
         /// Bulk soft-delete sales rows. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingByIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSaleBulkDeleteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse>> CreateSaleBulkDeleteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSaleBulkDeleteResponse>> CreateSaleBulkDeleteWithHttpInfoAsync(CreateListingByIdRequest createListingByIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createListingByIdRequest' is set
+            if (createListingByIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createListingByIdRequest' when calling SalesApi->CreateSaleBulkDelete");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -334,6 +365,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingByIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -361,10 +393,12 @@ namespace net.crossly.Api
         /// List sales (each unique sale event). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <returns>ListSalesResponse</returns>
-        public ListSalesResponse ListSales()
+        public ListSalesResponse ListSales(int? page = default(int?), int? limit = default(int?))
         {
-            net.crossly.Client.ApiResponse<ListSalesResponse> localVarResponse = ListSalesWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSalesResponse> localVarResponse = ListSalesWithHttpInfo(page, limit);
             return localVarResponse.Data;
         }
 
@@ -372,8 +406,10 @@ namespace net.crossly.Api
         /// List sales (each unique sale event). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <returns>ApiResponse of ListSalesResponse</returns>
-        public net.crossly.Client.ApiResponse<ListSalesResponse> ListSalesWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSalesResponse> ListSalesWithHttpInfo(int? page = default(int?), int? limit = default(int?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -397,6 +433,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -423,11 +467,13 @@ namespace net.crossly.Api
         /// List sales (each unique sale event). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSalesResponse</returns>
-        public async System.Threading.Tasks.Task<ListSalesResponse> ListSalesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSalesResponse> ListSalesAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSalesResponse> localVarResponse = await ListSalesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSalesResponse> localVarResponse = await ListSalesWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -435,9 +481,11 @@ namespace net.crossly.Api
         /// List sales (each unique sale event). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="page"> (optional, default to 1)</param>
+        /// <param name="limit"> (optional, default to 25)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSalesResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSalesResponse>> ListSalesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSalesResponse>> ListSalesWithHttpInfoAsync(int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -462,6 +510,14 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

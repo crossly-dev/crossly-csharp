@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencecollaborator"></a>
 # **CreateWorldExperienceCollaborator**
-> CreateWorldExperienceCollaboratorResponse CreateWorldExperienceCollaborator (string experienceId)
+> CreateWorldExperienceCollaboratorResponse CreateWorldExperienceCollaborator (string experienceId, CreateWorldExperienceCollaboratorRequest createWorldExperienceCollaboratorRequest = null)
 
 Invite a Crossly handle with a role. Owner or admin; only the owner makes admins. Counts against the owner's plan cap.
 
@@ -288,11 +288,12 @@ namespace Example
 
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceCollaboratorRequest = new CreateWorldExperienceCollaboratorRequest(); // CreateWorldExperienceCollaboratorRequest |  (optional) 
 
             try
             {
                 // Invite a Crossly handle with a role. Owner or admin; only the owner makes admins. Counts against the owner's plan cap.
-                CreateWorldExperienceCollaboratorResponse result = apiInstance.CreateWorldExperienceCollaborator(experienceId);
+                CreateWorldExperienceCollaboratorResponse result = apiInstance.CreateWorldExperienceCollaborator(experienceId, createWorldExperienceCollaboratorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -311,6 +312,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceCollaboratorRequest** | **CreateWorldExperienceCollaboratorRequest**|  | [optional] 
 
 ### Return type
 
@@ -322,7 +324,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -341,7 +343,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacecollabop"></a>
 # **CreateWorldExperiencePlaceCollabOp**
-> CreateWorldExperiencePlaceCollabOpResponse CreateWorldExperiencePlaceCollabOp (string experienceId, string placeId)
+> CreateWorldExperiencePlaceCollabOpResponse CreateWorldExperiencePlaceCollabOp (string experienceId, string placeId, CreateWorldExperiencePlaceCollabOpRequest createWorldExperiencePlaceCollabOpRequest = null)
 
 Apply a batch of ops (insert, delete, move, prop, attr, name, tags, world) in server order. Each op is checked against your role; a retried batch id is answered, not re-applied.
 
@@ -367,11 +369,12 @@ namespace Example
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var createWorldExperiencePlaceCollabOpRequest = new CreateWorldExperiencePlaceCollabOpRequest(); // CreateWorldExperiencePlaceCollabOpRequest |  (optional) 
 
             try
             {
                 // Apply a batch of ops (insert, delete, move, prop, attr, name, tags, world) in server order. Each op is checked against your role; a retried batch id is answered, not re-applied.
-                CreateWorldExperiencePlaceCollabOpResponse result = apiInstance.CreateWorldExperiencePlaceCollabOp(experienceId, placeId);
+                CreateWorldExperiencePlaceCollabOpResponse result = apiInstance.CreateWorldExperiencePlaceCollabOp(experienceId, placeId, createWorldExperiencePlaceCollabOpRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -391,6 +394,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **createWorldExperiencePlaceCollabOpRequest** | **CreateWorldExperiencePlaceCollabOpRequest**|  | [optional] 
 
 ### Return type
 
@@ -402,7 +406,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -501,7 +505,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceplacecollabscriptcommit"></a>
 # **CreateWorldExperiencePlaceCollabScriptCommit**
-> CreateWorldExperiencePlaceCollabScriptCommitResponse CreateWorldExperiencePlaceCollabScriptCommit (string experienceId, string placeId, string nodeId)
+> CreateWorldExperiencePlaceCollabScriptCommitResponse CreateWorldExperiencePlaceCollabScriptCommit (string experienceId, string placeId, string nodeId, CreateWorldExperiencePlaceCollabScriptCommitRequest createWorldExperiencePlaceCollabScriptCommitRequest = null)
 
 Commit your draft with a three-way merge. 409 merge_conflict carries the merged text with conflict blocks and the current source.
 
@@ -528,11 +532,12 @@ namespace Example
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
             var nodeId = "nodeId_example";  // string | 
+            var createWorldExperiencePlaceCollabScriptCommitRequest = new CreateWorldExperiencePlaceCollabScriptCommitRequest(); // CreateWorldExperiencePlaceCollabScriptCommitRequest |  (optional) 
 
             try
             {
                 // Commit your draft with a three-way merge. 409 merge_conflict carries the merged text with conflict blocks and the current source.
-                CreateWorldExperiencePlaceCollabScriptCommitResponse result = apiInstance.CreateWorldExperiencePlaceCollabScriptCommit(experienceId, placeId, nodeId);
+                CreateWorldExperiencePlaceCollabScriptCommitResponse result = apiInstance.CreateWorldExperiencePlaceCollabScriptCommit(experienceId, placeId, nodeId, createWorldExperiencePlaceCollabScriptCommitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -553,6 +558,7 @@ Name | Type | Description  | Notes
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
  **nodeId** | **string**|  | 
+ **createWorldExperiencePlaceCollabScriptCommitRequest** | **CreateWorldExperiencePlaceCollabScriptCommitRequest**|  | [optional] 
 
 ### Return type
 
@@ -564,7 +570,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -825,7 +831,7 @@ Name | Type | Description  | Notes
 
 <a name="getworldexperienceplacecollabop"></a>
 # **GetWorldExperiencePlaceCollabOp**
-> GetWorldExperiencePlaceCollabOpResponse GetWorldExperiencePlaceCollabOp (string experienceId, string placeId)
+> GetWorldExperiencePlaceCollabOpResponse GetWorldExperiencePlaceCollabOp (string experienceId, string placeId, decimal since)
 
 Ops after a sequence number, grouped by batch. 409 resync when they are no longer kept: reload the session.
 
@@ -851,11 +857,12 @@ namespace Example
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
+            var since = 8.14D;  // decimal | 
 
             try
             {
                 // Ops after a sequence number, grouped by batch. 409 resync when they are no longer kept: reload the session.
-                GetWorldExperiencePlaceCollabOpResponse result = apiInstance.GetWorldExperiencePlaceCollabOp(experienceId, placeId);
+                GetWorldExperiencePlaceCollabOpResponse result = apiInstance.GetWorldExperiencePlaceCollabOp(experienceId, placeId, since);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -875,6 +882,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
+ **since** | **decimal**|  | 
 
 ### Return type
 
@@ -1135,7 +1143,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldexperienceactivity"></a>
 # **ListWorldExperienceActivity**
-> ListWorldExperienceActivityResponse ListWorldExperienceActivity (string experienceId)
+> ListWorldExperienceActivityResponse ListWorldExperienceActivity (string experienceId, string cursor = null, decimal? limit = null, string placeId = null)
 
 Activity history, newest first: who changed what, when, from where (studio, api, mcp, cli); instance changes are revertible.
 
@@ -1160,11 +1168,14 @@ namespace Example
 
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var placeId = "placeId_example";  // string |  (optional) 
 
             try
             {
                 // Activity history, newest first: who changed what, when, from where (studio, api, mcp, cli); instance changes are revertible.
-                ListWorldExperienceActivityResponse result = apiInstance.ListWorldExperienceActivity(experienceId);
+                ListWorldExperienceActivityResponse result = apiInstance.ListWorldExperienceActivity(experienceId, cursor, limit, placeId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1183,6 +1194,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **placeId** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1293,7 +1307,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencecollaborator"></a>
 # **UpdateWorldExperienceCollaborator**
-> CreateWorldExperienceCollaboratorResponse UpdateWorldExperienceCollaborator (string experienceId, string userId)
+> CreateWorldExperienceCollaboratorResponse UpdateWorldExperienceCollaborator (string experienceId, string userId, UpdateWorldExperienceCollaboratorRequest updateWorldExperienceCollaboratorRequest = null)
 
 Change a collaborator's role.
 
@@ -1319,11 +1333,12 @@ namespace Example
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
             var userId = "userId_example";  // string | 
+            var updateWorldExperienceCollaboratorRequest = new UpdateWorldExperienceCollaboratorRequest(); // UpdateWorldExperienceCollaboratorRequest |  (optional) 
 
             try
             {
                 // Change a collaborator's role.
-                CreateWorldExperienceCollaboratorResponse result = apiInstance.UpdateWorldExperienceCollaborator(experienceId, userId);
+                CreateWorldExperienceCollaboratorResponse result = apiInstance.UpdateWorldExperienceCollaborator(experienceId, userId, updateWorldExperienceCollaboratorRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1343,6 +1358,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **userId** | **string**|  | 
+ **updateWorldExperienceCollaboratorRequest** | **UpdateWorldExperienceCollaboratorRequest**|  | [optional] 
 
 ### Return type
 
@@ -1354,7 +1370,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1373,7 +1389,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperienceplacecollabscript"></a>
 # **UpdateWorldExperiencePlaceCollabScript**
-> UpdateWorldExperiencePlaceCollabScriptResponse UpdateWorldExperiencePlaceCollabScript (string experienceId, string placeId, string nodeId)
+> UpdateWorldExperiencePlaceCollabScriptResponse UpdateWorldExperiencePlaceCollabScript (string experienceId, string placeId, string nodeId, UpdateWorldInteractiveDesignDraftRequest updateWorldInteractiveDesignDraftRequest = null)
 
 Save your own draft of a script (needs edit scripts).
 
@@ -1400,11 +1416,12 @@ namespace Example
             var experienceId = "experienceId_example";  // string | 
             var placeId = "placeId_example";  // string | 
             var nodeId = "nodeId_example";  // string | 
+            var updateWorldInteractiveDesignDraftRequest = new UpdateWorldInteractiveDesignDraftRequest(); // UpdateWorldInteractiveDesignDraftRequest |  (optional) 
 
             try
             {
                 // Save your own draft of a script (needs edit scripts).
-                UpdateWorldExperiencePlaceCollabScriptResponse result = apiInstance.UpdateWorldExperiencePlaceCollabScript(experienceId, placeId, nodeId);
+                UpdateWorldExperiencePlaceCollabScriptResponse result = apiInstance.UpdateWorldExperiencePlaceCollabScript(experienceId, placeId, nodeId, updateWorldInteractiveDesignDraftRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1425,6 +1442,7 @@ Name | Type | Description  | Notes
  **experienceId** | **string**|  | 
  **placeId** | **string**|  | 
  **nodeId** | **string**|  | 
+ **updateWorldInteractiveDesignDraftRequest** | **UpdateWorldInteractiveDesignDraftRequest**|  | [optional] 
 
 ### Return type
 
@@ -1436,7 +1454,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1455,7 +1473,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencesplit"></a>
 # **UpdateWorldExperienceSplit**
-> GetWorldExperienceSplitResponse UpdateWorldExperienceSplit (string experienceId)
+> GetWorldExperienceSplitResponse UpdateWorldExperienceSplit (string experienceId, UpdateWorldExperienceSplitRequest updateWorldExperienceSplitRequest = null)
 
 Owner only: split the creator share (70% of net) in basis points summing to 10000. Takes effect the 1st of next month; every party is notified. The 70% total never changes.
 
@@ -1480,11 +1498,12 @@ namespace Example
 
             var apiInstance = new WorldsTeamApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceSplitRequest = new UpdateWorldExperienceSplitRequest(); // UpdateWorldExperienceSplitRequest |  (optional) 
 
             try
             {
                 // Owner only: split the creator share (70% of net) in basis points summing to 10000. Takes effect the 1st of next month; every party is notified. The 70% total never changes.
-                GetWorldExperienceSplitResponse result = apiInstance.UpdateWorldExperienceSplit(experienceId);
+                GetWorldExperienceSplitResponse result = apiInstance.UpdateWorldExperienceSplit(experienceId, updateWorldExperienceSplitRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1503,6 +1522,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceSplitRequest** | **UpdateWorldExperienceSplitRequest**|  | [optional] 
 
 ### Return type
 
@@ -1514,7 +1534,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

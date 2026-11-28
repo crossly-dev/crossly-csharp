@@ -185,7 +185,7 @@ namespace net.crossly.Model
         /// <param name="confidence">AI&#39;s confidence in the synthesis (0-1). Surfaced to the seller so they can decide whether to skim or trust + click. (required).</param>
         /// <param name="notes">AI&#39;s free-text rationale for the merge — what it pulled from where. Helps the seller spot a bad merge before listing..</param>
         /// <param name="sectionApplicability">sectionApplicability.</param>
-        public CreateMagicScanSynthesizeResponsePayload(string title = default(string), string description = default(string), string brand = default(string), ConditionEnum? condition = default(ConditionEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string color = default(string), string material = default(string), string size = default(string), string sizeSystem = default(string), decimal? weightOz = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions dimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), decimal? priceCents = default(decimal?), string sellerNote = default(string), decimal? priceLowCents = default(decimal?), decimal? priceMedianCents = default(decimal?), decimal? priceHighCents = default(decimal?), decimal? quantity = default(decimal?), bool? createInventoryItem = default(bool?), decimal? inventoryQuantity = default(decimal?), decimal? unitsPerListing = default(decimal?), decimal? costBasisCents = default(decimal?), CreateMagicScanSynthesizeResponsePayloadDimensions chosenDimensions = default(CreateMagicScanSynthesizeResponsePayloadDimensions), List<string> imageUrls = default(List<string>), CreateMagicScanSynthesizeResponsePayloadCategory category = default(CreateMagicScanSynthesizeResponsePayloadCategory), string department = default(string), string gender = default(string), string style = default(string), string pattern = default(string), string itemType = default(string), string upc = default(string), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), string handlingTimeDays = default(string), ReturnsAcceptedEnum? returnsAccepted = default(ReturnsAcceptedEnum?), string returnWindowDays = default(string), List<string> tags = default(List<string>), string itemSpecifics = default(string), Dictionary<string, Object> perPlatformOverrides = default(Dictionary<string, Object>), decimal confidence = default(decimal), string notes = default(string), CreateMagicScanSynthesizeResponsePayloadSectionApplicability sectionApplicability = default(CreateMagicScanSynthesizeResponsePayloadSectionApplicability))
+        public CreateMagicScanSynthesizeResponsePayload(string title = default(string), string description = default(string), string brand = default(string), ConditionEnum? condition = default(ConditionEnum?), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string color = default(string), string material = default(string), string size = default(string), string sizeSystem = default(string), decimal? weightOz = default(decimal?), CreateMeTemplateRequestDimensions dimensions = default(CreateMeTemplateRequestDimensions), decimal? priceCents = default(decimal?), string sellerNote = default(string), decimal? priceLowCents = default(decimal?), decimal? priceMedianCents = default(decimal?), decimal? priceHighCents = default(decimal?), decimal? quantity = default(decimal?), bool? createInventoryItem = default(bool?), decimal? inventoryQuantity = default(decimal?), decimal? unitsPerListing = default(decimal?), decimal? costBasisCents = default(decimal?), CreateMeTemplateRequestDimensions chosenDimensions = default(CreateMeTemplateRequestDimensions), List<string> imageUrls = default(List<string>), CreateMeTemplateRequestCategoryPath category = default(CreateMeTemplateRequestCategoryPath), string department = default(string), string gender = default(string), string style = default(string), string pattern = default(string), string itemType = default(string), string upc = default(string), ShippingPaidByEnum? shippingPaidBy = default(ShippingPaidByEnum?), string handlingTimeDays = default(string), ReturnsAcceptedEnum? returnsAccepted = default(ReturnsAcceptedEnum?), string returnWindowDays = default(string), List<string> tags = default(List<string>), string itemSpecifics = default(string), Dictionary<string, Object> perPlatformOverrides = default(Dictionary<string, Object>), decimal confidence = default(decimal), string notes = default(string), CreateMagicScanSynthesizeResponsePayloadSectionApplicability sectionApplicability = default(CreateMagicScanSynthesizeResponsePayloadSectionApplicability))
         {
             // to ensure "title" is required (not null)
             if (title == null) {
@@ -300,7 +300,7 @@ namespace net.crossly.Model
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = true)]
-        public CreateMagicScanSynthesizeResponsePayloadDimensions Dimensions { get; set; }
+        public CreateMeTemplateRequestDimensions Dimensions { get; set; }
 
         /// <summary>
         /// Echoed user-selected price (cents). Set on every synthesize call so the master form&#39;s defaultPrice input gets populated regardless of which path (AI or heuristic) generated the rest.
@@ -374,7 +374,7 @@ namespace net.crossly.Model
         /// Gets or Sets ChosenDimensions
         /// </summary>
         [DataMember(Name = "chosenDimensions", EmitDefaultValue = true)]
-        public CreateMagicScanSynthesizeResponsePayloadDimensions ChosenDimensions { get; set; }
+        public CreateMeTemplateRequestDimensions ChosenDimensions { get; set; }
 
         /// <summary>
         /// Every photo the seller uploaded for the source scan, primary first. The NewListingPage hydrator drops these straight into the form&#39;s images state so the seller doesn&#39;t have to re-upload.
@@ -387,7 +387,7 @@ namespace net.crossly.Model
         /// Gets or Sets Category
         /// </summary>
         [DataMember(Name = "category", EmitDefaultValue = true)]
-        public CreateMagicScanSynthesizeResponsePayloadCategory Category { get; set; }
+        public CreateMeTemplateRequestCategoryPath Category { get; set; }
 
         /// <summary>
         /// eBay item-specifics: Department/Gender/Style/Pattern/Type. These drive the eBay-required aspects on the form&#39;s Item Details section. Mostly only eBay matches have them.

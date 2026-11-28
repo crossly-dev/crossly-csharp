@@ -31,7 +31,7 @@ Method | HTTP request | Description
 
 <a name="createinboxaisuggest"></a>
 # **CreateInboxAiSuggest**
-> CreateInboxAiSuggestResponse CreateInboxAiSuggest ()
+> CreateInboxAiSuggestResponse CreateInboxAiSuggest (CreateInboxAiSuggestRequest createInboxAiSuggestRequest)
 
 AI reply suggestion for a conversation.
 
@@ -55,11 +55,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var createInboxAiSuggestRequest = new CreateInboxAiSuggestRequest(); // CreateInboxAiSuggestRequest | 
 
             try
             {
                 // AI reply suggestion for a conversation.
-                CreateInboxAiSuggestResponse result = apiInstance.CreateInboxAiSuggest();
+                CreateInboxAiSuggestResponse result = apiInstance.CreateInboxAiSuggest(createInboxAiSuggestRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -74,7 +75,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInboxAiSuggestRequest** | **CreateInboxAiSuggestRequest**|  | 
 
 ### Return type
 
@@ -86,7 +90,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -105,7 +109,7 @@ This endpoint does not need any parameter.
 
 <a name="createinboxcannedresponse"></a>
 # **CreateInboxCannedResponse**
-> CreateInboxCannedResponseResponse CreateInboxCannedResponse ()
+> CreateInboxCannedResponseResponse CreateInboxCannedResponse (CreateInboxCannedResponseRequest createInboxCannedResponseRequest)
 
 Create a canned response (added to the end of the list).
 
@@ -129,11 +133,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var createInboxCannedResponseRequest = new CreateInboxCannedResponseRequest(); // CreateInboxCannedResponseRequest | 
 
             try
             {
                 // Create a canned response (added to the end of the list).
-                CreateInboxCannedResponseResponse result = apiInstance.CreateInboxCannedResponse();
+                CreateInboxCannedResponseResponse result = apiInstance.CreateInboxCannedResponse(createInboxCannedResponseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -148,7 +153,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInboxCannedResponseRequest** | **CreateInboxCannedResponseRequest**|  | 
 
 ### Return type
 
@@ -160,7 +168,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -179,7 +187,7 @@ This endpoint does not need any parameter.
 
 <a name="createinboxconversationbulk"></a>
 # **CreateInboxConversationBulk**
-> CreateInboxConversationBulkResponse CreateInboxConversationBulk ()
+> CreateInboxConversationBulkResponse CreateInboxConversationBulk (CreateInboxConversationBulkRequest createInboxConversationBulkRequest)
 
 Bulk mark read / mark unread / soft-delete conversations.
 
@@ -203,11 +211,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var createInboxConversationBulkRequest = new CreateInboxConversationBulkRequest(); // CreateInboxConversationBulkRequest | 
 
             try
             {
                 // Bulk mark read / mark unread / soft-delete conversations.
-                CreateInboxConversationBulkResponse result = apiInstance.CreateInboxConversationBulk();
+                CreateInboxConversationBulkResponse result = apiInstance.CreateInboxConversationBulk(createInboxConversationBulkRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -222,7 +231,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInboxConversationBulkRequest** | **CreateInboxConversationBulkRequest**|  | 
 
 ### Return type
 
@@ -234,7 +246,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -253,7 +265,7 @@ This endpoint does not need any parameter.
 
 <a name="createinboxconversationbulkairespond"></a>
 # **CreateInboxConversationBulkAiRespond**
-> CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond ()
+> CreateInboxConversationBulkAiRespondResponse CreateInboxConversationBulkAiRespond (CreateInboxConversationBulkAiRespondRequest createInboxConversationBulkAiRespondRequest)
 
 AI reply suggestion for multiple conversations — draft or send.
 
@@ -277,11 +289,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var createInboxConversationBulkAiRespondRequest = new CreateInboxConversationBulkAiRespondRequest(); // CreateInboxConversationBulkAiRespondRequest | 
 
             try
             {
                 // AI reply suggestion for multiple conversations — draft or send.
-                CreateInboxConversationBulkAiRespondResponse result = apiInstance.CreateInboxConversationBulkAiRespond();
+                CreateInboxConversationBulkAiRespondResponse result = apiInstance.CreateInboxConversationBulkAiRespond(createInboxConversationBulkAiRespondRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -296,7 +309,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createInboxConversationBulkAiRespondRequest** | **CreateInboxConversationBulkAiRespondRequest**|  | 
 
 ### Return type
 
@@ -308,7 +324,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -327,7 +343,7 @@ This endpoint does not need any parameter.
 
 <a name="createinboxconversationofferaction"></a>
 # **CreateInboxConversationOfferAction**
-> UpdateInboxConversationResponse CreateInboxConversationOfferAction (Guid id)
+> UpdateInboxConversationResponse CreateInboxConversationOfferAction (Guid id, CreateInboxConversationOfferActionRequest createInboxConversationOfferActionRequest)
 
 Accept / counter / decline an active offer on a conversation.
 
@@ -352,11 +368,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // Guid | 
+            var createInboxConversationOfferActionRequest = new CreateInboxConversationOfferActionRequest(); // CreateInboxConversationOfferActionRequest | 
 
             try
             {
                 // Accept / counter / decline an active offer on a conversation.
-                UpdateInboxConversationResponse result = apiInstance.CreateInboxConversationOfferAction(id);
+                UpdateInboxConversationResponse result = apiInstance.CreateInboxConversationOfferAction(id, createInboxConversationOfferActionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -375,6 +392,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createInboxConversationOfferActionRequest** | **CreateInboxConversationOfferActionRequest**|  | 
 
 ### Return type
 
@@ -386,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -483,7 +501,7 @@ Name | Type | Description  | Notes
 
 <a name="createinboxoffer"></a>
 # **CreateInboxOffer**
-> CreateInboxOfferResponse CreateInboxOffer (Guid id)
+> CreateInboxOfferResponse CreateInboxOffer (Guid id, CreateInboxOfferRequest createInboxOfferRequest)
 
 Accept, counter, or decline an offer on a conversation.
 
@@ -508,11 +526,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // Guid | 
+            var createInboxOfferRequest = new CreateInboxOfferRequest(); // CreateInboxOfferRequest | 
 
             try
             {
                 // Accept, counter, or decline an offer on a conversation.
-                CreateInboxOfferResponse result = apiInstance.CreateInboxOffer(id);
+                CreateInboxOfferResponse result = apiInstance.CreateInboxOffer(id, createInboxOfferRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -531,6 +550,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **createInboxOfferRequest** | **CreateInboxOfferRequest**|  | 
 
 ### Return type
 
@@ -542,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -561,7 +581,7 @@ Name | Type | Description  | Notes
 
 <a name="createinboxreply"></a>
 # **CreateInboxReply**
-> CreateInboxReplyResponse CreateInboxReply (Guid id)
+> CreateInboxReplyResponse CreateInboxReply (Guid id, BodyRequest bodyRequest)
 
 Send a reply to a conversation thread.
 
@@ -586,11 +606,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // Guid | 
+            var bodyRequest = new BodyRequest(); // BodyRequest | 
 
             try
             {
                 // Send a reply to a conversation thread.
-                CreateInboxReplyResponse result = apiInstance.CreateInboxReply(id);
+                CreateInboxReplyResponse result = apiInstance.CreateInboxReply(id, bodyRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -609,6 +630,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **bodyRequest** | **BodyRequest**|  | 
 
 ### Return type
 
@@ -620,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -719,7 +741,7 @@ Name | Type | Description  | Notes
 
 <a name="createvideorequestanswer"></a>
 # **CreateVideoRequestAnswer**
-> CreateVideoRequestAnswerResponse CreateVideoRequestAnswer (string id)
+> CreateVideoRequestAnswerResponse CreateVideoRequestAnswer (string id, CreateVideoRequestAnswerRequest createVideoRequestAnswerRequest)
 
 Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
 
@@ -744,11 +766,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // string | 
+            var createVideoRequestAnswerRequest = new CreateVideoRequestAnswerRequest(); // CreateVideoRequestAnswerRequest | 
 
             try
             {
                 // Answer a video request with a clip you uploaded (POST /v1/video-requests/upload-url, then PUT the file to uploadUrl). The buyer is notified and the clip shows on the listing.
-                CreateVideoRequestAnswerResponse result = apiInstance.CreateVideoRequestAnswer(id);
+                CreateVideoRequestAnswerResponse result = apiInstance.CreateVideoRequestAnswer(id, createVideoRequestAnswerRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -767,6 +790,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVideoRequestAnswerRequest** | **CreateVideoRequestAnswerRequest**|  | 
 
 ### Return type
 
@@ -778,7 +802,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -797,7 +821,7 @@ Name | Type | Description  | Notes
 
 <a name="createvideorequestdecline"></a>
 # **CreateVideoRequestDecline**
-> CreateVideoRequestAnswerResponse CreateVideoRequestDecline (string id)
+> CreateVideoRequestAnswerResponse CreateVideoRequestDecline (string id, CreateVideoRequestDeclineRequest createVideoRequestDeclineRequest = null)
 
 Decline a video request, with an optional note to the buyer.
 
@@ -822,11 +846,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // string | 
+            var createVideoRequestDeclineRequest = new CreateVideoRequestDeclineRequest(); // CreateVideoRequestDeclineRequest |  (optional) 
 
             try
             {
                 // Decline a video request, with an optional note to the buyer.
-                CreateVideoRequestAnswerResponse result = apiInstance.CreateVideoRequestDecline(id);
+                CreateVideoRequestAnswerResponse result = apiInstance.CreateVideoRequestDecline(id, createVideoRequestDeclineRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -845,6 +870,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**|  | 
+ **createVideoRequestDeclineRequest** | **CreateVideoRequestDeclineRequest**|  | [optional] 
 
 ### Return type
 
@@ -856,7 +882,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -875,7 +901,7 @@ Name | Type | Description  | Notes
 
 <a name="createvideorequestuploadurl"></a>
 # **CreateVideoRequestUploadUrl**
-> CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl ()
+> CreateVideoRequestUploadUrlResponse CreateVideoRequestUploadUrl (CreateFundingInvoiceFileRequest createFundingInvoiceFileRequest)
 
 A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
 
@@ -899,11 +925,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var createFundingInvoiceFileRequest = new CreateFundingInvoiceFileRequest(); // CreateFundingInvoiceFileRequest | 
 
             try
             {
                 // A presigned upload for a video answer: PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then answer with publicUrl.
-                CreateVideoRequestUploadUrlResponse result = apiInstance.CreateVideoRequestUploadUrl();
+                CreateVideoRequestUploadUrlResponse result = apiInstance.CreateVideoRequestUploadUrl(createFundingInvoiceFileRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -918,7 +945,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createFundingInvoiceFileRequest** | **CreateFundingInvoiceFileRequest**|  | 
 
 ### Return type
 
@@ -930,7 +960,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1486,7 +1516,7 @@ Name | Type | Description  | Notes
 
 <a name="listvideorequests"></a>
 # **ListVideoRequests**
-> ListVideoRequestsResponse ListVideoRequests ()
+> ListVideoRequestsResponse ListVideoRequests (string status = null)
 
 Buyers asking for a video of your items. status: open (default), answered, declined or all.
 
@@ -1510,11 +1540,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new InboxApi(config);
+            var status = "all";  // string |  (optional) 
 
             try
             {
                 // Buyers asking for a video of your items. status: open (default), answered, declined or all.
-                ListVideoRequestsResponse result = apiInstance.ListVideoRequests();
+                ListVideoRequestsResponse result = apiInstance.ListVideoRequests(status);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1529,7 +1560,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1560,7 +1594,7 @@ This endpoint does not need any parameter.
 
 <a name="updateinboxcannedresponse"></a>
 # **UpdateInboxCannedResponse**
-> CreateInboxCannedResponseResponse UpdateInboxCannedResponse (Guid id)
+> CreateInboxCannedResponseResponse UpdateInboxCannedResponse (Guid id, UpdateInboxCannedResponseRequest updateInboxCannedResponseRequest)
 
 Update a canned response.
 
@@ -1585,11 +1619,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // Guid | 
+            var updateInboxCannedResponseRequest = new UpdateInboxCannedResponseRequest(); // UpdateInboxCannedResponseRequest | 
 
             try
             {
                 // Update a canned response.
-                CreateInboxCannedResponseResponse result = apiInstance.UpdateInboxCannedResponse(id);
+                CreateInboxCannedResponseResponse result = apiInstance.UpdateInboxCannedResponse(id, updateInboxCannedResponseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1608,6 +1643,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateInboxCannedResponseRequest** | **UpdateInboxCannedResponseRequest**|  | 
 
 ### Return type
 
@@ -1619,7 +1655,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1718,7 +1754,7 @@ Name | Type | Description  | Notes
 
 <a name="updateinboxconversation"></a>
 # **UpdateInboxConversation**
-> UpdateInboxConversationResponse UpdateInboxConversation (Guid id)
+> UpdateInboxConversationResponse UpdateInboxConversation (Guid id, UpdateInboxConversationRequest updateInboxConversationRequest)
 
 Mark read / change status / close conversation.
 
@@ -1743,11 +1779,12 @@ namespace Example
 
             var apiInstance = new InboxApi(config);
             var id = "id_example";  // Guid | 
+            var updateInboxConversationRequest = new UpdateInboxConversationRequest(); // UpdateInboxConversationRequest | 
 
             try
             {
                 // Mark read / change status / close conversation.
-                UpdateInboxConversationResponse result = apiInstance.UpdateInboxConversation(id);
+                UpdateInboxConversationResponse result = apiInstance.UpdateInboxConversation(id, updateInboxConversationRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1766,6 +1803,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateInboxConversationRequest** | **UpdateInboxConversationRequest**|  | 
 
 ### Return type
 
@@ -1777,7 +1815,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

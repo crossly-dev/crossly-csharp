@@ -106,7 +106,7 @@ This endpoint does not need any parameter.
 
 <a name="createworldexperiencedroptable"></a>
 # **CreateWorldExperienceDropTable**
-> CreateWorldExperienceDropTableResponse CreateWorldExperienceDropTable (string experienceId)
+> CreateWorldExperienceDropTableResponse CreateWorldExperienceDropTable (string experienceId, CreateWorldExperienceDropTableRequest createWorldExperienceDropTableRequest = null)
 
 Declare a drop table for a paid random item: cosmetic or in-experience outcomes only. Crossly pre-simulates and hashes it.
 
@@ -131,11 +131,12 @@ namespace Example
 
             var apiInstance = new WorldsMoneyApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceDropTableRequest = new CreateWorldExperienceDropTableRequest(); // CreateWorldExperienceDropTableRequest |  (optional) 
 
             try
             {
                 // Declare a drop table for a paid random item: cosmetic or in-experience outcomes only. Crossly pre-simulates and hashes it.
-                CreateWorldExperienceDropTableResponse result = apiInstance.CreateWorldExperienceDropTable(experienceId);
+                CreateWorldExperienceDropTableResponse result = apiInstance.CreateWorldExperienceDropTable(experienceId, createWorldExperienceDropTableRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -154,6 +155,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceDropTableRequest** | **CreateWorldExperienceDropTableRequest**|  | [optional] 
 
 ### Return type
 
@@ -165,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -184,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperienceproduct"></a>
 # **CreateWorldExperienceProduct**
-> WorldExperienceProductResponse CreateWorldExperienceProduct (string experienceId)
+> WorldExperienceProductResponse CreateWorldExperienceProduct (string experienceId, CreateWorldExperienceProductRequest createWorldExperienceProductRequest = null)
 
 Create a product: price 50-100,000 cents (a private server may be free), optional per-country prices. Paid random items need an approved drop table and are never tradeable.
 
@@ -209,11 +211,12 @@ namespace Example
 
             var apiInstance = new WorldsMoneyApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceProductRequest = new CreateWorldExperienceProductRequest(); // CreateWorldExperienceProductRequest |  (optional) 
 
             try
             {
                 // Create a product: price 50-100,000 cents (a private server may be free), optional per-country prices. Paid random items need an approved drop table and are never tradeable.
-                WorldExperienceProductResponse result = apiInstance.CreateWorldExperienceProduct(experienceId);
+                WorldExperienceProductResponse result = apiInstance.CreateWorldExperienceProduct(experienceId, createWorldExperienceProductRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -232,6 +235,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceProductRequest** | **CreateWorldExperienceProductRequest**|  | [optional] 
 
 ### Return type
 
@@ -243,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -342,7 +346,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencepurchase"></a>
 # **CreateWorldExperiencePurchase**
-> CreateWorldExperiencePurchaseResponse CreateWorldExperiencePurchase (string experienceId)
+> CreateWorldExperiencePurchaseResponse CreateWorldExperiencePurchase (string experienceId, CreateWorldExperiencePurchaseRequest createWorldExperiencePurchaseRequest = null)
 
 Open a purchase sheet for a product (paid access, a pass…). Returns checkoutPath: the player pays only in the Crossly checkout.
 
@@ -367,11 +371,12 @@ namespace Example
 
             var apiInstance = new WorldsMoneyApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperiencePurchaseRequest = new CreateWorldExperiencePurchaseRequest(); // CreateWorldExperiencePurchaseRequest |  (optional) 
 
             try
             {
                 // Open a purchase sheet for a product (paid access, a pass…). Returns checkoutPath: the player pays only in the Crossly checkout.
-                CreateWorldExperiencePurchaseResponse result = apiInstance.CreateWorldExperiencePurchase(experienceId);
+                CreateWorldExperiencePurchaseResponse result = apiInstance.CreateWorldExperiencePurchase(experienceId, createWorldExperiencePurchaseRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -390,6 +395,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperiencePurchaseRequest** | **CreateWorldExperiencePurchaseRequest**|  | [optional] 
 
 ### Return type
 
@@ -401,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1342,7 +1348,7 @@ This endpoint does not need any parameter.
 
 <a name="listworldearningledger"></a>
 # **ListWorldEarningLedger**
-> ListWorldEarningLedgerResponse ListWorldEarningLedger ()
+> ListWorldEarningLedgerResponse ListWorldEarningLedger (string cursor = null, decimal? limit = null)
 
 Your creator ledger, newest first: every earning and reversal. Cursor-paged.
 
@@ -1366,11 +1372,13 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsMoneyApi(config);
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Your creator ledger, newest first: every earning and reversal. Cursor-paged.
-                ListWorldEarningLedgerResponse result = apiInstance.ListWorldEarningLedger();
+                ListWorldEarningLedgerResponse result = apiInstance.ListWorldEarningLedger(cursor, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1385,7 +1393,11 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -1646,7 +1658,7 @@ Name | Type | Description  | Notes
 
 <a name="listworldexperiencereceipts"></a>
 # **ListWorldExperienceReceipts**
-> ListWorldExperienceReceiptsResponse ListWorldExperienceReceipts (string experienceId)
+> ListWorldExperienceReceiptsResponse ListWorldExperienceReceipts (string experienceId, string cursor = null, decimal? limit = null, string since = null)
 
 Every purchase: orderId, sub, product, price, net, state (paid/delivered/granted/refunded/revoked). Cursor-paged; ?since=.
 
@@ -1671,11 +1683,14 @@ namespace Example
 
             var apiInstance = new WorldsMoneyApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var cursor = "cursor_example";  // string |  (optional) 
+            var limit = 8.14D;  // decimal? |  (optional) 
+            var since = "since_example";  // string |  (optional) 
 
             try
             {
                 // Every purchase: orderId, sub, product, price, net, state (paid/delivered/granted/refunded/revoked). Cursor-paged; ?since=.
-                ListWorldExperienceReceiptsResponse result = apiInstance.ListWorldExperienceReceipts(experienceId);
+                ListWorldExperienceReceiptsResponse result = apiInstance.ListWorldExperienceReceipts(experienceId, cursor, limit, since);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1694,6 +1709,9 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **cursor** | **string**|  | [optional] 
+ **limit** | **decimal?**|  | [optional] 
+ **since** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1798,7 +1816,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldexperienceproduct"></a>
 # **UpdateWorldExperienceProduct**
-> WorldExperienceProductResponse UpdateWorldExperienceProduct (string experienceId, string productId)
+> WorldExperienceProductResponse UpdateWorldExperienceProduct (string experienceId, string productId, UpdateWorldExperienceProductRequest updateWorldExperienceProductRequest = null)
 
 Edit a product: name, description, icon, price, regional prices, hourly limit, on/off sale. Kind and place never change.
 
@@ -1824,11 +1842,12 @@ namespace Example
             var apiInstance = new WorldsMoneyApi(config);
             var experienceId = "experienceId_example";  // string | 
             var productId = "productId_example";  // string | 
+            var updateWorldExperienceProductRequest = new UpdateWorldExperienceProductRequest(); // UpdateWorldExperienceProductRequest |  (optional) 
 
             try
             {
                 // Edit a product: name, description, icon, price, regional prices, hourly limit, on/off sale. Kind and place never change.
-                WorldExperienceProductResponse result = apiInstance.UpdateWorldExperienceProduct(experienceId, productId);
+                WorldExperienceProductResponse result = apiInstance.UpdateWorldExperienceProduct(experienceId, productId, updateWorldExperienceProductRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1848,6 +1867,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **productId** | **string**|  | 
+ **updateWorldExperienceProductRequest** | **UpdateWorldExperienceProductRequest**|  | [optional] 
 
 ### Return type
 
@@ -1859,7 +1879,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

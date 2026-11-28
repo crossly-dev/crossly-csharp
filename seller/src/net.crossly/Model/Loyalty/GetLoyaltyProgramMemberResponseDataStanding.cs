@@ -42,11 +42,13 @@ namespace net.crossly.Model
         /// <param name="spendCents">spendCents (required).</param>
         /// <param name="orders">orders (required).</param>
         /// <param name="points">points (required).</param>
-        public GetLoyaltyProgramMemberResponseDataStanding(decimal spendCents = default(decimal), decimal orders = default(decimal), decimal points = default(decimal))
+        /// <param name="balance">balance (required).</param>
+        public GetLoyaltyProgramMemberResponseDataStanding(decimal spendCents = default(decimal), decimal orders = default(decimal), decimal points = default(decimal), decimal balance = default(decimal))
         {
             this.SpendCents = spendCents;
             this.Orders = orders;
             this.Points = points;
+            this.Balance = balance;
         }
 
         /// <summary>
@@ -68,6 +70,12 @@ namespace net.crossly.Model
         public decimal Points { get; set; }
 
         /// <summary>
+        /// Gets or Sets Balance
+        /// </summary>
+        [DataMember(Name = "balance", IsRequired = true, EmitDefaultValue = false)]
+        public decimal Balance { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -78,6 +86,7 @@ namespace net.crossly.Model
             sb.Append("  SpendCents: ").Append(SpendCents).Append("\n");
             sb.Append("  Orders: ").Append(Orders).Append("\n");
             sb.Append("  Points: ").Append(Points).Append("\n");
+            sb.Append("  Balance: ").Append(Balance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,6 +133,10 @@ namespace net.crossly.Model
                 (
                     this.Points == input.Points ||
                     this.Points.Equals(input.Points)
+                ) && 
+                (
+                    this.Balance == input.Balance ||
+                    this.Balance.Equals(input.Balance)
                 );
         }
 
@@ -139,6 +152,7 @@ namespace net.crossly.Model
                 hashCode = (hashCode * 59) + this.SpendCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.Orders.GetHashCode();
                 hashCode = (hashCode * 59) + this.Points.GetHashCode();
+                hashCode = (hashCode * 59) + this.Balance.GetHashCode();
                 return hashCode;
             }
         }

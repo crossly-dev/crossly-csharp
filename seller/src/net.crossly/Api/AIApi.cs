@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single image URL.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <returns>CreateAiCategorizeResponse</returns>
-        CreateAiCategorizeResponse CreateAiCategorize();
+        CreateAiCategorizeResponse CreateAiCategorize(CreateAiCategorizeRequest createAiCategorizeRequest);
 
         /// <summary>
         /// Taxonomy guess from a single image URL.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <returns>ApiResponse of CreateAiCategorizeResponse</returns>
-        ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeWithHttpInfo();
+        ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeWithHttpInfo(CreateAiCategorizeRequest createAiCategorizeRequest);
         /// <summary>
         /// Taxonomy guess from a single base64 image.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>CreateAiCategorizeResponse</returns>
-        CreateAiCategorizeResponse CreateAiCategorizeFromImage();
+        CreateAiCategorizeResponse CreateAiCategorizeFromImage(CreateAiExtractReceiptRequest createAiExtractReceiptRequest);
 
         /// <summary>
         /// Taxonomy guess from a single base64 image.
@@ -56,14 +59,34 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>ApiResponse of CreateAiCategorizeResponse</returns>
-        ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeFromImageWithHttpInfo();
+        ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeFromImageWithHttpInfo(CreateAiExtractReceiptRequest createAiExtractReceiptRequest);
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <returns>CreateAiCopyResponse</returns>
+        CreateAiCopyResponse CreateAiCopy(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest));
+
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiCopyResponse</returns>
+        ApiResponse<CreateAiCopyResponse> CreateAiCopyWithHttpInfo(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest));
         /// <summary>
         /// SEO-rewrite a listing description.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <returns>CreateAiEnhanceDescriptionResponse</returns>
-        CreateAiEnhanceDescriptionResponse CreateAiEnhanceDescription();
+        CreateAiEnhanceDescriptionResponse CreateAiEnhanceDescription(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest);
 
         /// <summary>
         /// SEO-rewrite a listing description.
@@ -72,14 +95,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <returns>ApiResponse of CreateAiEnhanceDescriptionResponse</returns>
-        ApiResponse<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionWithHttpInfo();
+        ApiResponse<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionWithHttpInfo(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest);
         /// <summary>
         /// Rewrite title + description + tags in one call.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <returns>CreateAiEnhanceListingResponse</returns>
-        CreateAiEnhanceListingResponse CreateAiEnhanceListing();
+        CreateAiEnhanceListingResponse CreateAiEnhanceListing(CreateAiEnhanceListingRequest createAiEnhanceListingRequest);
 
         /// <summary>
         /// Rewrite title + description + tags in one call.
@@ -88,14 +113,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <returns>ApiResponse of CreateAiEnhanceListingResponse</returns>
-        ApiResponse<CreateAiEnhanceListingResponse> CreateAiEnhanceListingWithHttpInfo();
+        ApiResponse<CreateAiEnhanceListingResponse> CreateAiEnhanceListingWithHttpInfo(CreateAiEnhanceListingRequest createAiEnhanceListingRequest);
         /// <summary>
         /// SEO-rewrite a listing title.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <returns>CreateAiEnhanceTitleResponse</returns>
-        CreateAiEnhanceTitleResponse CreateAiEnhanceTitle();
+        CreateAiEnhanceTitleResponse CreateAiEnhanceTitle(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest);
 
         /// <summary>
         /// SEO-rewrite a listing title.
@@ -104,14 +131,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <returns>ApiResponse of CreateAiEnhanceTitleResponse</returns>
-        ApiResponse<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleWithHttpInfo();
+        ApiResponse<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleWithHttpInfo(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest);
         /// <summary>
         /// Structured data extraction from a receipt photo.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>CreateAiExtractReceiptResponse</returns>
-        CreateAiExtractReceiptResponse CreateAiExtractReceipt();
+        CreateAiExtractReceiptResponse CreateAiExtractReceipt(CreateAiExtractReceiptRequest createAiExtractReceiptRequest);
 
         /// <summary>
         /// Structured data extraction from a receipt photo.
@@ -120,14 +149,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>ApiResponse of CreateAiExtractReceiptResponse</returns>
-        ApiResponse<CreateAiExtractReceiptResponse> CreateAiExtractReceiptWithHttpInfo();
+        ApiResponse<CreateAiExtractReceiptResponse> CreateAiExtractReceiptWithHttpInfo(CreateAiExtractReceiptRequest createAiExtractReceiptRequest);
         /// <summary>
         /// Generate full listing fields from up to 4 image URLs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <returns>CreateAiMagicListingResponse</returns>
-        CreateAiMagicListingResponse CreateAiGenerateListing();
+        CreateAiMagicListingResponse CreateAiGenerateListing(CreateAiGenerateListingRequest createAiGenerateListingRequest);
 
         /// <summary>
         /// Generate full listing fields from up to 4 image URLs.
@@ -136,14 +167,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <returns>ApiResponse of CreateAiMagicListingResponse</returns>
-        ApiResponse<CreateAiMagicListingResponse> CreateAiGenerateListingWithHttpInfo();
+        ApiResponse<CreateAiMagicListingResponse> CreateAiGenerateListingWithHttpInfo(CreateAiGenerateListingRequest createAiGenerateListingRequest);
         /// <summary>
         /// In-app help Q&amp;A grounded in supplied docs.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <returns>CreateAiHelpResponse</returns>
-        CreateAiHelpResponse CreateAiHelp();
+        CreateAiHelpResponse CreateAiHelp(CreateAiHelpRequest createAiHelpRequest);
 
         /// <summary>
         /// In-app help Q&amp;A grounded in supplied docs.
@@ -152,14 +185,70 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <returns>ApiResponse of CreateAiHelpResponse</returns>
-        ApiResponse<CreateAiHelpResponse> CreateAiHelpWithHttpInfo();
+        ApiResponse<CreateAiHelpResponse> CreateAiHelpWithHttpInfo(CreateAiHelpRequest createAiHelpRequest);
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <returns>CreateAiKeyResponse</returns>
+        CreateAiKeyResponse CreateAiKey(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest));
+
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyResponse</returns>
+        ApiResponse<CreateAiKeyResponse> CreateAiKeyWithHttpInfo(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest));
+        /// <summary>
+        /// Test an AI provider key before saving it.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <returns>CreateAiKeyTestResponse</returns>
+        CreateAiKeyTestResponse CreateAiKeyTest(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest));
+
+        /// <summary>
+        /// Test an AI provider key before saving it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyTestResponse</returns>
+        ApiResponse<CreateAiKeyTestResponse> CreateAiKeyTestWithHttpInfo(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest));
+        /// <summary>
+        /// Re-test a saved AI key.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateAiKeyTestResponse</returns>
+        CreateAiKeyTestResponse CreateAiKeyTestById(string id);
+
+        /// <summary>
+        /// Re-test a saved AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateAiKeyTestResponse</returns>
+        ApiResponse<CreateAiKeyTestResponse> CreateAiKeyTestByIdWithHttpInfo(string id);
         /// <summary>
         /// Generate full listing fields from base64 photos.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <returns>CreateAiMagicListingResponse</returns>
-        CreateAiMagicListingResponse CreateAiMagicListing();
+        CreateAiMagicListingResponse CreateAiMagicListing(CreateAiMagicListingRequest createAiMagicListingRequest);
 
         /// <summary>
         /// Generate full listing fields from base64 photos.
@@ -168,14 +257,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <returns>ApiResponse of CreateAiMagicListingResponse</returns>
-        ApiResponse<CreateAiMagicListingResponse> CreateAiMagicListingWithHttpInfo();
+        ApiResponse<CreateAiMagicListingResponse> CreateAiMagicListingWithHttpInfo(CreateAiMagicListingRequest createAiMagicListingRequest);
         /// <summary>
         /// Live-ping a candidate BYO-key.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>CreateAiTestKeyResponse</returns>
-        CreateAiTestKeyResponse CreateAiTestKey();
+        CreateAiTestKeyResponse CreateAiTestKey(UpdateAiKeyRequest updateAiKeyRequest);
 
         /// <summary>
         /// Live-ping a candidate BYO-key.
@@ -184,14 +275,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>ApiResponse of CreateAiTestKeyResponse</returns>
-        ApiResponse<CreateAiTestKeyResponse> CreateAiTestKeyWithHttpInfo();
+        ApiResponse<CreateAiTestKeyResponse> CreateAiTestKeyWithHttpInfo(UpdateAiKeyRequest updateAiKeyRequest);
         /// <summary>
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <returns>CreateListingAiImageResponse</returns>
-        CreateListingAiImageResponse CreateListingAiImage();
+        CreateListingAiImageResponse CreateListingAiImage(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest));
 
         /// <summary>
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated.
@@ -200,14 +293,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingAiImageResponse</returns>
-        ApiResponse<CreateListingAiImageResponse> CreateListingAiImageWithHttpInfo();
+        ApiResponse<CreateListingAiImageResponse> CreateListingAiImageWithHttpInfo(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest));
         /// <summary>
         /// Build the AI product-photo prompt for a listing (no image is generated).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <returns>CreateListingAiImagePromptResponse</returns>
-        CreateListingAiImagePromptResponse CreateListingAiImagePrompt();
+        CreateListingAiImagePromptResponse CreateListingAiImagePrompt(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest));
 
         /// <summary>
         /// Build the AI product-photo prompt for a listing (no image is generated).
@@ -216,24 +311,61 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingAiImagePromptResponse</returns>
-        ApiResponse<CreateListingAiImagePromptResponse> CreateListingAiImagePromptWithHttpInfo();
+        ApiResponse<CreateListingAiImagePromptResponse> CreateListingAiImagePromptWithHttpInfo(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest));
         /// <summary>
-        /// Remove the BYO-key for a provider.
+        /// Remove the store&#39;s BYO-key for a provider.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <returns>SuccessResponse</returns>
-        SuccessResponse DeleteAiKey();
+        SuccessResponse DeleteAiKey(string provider = default(string));
 
         /// <summary>
-        /// Remove the BYO-key for a provider.
+        /// Remove the store&#39;s BYO-key for a provider.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        ApiResponse<SuccessResponse> DeleteAiKeyWithHttpInfo();
+        ApiResponse<SuccessResponse> DeleteAiKeyWithHttpInfo(string provider = default(string));
+        /// <summary>
+        /// Disconnect an AI provider key.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>SuccessResponse</returns>
+        SuccessResponse DeleteAiKeyById(string id);
+
+        /// <summary>
+        /// Disconnect an AI provider key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of SuccessResponse</returns>
+        ApiResponse<SuccessResponse> DeleteAiKeyByIdWithHttpInfo(string id);
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAiKeyResponse</returns>
+        GetAiKeyResponse GetAiKey();
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAiKeyResponse</returns>
+        ApiResponse<GetAiKeyResponse> GetAiKeyWithHttpInfo();
         /// <summary>
         /// Static catalog of supported AI providers.
         /// </summary>
@@ -250,6 +382,22 @@ namespace net.crossly.Api
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetAiProviderResponse</returns>
         ApiResponse<GetAiProviderResponse> GetAiProviderWithHttpInfo();
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAiRoutingResponse</returns>
+        GetAiRoutingResponse GetAiRouting();
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAiRoutingResponse</returns>
+        ApiResponse<GetAiRoutingResponse> GetAiRoutingWithHttpInfo();
         /// <summary>
         /// BYO-key state for the calling user.
         /// </summary>
@@ -270,8 +418,9 @@ namespace net.crossly.Api
         /// Choose the AI image provider/model, independently of the text provider.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <returns>UpdateAiImageConfigResponse</returns>
-        UpdateAiImageConfigResponse UpdateAiImageConfig();
+        UpdateAiImageConfigResponse UpdateAiImageConfig(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest));
 
         /// <summary>
         /// Choose the AI image provider/model, independently of the text provider.
@@ -280,24 +429,67 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateAiImageConfigResponse</returns>
-        ApiResponse<UpdateAiImageConfigResponse> UpdateAiImageConfigWithHttpInfo();
+        ApiResponse<UpdateAiImageConfigResponse> UpdateAiImageConfigWithHttpInfo(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest));
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider.
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>SuccessResponse</returns>
-        SuccessResponse UpdateAiKey();
+        SuccessResponse UpdateAiKey(UpdateAiKeyRequest updateAiKeyRequest);
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider.
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        ApiResponse<SuccessResponse> UpdateAiKeyWithHttpInfo();
+        ApiResponse<SuccessResponse> UpdateAiKeyWithHttpInfo(UpdateAiKeyRequest updateAiKeyRequest);
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <returns>CreateAiKeyResponse</returns>
+        CreateAiKeyResponse UpdateAiKeyById(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest));
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyResponse</returns>
+        ApiResponse<CreateAiKeyResponse> UpdateAiKeyByIdWithHttpInfo(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest));
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <returns>UpdateAiRoutingResponse</returns>
+        UpdateAiRoutingResponse UpdateAiRouting(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest));
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateAiRoutingResponse</returns>
+        ApiResponse<UpdateAiRoutingResponse> UpdateAiRoutingWithHttpInfo(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest));
         #endregion Synchronous Operations
     }
 
@@ -314,9 +506,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiCategorizeResponse</returns>
-        System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeAsync(CreateAiCategorizeRequest createAiCategorizeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Taxonomy guess from a single image URL.
@@ -325,9 +518,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiCategorizeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeWithHttpInfoAsync(CreateAiCategorizeRequest createAiCategorizeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Taxonomy guess from a single base64 image.
         /// </summary>
@@ -335,9 +529,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiCategorizeResponse</returns>
-        System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeFromImageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeFromImageAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Taxonomy guess from a single base64 image.
@@ -346,9 +541,33 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiCategorizeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeFromImageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeFromImageWithHttpInfoAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiCopyResponse</returns>
+        System.Threading.Tasks.Task<CreateAiCopyResponse> CreateAiCopyAsync(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiCopyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAiCopyResponse>> CreateAiCopyWithHttpInfoAsync(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// SEO-rewrite a listing description.
         /// </summary>
@@ -356,9 +575,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceDescriptionResponse</returns>
-        System.Threading.Tasks.Task<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionAsync(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// SEO-rewrite a listing description.
@@ -367,9 +587,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceDescriptionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceDescriptionResponse>> CreateAiEnhanceDescriptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceDescriptionResponse>> CreateAiEnhanceDescriptionWithHttpInfoAsync(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Rewrite title + description + tags in one call.
         /// </summary>
@@ -377,9 +598,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceListingResponse</returns>
-        System.Threading.Tasks.Task<CreateAiEnhanceListingResponse> CreateAiEnhanceListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiEnhanceListingResponse> CreateAiEnhanceListingAsync(CreateAiEnhanceListingRequest createAiEnhanceListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Rewrite title + description + tags in one call.
@@ -388,9 +610,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceListingResponse>> CreateAiEnhanceListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceListingResponse>> CreateAiEnhanceListingWithHttpInfoAsync(CreateAiEnhanceListingRequest createAiEnhanceListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// SEO-rewrite a listing title.
         /// </summary>
@@ -398,9 +621,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceTitleResponse</returns>
-        System.Threading.Tasks.Task<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleAsync(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// SEO-rewrite a listing title.
@@ -409,9 +633,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceTitleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceTitleResponse>> CreateAiEnhanceTitleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiEnhanceTitleResponse>> CreateAiEnhanceTitleWithHttpInfoAsync(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Structured data extraction from a receipt photo.
         /// </summary>
@@ -419,9 +644,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiExtractReceiptResponse</returns>
-        System.Threading.Tasks.Task<CreateAiExtractReceiptResponse> CreateAiExtractReceiptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiExtractReceiptResponse> CreateAiExtractReceiptAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Structured data extraction from a receipt photo.
@@ -430,9 +656,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiExtractReceiptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiExtractReceiptResponse>> CreateAiExtractReceiptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiExtractReceiptResponse>> CreateAiExtractReceiptWithHttpInfoAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generate full listing fields from up to 4 image URLs.
         /// </summary>
@@ -440,9 +667,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiMagicListingResponse</returns>
-        System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiGenerateListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiGenerateListingAsync(CreateAiGenerateListingRequest createAiGenerateListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate full listing fields from up to 4 image URLs.
@@ -451,9 +679,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiMagicListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiMagicListingResponse>> CreateAiGenerateListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiMagicListingResponse>> CreateAiGenerateListingWithHttpInfoAsync(CreateAiGenerateListingRequest createAiGenerateListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// In-app help Q&amp;A grounded in supplied docs.
         /// </summary>
@@ -461,9 +690,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiHelpResponse</returns>
-        System.Threading.Tasks.Task<CreateAiHelpResponse> CreateAiHelpAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiHelpResponse> CreateAiHelpAsync(CreateAiHelpRequest createAiHelpRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// In-app help Q&amp;A grounded in supplied docs.
@@ -472,9 +702,79 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiHelpResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiHelpResponse>> CreateAiHelpWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiHelpResponse>> CreateAiHelpWithHttpInfoAsync(CreateAiHelpRequest createAiHelpRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyResponse</returns>
+        System.Threading.Tasks.Task<CreateAiKeyResponse> CreateAiKeyAsync(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAiKeyResponse>> CreateAiKeyWithHttpInfoAsync(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Test an AI provider key before saving it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyTestResponse</returns>
+        System.Threading.Tasks.Task<CreateAiKeyTestResponse> CreateAiKeyTestAsync(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Test an AI provider key before saving it.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAiKeyTestResponse>> CreateAiKeyTestWithHttpInfoAsync(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Re-test a saved AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyTestResponse</returns>
+        System.Threading.Tasks.Task<CreateAiKeyTestResponse> CreateAiKeyTestByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Re-test a saved AI key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyTestResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAiKeyTestResponse>> CreateAiKeyTestByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generate full listing fields from base64 photos.
         /// </summary>
@@ -482,9 +782,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiMagicListingResponse</returns>
-        System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiMagicListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiMagicListingAsync(CreateAiMagicListingRequest createAiMagicListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate full listing fields from base64 photos.
@@ -493,9 +794,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiMagicListingResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiMagicListingResponse>> CreateAiMagicListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiMagicListingResponse>> CreateAiMagicListingWithHttpInfoAsync(CreateAiMagicListingRequest createAiMagicListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Live-ping a candidate BYO-key.
         /// </summary>
@@ -503,9 +805,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiTestKeyResponse</returns>
-        System.Threading.Tasks.Task<CreateAiTestKeyResponse> CreateAiTestKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateAiTestKeyResponse> CreateAiTestKeyAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Live-ping a candidate BYO-key.
@@ -514,9 +817,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiTestKeyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAiTestKeyResponse>> CreateAiTestKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateAiTestKeyResponse>> CreateAiTestKeyWithHttpInfoAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated.
         /// </summary>
@@ -524,9 +828,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAiImageResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAiImageResponse> CreateListingAiImageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAiImageResponse> CreateListingAiImageAsync(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated.
@@ -535,9 +840,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAiImageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAiImageResponse>> CreateListingAiImageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAiImageResponse>> CreateListingAiImageWithHttpInfoAsync(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build the AI product-photo prompt for a listing (no image is generated).
         /// </summary>
@@ -545,9 +851,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAiImagePromptResponse</returns>
-        System.Threading.Tasks.Task<CreateListingAiImagePromptResponse> CreateListingAiImagePromptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateListingAiImagePromptResponse> CreateListingAiImagePromptAsync(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build the AI product-photo prompt for a listing (no image is generated).
@@ -556,30 +863,77 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAiImagePromptResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateListingAiImagePromptResponse>> CreateListingAiImagePromptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateListingAiImagePromptResponse>> CreateListingAiImagePromptWithHttpInfoAsync(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Remove the BYO-key for a provider.
+        /// Remove the store&#39;s BYO-key for a provider.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyAsync(string provider = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Remove the BYO-key for a provider.
+        /// Remove the store&#39;s BYO-key for a provider.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteAiKeyWithHttpInfoAsync(string provider = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Disconnect an AI provider key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SuccessResponse</returns>
+        System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Disconnect an AI provider key.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteAiKeyByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key).
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> DeleteAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetAiKeyResponse</returns>
+        System.Threading.Tasks.Task<GetAiKeyResponse> GetAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAiKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAiKeyResponse>> GetAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Static catalog of supported AI providers.
         /// </summary>
@@ -601,6 +955,27 @@ namespace net.crossly.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAiProviderResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetAiProviderResponse>> GetAiProviderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAiRoutingResponse</returns>
+        System.Threading.Tasks.Task<GetAiRoutingResponse> GetAiRoutingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAiRoutingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAiRoutingResponse>> GetAiRoutingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// BYO-key state for the calling user.
         /// </summary>
@@ -629,9 +1004,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAiImageConfigResponse</returns>
-        System.Threading.Tasks.Task<UpdateAiImageConfigResponse> UpdateAiImageConfigAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateAiImageConfigResponse> UpdateAiImageConfigAsync(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Choose the AI image provider/model, independently of the text provider.
@@ -640,30 +1016,83 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAiImageConfigResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateAiImageConfigResponse>> UpdateAiImageConfigWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateAiImageConfigResponse>> UpdateAiImageConfigWithHttpInfoAsync(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider.
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        System.Threading.Tasks.Task<SuccessResponse> UpdateAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<SuccessResponse> UpdateAiKeyAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider.
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> UpdateAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SuccessResponse>> UpdateAiKeyWithHttpInfoAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyResponse</returns>
+        System.Threading.Tasks.Task<CreateAiKeyResponse> UpdateAiKeyByIdAsync(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateAiKeyResponse>> UpdateAiKeyByIdWithHttpInfoAsync(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateAiRoutingResponse</returns>
+        System.Threading.Tasks.Task<UpdateAiRoutingResponse> UpdateAiRoutingAsync(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateAiRoutingResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateAiRoutingResponse>> UpdateAiRoutingWithHttpInfoAsync(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -788,10 +1217,11 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single image URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <returns>CreateAiCategorizeResponse</returns>
-        public CreateAiCategorizeResponse CreateAiCategorize()
+        public CreateAiCategorizeResponse CreateAiCategorize(CreateAiCategorizeRequest createAiCategorizeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = CreateAiCategorizeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = CreateAiCategorizeWithHttpInfo(createAiCategorizeRequest);
             return localVarResponse.Data;
         }
 
@@ -799,12 +1229,20 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single image URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <returns>ApiResponse of CreateAiCategorizeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeWithHttpInfo(CreateAiCategorizeRequest createAiCategorizeRequest)
         {
+            // verify the required parameter 'createAiCategorizeRequest' is set
+            if (createAiCategorizeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiCategorizeRequest' when calling AIApi->CreateAiCategorize");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -824,6 +1262,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiCategorizeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -850,11 +1289,12 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single image URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiCategorizeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeAsync(CreateAiCategorizeRequest createAiCategorizeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = await CreateAiCategorizeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = await CreateAiCategorizeWithHttpInfoAsync(createAiCategorizeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -862,14 +1302,22 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single image URL. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCategorizeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiCategorizeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeWithHttpInfoAsync(CreateAiCategorizeRequest createAiCategorizeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiCategorizeRequest' is set
+            if (createAiCategorizeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiCategorizeRequest' when calling AIApi->CreateAiCategorize");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -889,6 +1337,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiCategorizeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -916,10 +1365,11 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single base64 image. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>CreateAiCategorizeResponse</returns>
-        public CreateAiCategorizeResponse CreateAiCategorizeFromImage()
+        public CreateAiCategorizeResponse CreateAiCategorizeFromImage(CreateAiExtractReceiptRequest createAiExtractReceiptRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = CreateAiCategorizeFromImageWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = CreateAiCategorizeFromImageWithHttpInfo(createAiExtractReceiptRequest);
             return localVarResponse.Data;
         }
 
@@ -927,12 +1377,20 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single base64 image. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>ApiResponse of CreateAiCategorizeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeFromImageWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> CreateAiCategorizeFromImageWithHttpInfo(CreateAiExtractReceiptRequest createAiExtractReceiptRequest)
         {
+            // verify the required parameter 'createAiExtractReceiptRequest' is set
+            if (createAiExtractReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiExtractReceiptRequest' when calling AIApi->CreateAiCategorizeFromImage");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -952,6 +1410,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiExtractReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -978,11 +1437,12 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single base64 image. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiCategorizeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeFromImageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiCategorizeResponse> CreateAiCategorizeFromImageAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = await CreateAiCategorizeFromImageWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiCategorizeResponse> localVarResponse = await CreateAiCategorizeFromImageWithHttpInfoAsync(createAiExtractReceiptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -990,14 +1450,22 @@ namespace net.crossly.Api
         /// Taxonomy guess from a single base64 image. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiCategorizeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeFromImageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiCategorizeResponse>> CreateAiCategorizeFromImageWithHttpInfoAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiExtractReceiptRequest' is set
+            if (createAiExtractReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiExtractReceiptRequest' when calling AIApi->CreateAiCategorizeFromImage");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1017,6 +1485,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiExtractReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1041,26 +1510,29 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// SEO-rewrite a listing description. 
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateAiEnhanceDescriptionResponse</returns>
-        public CreateAiEnhanceDescriptionResponse CreateAiEnhanceDescription()
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <returns>CreateAiCopyResponse</returns>
+        public CreateAiCopyResponse CreateAiCopy(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest))
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> localVarResponse = CreateAiEnhanceDescriptionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiCopyResponse> localVarResponse = CreateAiCopyWithHttpInfo(createAiCopyRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// SEO-rewrite a listing description. 
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateAiEnhanceDescriptionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionWithHttpInfo()
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiCopyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiCopyResponse> CreateAiCopyWithHttpInfo(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1080,6 +1552,149 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAiCopyResponse>("/v1/ai/copy", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiCopyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAiCopyResponse> CreateAiCopyAsync(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAiCopyResponse> localVarResponse = await CreateAiCopyWithHttpInfoAsync(createAiCopyRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Draft store copy (ads, branding, policy wording, lookbook copy) from the facts you give, on your AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiCopyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiCopyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiCopyResponse>> CreateAiCopyWithHttpInfoAsync(CreateAiCopyRequest createAiCopyRequest = default(CreateAiCopyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiCopyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAiCopyResponse>("/v1/ai/copy", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiCopy", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// SEO-rewrite a listing description. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
+        /// <returns>CreateAiEnhanceDescriptionResponse</returns>
+        public CreateAiEnhanceDescriptionResponse CreateAiEnhanceDescription(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> localVarResponse = CreateAiEnhanceDescriptionWithHttpInfo(createAiEnhanceDescriptionRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// SEO-rewrite a listing description. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
+        /// <returns>ApiResponse of CreateAiEnhanceDescriptionResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionWithHttpInfo(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest)
+        {
+            // verify the required parameter 'createAiEnhanceDescriptionRequest' is set
+            if (createAiEnhanceDescriptionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceDescriptionRequest' when calling AIApi->CreateAiEnhanceDescription");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiEnhanceDescriptionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1106,11 +1721,12 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing description. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceDescriptionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiEnhanceDescriptionResponse> CreateAiEnhanceDescriptionAsync(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> localVarResponse = await CreateAiEnhanceDescriptionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse> localVarResponse = await CreateAiEnhanceDescriptionWithHttpInfoAsync(createAiEnhanceDescriptionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1118,14 +1734,22 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing description. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceDescriptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceDescriptionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse>> CreateAiEnhanceDescriptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceDescriptionResponse>> CreateAiEnhanceDescriptionWithHttpInfoAsync(CreateAiEnhanceDescriptionRequest createAiEnhanceDescriptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiEnhanceDescriptionRequest' is set
+            if (createAiEnhanceDescriptionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceDescriptionRequest' when calling AIApi->CreateAiEnhanceDescription");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1145,6 +1769,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiEnhanceDescriptionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1172,10 +1797,11 @@ namespace net.crossly.Api
         /// Rewrite title + description + tags in one call. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <returns>CreateAiEnhanceListingResponse</returns>
-        public CreateAiEnhanceListingResponse CreateAiEnhanceListing()
+        public CreateAiEnhanceListingResponse CreateAiEnhanceListing(CreateAiEnhanceListingRequest createAiEnhanceListingRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> localVarResponse = CreateAiEnhanceListingWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> localVarResponse = CreateAiEnhanceListingWithHttpInfo(createAiEnhanceListingRequest);
             return localVarResponse.Data;
         }
 
@@ -1183,12 +1809,20 @@ namespace net.crossly.Api
         /// Rewrite title + description + tags in one call. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <returns>ApiResponse of CreateAiEnhanceListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> CreateAiEnhanceListingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> CreateAiEnhanceListingWithHttpInfo(CreateAiEnhanceListingRequest createAiEnhanceListingRequest)
         {
+            // verify the required parameter 'createAiEnhanceListingRequest' is set
+            if (createAiEnhanceListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceListingRequest' when calling AIApi->CreateAiEnhanceListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1208,6 +1842,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiEnhanceListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1234,11 +1869,12 @@ namespace net.crossly.Api
         /// Rewrite title + description + tags in one call. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiEnhanceListingResponse> CreateAiEnhanceListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiEnhanceListingResponse> CreateAiEnhanceListingAsync(CreateAiEnhanceListingRequest createAiEnhanceListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> localVarResponse = await CreateAiEnhanceListingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse> localVarResponse = await CreateAiEnhanceListingWithHttpInfoAsync(createAiEnhanceListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1246,14 +1882,22 @@ namespace net.crossly.Api
         /// Rewrite title + description + tags in one call. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse>> CreateAiEnhanceListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceListingResponse>> CreateAiEnhanceListingWithHttpInfoAsync(CreateAiEnhanceListingRequest createAiEnhanceListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiEnhanceListingRequest' is set
+            if (createAiEnhanceListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceListingRequest' when calling AIApi->CreateAiEnhanceListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1273,6 +1917,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiEnhanceListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1300,10 +1945,11 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing title. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <returns>CreateAiEnhanceTitleResponse</returns>
-        public CreateAiEnhanceTitleResponse CreateAiEnhanceTitle()
+        public CreateAiEnhanceTitleResponse CreateAiEnhanceTitle(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> localVarResponse = CreateAiEnhanceTitleWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> localVarResponse = CreateAiEnhanceTitleWithHttpInfo(createAiEnhanceTitleRequest);
             return localVarResponse.Data;
         }
 
@@ -1311,12 +1957,20 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing title. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <returns>ApiResponse of CreateAiEnhanceTitleResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleWithHttpInfo(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest)
         {
+            // verify the required parameter 'createAiEnhanceTitleRequest' is set
+            if (createAiEnhanceTitleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceTitleRequest' when calling AIApi->CreateAiEnhanceTitle");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1336,6 +1990,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiEnhanceTitleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1362,11 +2017,12 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing title. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiEnhanceTitleResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiEnhanceTitleResponse> CreateAiEnhanceTitleAsync(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> localVarResponse = await CreateAiEnhanceTitleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse> localVarResponse = await CreateAiEnhanceTitleWithHttpInfoAsync(createAiEnhanceTitleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1374,14 +2030,22 @@ namespace net.crossly.Api
         /// SEO-rewrite a listing title. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiEnhanceTitleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiEnhanceTitleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse>> CreateAiEnhanceTitleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiEnhanceTitleResponse>> CreateAiEnhanceTitleWithHttpInfoAsync(CreateAiEnhanceTitleRequest createAiEnhanceTitleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiEnhanceTitleRequest' is set
+            if (createAiEnhanceTitleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiEnhanceTitleRequest' when calling AIApi->CreateAiEnhanceTitle");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1401,6 +2065,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiEnhanceTitleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1428,10 +2093,11 @@ namespace net.crossly.Api
         /// Structured data extraction from a receipt photo. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>CreateAiExtractReceiptResponse</returns>
-        public CreateAiExtractReceiptResponse CreateAiExtractReceipt()
+        public CreateAiExtractReceiptResponse CreateAiExtractReceipt(CreateAiExtractReceiptRequest createAiExtractReceiptRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> localVarResponse = CreateAiExtractReceiptWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> localVarResponse = CreateAiExtractReceiptWithHttpInfo(createAiExtractReceiptRequest);
             return localVarResponse.Data;
         }
 
@@ -1439,12 +2105,20 @@ namespace net.crossly.Api
         /// Structured data extraction from a receipt photo. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <returns>ApiResponse of CreateAiExtractReceiptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> CreateAiExtractReceiptWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> CreateAiExtractReceiptWithHttpInfo(CreateAiExtractReceiptRequest createAiExtractReceiptRequest)
         {
+            // verify the required parameter 'createAiExtractReceiptRequest' is set
+            if (createAiExtractReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiExtractReceiptRequest' when calling AIApi->CreateAiExtractReceipt");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1464,6 +2138,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiExtractReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1490,11 +2165,12 @@ namespace net.crossly.Api
         /// Structured data extraction from a receipt photo. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiExtractReceiptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiExtractReceiptResponse> CreateAiExtractReceiptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiExtractReceiptResponse> CreateAiExtractReceiptAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> localVarResponse = await CreateAiExtractReceiptWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse> localVarResponse = await CreateAiExtractReceiptWithHttpInfoAsync(createAiExtractReceiptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1502,14 +2178,22 @@ namespace net.crossly.Api
         /// Structured data extraction from a receipt photo. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiExtractReceiptRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiExtractReceiptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse>> CreateAiExtractReceiptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiExtractReceiptResponse>> CreateAiExtractReceiptWithHttpInfoAsync(CreateAiExtractReceiptRequest createAiExtractReceiptRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiExtractReceiptRequest' is set
+            if (createAiExtractReceiptRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiExtractReceiptRequest' when calling AIApi->CreateAiExtractReceipt");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1529,6 +2213,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiExtractReceiptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1556,10 +2241,11 @@ namespace net.crossly.Api
         /// Generate full listing fields from up to 4 image URLs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <returns>CreateAiMagicListingResponse</returns>
-        public CreateAiMagicListingResponse CreateAiGenerateListing()
+        public CreateAiMagicListingResponse CreateAiGenerateListing(CreateAiGenerateListingRequest createAiGenerateListingRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = CreateAiGenerateListingWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = CreateAiGenerateListingWithHttpInfo(createAiGenerateListingRequest);
             return localVarResponse.Data;
         }
 
@@ -1567,12 +2253,20 @@ namespace net.crossly.Api
         /// Generate full listing fields from up to 4 image URLs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <returns>ApiResponse of CreateAiMagicListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> CreateAiGenerateListingWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> CreateAiGenerateListingWithHttpInfo(CreateAiGenerateListingRequest createAiGenerateListingRequest)
         {
+            // verify the required parameter 'createAiGenerateListingRequest' is set
+            if (createAiGenerateListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiGenerateListingRequest' when calling AIApi->CreateAiGenerateListing");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1592,6 +2286,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiGenerateListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1618,11 +2313,12 @@ namespace net.crossly.Api
         /// Generate full listing fields from up to 4 image URLs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiMagicListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiGenerateListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiGenerateListingAsync(CreateAiGenerateListingRequest createAiGenerateListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = await CreateAiGenerateListingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = await CreateAiGenerateListingWithHttpInfoAsync(createAiGenerateListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1630,14 +2326,22 @@ namespace net.crossly.Api
         /// Generate full listing fields from up to 4 image URLs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiGenerateListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiMagicListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiMagicListingResponse>> CreateAiGenerateListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiMagicListingResponse>> CreateAiGenerateListingWithHttpInfoAsync(CreateAiGenerateListingRequest createAiGenerateListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiGenerateListingRequest' is set
+            if (createAiGenerateListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiGenerateListingRequest' when calling AIApi->CreateAiGenerateListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1657,6 +2361,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiGenerateListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1684,10 +2389,11 @@ namespace net.crossly.Api
         /// In-app help Q&amp;A grounded in supplied docs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <returns>CreateAiHelpResponse</returns>
-        public CreateAiHelpResponse CreateAiHelp()
+        public CreateAiHelpResponse CreateAiHelp(CreateAiHelpRequest createAiHelpRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiHelpResponse> localVarResponse = CreateAiHelpWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiHelpResponse> localVarResponse = CreateAiHelpWithHttpInfo(createAiHelpRequest);
             return localVarResponse.Data;
         }
 
@@ -1695,12 +2401,20 @@ namespace net.crossly.Api
         /// In-app help Q&amp;A grounded in supplied docs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <returns>ApiResponse of CreateAiHelpResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiHelpResponse> CreateAiHelpWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiHelpResponse> CreateAiHelpWithHttpInfo(CreateAiHelpRequest createAiHelpRequest)
         {
+            // verify the required parameter 'createAiHelpRequest' is set
+            if (createAiHelpRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiHelpRequest' when calling AIApi->CreateAiHelp");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1720,6 +2434,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiHelpRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1746,11 +2461,12 @@ namespace net.crossly.Api
         /// In-app help Q&amp;A grounded in supplied docs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiHelpResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiHelpResponse> CreateAiHelpAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiHelpResponse> CreateAiHelpAsync(CreateAiHelpRequest createAiHelpRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiHelpResponse> localVarResponse = await CreateAiHelpWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiHelpResponse> localVarResponse = await CreateAiHelpWithHttpInfoAsync(createAiHelpRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1758,14 +2474,22 @@ namespace net.crossly.Api
         /// In-app help Q&amp;A grounded in supplied docs. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiHelpRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiHelpResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiHelpResponse>> CreateAiHelpWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiHelpResponse>> CreateAiHelpWithHttpInfoAsync(CreateAiHelpRequest createAiHelpRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiHelpRequest' is set
+            if (createAiHelpRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiHelpRequest' when calling AIApi->CreateAiHelp");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1785,6 +2509,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiHelpRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1809,23 +2534,303 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Generate full listing fields from base64 photos. 
+        /// Connect an AI provider key to the store, with scopes and priority. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>CreateAiMagicListingResponse</returns>
-        public CreateAiMagicListingResponse CreateAiMagicListing()
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <returns>CreateAiKeyResponse</returns>
+        public CreateAiKeyResponse CreateAiKey(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest))
         {
-            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = CreateAiMagicListingWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiKeyResponse> localVarResponse = CreateAiKeyWithHttpInfo(createAiKeyRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Generate full listing fields from base64 photos. 
+        /// Connect an AI provider key to the store, with scopes and priority. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of CreateAiMagicListingResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> CreateAiMagicListingWithHttpInfo()
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiKeyResponse> CreateAiKeyWithHttpInfo(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest))
         {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiKeyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAiKeyResponse>("/v1/ai/keys", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAiKeyResponse> CreateAiKeyAsync(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyResponse> localVarResponse = await CreateAiKeyWithHttpInfoAsync(createAiKeyRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Connect an AI provider key to the store, with scopes and priority. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiKeyResponse>> CreateAiKeyWithHttpInfoAsync(CreateAiKeyRequest createAiKeyRequest = default(CreateAiKeyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiKeyRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAiKeyResponse>("/v1/ai/keys", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an AI provider key before saving it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <returns>CreateAiKeyTestResponse</returns>
+        public CreateAiKeyTestResponse CreateAiKeyTest(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> localVarResponse = CreateAiKeyTestWithHttpInfo(createAiKeyTestRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an AI provider key before saving it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> CreateAiKeyTestWithHttpInfo(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest))
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiKeyTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAiKeyTestResponse>("/v1/ai/keys/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKeyTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an AI provider key before saving it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAiKeyTestResponse> CreateAiKeyTestAsync(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> localVarResponse = await CreateAiKeyTestWithHttpInfoAsync(createAiKeyTestRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an AI provider key before saving it. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiKeyTestRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiKeyTestResponse>> CreateAiKeyTestWithHttpInfoAsync(CreateAiKeyTestRequest createAiKeyTestRequest = default(CreateAiKeyTestRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiKeyTestRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAiKeyTestResponse>("/v1/ai/keys/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKeyTest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Re-test a saved AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>CreateAiKeyTestResponse</returns>
+        public CreateAiKeyTestResponse CreateAiKeyTestById(string id)
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> localVarResponse = CreateAiKeyTestByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-test a saved AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of CreateAiKeyTestResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> CreateAiKeyTestByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->CreateAiKeyTestById");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -1848,6 +2853,154 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateAiKeyTestResponse>("/v1/ai/keys/{id}/test", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKeyTestById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Re-test a saved AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyTestResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAiKeyTestResponse> CreateAiKeyTestByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyTestResponse> localVarResponse = await CreateAiKeyTestByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Re-test a saved AI key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyTestResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiKeyTestResponse>> CreateAiKeyTestByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->CreateAiKeyTestById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAiKeyTestResponse>("/v1/ai/keys/{id}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAiKeyTestById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Generate full listing fields from base64 photos. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
+        /// <returns>CreateAiMagicListingResponse</returns>
+        public CreateAiMagicListingResponse CreateAiMagicListing(CreateAiMagicListingRequest createAiMagicListingRequest)
+        {
+            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = CreateAiMagicListingWithHttpInfo(createAiMagicListingRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generate full listing fields from base64 photos. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
+        /// <returns>ApiResponse of CreateAiMagicListingResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> CreateAiMagicListingWithHttpInfo(CreateAiMagicListingRequest createAiMagicListingRequest)
+        {
+            // verify the required parameter 'createAiMagicListingRequest' is set
+            if (createAiMagicListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiMagicListingRequest' when calling AIApi->CreateAiMagicListing");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createAiMagicListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1874,11 +3027,12 @@ namespace net.crossly.Api
         /// Generate full listing fields from base64 photos. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiMagicListingResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiMagicListingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiMagicListingResponse> CreateAiMagicListingAsync(CreateAiMagicListingRequest createAiMagicListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = await CreateAiMagicListingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiMagicListingResponse> localVarResponse = await CreateAiMagicListingWithHttpInfoAsync(createAiMagicListingRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1886,14 +3040,22 @@ namespace net.crossly.Api
         /// Generate full listing fields from base64 photos. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createAiMagicListingRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiMagicListingResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiMagicListingResponse>> CreateAiMagicListingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiMagicListingResponse>> CreateAiMagicListingWithHttpInfoAsync(CreateAiMagicListingRequest createAiMagicListingRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createAiMagicListingRequest' is set
+            if (createAiMagicListingRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createAiMagicListingRequest' when calling AIApi->CreateAiMagicListing");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1913,6 +3075,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createAiMagicListingRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1940,10 +3103,11 @@ namespace net.crossly.Api
         /// Live-ping a candidate BYO-key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>CreateAiTestKeyResponse</returns>
-        public CreateAiTestKeyResponse CreateAiTestKey()
+        public CreateAiTestKeyResponse CreateAiTestKey(UpdateAiKeyRequest updateAiKeyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> localVarResponse = CreateAiTestKeyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> localVarResponse = CreateAiTestKeyWithHttpInfo(updateAiKeyRequest);
             return localVarResponse.Data;
         }
 
@@ -1951,12 +3115,20 @@ namespace net.crossly.Api
         /// Live-ping a candidate BYO-key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>ApiResponse of CreateAiTestKeyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> CreateAiTestKeyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> CreateAiTestKeyWithHttpInfo(UpdateAiKeyRequest updateAiKeyRequest)
         {
+            // verify the required parameter 'updateAiKeyRequest' is set
+            if (updateAiKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAiKeyRequest' when calling AIApi->CreateAiTestKey");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1976,6 +3148,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2002,11 +3175,12 @@ namespace net.crossly.Api
         /// Live-ping a candidate BYO-key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAiTestKeyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAiTestKeyResponse> CreateAiTestKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateAiTestKeyResponse> CreateAiTestKeyAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> localVarResponse = await CreateAiTestKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateAiTestKeyResponse> localVarResponse = await CreateAiTestKeyWithHttpInfoAsync(updateAiKeyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2014,14 +3188,22 @@ namespace net.crossly.Api
         /// Live-ping a candidate BYO-key. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAiTestKeyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiTestKeyResponse>> CreateAiTestKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiTestKeyResponse>> CreateAiTestKeyWithHttpInfoAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateAiKeyRequest' is set
+            if (updateAiKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAiKeyRequest' when calling AIApi->CreateAiTestKey");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2041,6 +3223,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2068,10 +3251,11 @@ namespace net.crossly.Api
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <returns>CreateListingAiImageResponse</returns>
-        public CreateListingAiImageResponse CreateListingAiImage()
+        public CreateListingAiImageResponse CreateListingAiImage(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest))
         {
-            net.crossly.Client.ApiResponse<CreateListingAiImageResponse> localVarResponse = CreateListingAiImageWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingAiImageResponse> localVarResponse = CreateListingAiImageWithHttpInfo(createListingAiImageRequest);
             return localVarResponse.Data;
         }
 
@@ -2079,12 +3263,14 @@ namespace net.crossly.Api
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingAiImageResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAiImageResponse> CreateListingAiImageWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingAiImageResponse> CreateListingAiImageWithHttpInfo(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2104,6 +3290,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAiImageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2130,11 +3317,12 @@ namespace net.crossly.Api
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAiImageResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAiImageResponse> CreateListingAiImageAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAiImageResponse> CreateListingAiImageAsync(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAiImageResponse> localVarResponse = await CreateListingAiImageWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAiImageResponse> localVarResponse = await CreateListingAiImageWithHttpInfoAsync(createListingAiImageRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2142,14 +3330,16 @@ namespace net.crossly.Api
         /// Generate a listing photo with the caller&#39;s own image-provider key; the result is marked AI-generated. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImageRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAiImageResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAiImageResponse>> CreateListingAiImageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAiImageResponse>> CreateListingAiImageWithHttpInfoAsync(CreateListingAiImageRequest createListingAiImageRequest = default(CreateListingAiImageRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2169,6 +3359,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAiImageRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2196,10 +3387,11 @@ namespace net.crossly.Api
         /// Build the AI product-photo prompt for a listing (no image is generated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <returns>CreateListingAiImagePromptResponse</returns>
-        public CreateListingAiImagePromptResponse CreateListingAiImagePrompt()
+        public CreateListingAiImagePromptResponse CreateListingAiImagePrompt(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest))
         {
-            net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> localVarResponse = CreateListingAiImagePromptWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> localVarResponse = CreateListingAiImagePromptWithHttpInfo(createListingAiImagePromptRequest);
             return localVarResponse.Data;
         }
 
@@ -2207,12 +3399,14 @@ namespace net.crossly.Api
         /// Build the AI product-photo prompt for a listing (no image is generated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateListingAiImagePromptResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> CreateListingAiImagePromptWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> CreateListingAiImagePromptWithHttpInfo(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2232,6 +3426,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAiImagePromptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2258,11 +3453,12 @@ namespace net.crossly.Api
         /// Build the AI product-photo prompt for a listing (no image is generated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateListingAiImagePromptResponse</returns>
-        public async System.Threading.Tasks.Task<CreateListingAiImagePromptResponse> CreateListingAiImagePromptAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateListingAiImagePromptResponse> CreateListingAiImagePromptAsync(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> localVarResponse = await CreateListingAiImagePromptWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse> localVarResponse = await CreateListingAiImagePromptWithHttpInfoAsync(createListingAiImagePromptRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2270,14 +3466,16 @@ namespace net.crossly.Api
         /// Build the AI product-photo prompt for a listing (no image is generated). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createListingAiImagePromptRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateListingAiImagePromptResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse>> CreateListingAiImagePromptWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateListingAiImagePromptResponse>> CreateListingAiImagePromptWithHttpInfoAsync(CreateListingAiImagePromptRequest createListingAiImagePromptRequest = default(CreateListingAiImagePromptRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2297,6 +3495,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createListingAiImagePromptRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2321,22 +3520,24 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove the BYO-key for a provider. 
+        /// Remove the store&#39;s BYO-key for a provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <returns>SuccessResponse</returns>
-        public SuccessResponse DeleteAiKey()
+        public SuccessResponse DeleteAiKey(string provider = default(string))
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = DeleteAiKeyWithHttpInfo();
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = DeleteAiKeyWithHttpInfo(provider);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Remove the BYO-key for a provider. 
+        /// Remove the store&#39;s BYO-key for a provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteAiKeyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteAiKeyWithHttpInfo(string provider = default(string))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -2360,6 +3561,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (provider != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "provider", provider));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2383,24 +3588,304 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Remove the BYO-key for a provider. 
+        /// Remove the store&#39;s BYO-key for a provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        public async System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyAsync(string provider = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await DeleteAiKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await DeleteAiKeyWithHttpInfoAsync(provider, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Remove the BYO-key for a provider. 
+        /// Remove the store&#39;s BYO-key for a provider. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="provider"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteAiKeyWithHttpInfoAsync(string provider = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (provider != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "provider", provider));
+            }
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<SuccessResponse>("/v1/ai/key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an AI provider key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>SuccessResponse</returns>
+        public SuccessResponse DeleteAiKeyById(string id)
+        {
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = DeleteAiKeyByIdWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an AI provider key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of SuccessResponse</returns>
+        public net.crossly.Client.ApiResponse<SuccessResponse> DeleteAiKeyByIdWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->DeleteAiKeyById");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<SuccessResponse>("/v1/ai/keys/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAiKeyById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Disconnect an AI provider key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of SuccessResponse</returns>
+        public async System.Threading.Tasks.Task<SuccessResponse> DeleteAiKeyByIdAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await DeleteAiKeyByIdWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Disconnect an AI provider key. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteAiKeyByIdWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->DeleteAiKeyById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<SuccessResponse>("/v1/ai/keys/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAiKeyById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAiKeyResponse</returns>
+        public GetAiKeyResponse GetAiKey()
+        {
+            net.crossly.Client.ApiResponse<GetAiKeyResponse> localVarResponse = GetAiKeyWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAiKeyResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAiKeyResponse> GetAiKeyWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAiKeyResponse>("/v1/ai/keys", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> DeleteAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetAiKeyResponse</returns>
+        public async System.Threading.Tasks.Task<GetAiKeyResponse> GetAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAiKeyResponse> localVarResponse = await GetAiKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The store&#39;s AI provider keys with their scopes and priority (never the key). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAiKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAiKeyResponse>> GetAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -2434,11 +3919,11 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<SuccessResponse>("/v1/ai/key", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAiKeyResponse>("/v1/ai/keys", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("DeleteAiKey", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAiKey", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2567,6 +4052,134 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAiProvider", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetAiRoutingResponse</returns>
+        public GetAiRoutingResponse GetAiRouting()
+        {
+            net.crossly.Client.ApiResponse<GetAiRoutingResponse> localVarResponse = GetAiRoutingWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetAiRoutingResponse</returns>
+        public net.crossly.Client.ApiResponse<GetAiRoutingResponse> GetAiRoutingWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAiRoutingResponse>("/v1/ai/routing", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAiRouting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAiRoutingResponse</returns>
+        public async System.Threading.Tasks.Task<GetAiRoutingResponse> GetAiRoutingAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetAiRoutingResponse> localVarResponse = await GetAiRoutingWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Which AI provider serves each feature of the store, in order, and whether it is on. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAiRoutingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetAiRoutingResponse>> GetAiRoutingWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAiRoutingResponse>("/v1/ai/routing", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAiRouting", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2708,10 +4321,11 @@ namespace net.crossly.Api
         /// Choose the AI image provider/model, independently of the text provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <returns>UpdateAiImageConfigResponse</returns>
-        public UpdateAiImageConfigResponse UpdateAiImageConfig()
+        public UpdateAiImageConfigResponse UpdateAiImageConfig(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest))
         {
-            net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> localVarResponse = UpdateAiImageConfigWithHttpInfo();
+            net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> localVarResponse = UpdateAiImageConfigWithHttpInfo(updateAiImageConfigRequest);
             return localVarResponse.Data;
         }
 
@@ -2719,12 +4333,14 @@ namespace net.crossly.Api
         /// Choose the AI image provider/model, independently of the text provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <returns>ApiResponse of UpdateAiImageConfigResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> UpdateAiImageConfigWithHttpInfo()
+        public net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> UpdateAiImageConfigWithHttpInfo(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2744,6 +4360,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiImageConfigRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2770,11 +4387,12 @@ namespace net.crossly.Api
         /// Choose the AI image provider/model, independently of the text provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAiImageConfigResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateAiImageConfigResponse> UpdateAiImageConfigAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateAiImageConfigResponse> UpdateAiImageConfigAsync(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> localVarResponse = await UpdateAiImageConfigWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse> localVarResponse = await UpdateAiImageConfigWithHttpInfoAsync(updateAiImageConfigRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2782,14 +4400,16 @@ namespace net.crossly.Api
         /// Choose the AI image provider/model, independently of the text provider. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiImageConfigRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAiImageConfigResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse>> UpdateAiImageConfigWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAiImageConfigResponse>> UpdateAiImageConfigWithHttpInfoAsync(UpdateAiImageConfigRequest updateAiImageConfigRequest = default(UpdateAiImageConfigRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2809,6 +4429,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiImageConfigRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2833,26 +4454,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider. 
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>SuccessResponse</returns>
-        public SuccessResponse UpdateAiKey()
+        public SuccessResponse UpdateAiKey(UpdateAiKeyRequest updateAiKeyRequest)
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = UpdateAiKeyWithHttpInfo();
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = UpdateAiKeyWithHttpInfo(updateAiKeyRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider. 
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <returns>ApiResponse of SuccessResponse</returns>
-        public net.crossly.Client.ApiResponse<SuccessResponse> UpdateAiKeyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<SuccessResponse> UpdateAiKeyWithHttpInfo(UpdateAiKeyRequest updateAiKeyRequest)
         {
+            // verify the required parameter 'updateAiKeyRequest' is set
+            if (updateAiKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAiKeyRequest' when calling AIApi->UpdateAiKey");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2872,6 +4502,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2895,29 +4526,38 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider. 
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of SuccessResponse</returns>
-        public async System.Threading.Tasks.Task<SuccessResponse> UpdateAiKeyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<SuccessResponse> UpdateAiKeyAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await UpdateAiKeyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<SuccessResponse> localVarResponse = await UpdateAiKeyWithHttpInfoAsync(updateAiKeyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Save an encrypted BYO-key for an AI provider. 
+        /// Save a BYO-key for an AI provider on the store and make it the store&#39;s default. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updateAiKeyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (SuccessResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> UpdateAiKeyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<SuccessResponse>> UpdateAiKeyWithHttpInfoAsync(UpdateAiKeyRequest updateAiKeyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateAiKeyRequest' is set
+            if (updateAiKeyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateAiKeyRequest' when calling AIApi->UpdateAiKey");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2937,6 +4577,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = updateAiKeyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2951,6 +4592,314 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateAiKey", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <returns>CreateAiKeyResponse</returns>
+        public CreateAiKeyResponse UpdateAiKeyById(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyResponse> localVarResponse = UpdateAiKeyByIdWithHttpInfo(id, updateAiKeyByIdRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <returns>ApiResponse of CreateAiKeyResponse</returns>
+        public net.crossly.Client.ApiResponse<CreateAiKeyResponse> UpdateAiKeyByIdWithHttpInfo(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->UpdateAiKeyById");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateAiKeyByIdRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<CreateAiKeyResponse>("/v1/ai/keys/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAiKeyById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateAiKeyResponse</returns>
+        public async System.Threading.Tasks.Task<CreateAiKeyResponse> UpdateAiKeyByIdAsync(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<CreateAiKeyResponse> localVarResponse = await UpdateAiKeyByIdWithHttpInfoAsync(id, updateAiKeyByIdRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Edit an AI key: replace it, rename it, or change its scopes, priority and models. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updateAiKeyByIdRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateAiKeyResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateAiKeyResponse>> UpdateAiKeyByIdWithHttpInfoAsync(string id, UpdateAiKeyByIdRequest updateAiKeyByIdRequest = default(UpdateAiKeyByIdRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'id' when calling AIApi->UpdateAiKeyById");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateAiKeyByIdRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<CreateAiKeyResponse>("/v1/ai/keys/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAiKeyById", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <returns>UpdateAiRoutingResponse</returns>
+        public UpdateAiRoutingResponse UpdateAiRouting(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest))
+        {
+            net.crossly.Client.ApiResponse<UpdateAiRoutingResponse> localVarResponse = UpdateAiRoutingWithHttpInfo(scope, updateAiRoutingRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <returns>ApiResponse of UpdateAiRoutingResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdateAiRoutingResponse> UpdateAiRoutingWithHttpInfo(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest))
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'scope' when calling AIApi->UpdateAiRouting");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", net.crossly.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.Data = updateAiRoutingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdateAiRoutingResponse>("/v1/ai/routing/{scope}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAiRouting", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateAiRoutingResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateAiRoutingResponse> UpdateAiRoutingAsync(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdateAiRoutingResponse> localVarResponse = await UpdateAiRoutingWithHttpInfoAsync(scope, updateAiRoutingRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set one AI feature&#39;s provider chain, model or on/off. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="scope"></param>
+        /// <param name="updateAiRoutingRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateAiRoutingResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdateAiRoutingResponse>> UpdateAiRoutingWithHttpInfoAsync(string scope, UpdateAiRoutingRequest updateAiRoutingRequest = default(UpdateAiRoutingRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'scope' is set
+            if (scope == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'scope' when calling AIApi->UpdateAiRouting");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("scope", net.crossly.Client.ClientUtils.ParameterToString(scope)); // path parameter
+            localVarRequestOptions.Data = updateAiRoutingRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdateAiRoutingResponse>("/v1/ai/routing/{scope}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateAiRouting", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

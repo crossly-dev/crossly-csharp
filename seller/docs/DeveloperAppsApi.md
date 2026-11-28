@@ -4,6 +4,7 @@ All URIs are relative to *https://crossly.net/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateDeveloperApp**](DeveloperAppsApi.md#createdeveloperapp) | **POST** /v1/developer/apps | Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
 [**CreateDeveloperAppCertificationSubmit**](DeveloperAppsApi.md#createdeveloperappcertificationsubmit) | **POST** /v1/developer/apps/{appId}/certification/submit | Send the application to Crossly review. Needs a passing conformance run on this client version and report-menu evidence.
 [**CreateDeveloperAppCertificationWithdraw**](DeveloperAppsApi.md#createdeveloperappcertificationwithdraw) | **POST** /v1/developer/apps/{appId}/certification/withdraw | Take the application out of review to edit it.
 [**CreateDeveloperAppClientVersion**](DeveloperAppsApi.md#createdeveloperappclientversion) | **POST** /v1/developer/apps/{appId}/client-versions | Register a new release of your certified client and start its conformance run. A pass on the same major version carries the certification automatically; a new major version goes to Crossly review; a failure keeps your previous certified version.
@@ -13,6 +14,7 @@ Method | HTTP request | Description
 [**CreateDeveloperAppVerificationCheckDomain**](DeveloperAppsApi.md#createdeveloperappverificationcheckdomain) | **POST** /v1/developer/apps/{appId}/verification/check-domain | Look up the DNS TXT record crossly-app-verification&#x3D;&lt;token&gt; on your domain (or _crossly.&lt;domain&gt;) now.
 [**CreateDeveloperAppVerificationSubmit**](DeveloperAppsApi.md#createdeveloperappverificationsubmit) | **POST** /v1/developer/apps/{appId}/verification/submit | Send the verification to Crossly review (each scope is decided separately).
 [**CreateDeveloperAppVerificationWithdraw**](DeveloperAppsApi.md#createdeveloperappverificationwithdraw) | **POST** /v1/developer/apps/{appId}/verification/withdraw | Take the verification out of review to edit it.
+[**GetDeveloperApp**](DeveloperAppsApi.md#getdeveloperapp) | **GET** /v1/developer/apps/{appId} | One of your OAuth apps, with the store that owns it.
 [**GetDeveloperAppCertification**](DeveloperAppsApi.md#getdeveloperappcertification) | **GET** /v1/developer/apps/{appId}/certification | The Crossly Carnival client certification application (null until you create it): status, client, evidence, the passing run and what still blocks submission.
 [**GetDeveloperAppClientVersion**](DeveloperAppsApi.md#getdeveloperappclientversion) | **GET** /v1/developer/apps/{appId}/client-versions/{versionId} | One client release and its re-certification.
 [**GetDeveloperAppConformanceRun**](DeveloperAppsApi.md#getdeveloperappconformancerun) | **GET** /v1/developer/apps/{appId}/conformance-runs/{runId} | A run&#39;s step, instruction and every check with its verdict.
@@ -22,11 +24,88 @@ Method | HTTP request | Description
 [**GetDeveloperAppVerification**](DeveloperAppsApi.md#getdeveloperappverification) | **GET** /v1/developer/apps/{appId}/verification | The app verification for worlds:publish / worlds:monetize (null until created): domain proof, policies, justifications and per-scope decisions.
 [**ListDeveloperAppClientVersions**](DeveloperAppsApi.md#listdeveloperappclientversions) | **GET** /v1/developer/apps/{appId}/client-versions | Releases of your certified client, newest first: the re-certification status (awaiting_run, running, carried, ops_review, approved, rejected, failed, superseded), the rule that decided it and its checks.
 [**ListDeveloperAppConformanceRuns**](DeveloperAppsApi.md#listdeveloperappconformanceruns) | **GET** /v1/developer/apps/{appId}/conformance-runs | Your app&#39;s conformance runs, newest first.
+[**ListDeveloperApps**](DeveloperAppsApi.md#listdeveloperapps) | **GET** /v1/developer/apps | Your stores&#39; OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+[**UpdateDeveloperApp**](DeveloperAppsApi.md#updatedeveloperapp) | **PATCH** /v1/developer/apps/{appId} | Edit an app&#39;s name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
 [**UpdateDeveloperAppCertification**](DeveloperAppsApi.md#updatedeveloperappcertification) | **PUT** /v1/developer/apps/{appId}/certification | Create or edit the application: client name, platform, version, build and source URLs, description and evidence (report menu, chat, Policy UI). Changing the client clears the passing run.
 [**UpdateDeveloperAppListing**](DeveloperAppsApi.md#updatedeveloperapplisting) | **PUT** /v1/developer/apps/{appId}/listing | Turn \&quot;Listed publicly\&quot; on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
 [**UpdateDeveloperAppProfile**](DeveloperAppsApi.md#updatedeveloperappprofile) | **PATCH** /v1/developer/apps/{appId}/profile | Edit your app&#39;s directory profile: name, slug, tagline, description, longDescription (markdown), category, audience (auto|seller|buyer|both), logoUrl, bannerUrl (4:1, 1600×400), screenshots (≤6), demoVideoUrl, homepageUrl, installUrl, support/privacy/terms links, docsLinks [{label,url}] and pricingNote. Absent keys are kept, null clears. Images not on Crossly&#39;s CDN are copied onto it. Renaming a listed app or changing its audience sends it back to review.
+[**UpdateDeveloperAppStore**](DeveloperAppsApi.md#updatedeveloperappstore) | **PUT** /v1/developer/apps/{appId}/store | Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don&#39;t change.
 [**UpdateDeveloperAppVerification**](DeveloperAppsApi.md#updatedeveloperappverification) | **PUT** /v1/developer/apps/{appId}/verification | Create or edit the verification: domain, requested scopes with a justification each, privacy policy, terms, support email, demo.
 
+
+<a name="createdeveloperapp"></a>
+# **CreateDeveloperApp**
+> CreateDeveloperAppResponse CreateDeveloperApp ()
+
+Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class CreateDeveloperAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeveloperAppsApi(config);
+
+            try
+            {
+                // Register an OAuth app for one of your stores (storefrontId; default: the store in X-Storefront-Id, else your default store). The store is paid what the app earns. clientSecret is returned ONCE.
+                CreateDeveloperAppResponse result = apiInstance.CreateDeveloperApp();
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeveloperAppsApi.CreateDeveloperApp: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**CreateDeveloperAppResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 <a name="createdeveloperappcertificationsubmit"></a>
 # **CreateDeveloperAppCertificationSubmit**
@@ -710,6 +789,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 **DeveloperAppVerificationResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="getdeveloperapp"></a>
+# **GetDeveloperApp**
+> GetDeveloperAppResponse GetDeveloperApp (Guid appId)
+
+One of your OAuth apps, with the store that owns it.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class GetDeveloperAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeveloperAppsApi(config);
+            var appId = "appId_example";  // Guid | 
+
+            try
+            {
+                // One of your OAuth apps, with the store that owns it.
+                GetDeveloperAppResponse result = apiInstance.GetDeveloperApp(appId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeveloperAppsApi.GetDeveloperApp: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **Guid**|  | 
+
+### Return type
+
+**GetDeveloperAppResponse**
 
 ### Authorization
 
@@ -1440,6 +1597,170 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
+<a name="listdeveloperapps"></a>
+# **ListDeveloperApps**
+> ListDeveloperAppsResponse ListDeveloperApps (Guid? storefrontId = null, string q = null, string status = null, int? page = null, int? pageSize = null)
+
+Your stores' OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class ListDeveloperAppsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeveloperAppsApi(config);
+            var storefrontId = "storefrontId_example";  // Guid? |  (optional) 
+            var q = "q_example";  // string |  (optional) 
+            var status = "live";  // string |  (optional) 
+            var page = 56;  // int? |  (optional) 
+            var pageSize = 56;  // int? |  (optional) 
+
+            try
+            {
+                // Your stores' OAuth apps (and any of yours still waiting for a store): filter by storefrontId, status or q; page with page + pageSize. meta.stores lists the stores you may register apps for.
+                ListDeveloperAppsResponse result = apiInstance.ListDeveloperApps(storefrontId, q, status, page, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeveloperAppsApi.ListDeveloperApps: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **storefrontId** | **Guid?**|  | [optional] 
+ **q** | **string**|  | [optional] 
+ **status** | **string**|  | [optional] 
+ **page** | **int?**|  | [optional] 
+ **pageSize** | **int?**|  | [optional] 
+
+### Return type
+
+**ListDeveloperAppsResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatedeveloperapp"></a>
+# **UpdateDeveloperApp**
+> UpdateDeveloperAppResponse UpdateDeveloperApp (Guid appId)
+
+Edit an app's name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateDeveloperAppExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeveloperAppsApi(config);
+            var appId = "appId_example";  // Guid | 
+
+            try
+            {
+                // Edit an app's name, redirect URIs, scopes and revenue share. Existing installs keep the terms they agreed to.
+                UpdateDeveloperAppResponse result = apiInstance.UpdateDeveloperApp(appId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeveloperAppsApi.UpdateDeveloperApp: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **Guid**|  | 
+
+### Return type
+
+**UpdateDeveloperAppResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
 <a name="updatedeveloperappcertification"></a>
 # **UpdateDeveloperAppCertification**
 > DeveloperAppCertificationResponse UpdateDeveloperAppCertification (string appId)
@@ -1520,7 +1841,7 @@ Name | Type | Description  | Notes
 
 <a name="updatedeveloperapplisting"></a>
 # **UpdateDeveloperAppListing**
-> UpdateDeveloperAppListingResponse UpdateDeveloperAppListing (string appId)
+> UpdateDeveloperAppListingResponse UpdateDeveloperAppListing (string appId, UpdateDeveloperAppListingRequest updateDeveloperAppListingRequest = null)
 
 Turn \"Listed publicly\" on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
 
@@ -1545,11 +1866,12 @@ namespace Example
 
             var apiInstance = new DeveloperAppsApi(config);
             var appId = "appId_example";  // string | 
+            var updateDeveloperAppListingRequest = new UpdateDeveloperAppListingRequest(); // UpdateDeveloperAppListingRequest |  (optional) 
 
             try
             {
                 // Turn \"Listed publicly\" on or off. On: an app Crossly approved whose name, scopes and audience are unchanged is listed at once; anything else goes to review (pending_review). Off: unlisted immediately.
-                UpdateDeveloperAppListingResponse result = apiInstance.UpdateDeveloperAppListing(appId);
+                UpdateDeveloperAppListingResponse result = apiInstance.UpdateDeveloperAppListing(appId, updateDeveloperAppListingRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1568,6 +1890,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **string**|  | 
+ **updateDeveloperAppListingRequest** | **UpdateDeveloperAppListingRequest**|  | [optional] 
 
 ### Return type
 
@@ -1579,7 +1902,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -1658,6 +1981,86 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Error |  -  |
+| **401** | Error |  -  |
+| **403** | Error |  -  |
+| **404** | Error |  -  |
+| **429** | Error |  -  |
+| **500** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+<a name="updatedeveloperappstore"></a>
+# **UpdateDeveloperAppStore**
+> UpdateDeveloperAppStoreResponse UpdateDeveloperAppStore (Guid appId, UpdateDeveloperAppStoreRequest updateDeveloperAppStoreRequest)
+
+Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don't change.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using net.crossly.Api;
+using net.crossly.Client;
+using net.crossly.Model;
+
+namespace Example
+{
+    public class UpdateDeveloperAppStoreExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://crossly.net/api";
+            // Configure Bearer token for authorization: PersonalAccessToken
+            config.AccessToken = "YOUR_BEARER_TOKEN";
+
+            var apiInstance = new DeveloperAppsApi(config);
+            var appId = "appId_example";  // Guid | 
+            var updateDeveloperAppStoreRequest = new UpdateDeveloperAppStoreRequest(); // UpdateDeveloperAppStoreRequest | 
+
+            try
+            {
+                // Choose (or change) the store that owns an app: a store of the same business. Its unpaid earnings move with it; client id, secret, installs and webhooks don't change.
+                UpdateDeveloperAppStoreResponse result = apiInstance.UpdateDeveloperAppStore(appId, updateDeveloperAppStoreRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling DeveloperAppsApi.UpdateDeveloperAppStore: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **Guid**|  | 
+ **updateDeveloperAppStoreRequest** | **UpdateDeveloperAppStoreRequest**|  | 
+
+### Return type
+
+**UpdateDeveloperAppStoreResponse**
+
+### Authorization
+
+[PersonalAccessToken](../README.md#PersonalAccessToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

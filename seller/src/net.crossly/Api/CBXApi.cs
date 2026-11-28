@@ -33,8 +33,9 @@ namespace net.crossly.Api
         /// The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <returns>CreateCbxAccrualResponse</returns>
-        CreateCbxAccrualResponse CreateCbxAccrual();
+        CreateCbxAccrualResponse CreateCbxAccrual(CreateCbxAccrualRequest createCbxAccrualRequest);
 
         /// <summary>
         /// Record cashback a user earned, in cents.
@@ -43,8 +44,9 @@ namespace net.crossly.Api
         /// The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <returns>ApiResponse of CreateCbxAccrualResponse</returns>
-        ApiResponse<CreateCbxAccrualResponse> CreateCbxAccrualWithHttpInfo();
+        ApiResponse<CreateCbxAccrualResponse> CreateCbxAccrualWithHttpInfo(CreateCbxAccrualRequest createCbxAccrualRequest);
         /// <summary>
         /// Accrue cashback for an order at the resolved rate.
         /// </summary>
@@ -52,8 +54,9 @@ namespace net.crossly.Api
         /// Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <returns>CreateCbxAccrualPurchaseResponse</returns>
-        CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase();
+        CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest);
 
         /// <summary>
         /// Accrue cashback for an order at the resolved rate.
@@ -62,8 +65,9 @@ namespace net.crossly.Api
         /// Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <returns>ApiResponse of CreateCbxAccrualPurchaseResponse</returns>
-        ApiResponse<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseWithHttpInfo();
+        ApiResponse<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseWithHttpInfo(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest);
         /// <summary>
         /// Claw back a pending accrual — a refund, a cancellation, fraud.
         /// </summary>
@@ -72,8 +76,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateCbxSpendReverseResponse</returns>
-        CreateCbxSpendReverseResponse CreateCbxAccrualReverse(string accrualId);
+        CreateCbxSpendReverseResponse CreateCbxAccrualReverse(string accrualId, ReasonRequest reasonRequest);
 
         /// <summary>
         /// Claw back a pending accrual — a refund, a cancellation, fraud.
@@ -83,8 +88,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendReverseResponse</returns>
-        ApiResponse<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseWithHttpInfo(string accrualId);
+        ApiResponse<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseWithHttpInfo(string accrualId, ReasonRequest reasonRequest);
         /// <summary>
         /// Claim ad credit against a CBX transfer you sent.
         /// </summary>
@@ -92,8 +98,9 @@ namespace net.crossly.Api
         /// Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <returns>CreateCbxAdCreditPurchaseResponse</returns>
-        CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase();
+        CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest);
 
         /// <summary>
         /// Claim ad credit against a CBX transfer you sent.
@@ -102,8 +109,9 @@ namespace net.crossly.Api
         /// Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditPurchaseResponse</returns>
-        ApiResponse<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseWithHttpInfo();
+        ApiResponse<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseWithHttpInfo(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest);
         /// <summary>
         /// What a given number of tokens buys in ad credit.
         /// </summary>
@@ -111,8 +119,9 @@ namespace net.crossly.Api
         /// Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>CreateCbxAdCreditQuoteResponse</returns>
-        CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote();
+        CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest);
 
         /// <summary>
         /// What a given number of tokens buys in ad credit.
@@ -121,8 +130,9 @@ namespace net.crossly.Api
         /// Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditQuoteResponse</returns>
-        ApiResponse<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteWithHttpInfo();
+        ApiResponse<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteWithHttpInfo(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest);
         /// <summary>
         /// Consume credit for a billing period.
         /// </summary>
@@ -130,8 +140,9 @@ namespace net.crossly.Api
         /// Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <returns>CreateCbxAdCreditSpendResponse</returns>
-        CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend();
+        CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest);
 
         /// <summary>
         /// Consume credit for a billing period.
@@ -140,8 +151,9 @@ namespace net.crossly.Api
         /// Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditSpendResponse</returns>
-        ApiResponse<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendWithHttpInfo();
+        ApiResponse<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendWithHttpInfo(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest);
         /// <summary>
         /// Fund elevated cashback on matching items.
         /// </summary>
@@ -149,8 +161,9 @@ namespace net.crossly.Api
         /// Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <returns>CreateCbxBoostResponse</returns>
-        CreateCbxBoostResponse CreateCbxBoost();
+        CreateCbxBoostResponse CreateCbxBoost(CreateCbxBoostRequest createCbxBoostRequest);
 
         /// <summary>
         /// Fund elevated cashback on matching items.
@@ -159,8 +172,9 @@ namespace net.crossly.Api
         /// Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <returns>ApiResponse of CreateCbxBoostResponse</returns>
-        ApiResponse<CreateCbxBoostResponse> CreateCbxBoostWithHttpInfo();
+        ApiResponse<CreateCbxBoostResponse> CreateCbxBoostWithHttpInfo(CreateCbxBoostRequest createCbxBoostRequest);
         /// <summary>
         /// Stop a boost from matching further orders.
         /// </summary>
@@ -189,8 +203,9 @@ namespace net.crossly.Api
         /// Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <returns>CreateCbxCampaignResponse</returns>
-        CreateCbxCampaignResponse CreateCbxCampaign();
+        CreateCbxCampaignResponse CreateCbxCampaign(CreateCbxCampaignRequest createCbxCampaignRequest);
 
         /// <summary>
         /// Create a campaign in draft.
@@ -199,8 +214,9 @@ namespace net.crossly.Api
         /// Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <returns>ApiResponse of CreateCbxCampaignResponse</returns>
-        ApiResponse<CreateCbxCampaignResponse> CreateCbxCampaignWithHttpInfo();
+        ApiResponse<CreateCbxCampaignResponse> CreateCbxCampaignWithHttpInfo(CreateCbxCampaignRequest createCbxCampaignRequest);
         /// <summary>
         /// Approve the previewed recipient list.
         /// </summary>
@@ -227,8 +243,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <returns>CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId(string campaignId);
+        CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest);
 
         /// <summary>
         /// Pay an approved campaign.
@@ -238,8 +255,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <returns>ApiResponse of CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(string campaignId);
+        ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest);
         /// <summary>
         /// Compute the recipient list without paying it.
         /// </summary>
@@ -268,8 +286,9 @@ namespace net.crossly.Api
         /// The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <returns>CreateCbxClaimResponse</returns>
-        CreateCbxClaimResponse CreateCbxClaim();
+        CreateCbxClaimResponse CreateCbxClaim(CreateCbxClaimRequest createCbxClaimRequest);
 
         /// <summary>
         /// Reserve a claim. Debits the balance and queues the transfer.
@@ -278,8 +297,9 @@ namespace net.crossly.Api
         /// The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <returns>ApiResponse of CreateCbxClaimResponse</returns>
-        ApiResponse<CreateCbxClaimResponse> CreateCbxClaimWithHttpInfo();
+        ApiResponse<CreateCbxClaimResponse> CreateCbxClaimWithHttpInfo(CreateCbxClaimRequest createCbxClaimRequest);
         /// <summary>
         /// What a claim would cost, without committing to it.
         /// </summary>
@@ -287,8 +307,9 @@ namespace net.crossly.Api
         /// Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <returns>CreateCbxClaimQuoteResponse</returns>
-        CreateCbxClaimQuoteResponse CreateCbxClaimQuote();
+        CreateCbxClaimQuoteResponse CreateCbxClaimQuote(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest);
 
         /// <summary>
         /// What a claim would cost, without committing to it.
@@ -297,8 +318,9 @@ namespace net.crossly.Api
         /// Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxClaimQuoteResponse</returns>
-        ApiResponse<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteWithHttpInfo();
+        ApiResponse<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteWithHttpInfo(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest);
         /// <summary>
         /// Send a reserved claim on chain.
         /// </summary>
@@ -327,8 +349,9 @@ namespace net.crossly.Api
         /// The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <returns>CreateCbxCreditDrawResponse</returns>
-        CreateCbxCreditDrawResponse CreateCbxCreditDraw();
+        CreateCbxCreditDrawResponse CreateCbxCreditDraw(CreateCbxCreditDrawRequest createCbxCreditDrawRequest);
 
         /// <summary>
         /// Draw against a line, receiving grant credit.
@@ -337,8 +360,9 @@ namespace net.crossly.Api
         /// The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditDrawResponse</returns>
-        ApiResponse<CreateCbxCreditDrawResponse> CreateCbxCreditDrawWithHttpInfo();
+        ApiResponse<CreateCbxCreditDrawResponse> CreateCbxCreditDrawWithHttpInfo(CreateCbxCreditDrawRequest createCbxCreditDrawRequest);
         /// <summary>
         /// Stop new draws. Leaves the drawn balance on its terms.
         /// </summary>
@@ -346,8 +370,9 @@ namespace net.crossly.Api
         /// The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <returns>CreateCbxCreditFreezeResponse</returns>
-        CreateCbxCreditFreezeResponse CreateCbxCreditFreeze();
+        CreateCbxCreditFreezeResponse CreateCbxCreditFreeze(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest);
 
         /// <summary>
         /// Stop new draws. Leaves the drawn balance on its terms.
@@ -356,8 +381,9 @@ namespace net.crossly.Api
         /// The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditFreezeResponse</returns>
-        ApiResponse<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeWithHttpInfo();
+        ApiResponse<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeWithHttpInfo(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest);
         /// <summary>
         /// Recompute a limit from trading history and stake.
         /// </summary>
@@ -384,8 +410,9 @@ namespace net.crossly.Api
         /// &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <returns>CreateCbxCreditRepayResponse</returns>
-        CreateCbxCreditRepayResponse CreateCbxCreditRepay();
+        CreateCbxCreditRepayResponse CreateCbxCreditRepay(CreateCbxCreditRepayRequest createCbxCreditRepayRequest);
 
         /// <summary>
         /// Apply a repayment to a line.
@@ -394,8 +421,9 @@ namespace net.crossly.Api
         /// &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditRepayResponse</returns>
-        ApiResponse<CreateCbxCreditRepayResponse> CreateCbxCreditRepayWithHttpInfo();
+        ApiResponse<CreateCbxCreditRepayResponse> CreateCbxCreditRepayWithHttpInfo(CreateCbxCreditRepayRequest createCbxCreditRepayRequest);
         /// <summary>
         /// Fire a distribution when the events pool crosses a threshold.
         /// </summary>
@@ -403,8 +431,9 @@ namespace net.crossly.Api
         /// Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <returns>CreateCbxDisbursementRuleResponse</returns>
-        CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule();
+        CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest);
 
         /// <summary>
         /// Fire a distribution when the events pool crosses a threshold.
@@ -413,8 +442,9 @@ namespace net.crossly.Api
         /// Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <returns>ApiResponse of CreateCbxDisbursementRuleResponse</returns>
-        ApiResponse<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleWithHttpInfo();
+        ApiResponse<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleWithHttpInfo(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest);
         /// <summary>
         /// Enable or disable a rule.
         /// </summary>
@@ -461,8 +491,9 @@ namespace net.crossly.Api
         /// Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <returns>CreateCbxEarnTierResponse</returns>
-        CreateCbxEarnTierResponse CreateCbxEarnTier();
+        CreateCbxEarnTierResponse CreateCbxEarnTier(CreateCbxEarnTierRequest createCbxEarnTierRequest);
 
         /// <summary>
         /// Define an earn term.
@@ -471,8 +502,9 @@ namespace net.crossly.Api
         /// Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <returns>ApiResponse of CreateCbxEarnTierResponse</returns>
-        ApiResponse<CreateCbxEarnTierResponse> CreateCbxEarnTierWithHttpInfo();
+        ApiResponse<CreateCbxEarnTierResponse> CreateCbxEarnTierWithHttpInfo(CreateCbxEarnTierRequest createCbxEarnTierRequest);
         /// <summary>
         /// What would this order earn, and why.
         /// </summary>
@@ -480,8 +512,9 @@ namespace net.crossly.Api
         /// Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <returns>CreateCbxRateQuoteResponse</returns>
-        CreateCbxRateQuoteResponse CreateCbxRateQuote();
+        CreateCbxRateQuoteResponse CreateCbxRateQuote(CreateCbxRateQuoteRequest createCbxRateQuoteRequest);
 
         /// <summary>
         /// What would this order earn, and why.
@@ -490,8 +523,9 @@ namespace net.crossly.Api
         /// Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxRateQuoteResponse</returns>
-        ApiResponse<CreateCbxRateQuoteResponse> CreateCbxRateQuoteWithHttpInfo();
+        ApiResponse<CreateCbxRateQuoteResponse> CreateCbxRateQuoteWithHttpInfo(CreateCbxRateQuoteRequest createCbxRateQuoteRequest);
         /// <summary>
         /// Pay for a service in CBX.
         /// </summary>
@@ -499,8 +533,9 @@ namespace net.crossly.Api
         /// Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <returns>CreateCbxRedemptionResponse</returns>
-        CreateCbxRedemptionResponse CreateCbxRedemption();
+        CreateCbxRedemptionResponse CreateCbxRedemption(CreateCbxRedemptionRequest createCbxRedemptionRequest);
 
         /// <summary>
         /// Pay for a service in CBX.
@@ -509,8 +544,9 @@ namespace net.crossly.Api
         /// Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <returns>ApiResponse of CreateCbxRedemptionResponse</returns>
-        ApiResponse<CreateCbxRedemptionResponse> CreateCbxRedemptionWithHttpInfo();
+        ApiResponse<CreateCbxRedemptionResponse> CreateCbxRedemptionWithHttpInfo(CreateCbxRedemptionRequest createCbxRedemptionRequest);
         /// <summary>
         /// What a service costs in tokens right now.
         /// </summary>
@@ -518,8 +554,9 @@ namespace net.crossly.Api
         /// Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <returns>CreateCbxRedemptionQuoteResponse</returns>
-        CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote();
+        CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest);
 
         /// <summary>
         /// What a service costs in tokens right now.
@@ -528,14 +565,16 @@ namespace net.crossly.Api
         /// Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxRedemptionQuoteResponse</returns>
-        ApiResponse<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteWithHttpInfo();
+        ApiResponse<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteWithHttpInfo(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest);
         /// <summary>
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <returns>CreateCbxReserveResponse</returns>
-        CreateCbxReserveResponse CreateCbxReserve();
+        CreateCbxReserveResponse CreateCbxReserve(CreateCbxReserveRequest createCbxReserveRequest);
 
         /// <summary>
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
@@ -544,8 +583,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <returns>ApiResponse of CreateCbxReserveResponse</returns>
-        ApiResponse<CreateCbxReserveResponse> CreateCbxReserveWithHttpInfo();
+        ApiResponse<CreateCbxReserveResponse> CreateCbxReserveWithHttpInfo(CreateCbxReserveRequest createCbxReserveRequest);
         /// <summary>
         /// Move accrued revenue from the reserve to your revenue wallet.
         /// </summary>
@@ -553,8 +593,9 @@ namespace net.crossly.Api
         /// Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <returns>CreateCbxRevenueSweepResponse</returns>
-        CreateCbxRevenueSweepResponse CreateCbxRevenueSweep();
+        CreateCbxRevenueSweepResponse CreateCbxRevenueSweep(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest));
 
         /// <summary>
         /// Move accrued revenue from the reserve to your revenue wallet.
@@ -563,8 +604,9 @@ namespace net.crossly.Api
         /// Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCbxRevenueSweepResponse</returns>
-        ApiResponse<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepWithHttpInfo();
+        ApiResponse<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepWithHttpInfo(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest));
         /// <summary>
         /// Redeem a user&#39;s CBX against an order.
         /// </summary>
@@ -572,8 +614,9 @@ namespace net.crossly.Api
         /// Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <returns>CreateCbxSpendResponse</returns>
-        CreateCbxSpendResponse CreateCbxSpend();
+        CreateCbxSpendResponse CreateCbxSpend(CreateCbxSpendRequest createCbxSpendRequest);
 
         /// <summary>
         /// Redeem a user&#39;s CBX against an order.
@@ -582,8 +625,9 @@ namespace net.crossly.Api
         /// Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendResponse</returns>
-        ApiResponse<CreateCbxSpendResponse> CreateCbxSpendWithHttpInfo();
+        ApiResponse<CreateCbxSpendResponse> CreateCbxSpendWithHttpInfo(CreateCbxSpendRequest createCbxSpendRequest);
         /// <summary>
         /// Refund a spend — give the tokens back and claw the skim back.
         /// </summary>
@@ -592,8 +636,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateCbxSpendReverseResponse</returns>
-        CreateCbxSpendReverseResponse CreateCbxSpendReverse(string externalId);
+        CreateCbxSpendReverseResponse CreateCbxSpendReverse(string externalId, ReasonRequest reasonRequest);
 
         /// <summary>
         /// Refund a spend — give the tokens back and claw the skim back.
@@ -603,8 +648,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendReverseResponse</returns>
-        ApiResponse<CreateCbxSpendReverseResponse> CreateCbxSpendReverseWithHttpInfo(string externalId);
+        ApiResponse<CreateCbxSpendReverseResponse> CreateCbxSpendReverseWithHttpInfo(string externalId, ReasonRequest reasonRequest);
         /// <summary>
         /// Define a staking tier.
         /// </summary>
@@ -612,8 +658,9 @@ namespace net.crossly.Api
         /// A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <returns>CreateCbxStakeTierResponse</returns>
-        CreateCbxStakeTierResponse CreateCbxStakeTier();
+        CreateCbxStakeTierResponse CreateCbxStakeTier(CreateCbxStakeTierRequest createCbxStakeTierRequest);
 
         /// <summary>
         /// Define a staking tier.
@@ -622,8 +669,9 @@ namespace net.crossly.Api
         /// A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <returns>ApiResponse of CreateCbxStakeTierResponse</returns>
-        ApiResponse<CreateCbxStakeTierResponse> CreateCbxStakeTierWithHttpInfo();
+        ApiResponse<CreateCbxStakeTierResponse> CreateCbxStakeTierWithHttpInfo(CreateCbxStakeTierRequest createCbxStakeTierRequest);
         /// <summary>
         /// Map one of your user ids to a CBX subject.
         /// </summary>
@@ -631,8 +679,9 @@ namespace net.crossly.Api
         /// Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <returns>CreateCbxSubjectResponse</returns>
-        CreateCbxSubjectResponse CreateCbxSubject();
+        CreateCbxSubjectResponse CreateCbxSubject(CreateCbxSubjectRequest createCbxSubjectRequest);
 
         /// <summary>
         /// Map one of your user ids to a CBX subject.
@@ -641,8 +690,9 @@ namespace net.crossly.Api
         /// Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectResponse</returns>
-        ApiResponse<CreateCbxSubjectResponse> CreateCbxSubjectWithHttpInfo();
+        ApiResponse<CreateCbxSubjectResponse> CreateCbxSubjectWithHttpInfo(CreateCbxSubjectRequest createCbxSubjectRequest);
         /// <summary>
         /// Issue grant credit — in-platform, non-withdrawable.
         /// </summary>
@@ -651,8 +701,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <returns>CreateCbxSubjectGrantResponse</returns>
-        CreateCbxSubjectGrantResponse CreateCbxSubjectGrant(string subjectId);
+        CreateCbxSubjectGrantResponse CreateCbxSubjectGrant(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest);
 
         /// <summary>
         /// Issue grant credit — in-platform, non-withdrawable.
@@ -662,8 +713,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectGrantResponse</returns>
-        ApiResponse<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantWithHttpInfo(string subjectId);
+        ApiResponse<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantWithHttpInfo(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest);
         /// <summary>
         /// Which balances would pay for a spend, and in what order.
         /// </summary>
@@ -672,8 +724,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <returns>CreateCbxSubjectSpendPlanResponse</returns>
-        CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan(string subjectId);
+        CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest);
 
         /// <summary>
         /// Which balances would pay for a spend, and in what order.
@@ -683,8 +736,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectSpendPlanResponse</returns>
-        ApiResponse<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanWithHttpInfo(string subjectId);
+        ApiResponse<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanWithHttpInfo(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest);
         /// <summary>
         /// Lock a subject&#39;s tokens for a tier.
         /// </summary>
@@ -693,8 +747,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>CreateCbxSubjectStakeResponse</returns>
-        CreateCbxSubjectStakeResponse CreateCbxSubjectStake(string subjectId);
+        CreateCbxSubjectStakeResponse CreateCbxSubjectStake(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest);
 
         /// <summary>
         /// Lock a subject&#39;s tokens for a tier.
@@ -704,8 +759,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectStakeResponse</returns>
-        ApiResponse<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeWithHttpInfo(string subjectId);
+        ApiResponse<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeWithHttpInfo(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest);
         /// <summary>
         /// Start the cooldown. Tokens unlock when it elapses.
         /// </summary>
@@ -734,8 +790,9 @@ namespace net.crossly.Api
         /// Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <returns>CreateCbxWalletChallengeResponse</returns>
-        CreateCbxWalletChallengeResponse CreateCbxWalletChallenge();
+        CreateCbxWalletChallengeResponse CreateCbxWalletChallenge(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest);
 
         /// <summary>
         /// Start wallet verification. Returns a message for the user to sign.
@@ -744,8 +801,9 @@ namespace net.crossly.Api
         /// Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletChallengeResponse</returns>
-        ApiResponse<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeWithHttpInfo();
+        ApiResponse<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeWithHttpInfo(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest);
         /// <summary>
         /// Present the signature. Returns a ship / do-not-ship decision.
         /// </summary>
@@ -753,8 +811,9 @@ namespace net.crossly.Api
         /// Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <returns>CreateCbxWalletPaymentConfirmResponse</returns>
-        CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm();
+        CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest);
 
         /// <summary>
         /// Present the signature. Returns a ship / do-not-ship decision.
@@ -763,8 +822,9 @@ namespace net.crossly.Api
         /// Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentConfirmResponse</returns>
-        ApiResponse<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmWithHttpInfo();
+        ApiResponse<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmWithHttpInfo(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest);
         /// <summary>
         /// Build a transfer for the buyer to sign themselves.
         /// </summary>
@@ -772,8 +832,9 @@ namespace net.crossly.Api
         /// Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <returns>CreateCbxWalletPaymentQuoteResponse</returns>
-        CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote();
+        CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest);
 
         /// <summary>
         /// Build a transfer for the buyer to sign themselves.
@@ -782,8 +843,9 @@ namespace net.crossly.Api
         /// Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentQuoteResponse</returns>
-        ApiResponse<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteWithHttpInfo();
+        ApiResponse<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteWithHttpInfo(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest);
         /// <summary>
         /// A human decides on a held payment.
         /// </summary>
@@ -792,8 +854,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <returns>CreateCbxWalletPaymentResolveResponse</returns>
-        CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve(string paymentId);
+        CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest);
 
         /// <summary>
         /// A human decides on a held payment.
@@ -803,8 +866,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentResolveResponse</returns>
-        ApiResponse<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveWithHttpInfo(string paymentId);
+        ApiResponse<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveWithHttpInfo(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest);
         /// <summary>
         /// Complete wallet verification with the user&#39;s signature.
         /// </summary>
@@ -812,8 +876,9 @@ namespace net.crossly.Api
         /// The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <returns>CreateCbxWalletVerifyResponse</returns>
-        CreateCbxWalletVerifyResponse CreateCbxWalletVerify();
+        CreateCbxWalletVerifyResponse CreateCbxWalletVerify(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest);
 
         /// <summary>
         /// Complete wallet verification with the user&#39;s signature.
@@ -822,8 +887,9 @@ namespace net.crossly.Api
         /// The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletVerifyResponse</returns>
-        ApiResponse<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyWithHttpInfo();
+        ApiResponse<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyWithHttpInfo(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest);
         /// <summary>
         /// Unspent advertising credit, in cents.
         /// </summary>
@@ -1301,9 +1367,10 @@ namespace net.crossly.Api
         /// The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAccrualResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxAccrualResponse> CreateCbxAccrualAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxAccrualResponse> CreateCbxAccrualAsync(CreateCbxAccrualRequest createCbxAccrualRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Record cashback a user earned, in cents.
@@ -1312,9 +1379,10 @@ namespace net.crossly.Api
         /// The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAccrualResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxAccrualResponse>> CreateCbxAccrualWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxAccrualResponse>> CreateCbxAccrualWithHttpInfoAsync(CreateCbxAccrualRequest createCbxAccrualRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Accrue cashback for an order at the resolved rate.
         /// </summary>
@@ -1322,9 +1390,10 @@ namespace net.crossly.Api
         /// Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAccrualPurchaseResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseAsync(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Accrue cashback for an order at the resolved rate.
@@ -1333,9 +1402,10 @@ namespace net.crossly.Api
         /// Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAccrualPurchaseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxAccrualPurchaseResponse>> CreateCbxAccrualPurchaseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxAccrualPurchaseResponse>> CreateCbxAccrualPurchaseWithHttpInfoAsync(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Claw back a pending accrual — a refund, a cancellation, fraud.
         /// </summary>
@@ -1344,9 +1414,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendReverseResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseAsync(string accrualId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseAsync(string accrualId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claw back a pending accrual — a refund, a cancellation, fraud.
@@ -1356,9 +1427,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendReverseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxAccrualReverseWithHttpInfoAsync(string accrualId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxAccrualReverseWithHttpInfoAsync(string accrualId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Claim ad credit against a CBX transfer you sent.
         /// </summary>
@@ -1366,9 +1438,10 @@ namespace net.crossly.Api
         /// Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditPurchaseResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseAsync(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Claim ad credit against a CBX transfer you sent.
@@ -1377,9 +1450,10 @@ namespace net.crossly.Api
         /// Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditPurchaseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditPurchaseResponse>> CreateCbxAdCreditPurchaseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditPurchaseResponse>> CreateCbxAdCreditPurchaseWithHttpInfoAsync(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What a given number of tokens buys in ad credit.
         /// </summary>
@@ -1387,9 +1461,10 @@ namespace net.crossly.Api
         /// Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteAsync(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What a given number of tokens buys in ad credit.
@@ -1398,9 +1473,10 @@ namespace net.crossly.Api
         /// Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditQuoteResponse>> CreateCbxAdCreditQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditQuoteResponse>> CreateCbxAdCreditQuoteWithHttpInfoAsync(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Consume credit for a billing period.
         /// </summary>
@@ -1408,9 +1484,10 @@ namespace net.crossly.Api
         /// Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditSpendResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendAsync(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Consume credit for a billing period.
@@ -1419,9 +1496,10 @@ namespace net.crossly.Api
         /// Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditSpendResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditSpendResponse>> CreateCbxAdCreditSpendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxAdCreditSpendResponse>> CreateCbxAdCreditSpendWithHttpInfoAsync(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Fund elevated cashback on matching items.
         /// </summary>
@@ -1429,9 +1507,10 @@ namespace net.crossly.Api
         /// Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxBoostResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxBoostResponse> CreateCbxBoostAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxBoostResponse> CreateCbxBoostAsync(CreateCbxBoostRequest createCbxBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fund elevated cashback on matching items.
@@ -1440,9 +1519,10 @@ namespace net.crossly.Api
         /// Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxBoostResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxBoostResponse>> CreateCbxBoostWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxBoostResponse>> CreateCbxBoostWithHttpInfoAsync(CreateCbxBoostRequest createCbxBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop a boost from matching further orders.
         /// </summary>
@@ -1473,9 +1553,10 @@ namespace net.crossly.Api
         /// Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCampaignResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxCampaignResponse> CreateCbxCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxCampaignResponse> CreateCbxCampaignAsync(CreateCbxCampaignRequest createCbxCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a campaign in draft.
@@ -1484,9 +1565,10 @@ namespace net.crossly.Api
         /// Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCampaignResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxCampaignResponse>> CreateCbxCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxCampaignResponse>> CreateCbxCampaignWithHttpInfoAsync(CreateCbxCampaignRequest createCbxCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Approve the previewed recipient list.
         /// </summary>
@@ -1518,9 +1600,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdAsync(string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdAsync(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pay an approved campaign.
@@ -1530,9 +1613,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCampaignExecuteByCampaignIdResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Compute the recipient list without paying it.
         /// </summary>
@@ -1563,9 +1647,10 @@ namespace net.crossly.Api
         /// The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxClaimResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxClaimResponse> CreateCbxClaimAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxClaimResponse> CreateCbxClaimAsync(CreateCbxClaimRequest createCbxClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Reserve a claim. Debits the balance and queues the transfer.
@@ -1574,9 +1659,10 @@ namespace net.crossly.Api
         /// The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxClaimResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxClaimResponse>> CreateCbxClaimWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxClaimResponse>> CreateCbxClaimWithHttpInfoAsync(CreateCbxClaimRequest createCbxClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What a claim would cost, without committing to it.
         /// </summary>
@@ -1584,9 +1670,10 @@ namespace net.crossly.Api
         /// Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxClaimQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteAsync(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What a claim would cost, without committing to it.
@@ -1595,9 +1682,10 @@ namespace net.crossly.Api
         /// Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxClaimQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxClaimQuoteResponse>> CreateCbxClaimQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxClaimQuoteResponse>> CreateCbxClaimQuoteWithHttpInfoAsync(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Send a reserved claim on chain.
         /// </summary>
@@ -1628,9 +1716,10 @@ namespace net.crossly.Api
         /// The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditDrawResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxCreditDrawResponse> CreateCbxCreditDrawAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxCreditDrawResponse> CreateCbxCreditDrawAsync(CreateCbxCreditDrawRequest createCbxCreditDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Draw against a line, receiving grant credit.
@@ -1639,9 +1728,10 @@ namespace net.crossly.Api
         /// The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditDrawResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditDrawResponse>> CreateCbxCreditDrawWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditDrawResponse>> CreateCbxCreditDrawWithHttpInfoAsync(CreateCbxCreditDrawRequest createCbxCreditDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Stop new draws. Leaves the drawn balance on its terms.
         /// </summary>
@@ -1649,9 +1739,10 @@ namespace net.crossly.Api
         /// The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditFreezeResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeAsync(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Stop new draws. Leaves the drawn balance on its terms.
@@ -1660,9 +1751,10 @@ namespace net.crossly.Api
         /// The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditFreezeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditFreezeResponse>> CreateCbxCreditFreezeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditFreezeResponse>> CreateCbxCreditFreezeWithHttpInfoAsync(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Recompute a limit from trading history and stake.
         /// </summary>
@@ -1691,9 +1783,10 @@ namespace net.crossly.Api
         /// &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditRepayResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxCreditRepayResponse> CreateCbxCreditRepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxCreditRepayResponse> CreateCbxCreditRepayAsync(CreateCbxCreditRepayRequest createCbxCreditRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Apply a repayment to a line.
@@ -1702,9 +1795,10 @@ namespace net.crossly.Api
         /// &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditRepayResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditRepayResponse>> CreateCbxCreditRepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxCreditRepayResponse>> CreateCbxCreditRepayWithHttpInfoAsync(CreateCbxCreditRepayRequest createCbxCreditRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Fire a distribution when the events pool crosses a threshold.
         /// </summary>
@@ -1712,9 +1806,10 @@ namespace net.crossly.Api
         /// Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxDisbursementRuleResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleAsync(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fire a distribution when the events pool crosses a threshold.
@@ -1723,9 +1818,10 @@ namespace net.crossly.Api
         /// Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxDisbursementRuleResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxDisbursementRuleResponse>> CreateCbxDisbursementRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxDisbursementRuleResponse>> CreateCbxDisbursementRuleWithHttpInfoAsync(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Enable or disable a rule.
         /// </summary>
@@ -1779,9 +1875,10 @@ namespace net.crossly.Api
         /// Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxEarnTierResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxEarnTierResponse> CreateCbxEarnTierAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxEarnTierResponse> CreateCbxEarnTierAsync(CreateCbxEarnTierRequest createCbxEarnTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Define an earn term.
@@ -1790,9 +1887,10 @@ namespace net.crossly.Api
         /// Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxEarnTierResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxEarnTierResponse>> CreateCbxEarnTierWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxEarnTierResponse>> CreateCbxEarnTierWithHttpInfoAsync(CreateCbxEarnTierRequest createCbxEarnTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What would this order earn, and why.
         /// </summary>
@@ -1800,9 +1898,10 @@ namespace net.crossly.Api
         /// Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRateQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxRateQuoteResponse> CreateCbxRateQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxRateQuoteResponse> CreateCbxRateQuoteAsync(CreateCbxRateQuoteRequest createCbxRateQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What would this order earn, and why.
@@ -1811,9 +1910,10 @@ namespace net.crossly.Api
         /// Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRateQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxRateQuoteResponse>> CreateCbxRateQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxRateQuoteResponse>> CreateCbxRateQuoteWithHttpInfoAsync(CreateCbxRateQuoteRequest createCbxRateQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Pay for a service in CBX.
         /// </summary>
@@ -1821,9 +1921,10 @@ namespace net.crossly.Api
         /// Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRedemptionResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxRedemptionResponse> CreateCbxRedemptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxRedemptionResponse> CreateCbxRedemptionAsync(CreateCbxRedemptionRequest createCbxRedemptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Pay for a service in CBX.
@@ -1832,9 +1933,10 @@ namespace net.crossly.Api
         /// Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRedemptionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxRedemptionResponse>> CreateCbxRedemptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxRedemptionResponse>> CreateCbxRedemptionWithHttpInfoAsync(CreateCbxRedemptionRequest createCbxRedemptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What a service costs in tokens right now.
         /// </summary>
@@ -1842,9 +1944,10 @@ namespace net.crossly.Api
         /// Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRedemptionQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteAsync(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// What a service costs in tokens right now.
@@ -1853,9 +1956,10 @@ namespace net.crossly.Api
         /// Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRedemptionQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxRedemptionQuoteResponse>> CreateCbxRedemptionQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxRedemptionQuoteResponse>> CreateCbxRedemptionQuoteWithHttpInfoAsync(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
         /// </summary>
@@ -1863,9 +1967,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxReserveResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxReserveResponse> CreateCbxReserveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxReserveResponse> CreateCbxReserveAsync(CreateCbxReserveRequest createCbxReserveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account.
@@ -1874,9 +1979,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxReserveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxReserveResponse>> CreateCbxReserveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxReserveResponse>> CreateCbxReserveWithHttpInfoAsync(CreateCbxReserveRequest createCbxReserveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Move accrued revenue from the reserve to your revenue wallet.
         /// </summary>
@@ -1884,9 +1990,10 @@ namespace net.crossly.Api
         /// Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRevenueSweepResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepAsync(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Move accrued revenue from the reserve to your revenue wallet.
@@ -1895,9 +2002,10 @@ namespace net.crossly.Api
         /// Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRevenueSweepResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxRevenueSweepResponse>> CreateCbxRevenueSweepWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxRevenueSweepResponse>> CreateCbxRevenueSweepWithHttpInfoAsync(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Redeem a user&#39;s CBX against an order.
         /// </summary>
@@ -1905,9 +2013,10 @@ namespace net.crossly.Api
         /// Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSpendResponse> CreateCbxSpendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSpendResponse> CreateCbxSpendAsync(CreateCbxSpendRequest createCbxSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Redeem a user&#39;s CBX against an order.
@@ -1916,9 +2025,10 @@ namespace net.crossly.Api
         /// Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendResponse>> CreateCbxSpendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendResponse>> CreateCbxSpendWithHttpInfoAsync(CreateCbxSpendRequest createCbxSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Refund a spend — give the tokens back and claw the skim back.
         /// </summary>
@@ -1927,9 +2037,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendReverseResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxSpendReverseAsync(string externalId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxSpendReverseAsync(string externalId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Refund a spend — give the tokens back and claw the skim back.
@@ -1939,9 +2050,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendReverseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxSpendReverseWithHttpInfoAsync(string externalId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxSpendReverseWithHttpInfoAsync(string externalId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Define a staking tier.
         /// </summary>
@@ -1949,9 +2061,10 @@ namespace net.crossly.Api
         /// A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxStakeTierResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxStakeTierResponse> CreateCbxStakeTierAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxStakeTierResponse> CreateCbxStakeTierAsync(CreateCbxStakeTierRequest createCbxStakeTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Define a staking tier.
@@ -1960,9 +2073,10 @@ namespace net.crossly.Api
         /// A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxStakeTierResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxStakeTierResponse>> CreateCbxStakeTierWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxStakeTierResponse>> CreateCbxStakeTierWithHttpInfoAsync(CreateCbxStakeTierRequest createCbxStakeTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Map one of your user ids to a CBX subject.
         /// </summary>
@@ -1970,9 +2084,10 @@ namespace net.crossly.Api
         /// Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSubjectResponse> CreateCbxSubjectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSubjectResponse> CreateCbxSubjectAsync(CreateCbxSubjectRequest createCbxSubjectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Map one of your user ids to a CBX subject.
@@ -1981,9 +2096,10 @@ namespace net.crossly.Api
         /// Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectResponse>> CreateCbxSubjectWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectResponse>> CreateCbxSubjectWithHttpInfoAsync(CreateCbxSubjectRequest createCbxSubjectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Issue grant credit — in-platform, non-withdrawable.
         /// </summary>
@@ -1992,9 +2108,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectGrantResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantAsync(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Issue grant credit — in-platform, non-withdrawable.
@@ -2004,9 +2121,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectGrantResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectGrantResponse>> CreateCbxSubjectGrantWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectGrantResponse>> CreateCbxSubjectGrantWithHttpInfoAsync(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Which balances would pay for a spend, and in what order.
         /// </summary>
@@ -2015,9 +2133,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectSpendPlanResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanAsync(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Which balances would pay for a spend, and in what order.
@@ -2027,9 +2146,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectSpendPlanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectSpendPlanResponse>> CreateCbxSubjectSpendPlanWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectSpendPlanResponse>> CreateCbxSubjectSpendPlanWithHttpInfoAsync(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Lock a subject&#39;s tokens for a tier.
         /// </summary>
@@ -2038,9 +2158,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectStakeResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeAsync(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lock a subject&#39;s tokens for a tier.
@@ -2050,9 +2171,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectStakeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectStakeResponse>> CreateCbxSubjectStakeWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxSubjectStakeResponse>> CreateCbxSubjectStakeWithHttpInfoAsync(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Start the cooldown. Tokens unlock when it elapses.
         /// </summary>
@@ -2083,9 +2205,10 @@ namespace net.crossly.Api
         /// Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletChallengeResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeAsync(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Start wallet verification. Returns a message for the user to sign.
@@ -2094,9 +2217,10 @@ namespace net.crossly.Api
         /// Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletChallengeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletChallengeResponse>> CreateCbxWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletChallengeResponse>> CreateCbxWalletChallengeWithHttpInfoAsync(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Present the signature. Returns a ship / do-not-ship decision.
         /// </summary>
@@ -2104,9 +2228,10 @@ namespace net.crossly.Api
         /// Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmAsync(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Present the signature. Returns a ship / do-not-ship decision.
@@ -2115,9 +2240,10 @@ namespace net.crossly.Api
         /// Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentConfirmResponse>> CreateCbxWalletPaymentConfirmWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentConfirmResponse>> CreateCbxWalletPaymentConfirmWithHttpInfoAsync(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Build a transfer for the buyer to sign themselves.
         /// </summary>
@@ -2125,9 +2251,10 @@ namespace net.crossly.Api
         /// Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentQuoteResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteAsync(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Build a transfer for the buyer to sign themselves.
@@ -2136,9 +2263,10 @@ namespace net.crossly.Api
         /// Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentQuoteResponse>> CreateCbxWalletPaymentQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentQuoteResponse>> CreateCbxWalletPaymentQuoteWithHttpInfoAsync(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A human decides on a held payment.
         /// </summary>
@@ -2147,9 +2275,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentResolveResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveAsync(string paymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveAsync(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A human decides on a held payment.
@@ -2159,9 +2288,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentResolveResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentResolveResponse>> CreateCbxWalletPaymentResolveWithHttpInfoAsync(string paymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletPaymentResolveResponse>> CreateCbxWalletPaymentResolveWithHttpInfoAsync(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Complete wallet verification with the user&#39;s signature.
         /// </summary>
@@ -2169,9 +2299,10 @@ namespace net.crossly.Api
         /// The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletVerifyResponse</returns>
-        System.Threading.Tasks.Task<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyAsync(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Complete wallet verification with the user&#39;s signature.
@@ -2180,9 +2311,10 @@ namespace net.crossly.Api
         /// The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletVerifyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletVerifyResponse>> CreateCbxWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateCbxWalletVerifyResponse>> CreateCbxWalletVerifyWithHttpInfoAsync(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Unspent advertising credit, in cents.
         /// </summary>
@@ -2831,10 +2963,11 @@ namespace net.crossly.Api
         /// Record cashback a user earned, in cents. The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <returns>CreateCbxAccrualResponse</returns>
-        public CreateCbxAccrualResponse CreateCbxAccrual()
+        public CreateCbxAccrualResponse CreateCbxAccrual(CreateCbxAccrualRequest createCbxAccrualRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> localVarResponse = CreateCbxAccrualWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> localVarResponse = CreateCbxAccrualWithHttpInfo(createCbxAccrualRequest);
             return localVarResponse.Data;
         }
 
@@ -2842,12 +2975,20 @@ namespace net.crossly.Api
         /// Record cashback a user earned, in cents. The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <returns>ApiResponse of CreateCbxAccrualResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> CreateCbxAccrualWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> CreateCbxAccrualWithHttpInfo(CreateCbxAccrualRequest createCbxAccrualRequest)
         {
+            // verify the required parameter 'createCbxAccrualRequest' is set
+            if (createCbxAccrualRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAccrualRequest' when calling CBXApi->CreateCbxAccrual");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2867,6 +3008,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAccrualRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2893,11 +3035,12 @@ namespace net.crossly.Api
         /// Record cashback a user earned, in cents. The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAccrualResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxAccrualResponse> CreateCbxAccrualAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxAccrualResponse> CreateCbxAccrualAsync(CreateCbxAccrualRequest createCbxAccrualRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> localVarResponse = await CreateCbxAccrualWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxAccrualResponse> localVarResponse = await CreateCbxAccrualWithHttpInfoAsync(createCbxAccrualRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2905,14 +3048,22 @@ namespace net.crossly.Api
         /// Record cashback a user earned, in cents. The accrual is PENDING until its maturation window closes, then converts to CBX at that moment&#39;s market price. It is denominated in cents the whole time it is pending, deliberately: quoting a token quantity up front and buying later would leave the reserve short for the length of the window. Send sourceExternalId and a retry is a no-op rather than a double credit.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAccrualResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAccrualResponse>> CreateCbxAccrualWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAccrualResponse>> CreateCbxAccrualWithHttpInfoAsync(CreateCbxAccrualRequest createCbxAccrualRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxAccrualRequest' is set
+            if (createCbxAccrualRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAccrualRequest' when calling CBXApi->CreateCbxAccrual");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2932,6 +3083,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAccrualRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2959,10 +3111,11 @@ namespace net.crossly.Api
         /// Accrue cashback for an order at the resolved rate. Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <returns>CreateCbxAccrualPurchaseResponse</returns>
-        public CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase()
+        public CreateCbxAccrualPurchaseResponse CreateCbxAccrualPurchase(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> localVarResponse = CreateCbxAccrualPurchaseWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> localVarResponse = CreateCbxAccrualPurchaseWithHttpInfo(createCbxAccrualPurchaseRequest);
             return localVarResponse.Data;
         }
 
@@ -2970,12 +3123,20 @@ namespace net.crossly.Api
         /// Accrue cashback for an order at the resolved rate. Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <returns>ApiResponse of CreateCbxAccrualPurchaseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseWithHttpInfo(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest)
         {
+            // verify the required parameter 'createCbxAccrualPurchaseRequest' is set
+            if (createCbxAccrualPurchaseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAccrualPurchaseRequest' when calling CBXApi->CreateCbxAccrualPurchase");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2995,6 +3156,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAccrualPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3021,11 +3183,12 @@ namespace net.crossly.Api
         /// Accrue cashback for an order at the resolved rate. Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAccrualPurchaseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxAccrualPurchaseResponse> CreateCbxAccrualPurchaseAsync(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> localVarResponse = await CreateCbxAccrualPurchaseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse> localVarResponse = await CreateCbxAccrualPurchaseWithHttpInfoAsync(createCbxAccrualPurchaseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3033,14 +3196,22 @@ namespace net.crossly.Api
         /// Accrue cashback for an order at the resolved rate. Prefer this over POST /accruals when you want us to do the rate maths — it resolves the tier, the boost and the stake boost, charges your boost budget in the same transaction, and records what rate was actually granted. If a matching boost cannot fund the order, the accrual falls back to your un-boosted rate and &#x60;boostBudgetExhausted&#x60; is true. Idempotent on externalId: a retried webhook neither accrues twice nor charges your budget twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAccrualPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAccrualPurchaseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse>> CreateCbxAccrualPurchaseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAccrualPurchaseResponse>> CreateCbxAccrualPurchaseWithHttpInfoAsync(CreateCbxAccrualPurchaseRequest createCbxAccrualPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxAccrualPurchaseRequest' is set
+            if (createCbxAccrualPurchaseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAccrualPurchaseRequest' when calling CBXApi->CreateCbxAccrualPurchase");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3060,6 +3231,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAccrualPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3088,10 +3260,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateCbxSpendReverseResponse</returns>
-        public CreateCbxSpendReverseResponse CreateCbxAccrualReverse(string accrualId)
+        public CreateCbxSpendReverseResponse CreateCbxAccrualReverse(string accrualId, ReasonRequest reasonRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = CreateCbxAccrualReverseWithHttpInfo(accrualId);
+            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = CreateCbxAccrualReverseWithHttpInfo(accrualId, reasonRequest);
             return localVarResponse.Data;
         }
 
@@ -3100,8 +3273,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendReverseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseWithHttpInfo(string accrualId)
+        public net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseWithHttpInfo(string accrualId, ReasonRequest reasonRequest)
         {
             // verify the required parameter 'accrualId' is set
             if (accrualId == null)
@@ -3109,9 +3283,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'accrualId' when calling CBXApi->CreateCbxAccrualReverse");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling CBXApi->CreateCbxAccrualReverse");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3132,6 +3313,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("accrualId", net.crossly.Client.ClientUtils.ParameterToString(accrualId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3159,11 +3341,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendReverseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseAsync(string accrualId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxAccrualReverseAsync(string accrualId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = await CreateCbxAccrualReverseWithHttpInfoAsync(accrualId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = await CreateCbxAccrualReverseWithHttpInfoAsync(accrualId, reasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3172,9 +3355,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="accrualId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendReverseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxAccrualReverseWithHttpInfoAsync(string accrualId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxAccrualReverseWithHttpInfoAsync(string accrualId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'accrualId' is set
             if (accrualId == null)
@@ -3182,10 +3366,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'accrualId' when calling CBXApi->CreateCbxAccrualReverse");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling CBXApi->CreateCbxAccrualReverse");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3206,6 +3397,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("accrualId", net.crossly.Client.ClientUtils.ParameterToString(accrualId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3233,10 +3425,11 @@ namespace net.crossly.Api
         /// Claim ad credit against a CBX transfer you sent. Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <returns>CreateCbxAdCreditPurchaseResponse</returns>
-        public CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase()
+        public CreateCbxAdCreditPurchaseResponse CreateCbxAdCreditPurchase(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> localVarResponse = CreateCbxAdCreditPurchaseWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> localVarResponse = CreateCbxAdCreditPurchaseWithHttpInfo(createCbxAdCreditPurchaseRequest);
             return localVarResponse.Data;
         }
 
@@ -3244,12 +3437,20 @@ namespace net.crossly.Api
         /// Claim ad credit against a CBX transfer you sent. Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditPurchaseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseWithHttpInfo(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest)
         {
+            // verify the required parameter 'createCbxAdCreditPurchaseRequest' is set
+            if (createCbxAdCreditPurchaseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAdCreditPurchaseRequest' when calling CBXApi->CreateCbxAdCreditPurchase");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3269,6 +3470,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAdCreditPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3295,11 +3497,12 @@ namespace net.crossly.Api
         /// Claim ad credit against a CBX transfer you sent. Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditPurchaseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxAdCreditPurchaseResponse> CreateCbxAdCreditPurchaseAsync(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> localVarResponse = await CreateCbxAdCreditPurchaseWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse> localVarResponse = await CreateCbxAdCreditPurchaseWithHttpInfoAsync(createCbxAdCreditPurchaseRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3307,14 +3510,22 @@ namespace net.crossly.Api
         /// Claim ad credit against a CBX transfer you sent. Send CBX to our revenue wallet yourself, then present the signature. We read the actual balance delta at FINALIZED commitment — a confirmed transaction can still be dropped by a fork, and this grants real credit. One signature can be claimed exactly once. Priced at the spot when the claim is processed, not when you signed: pricing at send time would let somebody hold signed transfers and claim only the ones that moved in their favour. A 409 means the transaction has not finalized yet and you should retry; a 400 means it will never be claimable (failed, wrong mint, wrong destination).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditPurchaseRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditPurchaseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse>> CreateCbxAdCreditPurchaseWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditPurchaseResponse>> CreateCbxAdCreditPurchaseWithHttpInfoAsync(CreateCbxAdCreditPurchaseRequest createCbxAdCreditPurchaseRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxAdCreditPurchaseRequest' is set
+            if (createCbxAdCreditPurchaseRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAdCreditPurchaseRequest' when calling CBXApi->CreateCbxAdCreditPurchase");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3334,6 +3545,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAdCreditPurchaseRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3361,10 +3573,11 @@ namespace net.crossly.Api
         /// What a given number of tokens buys in ad credit. Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>CreateCbxAdCreditQuoteResponse</returns>
-        public CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote()
+        public CreateCbxAdCreditQuoteResponse CreateCbxAdCreditQuote(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> localVarResponse = CreateCbxAdCreditQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> localVarResponse = CreateCbxAdCreditQuoteWithHttpInfo(createCbxSubjectStakeRequest);
             return localVarResponse.Data;
         }
 
@@ -3372,12 +3585,20 @@ namespace net.crossly.Api
         /// What a given number of tokens buys in ad credit. Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteWithHttpInfo(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
         {
+            // verify the required parameter 'createCbxSubjectStakeRequest' is set
+            if (createCbxSubjectStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectStakeRequest' when calling CBXApi->CreateCbxAdCreditQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3397,6 +3618,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSubjectStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3423,11 +3645,12 @@ namespace net.crossly.Api
         /// What a given number of tokens buys in ad credit. Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxAdCreditQuoteResponse> CreateCbxAdCreditQuoteAsync(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> localVarResponse = await CreateCbxAdCreditQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse> localVarResponse = await CreateCbxAdCreditQuoteWithHttpInfoAsync(createCbxSubjectStakeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3435,14 +3658,22 @@ namespace net.crossly.Api
         /// What a given number of tokens buys in ad credit. Credit is 1:1 with the market value of the tokens at confirmation. Refuses with 409 when there is no fresh price — pricing an entire prepaid budget off a guess is not something to do quietly.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse>> CreateCbxAdCreditQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditQuoteResponse>> CreateCbxAdCreditQuoteWithHttpInfoAsync(CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxSubjectStakeRequest' is set
+            if (createCbxSubjectStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectStakeRequest' when calling CBXApi->CreateCbxAdCreditQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3462,6 +3693,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSubjectStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3489,10 +3721,11 @@ namespace net.crossly.Api
         /// Consume credit for a billing period. Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <returns>CreateCbxAdCreditSpendResponse</returns>
-        public CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend()
+        public CreateCbxAdCreditSpendResponse CreateCbxAdCreditSpend(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> localVarResponse = CreateCbxAdCreditSpendWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> localVarResponse = CreateCbxAdCreditSpendWithHttpInfo(createCbxAdCreditSpendRequest);
             return localVarResponse.Data;
         }
 
@@ -3500,12 +3733,20 @@ namespace net.crossly.Api
         /// Consume credit for a billing period. Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <returns>ApiResponse of CreateCbxAdCreditSpendResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendWithHttpInfo(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest)
         {
+            // verify the required parameter 'createCbxAdCreditSpendRequest' is set
+            if (createCbxAdCreditSpendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAdCreditSpendRequest' when calling CBXApi->CreateCbxAdCreditSpend");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3525,6 +3766,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAdCreditSpendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3551,11 +3793,12 @@ namespace net.crossly.Api
         /// Consume credit for a billing period. Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxAdCreditSpendResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxAdCreditSpendResponse> CreateCbxAdCreditSpendAsync(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> localVarResponse = await CreateCbxAdCreditSpendWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse> localVarResponse = await CreateCbxAdCreditSpendWithHttpInfoAsync(createCbxAdCreditSpendRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3563,14 +3806,22 @@ namespace net.crossly.Api
         /// Consume credit for a billing period. Spends what the balance covers and reports the rest as &#x60;shortfallCents&#x60; — the campaign should stop there rather than running on credit that does not exist. 20% of what is spent moves to the community events pool and 80% is operator revenue; the split happens on SPEND rather than at purchase, because the pool&#39;s share is earned when the advertising is actually delivered. Idempotent on externalId: pass your billing-period id so a retried run does not consume the same credit twice.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxAdCreditSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxAdCreditSpendResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse>> CreateCbxAdCreditSpendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxAdCreditSpendResponse>> CreateCbxAdCreditSpendWithHttpInfoAsync(CreateCbxAdCreditSpendRequest createCbxAdCreditSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxAdCreditSpendRequest' is set
+            if (createCbxAdCreditSpendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxAdCreditSpendRequest' when calling CBXApi->CreateCbxAdCreditSpend");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3590,6 +3841,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxAdCreditSpendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3617,10 +3869,11 @@ namespace net.crossly.Api
         /// Fund elevated cashback on matching items. Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <returns>CreateCbxBoostResponse</returns>
-        public CreateCbxBoostResponse CreateCbxBoost()
+        public CreateCbxBoostResponse CreateCbxBoost(CreateCbxBoostRequest createCbxBoostRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxBoostResponse> localVarResponse = CreateCbxBoostWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxBoostResponse> localVarResponse = CreateCbxBoostWithHttpInfo(createCbxBoostRequest);
             return localVarResponse.Data;
         }
 
@@ -3628,12 +3881,20 @@ namespace net.crossly.Api
         /// Fund elevated cashback on matching items. Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <returns>ApiResponse of CreateCbxBoostResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxBoostResponse> CreateCbxBoostWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxBoostResponse> CreateCbxBoostWithHttpInfo(CreateCbxBoostRequest createCbxBoostRequest)
         {
+            // verify the required parameter 'createCbxBoostRequest' is set
+            if (createCbxBoostRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxBoostRequest' when calling CBXApi->CreateCbxBoost");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3653,6 +3914,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxBoostRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3679,11 +3941,12 @@ namespace net.crossly.Api
         /// Fund elevated cashback on matching items. Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxBoostResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxBoostResponse> CreateCbxBoostAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxBoostResponse> CreateCbxBoostAsync(CreateCbxBoostRequest createCbxBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxBoostResponse> localVarResponse = await CreateCbxBoostWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxBoostResponse> localVarResponse = await CreateCbxBoostWithHttpInfoAsync(createCbxBoostRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3691,14 +3954,22 @@ namespace net.crossly.Api
         /// Fund elevated cashback on matching items. Performance marketing priced in CBX: the spend lands as a durable balance the buyer returns to use, rather than a one-time price cut they pocket. A boost REPLACES the base or tier rate rather than adding to it — you are stating the total you will pay, and it is priced against your margin. Targeting is matched by equality on one facet; most specific wins (sku &gt; collection &gt; category &gt; all). Kinds: all, category, sku, collection.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxBoostRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxBoostResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxBoostResponse>> CreateCbxBoostWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxBoostResponse>> CreateCbxBoostWithHttpInfoAsync(CreateCbxBoostRequest createCbxBoostRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxBoostRequest' is set
+            if (createCbxBoostRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxBoostRequest' when calling CBXApi->CreateCbxBoost");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3718,6 +3989,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxBoostRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3891,10 +4163,11 @@ namespace net.crossly.Api
         /// Create a campaign in draft. Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <returns>CreateCbxCampaignResponse</returns>
-        public CreateCbxCampaignResponse CreateCbxCampaign()
+        public CreateCbxCampaignResponse CreateCbxCampaign(CreateCbxCampaignRequest createCbxCampaignRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> localVarResponse = CreateCbxCampaignWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> localVarResponse = CreateCbxCampaignWithHttpInfo(createCbxCampaignRequest);
             return localVarResponse.Data;
         }
 
@@ -3902,12 +4175,20 @@ namespace net.crossly.Api
         /// Create a campaign in draft. Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <returns>ApiResponse of CreateCbxCampaignResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> CreateCbxCampaignWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> CreateCbxCampaignWithHttpInfo(CreateCbxCampaignRequest createCbxCampaignRequest)
         {
+            // verify the required parameter 'createCbxCampaignRequest' is set
+            if (createCbxCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCampaignRequest' when calling CBXApi->CreateCbxCampaign");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3927,6 +4208,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -3953,11 +4235,12 @@ namespace net.crossly.Api
         /// Create a campaign in draft. Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCampaignResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxCampaignResponse> CreateCbxCampaignAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxCampaignResponse> CreateCbxCampaignAsync(CreateCbxCampaignRequest createCbxCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> localVarResponse = await CreateCbxCampaignWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxCampaignResponse> localVarResponse = await CreateCbxCampaignWithHttpInfoAsync(createCbxCampaignRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3965,14 +4248,22 @@ namespace net.crossly.Api
         /// Create a campaign in draft. Nothing is paid until it is previewed, approved and executed. Available metrics: accruals_count, accrued_cents, spend_count, spend_base_units — all of them measure activity inside the window. &#x60;capPerSubject&#x60; is worth setting on a proportional campaign: without it one large participant can take almost the whole pool, which makes the event pointless for everybody else.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCampaignRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCampaignResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCampaignResponse>> CreateCbxCampaignWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCampaignResponse>> CreateCbxCampaignWithHttpInfoAsync(CreateCbxCampaignRequest createCbxCampaignRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxCampaignRequest' is set
+            if (createCbxCampaignRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCampaignRequest' when calling CBXApi->CreateCbxCampaign");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -3992,6 +4283,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCampaignRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4166,10 +4458,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <returns>CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        public CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId(string campaignId)
+        public CreateCbxCampaignExecuteByCampaignIdResponse CreateCbxCampaignExecuteByCampaignId(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> localVarResponse = CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(campaignId);
+            net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> localVarResponse = CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(campaignId, createCbxCampaignExecuteByCampaignIdRequest);
             return localVarResponse.Data;
         }
 
@@ -4178,8 +4471,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <returns>ApiResponse of CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(string campaignId)
+        public net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdWithHttpInfo(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest)
         {
             // verify the required parameter 'campaignId' is set
             if (campaignId == null)
@@ -4187,9 +4481,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling CBXApi->CreateCbxCampaignExecuteByCampaignId");
             }
 
+            // verify the required parameter 'createCbxCampaignExecuteByCampaignIdRequest' is set
+            if (createCbxCampaignExecuteByCampaignIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCampaignExecuteByCampaignIdRequest' when calling CBXApi->CreateCbxCampaignExecuteByCampaignId");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4210,6 +4511,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = createCbxCampaignExecuteByCampaignIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4237,11 +4539,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCampaignExecuteByCampaignIdResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdAsync(string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxCampaignExecuteByCampaignIdResponse> CreateCbxCampaignExecuteByCampaignIdAsync(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> localVarResponse = await CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(campaignId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse> localVarResponse = await CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(campaignId, createCbxCampaignExecuteByCampaignIdRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4250,9 +4553,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="campaignId"></param>
+        /// <param name="createCbxCampaignExecuteByCampaignIdRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCampaignExecuteByCampaignIdResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(string campaignId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCampaignExecuteByCampaignIdResponse>> CreateCbxCampaignExecuteByCampaignIdWithHttpInfoAsync(string campaignId, CreateCbxCampaignExecuteByCampaignIdRequest createCbxCampaignExecuteByCampaignIdRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'campaignId' is set
             if (campaignId == null)
@@ -4260,10 +4564,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'campaignId' when calling CBXApi->CreateCbxCampaignExecuteByCampaignId");
             }
 
+            // verify the required parameter 'createCbxCampaignExecuteByCampaignIdRequest' is set
+            if (createCbxCampaignExecuteByCampaignIdRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCampaignExecuteByCampaignIdRequest' when calling CBXApi->CreateCbxCampaignExecuteByCampaignId");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4284,6 +4595,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("campaignId", net.crossly.Client.ClientUtils.ParameterToString(campaignId)); // path parameter
+            localVarRequestOptions.Data = createCbxCampaignExecuteByCampaignIdRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4457,10 +4769,11 @@ namespace net.crossly.Api
         /// Reserve a claim. Debits the balance and queues the transfer. The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <returns>CreateCbxClaimResponse</returns>
-        public CreateCbxClaimResponse CreateCbxClaim()
+        public CreateCbxClaimResponse CreateCbxClaim(CreateCbxClaimRequest createCbxClaimRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxClaimResponse> localVarResponse = CreateCbxClaimWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxClaimResponse> localVarResponse = CreateCbxClaimWithHttpInfo(createCbxClaimRequest);
             return localVarResponse.Data;
         }
 
@@ -4468,12 +4781,20 @@ namespace net.crossly.Api
         /// Reserve a claim. Debits the balance and queues the transfer. The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <returns>ApiResponse of CreateCbxClaimResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxClaimResponse> CreateCbxClaimWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxClaimResponse> CreateCbxClaimWithHttpInfo(CreateCbxClaimRequest createCbxClaimRequest)
         {
+            // verify the required parameter 'createCbxClaimRequest' is set
+            if (createCbxClaimRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxClaimRequest' when calling CBXApi->CreateCbxClaim");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4493,6 +4814,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxClaimRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4519,11 +4841,12 @@ namespace net.crossly.Api
         /// Reserve a claim. Debits the balance and queues the transfer. The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxClaimResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxClaimResponse> CreateCbxClaimAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxClaimResponse> CreateCbxClaimAsync(CreateCbxClaimRequest createCbxClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxClaimResponse> localVarResponse = await CreateCbxClaimWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxClaimResponse> localVarResponse = await CreateCbxClaimWithHttpInfoAsync(createCbxClaimRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4531,14 +4854,22 @@ namespace net.crossly.Api
         /// Reserve a claim. Debits the balance and queues the transfer. The balance is debited here, before anything is sent, which is the only safe order: sending first and debiting after means a crash between the two pays somebody and never charges them, and that is unrecoverable. A crash after this leaves a reserved balance and a pending claim, which is recoverable by looking at the chain. Send the same idempotencyKey to retry safely.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxClaimResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxClaimResponse>> CreateCbxClaimWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxClaimResponse>> CreateCbxClaimWithHttpInfoAsync(CreateCbxClaimRequest createCbxClaimRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxClaimRequest' is set
+            if (createCbxClaimRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxClaimRequest' when calling CBXApi->CreateCbxClaim");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4558,6 +4889,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxClaimRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4585,10 +4917,11 @@ namespace net.crossly.Api
         /// What a claim would cost, without committing to it. Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <returns>CreateCbxClaimQuoteResponse</returns>
-        public CreateCbxClaimQuoteResponse CreateCbxClaimQuote()
+        public CreateCbxClaimQuoteResponse CreateCbxClaimQuote(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> localVarResponse = CreateCbxClaimQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> localVarResponse = CreateCbxClaimQuoteWithHttpInfo(createCbxClaimQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -4596,12 +4929,20 @@ namespace net.crossly.Api
         /// What a claim would cost, without committing to it. Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxClaimQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteWithHttpInfo(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest)
         {
+            // verify the required parameter 'createCbxClaimQuoteRequest' is set
+            if (createCbxClaimQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxClaimQuoteRequest' when calling CBXApi->CreateCbxClaimQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4621,6 +4962,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxClaimQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4647,11 +4989,12 @@ namespace net.crossly.Api
         /// What a claim would cost, without committing to it. Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxClaimQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxClaimQuoteResponse> CreateCbxClaimQuoteAsync(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> localVarResponse = await CreateCbxClaimQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse> localVarResponse = await CreateCbxClaimQuoteWithHttpInfoAsync(createCbxClaimQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4659,14 +5002,22 @@ namespace net.crossly.Api
         /// What a claim would cost, without committing to it. Every fee at cost, so a confirm screen can show the breakdown before the user agrees. The network fee is passed through at actual cost and includes the one-time account rent when the recipient has no token account yet — that rent is a recoverable deposit on an account the USER owns, not a fee we keep.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxClaimQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxClaimQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse>> CreateCbxClaimQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxClaimQuoteResponse>> CreateCbxClaimQuoteWithHttpInfoAsync(CreateCbxClaimQuoteRequest createCbxClaimQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxClaimQuoteRequest' is set
+            if (createCbxClaimQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxClaimQuoteRequest' when calling CBXApi->CreateCbxClaimQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4686,6 +5037,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxClaimQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4859,10 +5211,11 @@ namespace net.crossly.Api
         /// Draw against a line, receiving grant credit. The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <returns>CreateCbxCreditDrawResponse</returns>
-        public CreateCbxCreditDrawResponse CreateCbxCreditDraw()
+        public CreateCbxCreditDrawResponse CreateCbxCreditDraw(CreateCbxCreditDrawRequest createCbxCreditDrawRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> localVarResponse = CreateCbxCreditDrawWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> localVarResponse = CreateCbxCreditDrawWithHttpInfo(createCbxCreditDrawRequest);
             return localVarResponse.Data;
         }
 
@@ -4870,12 +5223,20 @@ namespace net.crossly.Api
         /// Draw against a line, receiving grant credit. The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditDrawResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> CreateCbxCreditDrawWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> CreateCbxCreditDrawWithHttpInfo(CreateCbxCreditDrawRequest createCbxCreditDrawRequest)
         {
+            // verify the required parameter 'createCbxCreditDrawRequest' is set
+            if (createCbxCreditDrawRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditDrawRequest' when calling CBXApi->CreateCbxCreditDraw");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4895,6 +5256,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditDrawRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4921,11 +5283,12 @@ namespace net.crossly.Api
         /// Draw against a line, receiving grant credit. The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditDrawResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxCreditDrawResponse> CreateCbxCreditDrawAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxCreditDrawResponse> CreateCbxCreditDrawAsync(CreateCbxCreditDrawRequest createCbxCreditDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> localVarResponse = await CreateCbxCreditDrawWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse> localVarResponse = await CreateCbxCreditDrawWithHttpInfoAsync(createCbxCreditDrawRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -4933,14 +5296,22 @@ namespace net.crossly.Api
         /// Draw against a line, receiving grant credit. The advance lands as GRANT balance: in-platform only, so it cannot be withdrawn, cannot be turned into cash and absconded with, and adds nothing to the float that could hit an order book. Restricted to wholesale channels — the limit was sized on the theory that the advance buys goods that get sold and generate the payout stream repaying it, and credit spent on a subscription does not create that stream. Refuses if the reserve has no unallocated tokens: credit is real value and cannot be advanced against tokens that do not exist. Idempotent on externalId.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditDrawRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditDrawResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse>> CreateCbxCreditDrawWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditDrawResponse>> CreateCbxCreditDrawWithHttpInfoAsync(CreateCbxCreditDrawRequest createCbxCreditDrawRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxCreditDrawRequest' is set
+            if (createCbxCreditDrawRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditDrawRequest' when calling CBXApi->CreateCbxCreditDraw");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -4960,6 +5331,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditDrawRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -4987,10 +5359,11 @@ namespace net.crossly.Api
         /// Stop new draws. Leaves the drawn balance on its terms. The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <returns>CreateCbxCreditFreezeResponse</returns>
-        public CreateCbxCreditFreezeResponse CreateCbxCreditFreeze()
+        public CreateCbxCreditFreezeResponse CreateCbxCreditFreeze(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> localVarResponse = CreateCbxCreditFreezeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> localVarResponse = CreateCbxCreditFreezeWithHttpInfo(createCbxCreditFreezeRequest);
             return localVarResponse.Data;
         }
 
@@ -4998,12 +5371,20 @@ namespace net.crossly.Api
         /// Stop new draws. Leaves the drawn balance on its terms. The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditFreezeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeWithHttpInfo(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest)
         {
+            // verify the required parameter 'createCbxCreditFreezeRequest' is set
+            if (createCbxCreditFreezeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditFreezeRequest' when calling CBXApi->CreateCbxCreditFreeze");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5023,6 +5404,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditFreezeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5049,11 +5431,12 @@ namespace net.crossly.Api
         /// Stop new draws. Leaves the drawn balance on its terms. The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditFreezeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxCreditFreezeResponse> CreateCbxCreditFreezeAsync(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> localVarResponse = await CreateCbxCreditFreezeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse> localVarResponse = await CreateCbxCreditFreezeWithHttpInfoAsync(createCbxCreditFreezeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5061,14 +5444,22 @@ namespace net.crossly.Api
         /// Stop new draws. Leaves the drawn balance on its terms. The only lever over a line, and deliberately the only one. A seller who took inventory on Tuesday keeps Tuesday&#39;s terms whatever the token does on Wednesday — the only way a credit product sits next to a volatile asset without transmitting its volatility.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditFreezeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditFreezeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse>> CreateCbxCreditFreezeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditFreezeResponse>> CreateCbxCreditFreezeWithHttpInfoAsync(CreateCbxCreditFreezeRequest createCbxCreditFreezeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxCreditFreezeRequest' is set
+            if (createCbxCreditFreezeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditFreezeRequest' when calling CBXApi->CreateCbxCreditFreeze");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5088,6 +5479,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditFreezeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5243,10 +5635,11 @@ namespace net.crossly.Api
         /// Apply a repayment to a line. &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <returns>CreateCbxCreditRepayResponse</returns>
-        public CreateCbxCreditRepayResponse CreateCbxCreditRepay()
+        public CreateCbxCreditRepayResponse CreateCbxCreditRepay(CreateCbxCreditRepayRequest createCbxCreditRepayRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> localVarResponse = CreateCbxCreditRepayWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> localVarResponse = CreateCbxCreditRepayWithHttpInfo(createCbxCreditRepayRequest);
             return localVarResponse.Data;
         }
 
@@ -5254,12 +5647,20 @@ namespace net.crossly.Api
         /// Apply a repayment to a line. &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <returns>ApiResponse of CreateCbxCreditRepayResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> CreateCbxCreditRepayWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> CreateCbxCreditRepayWithHttpInfo(CreateCbxCreditRepayRequest createCbxCreditRepayRequest)
         {
+            // verify the required parameter 'createCbxCreditRepayRequest' is set
+            if (createCbxCreditRepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditRepayRequest' when calling CBXApi->CreateCbxCreditRepay");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5279,6 +5680,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5305,11 +5707,12 @@ namespace net.crossly.Api
         /// Apply a repayment to a line. &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxCreditRepayResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxCreditRepayResponse> CreateCbxCreditRepayAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxCreditRepayResponse> CreateCbxCreditRepayAsync(CreateCbxCreditRepayRequest createCbxCreditRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> localVarResponse = await CreateCbxCreditRepayWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse> localVarResponse = await CreateCbxCreditRepayWithHttpInfoAsync(createCbxCreditRepayRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5317,14 +5720,22 @@ namespace net.crossly.Api
         /// Apply a repayment to a line. &#x60;treasury&#x60; scope, which looks backwards next to a draw needing only &#x60;spend&#x60; and is deliberate: a forged repayment writes off real money owed to us, while a forged draw hands out credit spendable only in our own marketplace. The scope follows the loss. Clamped to what is outstanding — a payout larger than the debt would otherwise push the balance negative and read as credit nobody underwrote.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxCreditRepayRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxCreditRepayResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse>> CreateCbxCreditRepayWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxCreditRepayResponse>> CreateCbxCreditRepayWithHttpInfoAsync(CreateCbxCreditRepayRequest createCbxCreditRepayRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxCreditRepayRequest' is set
+            if (createCbxCreditRepayRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxCreditRepayRequest' when calling CBXApi->CreateCbxCreditRepay");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5344,6 +5755,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxCreditRepayRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5371,10 +5783,11 @@ namespace net.crossly.Api
         /// Fire a distribution when the events pool crosses a threshold. Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <returns>CreateCbxDisbursementRuleResponse</returns>
-        public CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule()
+        public CreateCbxDisbursementRuleResponse CreateCbxDisbursementRule(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> localVarResponse = CreateCbxDisbursementRuleWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> localVarResponse = CreateCbxDisbursementRuleWithHttpInfo(createCbxDisbursementRuleRequest);
             return localVarResponse.Data;
         }
 
@@ -5382,12 +5795,20 @@ namespace net.crossly.Api
         /// Fire a distribution when the events pool crosses a threshold. Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <returns>ApiResponse of CreateCbxDisbursementRuleResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleWithHttpInfo(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest)
         {
+            // verify the required parameter 'createCbxDisbursementRuleRequest' is set
+            if (createCbxDisbursementRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxDisbursementRuleRequest' when calling CBXApi->CreateCbxDisbursementRule");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5407,6 +5828,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxDisbursementRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5433,11 +5855,12 @@ namespace net.crossly.Api
         /// Fire a distribution when the events pool crosses a threshold. Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxDisbursementRuleResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxDisbursementRuleResponse> CreateCbxDisbursementRuleAsync(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> localVarResponse = await CreateCbxDisbursementRuleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse> localVarResponse = await CreateCbxDisbursementRuleWithHttpInfoAsync(createCbxDisbursementRuleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5445,14 +5868,22 @@ namespace net.crossly.Api
         /// Fire a distribution when the events pool crosses a threshold. Applies to the EVENTS POOL only — never free reserve surplus. Reserve surplus is the recirculation buffer that funds the next accrual without touching the market, so distributing it would force us to buy the same tokens back at spread plus MEV. &#x60;checkCadenceHours&#x60; bounds how often the rule may fire even when the pool is over the line: a pure threshold fires at an unpredictable moment, and the pool jumps most after a lapse sweep — precisely when engagement was worst. &#x60;distributeBps&#x60; is capped under 100% because draining the pool removes the standing balance that makes the next event credible. The rule decides WHEN only: firing opens a campaign that still needs preview, approval and execution. Metrics: accruals_count, accrued_cents, spend_count, spend_base_units.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxDisbursementRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxDisbursementRuleResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse>> CreateCbxDisbursementRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxDisbursementRuleResponse>> CreateCbxDisbursementRuleWithHttpInfoAsync(CreateCbxDisbursementRuleRequest createCbxDisbursementRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxDisbursementRuleRequest' is set
+            if (createCbxDisbursementRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxDisbursementRuleRequest' when calling CBXApi->CreateCbxDisbursementRule");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5472,6 +5903,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxDisbursementRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5791,10 +6223,11 @@ namespace net.crossly.Api
         /// Define an earn term. Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <returns>CreateCbxEarnTierResponse</returns>
-        public CreateCbxEarnTierResponse CreateCbxEarnTier()
+        public CreateCbxEarnTierResponse CreateCbxEarnTier(CreateCbxEarnTierRequest createCbxEarnTierRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> localVarResponse = CreateCbxEarnTierWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> localVarResponse = CreateCbxEarnTierWithHttpInfo(createCbxEarnTierRequest);
             return localVarResponse.Data;
         }
 
@@ -5802,12 +6235,20 @@ namespace net.crossly.Api
         /// Define an earn term. Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <returns>ApiResponse of CreateCbxEarnTierResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> CreateCbxEarnTierWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> CreateCbxEarnTierWithHttpInfo(CreateCbxEarnTierRequest createCbxEarnTierRequest)
         {
+            // verify the required parameter 'createCbxEarnTierRequest' is set
+            if (createCbxEarnTierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxEarnTierRequest' when calling CBXApi->CreateCbxEarnTier");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5827,6 +6268,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxEarnTierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5853,11 +6295,12 @@ namespace net.crossly.Api
         /// Define an earn term. Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxEarnTierResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxEarnTierResponse> CreateCbxEarnTierAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxEarnTierResponse> CreateCbxEarnTierAsync(CreateCbxEarnTierRequest createCbxEarnTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> localVarResponse = await CreateCbxEarnTierWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse> localVarResponse = await CreateCbxEarnTierWithHttpInfoAsync(createCbxEarnTierRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5865,14 +6308,22 @@ namespace net.crossly.Api
         /// Define an earn term. Setting &#x60;isDefault&#x60; moves the default off whatever held it — exactly one active default per merchant is enforced by a unique index, because two would make \&quot;what rate did this user get\&quot; depend on row order.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxEarnTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxEarnTierResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse>> CreateCbxEarnTierWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxEarnTierResponse>> CreateCbxEarnTierWithHttpInfoAsync(CreateCbxEarnTierRequest createCbxEarnTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxEarnTierRequest' is set
+            if (createCbxEarnTierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxEarnTierRequest' when calling CBXApi->CreateCbxEarnTier");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5892,6 +6343,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxEarnTierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5919,10 +6371,11 @@ namespace net.crossly.Api
         /// What would this order earn, and why. Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <returns>CreateCbxRateQuoteResponse</returns>
-        public CreateCbxRateQuoteResponse CreateCbxRateQuote()
+        public CreateCbxRateQuoteResponse CreateCbxRateQuote(CreateCbxRateQuoteRequest createCbxRateQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> localVarResponse = CreateCbxRateQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> localVarResponse = CreateCbxRateQuoteWithHttpInfo(createCbxRateQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -5930,12 +6383,20 @@ namespace net.crossly.Api
         /// What would this order earn, and why. Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxRateQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> CreateCbxRateQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> CreateCbxRateQuoteWithHttpInfo(CreateCbxRateQuoteRequest createCbxRateQuoteRequest)
         {
+            // verify the required parameter 'createCbxRateQuoteRequest' is set
+            if (createCbxRateQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRateQuoteRequest' when calling CBXApi->CreateCbxRateQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -5955,6 +6416,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRateQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -5981,11 +6443,12 @@ namespace net.crossly.Api
         /// What would this order earn, and why. Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRateQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxRateQuoteResponse> CreateCbxRateQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxRateQuoteResponse> CreateCbxRateQuoteAsync(CreateCbxRateQuoteRequest createCbxRateQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> localVarResponse = await CreateCbxRateQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse> localVarResponse = await CreateCbxRateQuoteWithHttpInfoAsync(createCbxRateQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -5993,14 +6456,22 @@ namespace net.crossly.Api
         /// What would this order earn, and why. Resolve the rate without accruing anything, so a checkout can show the real number and its reason. &#x60;source&#x60; tells you whether it came from your base rate, a tier, or a boost; &#x60;stakeBoostBps&#x60; is the part the user&#39;s own stake contributed. Quoting does NOT reserve boost budget — a quote and the subsequent accrual can differ if the budget runs out in between, which is why the accrual response repeats the rate it actually granted.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRateQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRateQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse>> CreateCbxRateQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRateQuoteResponse>> CreateCbxRateQuoteWithHttpInfoAsync(CreateCbxRateQuoteRequest createCbxRateQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxRateQuoteRequest' is set
+            if (createCbxRateQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRateQuoteRequest' when calling CBXApi->CreateCbxRateQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6020,6 +6491,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRateQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6047,10 +6519,11 @@ namespace net.crossly.Api
         /// Pay for a service in CBX. Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <returns>CreateCbxRedemptionResponse</returns>
-        public CreateCbxRedemptionResponse CreateCbxRedemption()
+        public CreateCbxRedemptionResponse CreateCbxRedemption(CreateCbxRedemptionRequest createCbxRedemptionRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> localVarResponse = CreateCbxRedemptionWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> localVarResponse = CreateCbxRedemptionWithHttpInfo(createCbxRedemptionRequest);
             return localVarResponse.Data;
         }
 
@@ -6058,12 +6531,20 @@ namespace net.crossly.Api
         /// Pay for a service in CBX. Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <returns>ApiResponse of CreateCbxRedemptionResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> CreateCbxRedemptionWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> CreateCbxRedemptionWithHttpInfo(CreateCbxRedemptionRequest createCbxRedemptionRequest)
         {
+            // verify the required parameter 'createCbxRedemptionRequest' is set
+            if (createCbxRedemptionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRedemptionRequest' when calling CBXApi->CreateCbxRedemption");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6083,6 +6564,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRedemptionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6109,11 +6591,12 @@ namespace net.crossly.Api
         /// Pay for a service in CBX. Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRedemptionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxRedemptionResponse> CreateCbxRedemptionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxRedemptionResponse> CreateCbxRedemptionAsync(CreateCbxRedemptionRequest createCbxRedemptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> localVarResponse = await CreateCbxRedemptionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse> localVarResponse = await CreateCbxRedemptionWithHttpInfoAsync(createCbxRedemptionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6121,14 +6604,22 @@ namespace net.crossly.Api
         /// Pay for a service in CBX. Idempotent on (serviceKind, externalId) rather than externalId alone: a grading submission and a listing boost can legitimately share an id because they refer to the same item, and without the service in the key, boosting a listing you had already graded would return the grading receipt and never charge for the boost. Staked tokens cannot pay — the debit checks spendable balance, not total.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRedemptionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse>> CreateCbxRedemptionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRedemptionResponse>> CreateCbxRedemptionWithHttpInfoAsync(CreateCbxRedemptionRequest createCbxRedemptionRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxRedemptionRequest' is set
+            if (createCbxRedemptionRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRedemptionRequest' when calling CBXApi->CreateCbxRedemption");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6148,6 +6639,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRedemptionRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6175,10 +6667,11 @@ namespace net.crossly.Api
         /// What a service costs in tokens right now. Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <returns>CreateCbxRedemptionQuoteResponse</returns>
-        public CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote()
+        public CreateCbxRedemptionQuoteResponse CreateCbxRedemptionQuote(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> localVarResponse = CreateCbxRedemptionQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> localVarResponse = CreateCbxRedemptionQuoteWithHttpInfo(createCbxRedemptionQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -6186,12 +6679,20 @@ namespace net.crossly.Api
         /// What a service costs in tokens right now. Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxRedemptionQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteWithHttpInfo(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest)
         {
+            // verify the required parameter 'createCbxRedemptionQuoteRequest' is set
+            if (createCbxRedemptionQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRedemptionQuoteRequest' when calling CBXApi->CreateCbxRedemptionQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6211,6 +6712,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRedemptionQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6237,11 +6739,12 @@ namespace net.crossly.Api
         /// What a service costs in tokens right now. Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRedemptionQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxRedemptionQuoteResponse> CreateCbxRedemptionQuoteAsync(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> localVarResponse = await CreateCbxRedemptionQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse> localVarResponse = await CreateCbxRedemptionQuoteWithHttpInfoAsync(createCbxRedemptionQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6249,14 +6752,22 @@ namespace net.crossly.Api
         /// What a service costs in tokens right now. Refuses with 409 when there is no fresh price. A dollar-priced service has no honest token quantity without a spot, and there is no safe direction to guess in — a guess either overcharges the user or undercharges us.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRedemptionQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRedemptionQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse>> CreateCbxRedemptionQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRedemptionQuoteResponse>> CreateCbxRedemptionQuoteWithHttpInfoAsync(CreateCbxRedemptionQuoteRequest createCbxRedemptionQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxRedemptionQuoteRequest' is set
+            if (createCbxRedemptionQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxRedemptionQuoteRequest' when calling CBXApi->CreateCbxRedemptionQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6276,6 +6787,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRedemptionQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6303,10 +6815,11 @@ namespace net.crossly.Api
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <returns>CreateCbxReserveResponse</returns>
-        public CreateCbxReserveResponse CreateCbxReserve()
+        public CreateCbxReserveResponse CreateCbxReserve(CreateCbxReserveRequest createCbxReserveRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxReserveResponse> localVarResponse = CreateCbxReserveWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxReserveResponse> localVarResponse = CreateCbxReserveWithHttpInfo(createCbxReserveRequest);
             return localVarResponse.Data;
         }
 
@@ -6314,12 +6827,20 @@ namespace net.crossly.Api
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <returns>ApiResponse of CreateCbxReserveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxReserveResponse> CreateCbxReserveWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxReserveResponse> CreateCbxReserveWithHttpInfo(CreateCbxReserveRequest createCbxReserveRequest)
         {
+            // verify the required parameter 'createCbxReserveRequest' is set
+            if (createCbxReserveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxReserveRequest' when calling CBXApi->CreateCbxReserve");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6339,6 +6860,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxReserveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6365,11 +6887,12 @@ namespace net.crossly.Api
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxReserveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxReserveResponse> CreateCbxReserveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxReserveResponse> CreateCbxReserveAsync(CreateCbxReserveRequest createCbxReserveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxReserveResponse> localVarResponse = await CreateCbxReserveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxReserveResponse> localVarResponse = await CreateCbxReserveWithHttpInfoAsync(createCbxReserveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6377,14 +6900,22 @@ namespace net.crossly.Api
         /// Register your reserve after granting the payout allowance. Verified on chain: mint, delegate and allowance are read from the token account. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxReserveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxReserveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxReserveResponse>> CreateCbxReserveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxReserveResponse>> CreateCbxReserveWithHttpInfoAsync(CreateCbxReserveRequest createCbxReserveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxReserveRequest' is set
+            if (createCbxReserveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxReserveRequest' when calling CBXApi->CreateCbxReserve");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6404,6 +6935,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxReserveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6431,10 +6963,11 @@ namespace net.crossly.Api
         /// Move accrued revenue from the reserve to your revenue wallet. Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <returns>CreateCbxRevenueSweepResponse</returns>
-        public CreateCbxRevenueSweepResponse CreateCbxRevenueSweep()
+        public CreateCbxRevenueSweepResponse CreateCbxRevenueSweep(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest))
         {
-            net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> localVarResponse = CreateCbxRevenueSweepWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> localVarResponse = CreateCbxRevenueSweepWithHttpInfo(createCbxRevenueSweepRequest);
             return localVarResponse.Data;
         }
 
@@ -6442,12 +6975,14 @@ namespace net.crossly.Api
         /// Move accrued revenue from the reserve to your revenue wallet. Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateCbxRevenueSweepResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepWithHttpInfo(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6467,6 +7002,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRevenueSweepRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6493,11 +7029,12 @@ namespace net.crossly.Api
         /// Move accrued revenue from the reserve to your revenue wallet. Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxRevenueSweepResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxRevenueSweepResponse> CreateCbxRevenueSweepAsync(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> localVarResponse = await CreateCbxRevenueSweepWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse> localVarResponse = await CreateCbxRevenueSweepWithHttpInfoAsync(createCbxRevenueSweepRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6505,14 +7042,16 @@ namespace net.crossly.Api
         /// Move accrued revenue from the reserve to your revenue wallet. Computes what is genuinely free — reserve minus outstanding balances, minus claims in flight, minus the pool, minus unswept revenue — and moves at most that. If the reserve is short it moves NOTHING, whatever the ledger says: an under-covered reserve is not a reason to stop paying users, it is a reason to stop paying yourself. Send dryRun to see the arithmetic without moving tokens.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxRevenueSweepRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxRevenueSweepResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse>> CreateCbxRevenueSweepWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxRevenueSweepResponse>> CreateCbxRevenueSweepWithHttpInfoAsync(CreateCbxRevenueSweepRequest createCbxRevenueSweepRequest = default(CreateCbxRevenueSweepRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6532,6 +7071,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxRevenueSweepRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6559,10 +7099,11 @@ namespace net.crossly.Api
         /// Redeem a user&#39;s CBX against an order. Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <returns>CreateCbxSpendResponse</returns>
-        public CreateCbxSpendResponse CreateCbxSpend()
+        public CreateCbxSpendResponse CreateCbxSpend(CreateCbxSpendRequest createCbxSpendRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendResponse> localVarResponse = CreateCbxSpendWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxSpendResponse> localVarResponse = CreateCbxSpendWithHttpInfo(createCbxSpendRequest);
             return localVarResponse.Data;
         }
 
@@ -6570,12 +7111,20 @@ namespace net.crossly.Api
         /// Redeem a user&#39;s CBX against an order. Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSpendResponse> CreateCbxSpendWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxSpendResponse> CreateCbxSpendWithHttpInfo(CreateCbxSpendRequest createCbxSpendRequest)
         {
+            // verify the required parameter 'createCbxSpendRequest' is set
+            if (createCbxSpendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSpendRequest' when calling CBXApi->CreateCbxSpend");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6595,6 +7144,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSpendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6621,11 +7171,12 @@ namespace net.crossly.Api
         /// Redeem a user&#39;s CBX against an order. Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSpendResponse> CreateCbxSpendAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSpendResponse> CreateCbxSpendAsync(CreateCbxSpendRequest createCbxSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendResponse> localVarResponse = await CreateCbxSpendWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSpendResponse> localVarResponse = await CreateCbxSpendWithHttpInfoAsync(createCbxSpendRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6633,14 +7184,22 @@ namespace net.crossly.Api
         /// Redeem a user&#39;s CBX against an order. Debits the user exactly what they spent — the skim is never added on top, because making CBX worth less when used than when sold would invert the whole reason to spend rather than liquidate. The skim comes out of YOUR fee on the order and is capped against it, so an order paid entirely in saved-up CBX does not have its whole margin eaten. Idempotent on externalId: a retried checkout returns the original spend rather than debiting twice. Spending is always free and has no minimum — that asymmetry against the withdrawal fee is what steers toward spending without ever telling anyone they cannot have their money.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSpendRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendResponse>> CreateCbxSpendWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendResponse>> CreateCbxSpendWithHttpInfoAsync(CreateCbxSpendRequest createCbxSpendRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxSpendRequest' is set
+            if (createCbxSpendRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSpendRequest' when calling CBXApi->CreateCbxSpend");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6660,6 +7219,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSpendRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6688,10 +7248,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>CreateCbxSpendReverseResponse</returns>
-        public CreateCbxSpendReverseResponse CreateCbxSpendReverse(string externalId)
+        public CreateCbxSpendReverseResponse CreateCbxSpendReverse(string externalId, ReasonRequest reasonRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = CreateCbxSpendReverseWithHttpInfo(externalId);
+            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = CreateCbxSpendReverseWithHttpInfo(externalId, reasonRequest);
             return localVarResponse.Data;
         }
 
@@ -6700,8 +7261,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <returns>ApiResponse of CreateCbxSpendReverseResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> CreateCbxSpendReverseWithHttpInfo(string externalId)
+        public net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> CreateCbxSpendReverseWithHttpInfo(string externalId, ReasonRequest reasonRequest)
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -6709,9 +7271,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'externalId' when calling CBXApi->CreateCbxSpendReverse");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling CBXApi->CreateCbxSpendReverse");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6732,6 +7301,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("externalId", net.crossly.Client.ClientUtils.ParameterToString(externalId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6759,11 +7329,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSpendReverseResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxSpendReverseAsync(string externalId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSpendReverseResponse> CreateCbxSpendReverseAsync(string externalId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = await CreateCbxSpendReverseWithHttpInfoAsync(externalId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse> localVarResponse = await CreateCbxSpendReverseWithHttpInfoAsync(externalId, reasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6772,9 +7343,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="externalId"></param>
+        /// <param name="reasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSpendReverseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxSpendReverseWithHttpInfoAsync(string externalId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSpendReverseResponse>> CreateCbxSpendReverseWithHttpInfoAsync(string externalId, ReasonRequest reasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -6782,10 +7354,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'externalId' when calling CBXApi->CreateCbxSpendReverse");
             }
 
+            // verify the required parameter 'reasonRequest' is set
+            if (reasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'reasonRequest' when calling CBXApi->CreateCbxSpendReverse");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6806,6 +7385,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("externalId", net.crossly.Client.ClientUtils.ParameterToString(externalId)); // path parameter
+            localVarRequestOptions.Data = reasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6833,10 +7413,11 @@ namespace net.crossly.Api
         /// Define a staking tier. A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <returns>CreateCbxStakeTierResponse</returns>
-        public CreateCbxStakeTierResponse CreateCbxStakeTier()
+        public CreateCbxStakeTierResponse CreateCbxStakeTier(CreateCbxStakeTierRequest createCbxStakeTierRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> localVarResponse = CreateCbxStakeTierWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> localVarResponse = CreateCbxStakeTierWithHttpInfo(createCbxStakeTierRequest);
             return localVarResponse.Data;
         }
 
@@ -6844,12 +7425,20 @@ namespace net.crossly.Api
         /// Define a staking tier. A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <returns>ApiResponse of CreateCbxStakeTierResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> CreateCbxStakeTierWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> CreateCbxStakeTierWithHttpInfo(CreateCbxStakeTierRequest createCbxStakeTierRequest)
         {
+            // verify the required parameter 'createCbxStakeTierRequest' is set
+            if (createCbxStakeTierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxStakeTierRequest' when calling CBXApi->CreateCbxStakeTier");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6869,6 +7458,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxStakeTierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6895,11 +7485,12 @@ namespace net.crossly.Api
         /// Define a staking tier. A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxStakeTierResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxStakeTierResponse> CreateCbxStakeTierAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxStakeTierResponse> CreateCbxStakeTierAsync(CreateCbxStakeTierRequest createCbxStakeTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> localVarResponse = await CreateCbxStakeTierWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse> localVarResponse = await CreateCbxStakeTierWithHttpInfoAsync(createCbxStakeTierRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -6907,14 +7498,22 @@ namespace net.crossly.Api
         /// Define a staking tier. A user gets the highest tier their amount clears. &#x60;cooldownDays&#x60; is what makes the discount real: without a wait, a user stakes for the discount and unstakes the moment they want to withdraw, so the commitment it was priced against never existed.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxStakeTierRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxStakeTierResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse>> CreateCbxStakeTierWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxStakeTierResponse>> CreateCbxStakeTierWithHttpInfoAsync(CreateCbxStakeTierRequest createCbxStakeTierRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxStakeTierRequest' is set
+            if (createCbxStakeTierRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxStakeTierRequest' when calling CBXApi->CreateCbxStakeTier");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6934,6 +7533,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxStakeTierRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -6961,10 +7561,11 @@ namespace net.crossly.Api
         /// Map one of your user ids to a CBX subject. Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <returns>CreateCbxSubjectResponse</returns>
-        public CreateCbxSubjectResponse CreateCbxSubject()
+        public CreateCbxSubjectResponse CreateCbxSubject(CreateCbxSubjectRequest createCbxSubjectRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> localVarResponse = CreateCbxSubjectWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> localVarResponse = CreateCbxSubjectWithHttpInfo(createCbxSubjectRequest);
             return localVarResponse.Data;
         }
 
@@ -6972,12 +7573,20 @@ namespace net.crossly.Api
         /// Map one of your user ids to a CBX subject. Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> CreateCbxSubjectWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> CreateCbxSubjectWithHttpInfo(CreateCbxSubjectRequest createCbxSubjectRequest)
         {
+            // verify the required parameter 'createCbxSubjectRequest' is set
+            if (createCbxSubjectRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectRequest' when calling CBXApi->CreateCbxSubject");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -6997,6 +7606,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSubjectRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7023,11 +7633,12 @@ namespace net.crossly.Api
         /// Map one of your user ids to a CBX subject. Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSubjectResponse> CreateCbxSubjectAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSubjectResponse> CreateCbxSubjectAsync(CreateCbxSubjectRequest createCbxSubjectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> localVarResponse = await CreateCbxSubjectWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectResponse> localVarResponse = await CreateCbxSubjectWithHttpInfoAsync(createCbxSubjectRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7035,14 +7646,22 @@ namespace net.crossly.Api
         /// Map one of your user ids to a CBX subject. Idempotent. Call it whenever you need a subject id; repeated calls with the same externalUserId return the same subject. Your user ids are opaque to us and unique only within your merchant, so two marketplaces can both have a user \&quot;1\&quot; without collision.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxSubjectRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectResponse>> CreateCbxSubjectWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectResponse>> CreateCbxSubjectWithHttpInfoAsync(CreateCbxSubjectRequest createCbxSubjectRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxSubjectRequest' is set
+            if (createCbxSubjectRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectRequest' when calling CBXApi->CreateCbxSubject");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7062,6 +7681,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxSubjectRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7090,10 +7710,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <returns>CreateCbxSubjectGrantResponse</returns>
-        public CreateCbxSubjectGrantResponse CreateCbxSubjectGrant(string subjectId)
+        public CreateCbxSubjectGrantResponse CreateCbxSubjectGrant(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> localVarResponse = CreateCbxSubjectGrantWithHttpInfo(subjectId);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> localVarResponse = CreateCbxSubjectGrantWithHttpInfo(subjectId, createCbxSubjectGrantRequest);
             return localVarResponse.Data;
         }
 
@@ -7102,8 +7723,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectGrantResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantWithHttpInfo(string subjectId)
+        public net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantWithHttpInfo(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest)
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7111,9 +7733,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectGrant");
             }
 
+            // verify the required parameter 'createCbxSubjectGrantRequest' is set
+            if (createCbxSubjectGrantRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectGrantRequest' when calling CBXApi->CreateCbxSubjectGrant");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7134,6 +7763,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectGrantRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7161,11 +7791,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectGrantResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSubjectGrantResponse> CreateCbxSubjectGrantAsync(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> localVarResponse = await CreateCbxSubjectGrantWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse> localVarResponse = await CreateCbxSubjectGrantWithHttpInfoAsync(subjectId, createCbxSubjectGrantRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7174,9 +7805,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectGrantRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectGrantResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse>> CreateCbxSubjectGrantWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectGrantResponse>> CreateCbxSubjectGrantWithHttpInfoAsync(string subjectId, CreateCbxSubjectGrantRequest createCbxSubjectGrantRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7184,10 +7816,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectGrant");
             }
 
+            // verify the required parameter 'createCbxSubjectGrantRequest' is set
+            if (createCbxSubjectGrantRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectGrantRequest' when calling CBXApi->CreateCbxSubjectGrant");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7208,6 +7847,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectGrantRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7236,10 +7876,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <returns>CreateCbxSubjectSpendPlanResponse</returns>
-        public CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan(string subjectId)
+        public CreateCbxSubjectSpendPlanResponse CreateCbxSubjectSpendPlan(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> localVarResponse = CreateCbxSubjectSpendPlanWithHttpInfo(subjectId);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> localVarResponse = CreateCbxSubjectSpendPlanWithHttpInfo(subjectId, createCbxSubjectSpendPlanRequest);
             return localVarResponse.Data;
         }
 
@@ -7248,8 +7889,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectSpendPlanResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanWithHttpInfo(string subjectId)
+        public net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanWithHttpInfo(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest)
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7257,9 +7899,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectSpendPlan");
             }
 
+            // verify the required parameter 'createCbxSubjectSpendPlanRequest' is set
+            if (createCbxSubjectSpendPlanRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectSpendPlanRequest' when calling CBXApi->CreateCbxSubjectSpendPlan");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7280,6 +7929,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectSpendPlanRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7307,11 +7957,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectSpendPlanResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSubjectSpendPlanResponse> CreateCbxSubjectSpendPlanAsync(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> localVarResponse = await CreateCbxSubjectSpendPlanWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse> localVarResponse = await CreateCbxSubjectSpendPlanWithHttpInfoAsync(subjectId, createCbxSubjectSpendPlanRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7320,9 +7971,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectSpendPlanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectSpendPlanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse>> CreateCbxSubjectSpendPlanWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectSpendPlanResponse>> CreateCbxSubjectSpendPlanWithHttpInfoAsync(string subjectId, CreateCbxSubjectSpendPlanRequest createCbxSubjectSpendPlanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7330,10 +7982,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectSpendPlan");
             }
 
+            // verify the required parameter 'createCbxSubjectSpendPlanRequest' is set
+            if (createCbxSubjectSpendPlanRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectSpendPlanRequest' when calling CBXApi->CreateCbxSubjectSpendPlan");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7354,6 +8013,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectSpendPlanRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7382,10 +8042,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>CreateCbxSubjectStakeResponse</returns>
-        public CreateCbxSubjectStakeResponse CreateCbxSubjectStake(string subjectId)
+        public CreateCbxSubjectStakeResponse CreateCbxSubjectStake(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> localVarResponse = CreateCbxSubjectStakeWithHttpInfo(subjectId);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> localVarResponse = CreateCbxSubjectStakeWithHttpInfo(subjectId, createCbxSubjectStakeRequest);
             return localVarResponse.Data;
         }
 
@@ -7394,8 +8055,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <returns>ApiResponse of CreateCbxSubjectStakeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeWithHttpInfo(string subjectId)
+        public net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeWithHttpInfo(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest)
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7403,9 +8065,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectStake");
             }
 
+            // verify the required parameter 'createCbxSubjectStakeRequest' is set
+            if (createCbxSubjectStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectStakeRequest' when calling CBXApi->CreateCbxSubjectStake");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7426,6 +8095,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7453,11 +8123,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxSubjectStakeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxSubjectStakeResponse> CreateCbxSubjectStakeAsync(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> localVarResponse = await CreateCbxSubjectStakeWithHttpInfoAsync(subjectId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse> localVarResponse = await CreateCbxSubjectStakeWithHttpInfoAsync(subjectId, createCbxSubjectStakeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7466,9 +8137,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="subjectId"></param>
+        /// <param name="createCbxSubjectStakeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxSubjectStakeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse>> CreateCbxSubjectStakeWithHttpInfoAsync(string subjectId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxSubjectStakeResponse>> CreateCbxSubjectStakeWithHttpInfoAsync(string subjectId, CreateCbxSubjectStakeRequest createCbxSubjectStakeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'subjectId' is set
             if (subjectId == null)
@@ -7476,10 +8148,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'subjectId' when calling CBXApi->CreateCbxSubjectStake");
             }
 
+            // verify the required parameter 'createCbxSubjectStakeRequest' is set
+            if (createCbxSubjectStakeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxSubjectStakeRequest' when calling CBXApi->CreateCbxSubjectStake");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7500,6 +8179,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("subjectId", net.crossly.Client.ClientUtils.ParameterToString(subjectId)); // path parameter
+            localVarRequestOptions.Data = createCbxSubjectStakeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7673,10 +8353,11 @@ namespace net.crossly.Api
         /// Start wallet verification. Returns a message for the user to sign. Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <returns>CreateCbxWalletChallengeResponse</returns>
-        public CreateCbxWalletChallengeResponse CreateCbxWalletChallenge()
+        public CreateCbxWalletChallengeResponse CreateCbxWalletChallenge(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> localVarResponse = CreateCbxWalletChallengeWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> localVarResponse = CreateCbxWalletChallengeWithHttpInfo(createCbxWalletChallengeRequest);
             return localVarResponse.Data;
         }
 
@@ -7684,12 +8365,20 @@ namespace net.crossly.Api
         /// Start wallet verification. Returns a message for the user to sign. Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletChallengeResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeWithHttpInfo(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest)
         {
+            // verify the required parameter 'createCbxWalletChallengeRequest' is set
+            if (createCbxWalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletChallengeRequest' when calling CBXApi->CreateCbxWalletChallenge");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7709,6 +8398,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7735,11 +8425,12 @@ namespace net.crossly.Api
         /// Start wallet verification. Returns a message for the user to sign. Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletChallengeResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxWalletChallengeResponse> CreateCbxWalletChallengeAsync(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> localVarResponse = await CreateCbxWalletChallengeWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse> localVarResponse = await CreateCbxWalletChallengeWithHttpInfoAsync(createCbxWalletChallengeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7747,14 +8438,22 @@ namespace net.crossly.Api
         /// Start wallet verification. Returns a message for the user to sign. Present the returned &#x60;message&#x60; verbatim to the user&#39;s wallet for signing. It binds your merchant, their subject, the address and a single-use nonce, so the resulting signature is not transferable to another address or account. A signature is required because there is no custody here: a send cannot be undone, so a typo or a swapped address is permanent.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletChallengeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletChallengeResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse>> CreateCbxWalletChallengeWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletChallengeResponse>> CreateCbxWalletChallengeWithHttpInfoAsync(CreateCbxWalletChallengeRequest createCbxWalletChallengeRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxWalletChallengeRequest' is set
+            if (createCbxWalletChallengeRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletChallengeRequest' when calling CBXApi->CreateCbxWalletChallenge");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7774,6 +8473,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletChallengeRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7801,10 +8501,11 @@ namespace net.crossly.Api
         /// Present the signature. Returns a ship / do-not-ship decision. Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <returns>CreateCbxWalletPaymentConfirmResponse</returns>
-        public CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm()
+        public CreateCbxWalletPaymentConfirmResponse CreateCbxWalletPaymentConfirm(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> localVarResponse = CreateCbxWalletPaymentConfirmWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> localVarResponse = CreateCbxWalletPaymentConfirmWithHttpInfo(createCbxWalletPaymentConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -7812,12 +8513,20 @@ namespace net.crossly.Api
         /// Present the signature. Returns a ship / do-not-ship decision. Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentConfirmResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmWithHttpInfo(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest)
         {
+            // verify the required parameter 'createCbxWalletPaymentConfirmRequest' is set
+            if (createCbxWalletPaymentConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentConfirmRequest' when calling CBXApi->CreateCbxWalletPaymentConfirm");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7837,6 +8546,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletPaymentConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7863,11 +8573,12 @@ namespace net.crossly.Api
         /// Present the signature. Returns a ship / do-not-ship decision. Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentConfirmResponse> CreateCbxWalletPaymentConfirmAsync(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> localVarResponse = await CreateCbxWalletPaymentConfirmWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse> localVarResponse = await CreateCbxWalletPaymentConfirmWithHttpInfoAsync(createCbxWalletPaymentConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -7875,14 +8586,22 @@ namespace net.crossly.Api
         /// Present the signature. Returns a ship / do-not-ship decision. Everything is read from the CHAIN at finalized commitment — the amount, the payer, the destination. Nothing you assert about the payment is trusted, because a client that can state its own payment amount can state a larger one. The response &#x60;releaseDecision&#x60; is about the ORDER, not the payment: by the time we see a signature the tokens have moved and cannot be un-moved, so the only decision left is whether to hand over goods. &#x60;release&#x60; means ship. &#x60;review&#x60; means hold — a person needs to look, and that includes the case where no screening provider is configured. &#x60;refuse&#x60; means do not ship; the payment is still recorded, because we received the tokens and that fact does not go away. Idempotent twice over: on txSig globally, so one payment cannot pay two orders, and on (merchant, externalId), so one order is not paid twice. A 409 means the transaction has not finalized yet and you should retry; a 400 means it never will be claimable.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse>> CreateCbxWalletPaymentConfirmWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentConfirmResponse>> CreateCbxWalletPaymentConfirmWithHttpInfoAsync(CreateCbxWalletPaymentConfirmRequest createCbxWalletPaymentConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxWalletPaymentConfirmRequest' is set
+            if (createCbxWalletPaymentConfirmRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentConfirmRequest' when calling CBXApi->CreateCbxWalletPaymentConfirm");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7902,6 +8621,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletPaymentConfirmRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7929,10 +8649,11 @@ namespace net.crossly.Api
         /// Build a transfer for the buyer to sign themselves. Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <returns>CreateCbxWalletPaymentQuoteResponse</returns>
-        public CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote()
+        public CreateCbxWalletPaymentQuoteResponse CreateCbxWalletPaymentQuote(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> localVarResponse = CreateCbxWalletPaymentQuoteWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> localVarResponse = CreateCbxWalletPaymentQuoteWithHttpInfo(createCbxWalletPaymentQuoteRequest);
             return localVarResponse.Data;
         }
 
@@ -7940,12 +8661,20 @@ namespace net.crossly.Api
         /// Build a transfer for the buyer to sign themselves. Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentQuoteResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteWithHttpInfo(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest)
         {
+            // verify the required parameter 'createCbxWalletPaymentQuoteRequest' is set
+            if (createCbxWalletPaymentQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentQuoteRequest' when calling CBXApi->CreateCbxWalletPaymentQuote");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -7965,6 +8694,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletPaymentQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -7991,11 +8721,12 @@ namespace net.crossly.Api
         /// Build a transfer for the buyer to sign themselves. Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentQuoteResponse> CreateCbxWalletPaymentQuoteAsync(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> localVarResponse = await CreateCbxWalletPaymentQuoteWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse> localVarResponse = await CreateCbxWalletPaymentQuoteWithHttpInfoAsync(createCbxWalletPaymentQuoteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8003,14 +8734,22 @@ namespace net.crossly.Api
         /// Build a transfer for the buyer to sign themselves. Returns an unsigned, base64 transaction. The buyer&#39;s wallet signs and submits it; we never hold a key or a delegation and never submit anything, so the platform has no authority over their tokens at any point. RESERVES NOTHING — no row, no hold, no balance change. The buyer may never sign it. The SIGNATURE is the event, so treat this as a convenience and not a commitment. &#x60;lastValidBlockHeight&#x60; is when it expires: a wallet prompt left open for a couple of minutes produces a transaction the chain will reject, and you should re-quote rather than retry. &#x60;payerCanCover&#x60; is a courtesy read of their balance so you can warn before a prompt rather than after a failure; null means we could not read it, which is not the same as \&quot;no\&quot;. The buyer needs no prior wallet registration: a payment proves control of the tokens, which is what a connect-and-verify step would have been proving.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletPaymentQuoteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse>> CreateCbxWalletPaymentQuoteWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentQuoteResponse>> CreateCbxWalletPaymentQuoteWithHttpInfoAsync(CreateCbxWalletPaymentQuoteRequest createCbxWalletPaymentQuoteRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxWalletPaymentQuoteRequest' is set
+            if (createCbxWalletPaymentQuoteRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentQuoteRequest' when calling CBXApi->CreateCbxWalletPaymentQuote");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8030,6 +8769,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletPaymentQuoteRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8058,10 +8798,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <returns>CreateCbxWalletPaymentResolveResponse</returns>
-        public CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve(string paymentId)
+        public CreateCbxWalletPaymentResolveResponse CreateCbxWalletPaymentResolve(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> localVarResponse = CreateCbxWalletPaymentResolveWithHttpInfo(paymentId);
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> localVarResponse = CreateCbxWalletPaymentResolveWithHttpInfo(paymentId, createCbxWalletPaymentResolveRequest);
             return localVarResponse.Data;
         }
 
@@ -8070,8 +8811,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletPaymentResolveResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveWithHttpInfo(string paymentId)
+        public net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveWithHttpInfo(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest)
         {
             // verify the required parameter 'paymentId' is set
             if (paymentId == null)
@@ -8079,9 +8821,16 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'paymentId' when calling CBXApi->CreateCbxWalletPaymentResolve");
             }
 
+            // verify the required parameter 'createCbxWalletPaymentResolveRequest' is set
+            if (createCbxWalletPaymentResolveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentResolveRequest' when calling CBXApi->CreateCbxWalletPaymentResolve");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8102,6 +8851,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("paymentId", net.crossly.Client.ClientUtils.ParameterToString(paymentId)); // path parameter
+            localVarRequestOptions.Data = createCbxWalletPaymentResolveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8129,11 +8879,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletPaymentResolveResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveAsync(string paymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxWalletPaymentResolveResponse> CreateCbxWalletPaymentResolveAsync(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> localVarResponse = await CreateCbxWalletPaymentResolveWithHttpInfoAsync(paymentId, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse> localVarResponse = await CreateCbxWalletPaymentResolveWithHttpInfoAsync(paymentId, createCbxWalletPaymentResolveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8142,9 +8893,10 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="paymentId"></param>
+        /// <param name="createCbxWalletPaymentResolveRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletPaymentResolveResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse>> CreateCbxWalletPaymentResolveWithHttpInfoAsync(string paymentId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletPaymentResolveResponse>> CreateCbxWalletPaymentResolveWithHttpInfoAsync(string paymentId, CreateCbxWalletPaymentResolveRequest createCbxWalletPaymentResolveRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'paymentId' is set
             if (paymentId == null)
@@ -8152,10 +8904,17 @@ namespace net.crossly.Api
                 throw new net.crossly.Client.ApiException(400, "Missing required parameter 'paymentId' when calling CBXApi->CreateCbxWalletPaymentResolve");
             }
 
+            // verify the required parameter 'createCbxWalletPaymentResolveRequest' is set
+            if (createCbxWalletPaymentResolveRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletPaymentResolveRequest' when calling CBXApi->CreateCbxWalletPaymentResolve");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8176,6 +8935,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("paymentId", net.crossly.Client.ClientUtils.ParameterToString(paymentId)); // path parameter
+            localVarRequestOptions.Data = createCbxWalletPaymentResolveRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8203,10 +8963,11 @@ namespace net.crossly.Api
         /// Complete wallet verification with the user&#39;s signature. The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <returns>CreateCbxWalletVerifyResponse</returns>
-        public CreateCbxWalletVerifyResponse CreateCbxWalletVerify()
+        public CreateCbxWalletVerifyResponse CreateCbxWalletVerify(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest)
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> localVarResponse = CreateCbxWalletVerifyWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> localVarResponse = CreateCbxWalletVerifyWithHttpInfo(createCbxWalletVerifyRequest);
             return localVarResponse.Data;
         }
 
@@ -8214,12 +8975,20 @@ namespace net.crossly.Api
         /// Complete wallet verification with the user&#39;s signature. The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <returns>ApiResponse of CreateCbxWalletVerifyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyWithHttpInfo(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest)
         {
+            // verify the required parameter 'createCbxWalletVerifyRequest' is set
+            if (createCbxWalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletVerifyRequest' when calling CBXApi->CreateCbxWalletVerify");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8239,6 +9008,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -8265,11 +9035,12 @@ namespace net.crossly.Api
         /// Complete wallet verification with the user&#39;s signature. The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateCbxWalletVerifyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateCbxWalletVerifyResponse> CreateCbxWalletVerifyAsync(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> localVarResponse = await CreateCbxWalletVerifyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse> localVarResponse = await CreateCbxWalletVerifyWithHttpInfoAsync(createCbxWalletVerifyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -8277,14 +9048,22 @@ namespace net.crossly.Api
         /// Complete wallet verification with the user&#39;s signature. The signature is checked against the message WE issued and stored, never one supplied here. The nonce is single-use, so the same signature cannot re-verify an address later.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createCbxWalletVerifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateCbxWalletVerifyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse>> CreateCbxWalletVerifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateCbxWalletVerifyResponse>> CreateCbxWalletVerifyWithHttpInfoAsync(CreateCbxWalletVerifyRequest createCbxWalletVerifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createCbxWalletVerifyRequest' is set
+            if (createCbxWalletVerifyRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createCbxWalletVerifyRequest' when calling CBXApi->CreateCbxWalletVerify");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -8304,6 +9083,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createCbxWalletVerifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

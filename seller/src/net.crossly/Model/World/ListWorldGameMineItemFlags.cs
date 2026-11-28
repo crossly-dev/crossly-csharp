@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum ModerationEnum
         {
             /// <summary>
-            /// Enum Unlisted for value: unlisted
-            /// </summary>
-            [EnumMember(Value = "unlisted")]
-            Unlisted = 1,
-
-            /// <summary>
             /// Enum Ok for value: ok
             /// </summary>
             [EnumMember(Value = "ok")]
-            Ok = 2,
+            Ok = 1,
+
+            /// <summary>
+            /// Enum Unlisted for value: unlisted
+            /// </summary>
+            [EnumMember(Value = "unlisted")]
+            Unlisted = 2,
 
             /// <summary>
             /// Enum TakenDown for value: taken_down

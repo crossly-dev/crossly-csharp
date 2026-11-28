@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperiencebadge"></a>
 # **CreateWorldExperienceBadge**
-> CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge (string experienceId)
+> CreateWorldExperienceBadgeResponse CreateWorldExperienceBadge (string experienceId, CreateWorldExperienceBadgeRequest createWorldExperienceBadgeRequest = null)
 
 Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 = the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
 
@@ -40,11 +40,12 @@ namespace Example
 
             var apiInstance = new WorldsBadgesApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceBadgeRequest = new CreateWorldExperienceBadgeRequest(); // CreateWorldExperienceBadgeRequest |  (optional) 
 
             try
             {
                 // Add a badge (at most 100 per game). name 1-50 characters, description up to 1000, iconSha256 = the sha256 a png upload answered (POST /v1/world/interactive/assets, kind png); a new icon is shown once a person approved it.
-                CreateWorldExperienceBadgeResponse result = apiInstance.CreateWorldExperienceBadge(experienceId);
+                CreateWorldExperienceBadgeResponse result = apiInstance.CreateWorldExperienceBadge(experienceId, createWorldExperienceBadgeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -63,6 +64,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceBadgeRequest** | **CreateWorldExperienceBadgeRequest**|  | [optional] 
 
 ### Return type
 
@@ -74,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -401,7 +403,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldbadgeprofile"></a>
 # **UpdateWorldBadgeProfile**
-> UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile ()
+> UpdateWorldBadgeProfileResponse UpdateWorldBadgeProfile (UpdateWorldBadgeProfileRequest updateWorldBadgeProfileRequest = null)
 
 Show (or hide) the game badges you hold on your person page. Off by default.
 
@@ -425,11 +427,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new WorldsBadgesApi(config);
+            var updateWorldBadgeProfileRequest = new UpdateWorldBadgeProfileRequest(); // UpdateWorldBadgeProfileRequest |  (optional) 
 
             try
             {
                 // Show (or hide) the game badges you hold on your person page. Off by default.
-                UpdateWorldBadgeProfileResponse result = apiInstance.UpdateWorldBadgeProfile();
+                UpdateWorldBadgeProfileResponse result = apiInstance.UpdateWorldBadgeProfile(updateWorldBadgeProfileRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -444,7 +447,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateWorldBadgeProfileRequest** | **UpdateWorldBadgeProfileRequest**|  | [optional] 
 
 ### Return type
 
@@ -456,7 +462,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -475,7 +481,7 @@ This endpoint does not need any parameter.
 
 <a name="updateworldexperiencebadge"></a>
 # **UpdateWorldExperienceBadge**
-> CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge (string experienceId, string badgeId)
+> CreateWorldExperienceBadgeResponse UpdateWorldExperienceBadge (string experienceId, string badgeId, UpdateWorldExperienceBadgeRequest updateWorldExperienceBadgeRequest = null)
 
 Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
 
@@ -501,11 +507,12 @@ namespace Example
             var apiInstance = new WorldsBadgesApi(config);
             var experienceId = "experienceId_example";  // string | 
             var badgeId = "badgeId_example";  // string | 
+            var updateWorldExperienceBadgeRequest = new UpdateWorldExperienceBadgeRequest(); // UpdateWorldExperienceBadgeRequest |  (optional) 
 
             try
             {
                 // Edit a badge: name, description, icon (null removes it), enabled. Badges are never deleted (players keep what they earned); turn one off to hide it and stop AwardBadge.
-                CreateWorldExperienceBadgeResponse result = apiInstance.UpdateWorldExperienceBadge(experienceId, badgeId);
+                CreateWorldExperienceBadgeResponse result = apiInstance.UpdateWorldExperienceBadge(experienceId, badgeId, updateWorldExperienceBadgeRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -525,6 +532,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **badgeId** | **string**|  | 
+ **updateWorldExperienceBadgeRequest** | **UpdateWorldExperienceBadgeRequest**|  | [optional] 
 
 ### Return type
 
@@ -536,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

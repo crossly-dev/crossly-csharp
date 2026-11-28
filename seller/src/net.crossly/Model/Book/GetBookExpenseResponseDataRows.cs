@@ -79,9 +79,13 @@ namespace net.crossly.Model
         /// <param name="recurring">recurring.</param>
         /// <param name="recurringUntil">recurringUntil.</param>
         /// <param name="source">source (required).</param>
+        /// <param name="sourceRef">The charge it came from (a billing charge, an interest movement, a grading order); null for manual rows..</param>
+        /// <param name="sourceLabel">Where it came from in words (\&quot;Crossly ads\&quot;, \&quot;Entered by you\&quot;). (required).</param>
+        /// <param name="crossly">Posted by Crossly for its own charge (audit4 D4): read-only, shown with a Crossly badge. (required).</param>
+        /// <param name="possibleDuplicateOf">possibleDuplicateOf.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public GetBookExpenseResponseDataRows(decimal occurrences = default(decimal), decimal amountInRangeCents = default(decimal), string id = default(string), string date = default(string), decimal amountCents = default(decimal), string category = default(string), string categoryLabel = default(string), string scheduleCLine = default(string), string vendor = default(string), string description = default(string), string receiptUrl = default(string), RecurringEnum? recurring = default(RecurringEnum?), string recurringUntil = default(string), string source = default(string), string createdAt = default(string), string updatedAt = default(string))
+        public GetBookExpenseResponseDataRows(decimal occurrences = default(decimal), decimal amountInRangeCents = default(decimal), string id = default(string), string date = default(string), decimal amountCents = default(decimal), string category = default(string), string categoryLabel = default(string), string scheduleCLine = default(string), string vendor = default(string), string description = default(string), string receiptUrl = default(string), RecurringEnum? recurring = default(RecurringEnum?), string recurringUntil = default(string), string source = default(string), string sourceRef = default(string), string sourceLabel = default(string), bool crossly = default(bool), CreateBookExpenseResponseDataPossibleDuplicateOf possibleDuplicateOf = default(CreateBookExpenseResponseDataPossibleDuplicateOf), string createdAt = default(string), string updatedAt = default(string))
         {
             this.Occurrences = occurrences;
             this.AmountInRangeCents = amountInRangeCents;
@@ -116,11 +120,19 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("source is a required property for GetBookExpenseResponseDataRows and cannot be null");
             }
             this.Source = source;
+            // to ensure "sourceLabel" is required (not null)
+            if (sourceLabel == null) {
+                throw new ArgumentNullException("sourceLabel is a required property for GetBookExpenseResponseDataRows and cannot be null");
+            }
+            this.SourceLabel = sourceLabel;
+            this.Crossly = crossly;
             this.Vendor = vendor;
             this.Description = description;
             this.ReceiptUrl = receiptUrl;
             this.Recurring = recurring;
             this.RecurringUntil = recurringUntil;
+            this.SourceRef = sourceRef;
+            this.PossibleDuplicateOf = possibleDuplicateOf;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -204,6 +216,33 @@ namespace net.crossly.Model
         public string Source { get; set; }
 
         /// <summary>
+        /// The charge it came from (a billing charge, an interest movement, a grading order); null for manual rows.
+        /// </summary>
+        /// <value>The charge it came from (a billing charge, an interest movement, a grading order); null for manual rows.</value>
+        [DataMember(Name = "sourceRef", EmitDefaultValue = true)]
+        public string SourceRef { get; set; }
+
+        /// <summary>
+        /// Where it came from in words (\&quot;Crossly ads\&quot;, \&quot;Entered by you\&quot;).
+        /// </summary>
+        /// <value>Where it came from in words (\&quot;Crossly ads\&quot;, \&quot;Entered by you\&quot;).</value>
+        [DataMember(Name = "sourceLabel", IsRequired = true, EmitDefaultValue = false)]
+        public string SourceLabel { get; set; }
+
+        /// <summary>
+        /// Posted by Crossly for its own charge (audit4 D4): read-only, shown with a Crossly badge.
+        /// </summary>
+        /// <value>Posted by Crossly for its own charge (audit4 D4): read-only, shown with a Crossly badge.</value>
+        [DataMember(Name = "crossly", IsRequired = true, EmitDefaultValue = true)]
+        public bool Crossly { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PossibleDuplicateOf
+        /// </summary>
+        [DataMember(Name = "possibleDuplicateOf", EmitDefaultValue = true)]
+        public CreateBookExpenseResponseDataPossibleDuplicateOf PossibleDuplicateOf { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", EmitDefaultValue = true)]
@@ -237,6 +276,10 @@ namespace net.crossly.Model
             sb.Append("  Recurring: ").Append(Recurring).Append("\n");
             sb.Append("  RecurringUntil: ").Append(RecurringUntil).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  SourceRef: ").Append(SourceRef).Append("\n");
+            sb.Append("  SourceLabel: ").Append(SourceLabel).Append("\n");
+            sb.Append("  Crossly: ").Append(Crossly).Append("\n");
+            sb.Append("  PossibleDuplicateOf: ").Append(PossibleDuplicateOf).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -341,6 +384,25 @@ namespace net.crossly.Model
                     this.Source.Equals(input.Source))
                 ) && 
                 (
+                    this.SourceRef == input.SourceRef ||
+                    (this.SourceRef != null &&
+                    this.SourceRef.Equals(input.SourceRef))
+                ) && 
+                (
+                    this.SourceLabel == input.SourceLabel ||
+                    (this.SourceLabel != null &&
+                    this.SourceLabel.Equals(input.SourceLabel))
+                ) && 
+                (
+                    this.Crossly == input.Crossly ||
+                    this.Crossly.Equals(input.Crossly)
+                ) && 
+                (
+                    this.PossibleDuplicateOf == input.PossibleDuplicateOf ||
+                    (this.PossibleDuplicateOf != null &&
+                    this.PossibleDuplicateOf.Equals(input.PossibleDuplicateOf))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -404,6 +466,19 @@ namespace net.crossly.Model
                 if (this.Source != null)
                 {
                     hashCode = (hashCode * 59) + this.Source.GetHashCode();
+                }
+                if (this.SourceRef != null)
+                {
+                    hashCode = (hashCode * 59) + this.SourceRef.GetHashCode();
+                }
+                if (this.SourceLabel != null)
+                {
+                    hashCode = (hashCode * 59) + this.SourceLabel.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Crossly.GetHashCode();
+                if (this.PossibleDuplicateOf != null)
+                {
+                    hashCode = (hashCode * 59) + this.PossibleDuplicateOf.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

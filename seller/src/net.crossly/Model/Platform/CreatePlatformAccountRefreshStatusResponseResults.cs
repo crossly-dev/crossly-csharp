@@ -42,7 +42,7 @@ namespace net.crossly.Model
         /// <param name="id">id (required).</param>
         /// <param name="platform">platform (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="_checked">_checked (required).</param>
+        /// <param name="_checked">A probe ran and the platform answered (false: no healthcheck action, archived, or the call never got through). (required).</param>
         public CreatePlatformAccountRefreshStatusResponseResults(string id = default(string), string platform = default(string), string status = default(string), bool _checked = default(bool))
         {
             // to ensure "id" is required (not null)
@@ -82,8 +82,9 @@ namespace net.crossly.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or Sets Checked
+        /// A probe ran and the platform answered (false: no healthcheck action, archived, or the call never got through).
         /// </summary>
+        /// <value>A probe ran and the platform answered (false: no healthcheck action, archived, or the call never got through).</value>
         [DataMember(Name = "checked", IsRequired = true, EmitDefaultValue = true)]
         public bool Checked { get; set; }
 

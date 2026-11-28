@@ -124,12 +124,12 @@ namespace net.crossly.Model
         /// <param name="contractId">contractId (required).</param>
         /// <param name="proceedsCents">proceedsCents (required).</param>
         /// <param name="how">how (required).</param>
-        /// <param name="gainCents">gainCents (required).</param>
         /// <param name="term">term (required).</param>
+        /// <param name="gainCents">gainCents (required).</param>
         /// <param name="section1256">section1256 (required).</param>
         /// <param name="openedAt">openedAt (required).</param>
         /// <param name="closedAt">closedAt (required).</param>
-        public GetVaultMarketTaxOptionResponseDisposals(string symbol = default(string), decimal costCents = default(decimal), PositionEnum position = default(PositionEnum), decimal qtyMilli = default(decimal), string contractId = default(string), decimal proceedsCents = default(decimal), HowEnum how = default(HowEnum), decimal gainCents = default(decimal), TermEnum term = default(TermEnum), bool section1256 = default(bool), string openedAt = default(string), string closedAt = default(string))
+        public GetVaultMarketTaxOptionResponseDisposals(string symbol = default(string), decimal costCents = default(decimal), PositionEnum position = default(PositionEnum), decimal qtyMilli = default(decimal), string contractId = default(string), decimal proceedsCents = default(decimal), HowEnum how = default(HowEnum), TermEnum term = default(TermEnum), decimal gainCents = default(decimal), bool section1256 = default(bool), string openedAt = default(string), string closedAt = default(string))
         {
             // to ensure "symbol" is required (not null)
             if (symbol == null) {
@@ -146,8 +146,8 @@ namespace net.crossly.Model
             this.ContractId = contractId;
             this.ProceedsCents = proceedsCents;
             this.How = how;
-            this.GainCents = gainCents;
             this.Term = term;
+            this.GainCents = gainCents;
             this.Section1256 = section1256;
             // to ensure "openedAt" is required (not null)
             if (openedAt == null) {
@@ -230,8 +230,8 @@ namespace net.crossly.Model
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  ProceedsCents: ").Append(ProceedsCents).Append("\n");
             sb.Append("  How: ").Append(How).Append("\n");
-            sb.Append("  GainCents: ").Append(GainCents).Append("\n");
             sb.Append("  Term: ").Append(Term).Append("\n");
+            sb.Append("  GainCents: ").Append(GainCents).Append("\n");
             sb.Append("  Section1256: ").Append(Section1256).Append("\n");
             sb.Append("  OpenedAt: ").Append(OpenedAt).Append("\n");
             sb.Append("  ClosedAt: ").Append(ClosedAt).Append("\n");
@@ -301,12 +301,12 @@ namespace net.crossly.Model
                     this.How.Equals(input.How)
                 ) && 
                 (
-                    this.GainCents == input.GainCents ||
-                    this.GainCents.Equals(input.GainCents)
-                ) && 
-                (
                     this.Term == input.Term ||
                     this.Term.Equals(input.Term)
+                ) && 
+                (
+                    this.GainCents == input.GainCents ||
+                    this.GainCents.Equals(input.GainCents)
                 ) && 
                 (
                     this.Section1256 == input.Section1256 ||
@@ -346,8 +346,8 @@ namespace net.crossly.Model
                 }
                 hashCode = (hashCode * 59) + this.ProceedsCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.How.GetHashCode();
-                hashCode = (hashCode * 59) + this.GainCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.Term.GetHashCode();
+                hashCode = (hashCode * 59) + this.GainCents.GetHashCode();
                 hashCode = (hashCode * 59) + this.Section1256.GetHashCode();
                 if (this.OpenedAt != null)
                 {

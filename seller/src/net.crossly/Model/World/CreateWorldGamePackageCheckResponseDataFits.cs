@@ -39,25 +39,25 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateWorldGamePackageCheckResponseDataFits" /> class.
         /// </summary>
-        /// <param name="phone">phone (required).</param>
         /// <param name="desktop">desktop (required).</param>
-        public CreateWorldGamePackageCheckResponseDataFits(bool phone = default(bool), bool desktop = default(bool))
+        /// <param name="phone">phone (required).</param>
+        public CreateWorldGamePackageCheckResponseDataFits(bool desktop = default(bool), bool phone = default(bool))
         {
-            this.Phone = phone;
             this.Desktop = desktop;
+            this.Phone = phone;
         }
-
-        /// <summary>
-        /// Gets or Sets Phone
-        /// </summary>
-        [DataMember(Name = "phone", IsRequired = true, EmitDefaultValue = true)]
-        public bool Phone { get; set; }
 
         /// <summary>
         /// Gets or Sets Desktop
         /// </summary>
         [DataMember(Name = "desktop", IsRequired = true, EmitDefaultValue = true)]
         public bool Desktop { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Phone
+        /// </summary>
+        [DataMember(Name = "phone", IsRequired = true, EmitDefaultValue = true)]
+        public bool Phone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -67,8 +67,8 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateWorldGamePackageCheckResponseDataFits {\n");
-            sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("  Desktop: ").Append(Desktop).Append("\n");
+            sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,12 +105,12 @@ namespace net.crossly.Model
             }
             return 
                 (
-                    this.Phone == input.Phone ||
-                    this.Phone.Equals(input.Phone)
-                ) && 
-                (
                     this.Desktop == input.Desktop ||
                     this.Desktop.Equals(input.Desktop)
+                ) && 
+                (
+                    this.Phone == input.Phone ||
+                    this.Phone.Equals(input.Phone)
                 );
         }
 
@@ -123,8 +123,8 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Phone.GetHashCode();
                 hashCode = (hashCode * 59) + this.Desktop.GetHashCode();
+                hashCode = (hashCode * 59) + this.Phone.GetHashCode();
                 return hashCode;
             }
         }

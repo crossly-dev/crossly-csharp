@@ -41,14 +41,14 @@ namespace net.crossly.Model
         /// </summary>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="kind">kind (required).</param>
         /// <param name="quantity">quantity.</param>
         /// <param name="orderId">orderId (required).</param>
-        /// <param name="kind">kind (required).</param>
         /// <param name="priceCents">priceCents.</param>
         /// <param name="tradeId">tradeId.</param>
         /// <param name="detail">detail.</param>
         /// <param name="seq">seq (required).</param>
-        public ListVaultMarketProEventsItem(DateTime createdAt = default(DateTime), string userId = default(string), decimal? quantity = default(decimal?), string orderId = default(string), string kind = default(string), decimal? priceCents = default(decimal?), string tradeId = default(string), Dictionary<string, Object> detail = default(Dictionary<string, Object>), decimal seq = default(decimal))
+        public ListVaultMarketProEventsItem(DateTime createdAt = default(DateTime), string userId = default(string), string kind = default(string), decimal? quantity = default(decimal?), string orderId = default(string), decimal? priceCents = default(decimal?), string tradeId = default(string), Dictionary<string, Object> detail = default(Dictionary<string, Object>), decimal seq = default(decimal))
         {
             this.CreatedAt = createdAt;
             // to ensure "userId" is required (not null)
@@ -56,16 +56,16 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("userId is a required property for ListVaultMarketProEventsItem and cannot be null");
             }
             this.UserId = userId;
-            // to ensure "orderId" is required (not null)
-            if (orderId == null) {
-                throw new ArgumentNullException("orderId is a required property for ListVaultMarketProEventsItem and cannot be null");
-            }
-            this.OrderId = orderId;
             // to ensure "kind" is required (not null)
             if (kind == null) {
                 throw new ArgumentNullException("kind is a required property for ListVaultMarketProEventsItem and cannot be null");
             }
             this.Kind = kind;
+            // to ensure "orderId" is required (not null)
+            if (orderId == null) {
+                throw new ArgumentNullException("orderId is a required property for ListVaultMarketProEventsItem and cannot be null");
+            }
+            this.OrderId = orderId;
             this.Seq = seq;
             this.Quantity = quantity;
             this.PriceCents = priceCents;
@@ -86,6 +86,12 @@ namespace net.crossly.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Kind
+        /// </summary>
+        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
+        public string Kind { get; set; }
+
+        /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
         [DataMember(Name = "quantity", EmitDefaultValue = true)]
@@ -96,12 +102,6 @@ namespace net.crossly.Model
         /// </summary>
         [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = false)]
         public string OrderId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Kind
-        /// </summary>
-        [DataMember(Name = "kind", IsRequired = true, EmitDefaultValue = false)]
-        public string Kind { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceCents
@@ -137,9 +137,9 @@ namespace net.crossly.Model
             sb.Append("class ListVaultMarketProEventsItem {\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  Kind: ").Append(Kind).Append("\n");
             sb.Append("  PriceCents: ").Append(PriceCents).Append("\n");
             sb.Append("  TradeId: ").Append(TradeId).Append("\n");
             sb.Append("  Detail: ").Append(Detail).Append("\n");
@@ -190,6 +190,11 @@ namespace net.crossly.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.Kind == input.Kind ||
+                    (this.Kind != null &&
+                    this.Kind.Equals(input.Kind))
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
@@ -198,11 +203,6 @@ namespace net.crossly.Model
                     this.OrderId == input.OrderId ||
                     (this.OrderId != null &&
                     this.OrderId.Equals(input.OrderId))
-                ) && 
-                (
-                    this.Kind == input.Kind ||
-                    (this.Kind != null &&
-                    this.Kind.Equals(input.Kind))
                 ) && 
                 (
                     this.PriceCents == input.PriceCents ||
@@ -243,6 +243,10 @@ namespace net.crossly.Model
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
                 }
+                if (this.Kind != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
+                }
                 if (this.Quantity != null)
                 {
                     hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
@@ -250,10 +254,6 @@ namespace net.crossly.Model
                 if (this.OrderId != null)
                 {
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
-                }
-                if (this.Kind != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kind.GetHashCode();
                 }
                 if (this.PriceCents != null)
                 {

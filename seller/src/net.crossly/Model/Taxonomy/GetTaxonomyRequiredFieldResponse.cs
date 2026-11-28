@@ -62,46 +62,46 @@ namespace net.crossly.Model
             Mercari = 4,
 
             /// <summary>
+            /// Enum Facebook for value: facebook
+            /// </summary>
+            [EnumMember(Value = "facebook")]
+            Facebook = 5,
+
+            /// <summary>
             /// Enum Depop for value: depop
             /// </summary>
             [EnumMember(Value = "depop")]
-            Depop = 5,
+            Depop = 6,
 
             /// <summary>
             /// Enum Grailed for value: grailed
             /// </summary>
             [EnumMember(Value = "grailed")]
-            Grailed = 6,
+            Grailed = 7,
 
             /// <summary>
             /// Enum Vinted for value: vinted
             /// </summary>
             [EnumMember(Value = "vinted")]
-            Vinted = 7,
+            Vinted = 8,
 
             /// <summary>
             /// Enum Whatnot for value: whatnot
             /// </summary>
             [EnumMember(Value = "whatnot")]
-            Whatnot = 8,
+            Whatnot = 9,
 
             /// <summary>
             /// Enum Vestiaire for value: vestiaire
             /// </summary>
             [EnumMember(Value = "vestiaire")]
-            Vestiaire = 9,
+            Vestiaire = 10,
 
             /// <summary>
             /// Enum Offerup for value: offerup
             /// </summary>
             [EnumMember(Value = "offerup")]
-            Offerup = 10,
-
-            /// <summary>
-            /// Enum Facebook for value: facebook
-            /// </summary>
-            [EnumMember(Value = "facebook")]
-            Facebook = 11,
+            Offerup = 11,
 
             /// <summary>
             /// Enum Curtsy for value: curtsy

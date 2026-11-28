@@ -32,6 +32,38 @@ namespace net.crossly.Model
     public partial class CreateOfferRespondResponse : IEquatable<CreateOfferRespondResponse>, IValidatableObject
     {
         /// <summary>
+        /// Defines FloorSource
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum FloorSourceEnum
+        {
+            /// <summary>
+            /// Enum Listing for value: listing
+            /// </summary>
+            [EnumMember(Value = "listing")]
+            Listing = 1,
+
+            /// <summary>
+            /// Enum Item for value: item
+            /// </summary>
+            [EnumMember(Value = "item")]
+            Item = 2,
+
+            /// <summary>
+            /// Enum BreakEven for value: break_even
+            /// </summary>
+            [EnumMember(Value = "break_even")]
+            BreakEven = 3
+
+        }
+
+
+        /// <summary>
+        /// Gets or Sets FloorSource
+        /// </summary>
+        [DataMember(Name = "floorSource", EmitDefaultValue = true)]
+        public FloorSourceEnum? FloorSource { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="CreateOfferRespondResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,9 +71,11 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateOfferRespondResponse" /> class.
         /// </summary>
+        /// <param name="floorCents">floorCents.</param>
+        /// <param name="floorSource">floorSource.</param>
         /// <param name="ok">ok (required).</param>
         /// <param name="status">status (required).</param>
-        public CreateOfferRespondResponse(bool ok = default(bool), string status = default(string))
+        public CreateOfferRespondResponse(decimal? floorCents = default(decimal?), FloorSourceEnum? floorSource = default(FloorSourceEnum?), bool ok = default(bool), string status = default(string))
         {
             this.Ok = ok;
             // to ensure "status" is required (not null)
@@ -49,7 +83,15 @@ namespace net.crossly.Model
                 throw new ArgumentNullException("status is a required property for CreateOfferRespondResponse and cannot be null");
             }
             this.Status = status;
+            this.FloorCents = floorCents;
+            this.FloorSource = floorSource;
         }
+
+        /// <summary>
+        /// Gets or Sets FloorCents
+        /// </summary>
+        [DataMember(Name = "floorCents", EmitDefaultValue = true)]
+        public decimal? FloorCents { get; set; }
 
         /// <summary>
         /// Gets or Sets Ok
@@ -71,6 +113,8 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateOfferRespondResponse {\n");
+            sb.Append("  FloorCents: ").Append(FloorCents).Append("\n");
+            sb.Append("  FloorSource: ").Append(FloorSource).Append("\n");
             sb.Append("  Ok: ").Append(Ok).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
@@ -109,6 +153,15 @@ namespace net.crossly.Model
             }
             return 
                 (
+                    this.FloorCents == input.FloorCents ||
+                    (this.FloorCents != null &&
+                    this.FloorCents.Equals(input.FloorCents))
+                ) && 
+                (
+                    this.FloorSource == input.FloorSource ||
+                    this.FloorSource.Equals(input.FloorSource)
+                ) && 
+                (
                     this.Ok == input.Ok ||
                     this.Ok.Equals(input.Ok)
                 ) && 
@@ -128,6 +181,11 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.FloorCents != null)
+                {
+                    hashCode = (hashCode * 59) + this.FloorCents.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.FloorSource.GetHashCode();
                 hashCode = (hashCode * 59) + this.Ok.GetHashCode();
                 if (this.Status != null)
                 {

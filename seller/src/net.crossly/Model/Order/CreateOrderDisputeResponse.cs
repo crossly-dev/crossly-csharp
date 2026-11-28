@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateOrderDisputeResponse" /> class.
         /// </summary>
         /// <param name="error">error (required).</param>
-        public CreateOrderDisputeResponse(CreateOrderDisputeResponseError error = default(CreateOrderDisputeResponseError))
+        public CreateOrderDisputeResponse(CreateOrderPackScanRequest error = default(CreateOrderPackScanRequest))
         {
             // to ensure "error" is required (not null)
             if (error == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", IsRequired = true, EmitDefaultValue = false)]
-        public CreateOrderDisputeResponseError Error { get; set; }
+        public CreateOrderPackScanRequest Error { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

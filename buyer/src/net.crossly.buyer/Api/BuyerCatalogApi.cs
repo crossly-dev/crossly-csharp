@@ -33,8 +33,9 @@ namespace net.crossly.buyer.Api
         /// The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <returns>CreateBuyerIdentifyResponse</returns>
-        CreateBuyerIdentifyResponse CreateBuyerIdentify();
+        CreateBuyerIdentifyResponse CreateBuyerIdentify(CreateBuyerIdentifyRequest createBuyerIdentifyRequest);
 
         /// <summary>
         /// Identify a held object and return a HUD-ready answer.
@@ -43,8 +44,9 @@ namespace net.crossly.buyer.Api
         /// The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <returns>ApiResponse of CreateBuyerIdentifyResponse</returns>
-        ApiResponse<CreateBuyerIdentifyResponse> CreateBuyerIdentifyWithHttpInfo();
+        ApiResponse<CreateBuyerIdentifyResponse> CreateBuyerIdentifyWithHttpInfo(CreateBuyerIdentifyRequest createBuyerIdentifyRequest);
         /// <summary>
         /// Lock on to an object the buyer is holding.
         /// </summary>
@@ -52,8 +54,9 @@ namespace net.crossly.buyer.Api
         /// Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <returns>CreateBuyerLockonResponse</returns>
-        CreateBuyerLockonResponse CreateBuyerLockon();
+        CreateBuyerLockonResponse CreateBuyerLockon(CreateBuyerLockonRequest createBuyerLockonRequest);
 
         /// <summary>
         /// Lock on to an object the buyer is holding.
@@ -62,8 +65,9 @@ namespace net.crossly.buyer.Api
         /// Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <returns>ApiResponse of CreateBuyerLockonResponse</returns>
-        ApiResponse<CreateBuyerLockonResponse> CreateBuyerLockonWithHttpInfo();
+        ApiResponse<CreateBuyerLockonResponse> CreateBuyerLockonWithHttpInfo(CreateBuyerLockonRequest createBuyerLockonRequest);
         /// <summary>
         /// The buyer picked one of the candidates.
         /// </summary>
@@ -72,8 +76,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <returns>CreateBuyerLockonConfirmResponse</returns>
-        CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm(Guid id);
+        CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest);
 
         /// <summary>
         /// The buyer picked one of the candidates.
@@ -83,8 +88,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <returns>ApiResponse of CreateBuyerLockonConfirmResponse</returns>
-        ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmWithHttpInfo(Guid id);
+        ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmWithHttpInfo(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest);
         /// <summary>
         /// Add what this frame revealed, and get the current best answer.
         /// </summary>
@@ -93,8 +99,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <returns>CreateBuyerLockonConfirmResponse</returns>
-        CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve(Guid id);
+        CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest));
 
         /// <summary>
         /// Add what this frame revealed, and get the current best answer.
@@ -104,8 +111,9 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerLockonConfirmResponse</returns>
-        ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveWithHttpInfo(Guid id);
+        ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveWithHttpInfo(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest));
         /// <summary>
         /// Identify a physical item and find the cheapest place to buy it.
         /// </summary>
@@ -113,8 +121,9 @@ namespace net.crossly.buyer.Api
         /// Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <returns>CreateBuyerScanResponse</returns>
-        CreateBuyerScanResponse CreateBuyerScan();
+        CreateBuyerScanResponse CreateBuyerScan(CreateBuyerScanRequest createBuyerScanRequest);
 
         /// <summary>
         /// Identify a physical item and find the cheapest place to buy it.
@@ -123,8 +132,9 @@ namespace net.crossly.buyer.Api
         /// Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <returns>ApiResponse of CreateBuyerScanResponse</returns>
-        ApiResponse<CreateBuyerScanResponse> CreateBuyerScanWithHttpInfo();
+        ApiResponse<CreateBuyerScanResponse> CreateBuyerScanWithHttpInfo(CreateBuyerScanRequest createBuyerScanRequest);
         /// <summary>
         /// Open a Live Shop session.
         /// </summary>
@@ -132,8 +142,9 @@ namespace net.crossly.buyer.Api
         /// Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <returns>CreateBuyerScanSessionResponse</returns>
-        CreateBuyerScanSessionResponse CreateBuyerScanSession();
+        CreateBuyerScanSessionResponse CreateBuyerScanSession(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest));
 
         /// <summary>
         /// Open a Live Shop session.
@@ -142,8 +153,9 @@ namespace net.crossly.buyer.Api
         /// Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerScanSessionResponse</returns>
-        ApiResponse<CreateBuyerScanSessionResponse> CreateBuyerScanSessionWithHttpInfo();
+        ApiResponse<CreateBuyerScanSessionResponse> CreateBuyerScanSessionWithHttpInfo(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest));
         /// <summary>
         /// Close a Live Shop session.
         /// </summary>
@@ -169,8 +181,12 @@ namespace net.crossly.buyer.Api
         /// Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <returns>GetBuyerAnywhereResponse</returns>
-        GetBuyerAnywhereResponse GetBuyerAnywhere();
+        GetBuyerAnywhereResponse GetBuyerAnywhere(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string));
 
         /// <summary>
         /// Cheapest source for an item — Crossly first, then other retailers.
@@ -179,8 +195,12 @@ namespace net.crossly.buyer.Api
         /// Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerAnywhereResponse</returns>
-        ApiResponse<GetBuyerAnywhereResponse> GetBuyerAnywhereWithHttpInfo();
+        ApiResponse<GetBuyerAnywhereResponse> GetBuyerAnywhereWithHttpInfo(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string));
         /// <summary>
         /// Brands, categories and conditions that currently have stock.
         /// </summary>
@@ -354,8 +374,17 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <returns>ListBuyerCatalogBrowseResponse</returns>
-        ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?));
+        ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string));
 
         /// <summary>
         /// Browse the way the shop does — buying format, returns, size, color, sold items, Best Match.
@@ -376,8 +405,17 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerCatalogBrowseResponse</returns>
-        ApiResponse<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseWithHttpInfo(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?));
+        ApiResponse<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseWithHttpInfo(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string));
         /// <summary>
         /// What THIS listing has sold for, newest first (last 50), with the median.
         /// </summary>
@@ -406,8 +444,20 @@ namespace net.crossly.buyer.Api
         /// Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ListBuyerCatalogSearchResponse</returns>
-        ListBuyerCatalogSearchResponse ListBuyerCatalogSearch();
+        ListBuyerCatalogSearchResponse ListBuyerCatalogSearch(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string));
 
         /// <summary>
         /// Search the Crossly catalogue.
@@ -416,8 +466,20 @@ namespace net.crossly.buyer.Api
         /// Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerCatalogSearchResponse</returns>
-        ApiResponse<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchWithHttpInfo();
+        ApiResponse<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchWithHttpInfo(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string));
         /// <summary>
         /// Find a seller by shop handle or shop name.
         /// </summary>
@@ -473,9 +535,10 @@ namespace net.crossly.buyer.Api
         /// The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerIdentifyResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerIdentifyResponse> CreateBuyerIdentifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerIdentifyResponse> CreateBuyerIdentifyAsync(CreateBuyerIdentifyRequest createBuyerIdentifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Identify a held object and return a HUD-ready answer.
@@ -484,9 +547,10 @@ namespace net.crossly.buyer.Api
         /// The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerIdentifyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerIdentifyResponse>> CreateBuyerIdentifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerIdentifyResponse>> CreateBuyerIdentifyWithHttpInfoAsync(CreateBuyerIdentifyRequest createBuyerIdentifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Lock on to an object the buyer is holding.
         /// </summary>
@@ -494,9 +558,10 @@ namespace net.crossly.buyer.Api
         /// Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerLockonResponse> CreateBuyerLockonAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerLockonResponse> CreateBuyerLockonAsync(CreateBuyerLockonRequest createBuyerLockonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lock on to an object the buyer is holding.
@@ -505,9 +570,10 @@ namespace net.crossly.buyer.Api
         /// Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonResponse>> CreateBuyerLockonWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonResponse>> CreateBuyerLockonWithHttpInfoAsync(CreateBuyerLockonRequest createBuyerLockonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The buyer picked one of the candidates.
         /// </summary>
@@ -516,9 +582,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmAsync(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The buyer picked one of the candidates.
@@ -528,9 +595,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonConfirmWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonConfirmWithHttpInfoAsync(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add what this frame revealed, and get the current best answer.
         /// </summary>
@@ -539,9 +607,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonConfirmResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveAsync(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Add what this frame revealed, and get the current best answer.
@@ -551,9 +620,10 @@ namespace net.crossly.buyer.Api
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonConfirmResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonObserveWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonObserveWithHttpInfoAsync(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Identify a physical item and find the cheapest place to buy it.
         /// </summary>
@@ -561,9 +631,10 @@ namespace net.crossly.buyer.Api
         /// Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerScanResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerScanResponse> CreateBuyerScanAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerScanResponse> CreateBuyerScanAsync(CreateBuyerScanRequest createBuyerScanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Identify a physical item and find the cheapest place to buy it.
@@ -572,9 +643,10 @@ namespace net.crossly.buyer.Api
         /// Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerScanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerScanResponse>> CreateBuyerScanWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerScanResponse>> CreateBuyerScanWithHttpInfoAsync(CreateBuyerScanRequest createBuyerScanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Open a Live Shop session.
         /// </summary>
@@ -582,9 +654,10 @@ namespace net.crossly.buyer.Api
         /// Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerScanSessionResponse</returns>
-        System.Threading.Tasks.Task<CreateBuyerScanSessionResponse> CreateBuyerScanSessionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBuyerScanSessionResponse> CreateBuyerScanSessionAsync(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Open a Live Shop session.
@@ -593,9 +666,10 @@ namespace net.crossly.buyer.Api
         /// Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerScanSessionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBuyerScanSessionResponse>> CreateBuyerScanSessionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBuyerScanSessionResponse>> CreateBuyerScanSessionWithHttpInfoAsync(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Close a Live Shop session.
         /// </summary>
@@ -626,9 +700,13 @@ namespace net.crossly.buyer.Api
         /// Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerAnywhereResponse</returns>
-        System.Threading.Tasks.Task<GetBuyerAnywhereResponse> GetBuyerAnywhereAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetBuyerAnywhereResponse> GetBuyerAnywhereAsync(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Cheapest source for an item — Crossly first, then other retailers.
@@ -637,9 +715,13 @@ namespace net.crossly.buyer.Api
         /// Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerAnywhereResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBuyerAnywhereResponse>> GetBuyerAnywhereWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetBuyerAnywhereResponse>> GetBuyerAnywhereWithHttpInfoAsync(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Brands, categories and conditions that currently have stock.
         /// </summary>
@@ -830,9 +912,18 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerCatalogBrowseResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Browse the way the shop does — buying format, returns, size, color, sold items, Best Match.
@@ -853,9 +944,18 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerCatalogBrowseResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerCatalogBrowseResponse>> ListBuyerCatalogBrowseWithHttpInfoAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerCatalogBrowseResponse>> ListBuyerCatalogBrowseWithHttpInfoAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// What THIS listing has sold for, newest first (last 50), with the median.
         /// </summary>
@@ -886,9 +986,21 @@ namespace net.crossly.buyer.Api
         /// Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerCatalogSearchResponse</returns>
-        System.Threading.Tasks.Task<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchAsync(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Search the Crossly catalogue.
@@ -897,9 +1009,21 @@ namespace net.crossly.buyer.Api
         /// Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </remarks>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerCatalogSearchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBuyerCatalogSearchResponse>> ListBuyerCatalogSearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBuyerCatalogSearchResponse>> ListBuyerCatalogSearchWithHttpInfoAsync(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Find a seller by shop handle or shop name.
         /// </summary>
@@ -1070,10 +1194,11 @@ namespace net.crossly.buyer.Api
         /// Identify a held object and return a HUD-ready answer. The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <returns>CreateBuyerIdentifyResponse</returns>
-        public CreateBuyerIdentifyResponse CreateBuyerIdentify()
+        public CreateBuyerIdentifyResponse CreateBuyerIdentify(CreateBuyerIdentifyRequest createBuyerIdentifyRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> localVarResponse = CreateBuyerIdentifyWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> localVarResponse = CreateBuyerIdentifyWithHttpInfo(createBuyerIdentifyRequest);
             return localVarResponse.Data;
         }
 
@@ -1081,12 +1206,20 @@ namespace net.crossly.buyer.Api
         /// Identify a held object and return a HUD-ready answer. The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <returns>ApiResponse of CreateBuyerIdentifyResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> CreateBuyerIdentifyWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> CreateBuyerIdentifyWithHttpInfo(CreateBuyerIdentifyRequest createBuyerIdentifyRequest)
         {
+            // verify the required parameter 'createBuyerIdentifyRequest' is set
+            if (createBuyerIdentifyRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerIdentifyRequest' when calling BuyerCatalogApi->CreateBuyerIdentify");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1106,6 +1239,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerIdentifyRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1132,11 +1266,12 @@ namespace net.crossly.buyer.Api
         /// Identify a held object and return a HUD-ready answer. The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerIdentifyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerIdentifyResponse> CreateBuyerIdentifyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerIdentifyResponse> CreateBuyerIdentifyAsync(CreateBuyerIdentifyRequest createBuyerIdentifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> localVarResponse = await CreateBuyerIdentifyWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse> localVarResponse = await CreateBuyerIdentifyWithHttpInfoAsync(createBuyerIdentifyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1144,14 +1279,22 @@ namespace net.crossly.buyer.Api
         /// Identify a held object and return a HUD-ready answer. The gesture endpoint for Live Shop. Runs a cost ladder: a decoded BARCODE resolves in ~50ms for nothing; failing that, self-hosted CLIP matches the catalogue; failing that, a vision model names it (the only rung that costs anything, capped per buyer per day). &#x60;hud&#x60; is pre-formatted for a 600×600 lens — one headline, one subline, up to three fact chips and exactly ONE action, because a pinch cannot choose between buttons. A vision label is WORDS, never an identity: it names the thing so the buyer can search, and never drives a price comparison.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerIdentifyRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerIdentifyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse>> CreateBuyerIdentifyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerIdentifyResponse>> CreateBuyerIdentifyWithHttpInfoAsync(CreateBuyerIdentifyRequest createBuyerIdentifyRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerIdentifyRequest' is set
+            if (createBuyerIdentifyRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerIdentifyRequest' when calling BuyerCatalogApi->CreateBuyerIdentify");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1171,6 +1314,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerIdentifyRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1198,10 +1342,11 @@ namespace net.crossly.buyer.Api
         /// Lock on to an object the buyer is holding. Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <returns>CreateBuyerLockonResponse</returns>
-        public CreateBuyerLockonResponse CreateBuyerLockon()
+        public CreateBuyerLockonResponse CreateBuyerLockon(CreateBuyerLockonRequest createBuyerLockonRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> localVarResponse = CreateBuyerLockonWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> localVarResponse = CreateBuyerLockonWithHttpInfo(createBuyerLockonRequest);
             return localVarResponse.Data;
         }
 
@@ -1209,12 +1354,20 @@ namespace net.crossly.buyer.Api
         /// Lock on to an object the buyer is holding. Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <returns>ApiResponse of CreateBuyerLockonResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> CreateBuyerLockonWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> CreateBuyerLockonWithHttpInfo(CreateBuyerLockonRequest createBuyerLockonRequest)
         {
+            // verify the required parameter 'createBuyerLockonRequest' is set
+            if (createBuyerLockonRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerLockonRequest' when calling BuyerCatalogApi->CreateBuyerLockon");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1234,6 +1387,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerLockonRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1260,11 +1414,12 @@ namespace net.crossly.buyer.Api
         /// Lock on to an object the buyer is holding. Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerLockonResponse> CreateBuyerLockonAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerLockonResponse> CreateBuyerLockonAsync(CreateBuyerLockonRequest createBuyerLockonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> localVarResponse = await CreateBuyerLockonWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse> localVarResponse = await CreateBuyerLockonWithHttpInfoAsync(createBuyerLockonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1272,14 +1427,22 @@ namespace net.crossly.buyer.Api
         /// Lock on to an object the buyer is holding. Open this when on-device tracking acquires an object, then post observations to it as the buyer turns the thing over. The answer improves as evidence arrives — the style code inside a shoe settles what the front of it could not.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerLockonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse>> CreateBuyerLockonWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonResponse>> CreateBuyerLockonWithHttpInfoAsync(CreateBuyerLockonRequest createBuyerLockonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerLockonRequest' is set
+            if (createBuyerLockonRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerLockonRequest' when calling BuyerCatalogApi->CreateBuyerLockon");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1299,6 +1462,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerLockonRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1327,10 +1491,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <returns>CreateBuyerLockonConfirmResponse</returns>
-        public CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm(Guid id)
+        public CreateBuyerLockonConfirmResponse CreateBuyerLockonConfirm(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = CreateBuyerLockonConfirmWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = CreateBuyerLockonConfirmWithHttpInfo(id, createBuyerLockonConfirmRequest);
             return localVarResponse.Data;
         }
 
@@ -1339,12 +1504,20 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <returns>ApiResponse of CreateBuyerLockonConfirmResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmWithHttpInfo(Guid id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmWithHttpInfo(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest)
         {
+            // verify the required parameter 'createBuyerLockonConfirmRequest' is set
+            if (createBuyerLockonConfirmRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerLockonConfirmRequest' when calling BuyerCatalogApi->CreateBuyerLockonConfirm");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1365,6 +1538,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLockonConfirmRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1392,11 +1566,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonConfirmAsync(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = await CreateBuyerLockonConfirmWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = await CreateBuyerLockonConfirmWithHttpInfoAsync(id, createBuyerLockonConfirmRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1405,14 +1580,22 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonConfirmRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonConfirmWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonConfirmWithHttpInfoAsync(Guid id, CreateBuyerLockonConfirmRequest createBuyerLockonConfirmRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerLockonConfirmRequest' is set
+            if (createBuyerLockonConfirmRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerLockonConfirmRequest' when calling BuyerCatalogApi->CreateBuyerLockonConfirm");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1433,6 +1616,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLockonConfirmRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1461,10 +1645,11 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <returns>CreateBuyerLockonConfirmResponse</returns>
-        public CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve(Guid id)
+        public CreateBuyerLockonConfirmResponse CreateBuyerLockonObserve(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = CreateBuyerLockonObserveWithHttpInfo(id);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = CreateBuyerLockonObserveWithHttpInfo(id, createBuyerLockonObserveRequest);
             return localVarResponse.Data;
         }
 
@@ -1473,12 +1658,14 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerLockonConfirmResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveWithHttpInfo(Guid id)
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveWithHttpInfo(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1499,6 +1686,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLockonObserveRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1526,11 +1714,12 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerLockonConfirmResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerLockonConfirmResponse> CreateBuyerLockonObserveAsync(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = await CreateBuyerLockonObserveWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse> localVarResponse = await CreateBuyerLockonObserveWithHttpInfoAsync(id, createBuyerLockonObserveRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1539,14 +1728,16 @@ namespace net.crossly.buyer.Api
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBuyerLockonObserveRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerLockonConfirmResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonObserveWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerLockonConfirmResponse>> CreateBuyerLockonObserveWithHttpInfoAsync(Guid id, CreateBuyerLockonObserveRequest createBuyerLockonObserveRequest = default(CreateBuyerLockonObserveRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1567,6 +1758,7 @@ namespace net.crossly.buyer.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.buyer.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBuyerLockonObserveRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1594,10 +1786,11 @@ namespace net.crossly.buyer.Api
         /// Identify a physical item and find the cheapest place to buy it. Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <returns>CreateBuyerScanResponse</returns>
-        public CreateBuyerScanResponse CreateBuyerScan()
+        public CreateBuyerScanResponse CreateBuyerScan(CreateBuyerScanRequest createBuyerScanRequest)
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> localVarResponse = CreateBuyerScanWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> localVarResponse = CreateBuyerScanWithHttpInfo(createBuyerScanRequest);
             return localVarResponse.Data;
         }
 
@@ -1605,12 +1798,20 @@ namespace net.crossly.buyer.Api
         /// Identify a physical item and find the cheapest place to buy it. Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <returns>ApiResponse of CreateBuyerScanResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> CreateBuyerScanWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> CreateBuyerScanWithHttpInfo(CreateBuyerScanRequest createBuyerScanRequest)
         {
+            // verify the required parameter 'createBuyerScanRequest' is set
+            if (createBuyerScanRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerScanRequest' when calling BuyerCatalogApi->CreateBuyerScan");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1630,6 +1831,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerScanRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1656,11 +1858,12 @@ namespace net.crossly.buyer.Api
         /// Identify a physical item and find the cheapest place to buy it. Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerScanResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerScanResponse> CreateBuyerScanAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerScanResponse> CreateBuyerScanAsync(CreateBuyerScanRequest createBuyerScanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> localVarResponse = await CreateBuyerScanWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse> localVarResponse = await CreateBuyerScanWithHttpInfoAsync(createBuyerScanRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1668,14 +1871,22 @@ namespace net.crossly.buyer.Api
         /// Identify a physical item and find the cheapest place to buy it. Send a barcode identifier OR a photo. A BARCODE establishes identity, so the response carries a full price verdict across Crossly and other retailers. A PHOTO establishes resemblance only: you get visual matches from the Crossly catalogue, and a price verdict ONLY if the matched listing carries a real identifier. When it does not, &#x60;comparable&#x60; is false and there is no verdict — a price comparison built on a visual guess is a claim about a different product. Most second-hand items have no identifier by nature, so this is expected rather than a failure.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerScanResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse>> CreateBuyerScanWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerScanResponse>> CreateBuyerScanWithHttpInfoAsync(CreateBuyerScanRequest createBuyerScanRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBuyerScanRequest' is set
+            if (createBuyerScanRequest == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'createBuyerScanRequest' when calling BuyerCatalogApi->CreateBuyerScan");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1695,6 +1906,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerScanRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1722,10 +1934,11 @@ namespace net.crossly.buyer.Api
         /// Open a Live Shop session. Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <returns>CreateBuyerScanSessionResponse</returns>
-        public CreateBuyerScanSessionResponse CreateBuyerScanSession()
+        public CreateBuyerScanSessionResponse CreateBuyerScanSession(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> localVarResponse = CreateBuyerScanSessionWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> localVarResponse = CreateBuyerScanSessionWithHttpInfo(createBuyerScanSessionRequest);
             return localVarResponse.Data;
         }
 
@@ -1733,12 +1946,14 @@ namespace net.crossly.buyer.Api
         /// Open a Live Shop session. Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBuyerScanSessionResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> CreateBuyerScanSessionWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> CreateBuyerScanSessionWithHttpInfo(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1758,6 +1973,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerScanSessionRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1784,11 +2000,12 @@ namespace net.crossly.buyer.Api
         /// Open a Live Shop session. Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBuyerScanSessionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBuyerScanSessionResponse> CreateBuyerScanSessionAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBuyerScanSessionResponse> CreateBuyerScanSessionAsync(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> localVarResponse = await CreateBuyerScanSessionWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse> localVarResponse = await CreateBuyerScanSessionWithHttpInfoAsync(createBuyerScanSessionRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1796,14 +2013,16 @@ namespace net.crossly.buyer.Api
         /// Open a Live Shop session. Call this when the glasses connect, then pass the returned id as &#x60;sessionId&#x60; on each scan. Opening a session CLOSES any other live one — a person is in one shop at a time, and two live sessions split a trip across both.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createBuyerScanSessionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBuyerScanSessionResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse>> CreateBuyerScanSessionWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<CreateBuyerScanSessionResponse>> CreateBuyerScanSessionWithHttpInfoAsync(CreateBuyerScanSessionRequest createBuyerScanSessionRequest = default(CreateBuyerScanSessionRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1823,6 +2042,7 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createBuyerScanSessionRequest;
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -1984,10 +2204,14 @@ namespace net.crossly.buyer.Api
         /// Cheapest source for an item — Crossly first, then other retailers. Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <returns>GetBuyerAnywhereResponse</returns>
-        public GetBuyerAnywhereResponse GetBuyerAnywhere()
+        public GetBuyerAnywhereResponse GetBuyerAnywhere(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> localVarResponse = GetBuyerAnywhereWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> localVarResponse = GetBuyerAnywhereWithHttpInfo(ns, value, pagePriceCents, currency);
             return localVarResponse.Data;
         }
 
@@ -1995,9 +2219,25 @@ namespace net.crossly.buyer.Api
         /// Cheapest source for an item — Crossly first, then other retailers. Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <returns>ApiResponse of GetBuyerAnywhereResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> GetBuyerAnywhereWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> GetBuyerAnywhereWithHttpInfo(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string))
         {
+            // verify the required parameter 'ns' is set
+            if (ns == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'ns' when calling BuyerCatalogApi->GetBuyerAnywhere");
+            }
+
+            // verify the required parameter 'value' is set
+            if (value == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'value' when calling BuyerCatalogApi->GetBuyerAnywhere");
+            }
+
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -2020,6 +2260,16 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "ns", ns));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "value", value));
+            if (pagePriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "pagePriceCents", pagePriceCents));
+            }
+            if (currency != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "currency", currency));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -2046,11 +2296,15 @@ namespace net.crossly.buyer.Api
         /// Cheapest source for an item — Crossly first, then other retailers. Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBuyerAnywhereResponse</returns>
-        public async System.Threading.Tasks.Task<GetBuyerAnywhereResponse> GetBuyerAnywhereAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetBuyerAnywhereResponse> GetBuyerAnywhereAsync(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> localVarResponse = await GetBuyerAnywhereWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse> localVarResponse = await GetBuyerAnywhereWithHttpInfoAsync(ns, value, pagePriceCents, currency, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2058,10 +2312,26 @@ namespace net.crossly.buyer.Api
         /// Cheapest source for an item — Crossly first, then other retailers. Answers with a VERDICT, not a list: crossly_best, offsite_cheaper, offsite_only or no_match. Offsite offers come from licensed affiliate product feeds, are ranked CHEAPEST-FIRST — commission only ever breaks a sub-$1 tie — and only appear when they beat the price you passed in. &#x60;shippingUnknown: true&#x60; means a compared price omitted postage, so present the result as \&quot;before postage\&quot; rather than as a delivered total. Crossly wins ties within $1; beyond that the honest answer wins.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ns">An identifier the item actually carries. No free-text fallback, ever — see docs/IDENTIFIER-FIRST.md. A title-matched \&quot;cheaper elsewhere\&quot; is a claim about a different product.  The ALLOW-LIST, not a free string. &#x60;compare.ts&#x60; explains why: the namespace goes straight into a query, and an open passthrough lets a caller enumerate every namespace we hold — a map of the catalogue&#39;s provenance. Reusing the same list here keeps the two from drifting.</param>
+        /// <param name="value"></param>
+        /// <param name="pagePriceCents">What the buyer is looking at, so \&quot;cheaper\&quot; means cheaper than THAT. (optional)</param>
+        /// <param name="currency"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBuyerAnywhereResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse>> GetBuyerAnywhereWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<GetBuyerAnywhereResponse>> GetBuyerAnywhereWithHttpInfoAsync(string ns, string value, decimal? pagePriceCents = default(decimal?), string currency = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'ns' is set
+            if (ns == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'ns' when calling BuyerCatalogApi->GetBuyerAnywhere");
+            }
+
+            // verify the required parameter 'value' is set
+            if (value == null)
+            {
+                throw new net.crossly.buyer.Client.ApiException(400, "Missing required parameter 'value' when calling BuyerCatalogApi->GetBuyerAnywhere");
+            }
+
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -2085,6 +2355,16 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "ns", ns));
+            localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "value", value));
+            if (pagePriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "pagePriceCents", pagePriceCents));
+            }
+            if (currency != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "currency", currency));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -3188,10 +3468,19 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <returns>ListBuyerCatalogBrowseResponse</returns>
-        public ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?))
+        public ListBuyerCatalogBrowseResponse ListBuyerCatalogBrowse(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> localVarResponse = ListBuyerCatalogBrowseWithHttpInfo(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> localVarResponse = ListBuyerCatalogBrowseWithHttpInfo(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit, brand, condition, category, subcategory, freeShipping, localPickup, deals, state, zip);
             return localVarResponse.Data;
         }
 
@@ -3211,8 +3500,17 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerCatalogBrowseResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseWithHttpInfo(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?))
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseWithHttpInfo(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -3283,6 +3581,42 @@ namespace net.crossly.buyer.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (subcategory != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "subcategory", subcategory));
+            }
+            if (freeShipping != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "freeShipping", freeShipping));
+            }
+            if (localPickup != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "localPickup", localPickup));
+            }
+            if (deals != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "deals", deals));
+            }
+            if (state != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "state", state));
+            }
+            if (zip != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "zip", zip));
             }
 
             // authentication (BuyerOAuth) required
@@ -3322,11 +3656,20 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerCatalogBrowseResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerCatalogBrowseResponse> ListBuyerCatalogBrowseAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> localVarResponse = await ListBuyerCatalogBrowseWithHttpInfoAsync(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit, cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse> localVarResponse = await ListBuyerCatalogBrowseWithHttpInfoAsync(q, format, returns, sold, size, color, shipsTo, sort, minPriceCents, maxPriceCents, page, limit, brand, condition, category, subcategory, freeShipping, localPickup, deals, state, zip, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3346,9 +3689,18 @@ namespace net.crossly.buyer.Api
         /// <param name="maxPriceCents">Highest price, in cents. (optional)</param>
         /// <param name="page">1-indexed page. (optional, default to 1)</param>
         /// <param name="limit">Rows per page. (optional, default to 24)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="subcategory"> (optional)</param>
+        /// <param name="freeShipping"> (optional)</param>
+        /// <param name="localPickup"> (optional)</param>
+        /// <param name="deals"> (optional)</param>
+        /// <param name="state"> (optional)</param>
+        /// <param name="zip"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerCatalogBrowseResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse>> ListBuyerCatalogBrowseWithHttpInfoAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogBrowseResponse>> ListBuyerCatalogBrowseWithHttpInfoAsync(string q = default(string), string format = default(string), string returns = default(string), string sold = default(string), string size = default(string), string color = default(string), string shipsTo = default(string), string sort = default(string), int? minPriceCents = default(int?), int? maxPriceCents = default(int?), int? page = default(int?), int? limit = default(int?), string brand = default(string), string condition = default(string), string category = default(string), string subcategory = default(string), string freeShipping = default(string), string localPickup = default(string), string deals = default(string), string state = default(string), string zip = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
@@ -3420,6 +3772,42 @@ namespace net.crossly.buyer.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (subcategory != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "subcategory", subcategory));
+            }
+            if (freeShipping != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "freeShipping", freeShipping));
+            }
+            if (localPickup != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "localPickup", localPickup));
+            }
+            if (deals != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "deals", deals));
+            }
+            if (state != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "state", state));
+            }
+            if (zip != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "zip", zip));
             }
 
             // authentication (BuyerOAuth) required
@@ -3594,10 +3982,22 @@ namespace net.crossly.buyer.Api
         /// Search the Crossly catalogue. Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ListBuyerCatalogSearchResponse</returns>
-        public ListBuyerCatalogSearchResponse ListBuyerCatalogSearch()
+        public ListBuyerCatalogSearchResponse ListBuyerCatalogSearch(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> localVarResponse = ListBuyerCatalogSearchWithHttpInfo();
+            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> localVarResponse = ListBuyerCatalogSearchWithHttpInfo(q, brand, category, condition, seller, minPriceCents, maxPriceCents, listedAfter, inStockOnly, sort, limit, cursor);
             return localVarResponse.Data;
         }
 
@@ -3605,8 +4005,20 @@ namespace net.crossly.buyer.Api
         /// Search the Crossly catalogue. Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <returns>ApiResponse of ListBuyerCatalogSearchResponse</returns>
-        public net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchWithHttpInfo()
+        public net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchWithHttpInfo(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string))
         {
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
 
@@ -3630,6 +4042,54 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
+            if (seller != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "seller", seller));
+            }
+            if (minPriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "minPriceCents", minPriceCents));
+            }
+            if (maxPriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "maxPriceCents", maxPriceCents));
+            }
+            if (listedAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "listedAfter", listedAfter));
+            }
+            if (inStockOnly != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "inStockOnly", inStockOnly));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required
@@ -3656,11 +4116,23 @@ namespace net.crossly.buyer.Api
         /// Search the Crossly catalogue. Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBuyerCatalogSearchResponse</returns>
-        public async System.Threading.Tasks.Task<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBuyerCatalogSearchResponse> ListBuyerCatalogSearchAsync(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> localVarResponse = await ListBuyerCatalogSearchWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse> localVarResponse = await ListBuyerCatalogSearchWithHttpInfoAsync(q, brand, category, condition, seller, minPriceCents, maxPriceCents, listedAfter, inStockOnly, sort, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -3668,9 +4140,21 @@ namespace net.crossly.buyer.Api
         /// Search the Crossly catalogue. Keyset-paginated. Pass the &#x60;nextCursor&#x60; you were given back as &#x60;cursor&#x60;; page 500 costs the same as page 1. Cursors are opaque — do not parse them. Responses carry an ETag: send it back as If-None-Match and an unchanged page answers 304, which is free. &#x60;sort&#x3D;popular&#x60; is deliberately unavailable, because a cursor into a continuously-reordering list silently skips rows.
         /// </summary>
         /// <exception cref="net.crossly.buyer.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="q"> (optional)</param>
+        /// <param name="brand"> (optional)</param>
+        /// <param name="category"> (optional)</param>
+        /// <param name="condition"> (optional)</param>
+        /// <param name="seller"> (optional)</param>
+        /// <param name="minPriceCents"> (optional)</param>
+        /// <param name="maxPriceCents"> (optional)</param>
+        /// <param name="listedAfter"> (optional)</param>
+        /// <param name="inStockOnly"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="cursor"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBuyerCatalogSearchResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse>> ListBuyerCatalogSearchWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.buyer.Client.ApiResponse<ListBuyerCatalogSearchResponse>> ListBuyerCatalogSearchWithHttpInfoAsync(string q = default(string), string brand = default(string), string category = default(string), string condition = default(string), string seller = default(string), decimal? minPriceCents = default(decimal?), decimal? maxPriceCents = default(decimal?), string listedAfter = default(string), string inStockOnly = default(string), string sort = default(string), decimal? limit = default(decimal?), string cursor = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.buyer.Client.RequestOptions localVarRequestOptions = new net.crossly.buyer.Client.RequestOptions();
@@ -3695,6 +4179,54 @@ namespace net.crossly.buyer.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (q != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "q", q));
+            }
+            if (brand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "brand", brand));
+            }
+            if (category != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "category", category));
+            }
+            if (condition != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "condition", condition));
+            }
+            if (seller != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "seller", seller));
+            }
+            if (minPriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "minPriceCents", minPriceCents));
+            }
+            if (maxPriceCents != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "maxPriceCents", maxPriceCents));
+            }
+            if (listedAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "listedAfter", listedAfter));
+            }
+            if (inStockOnly != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "inStockOnly", inStockOnly));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.buyer.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (BuyerOAuth) required
             // bearer authentication required

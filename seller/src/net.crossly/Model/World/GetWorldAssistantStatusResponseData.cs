@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="GetWorldAssistantStatusResponseData" /> class.
         /// </summary>
         /// <param name="configured">Crossly&#39;s key is configured on this server. (required).</param>
-        /// <param name="ownKey">The creator has a usable own AI key (Settings → AI). (required).</param>
+        /// <param name="ownKey">The creator has a usable own AI key (Settings › Account &amp; notifications › Your AI key). (required).</param>
         /// <param name="allowance">allowance (required).</param>
         /// <param name="models">models.</param>
         public GetWorldAssistantStatusResponseData(bool configured = default(bool), bool ownKey = default(bool), GetWorldAssistantStatusResponseDataAllowance allowance = default(GetWorldAssistantStatusResponseDataAllowance), GetWorldAssistantStatusResponseDataModels models = default(GetWorldAssistantStatusResponseDataModels))
@@ -63,9 +63,9 @@ namespace net.crossly.Model
         public bool Configured { get; set; }
 
         /// <summary>
-        /// The creator has a usable own AI key (Settings → AI).
+        /// The creator has a usable own AI key (Settings › Account &amp; notifications › Your AI key).
         /// </summary>
-        /// <value>The creator has a usable own AI key (Settings → AI).</value>
+        /// <value>The creator has a usable own AI key (Settings › Account &amp; notifications › Your AI key).</value>
         [DataMember(Name = "ownKey", IsRequired = true, EmitDefaultValue = true)]
         public bool OwnKey { get; set; }
 

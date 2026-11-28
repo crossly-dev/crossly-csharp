@@ -47,8 +47,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <returns>CreateBulkBatchIdentifyResponse</returns>
-        CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify(Guid id);
+        CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest));
 
         /// <summary>
         /// Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
@@ -58,15 +59,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBulkBatchIdentifyResponse</returns>
-        ApiResponse<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyWithHttpInfo(Guid id);
+        ApiResponse<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyWithHttpInfo(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest));
         /// <summary>
         /// Append one item (every photo of it, primary first).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <returns>CreateBulkBatchItemResponse</returns>
-        CreateBulkBatchItemResponse CreateBulkBatchItem(Guid id);
+        CreateBulkBatchItemResponse CreateBulkBatchItem(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest);
 
         /// <summary>
         /// Append one item (every photo of it, primary first).
@@ -76,15 +79,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <returns>ApiResponse of CreateBulkBatchItemResponse</returns>
-        ApiResponse<CreateBulkBatchItemResponse> CreateBulkBatchItemWithHttpInfo(Guid id);
+        ApiResponse<CreateBulkBatchItemResponse> CreateBulkBatchItemWithHttpInfo(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest);
         /// <summary>
         /// Set price/quantity/condition/status on many items.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <returns>UpdatedResponse</returns>
-        UpdatedResponse CreateBulkBatchItemBulk(Guid id);
+        UpdatedResponse CreateBulkBatchItemBulk(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest);
 
         /// <summary>
         /// Set price/quantity/condition/status on many items.
@@ -94,15 +99,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <returns>ApiResponse of UpdatedResponse</returns>
-        ApiResponse<UpdatedResponse> CreateBulkBatchItemBulkWithHttpInfo(Guid id);
+        ApiResponse<UpdatedResponse> CreateBulkBatchItemBulkWithHttpInfo(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest);
         /// <summary>
         /// Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <returns>CreateBulkBatchPublishResponse</returns>
-        CreateBulkBatchPublishResponse CreateBulkBatchPublish(Guid id);
+        CreateBulkBatchPublishResponse CreateBulkBatchPublish(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest));
 
         /// <summary>
         /// Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
@@ -112,8 +119,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBulkBatchPublishResponse</returns>
-        ApiResponse<CreateBulkBatchPublishResponse> CreateBulkBatchPublishWithHttpInfo(Guid id);
+        ApiResponse<CreateBulkBatchPublishResponse> CreateBulkBatchPublishWithHttpInfo(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest));
         /// <summary>
         /// Discard a batch (listings it produced stay).
         /// </summary>
@@ -191,8 +199,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <returns>ListBulkBatchesItem</returns>
-        ListBulkBatchesItem UpdateBulkBatch(Guid id);
+        ListBulkBatchesItem UpdateBulkBatch(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest);
 
         /// <summary>
         /// Change batch settings, or set stage \&quot;identify\&quot; when capture is done.
@@ -202,15 +211,17 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <returns>ApiResponse of ListBulkBatchesItem</returns>
-        ApiResponse<ListBulkBatchesItem> UpdateBulkBatchWithHttpInfo(Guid id);
+        ApiResponse<ListBulkBatchesItem> UpdateBulkBatchWithHttpInfo(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest);
         /// <summary>
         /// Correct one item (match, title, price, photos…).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <returns>CreateBulkBatchItemResponse</returns>
-        CreateBulkBatchItemResponse UpdateBulkBatchItem(Guid id);
+        CreateBulkBatchItemResponse UpdateBulkBatchItem(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest);
 
         /// <summary>
         /// Correct one item (match, title, price, photos…).
@@ -220,8 +231,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <returns>ApiResponse of CreateBulkBatchItemResponse</returns>
-        ApiResponse<CreateBulkBatchItemResponse> UpdateBulkBatchItemWithHttpInfo(Guid id);
+        ApiResponse<CreateBulkBatchItemResponse> UpdateBulkBatchItemWithHttpInfo(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest);
         #endregion Synchronous Operations
     }
 
@@ -260,9 +272,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchIdentifyResponse</returns>
-        System.Threading.Tasks.Task<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyAsync(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Identify items: match to Crossly Market, Magic List, or auto (by preset). Runs in the background.
@@ -272,9 +285,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchIdentifyResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchIdentifyResponse>> CreateBulkBatchIdentifyWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchIdentifyResponse>> CreateBulkBatchIdentifyWithHttpInfoAsync(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Append one item (every photo of it, primary first).
         /// </summary>
@@ -283,9 +297,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchItemResponse</returns>
-        System.Threading.Tasks.Task<CreateBulkBatchItemResponse> CreateBulkBatchItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBulkBatchItemResponse> CreateBulkBatchItemAsync(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Append one item (every photo of it, primary first).
@@ -295,9 +310,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchItemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchItemResponse>> CreateBulkBatchItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchItemResponse>> CreateBulkBatchItemWithHttpInfoAsync(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set price/quantity/condition/status on many items.
         /// </summary>
@@ -306,9 +322,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatedResponse</returns>
-        System.Threading.Tasks.Task<UpdatedResponse> CreateBulkBatchItemBulkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdatedResponse> CreateBulkBatchItemBulkAsync(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set price/quantity/condition/status on many items.
@@ -318,9 +335,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateBulkBatchItemBulkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdatedResponse>> CreateBulkBatchItemBulkWithHttpInfoAsync(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
         /// </summary>
@@ -329,9 +347,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchPublishResponse</returns>
-        System.Threading.Tasks.Task<CreateBulkBatchPublishResponse> CreateBulkBatchPublishAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBulkBatchPublishResponse> CreateBulkBatchPublishAsync(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Publish reviewed items: drafts only (default) or live on destinations; adds quantity to an existing matching listing.
@@ -341,9 +360,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchPublishResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchPublishResponse>> CreateBulkBatchPublishWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchPublishResponse>> CreateBulkBatchPublishWithHttpInfoAsync(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Discard a batch (listings it produced stay).
         /// </summary>
@@ -444,9 +464,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBulkBatchesItem</returns>
-        System.Threading.Tasks.Task<ListBulkBatchesItem> UpdateBulkBatchAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListBulkBatchesItem> UpdateBulkBatchAsync(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change batch settings, or set stage \&quot;identify\&quot; when capture is done.
@@ -456,9 +477,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBulkBatchesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListBulkBatchesItem>> UpdateBulkBatchWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListBulkBatchesItem>> UpdateBulkBatchWithHttpInfoAsync(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Correct one item (match, title, price, photos…).
         /// </summary>
@@ -467,9 +489,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchItemResponse</returns>
-        System.Threading.Tasks.Task<CreateBulkBatchItemResponse> UpdateBulkBatchItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateBulkBatchItemResponse> UpdateBulkBatchItemAsync(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Correct one item (match, title, price, photos…).
@@ -479,9 +502,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchItemResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchItemResponse>> UpdateBulkBatchItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateBulkBatchItemResponse>> UpdateBulkBatchItemWithHttpInfoAsync(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -735,10 +759,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <returns>CreateBulkBatchIdentifyResponse</returns>
-        public CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify(Guid id)
+        public CreateBulkBatchIdentifyResponse CreateBulkBatchIdentify(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> localVarResponse = CreateBulkBatchIdentifyWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> localVarResponse = CreateBulkBatchIdentifyWithHttpInfo(id, createBulkBatchIdentifyRequest);
             return localVarResponse.Data;
         }
 
@@ -747,12 +772,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBulkBatchIdentifyResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyWithHttpInfo(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -773,6 +800,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchIdentifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -800,11 +828,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchIdentifyResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBulkBatchIdentifyResponse> CreateBulkBatchIdentifyAsync(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> localVarResponse = await CreateBulkBatchIdentifyWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse> localVarResponse = await CreateBulkBatchIdentifyWithHttpInfoAsync(id, createBulkBatchIdentifyRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -813,14 +842,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchIdentifyRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchIdentifyResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse>> CreateBulkBatchIdentifyWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchIdentifyResponse>> CreateBulkBatchIdentifyWithHttpInfoAsync(Guid id, CreateBulkBatchIdentifyRequest createBulkBatchIdentifyRequest = default(CreateBulkBatchIdentifyRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -841,6 +872,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchIdentifyRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -869,10 +901,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <returns>CreateBulkBatchItemResponse</returns>
-        public CreateBulkBatchItemResponse CreateBulkBatchItem(Guid id)
+        public CreateBulkBatchItemResponse CreateBulkBatchItem(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = CreateBulkBatchItemWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = CreateBulkBatchItemWithHttpInfo(id, createBulkBatchItemRequest);
             return localVarResponse.Data;
         }
 
@@ -881,12 +914,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <returns>ApiResponse of CreateBulkBatchItemResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> CreateBulkBatchItemWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> CreateBulkBatchItemWithHttpInfo(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest)
         {
+            // verify the required parameter 'createBulkBatchItemRequest' is set
+            if (createBulkBatchItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBulkBatchItemRequest' when calling BulkBatchesApi->CreateBulkBatchItem");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -907,6 +948,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -934,11 +976,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchItemResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBulkBatchItemResponse> CreateBulkBatchItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBulkBatchItemResponse> CreateBulkBatchItemAsync(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = await CreateBulkBatchItemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = await CreateBulkBatchItemWithHttpInfoAsync(id, createBulkBatchItemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -947,14 +990,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchItemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse>> CreateBulkBatchItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse>> CreateBulkBatchItemWithHttpInfoAsync(Guid id, CreateBulkBatchItemRequest createBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBulkBatchItemRequest' is set
+            if (createBulkBatchItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBulkBatchItemRequest' when calling BulkBatchesApi->CreateBulkBatchItem");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -975,6 +1026,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1003,10 +1055,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <returns>UpdatedResponse</returns>
-        public UpdatedResponse CreateBulkBatchItemBulk(Guid id)
+        public UpdatedResponse CreateBulkBatchItemBulk(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest)
         {
-            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateBulkBatchItemBulkWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = CreateBulkBatchItemBulkWithHttpInfo(id, createBulkBatchItemBulkRequest);
             return localVarResponse.Data;
         }
 
@@ -1015,12 +1068,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <returns>ApiResponse of UpdatedResponse</returns>
-        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateBulkBatchItemBulkWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<UpdatedResponse> CreateBulkBatchItemBulkWithHttpInfo(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest)
         {
+            // verify the required parameter 'createBulkBatchItemBulkRequest' is set
+            if (createBulkBatchItemBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBulkBatchItemBulkRequest' when calling BulkBatchesApi->CreateBulkBatchItemBulk");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1041,6 +1102,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchItemBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1068,11 +1130,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdatedResponse</returns>
-        public async System.Threading.Tasks.Task<UpdatedResponse> CreateBulkBatchItemBulkAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdatedResponse> CreateBulkBatchItemBulkAsync(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateBulkBatchItemBulkWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<UpdatedResponse> localVarResponse = await CreateBulkBatchItemBulkWithHttpInfoAsync(id, createBulkBatchItemBulkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1081,14 +1144,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchItemBulkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdatedResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateBulkBatchItemBulkWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatedResponse>> CreateBulkBatchItemBulkWithHttpInfoAsync(Guid id, CreateBulkBatchItemBulkRequest createBulkBatchItemBulkRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createBulkBatchItemBulkRequest' is set
+            if (createBulkBatchItemBulkRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createBulkBatchItemBulkRequest' when calling BulkBatchesApi->CreateBulkBatchItemBulk");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1109,6 +1180,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchItemBulkRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1137,10 +1209,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <returns>CreateBulkBatchPublishResponse</returns>
-        public CreateBulkBatchPublishResponse CreateBulkBatchPublish(Guid id)
+        public CreateBulkBatchPublishResponse CreateBulkBatchPublish(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> localVarResponse = CreateBulkBatchPublishWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> localVarResponse = CreateBulkBatchPublishWithHttpInfo(id, createBulkBatchPublishRequest);
             return localVarResponse.Data;
         }
 
@@ -1149,12 +1222,14 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateBulkBatchPublishResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> CreateBulkBatchPublishWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> CreateBulkBatchPublishWithHttpInfo(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1175,6 +1250,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchPublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1202,11 +1278,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchPublishResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBulkBatchPublishResponse> CreateBulkBatchPublishAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBulkBatchPublishResponse> CreateBulkBatchPublishAsync(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> localVarResponse = await CreateBulkBatchPublishWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse> localVarResponse = await CreateBulkBatchPublishWithHttpInfoAsync(id, createBulkBatchPublishRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1215,14 +1292,16 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="createBulkBatchPublishRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchPublishResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse>> CreateBulkBatchPublishWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchPublishResponse>> CreateBulkBatchPublishWithHttpInfoAsync(Guid id, CreateBulkBatchPublishRequest createBulkBatchPublishRequest = default(CreateBulkBatchPublishRequest), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1243,6 +1322,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = createBulkBatchPublishRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1813,10 +1893,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <returns>ListBulkBatchesItem</returns>
-        public ListBulkBatchesItem UpdateBulkBatch(Guid id)
+        public ListBulkBatchesItem UpdateBulkBatch(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest)
         {
-            net.crossly.Client.ApiResponse<ListBulkBatchesItem> localVarResponse = UpdateBulkBatchWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListBulkBatchesItem> localVarResponse = UpdateBulkBatchWithHttpInfo(id, updateBulkBatchRequest);
             return localVarResponse.Data;
         }
 
@@ -1825,12 +1906,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <returns>ApiResponse of ListBulkBatchesItem</returns>
-        public net.crossly.Client.ApiResponse<ListBulkBatchesItem> UpdateBulkBatchWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListBulkBatchesItem> UpdateBulkBatchWithHttpInfo(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest)
         {
+            // verify the required parameter 'updateBulkBatchRequest' is set
+            if (updateBulkBatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBulkBatchRequest' when calling BulkBatchesApi->UpdateBulkBatch");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1851,6 +1940,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBulkBatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1878,11 +1968,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListBulkBatchesItem</returns>
-        public async System.Threading.Tasks.Task<ListBulkBatchesItem> UpdateBulkBatchAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListBulkBatchesItem> UpdateBulkBatchAsync(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListBulkBatchesItem> localVarResponse = await UpdateBulkBatchWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListBulkBatchesItem> localVarResponse = await UpdateBulkBatchWithHttpInfoAsync(id, updateBulkBatchRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1891,14 +1982,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListBulkBatchesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBulkBatchesItem>> UpdateBulkBatchWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListBulkBatchesItem>> UpdateBulkBatchWithHttpInfoAsync(Guid id, UpdateBulkBatchRequest updateBulkBatchRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBulkBatchRequest' is set
+            if (updateBulkBatchRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBulkBatchRequest' when calling BulkBatchesApi->UpdateBulkBatch");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1919,6 +2018,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBulkBatchRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1947,10 +2047,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <returns>CreateBulkBatchItemResponse</returns>
-        public CreateBulkBatchItemResponse UpdateBulkBatchItem(Guid id)
+        public CreateBulkBatchItemResponse UpdateBulkBatchItem(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest)
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = UpdateBulkBatchItemWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = UpdateBulkBatchItemWithHttpInfo(id, updateBulkBatchItemRequest);
             return localVarResponse.Data;
         }
 
@@ -1959,12 +2060,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <returns>ApiResponse of CreateBulkBatchItemResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> UpdateBulkBatchItemWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> UpdateBulkBatchItemWithHttpInfo(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest)
         {
+            // verify the required parameter 'updateBulkBatchItemRequest' is set
+            if (updateBulkBatchItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBulkBatchItemRequest' when calling BulkBatchesApi->UpdateBulkBatchItem");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1985,6 +2094,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBulkBatchItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -2012,11 +2122,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateBulkBatchItemResponse</returns>
-        public async System.Threading.Tasks.Task<CreateBulkBatchItemResponse> UpdateBulkBatchItemAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateBulkBatchItemResponse> UpdateBulkBatchItemAsync(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = await UpdateBulkBatchItemWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse> localVarResponse = await UpdateBulkBatchItemWithHttpInfoAsync(id, updateBulkBatchItemRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2025,14 +2136,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateBulkBatchItemRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateBulkBatchItemResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse>> UpdateBulkBatchItemWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateBulkBatchItemResponse>> UpdateBulkBatchItemWithHttpInfoAsync(Guid id, UpdateBulkBatchItemRequest updateBulkBatchItemRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateBulkBatchItemRequest' is set
+            if (updateBulkBatchItemRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateBulkBatchItemRequest' when calling BulkBatchesApi->UpdateBulkBatchItem");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -2053,6 +2172,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateBulkBatchItemRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

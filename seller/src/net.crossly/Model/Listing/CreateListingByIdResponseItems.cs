@@ -146,9 +146,11 @@ namespace net.crossly.Model
         /// <param name="attributedOauthAppId">The third-party OAuth app that created this listing (via its access token), if any — the anchor for developer revenue-share: the app that created the item earns a cut of its sales. Stamped once at create time (first writer wins, never overwritten); null for the web app, a PAT, or anything first-party. &#x60;attributedGrantId&#x60; pins the specific install whose agreed terms apply. See services/developer-earnings/..</param>
         /// <param name="attributedGrantId">attributedGrantId.</param>
         /// <param name="quotaBucket">Which quota this listing is counted in (migration 1064): &#39;app_allowance&#39; &#x3D; the attributed app&#39;s per-seller allowance (services/app-allowance/), &#39;plan&#39; &#x3D; the seller&#39;s plan, null &#x3D; created before allowances / by no app (plan rules). Stays &#39;app_allowance&#39; after an unlink (grandfathered, no longer counted)..</param>
+        /// <param name="storefrontId">The store this listing belongs to (STORE-SCOPE-PLAN D7, migration 1342): stamped at write time from the request store, the connection&#39;s home store or the default store. NULL &#x3D; not stamped yet, which belongs to the owner&#39;s DEFAULT store (services/storefronts/scope.ts inStore) until backfill-store-usage.ts stamps it. Hot table: nullable, no default; the index is built CONCURRENTLY in 1343..</param>
+        /// <param name="assigneeMemberId">The teammate this listing (or draft) is assigned to (team_members.id, migration 1613); NULL &#x3D; unassigned. Written only through the work-assignment service (api-orders services/work-assignment). Hot table: nullable, no default; the partial index is built CONCURRENTLY in 1613..</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public CreateListingByIdResponseItems(string effectiveTitle = default(string), string effectivePrice = default(string), string effectiveDescription = default(string), List<string> effectiveImages = default(List<string>), string effectiveBrand = default(string), string effectiveCondition = default(string), string effectiveSize = default(string), string effectiveSku = default(string), List<string> effectiveColor = default(List<string>), List<string> effectiveTags = default(List<string>), List<Dictionary<string, Object>> platformListings = default(List<Dictionary<string, Object>>), string inventoryItemId = default(string), string id = default(string), string userId = default(string), string name = default(string), string title = default(string), string description = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> images = default(List<string>), string videoUrl = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), string status = default(string), string condition = default(string), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string brand = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> tags = default(List<string>), string sku = default(string), bool isDigital = default(bool), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string source = default(string), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public CreateListingByIdResponseItems(string effectiveTitle = default(string), string effectivePrice = default(string), string effectiveDescription = default(string), List<string> effectiveImages = default(List<string>), string effectiveBrand = default(string), string effectiveCondition = default(string), string effectiveSize = default(string), string effectiveSku = default(string), List<string> effectiveColor = default(List<string>), List<string> effectiveTags = default(List<string>), List<Dictionary<string, Object>> platformListings = default(List<Dictionary<string, Object>>), string inventoryItemId = default(string), string id = default(string), string userId = default(string), string name = default(string), string title = default(string), string description = default(string), string descriptionHtml = default(string), string price = default(string), string currency = default(string), List<string> images = default(List<string>), string videoUrl = default(string), List<string> aiMediaUrls = default(List<string>), bool aiMediaDeclared = default(bool), List<string> aiMediaDetectedUrls = default(List<string>), string status = default(string), string condition = default(string), string gradeKey = default(string), CreateBulkBatchItemResponseGrading grading = default(CreateBulkBatchItemResponseGrading), string brand = default(string), string size = default(string), string material = default(string), string style = default(string), string pattern = default(string), string department = default(string), string gender = default(string), string itemType = default(string), string sizeSystem = default(string), List<string> color = default(List<string>), List<string> tags = default(List<string>), string sku = default(string), bool isDigital = default(bool), decimal quantity = default(decimal), decimal quantityAvailable = default(decimal), string weightLb = default(string), string weightOz = default(string), string dimensionLIn = default(string), string dimensionWIn = default(string), string dimensionHIn = default(string), DateTime? publishAt = default(DateTime?), List<string> scheduledPlatforms = default(List<string>), string parentListingId = default(string), GroupKindEnum? groupKind = default(GroupKindEnum?), bool isBundle = default(bool), List<string> automationAssignedRuleIds = default(List<string>), List<string> automationBlockedRuleIds = default(List<string>), List<string> automationAssignedChainIds = default(List<string>), List<string> automationBlockedChainIds = default(List<string>), List<string> workflowBlockedIds = default(List<string>), List<string> workflowAssignedIds = default(List<string>), string hsCode = default(string), string countryOfOrigin = default(string), decimal? priceFloorCents = default(decimal?), bool floorIsNet = default(bool), DateTime? delistedAt = default(DateTime?), DateTime? soldAt = default(DateTime?), DateTime? ebayAttributesEnrichedAt = default(DateTime?), string source = default(string), string duplicateOfListingId = default(string), string clientDraftId = default(string), string attributedOauthAppId = default(string), string attributedGrantId = default(string), string quotaBucket = default(string), string storefrontId = default(string), string assigneeMemberId = default(string), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             // to ensure "effectiveTitle" is required (not null)
             if (effectiveTitle == null) {
@@ -301,6 +303,8 @@ namespace net.crossly.Model
             this.AttributedOauthAppId = attributedOauthAppId;
             this.AttributedGrantId = attributedGrantId;
             this.QuotaBucket = quotaBucket;
+            this.StorefrontId = storefrontId;
+            this.AssigneeMemberId = assigneeMemberId;
         }
 
         /// <summary>
@@ -759,6 +763,20 @@ namespace net.crossly.Model
         public string QuotaBucket { get; set; }
 
         /// <summary>
+        /// The store this listing belongs to (STORE-SCOPE-PLAN D7, migration 1342): stamped at write time from the request store, the connection&#39;s home store or the default store. NULL &#x3D; not stamped yet, which belongs to the owner&#39;s DEFAULT store (services/storefronts/scope.ts inStore) until backfill-store-usage.ts stamps it. Hot table: nullable, no default; the index is built CONCURRENTLY in 1343.
+        /// </summary>
+        /// <value>The store this listing belongs to (STORE-SCOPE-PLAN D7, migration 1342): stamped at write time from the request store, the connection&#39;s home store or the default store. NULL &#x3D; not stamped yet, which belongs to the owner&#39;s DEFAULT store (services/storefronts/scope.ts inStore) until backfill-store-usage.ts stamps it. Hot table: nullable, no default; the index is built CONCURRENTLY in 1343.</value>
+        [DataMember(Name = "storefrontId", EmitDefaultValue = true)]
+        public string StorefrontId { get; set; }
+
+        /// <summary>
+        /// The teammate this listing (or draft) is assigned to (team_members.id, migration 1613); NULL &#x3D; unassigned. Written only through the work-assignment service (api-orders services/work-assignment). Hot table: nullable, no default; the partial index is built CONCURRENTLY in 1613.
+        /// </summary>
+        /// <value>The teammate this listing (or draft) is assigned to (team_members.id, migration 1613); NULL &#x3D; unassigned. Written only through the work-assignment service (api-orders services/work-assignment). Hot table: nullable, no default; the partial index is built CONCURRENTLY in 1613.</value>
+        [DataMember(Name = "assigneeMemberId", EmitDefaultValue = true)]
+        public string AssigneeMemberId { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = false)]
@@ -851,6 +869,8 @@ namespace net.crossly.Model
             sb.Append("  AttributedOauthAppId: ").Append(AttributedOauthAppId).Append("\n");
             sb.Append("  AttributedGrantId: ").Append(AttributedGrantId).Append("\n");
             sb.Append("  QuotaBucket: ").Append(QuotaBucket).Append("\n");
+            sb.Append("  StorefrontId: ").Append(StorefrontId).Append("\n");
+            sb.Append("  AssigneeMemberId: ").Append(AssigneeMemberId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
@@ -1263,6 +1283,16 @@ namespace net.crossly.Model
                     this.QuotaBucket.Equals(input.QuotaBucket))
                 ) && 
                 (
+                    this.StorefrontId == input.StorefrontId ||
+                    (this.StorefrontId != null &&
+                    this.StorefrontId.Equals(input.StorefrontId))
+                ) && 
+                (
+                    this.AssigneeMemberId == input.AssigneeMemberId ||
+                    (this.AssigneeMemberId != null &&
+                    this.AssigneeMemberId.Equals(input.AssigneeMemberId))
+                ) && 
+                (
                     this.CreatedAt == input.CreatedAt ||
                     (this.CreatedAt != null &&
                     this.CreatedAt.Equals(input.CreatedAt))
@@ -1553,6 +1583,14 @@ namespace net.crossly.Model
                 if (this.QuotaBucket != null)
                 {
                     hashCode = (hashCode * 59) + this.QuotaBucket.GetHashCode();
+                }
+                if (this.StorefrontId != null)
+                {
+                    hashCode = (hashCode * 59) + this.StorefrontId.GetHashCode();
+                }
+                if (this.AssigneeMemberId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssigneeMemberId.GetHashCode();
                 }
                 if (this.CreatedAt != null)
                 {

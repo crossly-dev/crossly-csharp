@@ -30,8 +30,9 @@ namespace net.crossly.Api
         /// Create a per-channel field rule.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <returns>ListFieldRulesItem</returns>
-        ListFieldRulesItem CreateFieldRule();
+        ListFieldRulesItem CreateFieldRule(CreateFieldRuleRequest createFieldRuleRequest);
 
         /// <summary>
         /// Create a per-channel field rule.
@@ -40,14 +41,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <returns>ApiResponse of ListFieldRulesItem</returns>
-        ApiResponse<ListFieldRulesItem> CreateFieldRuleWithHttpInfo();
+        ApiResponse<ListFieldRulesItem> CreateFieldRuleWithHttpInfo(CreateFieldRuleRequest createFieldRuleRequest);
         /// <summary>
         /// Preview field-rule output for a listing on one channel.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <returns>CreateFieldRulePreviewResponse</returns>
-        CreateFieldRulePreviewResponse CreateFieldRulePreview();
+        CreateFieldRulePreviewResponse CreateFieldRulePreview(CreateFieldRulePreviewRequest createFieldRulePreviewRequest);
 
         /// <summary>
         /// Preview field-rule output for a listing on one channel.
@@ -56,14 +59,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <returns>ApiResponse of CreateFieldRulePreviewResponse</returns>
-        ApiResponse<CreateFieldRulePreviewResponse> CreateFieldRulePreviewWithHttpInfo();
+        ApiResponse<CreateFieldRulePreviewResponse> CreateFieldRulePreviewWithHttpInfo(CreateFieldRulePreviewRequest createFieldRulePreviewRequest);
         /// <summary>
         /// Set the run order of several field rules.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <returns>OkResponse</returns>
-        OkResponse CreateFieldRuleReorder();
+        OkResponse CreateFieldRuleReorder(CreateFieldRuleReorderRequest createFieldRuleReorderRequest);
 
         /// <summary>
         /// Set the run order of several field rules.
@@ -72,8 +77,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        ApiResponse<OkResponse> CreateFieldRuleReorderWithHttpInfo();
+        ApiResponse<OkResponse> CreateFieldRuleReorderWithHttpInfo(CreateFieldRuleReorderRequest createFieldRuleReorderRequest);
         /// <summary>
         /// Delete a field rule.
         /// </summary>
@@ -133,8 +139,9 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <returns>ListFieldRulesItem</returns>
-        ListFieldRulesItem UpdateFieldRule(Guid id);
+        ListFieldRulesItem UpdateFieldRule(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest);
 
         /// <summary>
         /// Update a field rule.
@@ -144,8 +151,9 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <returns>ApiResponse of ListFieldRulesItem</returns>
-        ApiResponse<ListFieldRulesItem> UpdateFieldRuleWithHttpInfo(Guid id);
+        ApiResponse<ListFieldRulesItem> UpdateFieldRuleWithHttpInfo(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest);
         #endregion Synchronous Operations
     }
 
@@ -162,9 +170,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFieldRulesItem</returns>
-        System.Threading.Tasks.Task<ListFieldRulesItem> CreateFieldRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListFieldRulesItem> CreateFieldRuleAsync(CreateFieldRuleRequest createFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Create a per-channel field rule.
@@ -173,9 +182,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFieldRulesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListFieldRulesItem>> CreateFieldRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListFieldRulesItem>> CreateFieldRuleWithHttpInfoAsync(CreateFieldRuleRequest createFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Preview field-rule output for a listing on one channel.
         /// </summary>
@@ -183,9 +193,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFieldRulePreviewResponse</returns>
-        System.Threading.Tasks.Task<CreateFieldRulePreviewResponse> CreateFieldRulePreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateFieldRulePreviewResponse> CreateFieldRulePreviewAsync(CreateFieldRulePreviewRequest createFieldRulePreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Preview field-rule output for a listing on one channel.
@@ -194,9 +205,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFieldRulePreviewResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateFieldRulePreviewResponse>> CreateFieldRulePreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateFieldRulePreviewResponse>> CreateFieldRulePreviewWithHttpInfoAsync(CreateFieldRulePreviewRequest createFieldRulePreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Set the run order of several field rules.
         /// </summary>
@@ -204,9 +216,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        System.Threading.Tasks.Task<OkResponse> CreateFieldRuleReorderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<OkResponse> CreateFieldRuleReorderAsync(CreateFieldRuleReorderRequest createFieldRuleReorderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Set the run order of several field rules.
@@ -215,9 +228,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateFieldRuleReorderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<OkResponse>> CreateFieldRuleReorderWithHttpInfoAsync(CreateFieldRuleReorderRequest createFieldRuleReorderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a field rule.
         /// </summary>
@@ -295,9 +309,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFieldRulesItem</returns>
-        System.Threading.Tasks.Task<ListFieldRulesItem> UpdateFieldRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListFieldRulesItem> UpdateFieldRuleAsync(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a field rule.
@@ -307,9 +322,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFieldRulesItem)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListFieldRulesItem>> UpdateFieldRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListFieldRulesItem>> UpdateFieldRuleWithHttpInfoAsync(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -434,10 +450,11 @@ namespace net.crossly.Api
         /// Create a per-channel field rule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <returns>ListFieldRulesItem</returns>
-        public ListFieldRulesItem CreateFieldRule()
+        public ListFieldRulesItem CreateFieldRule(CreateFieldRuleRequest createFieldRuleRequest)
         {
-            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = CreateFieldRuleWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = CreateFieldRuleWithHttpInfo(createFieldRuleRequest);
             return localVarResponse.Data;
         }
 
@@ -445,12 +462,20 @@ namespace net.crossly.Api
         /// Create a per-channel field rule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <returns>ApiResponse of ListFieldRulesItem</returns>
-        public net.crossly.Client.ApiResponse<ListFieldRulesItem> CreateFieldRuleWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListFieldRulesItem> CreateFieldRuleWithHttpInfo(CreateFieldRuleRequest createFieldRuleRequest)
         {
+            // verify the required parameter 'createFieldRuleRequest' is set
+            if (createFieldRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRuleRequest' when calling FieldRulesApi->CreateFieldRule");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -470,6 +495,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -496,11 +522,12 @@ namespace net.crossly.Api
         /// Create a per-channel field rule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFieldRulesItem</returns>
-        public async System.Threading.Tasks.Task<ListFieldRulesItem> CreateFieldRuleAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListFieldRulesItem> CreateFieldRuleAsync(CreateFieldRuleRequest createFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = await CreateFieldRuleWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = await CreateFieldRuleWithHttpInfoAsync(createFieldRuleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -508,14 +535,22 @@ namespace net.crossly.Api
         /// Create a per-channel field rule. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFieldRulesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFieldRulesItem>> CreateFieldRuleWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFieldRulesItem>> CreateFieldRuleWithHttpInfoAsync(CreateFieldRuleRequest createFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFieldRuleRequest' is set
+            if (createFieldRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRuleRequest' when calling FieldRulesApi->CreateFieldRule");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -535,6 +570,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -562,10 +598,11 @@ namespace net.crossly.Api
         /// Preview field-rule output for a listing on one channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <returns>CreateFieldRulePreviewResponse</returns>
-        public CreateFieldRulePreviewResponse CreateFieldRulePreview()
+        public CreateFieldRulePreviewResponse CreateFieldRulePreview(CreateFieldRulePreviewRequest createFieldRulePreviewRequest)
         {
-            net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> localVarResponse = CreateFieldRulePreviewWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> localVarResponse = CreateFieldRulePreviewWithHttpInfo(createFieldRulePreviewRequest);
             return localVarResponse.Data;
         }
 
@@ -573,12 +610,20 @@ namespace net.crossly.Api
         /// Preview field-rule output for a listing on one channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <returns>ApiResponse of CreateFieldRulePreviewResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> CreateFieldRulePreviewWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> CreateFieldRulePreviewWithHttpInfo(CreateFieldRulePreviewRequest createFieldRulePreviewRequest)
         {
+            // verify the required parameter 'createFieldRulePreviewRequest' is set
+            if (createFieldRulePreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRulePreviewRequest' when calling FieldRulesApi->CreateFieldRulePreview");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -598,6 +643,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRulePreviewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -624,11 +670,12 @@ namespace net.crossly.Api
         /// Preview field-rule output for a listing on one channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateFieldRulePreviewResponse</returns>
-        public async System.Threading.Tasks.Task<CreateFieldRulePreviewResponse> CreateFieldRulePreviewAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateFieldRulePreviewResponse> CreateFieldRulePreviewAsync(CreateFieldRulePreviewRequest createFieldRulePreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> localVarResponse = await CreateFieldRulePreviewWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse> localVarResponse = await CreateFieldRulePreviewWithHttpInfoAsync(createFieldRulePreviewRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -636,14 +683,22 @@ namespace net.crossly.Api
         /// Preview field-rule output for a listing on one channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRulePreviewRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateFieldRulePreviewResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse>> CreateFieldRulePreviewWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateFieldRulePreviewResponse>> CreateFieldRulePreviewWithHttpInfoAsync(CreateFieldRulePreviewRequest createFieldRulePreviewRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFieldRulePreviewRequest' is set
+            if (createFieldRulePreviewRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRulePreviewRequest' when calling FieldRulesApi->CreateFieldRulePreview");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -663,6 +718,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRulePreviewRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -690,10 +746,11 @@ namespace net.crossly.Api
         /// Set the run order of several field rules. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <returns>OkResponse</returns>
-        public OkResponse CreateFieldRuleReorder()
+        public OkResponse CreateFieldRuleReorder(CreateFieldRuleReorderRequest createFieldRuleReorderRequest)
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateFieldRuleReorderWithHttpInfo();
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = CreateFieldRuleReorderWithHttpInfo(createFieldRuleReorderRequest);
             return localVarResponse.Data;
         }
 
@@ -701,12 +758,20 @@ namespace net.crossly.Api
         /// Set the run order of several field rules. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <returns>ApiResponse of OkResponse</returns>
-        public net.crossly.Client.ApiResponse<OkResponse> CreateFieldRuleReorderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<OkResponse> CreateFieldRuleReorderWithHttpInfo(CreateFieldRuleReorderRequest createFieldRuleReorderRequest)
         {
+            // verify the required parameter 'createFieldRuleReorderRequest' is set
+            if (createFieldRuleReorderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRuleReorderRequest' when calling FieldRulesApi->CreateFieldRuleReorder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -726,6 +791,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRuleReorderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -752,11 +818,12 @@ namespace net.crossly.Api
         /// Set the run order of several field rules. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of OkResponse</returns>
-        public async System.Threading.Tasks.Task<OkResponse> CreateFieldRuleReorderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<OkResponse> CreateFieldRuleReorderAsync(CreateFieldRuleReorderRequest createFieldRuleReorderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateFieldRuleReorderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<OkResponse> localVarResponse = await CreateFieldRuleReorderWithHttpInfoAsync(createFieldRuleReorderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -764,14 +831,22 @@ namespace net.crossly.Api
         /// Set the run order of several field rules. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createFieldRuleReorderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (OkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateFieldRuleReorderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<OkResponse>> CreateFieldRuleReorderWithHttpInfoAsync(CreateFieldRuleReorderRequest createFieldRuleReorderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createFieldRuleReorderRequest' is set
+            if (createFieldRuleReorderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createFieldRuleReorderRequest' when calling FieldRulesApi->CreateFieldRuleReorder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -791,6 +866,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createFieldRuleReorderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1227,10 +1303,11 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <returns>ListFieldRulesItem</returns>
-        public ListFieldRulesItem UpdateFieldRule(Guid id)
+        public ListFieldRulesItem UpdateFieldRule(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest)
         {
-            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = UpdateFieldRuleWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = UpdateFieldRuleWithHttpInfo(id, updateFieldRuleRequest);
             return localVarResponse.Data;
         }
 
@@ -1239,12 +1316,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <returns>ApiResponse of ListFieldRulesItem</returns>
-        public net.crossly.Client.ApiResponse<ListFieldRulesItem> UpdateFieldRuleWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<ListFieldRulesItem> UpdateFieldRuleWithHttpInfo(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest)
         {
+            // verify the required parameter 'updateFieldRuleRequest' is set
+            if (updateFieldRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFieldRuleRequest' when calling FieldRulesApi->UpdateFieldRule");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1265,6 +1350,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateFieldRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1292,11 +1378,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListFieldRulesItem</returns>
-        public async System.Threading.Tasks.Task<ListFieldRulesItem> UpdateFieldRuleAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListFieldRulesItem> UpdateFieldRuleAsync(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = await UpdateFieldRuleWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListFieldRulesItem> localVarResponse = await UpdateFieldRuleWithHttpInfoAsync(id, updateFieldRuleRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1305,14 +1392,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updateFieldRuleRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListFieldRulesItem)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFieldRulesItem>> UpdateFieldRuleWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListFieldRulesItem>> UpdateFieldRuleWithHttpInfoAsync(Guid id, UpdateFieldRuleRequest updateFieldRuleRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updateFieldRuleRequest' is set
+            if (updateFieldRuleRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updateFieldRuleRequest' when calling FieldRulesApi->UpdateFieldRule");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1333,6 +1428,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updateFieldRuleRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

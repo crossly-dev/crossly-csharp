@@ -26,7 +26,7 @@ using OpenAPIDateConverter = net.crossly.Client.OpenAPIDateConverter;
 namespace net.crossly.Model
 {
     /// <summary>
-    /// The owner&#39;s crew, when they are in one (crew-only needs it).
+    /// The store that owns the app and is paid what it earns (spec DV1). Null &#x3D; held until a store is chosen.
     /// </summary>
     [DataContract(Name = "IdName2")]
     public partial class IdName2 : IEquatable<IdName2>, IValidatableObject

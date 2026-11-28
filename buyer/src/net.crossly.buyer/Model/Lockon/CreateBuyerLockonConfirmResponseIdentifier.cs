@@ -38,34 +38,34 @@ namespace net.crossly.buyer.Model
         public enum NsEnum
         {
             /// <summary>
-            /// Enum Gtin for value: gtin
+            /// Enum Discogs for value: discogs
             /// </summary>
-            [EnumMember(Value = "gtin")]
-            Gtin = 1,
-
-            /// <summary>
-            /// Enum StyleCode for value: style_code
-            /// </summary>
-            [EnumMember(Value = "style_code")]
-            StyleCode = 2,
-
-            /// <summary>
-            /// Enum LegoSet for value: lego_set
-            /// </summary>
-            [EnumMember(Value = "lego_set")]
-            LegoSet = 3,
+            [EnumMember(Value = "discogs")]
+            Discogs = 1,
 
             /// <summary>
             /// Enum Tcgplayer for value: tcgplayer
             /// </summary>
             [EnumMember(Value = "tcgplayer")]
-            Tcgplayer = 4,
+            Tcgplayer = 2,
 
             /// <summary>
-            /// Enum Discogs for value: discogs
+            /// Enum Gtin for value: gtin
             /// </summary>
-            [EnumMember(Value = "discogs")]
-            Discogs = 5,
+            [EnumMember(Value = "gtin")]
+            Gtin = 3,
+
+            /// <summary>
+            /// Enum StyleCode for value: style_code
+            /// </summary>
+            [EnumMember(Value = "style_code")]
+            StyleCode = 4,
+
+            /// <summary>
+            /// Enum LegoSet for value: lego_set
+            /// </summary>
+            [EnumMember(Value = "lego_set")]
+            LegoSet = 5,
 
             /// <summary>
             /// Enum Asin for value: asin

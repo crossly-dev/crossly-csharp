@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="UpdateWorldFitValueShareResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public UpdateWorldFitValueShareResponse(UpdateWorldFitValueShareResponseData data = default(UpdateWorldFitValueShareResponseData))
+        public UpdateWorldFitValueShareResponse(UpdateWorldFitValueShareRequest data = default(UpdateWorldFitValueShareRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public UpdateWorldFitValueShareResponseData Data { get; set; }
+        public UpdateWorldFitValueShareRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 <a name="updatesourcesync"></a>
 # **UpdateSourceSync**
-> ListSourceSyncItem UpdateSourceSync (string platform)
+> ListSourceSyncItem UpdateSourceSync (string platform, UpdateSourceSyncRequest updateSourceSyncRequest = null)
 
 Update a store's source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
 
@@ -349,11 +349,12 @@ namespace Example
 
             var apiInstance = new SourceSyncApi(config);
             var platform = "shopify";  // string | 
+            var updateSourceSyncRequest = new UpdateSourceSyncRequest(); // UpdateSourceSyncRequest |  (optional) 
 
             try
             {
                 // Update a store's source-sync settings: on/off, source-owned fields, deletion handling, auto-export channels.
-                ListSourceSyncItem result = apiInstance.UpdateSourceSync(platform);
+                ListSourceSyncItem result = apiInstance.UpdateSourceSync(platform, updateSourceSyncRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -372,6 +373,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **platform** | **string**|  | 
+ **updateSourceSyncRequest** | **UpdateSourceSyncRequest**|  | [optional] 
 
 ### Return type
 
@@ -383,7 +385,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

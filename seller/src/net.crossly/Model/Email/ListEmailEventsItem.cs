@@ -47,7 +47,8 @@ namespace net.crossly.Model
         /// <param name="detail">detail.</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="candidates">The seller&#39;s listings it could be about. One &#x3D; obvious; several &#x3D; the seller picks. (required).</param>
-        public ListEmailEventsItem(string id = default(string), string platform = default(string), string _event = default(string), string title = default(string), ListEmailEventsItemPrice price = default(ListEmailEventsItemPrice), string detail = default(string), string createdAt = default(string), List<ListEmailEventsItemCandidates> candidates = default(List<ListEmailEventsItemCandidates>))
+        /// <param name="detectedEventId">The detected event the email was reported as (email_events.detected_event_id): the card&#39;s \&quot;Open in History\&quot;..</param>
+        public ListEmailEventsItem(string id = default(string), string platform = default(string), string _event = default(string), string title = default(string), AmountCurrency price = default(AmountCurrency), string detail = default(string), string createdAt = default(string), List<ListEmailEventsItemCandidates> candidates = default(List<ListEmailEventsItemCandidates>), string detectedEventId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -69,6 +70,7 @@ namespace net.crossly.Model
             this.Title = title;
             this.Price = price;
             this.Detail = detail;
+            this.DetectedEventId = detectedEventId;
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace net.crossly.Model
         /// Gets or Sets Price
         /// </summary>
         [DataMember(Name = "price", EmitDefaultValue = true)]
-        public ListEmailEventsItemPrice Price { get; set; }
+        public AmountCurrency Price { get; set; }
 
         /// <summary>
         /// Gets or Sets Detail
@@ -122,6 +124,13 @@ namespace net.crossly.Model
         public List<ListEmailEventsItemCandidates> Candidates { get; set; }
 
         /// <summary>
+        /// The detected event the email was reported as (email_events.detected_event_id): the card&#39;s \&quot;Open in History\&quot;.
+        /// </summary>
+        /// <value>The detected event the email was reported as (email_events.detected_event_id): the card&#39;s \&quot;Open in History\&quot;.</value>
+        [DataMember(Name = "detectedEventId", EmitDefaultValue = true)]
+        public string DetectedEventId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -137,6 +146,7 @@ namespace net.crossly.Model
             sb.Append("  Detail: ").Append(Detail).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  Candidates: ").Append(Candidates).Append("\n");
+            sb.Append("  DetectedEventId: ").Append(DetectedEventId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -212,6 +222,11 @@ namespace net.crossly.Model
                     this.Candidates != null &&
                     input.Candidates != null &&
                     this.Candidates.SequenceEqual(input.Candidates)
+                ) && 
+                (
+                    this.DetectedEventId == input.DetectedEventId ||
+                    (this.DetectedEventId != null &&
+                    this.DetectedEventId.Equals(input.DetectedEventId))
                 );
         }
 
@@ -255,6 +270,10 @@ namespace net.crossly.Model
                 if (this.Candidates != null)
                 {
                     hashCode = (hashCode * 59) + this.Candidates.GetHashCode();
+                }
+                if (this.DetectedEventId != null)
+                {
+                    hashCode = (hashCode * 59) + this.DetectedEventId.GetHashCode();
                 }
                 return hashCode;
             }

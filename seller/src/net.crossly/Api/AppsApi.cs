@@ -45,7 +45,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListAppsItem</returns>
         ApiResponse<ListAppsItem> GetAppWithHttpInfo(string clientId);
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only.
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -53,7 +53,7 @@ namespace net.crossly.Api
         GetAppEarningResponse GetAppEarning(Guid id);
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only.
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it.
         /// </summary>
         /// <remarks>
         /// 
@@ -143,7 +143,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListAppsItem)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAppsItem>> GetAppWithHttpInfoAsync(string clientId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only.
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it.
         /// </summary>
         /// <remarks>
         /// 
@@ -155,7 +155,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetAppEarningResponse> GetAppEarningAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only.
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it.
         /// </summary>
         /// <remarks>
         /// 
@@ -490,7 +490,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only. 
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -502,7 +502,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only. 
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -555,7 +555,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only. 
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
@@ -568,7 +568,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Your OAuth app&#39;s revenue-share earnings: summary + ledger. Owner only. 
+        /// Your store&#39;s OAuth app&#39;s revenue-share earnings: summary (with the store they pay out to) + ledger. The app&#39;s store owner, or a teammate with apps:read on it. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>

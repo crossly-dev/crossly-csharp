@@ -38,16 +38,16 @@ namespace net.crossly.Model
         public enum StateEnum
         {
             /// <summary>
-            /// Enum Pending for value: pending
-            /// </summary>
-            [EnumMember(Value = "pending")]
-            Pending = 1,
-
-            /// <summary>
             /// Enum Draft for value: draft
             /// </summary>
             [EnumMember(Value = "draft")]
-            Draft = 2,
+            Draft = 1,
+
+            /// <summary>
+            /// Enum Pending for value: pending
+            /// </summary>
+            [EnumMember(Value = "pending")]
+            Pending = 2,
 
             /// <summary>
             /// Enum Cancelled for value: cancelled

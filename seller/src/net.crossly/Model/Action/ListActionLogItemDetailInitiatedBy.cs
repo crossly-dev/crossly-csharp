@@ -38,40 +38,40 @@ namespace net.crossly.Model
         public enum KindEnum
         {
             /// <summary>
+            /// Enum App for value: app
+            /// </summary>
+            [EnumMember(Value = "app")]
+            App = 1,
+
+            /// <summary>
             /// Enum Person for value: person
             /// </summary>
             [EnumMember(Value = "person")]
-            Person = 1,
+            Person = 2,
 
             /// <summary>
             /// Enum Rule for value: rule
             /// </summary>
             [EnumMember(Value = "rule")]
-            Rule = 2,
+            Rule = 3,
 
             /// <summary>
             /// Enum Sale for value: sale
             /// </summary>
             [EnumMember(Value = "sale")]
-            Sale = 3,
+            Sale = 4,
 
             /// <summary>
             /// Enum Bulk for value: bulk
             /// </summary>
             [EnumMember(Value = "bulk")]
-            Bulk = 4,
+            Bulk = 5,
 
             /// <summary>
             /// Enum Schedule for value: schedule
             /// </summary>
             [EnumMember(Value = "schedule")]
-            Schedule = 5,
-
-            /// <summary>
-            /// Enum App for value: app
-            /// </summary>
-            [EnumMember(Value = "app")]
-            App = 6,
+            Schedule = 6,
 
             /// <summary>
             /// Enum System for value: system

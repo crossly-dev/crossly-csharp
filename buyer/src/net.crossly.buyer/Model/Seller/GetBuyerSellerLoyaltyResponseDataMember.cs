@@ -47,7 +47,8 @@ namespace net.crossly.buyer.Model
         /// <param name="joinedAt">joinedAt (required).</param>
         /// <param name="perks">perks (required).</param>
         /// <param name="history">history (required).</param>
-        public GetBuyerSellerLoyaltyResponseDataMember(GetBuyerSellerLoyaltyResponseDataMemberStanding standing = default(GetBuyerSellerLoyaltyResponseDataMemberStanding), decimal value = default(decimal), GetBuyerSellerLoyaltyResponseDataMemberTier tier = default(GetBuyerSellerLoyaltyResponseDataMemberTier), GetBuyerSellerLoyaltyResponseDataMemberNext next = default(GetBuyerSellerLoyaltyResponseDataMemberNext), string graceUntil = default(string), string joinedAt = default(string), List<GetBuyerSellerLoyaltyResponseDataMemberPerks> perks = default(List<GetBuyerSellerLoyaltyResponseDataMemberPerks>), List<GetBuyerSellerLoyaltyResponseDataMemberHistory> history = default(List<GetBuyerSellerLoyaltyResponseDataMemberHistory>))
+        /// <param name="id">id.</param>
+        public GetBuyerSellerLoyaltyResponseDataMember(GetBuyerSellerLoyaltyResponseDataMemberStanding standing = default(GetBuyerSellerLoyaltyResponseDataMemberStanding), decimal value = default(decimal), GetBuyerSellerLoyaltyResponseDataMemberTier tier = default(GetBuyerSellerLoyaltyResponseDataMemberTier), GetBuyerSellerLoyaltyResponseDataMemberNext next = default(GetBuyerSellerLoyaltyResponseDataMemberNext), string graceUntil = default(string), string joinedAt = default(string), List<GetBuyerSellerLoyaltyResponseDataMemberPerks> perks = default(List<GetBuyerSellerLoyaltyResponseDataMemberPerks>), List<GetBuyerSellerLoyaltyResponseDataMemberHistory> history = default(List<GetBuyerSellerLoyaltyResponseDataMemberHistory>), string id = default(string))
         {
             // to ensure "standing" is required (not null)
             if (standing == null) {
@@ -73,6 +74,7 @@ namespace net.crossly.buyer.Model
             this.Tier = tier;
             this.Next = next;
             this.GraceUntil = graceUntil;
+            this.Id = id;
         }
 
         /// <summary>
@@ -124,6 +126,12 @@ namespace net.crossly.buyer.Model
         public List<GetBuyerSellerLoyaltyResponseDataMemberHistory> History { get; set; }
 
         /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public string Id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -139,6 +147,7 @@ namespace net.crossly.buyer.Model
             sb.Append("  JoinedAt: ").Append(JoinedAt).Append("\n");
             sb.Append("  Perks: ").Append(Perks).Append("\n");
             sb.Append("  History: ").Append(History).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -214,6 +223,11 @@ namespace net.crossly.buyer.Model
                     this.History != null &&
                     input.History != null &&
                     this.History.SequenceEqual(input.History)
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -254,6 +268,10 @@ namespace net.crossly.buyer.Model
                 if (this.History != null)
                 {
                     hashCode = (hashCode * 59) + this.History.GetHashCode();
+                }
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
                 return hashCode;
             }

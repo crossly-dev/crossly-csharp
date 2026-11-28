@@ -50,28 +50,28 @@ namespace net.crossly.Model
             Shelves = 2,
 
             /// <summary>
+            /// Enum About for value: about
+            /// </summary>
+            [EnumMember(Value = "about")]
+            About = 3,
+
+            /// <summary>
             /// Enum Reviews for value: reviews
             /// </summary>
             [EnumMember(Value = "reviews")]
-            Reviews = 3,
+            Reviews = 4,
 
             /// <summary>
             /// Enum Club for value: club
             /// </summary>
             [EnumMember(Value = "club")]
-            Club = 4,
+            Club = 5,
 
             /// <summary>
             /// Enum Policies for value: policies
             /// </summary>
             [EnumMember(Value = "policies")]
-            Policies = 5,
-
-            /// <summary>
-            /// Enum About for value: about
-            /// </summary>
-            [EnumMember(Value = "about")]
-            About = 6,
+            Policies = 6,
 
             /// <summary>
             /// Enum Lookbooks for value: lookbooks

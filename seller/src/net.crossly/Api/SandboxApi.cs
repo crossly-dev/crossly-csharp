@@ -46,8 +46,9 @@ namespace net.crossly.Api
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <returns>CreateInboxConversationBulkResponse</returns>
-        CreateInboxConversationBulkResponse CreateSandboxSimulateInventory();
+        CreateInboxConversationBulkResponse CreateSandboxSimulateInventory(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest);
 
         /// <summary>
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel.
@@ -56,14 +57,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkResponse</returns>
-        ApiResponse<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryWithHttpInfo();
+        ApiResponse<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryWithHttpInfo(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest);
         /// <summary>
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <returns>CreateSandboxSimulateListingSoldOutResponse</returns>
-        CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut();
+        CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest);
 
         /// <summary>
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist).
@@ -72,14 +75,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateListingSoldOutResponse</returns>
-        ApiResponse<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutWithHttpInfo(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest);
         /// <summary>
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <returns>CreateSandboxSimulateOrderResponse</returns>
-        CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder();
+        CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest);
 
         /// <summary>
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
@@ -88,14 +93,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderResponse</returns>
-        ApiResponse<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderWithHttpInfo(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest);
         /// <summary>
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <returns>CreateSandboxSimulateOrderAddressResponse</returns>
-        CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress();
+        CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest);
 
         /// <summary>
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available).
@@ -104,14 +111,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderAddressResponse</returns>
-        ApiResponse<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressWithHttpInfo(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest);
         /// <summary>
         /// The buyer or the marketplace cancels an order (order.cancelled).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>CreateSandboxSimulateOrderCancelledResponse</returns>
-        CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled();
+        CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled(OrderIdReasonRequest orderIdReasonRequest);
 
         /// <summary>
         /// The buyer or the marketplace cancels an order (order.cancelled).
@@ -120,14 +129,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderCancelledResponse</returns>
-        ApiResponse<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest);
         /// <summary>
         /// The carrier delivers a shipped order (order.delivered).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>CreateSandboxSimulateOrderDeliveredResponse</returns>
-        CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered();
+        CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered(OrderIdReasonRequest orderIdReasonRequest);
 
         /// <summary>
         /// The carrier delivers a shipped order (order.delivered).
@@ -136,14 +147,16 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderDeliveredResponse</returns>
-        ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest);
         /// <summary>
         /// Refund an order in full or in part (refund.issued).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <returns>CreateSandboxSimulateRefundResponse</returns>
-        CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund();
+        CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest);
 
         /// <summary>
         /// Refund an order in full or in part (refund.issued).
@@ -152,8 +165,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateRefundResponse</returns>
-        ApiResponse<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundWithHttpInfo();
+        ApiResponse<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundWithHttpInfo(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest);
         /// <summary>
         /// The sandbox seller this token acts on, its simulated channels and the failure modes.
         /// </summary>
@@ -174,8 +188,9 @@ namespace net.crossly.Api
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListSandboxEventsResponse</returns>
-        ListSandboxEventsResponse ListSandboxEvents();
+        ListSandboxEventsResponse ListSandboxEvents(decimal? limit = default(decimal?));
 
         /// <summary>
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency.
@@ -184,8 +199,9 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListSandboxEventsResponse</returns>
-        ApiResponse<ListSandboxEventsResponse> ListSandboxEventsWithHttpInfo();
+        ApiResponse<ListSandboxEventsResponse> ListSandboxEventsWithHttpInfo(decimal? limit = default(decimal?));
         #endregion Synchronous Operations
     }
 
@@ -223,9 +239,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkResponse</returns>
-        System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryAsync(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel.
@@ -234,9 +251,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkResponse>> CreateSandboxSimulateInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateInboxConversationBulkResponse>> CreateSandboxSimulateInventoryWithHttpInfoAsync(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist).
         /// </summary>
@@ -244,9 +262,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateListingSoldOutResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutAsync(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist).
@@ -255,9 +274,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateListingSoldOutResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
         /// </summary>
@@ -265,9 +285,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderAsync(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates).
@@ -276,9 +297,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderResponse>> CreateSandboxSimulateOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderResponse>> CreateSandboxSimulateOrderWithHttpInfoAsync(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available).
         /// </summary>
@@ -286,9 +308,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderAddressResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressAsync(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available).
@@ -297,9 +320,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderAddressResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderAddressResponse>> CreateSandboxSimulateOrderAddressWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderAddressResponse>> CreateSandboxSimulateOrderAddressWithHttpInfoAsync(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The buyer or the marketplace cancels an order (order.cancelled).
         /// </summary>
@@ -307,9 +331,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderCancelledResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The buyer or the marketplace cancels an order (order.cancelled).
@@ -318,9 +343,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderCancelledResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The carrier delivers a shipped order (order.delivered).
         /// </summary>
@@ -328,9 +354,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderDeliveredResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The carrier delivers a shipped order (order.delivered).
@@ -339,9 +366,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderDeliveredResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Refund an order in full or in part (refund.issued).
         /// </summary>
@@ -349,9 +377,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateRefundResponse</returns>
-        System.Threading.Tasks.Task<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundAsync(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Refund an order in full or in part (refund.issued).
@@ -360,9 +389,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateRefundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateRefundResponse>> CreateSandboxSimulateRefundWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateSandboxSimulateRefundResponse>> CreateSandboxSimulateRefundWithHttpInfoAsync(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// The sandbox seller this token acts on, its simulated channels and the failure modes.
         /// </summary>
@@ -391,9 +421,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSandboxEventsResponse</returns>
-        System.Threading.Tasks.Task<ListSandboxEventsResponse> ListSandboxEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ListSandboxEventsResponse> ListSandboxEventsAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency.
@@ -402,9 +433,10 @@ namespace net.crossly.Api
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSandboxEventsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSandboxEventsResponse>> ListSandboxEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ListSandboxEventsResponse>> ListSandboxEventsWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -657,10 +689,11 @@ namespace net.crossly.Api
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <returns>CreateInboxConversationBulkResponse</returns>
-        public CreateInboxConversationBulkResponse CreateSandboxSimulateInventory()
+        public CreateInboxConversationBulkResponse CreateSandboxSimulateInventory(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest)
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = CreateSandboxSimulateInventoryWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = CreateSandboxSimulateInventoryWithHttpInfo(createSandboxSimulateInventoryRequest);
             return localVarResponse.Data;
         }
 
@@ -668,12 +701,20 @@ namespace net.crossly.Api
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <returns>ApiResponse of CreateInboxConversationBulkResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryWithHttpInfo(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest)
         {
+            // verify the required parameter 'createSandboxSimulateInventoryRequest' is set
+            if (createSandboxSimulateInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateInventoryRequest' when calling SandboxApi->CreateSandboxSimulateInventory");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -693,6 +734,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -719,11 +761,12 @@ namespace net.crossly.Api
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateInboxConversationBulkResponse</returns>
-        public async System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateInboxConversationBulkResponse> CreateSandboxSimulateInventoryAsync(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = await CreateSandboxSimulateInventoryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse> localVarResponse = await CreateSandboxSimulateInventoryWithHttpInfoAsync(createSandboxSimulateInventoryRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -731,14 +774,22 @@ namespace net.crossly.Api
         /// Change stock (set, increase or decrease); the new quantity is pushed to every channel. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateInventoryRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateInboxConversationBulkResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse>> CreateSandboxSimulateInventoryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateInboxConversationBulkResponse>> CreateSandboxSimulateInventoryWithHttpInfoAsync(CreateSandboxSimulateInventoryRequest createSandboxSimulateInventoryRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSandboxSimulateInventoryRequest' is set
+            if (createSandboxSimulateInventoryRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateInventoryRequest' when calling SandboxApi->CreateSandboxSimulateInventory");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -758,6 +809,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateInventoryRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -785,10 +837,11 @@ namespace net.crossly.Api
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <returns>CreateSandboxSimulateListingSoldOutResponse</returns>
-        public CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut()
+        public CreateSandboxSimulateListingSoldOutResponse CreateSandboxSimulateListingSoldOut(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> localVarResponse = CreateSandboxSimulateListingSoldOutWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> localVarResponse = CreateSandboxSimulateListingSoldOutWithHttpInfo(createSandboxSimulateListingSoldOutRequest);
             return localVarResponse.Data;
         }
 
@@ -796,12 +849,20 @@ namespace net.crossly.Api
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateListingSoldOutResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutWithHttpInfo(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest)
         {
+            // verify the required parameter 'createSandboxSimulateListingSoldOutRequest' is set
+            if (createSandboxSimulateListingSoldOutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateListingSoldOutRequest' when calling SandboxApi->CreateSandboxSimulateListingSoldOut");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -821,6 +882,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateListingSoldOutRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -847,11 +909,12 @@ namespace net.crossly.Api
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateListingSoldOutResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateListingSoldOutResponse> CreateSandboxSimulateListingSoldOutAsync(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> localVarResponse = await CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse> localVarResponse = await CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(createSandboxSimulateListingSoldOutRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -859,14 +922,22 @@ namespace net.crossly.Api
         /// A listing sells out on a marketplace with no order (stock moves, other channels delist). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateListingSoldOutRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateListingSoldOutResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateListingSoldOutResponse>> CreateSandboxSimulateListingSoldOutWithHttpInfoAsync(CreateSandboxSimulateListingSoldOutRequest createSandboxSimulateListingSoldOutRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSandboxSimulateListingSoldOutRequest' is set
+            if (createSandboxSimulateListingSoldOutRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateListingSoldOutRequest' when calling SandboxApi->CreateSandboxSimulateListingSoldOut");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -886,6 +957,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateListingSoldOutRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -913,10 +985,11 @@ namespace net.crossly.Api
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <returns>CreateSandboxSimulateOrderResponse</returns>
-        public CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder()
+        public CreateSandboxSimulateOrderResponse CreateSandboxSimulateOrder(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> localVarResponse = CreateSandboxSimulateOrderWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> localVarResponse = CreateSandboxSimulateOrderWithHttpInfo(createSandboxSimulateOrderRequest);
             return localVarResponse.Data;
         }
 
@@ -924,12 +997,20 @@ namespace net.crossly.Api
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderWithHttpInfo(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest)
         {
+            // verify the required parameter 'createSandboxSimulateOrderRequest' is set
+            if (createSandboxSimulateOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateOrderRequest' when calling SandboxApi->CreateSandboxSimulateOrder");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -949,6 +1030,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -975,11 +1057,12 @@ namespace net.crossly.Api
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderResponse> CreateSandboxSimulateOrderAsync(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> localVarResponse = await CreateSandboxSimulateOrderWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse> localVarResponse = await CreateSandboxSimulateOrderWithHttpInfoAsync(createSandboxSimulateOrderRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -987,14 +1070,22 @@ namespace net.crossly.Api
         /// Simulate a sale through the real sale pipeline (order.created, sale.detected, stock and cross-channel updates). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse>> CreateSandboxSimulateOrderWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderResponse>> CreateSandboxSimulateOrderWithHttpInfoAsync(CreateSandboxSimulateOrderRequest createSandboxSimulateOrderRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSandboxSimulateOrderRequest' is set
+            if (createSandboxSimulateOrderRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateOrderRequest' when calling SandboxApi->CreateSandboxSimulateOrder");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1014,6 +1105,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateOrderRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1041,10 +1133,11 @@ namespace net.crossly.Api
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <returns>CreateSandboxSimulateOrderAddressResponse</returns>
-        public CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress()
+        public CreateSandboxSimulateOrderAddressResponse CreateSandboxSimulateOrderAddress(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> localVarResponse = CreateSandboxSimulateOrderAddressWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> localVarResponse = CreateSandboxSimulateOrderAddressWithHttpInfo(createSandboxSimulateOrderAddressRequest);
             return localVarResponse.Data;
         }
 
@@ -1052,12 +1145,20 @@ namespace net.crossly.Api
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderAddressResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressWithHttpInfo(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest)
         {
+            // verify the required parameter 'createSandboxSimulateOrderAddressRequest' is set
+            if (createSandboxSimulateOrderAddressRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateOrderAddressRequest' when calling SandboxApi->CreateSandboxSimulateOrderAddress");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1077,6 +1178,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateOrderAddressRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1103,11 +1205,12 @@ namespace net.crossly.Api
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderAddressResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderAddressResponse> CreateSandboxSimulateOrderAddressAsync(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> localVarResponse = await CreateSandboxSimulateOrderAddressWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse> localVarResponse = await CreateSandboxSimulateOrderAddressWithHttpInfoAsync(createSandboxSimulateOrderAddressRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1115,14 +1218,22 @@ namespace net.crossly.Api
         /// The buyer address of an order simulated with address \&quot;delayed\&quot; arrives now (order.address_available). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateOrderAddressRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderAddressResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse>> CreateSandboxSimulateOrderAddressWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderAddressResponse>> CreateSandboxSimulateOrderAddressWithHttpInfoAsync(CreateSandboxSimulateOrderAddressRequest createSandboxSimulateOrderAddressRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSandboxSimulateOrderAddressRequest' is set
+            if (createSandboxSimulateOrderAddressRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateOrderAddressRequest' when calling SandboxApi->CreateSandboxSimulateOrderAddress");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1142,6 +1253,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateOrderAddressRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1169,10 +1281,11 @@ namespace net.crossly.Api
         /// The buyer or the marketplace cancels an order (order.cancelled). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>CreateSandboxSimulateOrderCancelledResponse</returns>
-        public CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled()
+        public CreateSandboxSimulateOrderCancelledResponse CreateSandboxSimulateOrderCancelled(OrderIdReasonRequest orderIdReasonRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> localVarResponse = CreateSandboxSimulateOrderCancelledWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> localVarResponse = CreateSandboxSimulateOrderCancelledWithHttpInfo(orderIdReasonRequest);
             return localVarResponse.Data;
         }
 
@@ -1180,12 +1293,20 @@ namespace net.crossly.Api
         /// The buyer or the marketplace cancels an order (order.cancelled). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderCancelledResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest)
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling SandboxApi->CreateSandboxSimulateOrderCancelled");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1205,6 +1326,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1231,11 +1353,12 @@ namespace net.crossly.Api
         /// The buyer or the marketplace cancels an order (order.cancelled). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderCancelledResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderCancelledResponse> CreateSandboxSimulateOrderCancelledAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> localVarResponse = await CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse> localVarResponse = await CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(orderIdReasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1243,14 +1366,22 @@ namespace net.crossly.Api
         /// The buyer or the marketplace cancels an order (order.cancelled). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderCancelledResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderCancelledResponse>> CreateSandboxSimulateOrderCancelledWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling SandboxApi->CreateSandboxSimulateOrderCancelled");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1270,6 +1401,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1297,10 +1429,11 @@ namespace net.crossly.Api
         /// The carrier delivers a shipped order (order.delivered). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>CreateSandboxSimulateOrderDeliveredResponse</returns>
-        public CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered()
+        public CreateSandboxSimulateOrderDeliveredResponse CreateSandboxSimulateOrderDelivered(OrderIdReasonRequest orderIdReasonRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> localVarResponse = CreateSandboxSimulateOrderDeliveredWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> localVarResponse = CreateSandboxSimulateOrderDeliveredWithHttpInfo(orderIdReasonRequest);
             return localVarResponse.Data;
         }
 
@@ -1308,12 +1441,20 @@ namespace net.crossly.Api
         /// The carrier delivers a shipped order (order.delivered). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateOrderDeliveredResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredWithHttpInfo(OrderIdReasonRequest orderIdReasonRequest)
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling SandboxApi->CreateSandboxSimulateOrderDelivered");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1333,6 +1474,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1359,11 +1501,12 @@ namespace net.crossly.Api
         /// The carrier delivers a shipped order (order.delivered). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateOrderDeliveredResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateOrderDeliveredResponse> CreateSandboxSimulateOrderDeliveredAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> localVarResponse = await CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse> localVarResponse = await CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(orderIdReasonRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1371,14 +1514,22 @@ namespace net.crossly.Api
         /// The carrier delivers a shipped order (order.delivered). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderIdReasonRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateOrderDeliveredResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateOrderDeliveredResponse>> CreateSandboxSimulateOrderDeliveredWithHttpInfoAsync(OrderIdReasonRequest orderIdReasonRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'orderIdReasonRequest' is set
+            if (orderIdReasonRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'orderIdReasonRequest' when calling SandboxApi->CreateSandboxSimulateOrderDelivered");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1398,6 +1549,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = orderIdReasonRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1425,10 +1577,11 @@ namespace net.crossly.Api
         /// Refund an order in full or in part (refund.issued). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <returns>CreateSandboxSimulateRefundResponse</returns>
-        public CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund()
+        public CreateSandboxSimulateRefundResponse CreateSandboxSimulateRefund(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest)
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> localVarResponse = CreateSandboxSimulateRefundWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> localVarResponse = CreateSandboxSimulateRefundWithHttpInfo(createSandboxSimulateRefundRequest);
             return localVarResponse.Data;
         }
 
@@ -1436,12 +1589,20 @@ namespace net.crossly.Api
         /// Refund an order in full or in part (refund.issued). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <returns>ApiResponse of CreateSandboxSimulateRefundResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundWithHttpInfo(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest)
         {
+            // verify the required parameter 'createSandboxSimulateRefundRequest' is set
+            if (createSandboxSimulateRefundRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateRefundRequest' when calling SandboxApi->CreateSandboxSimulateRefund");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1461,6 +1622,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateRefundRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1487,11 +1649,12 @@ namespace net.crossly.Api
         /// Refund an order in full or in part (refund.issued). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSandboxSimulateRefundResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateSandboxSimulateRefundResponse> CreateSandboxSimulateRefundAsync(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> localVarResponse = await CreateSandboxSimulateRefundWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse> localVarResponse = await CreateSandboxSimulateRefundWithHttpInfoAsync(createSandboxSimulateRefundRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1499,14 +1662,22 @@ namespace net.crossly.Api
         /// Refund an order in full or in part (refund.issued). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createSandboxSimulateRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSandboxSimulateRefundResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse>> CreateSandboxSimulateRefundWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateSandboxSimulateRefundResponse>> CreateSandboxSimulateRefundWithHttpInfoAsync(CreateSandboxSimulateRefundRequest createSandboxSimulateRefundRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createSandboxSimulateRefundRequest' is set
+            if (createSandboxSimulateRefundRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createSandboxSimulateRefundRequest' when calling SandboxApi->CreateSandboxSimulateRefund");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1526,6 +1697,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createSandboxSimulateRefundRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1681,10 +1853,11 @@ namespace net.crossly.Api
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ListSandboxEventsResponse</returns>
-        public ListSandboxEventsResponse ListSandboxEvents()
+        public ListSandboxEventsResponse ListSandboxEvents(decimal? limit = default(decimal?))
         {
-            net.crossly.Client.ApiResponse<ListSandboxEventsResponse> localVarResponse = ListSandboxEventsWithHttpInfo();
+            net.crossly.Client.ApiResponse<ListSandboxEventsResponse> localVarResponse = ListSandboxEventsWithHttpInfo(limit);
             return localVarResponse.Data;
         }
 
@@ -1692,8 +1865,9 @@ namespace net.crossly.Api
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <returns>ApiResponse of ListSandboxEventsResponse</returns>
-        public net.crossly.Client.ApiResponse<ListSandboxEventsResponse> ListSandboxEventsWithHttpInfo()
+        public net.crossly.Client.ApiResponse<ListSandboxEventsResponse> ListSandboxEventsWithHttpInfo(decimal? limit = default(decimal?))
         {
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
@@ -1717,6 +1891,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1743,11 +1921,12 @@ namespace net.crossly.Api
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSandboxEventsResponse</returns>
-        public async System.Threading.Tasks.Task<ListSandboxEventsResponse> ListSandboxEventsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<ListSandboxEventsResponse> ListSandboxEventsAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<ListSandboxEventsResponse> localVarResponse = await ListSandboxEventsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<ListSandboxEventsResponse> localVarResponse = await ListSandboxEventsWithHttpInfoAsync(limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1755,9 +1934,10 @@ namespace net.crossly.Api
         /// The simulated marketplaces&#39; call log: verb, channel, outcome, latency. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSandboxEventsResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSandboxEventsResponse>> ListSandboxEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListSandboxEventsResponse>> ListSandboxEventsWithHttpInfoAsync(decimal? limit = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -1782,6 +1962,10 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(net.crossly.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required

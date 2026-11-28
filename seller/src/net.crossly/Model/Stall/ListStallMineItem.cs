@@ -134,16 +134,16 @@ namespace net.crossly.Model
         public enum BoothKindEnum
         {
             /// <summary>
-            /// Enum Booth for value: booth
-            /// </summary>
-            [EnumMember(Value = "booth")]
-            Booth = 1,
-
-            /// <summary>
             /// Enum Cart for value: cart
             /// </summary>
             [EnumMember(Value = "cart")]
-            Cart = 2,
+            Cart = 1,
+
+            /// <summary>
+            /// Enum Booth for value: booth
+            /// </summary>
+            [EnumMember(Value = "booth")]
+            Booth = 2,
 
             /// <summary>
             /// Enum Pavilion for value: pavilion

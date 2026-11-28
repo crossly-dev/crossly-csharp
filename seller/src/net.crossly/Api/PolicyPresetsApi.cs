@@ -33,8 +33,9 @@ namespace net.crossly.Api
         /// Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <returns>CreateGeoLocationCheckResponse</returns>
-        CreateGeoLocationCheckResponse CreateGeoLocationCheck();
+        CreateGeoLocationCheckResponse CreateGeoLocationCheck(CreateGeoLocationCheckRequest createGeoLocationCheckRequest);
 
         /// <summary>
         /// Check whether a shipping policy ships to an address.
@@ -43,24 +44,45 @@ namespace net.crossly.Api
         /// Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <returns>ApiResponse of CreateGeoLocationCheckResponse</returns>
-        ApiResponse<CreateGeoLocationCheckResponse> CreateGeoLocationCheckWithHttpInfo();
+        ApiResponse<CreateGeoLocationCheckResponse> CreateGeoLocationCheckWithHttpInfo(CreateGeoLocationCheckRequest createGeoLocationCheckRequest);
         /// <summary>
-        /// Create a return / shipping / payment policy preset.
+        /// Create a return / shipping / payment / pricing policy preset.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <returns>CreatePolicyPresetResponse</returns>
-        CreatePolicyPresetResponse CreatePolicyPreset();
+        CreatePolicyPresetResponse CreatePolicyPreset(CreatePolicyPresetRequest createPolicyPresetRequest);
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset.
+        /// Create a return / shipping / payment / pricing policy preset.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <returns>ApiResponse of CreatePolicyPresetResponse</returns>
-        ApiResponse<CreatePolicyPresetResponse> CreatePolicyPresetWithHttpInfo();
+        ApiResponse<CreatePolicyPresetResponse> CreatePolicyPresetWithHttpInfo(CreatePolicyPresetRequest createPolicyPresetRequest);
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListPolicyPresetsItem</returns>
+        ListPolicyPresetsItem CreatePolicyPresetDuplicate(Guid id);
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListPolicyPresetsItem</returns>
+        ApiResponse<ListPolicyPresetsItem> CreatePolicyPresetDuplicateWithHttpInfo(Guid id);
         /// <summary>
         /// Delete a policy preset. Listings that used it switch to the default preset of its kind.
         /// </summary>
@@ -80,7 +102,7 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of DeletePolicyPresetResponse</returns>
         ApiResponse<DeletePolicyPresetResponse> DeletePolicyPresetWithHttpInfo(Guid id);
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store).
         /// </summary>
         /// <remarks>
         /// Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
@@ -90,7 +112,7 @@ namespace net.crossly.Api
         GetPolicyResponse GetPolicy();
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store).
         /// </summary>
         /// <remarks>
         /// Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
@@ -99,7 +121,57 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of GetPolicyResponse</returns>
         ApiResponse<GetPolicyResponse> GetPolicyWithHttpInfo();
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetPolicyGeneralResponse</returns>
+        GetPolicyGeneralResponse GetPolicyGeneral();
+
+        /// <summary>
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetPolicyGeneralResponse</returns>
+        ApiResponse<GetPolicyGeneralResponse> GetPolicyGeneralWithHttpInfo();
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetPolicyPresetResponse</returns>
+        GetPolicyPresetResponse GetPolicyPreset(Guid id);
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetPolicyPresetResponse</returns>
+        ApiResponse<GetPolicyPresetResponse> GetPolicyPresetWithHttpInfo(Guid id);
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListPolicyPresetAccountsResponse</returns>
+        ListPolicyPresetAccountsResponse ListPolicyPresetAccounts();
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListPolicyPresetAccountsResponse</returns>
+        ApiResponse<ListPolicyPresetAccountsResponse> ListPolicyPresetAccountsWithHttpInfo();
+        /// <summary>
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kind"> (optional)</param>
@@ -107,7 +179,7 @@ namespace net.crossly.Api
         ListPolicyPresetsResponse ListPolicyPresets(string kind = default(string));
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
         /// </summary>
         /// <remarks>
         /// 
@@ -117,12 +189,31 @@ namespace net.crossly.Api
         /// <returns>ApiResponse of ListPolicyPresetsResponse</returns>
         ApiResponse<ListPolicyPresetsResponse> ListPolicyPresetsWithHttpInfo(string kind = default(string));
         /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <returns>UpdatePolicyGeneralResponse</returns>
+        UpdatePolicyGeneralResponse UpdatePolicyGeneral(UpdatePolicyGeneralRequest updatePolicyGeneralRequest);
+
+        /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <returns>ApiResponse of UpdatePolicyGeneralResponse</returns>
+        ApiResponse<UpdatePolicyGeneralResponse> UpdatePolicyGeneralWithHttpInfo(UpdatePolicyGeneralRequest updatePolicyGeneralRequest);
+        /// <summary>
         /// Update a policy preset.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <returns>CreatePolicyPresetResponse</returns>
-        CreatePolicyPresetResponse UpdatePolicyPreset(Guid id);
+        CreatePolicyPresetResponse UpdatePolicyPreset(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest);
 
         /// <summary>
         /// Update a policy preset.
@@ -132,8 +223,29 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <returns>ApiResponse of CreatePolicyPresetResponse</returns>
-        ApiResponse<CreatePolicyPresetResponse> UpdatePolicyPresetWithHttpInfo(Guid id);
+        ApiResponse<CreatePolicyPresetResponse> UpdatePolicyPresetWithHttpInfo(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest);
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <returns>UpdatePolicyPresetApplicationResponse</returns>
+        UpdatePolicyPresetApplicationResponse UpdatePolicyPresetApplication(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest);
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <returns>ApiResponse of UpdatePolicyPresetApplicationResponse</returns>
+        ApiResponse<UpdatePolicyPresetApplicationResponse> UpdatePolicyPresetApplicationWithHttpInfo(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest);
         #endregion Synchronous Operations
     }
 
@@ -150,9 +262,10 @@ namespace net.crossly.Api
         /// Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGeoLocationCheckResponse</returns>
-        System.Threading.Tasks.Task<CreateGeoLocationCheckResponse> CreateGeoLocationCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateGeoLocationCheckResponse> CreateGeoLocationCheckAsync(CreateGeoLocationCheckRequest createGeoLocationCheckRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Check whether a shipping policy ships to an address.
@@ -161,30 +274,56 @@ namespace net.crossly.Api
         /// Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGeoLocationCheckResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateGeoLocationCheckResponse>> CreateGeoLocationCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateGeoLocationCheckResponse>> CreateGeoLocationCheckWithHttpInfoAsync(CreateGeoLocationCheckRequest createGeoLocationCheckRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Create a return / shipping / payment policy preset.
+        /// Create a return / shipping / payment / pricing policy preset.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePolicyPresetResponse</returns>
-        System.Threading.Tasks.Task<CreatePolicyPresetResponse> CreatePolicyPresetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePolicyPresetResponse> CreatePolicyPresetAsync(CreatePolicyPresetRequest createPolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset.
+        /// Create a return / shipping / payment / pricing policy preset.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePolicyPresetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePolicyPresetResponse>> CreatePolicyPresetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePolicyPresetResponse>> CreatePolicyPresetWithHttpInfoAsync(CreatePolicyPresetRequest createPolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPolicyPresetsItem</returns>
+        System.Threading.Tasks.Task<ListPolicyPresetsItem> CreatePolicyPresetDuplicateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPolicyPresetsItem)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListPolicyPresetsItem>> CreatePolicyPresetDuplicateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Delete a policy preset. Listings that used it switch to the default preset of its kind.
         /// </summary>
@@ -209,7 +348,7 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (DeletePolicyPresetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DeletePolicyPresetResponse>> DeletePolicyPresetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store).
         /// </summary>
         /// <remarks>
         /// Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
@@ -220,7 +359,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<GetPolicyResponse> GetPolicyAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store).
         /// </summary>
         /// <remarks>
         /// Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
@@ -230,7 +369,72 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (GetPolicyResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetPolicyResponse>> GetPolicyWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPolicyGeneralResponse</returns>
+        System.Threading.Tasks.Task<GetPolicyGeneralResponse> GetPolicyGeneralAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPolicyGeneralResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPolicyGeneralResponse>> GetPolicyGeneralWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPolicyPresetResponse</returns>
+        System.Threading.Tasks.Task<GetPolicyPresetResponse> GetPolicyPresetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPolicyPresetResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetPolicyPresetResponse>> GetPolicyPresetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPolicyPresetAccountsResponse</returns>
+        System.Threading.Tasks.Task<ListPolicyPresetAccountsResponse> ListPolicyPresetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPolicyPresetAccountsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListPolicyPresetAccountsResponse>> ListPolicyPresetAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
         /// </summary>
         /// <remarks>
         /// 
@@ -242,7 +446,7 @@ namespace net.crossly.Api
         System.Threading.Tasks.Task<ListPolicyPresetsResponse> ListPolicyPresetsAsync(string kind = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default).
         /// </summary>
         /// <remarks>
         /// 
@@ -253,6 +457,29 @@ namespace net.crossly.Api
         /// <returns>Task of ApiResponse (ListPolicyPresetsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListPolicyPresetsResponse>> ListPolicyPresetsWithHttpInfoAsync(string kind = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePolicyGeneralResponse</returns>
+        System.Threading.Tasks.Task<UpdatePolicyGeneralResponse> UpdatePolicyGeneralAsync(UpdatePolicyGeneralRequest updatePolicyGeneralRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePolicyGeneralResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdatePolicyGeneralResponse>> UpdatePolicyGeneralWithHttpInfoAsync(UpdatePolicyGeneralRequest updatePolicyGeneralRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Update a policy preset.
         /// </summary>
         /// <remarks>
@@ -260,9 +487,10 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePolicyPresetResponse</returns>
-        System.Threading.Tasks.Task<CreatePolicyPresetResponse> UpdatePolicyPresetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreatePolicyPresetResponse> UpdatePolicyPresetAsync(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a policy preset.
@@ -272,9 +500,35 @@ namespace net.crossly.Api
         /// </remarks>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePolicyPresetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreatePolicyPresetResponse>> UpdatePolicyPresetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreatePolicyPresetResponse>> UpdatePolicyPresetWithHttpInfoAsync(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePolicyPresetApplicationResponse</returns>
+        System.Threading.Tasks.Task<UpdatePolicyPresetApplicationResponse> UpdatePolicyPresetApplicationAsync(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace).
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePolicyPresetApplicationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdatePolicyPresetApplicationResponse>> UpdatePolicyPresetApplicationWithHttpInfoAsync(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -399,10 +653,11 @@ namespace net.crossly.Api
         /// Check whether a shipping policy ships to an address. Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <returns>CreateGeoLocationCheckResponse</returns>
-        public CreateGeoLocationCheckResponse CreateGeoLocationCheck()
+        public CreateGeoLocationCheckResponse CreateGeoLocationCheck(CreateGeoLocationCheckRequest createGeoLocationCheckRequest)
         {
-            net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> localVarResponse = CreateGeoLocationCheckWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> localVarResponse = CreateGeoLocationCheckWithHttpInfo(createGeoLocationCheckRequest);
             return localVarResponse.Data;
         }
 
@@ -410,12 +665,20 @@ namespace net.crossly.Api
         /// Check whether a shipping policy ships to an address. Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <returns>ApiResponse of CreateGeoLocationCheckResponse</returns>
-        public net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> CreateGeoLocationCheckWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> CreateGeoLocationCheckWithHttpInfo(CreateGeoLocationCheckRequest createGeoLocationCheckRequest)
         {
+            // verify the required parameter 'createGeoLocationCheckRequest' is set
+            if (createGeoLocationCheckRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createGeoLocationCheckRequest' when calling PolicyPresetsApi->CreateGeoLocationCheck");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -435,6 +698,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGeoLocationCheckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -461,11 +725,12 @@ namespace net.crossly.Api
         /// Check whether a shipping policy ships to an address. Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateGeoLocationCheckResponse</returns>
-        public async System.Threading.Tasks.Task<CreateGeoLocationCheckResponse> CreateGeoLocationCheckAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateGeoLocationCheckResponse> CreateGeoLocationCheckAsync(CreateGeoLocationCheckRequest createGeoLocationCheckRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> localVarResponse = await CreateGeoLocationCheckWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse> localVarResponse = await CreateGeoLocationCheckWithHttpInfoAsync(createGeoLocationCheckRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -473,14 +738,22 @@ namespace net.crossly.Api
         /// Check whether a shipping policy ships to an address. Pass an unsaved &#x60;policy&#x60; draft or a &#x60;presetId&#x60; (neither &#x3D; your default shipping policy), an &#x60;address&#x60;, and optionally &#x60;consolidateVia&#x60; (a ship-together hub). Returns &#x60;ships&#x60;, and when it does not: &#x60;reason&#x60;, &#x60;stage&#x60; (buyer | hub), &#x60;message&#x60; and the deciding &#x60;rule&#x60;. &#x60;partial&#x60; means a fuller address (state, ZIP) could change the answer. A draft that is not a valid shipping policy is a 422; a presetId that is not yours is a 404.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createGeoLocationCheckRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateGeoLocationCheckResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse>> CreateGeoLocationCheckWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreateGeoLocationCheckResponse>> CreateGeoLocationCheckWithHttpInfoAsync(CreateGeoLocationCheckRequest createGeoLocationCheckRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'createGeoLocationCheckRequest' is set
+            if (createGeoLocationCheckRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createGeoLocationCheckRequest' when calling PolicyPresetsApi->CreateGeoLocationCheck");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -500,6 +773,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createGeoLocationCheckRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -524,26 +798,35 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset. 
+        /// Create a return / shipping / payment / pricing policy preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <returns>CreatePolicyPresetResponse</returns>
-        public CreatePolicyPresetResponse CreatePolicyPreset()
+        public CreatePolicyPresetResponse CreatePolicyPreset(CreatePolicyPresetRequest createPolicyPresetRequest)
         {
-            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = CreatePolicyPresetWithHttpInfo();
+            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = CreatePolicyPresetWithHttpInfo(createPolicyPresetRequest);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset. 
+        /// Create a return / shipping / payment / pricing policy preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <returns>ApiResponse of CreatePolicyPresetResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> CreatePolicyPresetWithHttpInfo()
+        public net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> CreatePolicyPresetWithHttpInfo(CreatePolicyPresetRequest createPolicyPresetRequest)
         {
+            // verify the required parameter 'createPolicyPresetRequest' is set
+            if (createPolicyPresetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPolicyPresetRequest' when calling PolicyPresetsApi->CreatePolicyPreset");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -563,6 +846,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.Data = createPolicyPresetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -586,24 +870,167 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset. 
+        /// Create a return / shipping / payment / pricing policy preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePolicyPresetResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePolicyPresetResponse> CreatePolicyPresetAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePolicyPresetResponse> CreatePolicyPresetAsync(CreatePolicyPresetRequest createPolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = await CreatePolicyPresetWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = await CreatePolicyPresetWithHttpInfoAsync(createPolicyPresetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Create a return / shipping / payment policy preset. 
+        /// Create a return / shipping / payment / pricing policy preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="createPolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePolicyPresetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePolicyPresetResponse>> CreatePolicyPresetWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePolicyPresetResponse>> CreatePolicyPresetWithHttpInfoAsync(CreatePolicyPresetRequest createPolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'createPolicyPresetRequest' is set
+            if (createPolicyPresetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'createPolicyPresetRequest' when calling PolicyPresetsApi->CreatePolicyPreset");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = createPolicyPresetRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePolicyPresetResponse>("/v1/policy-presets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePolicyPreset", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ListPolicyPresetsItem</returns>
+        public ListPolicyPresetsItem CreatePolicyPresetDuplicate(Guid id)
+        {
+            net.crossly.Client.ApiResponse<ListPolicyPresetsItem> localVarResponse = CreatePolicyPresetDuplicateWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of ListPolicyPresetsItem</returns>
+        public net.crossly.Client.ApiResponse<ListPolicyPresetsItem> CreatePolicyPresetDuplicateWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<ListPolicyPresetsItem>("/v1/policy-presets/{id}/duplicate", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreatePolicyPresetDuplicate", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPolicyPresetsItem</returns>
+        public async System.Threading.Tasks.Task<ListPolicyPresetsItem> CreatePolicyPresetDuplicateAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListPolicyPresetsItem> localVarResponse = await CreatePolicyPresetDuplicateWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Copy a policy preset (\&quot;&lt;name&gt; (copy)\&quot;, never the default; a pricing copy applies nowhere yet). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPolicyPresetsItem)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPolicyPresetsItem>> CreatePolicyPresetDuplicateWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
@@ -628,6 +1055,7 @@ namespace net.crossly.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -637,11 +1065,11 @@ namespace net.crossly.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreatePolicyPresetResponse>("/v1/policy-presets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ListPolicyPresetsItem>("/v1/policy-presets/{id}/duplicate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("CreatePolicyPreset", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreatePolicyPresetDuplicate", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -786,7 +1214,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default. Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store). Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetPolicyResponse</returns>
@@ -797,7 +1225,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default. Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store). Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetPolicyResponse</returns>
@@ -848,7 +1276,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default. Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store). Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -860,7 +1288,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// The seller&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default. Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
+        /// The store&#39;s shipping / return / payment policy presets by kind, with each kind&#39;s default (X-Storefront-Id, else the default store). Pass a preset &#x60;id&#x60; as &#x60;policies.shippingPresetId&#x60; / &#x60;returnPresetId&#x60; / &#x60;paymentPresetId&#x60; on POST or PATCH /v1/listings (null &#x3D; the marketplace&#39;s own default). A kind you omit uses &#x60;defaultPresetId&#x60;.
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -914,7 +1342,397 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>GetPolicyGeneralResponse</returns>
+        public GetPolicyGeneralResponse GetPolicyGeneral()
+        {
+            net.crossly.Client.ApiResponse<GetPolicyGeneralResponse> localVarResponse = GetPolicyGeneralWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of GetPolicyGeneralResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPolicyGeneralResponse> GetPolicyGeneralWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPolicyGeneralResponse>("/v1/policies/general", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicyGeneral", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPolicyGeneralResponse</returns>
+        public async System.Threading.Tasks.Task<GetPolicyGeneralResponse> GetPolicyGeneralAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPolicyGeneralResponse> localVarResponse = await GetPolicyGeneralWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Settings that fit no policy kind: vacation mode (schedule, scope, message, auto-actions). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPolicyGeneralResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPolicyGeneralResponse>> GetPolicyGeneralWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPolicyGeneralResponse>("/v1/policies/general", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicyGeneral", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetPolicyPresetResponse</returns>
+        public GetPolicyPresetResponse GetPolicyPreset(Guid id)
+        {
+            net.crossly.Client.ApiResponse<GetPolicyPresetResponse> localVarResponse = GetPolicyPresetWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetPolicyPresetResponse</returns>
+        public net.crossly.Client.ApiResponse<GetPolicyPresetResponse> GetPolicyPresetWithHttpInfo(Guid id)
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPolicyPresetResponse>("/v1/policy-presets/{id}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicyPreset", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPolicyPresetResponse</returns>
+        public async System.Threading.Tasks.Task<GetPolicyPresetResponse> GetPolicyPresetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<GetPolicyPresetResponse> localVarResponse = await GetPolicyPresetWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// One policy: its fields, how many listings use it, where it applies per platform account (use this policy / the marketplace&#39;s own setting / default for that marketplace) with what each marketplace receives, and its history. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPolicyPresetResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<GetPolicyPresetResponse>> GetPolicyPresetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPolicyPresetResponse>("/v1/policy-presets/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicyPreset", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListPolicyPresetAccountsResponse</returns>
+        public ListPolicyPresetAccountsResponse ListPolicyPresetAccounts()
+        {
+            net.crossly.Client.ApiResponse<ListPolicyPresetAccountsResponse> localVarResponse = ListPolicyPresetAccountsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListPolicyPresetAccountsResponse</returns>
+        public net.crossly.Client.ApiResponse<ListPolicyPresetAccountsResponse> ListPolicyPresetAccountsWithHttpInfo()
+        {
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListPolicyPresetAccountsResponse>("/v1/policy-presets/accounts", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPolicyPresetAccounts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListPolicyPresetAccountsResponse</returns>
+        public async System.Threading.Tasks.Task<ListPolicyPresetAccountsResponse> ListPolicyPresetAccountsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<ListPolicyPresetAccountsResponse> localVarResponse = await ListPolicyPresetAccountsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// The connected platform accounts a policy can apply to (\&quot;Where this applies\&quot;). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListPolicyPresetAccountsResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<ListPolicyPresetAccountsResponse>> ListPolicyPresetAccountsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListPolicyPresetAccountsResponse>("/v1/policy-presets/accounts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListPolicyPresetAccounts", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kind"> (optional)</param>
@@ -926,7 +1744,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kind"> (optional)</param>
@@ -982,7 +1800,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kind"> (optional)</param>
@@ -995,7 +1813,7 @@ namespace net.crossly.Api
         }
 
         /// <summary>
-        /// List the seller&#39;s return / shipping / payment policy presets. meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
+        /// List the seller&#39;s return / shipping / payment / pricing policy presets (no kind &#x3D; the three listing kinds). meta.migrationNotices lists defaults the policy migration demoted (kind still has no default). 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="kind"> (optional)</param>
@@ -1054,14 +1872,163 @@ namespace net.crossly.Api
         }
 
         /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <returns>UpdatePolicyGeneralResponse</returns>
+        public UpdatePolicyGeneralResponse UpdatePolicyGeneral(UpdatePolicyGeneralRequest updatePolicyGeneralRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdatePolicyGeneralResponse> localVarResponse = UpdatePolicyGeneralWithHttpInfo(updatePolicyGeneralRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <returns>ApiResponse of UpdatePolicyGeneralResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatePolicyGeneralResponse> UpdatePolicyGeneralWithHttpInfo(UpdatePolicyGeneralRequest updatePolicyGeneralRequest)
+        {
+            // verify the required parameter 'updatePolicyGeneralRequest' is set
+            if (updatePolicyGeneralRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyGeneralRequest' when calling PolicyPresetsApi->UpdatePolicyGeneral");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updatePolicyGeneralRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdatePolicyGeneralResponse>("/v1/policies/general", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePolicyGeneral", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePolicyGeneralResponse</returns>
+        public async System.Threading.Tasks.Task<UpdatePolicyGeneralResponse> UpdatePolicyGeneralAsync(UpdatePolicyGeneralRequest updatePolicyGeneralRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdatePolicyGeneralResponse> localVarResponse = await UpdatePolicyGeneralWithHttpInfoAsync(updatePolicyGeneralRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Save vacation mode: on now or scheduled, everywhere or chosen accounts, message, auto-actions. 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="updatePolicyGeneralRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePolicyGeneralResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatePolicyGeneralResponse>> UpdatePolicyGeneralWithHttpInfoAsync(UpdatePolicyGeneralRequest updatePolicyGeneralRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updatePolicyGeneralRequest' is set
+            if (updatePolicyGeneralRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyGeneralRequest' when calling PolicyPresetsApi->UpdatePolicyGeneral");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.Data = updatePolicyGeneralRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdatePolicyGeneralResponse>("/v1/policies/general", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePolicyGeneral", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Update a policy preset. 
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <returns>CreatePolicyPresetResponse</returns>
-        public CreatePolicyPresetResponse UpdatePolicyPreset(Guid id)
+        public CreatePolicyPresetResponse UpdatePolicyPreset(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest)
         {
-            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = UpdatePolicyPresetWithHttpInfo(id);
+            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = UpdatePolicyPresetWithHttpInfo(id, updatePolicyPresetRequest);
             return localVarResponse.Data;
         }
 
@@ -1070,12 +2037,20 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <returns>ApiResponse of CreatePolicyPresetResponse</returns>
-        public net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> UpdatePolicyPresetWithHttpInfo(Guid id)
+        public net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> UpdatePolicyPresetWithHttpInfo(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest)
         {
+            // verify the required parameter 'updatePolicyPresetRequest' is set
+            if (updatePolicyPresetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyPresetRequest' when calling PolicyPresetsApi->UpdatePolicyPreset");
+            }
+
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1096,6 +2071,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePolicyPresetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1123,11 +2099,12 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreatePolicyPresetResponse</returns>
-        public async System.Threading.Tasks.Task<CreatePolicyPresetResponse> UpdatePolicyPresetAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreatePolicyPresetResponse> UpdatePolicyPresetAsync(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = await UpdatePolicyPresetWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            net.crossly.Client.ApiResponse<CreatePolicyPresetResponse> localVarResponse = await UpdatePolicyPresetWithHttpInfoAsync(id, updatePolicyPresetRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1136,14 +2113,22 @@ namespace net.crossly.Api
         /// </summary>
         /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="updatePolicyPresetRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreatePolicyPresetResponse)</returns>
-        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePolicyPresetResponse>> UpdatePolicyPresetWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<CreatePolicyPresetResponse>> UpdatePolicyPresetWithHttpInfoAsync(Guid id, UpdatePolicyPresetRequest updatePolicyPresetRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'updatePolicyPresetRequest' is set
+            if (updatePolicyPresetRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyPresetRequest' when calling PolicyPresetsApi->UpdatePolicyPreset");
+            }
+
 
             net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -1164,6 +2149,7 @@ namespace net.crossly.Api
             }
 
             localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePolicyPresetRequest;
 
             // authentication (PersonalAccessToken) required
             // bearer authentication required
@@ -1178,6 +2164,160 @@ namespace net.crossly.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdatePolicyPreset", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <returns>UpdatePolicyPresetApplicationResponse</returns>
+        public UpdatePolicyPresetApplicationResponse UpdatePolicyPresetApplication(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest)
+        {
+            net.crossly.Client.ApiResponse<UpdatePolicyPresetApplicationResponse> localVarResponse = UpdatePolicyPresetApplicationWithHttpInfo(id, updatePolicyPresetApplicationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <returns>ApiResponse of UpdatePolicyPresetApplicationResponse</returns>
+        public net.crossly.Client.ApiResponse<UpdatePolicyPresetApplicationResponse> UpdatePolicyPresetApplicationWithHttpInfo(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest)
+        {
+            // verify the required parameter 'updatePolicyPresetApplicationRequest' is set
+            if (updatePolicyPresetApplicationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyPresetApplicationRequest' when calling PolicyPresetsApi->UpdatePolicyPresetApplication");
+            }
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePolicyPresetApplicationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Put<UpdatePolicyPresetApplicationResponse>("/v1/policy-presets/{id}/applications", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePolicyPresetApplication", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdatePolicyPresetApplicationResponse</returns>
+        public async System.Threading.Tasks.Task<UpdatePolicyPresetApplicationResponse> UpdatePolicyPresetApplicationAsync(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            net.crossly.Client.ApiResponse<UpdatePolicyPresetApplicationResponse> localVarResponse = await UpdatePolicyPresetApplicationWithHttpInfoAsync(id, updatePolicyPresetApplicationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Replace where a policy applies: per platform account, push (use this policy), marketplace (the marketplace&#39;s own setting, optionally an eBay business policy id) or off (pricing), and isDefault (default for that marketplace). 
+        /// </summary>
+        /// <exception cref="net.crossly.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="updatePolicyPresetApplicationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdatePolicyPresetApplicationResponse)</returns>
+        public async System.Threading.Tasks.Task<net.crossly.Client.ApiResponse<UpdatePolicyPresetApplicationResponse>> UpdatePolicyPresetApplicationWithHttpInfoAsync(Guid id, UpdatePolicyPresetApplicationRequest updatePolicyPresetApplicationRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'updatePolicyPresetApplicationRequest' is set
+            if (updatePolicyPresetApplicationRequest == null)
+            {
+                throw new net.crossly.Client.ApiException(400, "Missing required parameter 'updatePolicyPresetApplicationRequest' when calling PolicyPresetsApi->UpdatePolicyPresetApplication");
+            }
+
+
+            net.crossly.Client.RequestOptions localVarRequestOptions = new net.crossly.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = net.crossly.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = net.crossly.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", net.crossly.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.Data = updatePolicyPresetApplicationRequest;
+
+            // authentication (PersonalAccessToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PutAsync<UpdatePolicyPresetApplicationResponse>("/v1/policy-presets/{id}/applications", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdatePolicyPresetApplication", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

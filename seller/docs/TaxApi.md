@@ -6,21 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateMileage**](TaxApi.md#createmileage) | **POST** /v1/mileage | Create a mileage entry.
 [**DeleteMileage**](TaxApi.md#deletemileage) | **DELETE** /v1/mileage/{id} | Delete a mileage entry.
-[**GetBookTaxProfile**](TaxApi.md#getbooktaxprofile) | **GET** /v1/books/tax-profile | Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
 [**GetMileageSummary**](TaxApi.md#getmileagesummary) | **GET** /v1/mileage/summary | Annual mileage totals + IRS deduction. Each trip is priced at the IRS rate on its own date (2026 has two rates, listed in &#x60;rates&#x60;); &#x60;ratePerMile&#x60; is the January rate.
-[**GetOrderSalesTax**](TaxApi.md#getordersalestax) | **GET** /v1/orders/{id}/sales-tax | Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
 [**GetTaxSalesTax**](TaxApi.md#gettaxsalestax) | **GET** /v1/tax/sales-tax | Crossly marketplace sales Crossly did not collect sales tax on, by jurisdiction.
 [**GetTaxScheduleC**](TaxApi.md#gettaxschedulec) | **GET** /v1/tax/schedule-c | Schedule C JSON for a tax year (default the current year), from the same P&amp;L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&amp;L by period.
 [**ListMileage**](TaxApi.md#listmileage) | **GET** /v1/mileage | List mileage entries, newest trip first, paged (limit up to 500). Narrow by year and/or an inclusive from/to date range.
 [**ListTaxCrosslyCollects**](TaxApi.md#listtaxcrosslycollects) | **GET** /v1/tax/crossly-collects | Where Crossly collects sales tax today (its active Stripe Tax registrations).
 [**ListTaxSalesTaxNotCollected**](TaxApi.md#listtaxsalestaxnotcollected) | **GET** /v1/tax/sales-tax/not-collected | The individual Crossly sales Crossly did not collect sales tax on, newest first.
-[**UpdateBookTaxProfile**](TaxApi.md#updatebooktaxprofile) | **PUT** /v1/books/tax-profile | Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
 [**UpdateMileage**](TaxApi.md#updatemileage) | **PATCH** /v1/mileage/{id} | Update a mileage entry.
 
 
 <a name="createmileage"></a>
 # **CreateMileage**
-> CreateMileageResponse CreateMileage ()
+> CreateMileageResponse CreateMileage (CreateMileageRequest createMileageRequest)
 
 Create a mileage entry.
 
@@ -44,11 +41,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TaxApi(config);
+            var createMileageRequest = new CreateMileageRequest(); // CreateMileageRequest | 
 
             try
             {
                 // Create a mileage entry.
-                CreateMileageResponse result = apiInstance.CreateMileage();
+                CreateMileageResponse result = apiInstance.CreateMileage(createMileageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -63,7 +61,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createMileageRequest** | **CreateMileageRequest**|  | 
 
 ### Return type
 
@@ -75,7 +76,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -170,80 +171,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
-<a name="getbooktaxprofile"></a>
-# **GetBookTaxProfile**
-> GetBookTaxProfileResponse GetBookTaxProfile ()
-
-Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using net.crossly.Api;
-using net.crossly.Client;
-using net.crossly.Model;
-
-namespace Example
-{
-    public class GetBookTaxProfileExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://crossly.net/api";
-            // Configure Bearer token for authorization: PersonalAccessToken
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
-            var apiInstance = new TaxApi(config);
-
-            try
-            {
-                // Your tax profile: time zone for books boundaries, filing status, state, set-aside and rate assumptions, accounting method, and business name, EIN and address.
-                GetBookTaxProfileResponse result = apiInstance.GetBookTaxProfile();
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TaxApi.GetBookTaxProfile: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**GetBookTaxProfileResponse**
-
-### Authorization
-
-[PersonalAccessToken](../README.md#PersonalAccessToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Error |  -  |
-| **401** | Error |  -  |
-| **403** | Error |  -  |
-| **404** | Error |  -  |
-| **429** | Error |  -  |
-| **500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 <a name="getmileagesummary"></a>
 # **GetMileageSummary**
 > GetMileageSummaryResponse GetMileageSummary (int? year = null)
@@ -298,84 +225,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetMileageSummaryResponse**
-
-### Authorization
-
-[PersonalAccessToken](../README.md#PersonalAccessToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Error |  -  |
-| **401** | Error |  -  |
-| **403** | Error |  -  |
-| **404** | Error |  -  |
-| **429** | Error |  -  |
-| **500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
-<a name="getordersalestax"></a>
-# **GetOrderSalesTax**
-> GetOrderSalesTaxResponse GetOrderSalesTax (Guid id)
-
-Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using net.crossly.Api;
-using net.crossly.Client;
-using net.crossly.Model;
-
-namespace Example
-{
-    public class GetOrderSalesTaxExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://crossly.net/api";
-            // Configure Bearer token for authorization: PersonalAccessToken
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
-            var apiInstance = new TaxApi(config);
-            var id = "id_example";  // Guid | 
-
-            try
-            {
-                // Who collected sales tax on one Crossly marketplace order, where, and the seller notice.
-                GetOrderSalesTaxResponse result = apiInstance.GetOrderSalesTax(id);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TaxApi.GetOrderSalesTax: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Guid**|  | 
-
-### Return type
-
-**GetOrderSalesTaxResponse**
 
 ### Authorization
 
@@ -482,7 +331,7 @@ Name | Type | Description  | Notes
 
 <a name="gettaxschedulec"></a>
 # **GetTaxScheduleC**
-> GetTaxScheduleCResponse GetTaxScheduleC ()
+> GetTaxScheduleCResponse GetTaxScheduleC (decimal? year = null)
 
 Schedule C JSON for a tax year (default the current year), from the same P&L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&L by period.
 
@@ -506,11 +355,12 @@ namespace Example
             config.AccessToken = "YOUR_BEARER_TOKEN";
 
             var apiInstance = new TaxApi(config);
+            var year = 8.14D;  // decimal? |  (optional) 
 
             try
             {
                 // Schedule C JSON for a tax year (default the current year), from the same P&L as GET /v1/books: line 1 gross receipts before refunds, line 2 refunds, COGS in Part III, completed sales only. GET /v1/books has the full P&L by period.
-                GetTaxScheduleCResponse result = apiInstance.GetTaxScheduleC();
+                GetTaxScheduleCResponse result = apiInstance.GetTaxScheduleC(year);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -525,7 +375,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **year** | **decimal?**|  | [optional] 
 
 ### Return type
 
@@ -798,83 +651,9 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
-<a name="updatebooktaxprofile"></a>
-# **UpdateBookTaxProfile**
-> GetBookTaxProfileResponse UpdateBookTaxProfile ()
-
-Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
-
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using net.crossly.Api;
-using net.crossly.Client;
-using net.crossly.Model;
-
-namespace Example
-{
-    public class UpdateBookTaxProfileExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://crossly.net/api";
-            // Configure Bearer token for authorization: PersonalAccessToken
-            config.AccessToken = "YOUR_BEARER_TOKEN";
-
-            var apiInstance = new TaxApi(config);
-
-            try
-            {
-                // Update your tax profile: time zone, filing status, state, set-aside and rate assumptions (basis points), accounting method, business name, EIN and address. Fields left out are unchanged.
-                GetBookTaxProfileResponse result = apiInstance.UpdateBookTaxProfile();
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TaxApi.UpdateBookTaxProfile: " + e.Message );
-                Debug.Print("Status Code: "+ e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**GetBookTaxProfileResponse**
-
-### Authorization
-
-[PersonalAccessToken](../README.md#PersonalAccessToken)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Error |  -  |
-| **401** | Error |  -  |
-| **403** | Error |  -  |
-| **404** | Error |  -  |
-| **429** | Error |  -  |
-| **500** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 <a name="updatemileage"></a>
 # **UpdateMileage**
-> CreateMileageResponse UpdateMileage (Guid id)
+> CreateMileageResponse UpdateMileage (Guid id, UpdateMileageRequest updateMileageRequest)
 
 Update a mileage entry.
 
@@ -899,11 +678,12 @@ namespace Example
 
             var apiInstance = new TaxApi(config);
             var id = "id_example";  // Guid | 
+            var updateMileageRequest = new UpdateMileageRequest(); // UpdateMileageRequest | 
 
             try
             {
                 // Update a mileage entry.
-                CreateMileageResponse result = apiInstance.UpdateMileage(id);
+                CreateMileageResponse result = apiInstance.UpdateMileage(id, updateMileageRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -922,6 +702,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Guid**|  | 
+ **updateMileageRequest** | **UpdateMileageRequest**|  | 
 
 ### Return type
 
@@ -933,7 +714,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

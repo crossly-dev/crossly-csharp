@@ -39,6 +39,7 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListConnectionsItem" /> class.
         /// </summary>
+        /// <param name="attachedToStore">attachedToStore.</param>
         /// <param name="id">id (required).</param>
         /// <param name="platform">platform (required).</param>
         /// <param name="isActive">isActive (required).</param>
@@ -46,7 +47,7 @@ namespace net.crossly.Model
         /// <param name="lastSeenActive">lastSeenActive.</param>
         /// <param name="tokenExpiresAt">tokenExpiresAt.</param>
         /// <param name="createdAt">createdAt.</param>
-        public ListConnectionsItem(string id = default(string), string platform = default(string), bool isActive = default(bool), string shopUrl = default(string), DateTime? lastSeenActive = default(DateTime?), DateTime? tokenExpiresAt = default(DateTime?), DateTime? createdAt = default(DateTime?))
+        public ListConnectionsItem(bool? attachedToStore = default(bool?), string id = default(string), string platform = default(string), bool isActive = default(bool), string shopUrl = default(string), DateTime? lastSeenActive = default(DateTime?), DateTime? tokenExpiresAt = default(DateTime?), DateTime? createdAt = default(DateTime?))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -59,11 +60,18 @@ namespace net.crossly.Model
             }
             this.Platform = platform;
             this.IsActive = isActive;
+            this.AttachedToStore = attachedToStore;
             this.ShopUrl = shopUrl;
             this.LastSeenActive = lastSeenActive;
             this.TokenExpiresAt = tokenExpiresAt;
             this.CreatedAt = createdAt;
         }
+
+        /// <summary>
+        /// Gets or Sets AttachedToStore
+        /// </summary>
+        [DataMember(Name = "attachedToStore", EmitDefaultValue = true)]
+        public bool? AttachedToStore { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -115,6 +123,7 @@ namespace net.crossly.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListConnectionsItem {\n");
+            sb.Append("  AttachedToStore: ").Append(AttachedToStore).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Platform: ").Append(Platform).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
@@ -157,6 +166,11 @@ namespace net.crossly.Model
                 return false;
             }
             return 
+                (
+                    this.AttachedToStore == input.AttachedToStore ||
+                    (this.AttachedToStore != null &&
+                    this.AttachedToStore.Equals(input.AttachedToStore))
+                ) && 
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
@@ -202,6 +216,10 @@ namespace net.crossly.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AttachedToStore != null)
+                {
+                    hashCode = (hashCode * 59) + this.AttachedToStore.GetHashCode();
+                }
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();

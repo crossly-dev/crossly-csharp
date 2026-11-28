@@ -39,9 +39,9 @@ namespace net.crossly.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WorldStaffPostingResponseDataCheckIn" /> class.
         /// </summary>
-        /// <param name="graceMinutes">How early a worker may check in, and how late before it counts as missed. (required).</param>
-        /// <param name="presenceRatio">Share of the shift (less unpaid breaks) the server must see the worker in the place. (required).</param>
-        /// <param name="requireCheckIn">In-world: the worker must check in at the place (true), or presence alone counts (false). (required).</param>
+        /// <param name="graceMinutes">graceMinutes (required).</param>
+        /// <param name="presenceRatio">presenceRatio (required).</param>
+        /// <param name="requireCheckIn">requireCheckIn (required).</param>
         public WorldStaffPostingResponseDataCheckIn(decimal graceMinutes = default(decimal), decimal presenceRatio = default(decimal), bool requireCheckIn = default(bool))
         {
             this.GraceMinutes = graceMinutes;
@@ -50,23 +50,20 @@ namespace net.crossly.Model
         }
 
         /// <summary>
-        /// How early a worker may check in, and how late before it counts as missed.
+        /// Gets or Sets GraceMinutes
         /// </summary>
-        /// <value>How early a worker may check in, and how late before it counts as missed.</value>
         [DataMember(Name = "graceMinutes", IsRequired = true, EmitDefaultValue = false)]
         public decimal GraceMinutes { get; set; }
 
         /// <summary>
-        /// Share of the shift (less unpaid breaks) the server must see the worker in the place.
+        /// Gets or Sets PresenceRatio
         /// </summary>
-        /// <value>Share of the shift (less unpaid breaks) the server must see the worker in the place.</value>
         [DataMember(Name = "presenceRatio", IsRequired = true, EmitDefaultValue = false)]
         public decimal PresenceRatio { get; set; }
 
         /// <summary>
-        /// In-world: the worker must check in at the place (true), or presence alone counts (false).
+        /// Gets or Sets RequireCheckIn
         /// </summary>
-        /// <value>In-world: the worker must check in at the place (true), or presence alone counts (false).</value>
         [DataMember(Name = "requireCheckIn", IsRequired = true, EmitDefaultValue = true)]
         public bool RequireCheckIn { get; set; }
 

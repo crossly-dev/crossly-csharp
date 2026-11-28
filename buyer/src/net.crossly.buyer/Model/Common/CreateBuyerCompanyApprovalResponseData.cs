@@ -43,17 +43,17 @@ namespace net.crossly.buyer.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="expiresAt">expiresAt.</param>
         /// <param name="status">status (required).</param>
+        /// <param name="note">note.</param>
         /// <param name="amountCents">amountCents (required).</param>
-        /// <param name="decidedAt">decidedAt.</param>
-        /// <param name="usedAt">usedAt.</param>
         /// <param name="sellerUserId">sellerUserId (required).</param>
         /// <param name="poReference">poReference.</param>
-        /// <param name="note">note.</param>
+        /// <param name="decidedAt">decidedAt.</param>
         /// <param name="decisionNote">decisionNote.</param>
+        /// <param name="usedAt">usedAt.</param>
         /// <param name="requesterUserId">requesterUserId (required).</param>
         /// <param name="companyId">companyId (required).</param>
         /// <param name="decidedByUserId">decidedByUserId.</param>
-        public CreateBuyerCompanyApprovalResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime? expiresAt = default(DateTime?), string status = default(string), decimal amountCents = default(decimal), DateTime? decidedAt = default(DateTime?), DateTime? usedAt = default(DateTime?), string sellerUserId = default(string), string poReference = default(string), string note = default(string), string decisionNote = default(string), string requesterUserId = default(string), string companyId = default(string), string decidedByUserId = default(string))
+        public CreateBuyerCompanyApprovalResponseData(string id = default(string), DateTime createdAt = default(DateTime), DateTime? expiresAt = default(DateTime?), string status = default(string), string note = default(string), decimal amountCents = default(decimal), string sellerUserId = default(string), string poReference = default(string), DateTime? decidedAt = default(DateTime?), string decisionNote = default(string), DateTime? usedAt = default(DateTime?), string requesterUserId = default(string), string companyId = default(string), string decidedByUserId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null) {
@@ -83,11 +83,11 @@ namespace net.crossly.buyer.Model
             }
             this.CompanyId = companyId;
             this.ExpiresAt = expiresAt;
-            this.DecidedAt = decidedAt;
-            this.UsedAt = usedAt;
-            this.PoReference = poReference;
             this.Note = note;
+            this.PoReference = poReference;
+            this.DecidedAt = decidedAt;
             this.DecisionNote = decisionNote;
+            this.UsedAt = usedAt;
             this.DecidedByUserId = decidedByUserId;
         }
 
@@ -116,22 +116,16 @@ namespace net.crossly.buyer.Model
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or Sets Note
+        /// </summary>
+        [DataMember(Name = "note", EmitDefaultValue = true)]
+        public string Note { get; set; }
+
+        /// <summary>
         /// Gets or Sets AmountCents
         /// </summary>
         [DataMember(Name = "amountCents", IsRequired = true, EmitDefaultValue = false)]
         public decimal AmountCents { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DecidedAt
-        /// </summary>
-        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
-        public DateTime? DecidedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets UsedAt
-        /// </summary>
-        [DataMember(Name = "usedAt", EmitDefaultValue = true)]
-        public DateTime? UsedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerUserId
@@ -146,16 +140,22 @@ namespace net.crossly.buyer.Model
         public string PoReference { get; set; }
 
         /// <summary>
-        /// Gets or Sets Note
+        /// Gets or Sets DecidedAt
         /// </summary>
-        [DataMember(Name = "note", EmitDefaultValue = true)]
-        public string Note { get; set; }
+        [DataMember(Name = "decidedAt", EmitDefaultValue = true)]
+        public DateTime? DecidedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets DecisionNote
         /// </summary>
         [DataMember(Name = "decisionNote", EmitDefaultValue = true)]
         public string DecisionNote { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UsedAt
+        /// </summary>
+        [DataMember(Name = "usedAt", EmitDefaultValue = true)]
+        public DateTime? UsedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets RequesterUserId
@@ -187,13 +187,13 @@ namespace net.crossly.buyer.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Note: ").Append(Note).Append("\n");
             sb.Append("  AmountCents: ").Append(AmountCents).Append("\n");
-            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
-            sb.Append("  UsedAt: ").Append(UsedAt).Append("\n");
             sb.Append("  SellerUserId: ").Append(SellerUserId).Append("\n");
             sb.Append("  PoReference: ").Append(PoReference).Append("\n");
-            sb.Append("  Note: ").Append(Note).Append("\n");
+            sb.Append("  DecidedAt: ").Append(DecidedAt).Append("\n");
             sb.Append("  DecisionNote: ").Append(DecisionNote).Append("\n");
+            sb.Append("  UsedAt: ").Append(UsedAt).Append("\n");
             sb.Append("  RequesterUserId: ").Append(RequesterUserId).Append("\n");
             sb.Append("  CompanyId: ").Append(CompanyId).Append("\n");
             sb.Append("  DecidedByUserId: ").Append(DecidedByUserId).Append("\n");
@@ -253,18 +253,13 @@ namespace net.crossly.buyer.Model
                     this.Status.Equals(input.Status))
                 ) && 
                 (
+                    this.Note == input.Note ||
+                    (this.Note != null &&
+                    this.Note.Equals(input.Note))
+                ) && 
+                (
                     this.AmountCents == input.AmountCents ||
                     this.AmountCents.Equals(input.AmountCents)
-                ) && 
-                (
-                    this.DecidedAt == input.DecidedAt ||
-                    (this.DecidedAt != null &&
-                    this.DecidedAt.Equals(input.DecidedAt))
-                ) && 
-                (
-                    this.UsedAt == input.UsedAt ||
-                    (this.UsedAt != null &&
-                    this.UsedAt.Equals(input.UsedAt))
                 ) && 
                 (
                     this.SellerUserId == input.SellerUserId ||
@@ -277,14 +272,19 @@ namespace net.crossly.buyer.Model
                     this.PoReference.Equals(input.PoReference))
                 ) && 
                 (
-                    this.Note == input.Note ||
-                    (this.Note != null &&
-                    this.Note.Equals(input.Note))
+                    this.DecidedAt == input.DecidedAt ||
+                    (this.DecidedAt != null &&
+                    this.DecidedAt.Equals(input.DecidedAt))
                 ) && 
                 (
                     this.DecisionNote == input.DecisionNote ||
                     (this.DecisionNote != null &&
                     this.DecisionNote.Equals(input.DecisionNote))
+                ) && 
+                (
+                    this.UsedAt == input.UsedAt ||
+                    (this.UsedAt != null &&
+                    this.UsedAt.Equals(input.UsedAt))
                 ) && 
                 (
                     this.RequesterUserId == input.RequesterUserId ||
@@ -328,15 +328,11 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
+                if (this.Note != null)
+                {
+                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.AmountCents.GetHashCode();
-                if (this.DecidedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
-                }
-                if (this.UsedAt != null)
-                {
-                    hashCode = (hashCode * 59) + this.UsedAt.GetHashCode();
-                }
                 if (this.SellerUserId != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerUserId.GetHashCode();
@@ -345,13 +341,17 @@ namespace net.crossly.buyer.Model
                 {
                     hashCode = (hashCode * 59) + this.PoReference.GetHashCode();
                 }
-                if (this.Note != null)
+                if (this.DecidedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.Note.GetHashCode();
+                    hashCode = (hashCode * 59) + this.DecidedAt.GetHashCode();
                 }
                 if (this.DecisionNote != null)
                 {
                     hashCode = (hashCode * 59) + this.DecisionNote.GetHashCode();
+                }
+                if (this.UsedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UsedAt.GetHashCode();
                 }
                 if (this.RequesterUserId != null)
                 {

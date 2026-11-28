@@ -40,7 +40,7 @@ namespace net.crossly.Model
         /// Initializes a new instance of the <see cref="CreateWorldSpaceRoleResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public CreateWorldSpaceRoleResponse(CreateWorldSpaceRoleResponseData data = default(CreateWorldSpaceRoleResponseData))
+        public CreateWorldSpaceRoleResponse(CreateWorldSpaceRoleRequest data = default(CreateWorldSpaceRoleRequest))
         {
             // to ensure "data" is required (not null)
             if (data == null) {
@@ -53,7 +53,7 @@ namespace net.crossly.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = false)]
-        public CreateWorldSpaceRoleResponseData Data { get; set; }
+        public CreateWorldSpaceRoleRequest Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

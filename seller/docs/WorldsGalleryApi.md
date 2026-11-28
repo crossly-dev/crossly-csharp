@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="createworldexperiencegallery"></a>
 # **CreateWorldExperienceGallery**
-> WorldExperienceGalleryResponse CreateWorldExperienceGallery (string experienceId)
+> WorldExperienceGalleryResponse CreateWorldExperienceGallery (string experienceId, CreateWorldExperienceGalleryRequest createWorldExperienceGalleryRequest = null)
 
 Add an uploaded screenshot or video (your own upload's publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game's page once approved.
 
@@ -41,11 +41,12 @@ namespace Example
 
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceGalleryRequest = new CreateWorldExperienceGalleryRequest(); // CreateWorldExperienceGalleryRequest |  (optional) 
 
             try
             {
                 // Add an uploaded screenshot or video (your own upload's publicUrl; a video may carry a poster image). Images are scanned at once; every item waits for a person and shows on the game's page once approved.
-                WorldExperienceGalleryResponse result = apiInstance.CreateWorldExperienceGallery(experienceId);
+                WorldExperienceGalleryResponse result = apiInstance.CreateWorldExperienceGallery(experienceId, createWorldExperienceGalleryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -64,6 +65,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceGalleryRequest** | **CreateWorldExperienceGalleryRequest**|  | [optional] 
 
 ### Return type
 
@@ -75,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -94,7 +96,7 @@ Name | Type | Description  | Notes
 
 <a name="createworldexperiencegalleryuploadurl"></a>
 # **CreateWorldExperienceGalleryUploadUrl**
-> CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl (string experienceId)
+> CreateWorldExperienceGalleryUploadUrlResponse CreateWorldExperienceGalleryUploadUrl (string experienceId, CreateWorldExperienceGalleryUploadUrlRequest createWorldExperienceGalleryUploadUrlRequest = null)
 
 A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
 
@@ -119,11 +121,12 @@ namespace Example
 
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createWorldExperienceGalleryUploadUrlRequest = new CreateWorldExperienceGalleryUploadUrlRequest(); // CreateWorldExperienceGalleryUploadUrlRequest |  (optional) 
 
             try
             {
                 // A presigned upload for a gallery screenshot (JPEG/PNG/WebP/GIF, ≤ 10 MB) or video (MP4/QuickTime/WebM): PUT the file to uploadUrl with the same Content-Type and exact Content-Length, then add publicUrl to the gallery.
-                CreateWorldExperienceGalleryUploadUrlResponse result = apiInstance.CreateWorldExperienceGalleryUploadUrl(experienceId);
+                CreateWorldExperienceGalleryUploadUrlResponse result = apiInstance.CreateWorldExperienceGalleryUploadUrl(experienceId, createWorldExperienceGalleryUploadUrlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -142,6 +145,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createWorldExperienceGalleryUploadUrlRequest** | **CreateWorldExperienceGalleryUploadUrlRequest**|  | [optional] 
 
 ### Return type
 
@@ -153,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencegallery"></a>
 # **UpdateWorldExperienceGallery**
-> WorldExperienceGalleryResponse UpdateWorldExperienceGallery (string experienceId, string mediaId)
+> WorldExperienceGalleryResponse UpdateWorldExperienceGallery (string experienceId, string mediaId, UpdateWorldExperienceGalleryRequest updateWorldExperienceGalleryRequest = null)
 
 Change an item's caption (filtered; an approved item with a new caption goes back to review).
 
@@ -356,11 +360,12 @@ namespace Example
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
             var mediaId = "mediaId_example";  // string | 
+            var updateWorldExperienceGalleryRequest = new UpdateWorldExperienceGalleryRequest(); // UpdateWorldExperienceGalleryRequest |  (optional) 
 
             try
             {
                 // Change an item's caption (filtered; an approved item with a new caption goes back to review).
-                WorldExperienceGalleryResponse result = apiInstance.UpdateWorldExperienceGallery(experienceId, mediaId);
+                WorldExperienceGalleryResponse result = apiInstance.UpdateWorldExperienceGallery(experienceId, mediaId, updateWorldExperienceGalleryRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -380,6 +385,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **mediaId** | **string**|  | 
+ **updateWorldExperienceGalleryRequest** | **UpdateWorldExperienceGalleryRequest**|  | [optional] 
 
 ### Return type
 
@@ -391,7 +397,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -410,7 +416,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencegalleryorder"></a>
 # **UpdateWorldExperienceGalleryOrder**
-> UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder (string experienceId)
+> UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryOrder (string experienceId, CreateListingByIdRequest createListingByIdRequest = null)
 
 Set the order on the game's page: the ids you list first, the rest after in their current order.
 
@@ -435,11 +441,12 @@ namespace Example
 
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var createListingByIdRequest = new CreateListingByIdRequest(); // CreateListingByIdRequest |  (optional) 
 
             try
             {
                 // Set the order on the game's page: the ids you list first, the rest after in their current order.
-                UpdateWorldExperienceGalleryRoleResponse result = apiInstance.UpdateWorldExperienceGalleryOrder(experienceId);
+                UpdateWorldExperienceGalleryRoleResponse result = apiInstance.UpdateWorldExperienceGalleryOrder(experienceId, createListingByIdRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -458,6 +465,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **createListingByIdRequest** | **CreateListingByIdRequest**|  | [optional] 
 
 ### Return type
 
@@ -469,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -488,7 +496,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencegalleryrole"></a>
 # **UpdateWorldExperienceGalleryRole**
-> UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole (string experienceId, string mediaId)
+> UpdateWorldExperienceGalleryRoleResponse UpdateWorldExperienceGalleryRole (string experienceId, string mediaId, UpdateWorldExperienceGalleryRoleRequest updateWorldExperienceGalleryRoleRequest = null)
 
 Make an item the game's icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
 
@@ -514,11 +522,12 @@ namespace Example
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
             var mediaId = "mediaId_example";  // string | 
+            var updateWorldExperienceGalleryRoleRequest = new UpdateWorldExperienceGalleryRoleRequest(); // UpdateWorldExperienceGalleryRoleRequest |  (optional) 
 
             try
             {
                 // Make an item the game's icon or thumbnail (an image), its trailer (a video), or put it back in the gallery. The previous holder of that role goes back to the gallery.
-                UpdateWorldExperienceGalleryRoleResponse result = apiInstance.UpdateWorldExperienceGalleryRole(experienceId, mediaId);
+                UpdateWorldExperienceGalleryRoleResponse result = apiInstance.UpdateWorldExperienceGalleryRole(experienceId, mediaId, updateWorldExperienceGalleryRoleRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -538,6 +547,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
  **mediaId** | **string**|  | 
+ **updateWorldExperienceGalleryRoleRequest** | **UpdateWorldExperienceGalleryRoleRequest**|  | [optional] 
 
 ### Return type
 
@@ -549,7 +559,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 
@@ -568,7 +578,7 @@ Name | Type | Description  | Notes
 
 <a name="updateworldexperiencegallerytrailerurl"></a>
 # **UpdateWorldExperienceGalleryTrailerUrl**
-> WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl (string experienceId)
+> WorldExperienceGalleryResponse UpdateWorldExperienceGalleryTrailerUrl (string experienceId, UpdateWorldExperienceGalleryTrailerUrlRequest updateWorldExperienceGalleryTrailerUrlRequest = null)
 
 Set the game's trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
 
@@ -593,11 +603,12 @@ namespace Example
 
             var apiInstance = new WorldsGalleryApi(config);
             var experienceId = "experienceId_example";  // string | 
+            var updateWorldExperienceGalleryTrailerUrlRequest = new UpdateWorldExperienceGalleryTrailerUrlRequest(); // UpdateWorldExperienceGalleryTrailerUrlRequest |  (optional) 
 
             try
             {
                 // Set the game's trailer to a YouTube or Vimeo video link (https; youtube.com, youtu.be, vimeo.com, player.vimeo.com only; any other host is 400 trailer_host_not_allowed). It waits for a person like any gallery item; the current trailer goes back to the gallery (an uploaded clip) or off the page (a link).
-                WorldExperienceGalleryResponse result = apiInstance.UpdateWorldExperienceGalleryTrailerUrl(experienceId);
+                WorldExperienceGalleryResponse result = apiInstance.UpdateWorldExperienceGalleryTrailerUrl(experienceId, updateWorldExperienceGalleryTrailerUrlRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -616,6 +627,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **experienceId** | **string**|  | 
+ **updateWorldExperienceGalleryTrailerUrlRequest** | **UpdateWorldExperienceGalleryTrailerUrlRequest**|  | [optional] 
 
 ### Return type
 
@@ -627,7 +639,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 

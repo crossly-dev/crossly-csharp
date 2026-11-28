@@ -38,28 +38,28 @@ namespace net.crossly.Model
         public enum OpEnum
         {
             /// <summary>
-            /// Enum Move for value: move
-            /// </summary>
-            [EnumMember(Value = "move")]
-            Move = 1,
-
-            /// <summary>
-            /// Enum Remove for value: remove
-            /// </summary>
-            [EnumMember(Value = "remove")]
-            Remove = 2,
-
-            /// <summary>
             /// Enum Sort for value: sort
             /// </summary>
             [EnumMember(Value = "sort")]
-            Sort = 3,
+            Sort = 1,
 
             /// <summary>
             /// Enum Fill for value: fill
             /// </summary>
             [EnumMember(Value = "fill")]
-            Fill = 4,
+            Fill = 2,
+
+            /// <summary>
+            /// Enum Move for value: move
+            /// </summary>
+            [EnumMember(Value = "move")]
+            Move = 3,
+
+            /// <summary>
+            /// Enum Remove for value: remove
+            /// </summary>
+            [EnumMember(Value = "remove")]
+            Remove = 4,
 
             /// <summary>
             /// Enum Place for value: place
